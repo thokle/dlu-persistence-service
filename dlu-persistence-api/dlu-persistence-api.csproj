@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B8DA807F-531C-42C0-B3F1-79AD6560E1AA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>dlu_persistence_api</RootNamespace>
+    <AssemblyName>dlu-persistence-api</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1-beta1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AktiveUgeaviserMedAlleData.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="bladtlfogfaxkopi.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class1.cs" />
+    <Compile Include="daos\StamBladsDao.cs" />
+    <Compile Include="delPriser.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DLUModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DLUModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DLUModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DLUModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DLUModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="dtproperty.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dt_getpropertiesbyid_Result.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dt_getpropertiesbyid_u_Result.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FakturaFejlFinde.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FindFejlLinjer.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GammelAnnoncørID.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HerningFolkeblad.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LPRoller.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="mapper\AutoMaperUtil.cs" />
+    <Compile Include="models\Dage.cs" />
+    <Compile Include="models\Dage1.cs" />
+    <Compile Include="models\DelOmraade.cs" />
+    <Compile Include="models\GeoKode.cs" />
+    <Compile Include="models\Grupper.cs" />
+    <Compile Include="models\HovedGruppe.cs" />
+    <Compile Include="models\MedieplanLinjers.cs" />
+    <Compile Include="models\MedlGruppe.cs" />
+    <Compile Include="models\PostNr.cs" />
+    <Compile Include="models\Prisers.cs" />
+    <Compile Include="models\PrislisterPrBladPrUges.cs" />
+    <Compile Include="models\PrislisterPrBladÅr.cs" />
+    <Compile Include="models\Region.cs" />
+    <Compile Include="NavisionContact.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NavisionContact2.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OpdateringsTekst.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Salesperson.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="models\StamData.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblAktiveVærdier.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblAktivGruppeVersion.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblAnnoncekontrol.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblBladDækning.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblBladnavnMappingFraDO.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblBladStamdata.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblBladStamdataKopi.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblBrugerData.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblDage.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblDelOmråde.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblDPKulør.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblEjerforhold.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblFakturaFejl.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblFakturaFejlTekst.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblFaktureringsBilag.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblFarveTillægWebApp.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblFejlTekst.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblGeoKode.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblGrupper.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblGruppeRabatter.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblHovedGruppe.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblKonkurrentDækning.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblKonkurrenter.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblKontaktArbOmråder.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblKontakter.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblKontakterPrBlad.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblKontaktFunktioner.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblKontaktTitler.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMateriale.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMedieplan.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMedieplanLinjer.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMedieplanNr.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMedieplanÆndringer.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMedIGruppe.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMmPrisWebApp.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblOrdreGebyrNavision.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblOrdreLinjerNavision.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblOrdreNavision.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPlacering.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPlannerPlaner.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPostNr.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPostNrSøgning.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPriser.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPrislister.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPrislisterPrBladPrUge.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPrislisterPrBladPrÅr.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblRegion.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblRemindereSendt.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblSupportBilag.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblWEBeMail.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblWEBForespørgsel.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblWEBForespørgselLinjer.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblWEBSendTilKollega.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tempPriser.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tmpNyeDeadline.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tnpOrdreNr.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tnpOrdreNr2.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tnpOrdreNr3.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UgeaviserTilGrid.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="viewBlade.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="viewBookingListe.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="viewGrupper.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="viewLinjeDiff.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="viewOrdre.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="viewOrdreErSendt.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="viewOrdreFIND.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="viewOrdreIkkeSendt.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="viewOrdreLinjer.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="viewOrdreLinjerFIND.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="viewOrdreSendtManglerMateriale.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="viewOversigt.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="viewUpdateStatusIMedieplan.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="viewUpdateStatusIMedieplanNr.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="DLUModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DLUModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DLUModel.edmx.diagram">
+      <DependentUpon>DLUModel.edmx</DependentUpon>
+    </None>
+    <None Include="EF.Reverse.POCO.Core.ttinclude" />
+    <None Include="EF.Reverse.POCO.ttinclude" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DLUModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DLUModel.edmx</DependentUpon>
+      <LastGenOutput>DLUModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DLUModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DLUModel.edmx</DependentUpon>
+      <LastGenOutput>DLUModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

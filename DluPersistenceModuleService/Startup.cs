@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DLUPersistence_service_api
+namespace DluPersistenceModuleService
 {
     public class Startup
     {
