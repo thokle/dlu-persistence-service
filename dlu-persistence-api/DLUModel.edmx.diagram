@@ -4,9 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="908b07cd649d46dbbd111842a9163a3d" Name="Diagram1">
+      <Diagram DiagramId="908b07cd649d46dbbd111842a9163a3d" Name="Diagram1" ZoomLevel="150">
         <EntityTypeShape EntityType="DiMPdotNetModel.dtproperty" Width="1.5" PointX="7.75" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetModel.OpdateringsTekst" Width="1.5" PointX="7.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetModel.OpdateringsTekst" Width="2.75" PointX="7.5" PointY="11" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetModel.sysdiagram" Width="1.5" PointX="14.75" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetModel.tblAnnoncekontrol" Width="1.5" PointX="6" PointY="26.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetModel.tblBladDækning" Width="1.5" PointX="13.75" PointY="16.375" IsExpanded="true" />
@@ -17,7 +17,7 @@
         <EntityTypeShape EntityType="DiMPdotNetModel.tblDage" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetModel.tblDelOmråde" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetModel.tblDPKulør" Width="1.5" PointX="3.75" PointY="43.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetModel.tblEjerforhold" Width="1.5" PointX="15.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetModel.tblEjerforhold" Width="1.5" PointX="15" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetModel.tblFakturaFejl" Width="1.5" PointX="15.75" PointY="14.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetModel.tblFakturaFejlTekst" Width="1.5" PointX="15.75" PointY="17.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetModel.tblFaktureringsBilag" Width="1.5" PointX="17.75" PointY="2.375" IsExpanded="true" />
@@ -29,19 +29,19 @@
         <EntityTypeShape EntityType="DiMPdotNetModel.tblKonkurrentDækning" Width="1.5" PointX="6" PointY="16.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetModel.tblKonkurrenter" Width="1.5" PointX="3.75" PointY="40.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetModel.tblKontaktArbOmråder" Width="1.5" PointX="5.75" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetModel.tblKontakter" Width="1.5" PointX="8" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetModel.tblKontakter" Width="1.5" PointX="7.75" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetModel.tblKontakterPrBlad" Width="1.5" PointX="10.25" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetModel.tblKontaktFunktioner" Width="1.5" PointX="12.5" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetModel.tblKontaktTitler" Width="1.5" PointX="5.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetModel.tblKontaktTitler" Width="1.5" PointX="9.125" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetModel.tblMateriale" Width="1.5" PointX="6" PointY="31.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetModel.tblMedieplan" Width="1.5" PointX="6" PointY="39.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetModel.tblMedieplanLinjer" Width="1.5" PointX="8.25" PointY="13.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetModel.tblMedieplanNr" Width="1.5" PointX="3.75" PointY="30.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetModel.tblMedieplanÆndringer" Width="1.5" PointX="17.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetModel.tblMedieplanÆndringer" Width="2.5" PointX="17.25" PointY="10.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetModel.tblMedIGruppe" Width="1.5" PointX="5.25" PointY="13.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetModel.tblOrdreGebyrNavision" Width="1.5" PointX="13" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetModel.tblOrdreLinjerNavision" Width="1.5" PointX="13" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetModel.tblOrdreNavision" Width="1.5" PointX="10.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetModel.tblOrdreNavision" Width="1.5" PointX="11.125" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetModel.tblPlacering" Width="1.5" PointX="3.75" PointY="46" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetModel.tblPostNr" Width="1.5" PointX="0.75" PointY="16" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetModel.tblPostNrSøgning" Width="1.5" PointX="3" PointY="37.125" IsExpanded="true" />
@@ -69,7 +69,7 @@
         <EntityTypeShape EntityType="DiMPdotNetModel.tnpOrdreNr" Width="1.5" PointX="21.75" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetModel.tnpOrdreNr2" Width="1.5" PointX="21.75" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetModel.tnpOrdreNr3" Width="1.5" PointX="21.75" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetModel.AktiveUgeaviserMedAlleData" Width="1.5" PointX="18.75" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetModel.AktiveUgeaviserMedAlleData" Width="1.5" PointX="18.875" PointY="23.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetModel.FakturaFejlFinde" Width="1.5" PointX="21.75" PointY="9.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetModel.FindFejlLinjer" Width="1.5" PointX="21.75" PointY="12.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetModel.GammelAnnoncørID" Width="1.5" PointX="21.75" PointY="17.375" IsExpanded="true" />

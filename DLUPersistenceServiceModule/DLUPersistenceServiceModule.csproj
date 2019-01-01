@@ -191,6 +191,7 @@
   <ItemGroup>
     <Compile Include="Bootstrap.cs" />
     <Compile Include="controllers\IndexController.cs" />
+    <Compile Include="controllers\StamBladController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

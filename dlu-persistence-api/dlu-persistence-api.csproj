@@ -68,6 +68,7 @@
       <DependentUpon>DLUModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
+    <Compile Include="daos\MediePlanDao.cs" />
     <Compile Include="daos\StamBladsDao.cs" />
     <Compile Include="delPriser.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>
@@ -111,14 +112,17 @@
     <Compile Include="LPRoller.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="mapper\AutoMaperUtil.cs" />
+    <Compile Include="mapper\AutoMapeprUtil.cs" />
+    <Compile Include="models\Annoncekontrol.cs" />
     <Compile Include="models\Dage.cs" />
     <Compile Include="models\Dage1.cs" />
     <Compile Include="models\DelOmraade.cs" />
+    <Compile Include="models\FejlTekst.cs" />
     <Compile Include="models\GeoKode.cs" />
     <Compile Include="models\Grupper.cs" />
     <Compile Include="models\HovedGruppe.cs" />
-    <Compile Include="models\MedieplanLinjers.cs" />
+    <Compile Include="models\MediePlan.cs" />
+    <Compile Include="models\MedieplanLinjer.cs" />
     <Compile Include="models\MedlGruppe.cs" />
     <Compile Include="models\PostNr.cs" />
     <Compile Include="models\Prisers.cs" />

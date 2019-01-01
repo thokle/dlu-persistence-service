@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace dlu_persistence_api.models
 {
-    public class MedieplanLinjers
+    public class MedieplanLinjer
     {
         
         public int MedieplanNr { get; set; }

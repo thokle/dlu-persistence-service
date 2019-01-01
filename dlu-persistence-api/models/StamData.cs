@@ -12,7 +12,7 @@ namespace dlu_persistence_api
         public StamData()
         {
             this.MedIGruppes = new HashSet<MedlGruppe>();
-            this.MedieplanLinjers = new HashSet<MedieplanLinjers>();
+            this.MedieplanLinjers = new HashSet<MedieplanLinjer>();
             this.Prisers = new HashSet<Prisers>();
             this.PrislisterPrBladPrUges = new HashSet<PrislisterPrBladPrUges>();
             this.PrislisterPrBladPrÅr = new HashSet<PrislisterPrBladÅr>();
@@ -100,7 +100,7 @@ namespace dlu_persistence_api
         public  PostNr tblPostNr { get; set; }
         public  Region tblRegion { get; set; }
      
-        public  ICollection<MedieplanLinjers> MedieplanLinjers { get; set; }
+        public  ICollection<MedieplanLinjer> MedieplanLinjers { get; set; }
       
         public  ICollection<Prisers> Prisers { get; set; }
        

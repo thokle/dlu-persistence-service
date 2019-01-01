@@ -72,7 +72,7 @@ namespace dlu_persistence_api
         public virtual DbSet<tblPrislisterPrBladPrUge> tblPrislisterPrBladPrUges { get; set; }
         public virtual DbSet<tblPrislisterPrBladPrÅr> tblPrislisterPrBladPrÅr { get; set; }
         public virtual DbSet<tblRegion> tblRegions { get; set; }
-        public virtual DbSet<tblRemindereSendt> tblRemindereSendts {  get; set; }
+        public virtual DbSet<tblRemindereSendt> tblRemindereSendts { get; set; }
         public virtual DbSet<tblSupportBilag> tblSupportBilags { get; set; }
         public virtual DbSet<tblWEBeMail> tblWEBeMails { get; set; }
         public virtual DbSet<tblWEBForespørgsel> tblWEBForespørgsel { get; set; }
