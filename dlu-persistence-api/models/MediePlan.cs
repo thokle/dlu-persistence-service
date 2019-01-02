@@ -70,9 +70,9 @@ namespace dlu_persistence_api.models
         public bool? OpkrævNordjyskeTillæg { get; set; }
         public bool? OpkrævJyskeMedierASTillæg { get; set; }
 
-        public virtual tblDPKulør tblDPKulør { get; set; }
-        public virtual tblMedieplanNr tblMedieplanNr { get; set; }
-        public virtual tblPlacering tblPlacering { get; set; }
+        public virtual DPBukær tblDPKulør { get; set; }
+        public virtual MediePlanNr tblMedieplanNr { get; set; }
+        public virtual Placering tblPlacering { get; set; }
        
         public virtual ICollection<MedieplanLinjer> MedieplanLinjers { get; set; }
     }

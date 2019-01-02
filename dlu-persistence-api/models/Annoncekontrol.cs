@@ -13,7 +13,7 @@ namespace dlu_persistence_api.models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Annoncekontrol()
         {
-            this.tblMedieplanLinjers = new HashSet<MedieplanLinjer>();
+            MedieplanLinjers = new HashSet<MedieplanLinjer>();
         }
 
         public int MedieplanNr { get; set; }
@@ -30,6 +30,6 @@ namespace dlu_persistence_api.models
 
         public  tblFejlTekst tblFejlTekst { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public  ICollection<MedieplanLinjer> tblMedieplanLinjers { get; set; }
+        public  ICollection<MedieplanLinjer>  MedieplanLinjers { get; set; }
     }
 }

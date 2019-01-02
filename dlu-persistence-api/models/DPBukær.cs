@@ -6,19 +6,18 @@ using System.Threading.Tasks;
 
 namespace dlu_persistence_api.models
 {
-   public class FejlTekst
+   public class DPBukær
     {
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public FejlTekst()
+        public DPBukær()
         {
-            Annoncekontrols = new HashSet<Annoncekontrol>();
+            this.tblMedieplans = new HashSet<MediePlan>();
         }
 
-        public byte Fejlkode { get; set; }
-        public string Fekst { get; set; }
+        public byte DPKulørID { get; set; }
+        public string Kulør { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public  ICollection<Annoncekontrol> Annoncekontrols { get; set; }
+        public virtual ICollection<MediePlan> tblMedieplans { get; set; }
     }
 }

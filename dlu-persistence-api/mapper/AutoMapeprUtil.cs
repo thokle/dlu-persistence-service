@@ -85,13 +85,30 @@ namespace dlu_persistence_api.mapper
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.AllowNullCollections = true;
-
+                cfg.CreateMap<tblDPKulør, DPBukær>();
+                cfg.CreateMap<tblMedieplanNr, MediePlanNr>();
+                cfg.CreateMap<tblPlacering, Placering>();
 
             });
 
             var mapper = config.CreateMapper();
             return mapper.Map<tblMedieplan, MediePlan>(tblMedieplan);  
 
+        }
+
+        public static tblMedieplan ConvertFromMediePlan(MediePlan mediePlan)
+        {
+
+            var config = new MapperConfiguration(cfg =>
+             {
+                 cfg.AllowNullCollections = true;
+                 cfg.CreateMap<DPBukær, tblDPKulør>();
+                 cfg.CreateMap<MediePlanNr, tblMedieplanNr>();
+                 cfg.CreateMap<Placering, tblPlacering>();
+             });
+
+            var mapper = config.CreateMapper();
+            return mapper.Map<MediePlan, tblMedieplan>(mediePlan);
         }
 
         
@@ -102,7 +119,11 @@ namespace dlu_persistence_api.mapper
 
 /*
  *   
-       
+        public virtual tblDPKulør tblDPKulør { get; set; }
+        public virtual tblMedieplanNr tblMedieplanNr { get; set; }
+        public virtual tblPlacering tblPlacering { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblMedieplanLinjer> tblMedieplanLinjers { get; set; }
       
       
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
