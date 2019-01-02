@@ -42,8 +42,8 @@ namespace dlu_persistence_api.models
         public decimal TotalInclTillæg { get; set; }
         public bool PrisLåst { get; set; }
 
-        public virtual tblAnnoncekontrol tblAnnoncekontrol { get; set; }
-        public virtual tblBladStamdata tblBladStamdata { get; set; }
+        public virtual Annoncekontrol Annoncekontrol { get; set; }
+        public virtual StamData StamData { get; set; }
         public virtual tblMateriale tblMateriale { get; set; }
         public virtual tblMedieplan tblMedieplan { get; set; }
     }

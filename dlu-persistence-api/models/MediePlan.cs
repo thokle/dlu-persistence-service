@@ -11,10 +11,11 @@ namespace dlu_persistence_api.models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MediePlan()
         {
-            this.MedieplanLinjers = new HashSet<MedieplanLinjer>();
+            MedieplanLinjers = new HashSet<MedieplanLinjer>();
         }
 
         public int MedieplanNr { get; set; }
+
         public short Version { get; set; }
         public string AnnoncørNo_ { get; set; }
         public string BureauNo_ { get; set; }
@@ -53,26 +54,26 @@ namespace dlu_persistence_api.models
         public bool TilladMmSærRabat { get; set; }
         public byte Document_Type { get; set; }
         public string Credit_Reason { get; set; }
-        public Nullable<int> Previous_Version { get; set; }
+        public int? Previous_Version { get; set; }
         public bool SammeMateriale { get; set; }
         public bool KunForhandlerBundForskellig { get; set; }
         public bool SammeBureauOrdreNr { get; set; }
         public string FællesBureauOrdreNr { get; set; }
         public string BemærkningTilAnnoncør { get; set; }
         public string BemærkningTilBlade { get; set; }
-        public Nullable<bool> WebTillægOpkræves { get; set; }
-        public Nullable<bool> MiljøTillægOpkræves { get; set; }
-        public Nullable<bool> OpkrævJyskeMiljøTillæg { get; set; }
-        public Nullable<bool> OpkrævFynskeMiljøTillæg { get; set; }
-        public Nullable<bool> OpkrævNorthMiljøTillæg { get; set; }
-        public Nullable<bool> OpkrævDSVPMiljøTillæg { get; set; }
-        public Nullable<bool> OpkrævNordjyskeTillæg { get; set; }
-        public Nullable<bool> OpkrævJyskeMedierASTillæg { get; set; }
+        public bool? WebTillægOpkræves { get; set; }
+        public bool? MiljøTillægOpkræves { get; set; }
+        public bool? OpkrævJyskeMiljøTillæg { get; set; }
+        public bool? OpkrævFynskeMiljøTillæg { get; set; }
+        public bool? OpkrævNorthMiljøTillæg { get; set; }
+        public bool? OpkrævDSVPMiljøTillæg { get; set; }
+        public bool? OpkrævNordjyskeTillæg { get; set; }
+        public bool? OpkrævJyskeMedierASTillæg { get; set; }
 
         public virtual tblDPKulør tblDPKulør { get; set; }
         public virtual tblMedieplanNr tblMedieplanNr { get; set; }
         public virtual tblPlacering tblPlacering { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+       
         public virtual ICollection<MedieplanLinjer> MedieplanLinjers { get; set; }
     }
 }

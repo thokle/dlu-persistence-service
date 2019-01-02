@@ -18,9 +18,8 @@ namespace dlu_persistence_api.daos
 
 
 
-        public List<MediePlan> GetMediePlanByPartialNumber(int medieplanNr)
+        public async List<MediePlan> GetMediePlanByPartialNumber(int medieplanNr)
         {
-       
-        }
+            return entities.tblMedieplans.Where(a => a.MedieplanNr = medieplanNr);
     }
 }

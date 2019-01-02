@@ -13,7 +13,7 @@ namespace dlu_persistence_api.models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Annoncekontrol()
         {
-            this.tblMedieplanLinjers = new HashSet<tblMedieplanLinjer>();
+            this.tblMedieplanLinjers = new HashSet<MedieplanLinjer>();
         }
 
         public int MedieplanNr { get; set; }
