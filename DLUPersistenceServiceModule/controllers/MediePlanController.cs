@@ -10,10 +10,10 @@ namespace DLUPersistenceServiceModule.controllers
 
         public MediePlanController(MediePlanDao dao):base()
         {
-            Get("/{userid:int}", async ( parameters) =>
+            Get("/{userid:int}",  ( parameters) =>
             {
                 var userId = (int)parameters.userid;
-                return await dao.GetMediePlanByPartialNumber(userId);
+                return  dao.GetMediePlanByNumber(userId);
            });
         }
     }

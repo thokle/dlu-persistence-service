@@ -1,21 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using dlu_persistence_api.models;
+using Newtonsoft.Json;
+
 namespace dlu_persistence_api
 {
    public  class StamData
     {
-       
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public StamData()
         {
-            this.MedIGruppes = new HashSet<MedlGruppe>();
-            this.MedieplanLinjers = new HashSet<MedieplanLinjer>();
-            this.Prisers = new HashSet<Prisers>();
-            this.PrislisterPrBladPrUges = new HashSet<PrislisterPrBladPrUges>();
-            this.PrislisterPrBladPrÅr = new HashSet<PrislisterPrBladÅr>();
+            this.tblMedIGruppes = new HashSet<tblMedIGruppe>();
+            this.tblMedieplanLinjers = new HashSet<tblMedieplanLinjer>();
+            this.tblPrisers = new List<Prisers>();
+            this.tblPrislisterPrBladPrUges = new HashSet<tblPrislisterPrBladPrUge>();
+            this.tblPrislisterPrBladPrÅr = new HashSet<tblPrislisterPrBladPrÅr>();
         }
 
         public int BladID { get; set; }
@@ -90,22 +94,25 @@ namespace dlu_persistence_api
         public bool Overført { get; set; }
         public byte[] timestamp { get; set; }
 
-       
-        public  ICollection<MedlGruppe> MedIGruppes { get; set; }
-        public  Dage Dage { get; set; }
-        public  Dage1 Dage1 { get; set; }
-        public  DelOmraade DelOmråde { get; set; }
-        public  GeoKode GeoKode { get; set; }
-        public  HovedGruppe HovedGruppe { get; set; }
-        public  PostNr tblPostNr { get; set; }
-        public  Region tblRegion { get; set; }
-     
-        public  ICollection<MedieplanLinjer> MedieplanLinjers { get; set; }
-      
-        public  ICollection<Prisers> Prisers { get; set; }
-       
-        public  ICollection<PrislisterPrBladPrUges> PrislisterPrBladPrUges { get; set; }
-     
-        public  ICollection<PrislisterPrBladÅr> PrislisterPrBladPrÅr { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblMedIGruppe> tblMedIGruppes { get; set; }
+        public virtual tblDage tblDage { get; set; }
+        public virtual tblDage tblDage1 { get; set; }
+        public virtual tblDelOmråde tblDelOmråde { get; set; }
+        public virtual tblGeoKode tblGeoKode { get; set; }
+        public virtual tblHovedGruppe tblHovedGruppe { get; set; }
+        public virtual tblPostNr tblPostNr { get; set; }
+        public virtual tblRegion tblRegion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblMedieplanLinjer> tblMedieplanLinjers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    
+        [System.Runtime.Serialization.IgnoreDataMember]
+        public virtual ICollection<Prisers> tblPrisers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblPrislisterPrBladPrUge> tblPrislisterPrBladPrUges { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [JsonIgnore]
+        public virtual ICollection<tblPrislisterPrBladPrÅr> tblPrislisterPrBladPrÅr { get; set; }
     }
 }

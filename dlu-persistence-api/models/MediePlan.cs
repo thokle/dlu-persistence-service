@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,10 +8,9 @@ namespace dlu_persistence_api.models
 {
    public class MediePlan
    {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MediePlan()
         {
-            MedieplanLinjers = new HashSet<MedieplanLinjer>();
+            MedieplanLinjers = new Collection<MedieplanLinjer>();
         }
 
         public int MedieplanNr { get; set; }
@@ -70,11 +69,11 @@ namespace dlu_persistence_api.models
         public bool? OpkrævNordjyskeTillæg { get; set; }
         public bool? OpkrævJyskeMedierASTillæg { get; set; }
 
-        public virtual DPBukær tblDPKulør { get; set; }
-        public virtual MediePlanNr tblMedieplanNr { get; set; }
-        public virtual Placering tblPlacering { get; set; }
+        public  DPBukær tblDPKulør { get; set; }
+        public  MediePlanNr tblMedieplanNr { get; set; }
+        public  Placering tblPlacering { get; set; }
        
-        public virtual ICollection<MedieplanLinjer> MedieplanLinjers { get; set; }
+        public  Collection<MedieplanLinjer> MedieplanLinjers { get; set; }
     }
 }
 

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using dlu_persistence_api.models;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 namespace dlu_persistence_api.mapper
 {
     public class AutoMaperUtil
@@ -16,8 +17,8 @@ namespace dlu_persistence_api.mapper
                 cfg.CreateMap<tblHovedGruppe, HovedGruppe>();
                 cfg.CreateMap<tblPostNr, PostNr>();
                 cfg.CreateMap<tblRegion, Region>();
-                cfg.CreateMap<List<tblMedieplanLinjer>, List<MedieplanLinjer>>();
-                cfg.CreateMap<List<tblPriser>, List<Prisers>>();
+                cfg.CreateMap<ICollection<tblMedieplanLinjer>, Collection<MedieplanLinjer>>();
+                cfg.CreateMap<ICollection<tblPriser>, Collection<Prisers>>();
                 cfg.CreateMap<List<tblPrislisterPrBladPrÅr>, List<PrislisterPrBladÅr>>();
                 cfg.CreateMap<List<tblPrislisterPrBladPrUge>, List<PrislisterPrBladPrUges>>();              
 
@@ -111,9 +112,16 @@ namespace dlu_persistence_api.mapper
             return mapper.Map<MediePlan, tblMedieplan>(mediePlan);
         }
 
-        
+        public static List<Prisers> ConvertblPriser(ICollection<tblPriser> tblPrisers)
+        {
+            var config = new MapperConfiguration(cfg => { });
+
+            var mapper = config.CreateMapper();
+            return mapper.Map<ICollection<tblPriser>, List<Prisers>>(tblPrisers);
+        }    
         
     }
+
 
 }
 

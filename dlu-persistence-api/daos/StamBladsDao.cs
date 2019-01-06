@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,17 +19,31 @@ namespace dlu_persistence_api.daos
 
         }
 
-        public StamData GetStamDataById(int bladId)
+        public string GetStamDataById(int bladId)
         {
 
+            var res = from en in di.tblBladStamdatas
+                      where en.BladID == bladId join d
+                      select new StamData()
+                      {            
+                          BladID = en.BladID,
+                  
+                        
+                         tblPrislis(),
+                          
+                         tblPrislisterPrBladPrUges = en.tblPrislisterPrBladPrUges
+                          
+                      }; 
 
-            var res = di.tblBladStamdatas.Where(r => r.BladID == bladId).FirstOrDefault();
-            return dlu_persistence_api.mapper.AutoMaperUtil.ConvertFromTblStamBladEntity(res);
+
+
+            return JsonConvert.SerializeObject(res);
         }
+
 
         public List<StamData> GetStamBladByName(String name, String order, Boolean asc)
         {
-            var resultat = from m in di.tblBladStamdatas.Where(d => d.Navn.Contains(name)).OrderBy(s => s.Navn).ToList<tblBladStamdata>() select m;
+            var resultat = from m in di.tblBladStamdatas.Where(d => d.Navn.Contains(name)).OrderBy(s => s.Navn).ToList<tblBladStamdata>() select m ;
 
             return mapper.AutoMaperUtil.ConvertFromTblBladEntitie(resultat.ToList());
 
