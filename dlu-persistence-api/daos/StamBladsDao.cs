@@ -23,16 +23,24 @@ namespace dlu_persistence_api.daos
         {
 
             var res = from en in di.tblBladStamdatas
-                      where en.BladID == bladId join d
-                      select new StamData()
+                      where en.BladID == bladId 
+                      select new 
                       {            
                           BladID = en.BladID,
-                  
+                  Adresse  =en.Adresse,
+                  Addresse2 =en.Adresse2,
+                  AnnonceEmail = en.AnnonceEmail,
+                  AnnonceKontrolEmail = en.AnnonceKontrolEmail,
+                  BilagsbladEmail = en.BilagsbladeEmail,
+              BogholderiEmails = en .BogholderiEmails,
+              Bogholderikontaktperson = en.BogholderiKontaktperson,
+              CVR =en.CVR,
+             DelOmrådeID = en.DelOmrådeID
                         
-                         tblPrislis(),
-                          
-                         tblPrislisterPrBladPrUges = en.tblPrislisterPrBladPrUges
-                          
+                        
+
+                         tblPrislisterPrBladPrUges = from ps in di.tblPrislisterPrBladPrUges where ps.BladID == bladId select new  { Uge = ps.Uge,År = ps.År }
+
                       }; 
 
 

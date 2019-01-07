@@ -379,6 +379,7 @@
       <DependentUpon>DLUModel.tt</DependentUpon>
     </Compile>
     <Compile Include="models\Materiale.cs" />
+    <Compile Include="daos\PriserDao.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config">
