@@ -78,7 +78,7 @@ namespace dlu_persistence_api.daos
                      OrdreDeadlineTekst =    en.OrdredeadlineTekst,
                           OrdreDeadlineTekstDag =    en.OrdreDeadlineTekstDag,
                           OrdreDeadlineTekstKl =   en.OrdreDeadlineTekstKl,
-                        OrdreEmai  en.OrdreEmail
+                        OrdreEmai  en.OrdreEmail,
                          tblPrislisterPrBladPrUges = from ps in di.tblPrislisterPrBladPrUges where ps.BladID == bladId select new  { Uge = ps.Uge,År = ps.År,PrislisteID = ps.PrislisteID }
 
                       }; 
