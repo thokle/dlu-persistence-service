@@ -6,6 +6,8 @@ using dlu_persistence_api.daos;
 using dlu_persistence_api.mapper;
 using dlu_persistence_api.models;
 using Nancy;
+using dlu_persistence_api;
+using Nancy.ModelBinding.DefaultBodyDeserializers;
 namespace DLUPersistenceServiceModule.controllers
 {
     public class StamBladController: NancyModule
@@ -19,6 +21,13 @@ namespace DLUPersistenceServiceModule.controllers
                 int  bladid = parametes.id;
                 
                 return stamBladDao.GetStamDataById(bladid);
+            });
+
+            Post("add", parameter =>
+            {
+                
+                stamBladDao.OpretNytStamBlad()
+                return "";
             });
         
         }

@@ -37,7 +37,6 @@ namespace dlu_persistence_api.daos
                           CVR = en.CVR,
                           DelOmrådeID = en.DelOmrådeID,
                           DiMPDelOmrådeKode = en.DiMPDelOmrådeKode,
-
                           Ejerforhold = en.Ejerforhold,
                           Emails = en.Emails,
                           FakturaGruppeID = en.FakturaGruppeID,
@@ -51,7 +50,7 @@ namespace dlu_persistence_api.daos
                           HovedgruppeID = en.HovedgruppeID,
                           Koncern = en.Koncern,
                           Kontakperson = en.Kontaktperson,
-                          KontaktpersonerEmails = en.KontaktpersonerEmails, en,
+                          KontaktpersonerEmails = en.KontaktpersonerEmails, 
                           MaterialedeadlineRubrik = en.MaterialedeadlineRubrik,
                           MaterialeDeadlineRubrikDag = en.MaterialeDeadlineRubrikDag,
                           MaterialeDeadlineRubrikKl = en.MaterialeDeadlineRubrikKl,
@@ -73,16 +72,14 @@ namespace dlu_persistence_api.daos
                           OrdrecheckSendeDagID  = en.OrdrecheckSendeDagID,
                           OrdredeadlineRubrik =  en.OrdredeadlineRubrik,
                           OrdreDeadlineRubrikDag = en.OrdreDeadlineRubrikDag,
-                         OrdreDeadlineRubikDag = en.OrdreDeadlineRubrikKl,
-                            
+                         OrdreDeadlineRubikDag = en.OrdreDeadlineRubrikKl,                            
                      OrdreDeadlineTekst =    en.OrdredeadlineTekst,
                           OrdreDeadlineTekstDag =    en.OrdreDeadlineTekstDag,
                           OrdreDeadlineTekstKl =   en.OrdreDeadlineTekstKl,
                         OrdreEmai = en.OrdreEmail,
                           SendtiOrdrecheck = en.SendetidOrdrecheck,
                          SendværendeUge = en.SendIndeværendeUge,
-                
-                         tblPrislisterPrBladPrUges = from ps in di.tblPrislisterPrBladPrUges where ps.BladID == bladId select new  { Uge = ps.Uge,År = ps.År,PrislisteID = ps.PrislisteID }
+                           
 
                       }; 
 
@@ -92,7 +89,7 @@ namespace dlu_persistence_api.daos
         }
 
 
-        public List<StamData> GetStamBladByName(String name, String order, Boolean asc)
+        public List<StamData> GetStamBladByName(String name)
         {
             var resultat = from m in di.tblBladStamdatas.Where(d => d.Navn.Contains(name)).OrderBy(s => s.Navn).ToList<tblBladStamdata>() select m ;
 
@@ -101,19 +98,29 @@ namespace dlu_persistence_api.daos
         }
 
 
-        public StamData OpretNytStamBlad(StamData stamData)
+        public tblBladStamdata OpretNytStamBlad(tblBladStamdata stamData)
         {
             try
             {
+                stamData.BladID = GetLatestId() + 1;
+                
 
-                var tblStamBladData = mapper.AutoMaperUtil.ConvertFromnStamData(stamData);
-                var res = di.tblBladStamdatas.Add(tblStamBladData);
+                var res = di.tblBladStamdatas.Add(stamData);
 
-                return mapper.AutoMaperUtil.ConvertFromTblStamBladEntity(res);
+                di.SaveChanges();
+                
+                return res;
             } catch( Exception e)
             {
                 throw e;
             }
+        }
+
+        private int GetLatestId()
+        {
+          var row =  di.tblBladStamdatas.SqlQuery("select top 1 * from tblBladStamdata as a order  by a.BladID desc").SingleOrDefault();
+
+            return row.BladID;
         }
 
         
