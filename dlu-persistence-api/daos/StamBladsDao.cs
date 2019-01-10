@@ -76,11 +76,10 @@ namespace dlu_persistence_api.daos
                      OrdreDeadlineTekst =    en.OrdredeadlineTekst,
                           OrdreDeadlineTekstDag =    en.OrdreDeadlineTekstDag,
                           OrdreDeadlineTekstKl =   en.OrdreDeadlineTekstKl,
+
                         OrdreEmai = en.OrdreEmail,
                           SendtiOrdrecheck = en.SendetidOrdrecheck,
-                         SendværendeUge = en.SendIndeværendeUge,
-                           
-
+                         SendværendeUge = en.SendIndeværendeUge
                       }; 
 
 
