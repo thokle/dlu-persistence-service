@@ -26,7 +26,7 @@ namespace DLUPersistenceServiceModule.controllers
             Post("add", parameter =>
             {
                 
-                stamBladDao.OpretNytStamBlad()
+               
                 return "";
             });
         
