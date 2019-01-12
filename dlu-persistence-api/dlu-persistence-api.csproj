@@ -151,6 +151,8 @@
     <Compile Include="Salesperson.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="services\IStamBladService.cs" />
+    <Compile Include="services\StamBladService.cs" />
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>
     </Compile>
@@ -414,6 +416,5 @@
       <LastGenOutput>DLUModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
