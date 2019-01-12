@@ -33,17 +33,16 @@ namespace DLUPersistenceServiceModule.controllers
             {
                 return stamBladDao.GetStamBladByName(parameter.name);
             });
-            
-           Post("add", o =>
-           {
-               var stamblad = this.Bind<tblBladStamdata>(o);
-               return stamBladDao.CreaateOrUpdateStamBlad(stamblad);
-
-           }, context => { context.Parameters. });
-            
-           
 
 
-    }
+            Post("", o =>
+            {
+                var tblStablad = this.Bind<tblBladStamdata>();
+                return stamBladDao.CreaateOrUpdateStamBlad(tblStablad);
+            });
+
+
+
+        }
     }
 }
