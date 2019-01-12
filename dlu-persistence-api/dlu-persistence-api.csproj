@@ -70,8 +70,9 @@
     <Compile Include="bladtlfogfaxkopi.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="daos\MediePlanDao.cs" />
+    <Compile Include="daos\PostNrTableDao.cs" />
+    <Compile Include="daos\RegionDao.cs" />
     <Compile Include="daos\StamBladsDao.cs" />
     <Compile Include="delPriser.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>
@@ -117,27 +118,6 @@
     <Compile Include="LPRoller.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="mapper\AutoMapeprUtil.cs" />
-    <Compile Include="models\Annoncekontrol.cs" />
-    <Compile Include="models\Dage.cs" />
-    <Compile Include="models\Dage1.cs" />
-    <Compile Include="models\DPBukær.cs" />
-    <Compile Include="models\DelOmraade.cs" />
-    <Compile Include="models\FejlTekst.cs" />
-    <Compile Include="models\GeoKode.cs" />
-    <Compile Include="models\Grupper.cs" />
-    <Compile Include="models\HovedGruppe.cs" />
-    <Compile Include="models\Materiales.cs" />
-    <Compile Include="models\MediePlan.cs" />
-    <Compile Include="models\MedieplanLinjer.cs" />
-    <Compile Include="models\MediePlanNr.cs" />
-    <Compile Include="models\MedlGruppe.cs" />
-    <Compile Include="models\Placering.cs" />
-    <Compile Include="models\PostNr.cs" />
-    <Compile Include="models\Prisers.cs" />
-    <Compile Include="models\PrislisterPrBladPrUges.cs" />
-    <Compile Include="models\PrislisterPrBladÅr.cs" />
-    <Compile Include="models\Region.cs" />
     <Compile Include="NavisionContact.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>
     </Compile>
@@ -151,6 +131,8 @@
     <Compile Include="Salesperson.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="services\IMediePlanService.cs" />
+    <Compile Include="services\IPostNrTableService.cs" />
     <Compile Include="services\IStamBladService.cs" />
     <Compile Include="services\StamBladService.cs" />
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
@@ -159,7 +141,6 @@
     <Compile Include="sp_helpdiagrams_Result.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="models\StamData.cs" />
     <Compile Include="StambladService.cs" />
     <Compile Include="sysdiagram.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>
@@ -383,7 +364,6 @@
     <Compile Include="viewUpdateStatusIMedieplanNr.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="models\Materiale.cs" />
     <Compile Include="daos\PriserDao.cs" />
   </ItemGroup>
   <ItemGroup>

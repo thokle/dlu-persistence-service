@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using dlu_persistence_api.mapper;
-using dlu_persistence_api.models;
+
 using dlu_persistence_api.services;
 using Nancy;
 
