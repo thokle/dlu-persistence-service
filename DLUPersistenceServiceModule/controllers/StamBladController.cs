@@ -24,29 +24,25 @@ namespace DLUPersistenceServiceModule.controllers
             Get("{id:int}", parametes =>
             {
                 int bladid = parametes.id;
-                return stamBladDao.GetStamDataById(bladid);
+                return stamBladDao.GetStamBladById(bladid);
             });
 
             Get("/postnr{postnr:int}", parameter => { return stamBladDao.GetStamBladByPostNummer(parameter.postnr); });
             
-            Get("name/{namne:string}", parameter , => { return stamBladDao.GetStamBladByName(parameter.name) });
-            
-            Post("add", parameters =>
+            Get("name/{name:string}",  parameter =>
             {
-
-                var blad = this.Bind<tblBladStamdata>(parameters);
-                stamBladDao.OpretNytStamBlad(blad);
-
+                return stamBladDao.GetStamBladByName(parameter.name);
             });
-            
-           Post("update", paramter =>
-           {
-               var update = this.Bind<tblBladStamdata>(paramter);
-               stamBladDao.CreaateOrUpdateStamBlad(update);
-
-           });
 
 
-    }
+            Post("", o =>
+            {
+                var tblStablad = this.Bind<tblBladStamdata>();
+                return stamBladDao.CreaateOrUpdateStamBlad(tblStablad);
+            });
+
+
+
+        }
     }
 }
