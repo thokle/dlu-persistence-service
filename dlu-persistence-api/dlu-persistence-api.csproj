@@ -70,7 +70,10 @@
     <Compile Include="bladtlfogfaxkopi.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="daos\MaterialeDao.cs" />
+    <Compile Include="daos\MediaPlanNrDao.cs" />
     <Compile Include="daos\MediePlanDao.cs" />
+    <Compile Include="daos\MediePlanLinjerDao.cs" />
     <Compile Include="daos\PostNrTableDao.cs" />
     <Compile Include="daos\RegionDao.cs" />
     <Compile Include="daos\StamBladsDao.cs" />
@@ -129,9 +132,11 @@
     <Compile Include="Salesperson.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="services\IMediePlanNrService.cs" />
     <Compile Include="services\IMediePlanService.cs" />
     <Compile Include="services\IPostNrTableService.cs" />
     <Compile Include="services\IStamBladService.cs" />
+    <Compile Include="services\MediePlanNrService.cs" />
     <Compile Include="services\StamBladService.cs" />
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>

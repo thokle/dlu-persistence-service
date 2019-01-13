@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Management.Instrumentation;
 using System.Text;
@@ -42,10 +43,17 @@ namespace dlu_persistence_api.daos
 
         }
 
+        public Task<int> CreateOrUpdateMediePlan(tblMedieplan tblMedieplan)
+        {
+            entities.tblMedieplans.AddOrUpdate(tblMedieplan);
+
+            return entities.SaveChangesAsync();
+        }
         public void Dispose()
         {
             entities?.Dispose();
         }
+        
     }
 }
 

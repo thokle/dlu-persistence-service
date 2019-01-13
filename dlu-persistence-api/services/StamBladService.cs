@@ -1,3 +1,4 @@
+using System.Data.Entity.Core.Common;
 using dlu_persistence_api.daos;
 namespace dlu_persistence_api.services
 {
@@ -28,6 +29,36 @@ namespace dlu_persistence_api.services
         {
 
             return dao.OpretNytStamBlad(stamData: tblBladStamdata);
+        }
+
+        public string GetTableGeoCode()
+        {
+            return dao.GetTblGetKode();
+        }
+
+        public string GetTablePostNr()
+        {
+            return dao.GetTblPostNr(); 
+        }
+
+        public string GetTablePostNrSøgning()
+        {
+             return dao.GetPostNrSøgning();
+        }
+
+        public string GetTableHoveedGruppe()
+        {
+            return dao.GetTableHovedGruppe();
+        }
+
+        public string GetTableRegion()
+        {
+            return dao.GetTblRegion();
+        }
+
+        public string GetTableDage()
+        {
+            return dao.GetTableDage();
         }
     }
 }

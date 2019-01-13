@@ -29,10 +29,7 @@ namespace DLUPersistenceServiceModule.controllers
 
             Get("postnr/{postnr:int}", parameter => { return stamBladDao.GetStamBladByPostNummer(parameter.postnr); });
             
-            Get("name/{name:string}",  parameter =>
-            {
-                return stamBladDao.GetStamBladByName(parameter.name);
-            });
+            Get("navn/{name:string}",  parameter => stamBladDao.GetStamBladByName(parameter.name));
 
 
             Post("", o =>
@@ -41,6 +38,17 @@ namespace DLUPersistenceServiceModule.controllers
                 return stamBladDao.CreaateOrUpdateStamBlad(tblStablad);
             });
 
+            Get("GeoCodes", o => { return stamBladDao.GetTableGeoCode(); });
+            
+            Get("allpostnr", o => { return stamBladDao.GetTablePostNr(); });
+
+            Get("postnrsog", o => { return stamBladDao.GetTablePostNrSøgning(); });
+
+            Get("regions", o => { return stamBladDao.GetTableRegion(); });
+            
+            
+            Get("dage" , o => { return stamBladDao.GetTableDage(); 
+            });
 
 
         }

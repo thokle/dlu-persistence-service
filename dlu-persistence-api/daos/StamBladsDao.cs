@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Linq;
-
-using Newtonsoft.Json;
+ using System.Management.Instrumentation;
+ using Newtonsoft.Json;
 
 namespace dlu_persistence_api.daos
 {
@@ -298,6 +298,18 @@ namespace dlu_persistence_api.daos
 
             Debug.Assert(row != null, nameof(row) + " != null");
             return row.BladID;
+        }
+
+
+        public string GetTableHovedGruppe()
+        {
+            var res = from h in di.tblHovedGruppes
+                orderby h.HovedGruppeID, h.HovedGruppeNavn
+                select new
+                {
+                     h.HovedGruppeID, h.HovedGruppeNavn, h.HovedGruppeSortKey, h.timestamp
+                };
+            return JsonConvert.SerializeObject(res, Formatting.Indented);
         }
 
 

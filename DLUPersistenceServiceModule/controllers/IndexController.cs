@@ -9,14 +9,9 @@ namespace DLUPersistenceServiceModule.controllers
 {
     public class IndexController : Nancy.NancyModule
     {
-        public IndexController(dlu_persistence_api.daos.StamBladsDao stamBladDao) : base("/index")
+        public IndexController(dlu_persistence_api.daos.StamBladsDao stamBladDao) : base("/")
         {
-            Get("", parameter =>
-            {
-
-                return Response.AsJson(stamBladDao.GetStamDataById(2));
-
-            });
+            Get("", parameter => { return "Welcome to LokalPlanner API"; });
     }
     }
 }
