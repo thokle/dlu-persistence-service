@@ -1,25 +1,33 @@
+using dlu_persistence_api.daos;
 namespace dlu_persistence_api.services
 {
     public class StamBladService: IStamBladService 
     {
+        private StamBladsDao dao;
+
+        public StamBladService()
+        {
+            dao = new StamBladsDao();
+        }
         public string GetStamBladById(int id)
         {
-            throw new System.NotImplementedException();
+            return dao.GetStamDataById(bladId: id);
         }
 
         public string GetStamBladByName(string name)
         {
-            throw new System.NotImplementedException();
+            return dao.GetStamBladByName(name: name);
         }
 
         public string GetStamBladByPostNummer(int postnr)
         {
-            throw new System.NotImplementedException();
+            return dao.GetStamBladByPostNummer(postNr: postnr);
         }
 
         public string CreaateOrUpdateStamBlad(tblBladStamdata tblBladStamdata)
         {
-            throw new System.NotImplementedException();
+
+            return dao.OpretNytStamBlad(stamData: tblBladStamdata);
         }
     }
 }

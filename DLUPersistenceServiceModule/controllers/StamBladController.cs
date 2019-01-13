@@ -8,6 +8,7 @@ using dlu_persistence_api.services;
 using Nancy;
 
 using dlu_persistence_api;
+using dlu_persistence_api.daos;
 using Nancy.ModelBinding.DefaultBodyDeserializers;
 
 using Nancy.ModelBinding;
@@ -17,7 +18,7 @@ namespace DLUPersistenceServiceModule.controllers
     public class StamBladController: NancyModule
  
     {
-        public StamBladController(IStamBladService stamBladDao) : base("/stamblad")
+        public StamBladController(StamBladService stamBladDao) : base("/stamblad")
 
         {
             Get("{id:int}", parametes =>
@@ -26,7 +27,7 @@ namespace DLUPersistenceServiceModule.controllers
                 return stamBladDao.GetStamBladById(bladid);
             });
 
-            Get("/postnr{postnr:int}", parameter => { return stamBladDao.GetStamBladByPostNummer(parameter.postnr); });
+            Get("postnr/{postnr:int}", parameter => { return stamBladDao.GetStamBladByPostNummer(parameter.postnr); });
             
             Get("name/{name:string}",  parameter =>
             {

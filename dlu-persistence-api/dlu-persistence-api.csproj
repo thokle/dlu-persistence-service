@@ -113,8 +113,6 @@
     <Compile Include="HerningFolkeblad.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="IPriceservice.cs" />
-    <Compile Include="IStambladService.cs" />
     <Compile Include="LPRoller.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>
     </Compile>
