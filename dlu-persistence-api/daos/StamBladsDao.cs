@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Linq;
-
-using Newtonsoft.Json;
+ using System.Management.Instrumentation;
+ using Newtonsoft.Json;
 
 namespace dlu_persistence_api.daos
 {
@@ -25,82 +25,141 @@ namespace dlu_persistence_api.daos
 
             var res = from en in di.tblBladStamdatas
                 where en.BladID == bladId
-                select GetValue(en);
-            return JsonConvert.SerializeObject(res);
+                      let p = new
+                      {
+                          en.BladID,
+                          en.Adresse,
+                          en.Adresse2,
+                          en.AnnonceEmail,
+                          en.AnnonceKontrolEmail,
+                          en.BilagsbladeEmail,
+                          en.BogholderiEmails,
+                          en.BogholderiKontaktperson,
+                          en.CVR,
+                          en.DelOmrådeID,
+                          en.DiMPDelOmrådeKode,
+
+                          en.Ejerforhold,
+                          en.Emails,
+                          en.FakturaGruppeID,
+                          en.Fax,
+                          en.FIK,
+                          en.Format,
+                          en.GeoKodeID,
+                          en.GiverWebTillæg,
+                          en.GruppeRabat,
+                          en.Hjemmeside,
+                          en.HovedgruppeID,
+                          en.Koncern,
+                          Kontakperson = en.Kontaktperson,
+                          en.KontaktpersonerEmails,
+                          en.PostNr,
+                          en.MaterialedeadlineRubrik,
+                          en.MaterialeDeadlineRubrikDag,
+                          en.MaterialeDeadlineRubrikKl,
+                          en.MaterialedeadlineTekst,
+                          en.MaterialeDeadlineTekstDag,
+                          en.MaterialeDeadlineTekstKl,
+                          en.MaterialeEmail,
+                          en.MatGodtBeløb,
+                          en.MedieNetKode,
+                          en.MedlemMåned,
+                          en.MedlemSiden,
+                          en.MedlemÅr,
+                          en.MåGiveFarveRabat,
+                          en.Navn,
+                          en.Navn2,
+                          en.Ophørt,
+                          en.Oplag,
+                          en.OrdrecheckEmail,
+                          en.OrdrecheckSendeDagID,
+                          en.OrdredeadlineRubrik,
+                          en.OrdreDeadlineRubrikDag,
+                          en.OrdreDeadlineRubrikKl,
+
+                          en.OrdredeadlineTekst,
+                          en.OrdreDeadlineTekstDag,
+                          en.OrdreDeadlineTekstKl,
+
+                          en.OrdreEmail,
+                          en.SendetidOrdrecheck,
+                          en.SendIndeværendeUge,
+
+
+                      }
+                      select p;
+            return JsonConvert.SerializeObject(res, Formatting.Indented);
         }
 
 
 
         public string GetStamBladByName(String name){
-            var res = from en in di.tblBladStamdatas.Where(d => d.Navn.Contains(name)).OrderBy(s => s.Navn) select GetValue(en);
-            return JsonConvert.SerializeObject(res);
-
-        }
-
-        private static object GetValue(tblBladStamdata en)
-        {
-            return new {
-                BladID = en.BladID,
-                Adresse = en.Adresse,
-                Addresse2 = en.Adresse2,
-                AnnonceEmail = en.AnnonceEmail,
-                AnnonceKontrolEmail = en.AnnonceKontrolEmail,
-                BilagsbladEmail = en.BilagsbladeEmail,
-                BogholderiEmails = en.BogholderiEmails,
-                Bogholderikontaktperson = en.BogholderiKontaktperson,
-                CVR = en.CVR,
-                DelOmrådeID = en.DelOmrådeID,
-                DiMPDelOmrådeKode = en.DiMPDelOmrådeKode,
-
-                Ejerforhold = en.Ejerforhold,
-                Emails = en.Emails,
-                FakturaGruppeID = en.FakturaGruppeID,
-                Fax = en.Fax,
-                FIK = en.FIK,
-                Format = en.Format,
-                GeokodeID = en.GeoKodeID,
-                GiveWebTillæg = en.GiverWebTillæg,
-                GruppeRabat = en.GruppeRabat,
-                Hjemmesiode = en.Hjemmeside,
-                HovedgruppeID = en.HovedgruppeID,
-                Koncern = en.Koncern,
+            var res = from en in di.tblBladStamdatas.Where(d => d.Navn.Contains(name)).OrderBy(s => s.Navn) select new
+            {
+                en.BladID,
+                en.Adresse,
+                en.Adresse2,
+                en.AnnonceEmail,
+                en.AnnonceKontrolEmail,
+                en.BilagsbladeEmail,
+                en.BogholderiEmails,
+                en.BogholderiKontaktperson,
+                en.CVR,
+                en.DelOmrådeID,
+                en.DiMPDelOmrådeKode,
+                en.PostNr,
+                en.Ejerforhold,
+                en.Emails,
+                en.FakturaGruppeID,
+                en.Fax,
+                en.FIK,
+                en.Format,
+                en.GeoKodeID,
+                en.GiverWebTillæg,
+                en.GruppeRabat,
+                en.Hjemmeside,
+                en.HovedgruppeID,
+                en.Koncern,
                 Kontakperson = en.Kontaktperson,
-                KontaktpersonerEmails = en.KontaktpersonerEmails,
-                PostNr = en.PostNr,
-                MaterialedeadlineRubrik = en.MaterialedeadlineRubrik,
-                MaterialeDeadlineRubrikDag = en.MaterialeDeadlineRubrikDag,
-                MaterialeDeadlineRubrikKl = en.MaterialeDeadlineRubrikKl,
-                MaterialedeadlineTekst = en.MaterialedeadlineTekst,
-                MaterialeDeadlineTekstDag = en.MaterialeDeadlineTekstDag,
-                MaterialeDeadlineTekstKl = en.MaterialeDeadlineTekstKl,
-                MaterialeEmail = en.MaterialeEmail,
-                MatGodtBeløb = en.MatGodtBeløb,
-                MedieNetKode = en.MedieNetKode,
-                MedlemMåned = en.MedlemMåned,
-                MedlemSiden = en.MedlemSiden,
-                MedlemÅr = en.MedlemÅr,
-                MåGiveFarveRabat = en.MåGiveFarveRabat,
-                Navn = en.Navn,
-                Navn2 = en.Navn2,
-                Ophørt = en.Ophørt,
-                Oplag = en.Oplag,
-                OrdrecheckEmail = en.OrdrecheckEmail,
-                OrdrecheckSendeDagID = en.OrdrecheckSendeDagID,
-                OrdredeadlineRubrik = en.OrdredeadlineRubrik,
-                OrdreDeadlineRubrikDag = en.OrdreDeadlineRubrikDag,
-                OrdreDeadlineRubikDag = en.OrdreDeadlineRubrikKl,
+                en.KontaktpersonerEmails,
+              
+                en.MaterialedeadlineRubrik,
+                en.MaterialeDeadlineRubrikDag,
+                en.MaterialeDeadlineRubrikKl,
+                en.MaterialedeadlineTekst,
+                en.MaterialeDeadlineTekstDag,
+                en.MaterialeDeadlineTekstKl,
+                en.MaterialeEmail,
+                en.MatGodtBeløb,
+                en.MedieNetKode,
+                en.MedlemMåned,
+                en.MedlemSiden,
+                en.MedlemÅr,
+                en.MåGiveFarveRabat,
+                en.Navn,
+                en.Navn2,
+                en.Ophørt,
+                en.Oplag,
+                en.OrdrecheckEmail,
+                en.OrdrecheckSendeDagID,
+                en.OrdredeadlineRubrik,
+                en.OrdreDeadlineRubrikDag,
+                en.OrdreDeadlineRubrikKl,
 
-                OrdreDeadlineTekst = en.OrdredeadlineTekst,
-                OrdreDeadlineTekstDag = en.OrdreDeadlineTekstDag,
-                OrdreDeadlineTekstKl = en.OrdreDeadlineTekstKl,
+                en.OrdredeadlineTekst,
+                en.OrdreDeadlineTekstDag,
+                en.OrdreDeadlineTekstKl,
 
-                OrdreEmai = en.OrdreEmail,
-                SendtiOrdrecheck = en.SendetidOrdrecheck,
-                SendværendeUge = en.SendIndeværendeUge,
-
+                en.OrdreEmail,
+                en.SendetidOrdrecheck,
+                en.SendIndeværendeUge,
 
             };
+            return JsonConvert.SerializeObject(res, Formatting.Indented);
+
         }
+
+       
 
 
         public string GetStamBladByPostNummer(int postNr)
@@ -108,13 +167,113 @@ namespace dlu_persistence_api.daos
             var res = from en in di.tblBladStamdatas
                 where en.PostNr == postNr
                 orderby en.PostNr ascending
-                select GetValue(en);
-            return JsonConvert.SerializeObject(res);
+                select new
+                {
+                    en.BladID,
+                    en.Adresse,
+                    en.Adresse2,
+                    en.AnnonceEmail,
+                    en.AnnonceKontrolEmail,
+                    en.BilagsbladeEmail,
+                    en.BogholderiEmails,
+                    en.BogholderiKontaktperson,
+                    en.CVR,
+                    en.DelOmrådeID,
+                    en.DiMPDelOmrådeKode,
+
+                    en.Ejerforhold,
+                    en.Emails,
+                    en.FakturaGruppeID,
+                    en.Fax,
+                    en.FIK,
+                    en.Format,
+                    en.GeoKodeID,
+                    en.GiverWebTillæg,
+                    en.GruppeRabat,
+                    en.Hjemmeside,
+                    en.HovedgruppeID,
+                    en.Koncern,
+                    Kontakperson = en.Kontaktperson,
+                    en.KontaktpersonerEmails,
+                    en.PostNr,
+                    en.MaterialedeadlineRubrik,
+                    en.MaterialeDeadlineRubrikDag,
+                    en.MaterialeDeadlineRubrikKl,
+                    en.MaterialedeadlineTekst,
+                    en.MaterialeDeadlineTekstDag,
+                    en.MaterialeDeadlineTekstKl,
+                    en.MaterialeEmail,
+                    en.MatGodtBeløb,
+                    en.MedieNetKode,
+                    en.MedlemMåned,
+                    en.MedlemSiden,
+                    en.MedlemÅr,
+                    en.MåGiveFarveRabat,
+                    en.Navn,
+                    en.Navn2,
+                    en.Ophørt,
+                    en.Oplag,
+                    en.OrdrecheckEmail,
+                    en.OrdrecheckSendeDagID,
+                    en.OrdredeadlineRubrik,
+                    en.OrdreDeadlineRubrikDag,
+                    en.OrdreDeadlineRubrikKl,
+
+                    en.OrdredeadlineTekst,
+                    en.OrdreDeadlineTekstDag,
+                    en.OrdreDeadlineTekstKl,
+
+                    en.OrdreEmail,
+                    en.SendetidOrdrecheck,
+                    en.SendIndeværendeUge,
+
+
+                };
+            return JsonConvert.SerializeObject(res, Formatting.Indented);
         }
         
-        
-        
+        public string GetTblRegion()
+        {
+            var res = from re in di.tblRegions
+                      orderby re.RegionID
+                      select new
+                      {
+                          re.RegionID,
+                          re.RegionNavn,
+                          re.RegionSortKey
 
+                      };
+            return JsonConvert.SerializeObject(res, Formatting.Indented);
+        }
+
+        public string GetPostNrSøgning()
+        {
+            var post = from ps in di.tblPostNrSøgning orderby ps.PostNr select new { ps.PostNr, ps.BrugerNavn };
+            return JsonConvert.SerializeObject(post, Formatting.Indented);
+                
+        }
+        
+        public string GetTblPostNr()
+        {
+            var post = from p in di.tblPostNrs orderby p.PostNr, p.PostBy select new { p.PostNr, p.PostBy, p.Husstande, p.MaxDækningsGrad };
+            return JsonConvert.SerializeObject(post, Formatting.Indented);
+               
+        }
+
+
+        public string GetTblGetKode()
+        {
+            var geo = from g in di.tblGeoKodes orderby g.GeoKodeID, g.GeoKodeNavn select new { g.GeoKodeID, g.GeoKodeNavn, g.GeoKodeSortKey, g.timestamp };
+            return JsonConvert.SerializeObject(geo, Formatting.Indented);
+        }
+
+
+        public string GetTableDage()
+        {
+            var dage = from d in di.tblDages orderby d.DagType, d.DagID select new { d.DagID, d.DagNavn, d.DagType, d.timestamp };
+            return JsonConvert.SerializeObject(dage, Formatting.Indented);
+           
+        }
         public string  OpretNytStamBlad(tblBladStamdata stamData)
 
         {
@@ -123,9 +282,9 @@ namespace dlu_persistence_api.daos
                 stamData.BladID = GetLatestId() + 1;
                var res = di.tblBladStamdatas.Add(stamData);
                 di.SaveChanges();
-                 var json  =GetValue(res);
 
-                return JsonConvert.SerializeObject(json);
+
+                return "";
 
             } catch( Exception e)
             {
@@ -139,6 +298,18 @@ namespace dlu_persistence_api.daos
 
             Debug.Assert(row != null, nameof(row) + " != null");
             return row.BladID;
+        }
+
+
+        public string GetTableHovedGruppe()
+        {
+            var res = from h in di.tblHovedGruppes
+                orderby h.HovedGruppeID, h.HovedGruppeNavn
+                select new
+                {
+                     h.HovedGruppeID, h.HovedGruppeNavn, h.HovedGruppeSortKey, h.timestamp
+                };
+            return JsonConvert.SerializeObject(res, Formatting.Indented);
         }
 
 
