@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using dlu_persistence_api.daos;
 namespace dlu_persistence_api.services
 {
@@ -14,6 +15,11 @@ namespace dlu_persistence_api.services
     public string GetMediePlanNrByMedIePlanNr(int mediePlannr)
         {
             return MediaPlanNrDao.GetMediePlanNrDaoByMedPlanId(mediePlanId: mediePlannr);
+        }
+
+        public Task<int> CreateOrUpsateMediePlanNr(tblMedieplanNr tblMedieplanNr)
+        {
+            return MediaPlanNrDao.CreateOrUpDateMediePlanNr(tblMedieplanNr);
         }
     }
 }

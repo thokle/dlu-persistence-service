@@ -1,5 +1,7 @@
 using System;
+using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Threading.Tasks;
 using AutoMapper.QueryableExtensions;
 using Newtonsoft.Json;
 
@@ -13,7 +15,7 @@ namespace dlu_persistence_api.daos
         {
             using (_entities = new DiMPdotNetEntities())
             {
-                
+                _entities.Configuration.LazyLoadingEnabled = true;
             }
         }
 
@@ -33,6 +35,12 @@ namespace dlu_persistence_api.daos
             return JsonConvert.SerializeObject(res, Formatting.Indented);
         }
 
+
+        public Task<int> CreateOrUpDateMediePlanNr(tblMedieplanNr tblMedieplanNr)
+        {
+            _entities.tblMedieplanNrs.AddOrUpdate(tblMedieplanNr);
+            return _entities.SaveChangesAsync();
+        }
         public void Dispose()
         {
             _entities.Dispose();

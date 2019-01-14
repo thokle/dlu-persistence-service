@@ -20,7 +20,6 @@ namespace dlu_persistence_api.daos
              entities.Configuration.LazyLoadingEnabled = true;
             }
 
-          
         }
 
 
