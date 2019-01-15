@@ -191,8 +191,11 @@
   <ItemGroup>
     <Compile Include="Bootstrap.cs" />
     <Compile Include="controllers\IndexController.cs" />
+    <Compile Include="controllers\KontaltController.cs" />
+    <Compile Include="controllers\MediePlanLinjerController.cs" />
     <Compile Include="controllers\MediePlanNrController.cs" />
     <Compile Include="controllers\PostNrTableController.cs" />
+    <Compile Include="controllers\PriserController.cs" />
     <Compile Include="controllers\StamBladController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="controllers\MediePlanController.cs" />

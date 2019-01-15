@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Markup;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace dlu_persistence_api.daos
 {
@@ -35,7 +36,7 @@ namespace dlu_persistence_api.daos
                 where p.BladID == bladId
                 select new
                 {
-                    
+                    p.PrislisteID, p.Uge, p.År, p.BladID
                 };
             return JsonConvert.SerializeObject(res);
         }
@@ -60,6 +61,30 @@ namespace dlu_persistence_api.daos
             return JsonConvert.SerializeObject(res);
         }
 
+        public Task<int> AddPriserPrUge(string bladid)
+        {
+            var numnberofWeeksInYear = GetWeeksInYear(2019);
+
+            for (int i = 1; i < numnberofWeeksInYear; i++)
+            {
+                var tblPrislisterPrBladPrUge = new tblPrislisterPrBladPrUge();
+                tblPrislisterPrBladPrUge.Uge = i;
+                tblPrislisterPrBladPrUge.BladID = bladid;
+                tblPrislisterPrBladPrUge.PrislisteID = 1;
+                di.tblPrislisterPrBladPrUges.Add(tblPrislisterPrBladPrUge)
+            }
+
+         return   di.SaveChangesAsync();
+        }
+        
+        public int GetWeeksInYear(int year)
+        {
+            DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
+            DateTime date1 = new DateTime(year, 12, 31);
+            Calendar cal = dfi.Calendar;
+            return  cal.GetWeekOfYear(date1, dfi.CalendarWeekRule, 
+                dfi.FirstDayOfWeek);
+        }
         public void Dispose()
         {
             di?.Dispose();
