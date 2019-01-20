@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-
+using Nancy;
 using dlu_persistence_api.services;
 using Nancy;
 
@@ -33,9 +33,11 @@ namespace DLUPersistenceServiceModule.controllers
 
 
             Post("", o =>
-            {
-                var tblStablad = this.Bind<tblBladStamdata>();
-                return stamBladDao.CreaateOrUpdateStamBlad(tblStablad);
+            {  
+                var JSOn =  this.Bind<tblBladStamdata>();
+                stamBladDao.CreaateOrUpdateStamBlad(JSOn);
+                return Response.AsJson(JSOn);
+                
             });
 
             Get("GeoCodes", o => { return stamBladDao.GetTableGeoCode(); });

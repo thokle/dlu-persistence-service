@@ -70,6 +70,7 @@
     <Compile Include="bladtlfogfaxkopi.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="daos\BladDækningDao.cs" />
     <Compile Include="daos\KontaktDao.cs" />
     <Compile Include="daos\MaterialeDao.cs" />
     <Compile Include="daos\MediaPlanNrDao.cs" />
@@ -133,6 +134,8 @@
     <Compile Include="Salesperson.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="services\BladDækningService.cs" />
+    <Compile Include="services\IBladDæknigService.cs" />
     <Compile Include="services\IMediePlanLinjerService.cs" />
     <Compile Include="services\IMediePlanNrService.cs" />
     <Compile Include="services\IMediePlanService.cs" />

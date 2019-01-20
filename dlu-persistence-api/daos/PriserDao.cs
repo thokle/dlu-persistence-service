@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.Data.Entity.Migrations;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Markup;
@@ -61,17 +62,17 @@ namespace dlu_persistence_api.daos
             return JsonConvert.SerializeObject(res);
         }
 
-        public Task<int> AddPriserPrUge(string bladid)
+        public Task<int> AddPriserPrUge(int bladid)
         {
             var numnberofWeeksInYear = GetWeeksInYear(2019);
 
             for (int i = 1; i < numnberofWeeksInYear; i++)
             {
                 var tblPrislisterPrBladPrUge = new tblPrislisterPrBladPrUge();
-                tblPrislisterPrBladPrUge.Uge = i;
+                tblPrislisterPrBladPrUge.Uge = (byte) i;
                 tblPrislisterPrBladPrUge.BladID = bladid;
                 tblPrislisterPrBladPrUge.PrislisteID = 1;
-                di.tblPrislisterPrBladPrUges.Add(tblPrislisterPrBladPrUge)
+                di.tblPrislisterPrBladPrUges.Add(tblPrislisterPrBladPrUge);
             }
 
          return   di.SaveChangesAsync();
@@ -80,7 +81,7 @@ namespace dlu_persistence_api.daos
         public int GetWeeksInYear(int year)
         {
             DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
-            DateTime date1 = new DateTime(year, 12, 31);
+            var date1 = new DateTime(year, 12, 31);
             Calendar cal = dfi.Calendar;
             return  cal.GetWeekOfYear(date1, dfi.CalendarWeekRule, 
                 dfi.FirstDayOfWeek);
