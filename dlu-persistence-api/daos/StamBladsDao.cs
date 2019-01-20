@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Data.Entity.Migrations;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 
 namespace dlu_persistence_api.daos
@@ -13,6 +15,12 @@ namespace dlu_persistence_api.daos
         {
             di = new DiMPdotNetEntities();
             di.Configuration.LazyLoadingEnabled = true;
+        }
+
+
+        public void Dispose()
+        {
+            di?.Dispose();
         }
 
         public string GetStamDataById(int bladId)
@@ -288,6 +296,7 @@ namespace dlu_persistence_api.daos
                 .SingleOrDefault();
 
             Debug.Assert(row != null, nameof(row) + " != null");
+
             return row.BladID;
         }
 
@@ -303,10 +312,10 @@ namespace dlu_persistence_api.daos
             return JsonConvert.SerializeObject(res, Formatting.Indented);
         }
 
-
-        public void Dispose()
+        public Task<int> UpdateStamBlad(tblBladStamdata stamdata)
         {
-            di?.Dispose();
+            di.tblBladStamdatas.AddOrUpdate(stamdata);
+            return di.SaveChangesAsync();
         }
     }
 }
