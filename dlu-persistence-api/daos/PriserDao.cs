@@ -1,20 +1,24 @@
 ﻿using System;
-using System.Data.Entity.Core.Metadata.Edm;
 using System.Data.Entity.Migrations;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Markup;
 using Newtonsoft.Json;
 
 namespace dlu_persistence_api.daos
 {
-    public class PriserDao: IDisposable
+    public class PriserDao : IDisposable
     {
-        private DiMPdotNetEntities di;
+        private readonly DiMPdotNetEntities di;
 
         public PriserDao()
         {
             di = new DiMPdotNetEntities();
+        }
+
+        public void Dispose()
+        {
+            di?.Dispose();
         }
 
 
@@ -35,7 +39,7 @@ namespace dlu_persistence_api.daos
                 where p.BladID == bladId
                 select new
                 {
-                    
+                    p.PrislisteID, p.Uge, p.År, p.BladID
                 };
             return JsonConvert.SerializeObject(res);
         }
@@ -48,21 +52,38 @@ namespace dlu_persistence_api.daos
 
         public string GetPrisLister()
         {
-
             var res = from p in di.tblPrislisters
                 orderby p.PrislisteNavn
                 select new
                 {
-                    PrislisteID = p.PrislisteID,
-                    PrislisteNavn = p.PrislisteNavn
-
+                    p.PrislisteID, p.PrislisteNavn
                 };
             return JsonConvert.SerializeObject(res);
         }
 
-        public void Dispose()
+        public Task<int> AddPriserPrUge(int bladid)
         {
-            di?.Dispose();
+            var numnberofWeeksInYear = GetWeeksInYear(2019);
+
+            for (var i = 1; i < numnberofWeeksInYear; i++)
+            {
+                var tblPrislisterPrBladPrUge = new tblPrislisterPrBladPrUge();
+                tblPrislisterPrBladPrUge.Uge = (byte) i;
+                tblPrislisterPrBladPrUge.BladID = bladid;
+                tblPrislisterPrBladPrUge.PrislisteID = 1;
+                di.tblPrislisterPrBladPrUges.Add(tblPrislisterPrBladPrUge);
+            }
+
+            return di.SaveChangesAsync();
+        }
+
+        public int GetWeeksInYear(int year)
+        {
+            var dfi = DateTimeFormatInfo.CurrentInfo;
+            var date1 = new DateTime(year, 12, 31);
+            var cal = dfi.Calendar;
+            return cal.GetWeekOfYear(date1, dfi.CalendarWeekRule,
+                dfi.FirstDayOfWeek);
         }
     }
 }
