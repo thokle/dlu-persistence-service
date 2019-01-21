@@ -1,5 +1,6 @@
 using System;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace dlu_persistence_api.services
 {
@@ -8,7 +9,7 @@ namespace dlu_persistence_api.services
         string GetStamBladById(int id);
         string GetStamBladByName(string name);
         string GetStamBladByPostNummer(int postnr);
-        string CreaateOrUpdateStamBlad(tblBladStamdata tblBladStamdata);
+        Task<int> CreaateOrUpdateStamBlad(tblBladStamdata tblBladStamdata);
         string GetTableGeoCode();
         string GetTablePostNr();
         string GetTablePostNrSøgning();

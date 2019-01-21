@@ -70,12 +70,16 @@
     <Compile Include="bladtlfogfaxkopi.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="daos\AnnoncekontrolDao.cs" />
     <Compile Include="daos\BladDækningDao.cs" />
+    <Compile Include="daos\FejlTekstDao.cs" />
     <Compile Include="daos\KontaktDao.cs" />
+    <Compile Include="daos\KontakterPrBladDao.cs" />
     <Compile Include="daos\MaterialeDao.cs" />
     <Compile Include="daos\MediaPlanNrDao.cs" />
     <Compile Include="daos\MediePlanDao.cs" />
     <Compile Include="daos\MediePlanLinjerDao.cs" />
+    <Compile Include="daos\MedieplanÆndringerDao.cs" />
     <Compile Include="daos\PostNrTableDao.cs" />
     <Compile Include="daos\RegionDao.cs" />
     <Compile Include="daos\StamBladsDao.cs" />
@@ -106,6 +110,7 @@
     <Compile Include="dt_getpropertiesbyid_u_Result.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="exceptions\DaoExceptions.cs" />
     <Compile Include="FakturaFejlFinde.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>
     </Compile>

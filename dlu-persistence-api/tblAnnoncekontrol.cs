@@ -37,3 +37,4 @@ namespace dlu_persistence_api
         public virtual ICollection<tblMedieplanLinjer> tblMedieplanLinjers { get; set; }
     }
 }
+ 

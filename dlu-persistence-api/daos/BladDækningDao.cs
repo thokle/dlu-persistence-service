@@ -1,7 +1,10 @@
+using System;
 using System.Data.Entity.Migrations;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using  dlu_persistence_api.exceptions;
 
 namespace dlu_persistence_api.daos
 {
@@ -19,33 +22,55 @@ namespace dlu_persistence_api.daos
 
         public string GetDækningGradByBladId(int bladID)
         {
-            var res = from dg in _entities.tblBladDækning
-                where dg.BladID == bladID
-                select new
-                {
-                    dg.BladID, dg.Oplag, dg.DækningsGrad, dg.PostNr
-                };
-            return JsonConvert.SerializeObject(res, Formatting.Indented);
+            try
+            {
+                var res = from dg in _entities.tblBladDækning
+                    where dg.BladID == bladID
+                    select new
+                    {
+                        dg.BladID, dg.Oplag, dg.DækningsGrad, dg.PostNr
+                    };
+                return JsonConvert.SerializeObject(res, Formatting.Indented);
+            }
+            catch (Exception e)
+            {
+                throw new DaoExceptions("BladDækningDao GetDækningGradByBladId", e.InnerException);
+            }
         }
 
 
         public string GetDækningGrapPrPostNr(int postnr)
         {
-            var res = from dp in _entities.tblBladDækning
-                where dp.PostNr == postnr
-                select new
-                {
-                    dp.BladID, dp.Oplag, dp.DækningsGrad, dp.PostNr
-                };
+            try
+            {
+                var res = from dp in _entities.tblBladDækning
+                    where dp.PostNr == postnr
+                    select new
+                    {
+                        dp.BladID, dp.Oplag, dp.DækningsGrad, dp.PostNr
+                    };
 
-            return JsonConvert.SerializeObject(res, Formatting.Indented);
+                return JsonConvert.SerializeObject(res, Formatting.Indented);
+            }
+            catch (Exception e)
+            {
+                throw new DaoExceptions("BladDækningDao GetDækningGradByBladId", e.InnerException);
+            }
         }
 
         public Task<int> OpretBladDækning(tblBladDækning tblBladDækning)
         {
-            _entities.tblBladDækning.AddOrUpdate(tblBladDækning);
 
-            return _entities.SaveChangesAsync();
+            try
+            {
+                _entities.tblBladDækning.AddOrUpdate(tblBladDækning);
+
+                return _entities.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                throw new DaoExceptions("BladDækningDao OpretBladDækning " , e.InnerException);
+            }
         }
     }
 }

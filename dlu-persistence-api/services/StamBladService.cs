@@ -1,4 +1,5 @@
 using System.Data.Entity.Core.Common;
+using System.Threading.Tasks;
 using dlu_persistence_api.daos;
 namespace dlu_persistence_api.services
 {
@@ -25,7 +26,7 @@ namespace dlu_persistence_api.services
             return dao.GetStamBladByPostNummer(postNr: postnr);
         }
 
-        public string CreaateOrUpdateStamBlad(tblBladStamdata tblBladStamdata)
+        public Task<int> CreaateOrUpdateStamBlad(tblBladStamdata tblBladStamdata)
         {
 
             return dao.OpretNytStamBlad(stamData: tblBladStamdata);

@@ -1,63 +1,63 @@
 using System;
+
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using dlu_persistence_api.exceptions;
-
+using  dlu_persistence_api.exceptions;
 namespace dlu_persistence_api.daos
 {
-    public class MaterialeDao : IDisposable
+    public class MedieplanÆndringerDao: IDisposable
     {
         private DiMPdotNetEntities _entities;
 
-        public MaterialeDao()
+        private MedieplanÆndringerDao()
         {
             using (_entities = new DiMPdotNetEntities())
             {
                 _entities.Configuration.LazyLoadingEnabled = true;
-                
             }
         }
 
-        public string GetMaterialeByMediaNr(int ma)
+
+        public string GetMediePlanÆndringerByMedieId(int mediePlan)
         {
             try
             {
-                var res = from m in _entities.tblMateriales
-                    where m.MedieplanNr == ma
+                var res = from m in _entities.tblMedieplanÆndringer
+                    where m.MedieplanNr == mediePlan
                     select new
                     {
-                        m.MedieplanNr, m.ErSendt, m.FilNavn, m.FilSti, m.SkalSendes, m.UgeavisID
-
+                        m.MedieplanNr, m.Version, m.ÆndringsTekst
                     };
 
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
             catch (Exception e)
             {
-                throw new DaoExceptions(" MaterialeDao GetMaterialeByMediaNr  ", e.InnerException);
+                throw new DaoExceptions("MedieplanÆndringerDao GetMediePlanÆndringerByMedieId " , e.InnerException);
             }
 
         }
 
-        public Task<int> CreateMateriale(tblMateriale tblMateriale)
+        public Task<int> CreateOrUpdate(tblMedieplanÆndringer tblMedieplanÆndringer)
         {
             try
             {
-                _entities.tblMateriales.AddOrUpdate(tblMateriale);
+                _entities.tblMedieplanÆndringer.AddOrUpdate(tblMedieplanÆndringer);
                 return _entities.SaveChangesAsync();
             }
             catch (Exception e)
             {
-                throw new DaoExceptions(" MaterialeDao CreateMateriale ", e.InnerException );
+                throw new DaoExceptions(" MedieplanÆndringerDao CreateOrUpdate ", e.InnerException);
             }
         }
 
+
         public void Dispose()
         {
-            _entities.Dispose();
+            _entities?.Dispose();
         }
     }
 }

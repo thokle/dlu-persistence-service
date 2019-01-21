@@ -1,8 +1,7 @@
 using System;
-using System.Data.Entity.Core.Metadata.Edm;
-using System.Diagnostics;
 using System.Linq;
 using Newtonsoft.Json;
+using  dlu_persistence_api.exceptions;
 
 namespace dlu_persistence_api.daos
 {
@@ -22,16 +21,23 @@ namespace dlu_persistence_api.daos
 
         public string GetPostNrListe()
         {
+            try
+            {
+                var postnrs = from ps in _diMPdotNetEntities.tblPostNrs
+                    orderby ps.PostNr
+                    select new
+                    {
+                        ps.PostNr, ps.Husstande, ps.PostBy
 
-            var postnrs = from ps in _diMPdotNetEntities.tblPostNrs
-                orderby ps.PostNr
-                select new
-                {
-
-
-                };
-            return JsonConvert.SerializeObject(postnrs, Formatting.Indented);
-        }
+                    };
+                return JsonConvert.SerializeObject(postnrs, Formatting.Indented);
+            }
+            catch (Exception e)
+            {
+                throw new DaoExceptions("PostNrTableDao GetPostNrListe " , e.InnerException);
+            }
+        
+    }
 
         public void Dispose()
         {
