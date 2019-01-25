@@ -188,7 +188,12 @@ namespace dlu_persistence_api.daos
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="postNr"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetStamBladByPostNummer(int postNr)
         {
             try
@@ -263,7 +268,11 @@ namespace dlu_persistence_api.daos
                 throw new DaoExceptions("GetStamBladByPostNummer ", e.InnerException);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetTblRegion()
         {
             try
@@ -283,7 +292,11 @@ namespace dlu_persistence_api.daos
                 throw new DaoExceptions("GetTblRegion ", e.InnerException);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetPostNrSøgning()
         {
             try
@@ -296,7 +309,11 @@ namespace dlu_persistence_api.daos
                 throw new DaoExceptions("GetPostNrSøgning ", e.InnerException);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetTblPostNr()
         {
             try
@@ -312,7 +329,11 @@ namespace dlu_persistence_api.daos
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetTblGetKode()
         {
             try
@@ -328,7 +349,11 @@ namespace dlu_persistence_api.daos
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetTableDage()
         {
             try
@@ -343,14 +368,19 @@ namespace dlu_persistence_api.daos
                 throw new DaoExceptions("GetTableDage ", e.InnerException);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="stamData"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public Task<int> OpretNytStamBlad(tblBladStamdata stamData)
 
         {
             try
             {
                 stamData.BladID = GetLatestId() + 1;
-                var res = di.tblBladStamdatas.Add(stamData);
+                di.tblBladStamdatas.AddOrUpdate(stamData);
               return di.SaveChangesAsync();
 
 
@@ -361,7 +391,11 @@ namespace dlu_persistence_api.daos
                 throw new DaoExceptions("OpretNytStamBlad ",e.InnerException);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         private int GetLatestId()
         {
             try
@@ -381,7 +415,11 @@ namespace dlu_persistence_api.daos
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetTableHovedGruppe()
         {
             try
@@ -399,7 +437,12 @@ namespace dlu_persistence_api.daos
                 throw new  DaoExceptions("GetTableHovedGruppe ", e.InnerException);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="stamdata"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public Task<int> UpdateStamBlad(tblBladStamdata stamdata)
         {
             try

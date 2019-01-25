@@ -72,6 +72,7 @@
     </Compile>
     <Compile Include="daos\AnnoncekontrolDao.cs" />
     <Compile Include="daos\BladDækningDao.cs" />
+    <Compile Include="daos\EjeforholdDao.cs" />
     <Compile Include="daos\FejlTekstDao.cs" />
     <Compile Include="daos\KontaktDao.cs" />
     <Compile Include="daos\KontakterPrBladDao.cs" />
@@ -139,17 +140,23 @@
     <Compile Include="Salesperson.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="services\AnnoceKontrolService.cs" />
     <Compile Include="services\BladDækningService.cs" />
+    <Compile Include="services\EjerforholdService.cs" />
+    <Compile Include="services\IAnnonceKontrolService.cs" />
     <Compile Include="services\IBladDæknigService.cs" />
+    <Compile Include="services\IEjerforholdService.cs" />
     <Compile Include="services\IMediePlanLinjerService.cs" />
     <Compile Include="services\IMediePlanNrService.cs" />
     <Compile Include="services\IMediePlanService.cs" />
     <Compile Include="services\IPostNrTableService.cs" />
     <Compile Include="services\IPriserService.cs" />
+    <Compile Include="services\IRegionService.cs" />
     <Compile Include="services\IStamBladService.cs" />
     <Compile Include="services\MediePlanLinjerService.cs" />
     <Compile Include="services\MediePlanNrService.cs" />
     <Compile Include="services\PostNrTableService.cs" />
+    <Compile Include="services\RegionService.cs" />
     <Compile Include="services\StamBladService.cs" />
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>

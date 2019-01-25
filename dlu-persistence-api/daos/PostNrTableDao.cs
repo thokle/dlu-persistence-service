@@ -4,7 +4,9 @@ using Newtonsoft.Json;
 using  dlu_persistence_api.exceptions;
 
 namespace dlu_persistence_api.daos
-{
+{    /// <summary>
+     /// 
+     /// </summary>
     public class PostNrTableDao: IDisposable
     {
         private DiMPdotNetEntities _diMPdotNetEntities;
@@ -18,7 +20,11 @@ namespace dlu_persistence_api.daos
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetPostNrListe()
         {
             try

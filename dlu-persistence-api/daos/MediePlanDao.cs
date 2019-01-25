@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using  dlu_persistence_api.exceptions;
 namespace dlu_persistence_api.daos
-{
+{    /// <summary>
+     /// 
+     /// </summary>
     public class MediePlanDao: IDisposable
     {
         private DiMPdotNetEntities entities;
@@ -20,7 +22,12 @@ namespace dlu_persistence_api.daos
         }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="medieplanNr"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetMediePlanByNumber(int medieplanNr)
         {
             try
@@ -54,7 +61,12 @@ namespace dlu_persistence_api.daos
 
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tblMedieplan"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public Task<int> CreateOrUpdateMediePlan(tblMedieplan tblMedieplan)
         {
 

@@ -5,7 +5,9 @@ using dlu_persistence_api.exceptions;
 using Newtonsoft.Json;
 
 namespace dlu_persistence_api.daos
-{
+{    /// <summary>
+     /// 
+     /// </summary>
     public class RegionDao
     {
         private DiMPdotNetEntities _entities;
@@ -18,7 +20,11 @@ namespace dlu_persistence_api.daos
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetRegions()
         {
             try

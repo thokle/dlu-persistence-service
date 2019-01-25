@@ -8,6 +8,9 @@ using dlu_persistence_api.exceptions;
 
 namespace dlu_persistence_api.daos
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class MaterialeDao : IDisposable
     {
         private DiMPdotNetEntities _entities;
@@ -20,7 +23,12 @@ namespace dlu_persistence_api.daos
                 
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ma"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetMaterialeByMediaNr(int ma)
         {
             try
@@ -41,7 +49,12 @@ namespace dlu_persistence_api.daos
             }
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tblMateriale"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public Task<int> CreateMateriale(tblMateriale tblMateriale)
         {
             try

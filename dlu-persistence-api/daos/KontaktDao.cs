@@ -7,7 +7,7 @@ namespace dlu_persistence_api.daos
     public class KontaktDao
     {
         private readonly DiMPdotNetEntities _entities;
-
+    
         public KontaktDao()
         {
             using (_entities = new DiMPdotNetEntities())
@@ -15,7 +15,12 @@ namespace dlu_persistence_api.daos
                 _entities.Configuration.LazyLoadingEnabled = true;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bladid"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetKontakterPrBlad(int bladid)
         {
             try
@@ -45,7 +50,11 @@ namespace dlu_persistence_api.daos
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetKontaktTitler()
         {
             try
@@ -64,7 +73,11 @@ namespace dlu_persistence_api.daos
                 throw new DaoExceptions(" KontaktDao GetKontaktTitler", e.InnerException);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetKontakterArbOmråderKontkter()
         {
             try

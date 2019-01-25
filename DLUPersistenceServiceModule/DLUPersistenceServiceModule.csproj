@@ -202,7 +202,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrap.cs" />
+    <Compile Include="controllers\AnnonceKontrolController.cs" />
     <Compile Include="controllers\BladDækningController.cs" />
+    <Compile Include="controllers\EjerforholdServiceController.cs" />
     <Compile Include="controllers\IndexController.cs" />
     <Compile Include="controllers\KontaltController.cs" />
     <Compile Include="controllers\MediePlanLinjerController.cs" />

@@ -8,6 +8,9 @@ using Newtonsoft.Json;
 using  dlu_persistence_api.exceptions;
 namespace dlu_persistence_api.daos
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class MedieplanÆndringerDao: IDisposable
     {
         private DiMPdotNetEntities _entities;
@@ -20,7 +23,12 @@ namespace dlu_persistence_api.daos
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mediePlan"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetMediePlanÆndringerByMedieId(int mediePlan)
         {
             try
@@ -40,7 +48,12 @@ namespace dlu_persistence_api.daos
             }
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tblMedieplanÆndringer"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public Task<int> CreateOrUpdate(tblMedieplanÆndringer tblMedieplanÆndringer)
         {
             try
@@ -54,7 +67,9 @@ namespace dlu_persistence_api.daos
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public void Dispose()
         {
             _entities?.Dispose();

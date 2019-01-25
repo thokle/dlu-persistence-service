@@ -8,6 +8,9 @@ using  dlu_persistence_api.exceptions;
 
 namespace dlu_persistence_api.daos
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class BladDækningDao
     {
         private readonly DiMPdotNetEntities _entities;
@@ -19,7 +22,12 @@ namespace dlu_persistence_api.daos
                 _entities.Configuration.LazyLoadingEnabled = true;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bladID"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetDækningGradByBladId(int bladID)
         {
             try
@@ -38,7 +46,12 @@ namespace dlu_persistence_api.daos
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="postnr"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetDækningGrapPrPostNr(int postnr)
         {
             try
@@ -57,7 +70,12 @@ namespace dlu_persistence_api.daos
                 throw new DaoExceptions("BladDækningDao GetDækningGradByBladId", e.InnerException);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tblBladDækning"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public Task<int> OpretBladDækning(tblBladDækning tblBladDækning)
         {
 

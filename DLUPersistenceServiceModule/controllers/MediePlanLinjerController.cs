@@ -16,7 +16,7 @@ namespace DLUPersistenceServiceModule.controllers
                 return res;
             });
 
-            Post("create", parameter =>
+            Post("", parameter =>
             {
                 var p = this.Bind<tblMedieplanLinjer>();
                 var res = service.CreateOrUpDate(p);

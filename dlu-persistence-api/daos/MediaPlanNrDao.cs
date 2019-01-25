@@ -18,7 +18,12 @@ namespace dlu_persistence_api.daos
                 _entities.Configuration.LazyLoadingEnabled = true;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mediePlanId"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetMediePlanNrDaoByMedPlanId(int mediePlanId)
         {
             try
@@ -45,7 +50,12 @@ namespace dlu_persistence_api.daos
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tblMedieplanNr"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public Task<int> CreateOrUpDateMediePlanNr(tblMedieplanNr tblMedieplanNr)
         {
             try

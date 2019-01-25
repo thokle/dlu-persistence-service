@@ -82,7 +82,12 @@ namespace dlu_persistence_api.daos
             }
         }
 
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="tblAnnoncekontrol"></param>
+    /// <returns></returns>
+    /// <exception cref="DaoExceptions"></exception>
     public Task<int> CreateOrUpdate(tblAnnoncekontrol tblAnnoncekontrol)
         {
             try
