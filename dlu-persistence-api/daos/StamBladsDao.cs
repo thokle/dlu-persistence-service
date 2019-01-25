@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Data.Entity.Migrations;
+using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Threading;
 using System.Threading.Tasks;
+using dlu_persistence_api.exceptions;
 using Newtonsoft.Json;
-using  dlu_persistence_api.exceptions;
+
 namespace dlu_persistence_api.daos
 {
     /// <summary>
-    /// 
     /// </summary>
     public class StamBladsDao : IDisposable
     {
@@ -27,12 +26,12 @@ namespace dlu_persistence_api.daos
         {
             di?.Dispose();
         }
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="bladId"></param>
-    /// <returns></returns>
-    /// <exception cref="DaoExceptions"></exception>
+
+        /// <summary>
+        /// </summary>
+        /// <param name="bladId"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetStamDataById(int bladId)
         {
             try
@@ -101,17 +100,14 @@ namespace dlu_persistence_api.daos
                     }
                     select p;
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
-
             }
             catch (Exception e)
             {
                 throw new DaoExceptions(" StamBladsDao GetStamDataById ", e.InnerException);
             }
-      
-    }
+        }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -184,7 +180,7 @@ namespace dlu_persistence_api.daos
             }
             catch (Exception e)
             {
-                throw new  DaoExceptions("StamBladsDao GetStamBladByName " , e.InnerException);
+                throw new DaoExceptions("StamBladsDao GetStamBladByName ", e.InnerException);
             }
         }
 
@@ -308,7 +304,7 @@ namespace dlu_persistence_api.daos
             }
             catch (Exception e)
             {
-                throw new  DaoExceptions("GetTblPostNr ",e.InnerException);
+                throw new DaoExceptions("GetTblPostNr ", e.InnerException);
             }
         }
 
@@ -324,7 +320,7 @@ namespace dlu_persistence_api.daos
             }
             catch (Exception e)
             {
-                throw new  DaoExceptions("GetTblGetKode ", e.InnerException);
+                throw new DaoExceptions("GetTblGetKode ", e.InnerException);
             }
         }
 
@@ -350,15 +346,14 @@ namespace dlu_persistence_api.daos
             try
             {
                 stamData.BladID = GetLatestId() + 1;
-                var res = di.tblBladStamdatas.Add(stamData);
-              return di.SaveChangesAsync();
 
-
-                
+                di.tblBladStamdatas.AddOrUpdate(stamData);
+                return di.SaveChangesAsync();
             }
-            catch (Exception e)
+            catch (DbEntityValidationException e)
             {
-                throw new DaoExceptions("OpretNytStamBlad ",e.InnerException);
+                var newException = new FormattedDbEntityValidationException(e);
+                throw newException;
             }
         }
 
@@ -373,11 +368,10 @@ namespace dlu_persistence_api.daos
                 Debug.Assert(row != null, nameof(row) + " != null");
 
                 return row.BladID;
-
             }
             catch (Exception e)
             {
-                throw new DaoExceptions("GetLatestId" , e.InnerException);
+                throw new DaoExceptions("GetLatestId", e.InnerException);
             }
         }
 
@@ -396,7 +390,7 @@ namespace dlu_persistence_api.daos
             }
             catch (Exception e)
             {
-                throw new  DaoExceptions("GetTableHovedGruppe ", e.InnerException);
+                throw new DaoExceptions("GetTableHovedGruppe ", e.InnerException);
             }
         }
 

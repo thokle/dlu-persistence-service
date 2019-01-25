@@ -111,6 +111,7 @@
       <DependentUpon>DLUModel.tt</DependentUpon>
     </Compile>
     <Compile Include="exceptions\DaoExceptions.cs" />
+    <Compile Include="exceptions\FormattedDbEntityValidationException.cs" />
     <Compile Include="FakturaFejlFinde.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>
     </Compile>
