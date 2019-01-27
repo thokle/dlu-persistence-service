@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Data.Entity.Migrations;
+using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Threading;
 using System.Threading.Tasks;
+using dlu_persistence_api.exceptions;
 using Newtonsoft.Json;
-using  dlu_persistence_api.exceptions;
+
 namespace dlu_persistence_api.daos
 {
     /// <summary>
@@ -101,14 +101,12 @@ namespace dlu_persistence_api.daos
                     }
                     select p;
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
-
             }
             catch (Exception e)
             {
                 throw new DaoExceptions(" StamBladsDao GetStamDataById ", e.InnerException);
             }
-      
-    }
+        }
 
         /// <summary>
         /// 
@@ -184,7 +182,7 @@ namespace dlu_persistence_api.daos
             }
             catch (Exception e)
             {
-                throw new  DaoExceptions("StamBladsDao GetStamBladByName " , e.InnerException);
+                throw new DaoExceptions("StamBladsDao GetStamBladByName ", e.InnerException);
             }
         }
 
@@ -380,15 +378,14 @@ namespace dlu_persistence_api.daos
             try
             {
                 stamData.BladID = GetLatestId() + 1;
+
                 di.tblBladStamdatas.AddOrUpdate(stamData);
-              return di.SaveChangesAsync();
-
-
-                
+                return di.SaveChangesAsync();
             }
-            catch (Exception e)
+            catch (DbEntityValidationException e)
             {
-                throw new DaoExceptions("OpretNytStamBlad ",e.InnerException);
+                var newException = new FormattedDbEntityValidationException(e);
+                throw newException;
             }
         }
         /// <summary>
