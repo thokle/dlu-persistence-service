@@ -15,7 +15,7 @@ namespace dlu_persistence_api.daos
     {
         private DiMPdotNetEntities _entities;
 
-        private MedieplanÆndringerDao()
+        public MedieplanÆndringerDao()
         {
             using (_entities = new DiMPdotNetEntities())
             {

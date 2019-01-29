@@ -32,7 +32,7 @@ namespace dlu_persistence_api.daos
             }
             catch (Exception e)
             {
-                throw  new DaoExceptions("KontakterPrBladDao CreateOrUpdateKontakterPrBlad", e.InnerException);
+                throw  new FormatException();
             }
 
         }

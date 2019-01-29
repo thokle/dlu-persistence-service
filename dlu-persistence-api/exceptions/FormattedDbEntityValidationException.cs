@@ -6,7 +6,7 @@ namespace dlu_persistence_api.exceptions
 {
     public class FormattedDbEntityValidationException : Exception
     {
-        public FormattedDbEntityValidationException(DbEntityValidationException innerException) :
+        public FormattedDbEntityValidationException(Exception innerException) :
             base(null, innerException)
         {
         }

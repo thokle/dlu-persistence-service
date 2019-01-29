@@ -18,8 +18,13 @@ namespace dlu_persistence_api.daos
 
         public StamBladsDao()
         {
-            di = new DiMPdotNetEntities();
-            di.Configuration.LazyLoadingEnabled = true;
+            using ( di = new DiMPdotNetEntities())
+            {
+                di.Configuration.LazyLoadingEnabled = true;
+            }
+
+           
+         
         }
 
 
@@ -377,9 +382,15 @@ namespace dlu_persistence_api.daos
         {
             try
             {
-                stamData.BladID = GetLatestId() + 1;
-
-                di.tblBladStamdatas.AddOrUpdate(stamData);
+                if (DoesStambladExist(stamData.BladID))
+                {
+                    di.tblBladStamdatas.AddOrUpdate(stamData);
+                }
+                else
+                {
+                    stamData.BladID = GetLatestId() + 1;
+                    di.tblBladStamdatas.AddOrUpdate(stamData);
+                }
                 return di.SaveChangesAsync();
             }
             catch (DbEntityValidationException e)
@@ -434,23 +445,14 @@ namespace dlu_persistence_api.daos
                 throw new  DaoExceptions("GetTableHovedGruppe ", e.InnerException);
             }
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="stamdata"></param>
-        /// <returns></returns>
-        /// <exception cref="DaoExceptions"></exception>
-        public Task<int> UpdateStamBlad(tblBladStamdata stamdata)
+        
+
+        public bool DoesStambladExist(int bladId)
         {
-            try
-            {
-                di.tblBladStamdatas.AddOrUpdate(stamdata);
-                return di.SaveChangesAsync();
-            }
-            catch (Exception e)
-            {
-                throw new DaoExceptions("UpdateStamBlad ", e.InnerException);
-            }
+            var res = from st in di.tblBladStamdatas where st.BladID == bladId select new {st.BladID};
+            var single = res.Single();
+
+        return single != null;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace dlu_persistence_api.daos
 {    /// <summary>
      /// 
      /// </summary>
-    public class MediePlanLinjerDao
+    public class MediePlanLinjerDao: IDisposable
     {
         private DiMPdotNetEntities _entities;
 
@@ -72,5 +72,9 @@ namespace dlu_persistence_api.daos
 
         }
 
+        public void Dispose()
+        {
+            _entities?.Dispose();
+        }
     }
 }
