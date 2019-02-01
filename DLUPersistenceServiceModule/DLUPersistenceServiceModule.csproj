@@ -208,6 +208,7 @@
     <Compile Include="controllers\FakturaFejlTekstController.cs" />
     <Compile Include="controllers\FakturingsBilagController.cs" />
     <Compile Include="controllers\FejlTekstController.cs" />
+    <Compile Include="controllers\GruppeController.cs" />
     <Compile Include="controllers\IndexController.cs" />
     <Compile Include="controllers\KonkurrenceDækningsController.cs" />
     <Compile Include="controllers\KontakterPrBladController.cs" />
@@ -220,6 +221,7 @@
     <Compile Include="controllers\PriserController.cs" />
     <Compile Include="controllers\RegionsController.cs" />
     <Compile Include="controllers\StamBladController.cs" />
+    <Compile Include="controllers\SupportBilagController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="controllers\MediePlanController.cs" />
   </ItemGroup>

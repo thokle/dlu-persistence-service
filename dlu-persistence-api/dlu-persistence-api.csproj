@@ -77,6 +77,7 @@
     <Compile Include="daos\FakturingsBilagDao.cs" />
     <Compile Include="daos\FakuraFejlTekstDao.cs" />
     <Compile Include="daos\FejlTekstDao.cs" />
+    <Compile Include="daos\GrupperDao.cs" />
     <Compile Include="daos\KonkurrenceDaekningDao.cs" />
     <Compile Include="daos\KontaktDao.cs" />
     <Compile Include="daos\KontakterPrBladDao.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="daos\PostNrTableDao.cs" />
     <Compile Include="daos\RegionDao.cs" />
     <Compile Include="daos\StamBladsDao.cs" />
+    <Compile Include="daos\SupportBilagDao.cs" />
     <Compile Include="delPriser.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>
     </Compile>
@@ -151,6 +153,7 @@
     <Compile Include="services\EjerforholdService.cs" />
     <Compile Include="services\FakturaFejlTekstService.cs" />
     <Compile Include="services\FakturingsBilagService.cs" />
+    <Compile Include="services\GruppeService.cs" />
     <Compile Include="services\IFakuraFejlTekstService.cs" />
     <Compile Include="services\FejlTekstService.cs" />
     <Compile Include="services\IAnnonceKontrolService.cs" />
@@ -158,6 +161,7 @@
     <Compile Include="services\IEjerforholdService.cs" />
     <Compile Include="services\IFakturingBilagService.cs" />
     <Compile Include="services\IFejlTekstService.cs" />
+    <Compile Include="services\IGruppeService.cs" />
     <Compile Include="services\IKonkurrenceDækningService.cs" />
     <Compile Include="services\IKontakterPrBladService.cs" />
     <Compile Include="services\IKontaktService.cs" />
@@ -169,15 +173,18 @@
     <Compile Include="services\IPriserService.cs" />
     <Compile Include="services\IRegionService.cs" />
     <Compile Include="services\IStamBladService.cs" />
+    <Compile Include="services\ISupportBilagService.cs" />
     <Compile Include="services\KonkurrenceDækningService.cs" />
     <Compile Include="services\KontakterPrBladService.cs" />
     <Compile Include="services\KontaktService.cs" />
     <Compile Include="services\MediePlanLinjerService.cs" />
     <Compile Include="services\MediePlanNrService.cs" />
+    <Compile Include="services\MediePlanService.cs" />
     <Compile Include="services\MediePlanÆndringsService.cs" />
     <Compile Include="services\PostNrTableService.cs" />
     <Compile Include="services\RegionService.cs" />
     <Compile Include="services\StamBladService.cs" />
+    <Compile Include="services\SupportBilagService.cs" />
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>
     </Compile>
