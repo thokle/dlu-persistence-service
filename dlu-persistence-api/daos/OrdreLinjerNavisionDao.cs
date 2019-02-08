@@ -1,0 +1,22 @@
+using System;
+
+namespace dlu_persistence_api.daos
+{
+    public class OrdreLinjerNavisionDao: IDisposable
+    {
+        private DiMPdotNetEntities _entities;
+
+        public OrdreLinjerNavisionDao()
+        {
+            using (_entities = new DiMPdotNetEntities())
+            {
+                _entities.Configuration.LazyLoadingEnabled = true;
+            }
+        }
+
+        public void Dispose()
+        {
+            _entities?.Dispose();
+        }
+    }
+}

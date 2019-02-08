@@ -7,11 +7,11 @@ namespace DLUPersistenceServiceModule.controllers
 {
     public sealed class KonkurrenceDækningsController: NancyModule
     {
-        public KonkurrenceDækningsController(KonkurrenceDækningService service) : base("konkurrnceDækning")
+        public KonkurrenceDækningsController(KonkurrenceDækningService service)
         {
-            Get("byPostnr/{postnr:int}", o =>  service.GetKomkurrenceDækningPrPostNr(o.postnr));
-            Get("ByDaekning/{daekning:int", o => service.GetKonkurrenceDækningPrDaeknngGrad(o.daekning));
-            Post("", o =>
+            Get("/konkurrenceDækning/byPostnr/{postnr:int}", o =>  service.GetKomkurrenceDækningPrPostNr(o.postnr));
+            Get("/konkurrenceDækningByDaekning/{daekning:int", o => service.GetKonkurrenceDækningPrDaeknngGrad(o.daekning));
+            Post("/konkurrenceDækning/create", o =>
             {
                 var res = this.Bind<tblKonkurrentDækning>();
               return  service.CreateOrUpdate(res);

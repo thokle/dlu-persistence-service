@@ -5,11 +5,11 @@ namespace DLUPersistenceServiceModule.controllers
 {
     public sealed class KontaktController:  NancyModule
     {
-        public KontaktController(KontaktService service) : base("/kontakter")
+        public KontaktController(KontaktService service) 
         {
-            Get("/OmraadeKontakter", o => service.GetKontakterArbOmråderKontkter());
-            Get("/kontaktTitler", o => service.GetKontaktTitler());
-            Get("/kontakterPrBlad/{medieId:int}", o => service.GetKontakterPrBlad(o.medieId));
+            Get("/kontakter/OmraadeKontakter", o => service.GetKontakterArbOmråderKontkter());
+            Get("/kontakter/kontaktTitler", o => service.GetKontaktTitler());
+            Get("/kontakter/kontakterPrBlad/{medieId:int}", o => service.GetKontakterPrBlad(o.medieId));
         }
     }
 }

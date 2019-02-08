@@ -6,12 +6,11 @@ namespace DLUPersistenceServiceModule.controllers
 {
     public sealed class KontakterPrBladController: NancyModule
     {
-        public KontakterPrBladController(KontakterPrBladService service): base("/kontakterPrBlad")
+        public KontakterPrBladController(KontakterPrBladService service)
         {
 
-            Post("", o =>
+            Post("/kontakterPrBlad", o =>
             {
-
                 var rez = this.Bind<tblKontakterPrBlad>();
 
 

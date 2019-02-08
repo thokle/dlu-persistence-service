@@ -8,9 +8,9 @@ namespace DLUPersistenceServiceModule.controllers
     {
         public AnnonceKontrolController(AnnoceKontrolService service)
         {
-            Get("email/{email:string}", o => service.GetAnnonceKontrolByEmail(o.email));
-            Get("medieId/{medieid:int}", d => service.GetAnnoceKontrolByMediePlanId(d.medieid));
-            Post("", o =>
+            Get("/annoncekontrol/email/{email:string}", o => service.GetAnnonceKontrolByEmail(o.email));
+            Get("/annoncekontrol/medieId/{medieid:int}", d => service.GetAnnoceKontrolByMediePlanId(d.medieid));
+            Post("/annoncekontrol/create", o =>
             {
                 var res = this.Bind<tblAnnoncekontrol>();
 

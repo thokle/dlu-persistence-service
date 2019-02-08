@@ -8,10 +8,10 @@ namespace DLUPersistenceServiceModule.controllers
 {
     public sealed class FakturaFejlTekstController: NancyModule 
     {
-        public FakturaFejlTekstController(FakturaFejlTekstService service) : base("fakturaFejlTekst")
+        public FakturaFejlTekstController(FakturaFejlTekstService service) 
         {
-            Get("", o => { return service.GetFejlTekster(); });
-            Post("", o =>
+            Get("/fakturaFejlTekst", o => { return service.GetFejlTekster(); });
+            Post("/fakturaFejlTekst/create", o =>
             {
                 var res = this.Bind<tblFakturaFejlTekst>();
                 return service.CreateOrUpDate(res);

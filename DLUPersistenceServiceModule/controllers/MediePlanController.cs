@@ -11,11 +11,11 @@ namespace DLUPersistenceServiceModule.controllers
     {
         private const bool RunAsync = true;
 
-        public MediePlanController(MediePlanService dao):base("mediePæan ")
+        public MediePlanController(MediePlanService dao)
         {
-            Get("/medieId/{medieId:int}",   parameters  => {  return dao.GetMediePlanById(parameters.medieId); });
-            Get("/kontaktPerson/{kontaktPerson:string", o => { return dao.GetMediePlanByKontakt(o.kontaktPerson);} );
-            Post("/create", o =>
+            Get("/mediePlan/medieId/{medieId:int}",   parameters  => {  return dao.GetMediePlanById(parameters.medieId); });
+            Get("/mediePlan/kontaktPerson/{kontaktPerson:string", o => { return dao.GetMediePlanByKontakt(o.kontaktPerson);} );
+            Post("/mediePlan/create", o =>
             {
                 var mediePlan = this.Bind<tblMedieplan>();
 

@@ -5,11 +5,11 @@ namespace DLUPersistenceServiceModule.controllers
 {
     public sealed class UgeAviserTilGridController: NancyModule
     {
-        public UgeAviserTilGridController(UgeAviserTilGridService service) : base("ugeAviserTilGrid")
+        public UgeAviserTilGridController(UgeAviserTilGridService service) 
         {
-            Get("/postnr/{postnr:int}", o => service.GetAllUgeAviserGridPostNr(o.postnr));
-            Get("/all", o => service.GetAllUgerAviser());
-             Get("/bynavn/{bynavn:int}", o => service.GetAllUgeAviserByByNavn(o.bynavm));
+            Get("/ugeAviserTilGrid/postnr/{postnr:int}", o => service.GetAllUgeAviserGridPostNr(o.postnr));
+            Get("/ugeAviserTilGrid/all", o => service.GetAllUgerAviser());
+             Get("/ugeAviserTilGrid/bynavn/{bynavn:int}", o => service.GetAllUgeAviserByByNavn(o.bynavm));
         }
     }
 }

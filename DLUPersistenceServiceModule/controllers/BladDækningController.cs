@@ -7,11 +7,11 @@ namespace DLUPersistenceServiceModule.controllers
 {
     public class BladDækningController : NancyModule
     {
-        public BladDækningController(BladDækningService service) : base("bladdækning")
+        public BladDækningController(BladDækningService service)
         {
-            Get("bladid/{bladid:int", o => service.GetBladDækningByBladId(o.bladid));
-            Get("postnr/{postnr:int", o => service.GetBladDækningByPostnr(o.postnr));
-            Post("add", async o =>
+            Get("/bladdækning/bladid/{bladid:int", o => service.GetBladDækningByBladId(o.bladid));
+            Get("/bladdækning/postnr/{postnr:int", o => service.GetBladDækningByPostnr(o.postnr));
+            Post("/bladdækning/add", async o =>
             {
                 var tbl = this.Bind<tblBladDækning>();
                 var res = await service.OpretBladDækning(tbl);

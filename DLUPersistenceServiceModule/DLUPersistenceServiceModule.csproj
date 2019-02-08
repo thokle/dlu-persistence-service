@@ -212,11 +212,11 @@
     <Compile Include="controllers\IndexController.cs" />
     <Compile Include="controllers\KonkurrenceDækningsController.cs" />
     <Compile Include="controllers\KontakterPrBladController.cs" />
-    <Compile Include="controllers\KontaltController.cs" />
     <Compile Include="controllers\KontaktController.cs" />
     <Compile Include="controllers\MediePlanLinjerController.cs" />
     <Compile Include="controllers\MediePlanNrController.cs" />
     <Compile Include="controllers\MediePlanÆnmdringsController.cs" />
+    <Compile Include="controllers\NavisionContactController.cs" />
     <Compile Include="controllers\PostNrTableController.cs" />
     <Compile Include="controllers\PriserController.cs" />
     <Compile Include="controllers\RegionsController.cs" />
@@ -226,6 +226,7 @@
     <Compile Include="controllers\WebForspørgelsesController.cs" />
     <Compile Include="controllers\WebforspørgelsesLinjerController.cs" />
     <Compile Include="controllers\WebMailController.cs" />
+    <Compile Include="controllers\WEBSendTilKollegaController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="controllers\MediePlanController.cs" />
   </ItemGroup>

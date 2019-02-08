@@ -7,19 +7,19 @@ namespace DLUPersistenceServiceModule.controllers
 {
     public sealed class FejlTekstController: NancyModule
     {
-        public FejlTekstController(FejlTekstService service): base("/fejltekst")
+        public FejlTekstController(FejlTekstService service)
         {
 
-            Get("/medieid/{medieId:int}", o => { return service.GetFejlTekstDaoByMedieId(o.medieId); });
+            Get("/fejltekst/medieid/{medieId:int}", o => { return service.GetFejlTekstDaoByMedieId(o.medieId); });
             
-           Get("/ansvarlig/{ansvarlig:string}", o =>
+           Get("/fejltekst/ansvarlig/{ansvarlig:string}", o =>
            {
                return service.GetFejlodeTekstDaoByAnsvarlig(o.ansvarlig);
                
            } );
 
 
-            Post("", o =>
+            Post("/fejltekst/create", o =>
             {
                 var tbl = this.Bind<tblFakturaFejl>();
                 return service.CreateOrUpDateFejlTekst(tbl);

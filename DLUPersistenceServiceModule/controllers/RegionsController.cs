@@ -6,10 +6,10 @@ namespace DLUPersistenceServiceModule.controllers
 {
     public sealed class RegionsController: NancyModule
     {
-        public RegionsController(RegionService service) : base("regions")
+        public RegionsController(RegionService service)
         {
             
-            Get("",  o => service.GetRegions() );
+            Get("/regions/all",  o => service.GetRegions() );
         }
     }
 }

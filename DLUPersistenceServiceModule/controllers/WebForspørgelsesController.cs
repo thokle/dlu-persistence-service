@@ -7,13 +7,13 @@ namespace DLUPersistenceServiceModule.controllers
 {
     public sealed class WebForspørgelsesController: NancyModule
     {
-        public WebForspørgelsesController(WenForspørgelsesService service) : base("/webforspørgelses")
+        public WebForspørgelsesController(WenForspørgelsesService service) : base("/")
         {
             
-            Get("/mediplannr/{medieplannr:int", o => service.GetWebForespørgselByMedieplanNr(o.medieplannr));
-            Get("/medieburea/{bureau:string}", o => service.GetWebForespørgselByMediebureau(o.bureau));
-            Get("/annoncor/{annoncor:string}", o => service.GetWebForespørgselByAnnoncørNo(o.annoncor));
-            Post("/create", o =>
+            Get("/webforspørgelses/mediplannr/{medieplannr:int", o => service.GetWebForespørgselByMedieplanNr(o.medieplannr));
+            Get("/webforspørgelses/medieburea/{bureau:string}", o => service.GetWebForespørgselByMediebureau(o.bureau));
+            Get("/webforspørgelses/annoncor/{annoncor:string}", o => service.GetWebForespørgselByAnnoncørNo(o.annoncor));
+            Post("/webforspørgelses/create", o =>
             {
 
                 var res = this.Bind<tblWEBForespørgsel>();

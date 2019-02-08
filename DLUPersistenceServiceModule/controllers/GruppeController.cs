@@ -7,12 +7,12 @@ namespace DLUPersistenceServiceModule.controllers
 {
     public sealed class GruppeController: NancyModule
     {
-        public GruppeController(GruppeService service): base("grupåer")
+        public GruppeController(GruppeService service)
         {
-            Get("/id/{id:int}", o => service.GetGruppeByGruppeID(o.id));
-            Get("/navn/{navn:string", o => service.GetGruppeByGruppeNavn(o.navn));
-            Get("/type/{type:int}", o => service.GetGruppeByGruppeID(o.type));
-            Post("", o =>
+            Get("/gruppe/id/{id:int}", o => service.GetGruppeByGruppeID(o.id));
+            Get("/gruppe/navn/{navn:string", o => service.GetGruppeByGruppeNavn(o.navn));
+            Get("/gruppe/type/{type:int}", o => service.GetGruppeByGruppeID(o.type));
+            Post("/gruppe/create", o =>
             {
                 var gr = this.Bind<tblGrupper>();
                 return service.CreteOrUpdate(gr);

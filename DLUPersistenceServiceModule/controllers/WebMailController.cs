@@ -11,9 +11,9 @@ namespace DLUPersistenceServiceModule.controllers
     {
         public WebMailController(WebMailService service):base("/webemail")
         {
-            Get("/email/{email:string}", o => service.GetWebMailByMail(o.email));
-            Get("/personnavn/{personnavn:string}", o => service.GetWebMailByPersonNavn(o.personnavn));
-            Post("/create", o =>
+            Get("/webforspørgelsesLinjer/email/{email:string}", o => service.GetWebMailByMail(o.email));
+            Get("/webforspørgelsesLinjer/personnavn/{personnavn:string}", o => service.GetWebMailByPersonNavn(o.personnavn));
+            Post("/webforspørgelsesLinjer/create", o =>
             {
                 var web = this.Bind<tblWEBeMail>();
 

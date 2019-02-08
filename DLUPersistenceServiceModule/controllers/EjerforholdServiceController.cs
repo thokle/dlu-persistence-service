@@ -6,11 +6,11 @@ namespace DLUPersistenceServiceModule.controllers
 {
     public sealed class EjerforholdServiceController: NancyModule
     {
-        public EjerforholdServiceController(EjerforholdService service) : base("ejerforhold")
+        public EjerforholdServiceController(EjerforholdService service)
         {
-            Get("", o => { return service.GetEjerforold(); });
+            Get("/ejerforhold", o => { return service.GetEjerforold(); });
            
-            Post("", o =>
+            Post("ejerforhold/create", o =>
             {
                 var ejerforhold = this.Bind<tblEjerforhold>();
                return service.CreateOrUpDateEjerforhold(ejerforhold);

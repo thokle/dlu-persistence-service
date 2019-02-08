@@ -5,13 +5,13 @@ using  Nancy.ModelBinding;
 
 namespace DLUPersistenceServiceModule.controllers
 {
-    public class FakturingsBilagController:  NancyModule
+    public sealed class FakturingsBilagController:  NancyModule
     {
         public FakturingsBilagController(FakturingsBilagService service): base("fakturingsbilag")
         {
-            Get("medieId/{medieid:int}", o => { return service.GetFakturingsBilagByMedieId(o.medieid); });
-            Get("oprettetAf/{oprettetaf:string", o => { return service.GetFakturingsBilagByOprettetAf(o.oprettetaf);});
-            Post("opret", o =>
+            Get("/fakturingsbilag/medieId/{medieid:int}", o => { return service.GetFakturingsBilagByMedieId(o.medieid); });
+            Get("/fakturingsbilag/oprettetAf/{oprettetaf:string", o => { return service.GetFakturingsBilagByOprettetAf(o.oprettetaf);});
+            Post("/fakturingsbilag/opret", o =>
             {
                 var tbl = this.Bind<tblFaktureringsBilag>();
                 return service.OpretFakturingsBilag(tbl);

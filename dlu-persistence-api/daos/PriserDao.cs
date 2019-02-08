@@ -123,7 +123,8 @@ namespace dlu_persistence_api.daos
         {
             try
             {
-                var numnberofWeeksInYear = GetWeeksInYear(2019);
+               var year =  System.DateTime.Today.Year
+                var numnberofWeeksInYear = GetWeeksInYear(year);
 
                 for (var i = 1; i < numnberofWeeksInYear; i++)
                 {

@@ -8,10 +8,10 @@ namespace DLUPersistenceServiceModule.controllers
 {
     public sealed class WebforspørgelsesLinjerController: NancyModule 
     {
-        public WebforspørgelsesLinjerController(WebforspørgelsesLinjerService service): base("/webforspørgelsesLinjer")
+        public WebforspørgelsesLinjerController(WebforspørgelsesLinjerService service)
         {
-            Get("/bladid/{bladid:int}", o => service.GetForspørgelsesLinjerByBladId(o.bladid) );
-            Post("/create", o =>
+            Get("/webforspørgelsesLinjer/bladid/{bladid:int}", o => service.GetForspørgelsesLinjerByBladId(o.bladid) );
+            Post("/webforspørgelsesLinjer/create", o =>
             {
 
                 var res = this.Bind<tblWEBForespørgselLinjer>();

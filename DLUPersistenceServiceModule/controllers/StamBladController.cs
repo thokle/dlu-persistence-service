@@ -5,10 +5,10 @@ using Nancy.ModelBinding;
 
 namespace DLUPersistenceServiceModule.controllers
 {
-    public class StamBladController : NancyModule
+    public sealed class StamBladController : NancyModule
 
     {
-        public StamBladController(StamBladService stamBladDao) : base("/stamblad")
+        public StamBladController(StamBladService stamBladDao)
 
         {
             Get("{id:int}", parametes =>
@@ -17,28 +17,28 @@ namespace DLUPersistenceServiceModule.controllers
                 return stamBladDao.GetStamBladById(bladid);
             });
 
-            Get("postnr/{postnr:int}", parameter => { return stamBladDao.GetStamBladByPostNummer(parameter.postnr); });
+            Get("/stamblad/postnr/{postnr:int}", parameter => { return stamBladDao.GetStamBladByPostNummer(parameter.postnr); });
 
-            Get("navn/{name:string}", parameter => stamBladDao.GetStamBladByName(parameter.name));
+            Get("/stamblad/navn/{name:string}", parameter => stamBladDao.GetStamBladByName(parameter.name));
 
 
-            Post("", o =>
+            Post("/stamblad", o =>
             {
                 var JSOn = this.Bind<tblBladStamdata>();
                 stamBladDao.CreaateOrUpdateStamBlad(JSOn);
                 return Response.AsJson(JSOn);
             });
 
-            Get("GeoCodes", o => { return stamBladDao.GetTableGeoCode(); });
+            Get("/stamblad/GeoCodes", o => { return stamBladDao.GetTableGeoCode(); });
 
-            Get("allpostnr", o => { return stamBladDao.GetTablePostNr(); });
+            Get("/stamblad/allpostnr", o => { return stamBladDao.GetTablePostNr(); });
 
-            Get("postnrsog", o => { return stamBladDao.GetTablePostNrSøgning(); });
+            Get("/stamblad/postnrsog", o => { return stamBladDao.GetTablePostNrSøgning(); });
 
-            Get("regions", o => { return stamBladDao.GetTableRegion(); });
+            Get("/stamblad/regions", o => { return stamBladDao.GetTableRegion(); });
 
 
-            Get("dage", o => { return stamBladDao.GetTableDage(); });
+            Get("/stamblad/dage", o => { return stamBladDao.GetTableDage(); });
         }
     }
 }

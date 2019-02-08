@@ -7,10 +7,10 @@ namespace DLUPersistenceServiceModule.controllers
 {
     public sealed class MediePlanÆnmdringsController: NancyModule
     {
-        public MediePlanÆnmdringsController(MediePlanÆndringsService service) : base("/mediePlanAendringer")
+        public MediePlanÆnmdringsController(MediePlanÆndringsService service)
         {
-         Get("medieid/{medieid:int}", o => service.GetMediePlanÆndringerByMedieId(o.medieie) );
-         Post("", o =>
+         Get("/mediePlanAendringer/medieid/{medieid:int}", o => service.GetMediePlanÆndringerByMedieId(o.medieie) );
+         Post("/mediePlanAendringer/create", o =>
          {
 
              var res = this.Bind<tblMedieplanÆndringer>();

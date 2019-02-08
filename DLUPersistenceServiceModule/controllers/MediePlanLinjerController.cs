@@ -5,18 +5,18 @@ using Nancy.ModelBinding;
 
 namespace DLUPersistenceServiceModule.controllers
 {
-    public class MediePlanLinjerController : NancyModule
+    public sealed class MediePlanLinjerController : NancyModule
     {
-        public MediePlanLinjerController(MediePlanLinjerService service) : base("mediePlanlinjer")
+        public MediePlanLinjerController(MediePlanLinjerService service) : base("")
         {
-            Get("{medieid:int}", parameter =>
+            Get("/mediePlanlinjer/{medieid:int}", parameter =>
             {
                 var res = service.GetMediePlanLinjerByMedieId(parameter.medieid);
 
                 return res;
             });
 
-            Post("", parameter =>
+            Post("mediePlanlinjer/create", parameter =>
             {
                 var p = this.Bind<tblMedieplanLinjer>();
                 var res = service.CreateOrUpDate(p);
