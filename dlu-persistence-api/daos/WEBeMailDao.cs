@@ -8,6 +8,9 @@ using Newtonsoft.Json;
 
 namespace dlu_persistence_api.daos
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class WEBeMailDao: IDisposable
     {
 
@@ -21,7 +24,12 @@ namespace dlu_persistence_api.daos
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetWebMailByMail(string email)
         {
 
@@ -42,7 +50,12 @@ namespace dlu_persistence_api.daos
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="personnavn"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetWebMailByPersonNavn(string personnavn)
         {
             try
@@ -62,8 +75,13 @@ namespace dlu_persistence_api.daos
             }
         }
 
-
-
+    
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mail"></param>
+        /// <returns></returns>
+        /// <exception cref="FormattedDbEntityValidationException"></exception>
         public Task<int> CreateOrUpdate(tblWEBeMail mail)
        {
            try

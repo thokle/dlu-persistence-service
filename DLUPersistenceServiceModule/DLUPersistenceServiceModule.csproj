@@ -217,6 +217,7 @@
     <Compile Include="controllers\MediePlanNrController.cs" />
     <Compile Include="controllers\MediePlanÆnmdringsController.cs" />
     <Compile Include="controllers\NavisionContactController.cs" />
+    <Compile Include="controllers\OrdreGebyrNavisionController.cs" />
     <Compile Include="controllers\PostNrTableController.cs" />
     <Compile Include="controllers\PriserController.cs" />
     <Compile Include="controllers\RegionsController.cs" />

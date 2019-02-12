@@ -5,6 +5,9 @@ using Newtonsoft.Json;
 
 namespace dlu_persistence_api.daos
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class NavisionContactDao: IDisposable
 
     {
@@ -17,7 +20,12 @@ namespace dlu_persistence_api.daos
             _entities.Configuration.LazyLoadingEnabled = true;
         }
     }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="salesPersonId"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetNavisionContactbySalesPersonId(string salesPersonId)
         {
             try

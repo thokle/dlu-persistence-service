@@ -9,7 +9,10 @@ namespace dlu_persistence_api.daos
     public class UgeaviserTilGridDao: IDisposable
     {
         private DiMPdotNetEntities _entities;
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public UgeaviserTilGridDao()
         {
             using (_entities = new DiMPdotNetEntities())
@@ -17,7 +20,13 @@ namespace dlu_persistence_api.daos
                 _entities.Configuration.LazyLoadingEnabled = true;
             }
         }
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="postnr"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetAllUgeAviserGridPostNr(int? postnr)
         {
 
@@ -45,7 +54,12 @@ namespace dlu_persistence_api.daos
           
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetAllUgeAviserByByNavn(string name)
         {
             try
@@ -70,6 +84,11 @@ namespace dlu_persistence_api.daos
                 throw new DaoExceptions("GetAllUgeAviserByByNavn",e.InnerException);
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetAllUgerAviser()
         {
             try

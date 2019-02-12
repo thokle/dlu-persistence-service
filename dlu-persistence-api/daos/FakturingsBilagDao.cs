@@ -73,7 +73,7 @@ namespace dlu_persistence_api.daos
             }
             catch (Exception e)
             {
-                throw  new FormatException(e.Message);
+                throw  new FormattedDbEntityValidationException(e);
             }
         }
 

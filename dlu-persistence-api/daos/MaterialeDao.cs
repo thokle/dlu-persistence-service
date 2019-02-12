@@ -64,7 +64,7 @@ namespace dlu_persistence_api.daos
             }
             catch (Exception e)
             {
-                throw new DaoExceptions(" MaterialeDao CreateMateriale ", e.InnerException );
+                throw new FormattedDbEntityValidationException(e.InnerException );
             }
         }
 

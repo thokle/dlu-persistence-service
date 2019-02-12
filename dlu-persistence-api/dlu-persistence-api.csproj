@@ -179,6 +179,7 @@
     <Compile Include="services\interfaces\IMediePlanService.cs" />
     <Compile Include="services\interfaces\IMediePlanÆndringerService.cs" />
     <Compile Include="services\interfaces\INavisiomContactService.cs" />
+    <Compile Include="services\interfaces\IOrdreGebyrNavisionService.cs" />
     <Compile Include="services\interfaces\IPostNrTableService.cs" />
     <Compile Include="services\interfaces\IPriserService.cs" />
     <Compile Include="services\interfaces\IRegionService.cs" />
@@ -198,6 +199,7 @@
     <Compile Include="services\MediePlanService.cs" />
     <Compile Include="services\MediePlanÆndringsService.cs" />
     <Compile Include="services\NavisiomContactService.cs" />
+    <Compile Include="services\OrdreGebyrNavisionService.cs" />
     <Compile Include="services\PostNrTableService.cs" />
     <Compile Include="services\PriserService.cs" />
     <Compile Include="services\RegionService.cs" />

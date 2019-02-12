@@ -14,8 +14,7 @@ namespace dlu_persistence_api
     
     public partial class tblOrdreLinjerNavision
     {
-        public int OrdreNr { get; set; }
-        public short Version { get; set; }
+               
         public byte Document_Type { get; set; }
         public int BladId { get; set; }
         public short Mm { get; set; }

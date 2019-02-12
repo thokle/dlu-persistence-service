@@ -98,7 +98,7 @@ namespace dlu_persistence_api.daos
             catch (Exception e)
             {
                 
-                throw  new DaoExceptions("AnnoncekontrolDao CreateOrUpdate", e.InnerException);
+                throw  new FormattedDbEntityValidationException(e.InnerException);
            }
         }
            

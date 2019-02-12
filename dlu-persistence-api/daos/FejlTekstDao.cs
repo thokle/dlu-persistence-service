@@ -85,8 +85,7 @@ namespace dlu_persistence_api.daos
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                throw new  FormattedDbEntityValidationException(e.InnerException);
             }
         }
         public void Dispose()

@@ -93,7 +93,7 @@ namespace dlu_persistence_api.daos
             }
             catch (Exception e)
             {
-                throw new  DaoExceptions("KontaktDao GetKontakterArbOmråderKontkter " , e.InnerException);
+                throw new  FormattedDbEntityValidationException(e.InnerException);
             }
         }
         

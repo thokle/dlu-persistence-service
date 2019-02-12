@@ -67,7 +67,7 @@ namespace dlu_persistence_api.daos
             }
             catch (Exception e)
             {
-                throw new DaoExceptions("CreateOrUpdateMediePlanLinjer ", e.InnerException);
+                throw new FormattedDbEntityValidationException(e.InnerException);
             }
 
         }

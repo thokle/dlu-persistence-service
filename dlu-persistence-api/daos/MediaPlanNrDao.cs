@@ -65,7 +65,7 @@ namespace dlu_persistence_api.daos
             }
             catch (Exception e)
             {
-                throw new  DaoExceptions(" MediaPlanNrDao CreateOrUpDateMediePlanNr ", e.InnerException);
+                throw new  FormattedDbEntityValidationException(e.InnerException);
             }
         }
         public void Dispose()

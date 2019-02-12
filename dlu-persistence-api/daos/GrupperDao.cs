@@ -8,6 +8,9 @@ using Newtonsoft.Json;
 using dlu_persistence_api.exceptions;
 namespace dlu_persistence_api.daos
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class GrupperDao: IDisposable
     {
         private DiMPdotNetEntities _entities;
@@ -25,7 +28,12 @@ namespace dlu_persistence_api.daos
             _entities?.Dispose();
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetGruppeByGruppeID(int id)
         {
             try
@@ -45,7 +53,12 @@ namespace dlu_persistence_api.daos
                 throw new  DaoExceptions("GetGruppeByGruppeID", e.InnerException);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="gruppeNavn"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetGruppeByGruppeNavn(string gruppeNavn)
         {
             try
@@ -65,7 +78,12 @@ namespace dlu_persistence_api.daos
                 throw new DaoExceptions("GetGruppeByGruppeNavn", e.InnerException);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetGruppeByGruppeType(int type)
         {
             try
@@ -86,11 +104,23 @@ namespace dlu_persistence_api.daos
                 throw new DaoExceptions("GetGruppeByGruppeType", e.InnerException);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tblGrupper"></param>
+        /// <returns></returns>
+        /// <exception cref="FormattedDbEntityValidationException"></exception>
         public Task<int> CreteOrUpdate(tblGrupper tblGrupper)
         {
-            _entities.tblGruppers.AddOrUpdate(tblGrupper);
-            return _entities.SaveChangesAsync();
+            try
+            {
+                _entities.tblGruppers.AddOrUpdate(tblGrupper);
+                return _entities.SaveChangesAsync();
+            } catch(Exception e)
+
+            {
+                throw new FormattedDbEntityValidationException(e.InnerException);
+            }
         }
        
     }

@@ -9,7 +9,10 @@ using dlu_persistence_api.exceptions;
 using Newtonsoft.Json;
 
 namespace dlu_persistence_api.daos
-{
+{    
+    /// <summary>
+    /// 
+    /// </summary>
     public class KonkurrenceDaekningDao: IDisposable
 
     {
@@ -23,7 +26,12 @@ namespace dlu_persistence_api.daos
         }
     }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="postnr"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetKomkurrenceDækningPrPostNr(int postnr)
         {
             try
@@ -42,7 +50,12 @@ namespace dlu_persistence_api.daos
                 throw new  DaoExceptions("GetKomkurrenceDækningPrPostNr ", e.InnerException);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="daekg"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetKonkurrenceDækningPrDaeknngGrad(int daekg)
         {
 
@@ -63,7 +76,12 @@ namespace dlu_persistence_api.daos
             }
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tblKonkurrentDækning"></param>
+        /// <returns></returns>
+        /// <exception cref="FormattedDbEntityValidationException"></exception>
         public Task<int> CreateOrUpdate(tblKonkurrentDækning tblKonkurrentDækning)
         {
             try

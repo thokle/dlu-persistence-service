@@ -7,6 +7,9 @@ using Newtonsoft.Json;
 
 namespace dlu_persistence_api.daos
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class SalespersonDao: IDisposable
     {
         private DiMPdotNetEntities _entities;
@@ -18,7 +21,12 @@ namespace dlu_persistence_api.daos
                 _entities.Configuration.LazyLoadingEnabled = true;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetSalesPersonByEmail(string email)
         {
             try
@@ -38,7 +46,12 @@ namespace dlu_persistence_api.daos
                 throw new DaoExceptions("GetSalesPersonByEmail " , e.InnerException);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetSalesPersonByName(string name)
         {
             try
@@ -59,7 +72,12 @@ namespace dlu_persistence_api.daos
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="salesperson"></param>
+        /// <returns></returns>
+        /// <exception cref="FormattedDbEntityValidationException"></exception>
         public Task<int> CreateOrUpdate(Salesperson salesperson)
         {
             try

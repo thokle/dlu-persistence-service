@@ -8,6 +8,9 @@ using Newtonsoft.Json;
 
 namespace dlu_persistence_api.daos
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class WebForespørgselDao: IDisposable
     {
         private DiMPdotNetEntities _entities;
@@ -21,7 +24,12 @@ namespace dlu_persistence_api.daos
         }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mediePlanNr"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetWebForespørgselByMedieplanNr(int mediePlanNr)
         {
             try
@@ -42,7 +50,13 @@ namespace dlu_persistence_api.daos
                 throw new DaoExceptions("GetWEBForespørgselByMedieplanNr ", e.InnerException);
             }
         }
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="annoncørid"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetWebForespørgselByAnnoncørNo(string annoncørid)
         {
 
@@ -64,7 +78,13 @@ namespace dlu_persistence_api.daos
                 throw new DaoExceptions("GetWEBForespørgselByAnnoncørNo ", e.InnerException);
             }
         }
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="burea"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public string GetWebForespørgselByMediebureau(string burea)
         {
             try
@@ -86,7 +106,12 @@ namespace dlu_persistence_api.daos
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="forespørgsel"></param>
+        /// <returns></returns>
+        /// <exception cref="FormattedDbEntityValidationException"></exception>
         public Task<int> CreateOrUpdate(tblWEBForespørgsel forespørgsel)
         {
             try
