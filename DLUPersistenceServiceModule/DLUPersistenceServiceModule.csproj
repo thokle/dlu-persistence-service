@@ -210,6 +210,7 @@
     <Compile Include="controllers\FejlTekstController.cs" />
     <Compile Include="controllers\GruppeController.cs" />
     <Compile Include="controllers\IndexController.cs" />
+    <Compile Include="controllers\IOrdreLinjerNavisionController.cs" />
     <Compile Include="controllers\KonkurrenceDækningsController.cs" />
     <Compile Include="controllers\KontakterPrBladController.cs" />
     <Compile Include="controllers\KontaktController.cs" />

@@ -11,3 +11,4 @@ namespace dlu_persistence_api.services
         Task<int> CreateOrUpate(tblOrdreGebyrNavision tblOrdreGebyrNavision);
     }
 }
+    
