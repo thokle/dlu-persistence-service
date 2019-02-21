@@ -1,19 +1,24 @@
 using System.Collections;
+using System.Collections.Generic;
 using dlu_persistence_api;
 using Nancy.Metadata.Modules;
 using Nancy.Swagger;
+using Nancy.Swagger.Services;
 using Swagger.ObjectModel;
 
 namespace DLUPersistenceServiceModule.swagger
 {
-    public class StambladMetaDataModule: MetadataModule<PathItem>
+    public class StambladMetaDataModule: ISwaggerModelDataProvider
     {
-        public StambladMetaDataModule(ISwaggerModelCatalog catalog)
+        public SwaggerModelData GetModelData()
         {
-            catalog.AddModels(typeof(tblBladStamdata));
-            Describe["/stamblad/postnr/{postnr:int}/"] = describe =>
-                describe.AsSwagger(with => with.Operation(op => op.OperationId(("/stamblad/postnr")).Tag(("Users"))
-                    .Response(r => r.Schema<tblBladStamdata>(catalog).Description("StamBlad data"))));
+            return SwaggerModelData.ForType<StamBlad>(with =>
+            {
+                with.Description("An address of a user");
+                with.Property(x => x.BilagsbladeEmail)
+                    .Description("First Line of Address")
+                    .Required(true);
+            });
         }
     }
 }

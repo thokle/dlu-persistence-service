@@ -11,7 +11,17 @@ namespace DLUPersistenceServiceModule.controllers
     {
         public IndexController(dlu_persistence_api.daos.StamBladsDao stamBladDao)
         {
-            Get("", parameter => { return "Welcome to LokalPlanner API"; });
+         
+            Get("/swagger/", _ =>
+            {
+          
+                return Response.AsRedirect($"http://petstore.swagger.io/?url=http://localhost:5000/api-docs");
+            });
+            Get("/swagger-ui",_=>  
+            {                              
+                var url = $"{Request.Url.BasePath}/api-docs";  
+                return View["doc", url];  
+            });  
     }
     }
 }

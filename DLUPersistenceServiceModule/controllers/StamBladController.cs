@@ -3,20 +3,28 @@ using dlu_persistence_api.services;
 using Nancy;
 using Nancy.ModelBinding;
 
+using Nancy.Routing;
+using Nancy.Swagger;
+using Swagger.ObjectModel;
+using Nancy.Swagger.Annotations.Attributes;
+using Nancy.Swagger.Services;
+
 namespace DLUPersistenceServiceModule.controllers
 {
     public sealed class StamBladController : NancyModule
 
     {
-        public StamBladController(StamBladService stamBladDao)
+        public StamBladController(StamBladService stamBladDao, ISwaggerModelCatalog modelCatalog, ISwaggerTagCatalog tagCatalog)
 
         {
+            modelCatalog.AddModel<StamBlad>();
             Get("{id:int}", parametes =>
             {
                 int bladid = parametes.id;
                 return stamBladDao.GetStamBladById(bladid);
             });
 
+             
             Get("/stamblad/postnr/{postnr:int}", parameter => { return stamBladDao.GetStamBladByPostNummer(parameter.postnr); });
 
             Get("/stamblad/navn/{name:string}", parameter => stamBladDao.GetStamBladByName(parameter.name));
@@ -40,5 +48,7 @@ namespace DLUPersistenceServiceModule.controllers
 
             Get("/stamblad/dage", o => { return stamBladDao.GetTableDage(); });
         }
+
+      
     }
 }

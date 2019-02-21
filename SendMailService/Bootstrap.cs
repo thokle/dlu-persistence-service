@@ -19,7 +19,7 @@ namespace DLUPersistenceServiceModule
                     .WithHeader("Access-Control-Allow-Headers", "Accept, Origin, Content-type");
             });
 
-            SwaggerMetadataProvider.SetInfo("Nancy Swagger Example", "v1.0", "Some open api");  
+            //SwaggerMetadataProvider.SetInfo("Nancy Swagger Example", "v1.0", "Some open api");  
             
             base.ApplicationStartup(container, pipelines); 
         }
