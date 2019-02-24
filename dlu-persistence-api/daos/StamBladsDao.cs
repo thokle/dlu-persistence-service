@@ -12,26 +12,20 @@ namespace dlu_persistence_api.daos
     /// <summary>
     /// 
     /// </summary>
-    public class StamBladsDao : IDisposable
+    public class StamBladsDao 
     {
-        private readonly DiMPdotNetEntities di;
+        private  DiMPdotNetEntities di;
 
         public StamBladsDao()
         {
-            using ( di = new DiMPdotNetEntities())
-            {
+            di = new DiMPdotNetEntities();
                 di.Configuration.LazyLoadingEnabled = true;
-            }
-
+     
            
          
         }
 
 
-        public void Dispose()
-        {
-            di?.Dispose();
-        }
     /// <summary>
     /// 
     /// </summary>
@@ -343,7 +337,7 @@ namespace dlu_persistence_api.daos
             {
                 var geo = from g in di.tblGeoKodes
                     orderby g.GeoKodeID, g.GeoKodeNavn
-                    select new {g.GeoKodeID, g.GeoKodeNavn, g.GeoKodeSortKey, g.timestamp};
+                    select new {g.GeoKodeID, g.GeoKodeNavn, g.GeoKodeSortKey, g.timestamp };
                 return JsonConvert.SerializeObject(geo, Formatting.Indented);
             }
             catch (Exception e)

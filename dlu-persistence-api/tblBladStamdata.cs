@@ -9,7 +9,6 @@
 
 namespace dlu_persistence_api
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -109,8 +108,6 @@ namespace dlu_persistence_api
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblMedieplanLinjer> tblMedieplanLinjers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [JsonIgnore]
-        [System.Runtime.Serialization.IgnoreDataMember]
         public virtual ICollection<tblPriser> tblPrisers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblPrislisterPrBladPrUge> tblPrislisterPrBladPrUges { get; set; }

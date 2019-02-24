@@ -1,7 +1,9 @@
+using System.Collections.Generic;
 using System.IO;
 using System.Web.UI.WebControls;
 using Nancy;
 using Nancy.Bootstrapper;
+using Nancy.Configuration;
 using Nancy.Conventions;
 using Nancy.Swagger.Annotations;
 using Nancy.Swagger.Services;
@@ -34,8 +36,9 @@ namespace DLUPersistenceServiceModule
             base.ApplicationStartup(container, pipelines);
 
         }
-        
-        
+
+    
+
         protected override void ConfigureConventions(NancyConventions nancyConventions)
         {
             base.ConfigureConventions(nancyConventions);

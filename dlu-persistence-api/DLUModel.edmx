@@ -4,15 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DiMPdotNetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DiMPdotNet.dbo.Ark1$' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="Ark1$">
-          <Property Name="Blad Id" Type="float" />
-          <Property Name="Post nr" Type="float" />
-          <Property Name="Oplagstal" Type="float" />
-          <Property Name="DG Beregnet" Type="int" />
-        </EntityType>-->
+    <Schema Namespace="DiMPdotNetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6013: The table/view 'DiMPdotNet.dbo.BladDækningOpdater' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="BladDækningOpdater">
@@ -98,6 +90,13 @@ warning 6013: The table/view 'DiMPdotNet.dbo.Jysk-Fynske' does not have a primar
           <Property Name="Bilagsblade" Type="nvarchar" MaxLength="255" />
           <Property Name="Stamdata" Type="nvarchar" MaxLength="255" />
           <Property Name="Prisforespørgsler" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'DiMPdotNet.dbo.NyeLæsertal' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="NyeLæsertal">
+          <Property Name="BladId" Type="float" />
+          <Property Name="Læsertal" Type="float" />
+          <Property Name="pct" Type="float" />
         </EntityType>-->
         <EntityType Name="OpdateringsTekst">
           <Key>
@@ -562,6 +561,13 @@ warning 6002: The table/view 'DiMPdotNet.dbo.tblFarveTillægWebApp' does not hav
           <Property Name="TitelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Titel" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'DiMPdotNet.dbo.tblMængdeRabat' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tblMængdeRabat">
+          <Property Name="GeoKode" Type="nvarchar" MaxLength="8" />
+          <Property Name="AntalBlade" Type="tinyint" />
+          <Property Name="RabatPct" Type="tinyint" />
+        </EntityType>-->
         <EntityType Name="tblMateriale">
           <Key>
             <PropertyRef Name="MedieplanNr" />
@@ -633,6 +639,16 @@ warning 6002: The table/view 'DiMPdotNet.dbo.tblFarveTillægWebApp' does not hav
           <Property Name="OpkrævDSVPMiljøTillæg" Type="bit" />
           <Property Name="OpkrævNordjyskeTillæg" Type="bit" />
           <Property Name="OpkrævJyskeMedierASTillæg" Type="bit" />
+          <Property Name="OpkrævHelsingørMiljøTillæg" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblMedieplanÆndringer">
+          <Key>
+            <PropertyRef Name="MedieplanNr" />
+            <PropertyRef Name="Version" />
+          </Key>
+          <Property Name="MedieplanNr" Type="int" Nullable="false" />
+          <Property Name="Version" Type="smallint" Nullable="false" />
+          <Property Name="ÆndringsTekst" Type="text" />
         </EntityType>
         <EntityType Name="tblMedieplanLinjer">
           <Key>
@@ -692,15 +708,6 @@ warning 6002: The table/view 'DiMPdotNet.dbo.tblFarveTillægWebApp' does not hav
           <Property Name="AnvendtPrisberegningVersion" Type="tinyint" Nullable="false" />
           <Property Name="Kommentar" Type="nvarchar" MaxLength="250" Nullable="false" />
         </EntityType>
-        <EntityType Name="tblMedieplanÆndringer">
-          <Key>
-            <PropertyRef Name="MedieplanNr" />
-            <PropertyRef Name="Version" />
-          </Key>
-          <Property Name="MedieplanNr" Type="int" Nullable="false" />
-          <Property Name="Version" Type="smallint" Nullable="false" />
-          <Property Name="ÆndringsTekst" Type="text" />
-        </EntityType>
         <EntityType Name="tblMedIGruppe">
           <Key>
             <PropertyRef Name="GruppeID" />
@@ -723,13 +730,6 @@ warning 6002: The table/view 'DiMPdotNet.dbo.tblMmPrisWebApp' does not have a pr
           <Property Name="Placering" Type="tinyint" Nullable="false" />
           <Property Name="Pris" Type="money" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DiMPdotNet.dbo.tblMængdeRabat' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tblMængdeRabat">
-          <Property Name="GeoKode" Type="nvarchar" MaxLength="8" />
-          <Property Name="AntalBlade" Type="tinyint" />
-          <Property Name="RabatPct" Type="tinyint" />
-        </EntityType>-->
         <EntityType Name="tblOrdreGebyrNavision">
           <Key>
             <PropertyRef Name="OrdreNr" />
@@ -890,6 +890,16 @@ warning 6002: The table/view 'DiMPdotNet.dbo.tblPlannerPlaner' does not have a p
           <Property Name="PrislisteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PrislisteNavn" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="tblPrislisterPrBladPrÅr">
+          <Key>
+            <PropertyRef Name="BladID" />
+            <PropertyRef Name="År" />
+            <PropertyRef Name="PrislisteID" />
+          </Key>
+          <Property Name="BladID" Type="int" Nullable="false" />
+          <Property Name="År" Type="smallint" Nullable="false" />
+          <Property Name="PrislisteID" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="tblPrislisterPrBladPrUge">
           <Key>
             <PropertyRef Name="BladID" />
@@ -898,16 +908,6 @@ warning 6002: The table/view 'DiMPdotNet.dbo.tblPlannerPlaner' does not have a p
           </Key>
           <Property Name="BladID" Type="int" Nullable="false" />
           <Property Name="Uge" Type="tinyint" Nullable="false" />
-          <Property Name="År" Type="smallint" Nullable="false" />
-          <Property Name="PrislisteID" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tblPrislisterPrBladPrÅr">
-          <Key>
-            <PropertyRef Name="BladID" />
-            <PropertyRef Name="År" />
-            <PropertyRef Name="PrislisteID" />
-          </Key>
-          <Property Name="BladID" Type="int" Nullable="false" />
           <Property Name="År" Type="smallint" Nullable="false" />
           <Property Name="PrislisteID" Type="int" Nullable="false" />
         </EntityType>
@@ -2140,32 +2140,6 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplanNr' does 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tblPrislisterPrBladPrUge_tblBladStamdata">
-          <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="tblPrislisterPrBladPrUge" Type="Self.tblPrislisterPrBladPrUge" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblBladStamdata">
-              <PropertyRef Name="BladID" />
-            </Principal>
-            <Dependent Role="tblPrislisterPrBladPrUge">
-              <PropertyRef Name="BladID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblPrislisterPrBladPrUge_tblPrislister">
-          <End Role="tblPrislister" Type="Self.tblPrislister" Multiplicity="1" />
-          <End Role="tblPrislisterPrBladPrUge" Type="Self.tblPrislisterPrBladPrUge" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblPrislister">
-              <PropertyRef Name="PrislisteID" />
-            </Principal>
-            <Dependent Role="tblPrislisterPrBladPrUge">
-              <PropertyRef Name="PrislisteID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_tblPrislisterPrBladPrÅr_tblBladStamdata">
           <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -2188,6 +2162,32 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplanNr' does 
               <PropertyRef Name="PrislisteID" />
             </Principal>
             <Dependent Role="tblPrislisterPrBladPrÅr">
+              <PropertyRef Name="PrislisteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPrislisterPrBladPrUge_tblBladStamdata">
+          <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblPrislisterPrBladPrUge" Type="Self.tblPrislisterPrBladPrUge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBladStamdata">
+              <PropertyRef Name="BladID" />
+            </Principal>
+            <Dependent Role="tblPrislisterPrBladPrUge">
+              <PropertyRef Name="BladID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPrislisterPrBladPrUge_tblPrislister">
+          <End Role="tblPrislister" Type="Self.tblPrislister" Multiplicity="1" />
+          <End Role="tblPrislisterPrBladPrUge" Type="Self.tblPrislisterPrBladPrUge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPrislister">
+              <PropertyRef Name="PrislisteID" />
+            </Principal>
+            <Dependent Role="tblPrislisterPrBladPrUge">
               <PropertyRef Name="PrislisteID" />
             </Dependent>
           </ReferentialConstraint>
@@ -2454,9 +2454,9 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplanNr' does 
           <EntitySet Name="tblKontaktTitler" EntityType="Self.tblKontaktTitler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMateriale" EntityType="Self.tblMateriale" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMedieplan" EntityType="Self.tblMedieplan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMedieplanÆndringer" EntityType="Self.tblMedieplanÆndringer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMedieplanLinjer" EntityType="Self.tblMedieplanLinjer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMedieplanNr" EntityType="Self.tblMedieplanNr" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblMedieplanÆndringer" EntityType="Self.tblMedieplanÆndringer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMedIGruppe" EntityType="Self.tblMedIGruppe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblOrdreGebyrNavision" EntityType="Self.tblOrdreGebyrNavision" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblOrdreLinjerNavision" EntityType="Self.tblOrdreLinjerNavision" Schema="dbo" store:Type="Tables" />
@@ -2466,8 +2466,8 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplanNr' does 
           <EntitySet Name="tblPostNrSøgning" EntityType="Self.tblPostNrSøgning" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPriser" EntityType="Self.tblPriser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPrislister" EntityType="Self.tblPrislister" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblPrislisterPrBladPrUge" EntityType="Self.tblPrislisterPrBladPrUge" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPrislisterPrBladPrÅr" EntityType="Self.tblPrislisterPrBladPrÅr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPrislisterPrBladPrUge" EntityType="Self.tblPrislisterPrBladPrUge" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblRegion" EntityType="Self.tblRegion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblRemindereSendt" EntityType="Self.tblRemindereSendt" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblSupportBilag" EntityType="Self.tblSupportBilag" Schema="dbo" store:Type="Tables" />
@@ -3109,14 +3109,6 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplanNr' does 
             <End Role="tblPrislister" EntitySet="tblPrislister" />
             <End Role="tblPriser" EntitySet="tblPriser" />
           </AssociationSet>
-          <AssociationSet Name="FK_tblPrislisterPrBladPrUge_tblBladStamdata" Association="Self.FK_tblPrislisterPrBladPrUge_tblBladStamdata">
-            <End Role="tblBladStamdata" EntitySet="tblBladStamdata" />
-            <End Role="tblPrislisterPrBladPrUge" EntitySet="tblPrislisterPrBladPrUge" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblPrislisterPrBladPrUge_tblPrislister" Association="Self.FK_tblPrislisterPrBladPrUge_tblPrislister">
-            <End Role="tblPrislister" EntitySet="tblPrislister" />
-            <End Role="tblPrislisterPrBladPrUge" EntitySet="tblPrislisterPrBladPrUge" />
-          </AssociationSet>
           <AssociationSet Name="FK_tblPrislisterPrBladPrÅr_tblBladStamdata" Association="Self.FK_tblPrislisterPrBladPrÅr_tblBladStamdata">
             <End Role="tblBladStamdata" EntitySet="tblBladStamdata" />
             <End Role="tblPrislisterPrBladPrÅr" EntitySet="tblPrislisterPrBladPrÅr" />
@@ -3125,9 +3117,16 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplanNr' does 
             <End Role="tblPrislister" EntitySet="tblPrislister" />
             <End Role="tblPrislisterPrBladPrÅr" EntitySet="tblPrislisterPrBladPrÅr" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblPrislisterPrBladPrUge_tblBladStamdata" Association="Self.FK_tblPrislisterPrBladPrUge_tblBladStamdata">
+            <End Role="tblBladStamdata" EntitySet="tblBladStamdata" />
+            <End Role="tblPrislisterPrBladPrUge" EntitySet="tblPrislisterPrBladPrUge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPrislisterPrBladPrUge_tblPrislister" Association="Self.FK_tblPrislisterPrBladPrUge_tblPrislister">
+            <End Role="tblPrislister" EntitySet="tblPrislister" />
+            <End Role="tblPrislisterPrBladPrUge" EntitySet="tblPrislisterPrBladPrUge" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DiMPdotNetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -3652,6 +3651,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplanNr' does 
           <NavigationProperty Name="tblMedieplanNr" Relationship="Self.FK_tblMedieplan_tblMedieplanNr" FromRole="tblMedieplan" ToRole="tblMedieplanNr" />
           <NavigationProperty Name="tblPlacering" Relationship="Self.FK_tblMedieplan_tblPlacering" FromRole="tblMedieplan" ToRole="tblPlacering" />
           <NavigationProperty Name="tblMedieplanLinjers" Relationship="Self.FK_tblMedieplanLinjer_tblMedieplan" FromRole="tblMedieplan" ToRole="tblMedieplanLinjer" />
+          <Property Name="OpkrævHelsingørMiljøTillæg" Type="Boolean" />
         </EntityType>
         <EntityType Name="tblMedieplanLinjer">
           <Key>
@@ -5425,7 +5425,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplanNr' does 
           </FunctionImport>
           <FunctionImport Name="dt_adduserobject" />
           <FunctionImport Name="dt_adduserobject_vcs">
-            <Parameter Name="vchProperty" Mode="In" Type="String" />
+          <Parameter Name="vchProperty" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="dt_checkinobject">
             <Parameter Name="chObjectType" Mode="In" Type="String" />
@@ -5482,10 +5482,10 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplanNr' does 
             <Parameter Name="property" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="dt_dropuserobjectbyid">
-            <Parameter Name="id" Mode="In" Type="Int32" />
+          <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="dt_generateansiname">
-            <Parameter Name="name" Mode="InOut" Type="String" />
+          <Parameter Name="name" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="dt_getobjwithprop" ReturnType="Collection(Int32)">
             <Parameter Name="property" Mode="In" Type="String" />
@@ -5560,7 +5560,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplanNr' does 
             <Parameter Name="vchPassword" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="FindNæsteVersionsNrIMedieplan">
-            <Parameter Name="MedieplanNr" Mode="In" Type="Int32" />
+          <Parameter Name="MedieplanNr" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="IndsætOrdreLinjerTilNavision" />
           <FunctionImport Name="IndsætOrdreTilNavision" />
@@ -5593,11 +5593,11 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplanNr' does 
             <Parameter Name="DLUFarveRabat" Mode="In" Type="Double" />
           </FunctionImport>
           <FunctionImport Name="OpretKontakt" ReturnType="Collection(Decimal)">
-            <Parameter Name="EmailAdr" Mode="In" Type="String" />
+          <Parameter Name="EmailAdr" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="OpretNyMediePlan" ReturnType="Collection(Decimal)" />
           <FunctionImport Name="SearchAllTables">
-            <Parameter Name="SearchStr" Mode="In" Type="String" />
+          <Parameter Name="SearchStr" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -6101,6 +6101,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplanNr' does 
           <EntitySetMapping Name="tblMedieplans">
             <EntityTypeMapping TypeName="DiMPdotNetModel.tblMedieplan">
               <MappingFragment StoreEntitySet="tblMedieplan">
+                <ScalarProperty Name="OpkrævHelsingørMiljøTillæg" ColumnName="OpkrævHelsingørMiljøTillæg" />
                 <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
                 <ScalarProperty Name="Version" ColumnName="Version" />
                 <ScalarProperty Name="AnnoncørNo_" ColumnName="AnnoncørNo_" />

@@ -74,6 +74,7 @@ namespace dlu_persistence_api
         public Nullable<bool> OpkrævDSVPMiljøTillæg { get; set; }
         public Nullable<bool> OpkrævNordjyskeTillæg { get; set; }
         public Nullable<bool> OpkrævJyskeMedierASTillæg { get; set; }
+        public Nullable<bool> OpkrævHelsingørMiljøTillæg { get; set; }
     
         public virtual tblDPKulør tblDPKulør { get; set; }
         public virtual tblMedieplanNr tblMedieplanNr { get; set; }

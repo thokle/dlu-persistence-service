@@ -16,9 +16,9 @@ namespace DLUPersistenceServiceModule.controllers
             Get("/swagger/", _ =>
             {
           
-                return Response.AsRedirect($"http://petstore.swagger.io/?url=http://localhost:5000/api-docs");
+                return Response.AsRedirect($"http://petstore.swagger.io/?url=http://localhost:49485/api-docs");
             });
-            Get("/swagger-ui/",_=> { return Response.AsRedirect("http://localhost:5000/swagger-ui/"); });  
+            Get("/swagger-ui/",_=> { return Response.AsRedirect("http://localhost:49485/swagger-ui/"); });  
     }
     }
 }
