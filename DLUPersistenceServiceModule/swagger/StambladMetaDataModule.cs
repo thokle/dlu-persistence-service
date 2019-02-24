@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Policy;
+using System.Web.Security;
 using dlu_persistence_api;
+using Nancy;
 using Nancy.Metadata.Modules;
 using Nancy.Swagger;
 using Nancy.Swagger.Services;
@@ -18,6 +21,25 @@ namespace DLUPersistenceServiceModule.swagger
                 with.Property(x => x.BilagsbladeEmail)
                     .Description("First Line of Address")
                     .Required(true);
+            });
+        }
+        
+        
+        
+        
+    }
+
+    public class MediePlanDataModule : ISwaggerModelDataProvider
+    {
+
+
+        public SwaggerModelData GetModelData()
+        {
+            return SwaggerModelData.ForType<tblMedieplan>(with =>
+            {
+                with.Description("tblMediePlanData");
+                with.Property(x => x.MedieplanNr).Description("").Required(true);
+                
             });
         }
     }

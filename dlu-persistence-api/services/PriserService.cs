@@ -10,7 +10,10 @@ namespace dlu_persistence_api.services
 
         public PriserService()
         {
-            using (_dao = new PriserDao()) ;
+            using (_dao = new PriserDao())
+            {
+                
+            }
         }
         public string GetPrislisterPrÅrByBladId(int bladid)
         {

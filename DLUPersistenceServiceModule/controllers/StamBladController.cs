@@ -1,4 +1,5 @@
-﻿using dlu_persistence_api;
+﻿using System.Net.Http.Headers;
+using dlu_persistence_api;
 using dlu_persistence_api.services;
 using Nancy;
 using Nancy.ModelBinding;
@@ -14,17 +15,30 @@ namespace DLUPersistenceServiceModule.controllers
     public sealed class StamBladController : NancyModule
 
     {
+        private const string ServiceTagName = "Service Details";
+        private const string ServiceTagDescription = "Operations for handling the service";
+        private const string WidgetsTagName = "Available Widgets";
         public StamBladController(StamBladService stamBladDao, ISwaggerModelCatalog modelCatalog, ISwaggerTagCatalog tagCatalog)
 
         {
             modelCatalog.AddModel<StamBlad>();
+            
+            tagCatalog.AddTag(new Tag()
+            {
+                Name = ServiceTagName,
+                Description = ServiceTagDescription
+                
+            });
+            
+           
+            Get("/users", o => { return "user"; }, null,  "GetUsers");
             Get("{id:int}", parametes =>
             {
                 int bladid = parametes.id;
                 return stamBladDao.GetStamBladById(bladid);
-            });
+            }, null, "");
 
-             
+          
             Get("/stamblad/postnr/{postnr:int}", parameter => { return stamBladDao.GetStamBladByPostNummer(parameter.postnr); });
 
             Get("/stamblad/navn/{name:string}", parameter => stamBladDao.GetStamBladByName(parameter.name));
