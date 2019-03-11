@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Data.Entity.Migrations;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
@@ -439,7 +440,19 @@ namespace dlu_persistence_api.daos
                 throw new  DaoExceptions("GetTableHovedGruppe ", e.InnerException);
             }
         }
-        
+
+        public int GetNumberOfStamblad()
+        {
+            try
+            {
+                var row = di.tblBladStamdatas.SqlQuery("select count(BladID) from tblBladStamdata").SingleOrDefault();
+                return row;
+            }
+            catch (Exception e)
+            {
+              
+            }
+        }
 
         public bool DoesStambladExist(int bladId)
         {
