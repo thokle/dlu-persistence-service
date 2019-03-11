@@ -16,6 +16,7 @@ namespace dlu_persistence_api.services
         string GetTableHoveedGruppe();
         string GetTableRegion();
         string GetTableDage();
+        int GetNumbersOfStamblad();
 
     }
 }

@@ -18,7 +18,7 @@ namespace DLUPersistenceServiceModule.controllers
         private const string ServiceTagName = "Service Details";
         private const string ServiceTagDescription = "Operations for handling the service";
         private const string WidgetsTagName = "Available Widgets";
-        public StamBladController(StamBladService stamBladDao, ISwaggerModelCatalog modelCatalog, ISwaggerTagCatalog tagCatalog)
+        public  StamBladController(StamBladService stamBladDao, ISwaggerModelCatalog modelCatalog, ISwaggerTagCatalog tagCatalog)
 
         {
             modelCatalog.AddModel<StamBlad>();
@@ -61,6 +61,8 @@ namespace DLUPersistenceServiceModule.controllers
 
 
             Get("/stamblad/dage", o => { return stamBladDao.GetTableDage(); });
+            Get("/stamblad/antalblade", o => { return stamBladDao.GetNumbersOfStamblad(); });
+            
         }
 
       

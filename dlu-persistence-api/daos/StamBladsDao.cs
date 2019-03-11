@@ -414,7 +414,7 @@ namespace dlu_persistence_api.daos
             }
             catch (Exception e)
             {
-                throw new DaoExceptions("GetLatestId" , e.InnerException);
+                throw new FormattedDbEntityValidationException(e.InnerException);
             }
         }
 
@@ -437,20 +437,20 @@ namespace dlu_persistence_api.daos
             }
             catch (Exception e)
             {
-                throw new  DaoExceptions("GetTableHovedGruppe ", e.InnerException);
+                throw new  FormattedDbEntityValidationException( e.InnerException);
             }
         }
 
-        public int GetNumberOfStamblad()
+        public int GetNumbersOfStamblad()
         {
             try
             {
-                var row = di.tblBladStamdatas.SqlQuery("select count(BladID) from tblBladStamdata").SingleOrDefault();
-                return row;
+                var row = di.tblBladStamdatas.SqlQuery("select count(n.BladID) from tblBladStamdata as n").SingleOrDefault();
+                return row.BladID;
             }
             catch (Exception e)
             {
-              
+              throw  new FormattedDbEntityValidationException(e);
             }
         }
 

@@ -61,5 +61,10 @@ namespace dlu_persistence_api.services
         {
             return dao.GetTableDage();
         }
+
+        public int GetNumbersOfStamblad()
+        {
+            return dao.GetNumbersOfStamblad();
+        }
     }
 }
