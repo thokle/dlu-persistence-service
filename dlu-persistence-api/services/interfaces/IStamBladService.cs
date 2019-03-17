@@ -17,6 +17,7 @@ namespace dlu_persistence_api.services
         string GetTableRegion();
         string GetTableDage();
         int GetNumbersOfStamblad();
+        string GetByNavnPostNr(int postnr);
 
     }
 }

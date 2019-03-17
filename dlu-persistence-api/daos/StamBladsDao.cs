@@ -4,6 +4,7 @@ using System.Data.Entity.Migrations;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Sockets;
 using System.Threading.Tasks;
 using dlu_persistence_api.exceptions;
 using Newtonsoft.Json;
@@ -258,6 +259,7 @@ namespace dlu_persistence_api.daos
                         en.OrdreEmail,
                         en.SendetidOrdrecheck,
                         en.SendIndeværendeUge
+                  
                     };
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
@@ -445,8 +447,8 @@ namespace dlu_persistence_api.daos
         {
             try
             {
-                var row = di.tblBladStamdatas.SqlQuery("select count(n.BladID) from tblBladStamdata as n").SingleOrDefault();
-                return row.BladID;
+                return di.tblBladStamdatas.SqlQuery("select * from tblBladStamdata as n").Count();
+              
             }
             catch (Exception e)
             {
@@ -460,6 +462,26 @@ namespace dlu_persistence_api.daos
             var single = res.Single();
 
         return single != null;
+        }
+
+        public string GetByNavnPostNr(int postnr)
+        {
+            try
+            {
+                var res = from st in di.tblPostNrs
+                    where st.PostNr == postnr
+                    select new
+                    {
+                        st.PostNr, st.Husstande, st.PostBy,st.MaxDækningsGrad
+                    };
+
+                return JsonConvert.SerializeObject(res, Formatting.Indented);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            } 
         }
     }
 }

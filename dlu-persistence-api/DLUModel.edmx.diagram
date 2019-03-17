@@ -127,6 +127,7 @@
         <AssociationConnector Association="DiMPdotNetModel.FK_tblPrislisterPrBladPrÅr_tblPrislister" ManuallyRouted="false" />
         <AssociationConnector Association="DiMPdotNetModel.tblKontakterArbOmråderPrKontakt" ManuallyRouted="false" />
         <AssociationConnector Association="DiMPdotNetModel.tblKontaktFunktionerPrBlad" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DiMPdotNetModel.StamBladKontaktPersoner" Width="1.5" PointX="26.875" PointY="19.625" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

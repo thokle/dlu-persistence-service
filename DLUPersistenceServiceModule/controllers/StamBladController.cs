@@ -32,7 +32,7 @@ namespace DLUPersistenceServiceModule.controllers
             
            
             Get("/users", o => { return "user"; }, null,  "GetUsers");
-            Get("{id:int}", parametes =>
+            Get("/stamblad/{id:int}", parametes =>
             {
                 int bladid = parametes.id;
                 return stamBladDao.GetStamBladById(bladid);
@@ -61,8 +61,9 @@ namespace DLUPersistenceServiceModule.controllers
 
 
             Get("/stamblad/dage", o => { return stamBladDao.GetTableDage(); });
-            Get("/stamblad/antalblade", o => { return stamBladDao.GetNumbersOfStamblad(); });
-            
+            Get("/stamblad/antalblade", o => Response.AsJson(stamBladDao.GetNumbersOfStamblad()));
+            Get("/stamblad/bynavn/{postnr:int}" , p => stamBladDao.GetByNavnPostNr(p.postnr));
+
         }
 
       

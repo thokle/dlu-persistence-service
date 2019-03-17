@@ -90,6 +90,7 @@
     <Compile Include="daos\PostNrTableDao.cs" />
     <Compile Include="daos\RegionDao.cs" />
     <Compile Include="daos\SalespersonDao.cs" />
+    <Compile Include="daos\StambladKontaktPersonDao.cs" />
     <Compile Include="daos\StamBladsDao.cs" />
     <Compile Include="daos\SupportBilagDao.cs" />
     <Compile Include="daos\OrdreGebyrNavisionDao.cs" />
@@ -184,6 +185,7 @@
     <Compile Include="services\interfaces\IPostNrTableService.cs" />
     <Compile Include="services\interfaces\IPriserService.cs" />
     <Compile Include="services\interfaces\IRegionService.cs" />
+    <Compile Include="services\interfaces\IStambladKontaktPersonService.cs" />
     <Compile Include="services\interfaces\IStamBladService.cs" />
     <Compile Include="services\interfaces\ISupportBilagService.cs" />
     <Compile Include="services\interfaces\IUgeAviserTilGridServive.cs" />
@@ -206,6 +208,7 @@
     <Compile Include="services\PriserService.cs" />
     <Compile Include="services\RegionService.cs" />
     <Compile Include="services\SalesPersonService.cs" />
+    <Compile Include="services\StambladKontaktPersonService.cs" />
     <Compile Include="services\StamBladService.cs" />
     <Compile Include="services\SupportBilagService.cs" />
     <Compile Include="services\UgeAviserTilGridService.cs" />
@@ -217,6 +220,9 @@
       <DependentUpon>DLUModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>DLUModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StamBladKontaktPersoner.cs">
       <DependentUpon>DLUModel.tt</DependentUpon>
     </Compile>
     <Compile Include="StambladService.cs" />

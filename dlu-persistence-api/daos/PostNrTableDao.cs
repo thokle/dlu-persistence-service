@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Net.Sockets;
 using Newtonsoft.Json;
 using  dlu_persistence_api.exceptions;
 
@@ -7,17 +8,17 @@ namespace dlu_persistence_api.daos
 {    /// <summary>
      /// 
      /// </summary>
-    public class PostNrTableDao: IDisposable
+    public class PostNrTableDao
     {
         private DiMPdotNetEntities _diMPdotNetEntities;
 
 
         public PostNrTableDao()
         {
-            using (_diMPdotNetEntities = new DiMPdotNetEntities())
-            {
+            _diMPdotNetEntities = new DiMPdotNetEntities();
+            
                 _diMPdotNetEntities.Configuration.LazyLoadingEnabled = true;
-            }
+            
         }
 
         /// <summary>
@@ -44,6 +45,49 @@ namespace dlu_persistence_api.daos
             }
         
     }
+
+        public string GetPostNrAfByNavn(string bynavn)
+        {
+            try
+            {
+
+                var res = from ps in _diMPdotNetEntities.tblPostNrs
+                    where ps.PostBy.Equals(bynavn)
+                    orderby ps.PostBy
+                    select new
+                    {
+                        ps.PostNr
+                    };
+
+                return JsonConvert.SerializeObject(res, Formatting.Indented);
+            }
+            catch (Exception e)
+            {
+                throw new DaoExceptions("GetPostNrAfByNavn " , e.InnerException);
+            }
+        }
+
+
+        public string GetByBYPostNr(int postnr)
+        {
+            try
+            {
+
+                var res = from ps in _diMPdotNetEntities.tblPostNrs
+                    where ps.PostNr == postnr
+                    orderby ps.PostBy
+                    select new
+                    {
+                        ps.PostBy
+                    };
+
+                return JsonConvert.SerializeObject(res, Formatting.Indented);
+            }
+            catch (Exception e)
+            {
+                throw new DaoExceptions("GetByBYPostNr " , e.InnerException);
+            }   
+        }
 
         public void Dispose()
         {

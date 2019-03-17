@@ -105,6 +105,16 @@ warning 6013: The table/view 'DiMPdotNet.dbo.NyeLæsertal' does not have a prima
           <Property Name="LPVersion" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Beskrivelse" Type="ntext" Nullable="false" />
         </EntityType>
+        <EntityType Name="StamBladKontaktPersoner">
+          <Key>
+            <PropertyRef Name="StamBladId" />
+          </Key>
+          <Property Name="StamBladId" Type="int" Nullable="false" />
+          <Property Name="KontakPersonNavn" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="KontakPersonEmail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="KontakPersonTelefon" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="KontakPersonTitel" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -2424,6 +2434,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplanNr' does 
         <EntityContainer Name="DiMPdotNetModelStoreContainer">
           <EntitySet Name="dtproperties" EntityType="Self.dtproperties" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OpdateringsTekst" EntityType="Self.OpdateringsTekst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StamBladKontaktPersoner" EntityType="Self.StamBladKontaktPersoner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblAnnoncekontrol" EntityType="Self.tblAnnoncekontrol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblBladDækning" EntityType="Self.tblBladDækning" Schema="dbo" store:Type="Tables" />
@@ -5629,6 +5640,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplanNr' does 
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="StamBladKontaktPersoners" EntityType="DiMPdotNetModel.StamBladKontaktPersoner" />
         </EntityContainer>
         <ComplexType Name="dt_getpropertiesbyid_Result">
           <Property Type="String" Name="property" Nullable="false" MaxLength="64" />
@@ -5653,6 +5665,16 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplanNr' does 
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="StamBladKontaktPersoner">
+          <Key>
+            <PropertyRef Name="StamBladId" />
+          </Key>
+          <Property Name="StamBladId" Type="Int32" Nullable="false" />
+          <Property Name="KontakPersonNavn" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KontakPersonEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KontakPersonTelefon" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KontakPersonTitel" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -7155,6 +7177,17 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplanNr' does 
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DiMPdotNetModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DiMPdotNetModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="StamBladKontaktPersoners">
+            <EntityTypeMapping TypeName="DiMPdotNetModel.StamBladKontaktPersoner">
+              <MappingFragment StoreEntitySet="StamBladKontaktPersoner">
+                <ScalarProperty Name="KontakPersonTitel" ColumnName="KontakPersonTitel" />
+                <ScalarProperty Name="KontakPersonTelefon" ColumnName="KontakPersonTelefon" />
+                <ScalarProperty Name="KontakPersonEmail" ColumnName="KontakPersonEmail" />
+                <ScalarProperty Name="KontakPersonNavn" ColumnName="KontakPersonNavn" />
+                <ScalarProperty Name="StamBladId" ColumnName="StamBladId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

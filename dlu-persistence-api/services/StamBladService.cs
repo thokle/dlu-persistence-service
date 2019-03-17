@@ -66,5 +66,10 @@ namespace dlu_persistence_api.services
         {
             return dao.GetNumbersOfStamblad();
         }
+
+        public string GetByNavnPostNr(int postnr)
+        {
+            return dao.GetByNavnPostNr(postnr);
+        }
     }
 }
