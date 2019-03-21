@@ -25,7 +25,11 @@ namespace dlu_persistence_api.daos
                     where sbk.StamBladId == bladId
                     select new
                     {
-                        sbk.StamBladId, sbk.KontakPersonNavn, sbk.KontakPersonEmail, sbk.KontakPersonTitel, sbk.KontakPersonTelefon
+                        sbk.StamBladId,
+                        sbk.KontakPersonNavn, 
+                        sbk.KontakPersonEmail,
+                        sbk.KontakPersonTitel,
+                        sbk.KontakPersonTelefon
                     };
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }

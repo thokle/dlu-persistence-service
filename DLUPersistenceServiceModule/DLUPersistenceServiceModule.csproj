@@ -245,6 +245,7 @@
     <Compile Include="controllers\StambladKontaktController.cs" />
     <Compile Include="controllers\SupportBilagController.cs" />
     <Compile Include="controllers\UgeAviserTilGridController.cs" />
+    <Compile Include="controllers\UserController.cs" />
     <Compile Include="controllers\WebForspørgelsesController.cs" />
     <Compile Include="controllers\WebforspørgelsesLinjerController.cs" />
     <Compile Include="controllers\WebMailController.cs" />

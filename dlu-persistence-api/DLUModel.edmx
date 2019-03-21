@@ -1093,6 +1093,16 @@ warning 6002: The table/view 'DiMPdotNet.dbo.tnpOrdreNr3' does not have a primar
           <Property Name="MedieplanNr" Type="int" Nullable="false" />
           <Property Name="Version" Type="smallint" Nullable="false" />
         </EntityType>
+        <EntityType Name="UserTable2">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="nchar" MaxLength="10" />
+          <Property Name="Password" Type="nchar" MaxLength="10" />
+          <Property Name="dateCreated" Type="date" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'DiMPdotNet.dbo.AktiveUgeaviserMedAlleData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AktiveUgeaviserMedAlleData">
@@ -2486,6 +2496,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplanNr' does 
           <EntitySet Name="tblWEBForespørgsel" EntityType="Self.tblWEBForespørgsel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblWEBForespørgselLinjer" EntityType="Self.tblWEBForespørgselLinjer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblWEBSendTilKollega" EntityType="Self.tblWEBSendTilKollega" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTable2" EntityType="Self.UserTable2" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bladtlfogfaxkopi" EntityType="Self.bladtlfogfaxkopi" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [bladtlfogfaxkopi].[BladID] AS [BladID], 
@@ -5641,6 +5652,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplanNr' does 
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
           <EntitySet Name="StamBladKontaktPersoners" EntityType="DiMPdotNetModel.StamBladKontaktPersoner" />
+          <EntitySet Name="UserTable2" EntityType="DiMPdotNetModel.UserTable2" />
         </EntityContainer>
         <ComplexType Name="dt_getpropertiesbyid_Result">
           <Property Type="String" Name="property" Nullable="false" MaxLength="64" />
@@ -5674,6 +5686,16 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplanNr' does 
           <Property Name="KontakPersonEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="KontakPersonTelefon" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="KontakPersonTitel" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserTable2">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="dateCreated" Type="DateTime" Precision="0" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -7185,6 +7207,17 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplanNr' does 
                 <ScalarProperty Name="KontakPersonEmail" ColumnName="KontakPersonEmail" />
                 <ScalarProperty Name="KontakPersonNavn" ColumnName="KontakPersonNavn" />
                 <ScalarProperty Name="StamBladId" ColumnName="StamBladId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTable2">
+            <EntityTypeMapping TypeName="DiMPdotNetModel.UserTable2">
+              <MappingFragment StoreEntitySet="UserTable2">
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
