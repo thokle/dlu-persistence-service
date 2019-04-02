@@ -379,15 +379,9 @@ namespace dlu_persistence_api.daos
         {
             try
             {
-                if (DoesStambladExist(stamData.BladID))
-                {
+              
                     di.tblBladStamdatas.AddOrUpdate(stamData);
-                }
-                else
-                {
-                    stamData.BladID = GetLatestId() + 1;
-                    di.tblBladStamdatas.AddOrUpdate(stamData);
-                }
+            
                 return di.SaveChangesAsync();
             }
             catch (DbEntityValidationException e)
@@ -401,7 +395,7 @@ namespace dlu_persistence_api.daos
         /// </summary>
         /// <returns></returns>
         /// <exception cref="DaoExceptions"></exception>
-        private int GetLatestId()
+        public Tuple<string, int> GetLatestId()
         {
             try
             {
@@ -411,7 +405,7 @@ namespace dlu_persistence_api.daos
 
                 Debug.Assert(row != null, nameof(row) + " != null");
 
-                return row.BladID;
+                return new Tuple<string, int>("bladId", row.BladID);
 
             }
             catch (Exception e)

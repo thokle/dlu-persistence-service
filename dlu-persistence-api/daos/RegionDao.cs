@@ -1,6 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.InteropServices;
+using System.Runtime.Remoting.Messaging;
 using dlu_persistence_api.exceptions;
 using Newtonsoft.Json;
 
@@ -14,10 +17,10 @@ namespace dlu_persistence_api.daos
 
         public RegionDao()
         {
-            using (_entities = new DiMPdotNetEntities())
-            {
+            _entities = new DiMPdotNetEntities();
+            
                 _entities.Configuration.LazyLoadingEnabled = true;
-            }
+            
         }
 
         /// <summary>
@@ -29,15 +32,21 @@ namespace dlu_persistence_api.daos
         {
             try
             {
-                var res = from r in _entities.tblRegions
-                    orderby r.RegionNavn, r.RegionID
-                    select new
+                var res = _entities.tblRegions.SqlQuery("select * from tblRegion").ToList<tblRegion>();
+                var regions = new List<Regioms>();
+                foreach (var d in res)
+                {
+                    var regiion = new Regioms()
                     {
-
-                        r.RegionID, r.RegionNavn, r.timestamp, r.RegionSortKey
+                        RegionId = d.RegionID,
+                        RegionNavn1 =  d.RegionNavn,
+                        RegionSortId1 = d.RegionSortKey
                     };
+                    
+                 regions.Add(regiion);
+                }
 
-                return JsonConvert.SerializeObject(res, formatting: Formatting.Indented);
+                return JsonConvert.SerializeObject(regions, formatting: Formatting.Indented);
             }
             catch (Exception e)
             {
@@ -46,4 +55,31 @@ namespace dlu_persistence_api.daos
 
         }
     }
+
+     class Regioms
+     {
+         private int RegionID;
+         private string RegionNavn;
+         private int RegionSortId;
+
+
+         public int RegionId
+         {
+             get => RegionID;
+             set => RegionID = value;
+         }
+
+
+         public string RegionNavn1
+         {
+             get => RegionNavn;
+             set => RegionNavn = value;
+         }
+
+         public int RegionSortId1
+         {
+             get => RegionSortId;
+             set => RegionSortId = value;
+         }
+     }
 }

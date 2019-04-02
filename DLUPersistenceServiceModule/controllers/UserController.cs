@@ -10,11 +10,12 @@ namespace DLUPersistenceServiceModule.controllers
     {
         public UserController(UserTableDao dao)
         {
-            Get("/user/get/", o =>
+            Get("/user/login/", o =>
             {
-                var username = Request.Headers["useranme"].SingleOrDefault().ToString();
-                var password = Request.Headers["password"].SingleOrDefault().ToString();
-                return dao.Login(username, password);
+                var username = Request.Headers["username"].SingleOrDefault()?.ToString();
+                var password = Request.Headers["password"].SingleOrDefault()?.ToString();
+                var user = dao.Login(username, password);
+                return user;
             } );
             
             Post("/user/create", o =>

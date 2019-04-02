@@ -19,5 +19,9 @@ namespace dlu_persistence_api
         public string Email { get; set; }
         public string Password { get; set; }
         public Nullable<System.DateTime> dateCreated { get; set; }
+        public string firstname { get; set; }
+        public string lastname { get; set; }
+        public string jobfunction { get; set; }
+        public string colorvalue { get; set; }
     }
 }

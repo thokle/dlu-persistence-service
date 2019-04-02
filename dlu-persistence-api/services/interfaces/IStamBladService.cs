@@ -18,6 +18,7 @@ namespace dlu_persistence_api.services
         string GetTableDage();
         int GetNumbersOfStamblad();
         string GetByNavnPostNr(int postnr);
+        Tuple<string, int> GetLatestId();
 
     }
 }

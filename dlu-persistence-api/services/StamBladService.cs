@@ -1,3 +1,4 @@
+using System;
 using System.Data.Entity.Core.Common;
 using System.Threading.Tasks;
 using dlu_persistence_api.daos;
@@ -70,6 +71,11 @@ namespace dlu_persistence_api.services
         public string GetByNavnPostNr(int postnr)
         {
             return dao.GetByNavnPostNr(postnr);
+        }
+
+        public Tuple<string, int> GetLatestId()
+        {
+            return dao.GetLatestId();
         }
     }
 }

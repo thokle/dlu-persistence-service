@@ -1,4 +1,5 @@
 ﻿using System.Net.Http.Headers;
+using System.Runtime.Remoting.Messaging;
 using dlu_persistence_api;
 using dlu_persistence_api.services;
 using Nancy;
@@ -63,6 +64,7 @@ namespace DLUPersistenceServiceModule.controllers
             Get("/stamblad/dage", o => { return stamBladDao.GetTableDage(); });
             Get("/stamblad/antalblade", o => Response.AsJson(stamBladDao.GetNumbersOfStamblad()));
             Get("/stamblad/bynavn/{postnr:int}" , p => stamBladDao.GetByNavnPostNr(p.postnr));
+            Get("/stamblad/latestid" ,o => Response.AsJson(stamBladDao.GetLatestId()));
 
         }
 

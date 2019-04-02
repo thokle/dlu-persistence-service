@@ -1,18 +1,74 @@
 using System;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Linq;
+
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using dlu_persistence_api.exceptions;
 namespace dlu_persistence_api.daos
 {
-    public struct User
+    public class User
     {
-        private string _username;
-        private string _email;
-        private string _password;
+        private string username;
+        private string email;
+        private string password;
         private int userId;
+        private string firstname;
+        private string lastname;
+        private string jobfuncion;
+
+        public User(string username, string email, string password, int userId, string firstname, string lastname, string jobfuncion)
+        {
+            this.username = username;
+            this.email = email;
+            this.password = password;
+            this.userId = userId;
+            this.firstname = firstname;
+            this.lastname = lastname;
+            this.jobfuncion = jobfuncion;
+        }
+
+        public string Username
+        {
+            get => username;
+            set => username = value;
+        }
+
+        public string Email
+        {
+            get => email;
+            set => email = value;
+        }
+
+        public string Password
+        {
+            get => password;
+            set => password = value;
+        }
+
+        public int UserId
+        {
+            get => userId;
+            
+        }
+
+        public string Firstname
+        {
+            get => firstname;
+            set => firstname = value;
+        }
+
+        public string Lastname
+        {
+            get => lastname;
+            set => lastname = value;
+        }
+
+        public string Jobfuncion
+        {
+            get => jobfuncion;
+            set => jobfuncion = value;
+        }
     }
 
     public class UserTableDao
@@ -29,13 +85,12 @@ namespace dlu_persistence_api.daos
         {
             try
             {
-                var user = _entities.UserTable2.Where(a => a.Password == password && a.UserName == username).SingleOrDefault();
+                var user = _entities.UserTable2.SingleOrDefault(a => a.Password == password && a.UserName == username);
 
-                User res = new User();
-                user.Email = user.Email;
-                user.Password = user.Password;
-                user.UserName = user.UserName;
-                user.UserID = user.UserID;
+                var res = new User(user.UserName, user.Email, user.Password, user.UserID, user.firstname, user.lastname, user.jobfunction);
+
+               
+         
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
             catch (Exception e)
@@ -50,6 +105,7 @@ namespace dlu_persistence_api.daos
         {
             try
             {
+                table2.dateCreated = DateTime.Now;
                    _entities.UserTable2.AddOrUpdate(table2);
                    return _entities.SaveChangesAsync();
             }
