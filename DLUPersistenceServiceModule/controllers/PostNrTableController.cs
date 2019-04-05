@@ -12,7 +12,7 @@ namespace DLUPersistenceServiceModule.controllers
     {
         Get("/postnr/getall", o => service.GetPostNrListe());
         Get("/postnr/bynavn/{postnr:int}", o =>  service.GetByBYPostNr(o.postnr));
-            Get("/postnr/zipcode/{by:string}", o => service.GetPostNrAfByNavn(o.by) );
+     Get("/postnr/zipcode/{by:string}", o => service.GetPostNrAfByNavn(o.by) );
     }
     }
 }

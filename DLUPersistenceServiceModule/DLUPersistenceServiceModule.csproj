@@ -242,7 +242,6 @@
     <Compile Include="controllers\RegionsController.cs" />
     <Compile Include="controllers\StamBladController.cs" />
     <Compile Include="controllers\StamBladControllerMetadataModule.cs" />
-    <Compile Include="controllers\StambladKontaktController.cs" />
     <Compile Include="controllers\SupportBilagController.cs" />
     <Compile Include="controllers\UgeAviserTilGridController.cs" />
     <Compile Include="controllers\UserController.cs" />
