@@ -65,10 +65,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AktiveUgeaviserMedAlleData.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="bladtlfogfaxkopi.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="daos\AnnoncekontrolDao.cs" />
     <Compile Include="daos\BladDækningDao.cs" />
@@ -96,67 +96,68 @@
     <Compile Include="daos\OrdreLinjerNavisionDao.cs" />
     <Compile Include="daos\OrdreNavisionDao.cs" />
     <Compile Include="daos\UgeaviserTilGridDao.cs" />
-    <Compile Include="daos\UserTableDao.cs" />
+    <Compile Include="daos\UserDao.cs" />
     <Compile Include="daos\WEBeMailDao.cs" />
     <Compile Include="daos\WEBForespørgselDao.cs" />
     <Compile Include="daos\WEBForespørgselLinjerDao.cs" />
     <Compile Include="daos\WEBSendTilKollegaDao.cs" />
     <Compile Include="delPriser.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="dtproperty.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="dt_getpropertiesbyid_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="dt_getpropertiesbyid_u_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="exceptions\DaoExceptions.cs" />
     <Compile Include="exceptions\FormattedDbEntityValidationException.cs" />
     <Compile Include="FakturaFejlFinde.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="FindFejlLinjer.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="GammelAnnoncørID.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="HerningFolkeblad.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
+    </Compile>
+    <Compile Include="lokalplanner.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>lokalplanner.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="lokalplanner.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
+    </Compile>
+    <Compile Include="lokalplanner.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>lokalplanner.edmx</DependentUpon>
     </Compile>
     <Compile Include="LPRoller.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Compile>
+    <Compile Include="models\StamBlad.cs" />
     <Compile Include="NavisionContact.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="NavisionContact2.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="OpdateringsTekst.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Salesperson.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="services\AnnoceKontrolService.cs" />
     <Compile Include="services\BladDækningService.cs" />
@@ -218,252 +219,249 @@
     <Compile Include="services\WEBSendTilKollegaService.cs" />
     <Compile Include="services\WenForspørgelsesService.cs" />
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StamBladKontaktPersoner.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="StambladService.cs" />
     <Compile Include="daos\PriserDao.cs" />
     <Compile Include="sysdiagram.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblAktiveVærdier.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblAktivGruppeVersion.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblAnnoncekontrol.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBladDækning.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBladnavnMappingFraDO.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBladStamdata.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBladStamdataKopi.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBrugerData.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblDage.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblDelOmråde.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblDPKulør.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblEjerforhold.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFakturaFejl.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFakturaFejlTekst.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFaktureringsBilag.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFarveTillægWebApp.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFejlTekst.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblGeoKode.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblGrupper.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblGruppeRabatter.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblHovedGruppe.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblKonkurrentDækning.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblKonkurrenter.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblKontaktArbOmråder.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblKontakter.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblKontakterPrBlad.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblKontaktFunktioner.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblKontaktTitler.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMateriale.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMedieplan.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMedieplanLinjer.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMedieplanNr.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMedieplanÆndringer.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMedIGruppe.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMmPrisWebApp.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblOrdreGebyrNavision.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblOrdreLinjerNavision.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblOrdreNavision.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPlacering.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPlannerPlaner.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPostNr.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPostNrSøgning.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPriser.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPrislister.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPrislisterPrBladPrUge.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPrislisterPrBladPrÅr.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblRegion.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblRemindereSendt.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblSupportBilag.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblWEBeMail.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblWEBForespørgsel.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblWEBForespørgselLinjer.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblWEBSendTilKollega.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tempPriser.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tmpNyeDeadline.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tnpOrdreNr.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tnpOrdreNr2.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tnpOrdreNr3.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="UgeaviserTilGrid.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
-    <Compile Include="UserTable2.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="User.cs">
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="viewBlade.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="viewBookingListe.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="viewGrupper.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="viewLinjeDiff.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="viewOrdre.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="viewOrdreErSendt.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="viewOrdreFIND.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="viewOrdreIkkeSendt.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="viewOrdreLinjer.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="viewOrdreLinjerFIND.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="viewOrdreSendtManglerMateriale.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="viewOversigt.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="viewUpdateStatusIMedieplan.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
     <Compile Include="viewUpdateStatusIMedieplanNr.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>lokalplanner.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config">
       <SubType>Designer</SubType>
     </None>
-    <EntityDeploy Include="Model1.edmx">
+    <EntityDeploy Include="lokalplanner.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>lokalplanner.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <None Include="lokalplanner.edmx.diagram">
+      <DependentUpon>lokalplanner.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -471,15 +469,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model1.Context.tt">
+    <Content Include="lokalplanner.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>lokalplanner.edmx</DependentUpon>
+      <LastGenOutput>lokalplanner.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model1.tt">
+    <Content Include="lokalplanner.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>lokalplanner.edmx</DependentUpon>
+      <LastGenOutput>lokalplanner.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

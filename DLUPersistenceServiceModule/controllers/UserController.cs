@@ -1,27 +1,32 @@
+using System;
+using System.Dynamic;
 using System.Linq;
+using System.Net.Sockets;
 using dlu_persistence_api;
 using Nancy.ModelBinding;
 using Nancy;
-using Nancy.Responses;
-using dlu_persistence_api.daos;
+using dlu_persistence_api.services;
+
+using DLUPersistenceServiceModule.swagger;
+
 namespace DLUPersistenceServiceModule.controllers
 {
     public class UserController: NancyModule
     {
-        public UserController(UserTableDao dao)
+        public UserController(UserService service)
         {
-            Get("/user/login/", o =>
+            Get("/user/login", u =>
             {
-                var username = Request.Headers["username"].SingleOrDefault()?.ToString();
-                var password = Request.Headers["password"].SingleOrDefault()?.ToString();
-                var user = dao.Login(username, password);
-                return user;
+                var username = Request.Headers["username"].SingleOrDefault().ToString();
+                var password = Request.Headers["password"].SingleOrDefault().ToString();
+                return service.GetUserbyEmailAndPassword(username, password);
             } );
             
             Post("/user/create", o =>
             {
-                var user = this.Bind<UserTable2>();
-                return dao.CreateUser(user);
+
+                var user = this.Bind<User>();
+               return service.CreateUser(user);
             });
         }
     }

@@ -1,23 +1,25 @@
 using System.Threading.Tasks;
 using dlu_persistence_api.daos;
+
 namespace dlu_persistence_api.services
 {
     public class UserService: IUserService
     {
-        private UserTableDao  _tableDao;
+        private UserDao _dao;
 
         public UserService()
         {
-            _tableDao = new UserTableDao();
+            _dao = new UserDao();
         }
-        public string Login(string username, string password)
+        public string GetUserbyEmailAndPassword(string username, string password)
         {
-            return _tableDao.Login(username, password);
+
+            return _dao.GetUserbyEmailAndPassword(username, password);
         }
 
-        public Task<int> CreateUser(UserTable2 table2)
+        public Task<int> CreateUser(User user)
         {
-            return _tableDao.CreateUser(table2);
+            return _dao.CreateUser(user);
         }
     }
 }

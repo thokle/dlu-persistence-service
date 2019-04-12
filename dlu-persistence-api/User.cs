@@ -12,16 +12,16 @@ namespace dlu_persistence_api
     using System;
     using System.Collections.Generic;
     
-    public partial class UserTable2
+    public partial class User
     {
-        public int UserID { get; set; }
-        public string UserName { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public Nullable<System.DateTime> dateCreated { get; set; }
+        public int userID { get; set; }
+        public string username { get; set; }
         public string firstname { get; set; }
         public string lastname { get; set; }
+        public string middlename { get; set; }
+        public string email { get; set; }
+        public string password { get; set; }
+        public string color { get; set; }
         public string jobfunction { get; set; }
-        public string colorvalue { get; set; }
     }
 }
