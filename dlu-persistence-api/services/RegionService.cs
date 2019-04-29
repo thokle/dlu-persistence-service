@@ -14,5 +14,10 @@ namespace dlu_persistence_api.services
         {
             return _dao.GetRegions();
         }
+
+        public string GetRegsionById(int regionId)
+        {
+            return _dao.GetRegsionById(regionId);
+        }
     }
 }

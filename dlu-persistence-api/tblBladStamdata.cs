@@ -33,12 +33,10 @@ namespace dlu_persistence_api
         public string Tlf { get; set; }
         public string Fax { get; set; }
         public string CVR { get; set; }
-        public string FIK { get; set; }
         public string Kontaktperson { get; set; }
         public Nullable<byte> HovedgruppeID { get; set; }
         public Nullable<byte> MedlemMåned { get; set; }
         public Nullable<byte> MedlemÅr { get; set; }
-        public Nullable<System.DateTime> MedlemSiden { get; set; }
         public string Ejerforhold { get; set; }
         public string Koncern { get; set; }
         public bool Ophørt { get; set; }
@@ -70,7 +68,6 @@ namespace dlu_persistence_api
         public string Emails { get; set; }
         public string KontaktpersonerEmails { get; set; }
         public string BogholderiEmails { get; set; }
-        public string BogholderiKontaktperson { get; set; }
         public string MedieNetKode { get; set; }
         public Nullable<byte> MatGodtBeløb { get; set; }
         public string Hjemmeside { get; set; }

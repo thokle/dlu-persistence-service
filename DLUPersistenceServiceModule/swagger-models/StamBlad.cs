@@ -55,7 +55,7 @@ namespace DLUPersistenceServiceModule
         public string Emails { get; set; }
         public string KontaktpersonerEmails { get; set; }
         public string BogholderiEmails { get; set; }
-        public string BogholderiKontaktperson { get; set; }
+      
         public string MedieNetKode { get; set; }
         public Nullable<byte> MatGodtBeløb { get; set; }
         public string Hjemmeside { get; set; }

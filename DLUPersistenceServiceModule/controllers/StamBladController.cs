@@ -10,6 +10,9 @@ using Nancy.Swagger;
 using Swagger.ObjectModel;
 using Nancy.Swagger.Annotations.Attributes;
 using Nancy.Swagger.Services;
+using Nancy.IO;
+using Nancy.Extensions;
+using Newtonsoft.Json;
 
 namespace DLUPersistenceServiceModule.controllers
 {
@@ -47,9 +50,12 @@ namespace DLUPersistenceServiceModule.controllers
 
             Post("/stamblad", o =>
             {
-                var JSOn = this.Bind<tblBladStamdata>();
-                stamBladDao.CreaateOrUpdateStamBlad(JSOn);
-                return Response.AsJson(JSOn);
+                var body = RequestStream.FromStream(Request.Body).AsString();
+
+              var stamData =  this.CreateStamData(body);
+
+                stamBladDao.CreaateOrUpdateStamBlad(stamData);
+                return Response.AsJson(body);
             });
 
             Get("/stamblad/GeoCodes", o => { return stamBladDao.GetTableGeoCode(); });
@@ -67,6 +73,17 @@ namespace DLUPersistenceServiceModule.controllers
             Get("/stamblad/latestid" ,o => Response.AsJson(stamBladDao.GetLatestId()));
 
         }
+
+        private tblBladStamdata CreateStamData(string jsonString)
+        {
+           var stamDataJson =    JsonConvert.DeserializeObject<tblBladStamdata>(jsonString);
+          
+     
+
+
+            return stamDataJson;
+        }
+       
 
       
     }

@@ -128,10 +128,12 @@ namespace dlu_persistence_api.daos
 
                 for (var i = 1; i < numnberofWeeksInYear; i++)
                 {
-                    var tblPrislisterPrBladPrUge = new tblPrislisterPrBladPrUge();
-                    tblPrislisterPrBladPrUge.Uge = (byte) i;
-                    tblPrislisterPrBladPrUge.BladID = bladid;
-                    tblPrislisterPrBladPrUge.PrislisteID = 1;
+                    var tblPrislisterPrBladPrUge = new tblPrislisterPrBladPrUge
+                    {
+                        Uge = (byte)i,
+                        BladID = bladid,
+                        PrislisteID = 1
+                    };
                     di.tblPrislisterPrBladPrUges.Add(tblPrislisterPrBladPrUge);
                 }
 

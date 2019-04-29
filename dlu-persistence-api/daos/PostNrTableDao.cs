@@ -1,4 +1,5 @@
 using System;
+using System.Data.Entity.Core.Common.CommandTrees;
 using System.Linq;
 using System.Net.Sockets;
 using Newtonsoft.Json;
@@ -31,7 +32,7 @@ namespace dlu_persistence_api.daos
             try
             {
                 var postnrs = from ps in _diMPdotNetEntities.tblPostNrs
-                    orderby ps.PostNr
+                    orderby ps.PostBy
                     select new
                     {
                         ps.PostNr, ps.Husstande, ps.PostBy
@@ -78,7 +79,7 @@ namespace dlu_persistence_api.daos
                     orderby ps.PostBy
                     select new
                     {
-                        ps.PostBy
+                        ps.PostBy, ps.PostNr,ps.MaxDækningsGrad
                     };
 
                 return JsonConvert.SerializeObject(res, Formatting.Indented);

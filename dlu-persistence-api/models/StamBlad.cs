@@ -38,7 +38,7 @@ namespace dlu_persistence_api.models
 
         public byte? MedlemAAr { get; set; }
 
-        public DateTime? MedlemSiden { get; set; }
+    
 
         public string Ejerforhold { get; set; }
 
@@ -151,5 +151,7 @@ namespace dlu_persistence_api.models
         public bool Overfoert { get; set; }
 
         public byte[] Timestamp { get; set; }
+
+      
     }
 }

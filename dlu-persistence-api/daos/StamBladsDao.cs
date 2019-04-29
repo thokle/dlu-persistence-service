@@ -48,11 +48,11 @@ namespace dlu_persistence_api.daos
                         MedlemAAr = en.MedlemÅr,
                         Cvr = en.CVR,
                         Fax = en.Fax,
-                        Fik = en.FIK,
+                       
                         Tlf = en.Tlf,
                         Oplag = en.Oplag,
                         Emails = en.Emails,
-                        MedlemSiden = en.MedlemSiden,
+                    
                         Format = en.Format,
                         Adresse = en.Adresse,
                         Koncern = en.Koncern,
@@ -75,6 +75,7 @@ namespace dlu_persistence_api.daos
                         GruppeRabat = en.GruppeRabat,
                         AnnonceEmail = en.AnnonceEmail,
                         MedlemMaaned = en.MedlemMåned,
+                       
                         HovedgruppeId = en.HovedgruppeID,
                         StamdataEmail = en.StamdataEmail,
                         MaterialeEmail = en.MaterialeEmail,
@@ -89,7 +90,7 @@ namespace dlu_persistence_api.daos
                         SamannonceringsRabat = en.SamannonceringsRabat,
                         KontaktpersonerEmails = en.KontaktpersonerEmails,
                         MaterialedeadlineTekst = en.MaterialedeadlineTekst,
-                        BogholderiKontaktperson = en.BogholderiKontaktperson,
+                     
                         MaterialedeadlineRubrik = en.MaterialedeadlineRubrik,
                         MaterialeDeadlineRubrikKl = en.MaterialeDeadlineRubrikKl,
                         PrisforespoergselEmails = en.PrisforespørgselEmails,
@@ -167,7 +168,7 @@ namespace dlu_persistence_api.daos
                         en.AnnonceKontrolEmail,
                         en.BilagsbladeEmail,
                         en.BogholderiEmails,
-                        en.BogholderiKontaktperson,
+                       
                         en.CVR,
                         en.DelOmrådeID,
                         en.DiMPDelOmrådeKode,
@@ -176,7 +177,7 @@ namespace dlu_persistence_api.daos
                         en.Emails,
                         en.FakturaGruppeID,
                         en.Fax,
-                        en.FIK,
+                     
                         en.Format,
                         en.GeoKodeID,
 
@@ -197,7 +198,7 @@ namespace dlu_persistence_api.daos
                         en.MatGodtBeløb,
                         en.MedieNetKode,
                         en.MedlemMåned,
-                        en.MedlemSiden,
+                      
                         en.MedlemÅr,
                         en.MåGiveFarveRabat,
                         en.Navn,
@@ -279,7 +280,7 @@ namespace dlu_persistence_api.daos
             try
             {
                 var post = from p in di.tblPostNrs
-                    orderby p.PostNr, p.PostBy
+                    orderby p.PostNr   ascending 
                     select new {p.PostNr, p.PostBy, p.Husstande, p.MaxDækningsGrad};
                 return JsonConvert.SerializeObject(post, Formatting.Indented);
             }
@@ -417,6 +418,98 @@ namespace dlu_persistence_api.daos
             return single != null;
         }
 
+        public string GetStamBladEfterEjerforhold(string ejerforhold)
+        {
+            try
+            {
+                var res = from en in di.tblBladStamdatas
+                          where en.Ejerforhold == ejerforhold
+                          let p = new StamBlad()
+                          {
+                                 BladId = en.BladID,
+                                 Navn = en.Navn.Trim(),
+                                 Navn2 = en.Navn2.Trim(),
+                                 MatGodtBeloeb = en.MatGodtBeløb,
+                                 MedlemAAr = en.MedlemÅr,
+                                 Cvr = en.CVR,
+                                 Fax = en.Fax,
+
+                                 Tlf = en.Tlf,
+                                 Oplag = en.Oplag,
+                                 Emails = en.Emails,
+
+                                 Format = en.Format,
+                                 Adresse = en.Adresse,
+                                 Koncern = en.Koncern,
+                                 Ophoert = en.Ophørt,
+
+                                 Primaer = en.Primær,
+                                 Adresse2 = en.Adresse2,
+                                 Overfoert = en.Overført,
+                                 Timestamp = en.timestamp,
+                                 Hjemmeside = en.Hjemmeside,
+                                 Ejerforhold = en.Ejerforhold,
+                                 Totalomraade = en.Totalområde,
+                                 Kontaktperson = en.Kontaktperson,
+                                 OrienteringEmails = en.OrienteringEmails,
+                                 PostNr = en.PostNr,
+                                 RegionId = en.RegionID,
+                                 UgedagId = en.UgedagID,
+                                 OrdreEmail = en.OrdreEmail,
+                                 PrimaerPct = en.PrimærPct,
+                                 GruppeRabat = en.GruppeRabat,
+                                 AnnonceEmail = en.AnnonceEmail,
+                                 MedlemMaaned = en.MedlemMåned,
+
+                                 HovedgruppeId = en.HovedgruppeID,
+                                 StamdataEmail = en.StamdataEmail,
+                                 MaterialeEmail = en.MaterialeEmail,
+                                 RedaktionEmail = en.RedaktionEmail,
+                                 OrdrecheckEmail = en.OrdrecheckEmail,
+                                 TotalomraadePct = en.TotalområdePct,
+                                 BilagsbladeEmail = en.BilagsbladeEmail,
+                                 BogholderiEmails = en.BogholderiEmails,
+                                 OrdredeadlineTekst = en.OrdredeadlineTekst,
+                                 SendetidOrdrecheck = en.SendetidOrdrecheck,
+                                 OrdredeadlineRubrik = en.OrdredeadlineRubrik,
+                                 SamannonceringsRabat = en.SamannonceringsRabat,
+                                 KontaktpersonerEmails = en.KontaktpersonerEmails,
+                                 MaterialedeadlineTekst = en.MaterialedeadlineTekst,
+
+                                 MaterialedeadlineRubrik = en.MaterialedeadlineRubrik,
+                                 MaterialeDeadlineRubrikKl = en.MaterialeDeadlineRubrikKl,
+                                 PrisforespoergselEmails = en.PrisforespørgselEmails,
+                                 GeoKodeId = en.GeoKodeID,
+                                 VisPaaWww = en.VisPåWWW,
+                                 DelOmraadeId = en.DelOmrådeID,
+                                 OrdreDeadlineTekstDag = en.OrdreDeadlineTekstDag,
+                                 OrdreDeadlineRubrikDag = en.OrdreDeadlineRubrikDag,
+                                 OrdreDeadlineRubrikKl = en.OrdreDeadlineRubrikKl,
+                                 MedieNetKode = en.MedieNetKode,
+                                 SalgsGruppeId = en.SalgsGruppeID,
+                                 FakturaGruppeId = en.FakturaGruppeID,
+                                 GiverWebTillaeg = en.GiverWebTillæg,
+                                 SendIndevaerendeUge = en.SendIndeværendeUge,
+                                 AnnonceKontrolEmail = en.AnnonceKontrolEmail,
+                                 MaaGiveFarveRabat = en.MåGiveFarveRabat,
+                                 OrdrecheckSendeDagId = en.OrdrecheckSendeDagID,
+                                 WwwDaekningSomTekst = en.WWWDækningSomTekst,
+                                 MaterialeDeadlineTekstKl = en.MaterialeDeadlineTekstKl,
+                                 OrdreDeadlineTekstKl = en.OrdreDeadlineTekstKl,
+                                 MaterialeDeadlineTekstDag = en.MaterialeDeadlineTekstDag,
+                                 MaterialeDeadlineRubrikDag = en.MaterialeDeadlineRubrikDag
+                             }
+                    select p;
+                return JsonConvert.SerializeObject(res, Formatting.Indented);
+            }
+            catch(Exception e)
+            {
+                throw new FormattedDbEntityValidationException(e.InnerException);
+            }
+        }
+
+       
+
         public string GetByNavnPostNr(int postnr)
         {
             try
@@ -435,6 +528,18 @@ namespace dlu_persistence_api.daos
                 Console.WriteLine(e);
                 throw;
             }
+        }
+
+
+        public void updateEjerforholdForAviser(string oldejeforhold, string newejerforhold)
+        {
+            var old = from ej in di.tblBladStamdatas where ej.Ejerforhold == oldejeforhold select ej;
+
+            foreach (var item in old)
+            {
+                item.Ejerforhold = newejerforhold;
+            }
+            di.SaveChanges();
         }
     }
 }

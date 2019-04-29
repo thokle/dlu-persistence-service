@@ -4,8 +4,8 @@ namespace dlu_persistence_api.services
 {
     public interface IStambladKontaktPersonService
     {
-        string GetKontaktPersonerByBladID(int bladId);
-   
+        string GetStamBladKontakterByStambladId(int bladId);
+        Task<int> AddOrUpdateStamBladKontkt(tblStambladKontakter tblStambladKontakter);
 
     }
 }

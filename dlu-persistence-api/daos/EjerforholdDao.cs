@@ -14,10 +14,11 @@ namespace dlu_persistence_api.daos
 
     public EjerforholdDao()
     {
-        using (_entities = new DiMPdotNetEntities())
-        {
+            _entities = new DiMPdotNetEntities();
+
+   
             _entities.Configuration.LazyLoadingEnabled = true;
-        }
+      
         
     }
 
@@ -37,11 +38,35 @@ namespace dlu_persistence_api.daos
             }
             catch (Exception e)
             {
-                throw new DaoExceptions("GetEjerForholdName", e.InnerException);
+                throw new FormattedDbEntityValidationException(e.InnerException);
             }
 
         }
 
+        public string GetAllEjerforhold()
+        {
+            try
+            {
+                var res = from ej in _entities.tblEjerforholds
+                          orderby ej.Ejerforhold ascending
+                          select new
+                          {
+                              ej.Ejerforhold,
+                              ej.EjerforholdID,
+                              ej.WebTillægRubrik,
+                              ej.WebTillægTekst
+
+                          };
+                return JsonConvert.SerializeObject(res, Formatting.Indented);
+            }
+            catch (Exception e)
+            {
+
+                throw new FormattedDbEntityValidationException(e.InnerException);
+            }
+          
+        
+        }
         public Task<int> OpretEjerforhold(tblEjerforhold tblEjerforhold)
         {
             try

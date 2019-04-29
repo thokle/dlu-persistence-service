@@ -101,6 +101,8 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Text.Encodings.Web, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.Encodings.Web.4.5.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
@@ -216,16 +218,20 @@
     <Content Include="swagger-ui\swagger-ui.css.map" />
     <Content Include="swagger-ui\swagger-ui.js" />
     <Content Include="swagger-ui\swagger-ui.js.map" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrap.cs" />
     <Compile Include="controllers\AnnonceKontrolController.cs" />
     <Compile Include="controllers\BladDækningController.cs" />
-    <Compile Include="controllers\EjerforholdServiceController.cs" />
+    <Compile Include="controllers\DelOmraadeController.cs" />
+    <Compile Include="controllers\EjerforholdController.cs" />
     <Compile Include="controllers\FakturaFejlTekstController.cs" />
     <Compile Include="controllers\FakturingsBilagController.cs" />
     <Compile Include="controllers\FejlTekstController.cs" />
+    <Compile Include="controllers\GeoCodeController.cs" />
     <Compile Include="controllers\GruppeController.cs" />
     <Compile Include="controllers\IndexController.cs" />
     <Compile Include="controllers\IOrdreLinjerNavisionController.cs" />
@@ -238,10 +244,12 @@
     <Compile Include="controllers\NavisionContactController.cs" />
     <Compile Include="controllers\OrdreGebyrNavisionController.cs" />
     <Compile Include="controllers\PostNrTableController.cs" />
+    <Compile Include="controllers\PriceAskingController.cs" />
     <Compile Include="controllers\PriserController.cs" />
     <Compile Include="controllers\RegionsController.cs" />
     <Compile Include="controllers\StamBladController.cs" />
     <Compile Include="controllers\StamBladControllerMetadataModule.cs" />
+    <Compile Include="controllers\StmbladKontaktController.cs" />
     <Compile Include="controllers\SupportBilagController.cs" />
     <Compile Include="controllers\UgeAviserTilGridController.cs" />
     <Compile Include="controllers\UserController.cs" />
@@ -275,6 +283,9 @@
       <Project>{b8da807f-531c-42c0-b3f1-79ad6560e1aa}</Project>
       <Name>dlu-persistence-api</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

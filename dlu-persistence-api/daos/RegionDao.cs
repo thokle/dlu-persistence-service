@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Runtime.InteropServices;
-using System.Runtime.Remoting.Messaging;
+using System.Net.Http.Headers;
+using System.Net.Sockets;
 using dlu_persistence_api.exceptions;
 using Newtonsoft.Json;
 
@@ -33,10 +33,10 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = _entities.tblRegions.SqlQuery("select * from tblRegion").ToList<tblRegion>();
-                var regions = new List<Regioms>();
+                var regions = new List<Regions>();
                 foreach (var d in res)
                 {
-                    var regiion = new Regioms()
+                    var regiion = new Regions()
                     {
                         RegionId = d.RegionID,
                         RegionNavn1 =  d.RegionNavn,
@@ -54,9 +54,33 @@ namespace dlu_persistence_api.daos
             }
 
         }
+
+        public string GetRegsionById(int regionId)
+        {
+
+            try
+            {
+                var res = from re in _entities.tblRegions
+                    where re.RegionID == regionId
+                    select new Regions()
+                    {
+                         RegionId = re.RegionID,
+                         RegionNavn1 = re.RegionNavn,
+                         RegionSortId1 = re.RegionSortKey
+                        
+                    };
+
+                return JsonConvert.SerializeObject(res, Formatting.Indented);
+            }
+            
+            catch (Exception e)
+            {
+                throw new FormattedDbEntityValidationException(e.InnerException);
+            }
+        }
     }
 
-     class Regioms
+     class Regions
      {
          private int RegionID;
          private string RegionNavn;

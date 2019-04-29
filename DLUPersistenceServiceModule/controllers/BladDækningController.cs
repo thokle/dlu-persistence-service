@@ -9,9 +9,9 @@ namespace DLUPersistenceServiceModule.controllers
     {
         public BladDækningController(BladDækningService service)
         {
-            Get("/bladdækning/bladid/{bladid:int", o => service.GetBladDækningByBladId(o.bladid));
-            Get("/bladdækning/postnr/{postnr:int", o => service.GetBladDækningByPostnr(o.postnr));
-            Post("/bladdækning/add", async o =>
+            Get("/bladdaekning/bladid/{bladid:int}", o => service.GetBladDækningByBladId(o.bladid));
+            Get("/bladdaekning/postnr/{postnr:int}", o => service.GetBladDækningByPostnr(o.postnr));
+            Post("/bladdaekning/add", async o =>
             {
                 var tbl = this.Bind<tblBladDækning>();
                 var res = await service.OpretBladDækning(tbl);
