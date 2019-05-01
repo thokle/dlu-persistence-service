@@ -20,5 +20,11 @@ namespace dlu_persistence_api.services
         string GetByNavnPostNr(int postnr);
         Tuple<string, int> GetLatestId();
 
+       string GetStamBladEfterEjerforhold(string ejerforhold);
+
+       Task<int> UpdateEjerforholdForAviser(string oldejeforhold, string newejerforhold);
+
+         string GetAllIds();
+
     }
 }

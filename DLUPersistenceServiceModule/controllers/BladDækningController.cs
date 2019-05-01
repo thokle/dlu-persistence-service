@@ -1,6 +1,9 @@
 using dlu_persistence_api;
+using dlu_persistence_api.models;
 using dlu_persistence_api.services;
 using Nancy;
+using Nancy.Extensions;
+using Nancy.IO;
 using Nancy.ModelBinding;
 
 namespace DLUPersistenceServiceModule.controllers
@@ -11,11 +14,26 @@ namespace DLUPersistenceServiceModule.controllers
         {
             Get("/bladdaekning/bladid/{bladid:int}", o => service.GetBladDækningByBladId(o.bladid));
             Get("/bladdaekning/postnr/{postnr:int}", o => service.GetBladDækningByPostnr(o.postnr));
-            Post("/bladdaekning/add", async o =>
+            Post("/bladdaekning/add",  o =>
             {
-                var tbl = this.Bind<tblBladDækning>();
-                var res = await service.OpretBladDækning(tbl);
+                var body = RequestStream.FromStream(Request.Body).AsString();
+                var res = createBladDækning(body);
+              return service.OpretBladDækning(res);
             });
+        }
+        
+        private dlu_persistence_api.tblBladDækning createBladDækning(string jsonString)
+        {
+            var stamDataJson = Newtonsoft.Json.JsonConvert.DeserializeObject<Bladdaeknik>(jsonString);
+
+            var tblBladDaekning = new tblBladDækning();
+            tblBladDaekning.Oplag = stamDataJson.Oplag1;
+            tblBladDaekning.PostNr = stamDataJson.PostNr1;
+            tblBladDaekning.DækningsGrad = stamDataJson.DaekningsGrad1;
+            tblBladDaekning.BladID = stamDataJson.BladID1;
+                    
+
+            return tblBladDaekning;
         }
     }
 }

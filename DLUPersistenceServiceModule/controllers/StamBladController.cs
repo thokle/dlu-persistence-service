@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Headers;
+﻿using System.Linq;
+using System.Net.Http.Headers;
 using System.Runtime.Remoting.Messaging;
 using dlu_persistence_api;
 using dlu_persistence_api.services;
@@ -12,6 +13,7 @@ using Nancy.Swagger.Annotations.Attributes;
 using Nancy.Swagger.Services;
 using Nancy.IO;
 using Nancy.Extensions;
+using Nancy.Helpers;
 using Newtonsoft.Json;
 
 namespace DLUPersistenceServiceModule.controllers
@@ -71,6 +73,14 @@ namespace DLUPersistenceServiceModule.controllers
             Get("/stamblad/antalblade", o => Response.AsJson(stamBladDao.GetNumbersOfStamblad()));
             Get("/stamblad/bynavn/{postnr:int}" , p => stamBladDao.GetByNavnPostNr(p.postnr));
             Get("/stamblad/latestid" ,o => Response.AsJson(stamBladDao.GetLatestId()));
+            Get("/stamblad/ejerforhold/", o =>
+            {
+                var ejerforhold = Request.Headers["ejerforhold"].SingleOrDefault().ToString();
+                return stamBladDao.GetStamBladEfterEjerforhold(ejerforhold);
+            });
+            Post("/stamblad/ejerforhold/{oldejer:string}/{newejer:string",
+                o => stamBladDao.UpdateEjerforholdForAviser(o.oldejer, o.newejer));
+            Get("/stamblad/getAllBladid", o => stamBladDao.GetAllIds());
 
         }
 

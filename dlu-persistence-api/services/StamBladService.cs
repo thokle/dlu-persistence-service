@@ -7,6 +7,7 @@ namespace dlu_persistence_api.services
     public class StamBladService: IStamBladService 
     {
         private StamBladsDao dao;
+        private IStamBladService _stamBladServiceImplementation;
 
         public StamBladService()
         {
@@ -76,6 +77,21 @@ namespace dlu_persistence_api.services
         public Tuple<string, int> GetLatestId()
         {
             return dao.GetLatestId();
+        }
+
+        public string GetStamBladEfterEjerforhold(string ejerforhold)
+        {
+            return dao.GetStamBladEfterEjerforhold(ejerforhold);
+        }
+
+        public Task<int> UpdateEjerforholdForAviser(string oldejeforhold, string newejerforhold)
+        {
+            return dao.UpdateEjerforholdForAviser(oldejeforhold, newejerforhold);
+        }
+
+        public string GetAllIds()
+        {
+            return dao.GetAllIds();
         }
     }
 }

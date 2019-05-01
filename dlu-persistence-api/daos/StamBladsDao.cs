@@ -1,15 +1,12 @@
-﻿using System;
-using System.Data.Entity.Core.Mapping;
+﻿using dlu_persistence_api.exceptions;
+using dlu_persistence_api.models;
+using Newtonsoft.Json;
+using System;
 using System.Data.Entity.Migrations;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Linq;
-using System.Net.Sockets;
-using System.Runtime.Serialization;
 using System.Threading.Tasks;
-using dlu_persistence_api.exceptions;
-using Newtonsoft.Json;
-using dlu_persistence_api.models;
 
 namespace dlu_persistence_api.daos
 {
@@ -530,8 +527,24 @@ namespace dlu_persistence_api.daos
             }
         }
 
+        public string GetAllIds()
+        {
+            try
+            {
+                var res = from en in di.tblBladStamdatas   orderby en.BladID ascending select new {
+                  en.BladID
+                };
+                return JsonConvert.SerializeObject(res, Formatting.Indented);
 
-        public void updateEjerforholdForAviser(string oldejeforhold, string newejerforhold)
+
+            }
+            catch (Exception e)
+            {
+                throw new FormattedDbEntityValidationException(e.InnerException);
+            }
+        }
+
+        public Task<int> UpdateEjerforholdForAviser(string oldejeforhold, string newejerforhold)
         {
             var old = from ej in di.tblBladStamdatas where ej.Ejerforhold == oldejeforhold select ej;
 
@@ -539,7 +552,7 @@ namespace dlu_persistence_api.daos
             {
                 item.Ejerforhold = newejerforhold;
             }
-            di.SaveChanges();
+            return  di.SaveChangesAsync();
         }
     }
 }
