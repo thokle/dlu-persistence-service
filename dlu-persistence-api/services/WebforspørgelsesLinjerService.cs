@@ -8,7 +8,7 @@ namespace dlu_persistence_api.services
 
         public WebforspørgelsesLinjerService()
         {
-            using (_dao = new WEBForespørgselLinjerDao()) ;
+         _dao = new WEBForespørgselLinjerDao() ;
 
         }
         public string GetForspørgelsesLinjerByBladId(int bladID)

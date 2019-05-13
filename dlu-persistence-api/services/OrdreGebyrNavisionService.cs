@@ -9,7 +9,7 @@ namespace dlu_persistence_api.services
 
         public OrdreGebyrNavisionService()
         {
-            using (_navisionDao = new OrdreGebyrNavisionDao()) ;
+            _navisionDao = new OrdreGebyrNavisionDao() ;
         }
        
         public string GetOrderGebyNavisionByOrderId(int orderid)

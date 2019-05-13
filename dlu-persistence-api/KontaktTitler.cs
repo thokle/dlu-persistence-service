@@ -12,13 +12,9 @@ namespace dlu_persistence_api
     using System;
     using System.Collections.Generic;
     
-    public partial class tblStambladKontakter
+    public partial class KontaktTitler
     {
         public int id { get; set; }
-        public int StamBladId { get; set; }
-        public string KontakPersonNavn { get; set; }
-        public string KontakPersonEmail { get; set; }
-        public string KontakPersonTitel { get; set; }
-        public string KontakPersonTelefon { get; set; }
+        public string titel { get; set; }
     }
 }

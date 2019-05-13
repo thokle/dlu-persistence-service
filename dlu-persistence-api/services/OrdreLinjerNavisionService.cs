@@ -8,7 +8,7 @@ namespace dlu_persistence_api.services
 
         public OrdreLinjerNavisionService()
         {
-            using (_dao = new OrdreLinjerNavisionDao()) ;
+            _dao = new OrdreLinjerNavisionDao() ;
         }
         public string GetOrderLinerByBladID(int bladId)
         {

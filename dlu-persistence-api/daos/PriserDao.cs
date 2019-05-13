@@ -6,12 +6,13 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using dlu_persistence_api.exceptions;
+using dlu_persistence_api.models;
 namespace dlu_persistence_api.daos
 {
     /// <summary>
     /// 
     /// </summary>
-    public class PriserDao : IDisposable
+    public class PriserDao
     {
         private readonly DiMPdotNetEntities di;
 
@@ -20,34 +21,6 @@ namespace dlu_persistence_api.daos
             di = new DiMPdotNetEntities();
         }
 
-        public void Dispose()
-        {
-            di?.Dispose();
-        }
-
-/// <summary>
-/// 
-/// </summary>
-/// <param name="bladid"></param>
-/// <returns></returns>
-/// <exception cref="DaoExceptions"></exception>
-        public string GetPrislisterPrÅrByBladId(int bladid)
-        {
-            try
-            {
-                var res = from p in di.tblPrislisterPrBladPrÅr
-                    where p.BladID == bladid
-                    select new
-                    {
-                        tblPrislister = from ps in di.tblPrisers where ps.BladID == bladid select new { }
-                    };
-                return JsonConvert.SerializeObject(res);
-            }
-            catch (Exception e)
-            {
-                throw new DaoExceptions("PriserDao GetPrislisterPrÅrByBladId " , e.InnerException);
-            }
-        }
 
         /// <summary>
         /// 
@@ -106,7 +79,7 @@ namespace dlu_persistence_api.daos
                     {
                         p.PrislisteID, p.PrislisteNavn
                     };
-                return JsonConvert.SerializeObject(res);
+                return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
             catch (Exception e)
             {
@@ -119,7 +92,7 @@ namespace dlu_persistence_api.daos
 /// <param name="bladid"></param>
 /// <returns></returns>
 /// <exception cref="DaoExceptions"></exception>
-        public Task<int> AddPriserPrUge(int bladid)
+        public Task<int> AddPriserPrUge(int bladid, int prislisteId)
         {
             try
             {
@@ -132,18 +105,129 @@ namespace dlu_persistence_api.daos
                     {
                         Uge = (byte)i,
                         BladID = bladid,
-                        PrislisteID = 1
+                        PrislisteID = prislisteId
                     };
                     di.tblPrislisterPrBladPrUges.Add(tblPrislisterPrBladPrUge);
                 }
 
                 return di.SaveChangesAsync();
             }
-            catch (Exception e)
+            catch (FormattedDbEntityValidationException e)
             {
-            throw new FormattedDbEntityValidationException(e.InnerException);
+                throw new Exception(e.Message);
             }
-          
+
+        }
+
+    public Task<int> CreatePrice(tblPriser tblPriser)
+        {
+            try
+            {
+                di.tblPrisers.AddOrUpdate(tblPriser);
+                return di.SaveChangesAsync();
+            }
+            catch (FormattedDbEntityValidationException e)
+            {
+                throw new Exception(e.Message);
+            }
+
+
+        }
+
+    public string  GetPrislister()
+        {
+            try
+            {
+                var res = from pl in di.tblPrislisters
+                          orderby pl.PrislisteID
+                          select new
+                          {
+                              pl.PrislisteID,
+                              pl.PrislisteNavn
+
+
+                          };
+                return JsonConvert.SerializeObject(res, Formatting.Indented);
+            }
+            catch (FormattedDbEntityValidationException e)
+            {
+                throw new Exception(e.Message);
+            }
+
+        }
+
+        public string GetPlacering()
+        {
+            try
+            {
+                var res = from pla in di.tblPlacerings
+                          orderby pla.PlaceringID
+                          select new
+                          {
+                              pla.PlaceringID, pla.Betegnelse
+                          };
+                return JsonConvert.SerializeObject(res, Formatting.Indented);
+            }
+            catch (FormattedDbEntityValidationException e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public string GetPriserFromBladId(int bladId)
+        {
+            try
+            {
+                var res = from psl in di.tblPrisers
+                          where psl.BladID == bladId
+                          orderby psl.År
+                          select new PriserForBlad
+                          {
+                              
+                              
+                            AAr1 = psl.År , BladID1 = psl.BladID, ControlNavn1 = psl.ControlNavn, Farve4Max1 = psl.Farve4Max, Farve4Min1 = psl.Farve4Min, Farve4Pris1 = psl.Farve4Pris, FarveMax1 = psl.FarveMax, FarveMin1 = psl.FarveMin,
+                            FarvePris1 = psl.FarvePris, FormatFra1 =psl.FormatFra, FormatTil1 =psl.FormatTil, PlaceringID1 = psl.PlaceringID, PrislisteID1 = psl.PlaceringID
+                              
+                          };
+
+                return JsonConvert.SerializeObject(res, Formatting.Indented);
+            }
+            catch (FormattedDbEntityValidationException e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public string GetPrisListeFromBladidArPlacering(int bladId, int placering, int aar)
+        {
+            try
+            {
+                var res = from pl in di.tblPrisers
+                          where pl.År == aar & pl.BladID == bladId & pl.PlaceringID == placering
+                          select new PriserForBlad
+                          {
+                              AAr1 = pl.År,
+                              BladID1 = pl.BladID,
+                              ControlNavn1 = pl.ControlNavn,
+                              Farve4Max1 = pl.Farve4Max,
+                              Farve4Min1 = pl.Farve4Min,
+                              Farve4Pris1 = pl.Farve4Pris,
+                              FarveMax1 = pl.FarveMax,
+                              FarveMin1 = pl.FarveMin,
+                              FarvePris1 = pl.FarvePris,
+                              FormatFra1 = pl.FormatFra,
+                              FormatTil1 = pl.FormatTil,
+                              PlaceringID1 = pl.PlaceringID,
+                              PrislisteID1 = pl.PlaceringID
+
+                          };
+                return JsonConvert.SerializeObject(res, Formatting.Indented);
+
+            }
+            catch (FormattedDbEntityValidationException e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 /// <summary>
 /// 
@@ -159,4 +243,5 @@ namespace dlu_persistence_api.daos
                 dfi.FirstDayOfWeek);
         }
     }
+
 }

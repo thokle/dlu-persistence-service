@@ -15,6 +15,11 @@ namespace DLUPersistenceServiceModule
     public class Bootstrap : DefaultNancyBootstrapper
     {
 
+        public override void Configure(INancyEnvironment environment)
+        {
+            base.Configure(environment);
+            environment.Tracing(enabled: true, displayErrorTraces: true);
+        }
         protected override void RequestStartup(TinyIoCContainer container, IPipelines pipelines, NancyContext context)
         {
             //CORS Enable
@@ -30,9 +35,7 @@ namespace DLUPersistenceServiceModule
             {
                 EmailAddress = "exampleEmail@example.com"
             });
-
             
-           
             base.ApplicationStartup(container, pipelines);
 
         }

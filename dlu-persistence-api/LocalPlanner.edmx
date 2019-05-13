@@ -6,7 +6,7 @@
     <edmx:StorageModels>
     <Schema Namespace="DiMPdotNetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
-warning 6013: The table/view 'DiMPdotNet.dbo.BladDækningOpdater' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+warning 6013: The table/view 'DiMPdotNetDev.dbo.BladDækningOpdater' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="BladDækningOpdater">
           <Property Name="Blad ID" Type="int" />
           <Property Name="Postnr" Type="int" />
@@ -14,12 +14,12 @@ warning 6013: The table/view 'DiMPdotNet.dbo.BladDækningOpdater' does not have 
           <Property Name="DG Beregnet" Type="int" />
         </EntityType>-->
         <!--Errors Found During Generation:
-warning 6013: The table/view 'DiMPdotNet.dbo.BladSlet' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+warning 6013: The table/view 'DiMPdotNetDev.dbo.BladSlet' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="BladSlet">
           <Property Name="Blad ID" Type="int" />
         </EntityType>-->
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.bladtlfogfaxkopi' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.bladtlfogfaxkopi' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="bladtlfogfaxkopi">
           <Key>
             <PropertyRef Name="BladID" />
@@ -31,7 +31,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.bladtlfogfaxkopi' does not have a p
           <Property Name="Fax" Type="char" MaxLength="15" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'DiMPdotNet.dbo.DeadlinesJyskFynske' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+warning 6013: The table/view 'DiMPdotNetDev.dbo.DeadlinesJyskFynske' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="DeadlinesJyskFynske">
           <Property Name="Lokal Ugeavis" Type="nvarchar" MaxLength="255" />
           <Property Name="T Ordre Dag" Type="float" />
@@ -45,7 +45,7 @@ warning 6013: The table/view 'DiMPdotNet.dbo.DeadlinesJyskFynske' does not have 
           <Property Name="BladID" Type="float" />
         </EntityType>-->
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.delPriser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.delPriser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="delPriser">
           <Key>
             <PropertyRef Name="BladID" />
@@ -68,7 +68,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.delPriser' does not have a primary 
           <Property Name="version" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.HerningFolkeblad' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.HerningFolkeblad' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="HerningFolkeblad">
           <Key>
             <PropertyRef Name="BladID" />
@@ -78,7 +78,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.HerningFolkeblad' does not have a p
           <Property Name="Navn" Type="nchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'DiMPdotNet.dbo.Jysk-Fynske' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+warning 6013: The table/view 'DiMPdotNetDev.dbo.Jysk-Fynske' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="Jysk-Fynske">
           <Property Name="ID" Type="float" />
           <Property Name="Avis" Type="nvarchar" MaxLength="255" />
@@ -91,8 +91,15 @@ warning 6013: The table/view 'DiMPdotNet.dbo.Jysk-Fynske' does not have a primar
           <Property Name="Stamdata" Type="nvarchar" MaxLength="255" />
           <Property Name="Prisforespørgsler" Type="nvarchar" MaxLength="255" />
         </EntityType>-->
+        <EntityType Name="KontaktTitler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titel" Type="varchar" MaxLength="50" />
+        </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'DiMPdotNet.dbo.NyeLæsertal' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+warning 6013: The table/view 'DiMPdotNetDev.dbo.NyeLæsertal' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="NyeLæsertal">
           <Property Name="BladId" Type="float" />
           <Property Name="Læsertal" Type="float" />
@@ -116,7 +123,7 @@ warning 6013: The table/view 'DiMPdotNet.dbo.NyeLæsertal' does not have a prima
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.Table_1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.Table_1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Table_1">
           <Key>
             <PropertyRef Name="askingID" />
@@ -129,7 +136,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.Table_1' does not have a primary ke
           <Property Name="mail" Type="varchar" MaxLength="100" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.tblAktiveVærdier' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.tblAktiveVærdier' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblAktiveVærdier">
           <Key>
             <PropertyRef Name="GruppeVersion" />
@@ -143,7 +150,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.tblAktiveVærdier' does not have a 
           <Property Name="BilagsBladeSendeUge" Type="tinyint" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.tblAktivGruppeVersion' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.tblAktivGruppeVersion' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblAktivGruppeVersion">
           <Key>
             <PropertyRef Name="AktivVersion" />
@@ -178,7 +185,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.tblAktivGruppeVersion' does not hav
           <Property Name="DækningsGrad" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'DiMPdotNet.dbo.tblBladDækningOpdatering' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+warning 6013: The table/view 'DiMPdotNetDev.dbo.tblBladDækningOpdatering' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="tblBladDækningOpdatering">
           <Property Name="Blad-Id" Type="int" />
           <Property Name="Postnr" Type="int" />
@@ -188,6 +195,15 @@ warning 6013: The table/view 'DiMPdotNet.dbo.tblBladDækningOpdatering' does not
           <Property Name="Gratisaviser nej tak %1" Type="float" />
           <Property Name="DG beregnet" Type="int" />
         </EntityType>-->
+        <EntityType Name="tblBladKommentar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bladid" Type="int" />
+          <Property Name="tekst" Type="text" />
+          <Property Name="date" Type="date" Nullable="false" />
+        </EntityType>
         <EntityType Name="tblBladnavnMappingFraDO">
           <Key>
             <PropertyRef Name="BladID" />
@@ -340,6 +356,14 @@ warning 6013: The table/view 'DiMPdotNet.dbo.tblBladDækningOpdatering' does not
           <Property Name="Overført" Type="bit" Nullable="false" />
           <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
+        <EntityType Name="tblBladTiLaegsType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bladid" Type="int" />
+          <Property Name="tillaegsTypeId" Type="int" />
+        </EntityType>
         <EntityType Name="tblBrugerData">
           <Key>
             <PropertyRef Name="Initialer" />
@@ -418,7 +442,7 @@ warning 6013: The table/view 'DiMPdotNet.dbo.tblBladDækningOpdatering' does not
           <Property Name="Tekst" Type="ntext" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.tblFarveTillægWebApp' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.tblFarveTillægWebApp' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblFarveTillægWebApp">
           <Key>
             <PropertyRef Name="BladID" />
@@ -572,7 +596,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.tblFarveTillægWebApp' does not hav
           <Property Name="Titel" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'DiMPdotNet.dbo.tblMængdeRabat' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+warning 6013: The table/view 'DiMPdotNetDev.dbo.tblMængdeRabat' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="tblMængdeRabat">
           <Property Name="GeoKode" Type="nvarchar" MaxLength="8" />
           <Property Name="AntalBlade" Type="tinyint" />
@@ -730,7 +754,7 @@ warning 6013: The table/view 'DiMPdotNet.dbo.tblMængdeRabat' does not have a pr
           <Property Name="Version" Type="tinyint" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.tblMmPrisWebApp' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.tblMmPrisWebApp' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblMmPrisWebApp">
           <Key>
             <PropertyRef Name="BladID" />
@@ -822,7 +846,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.tblMmPrisWebApp' does not have a pr
           <Property Name="Betegnelse" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.tblPlannerPlaner' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.tblPlannerPlaner' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblPlannerPlaner">
           <Key>
             <PropertyRef Name="PlannerID" />
@@ -955,12 +979,12 @@ warning 6002: The table/view 'DiMPdotNet.dbo.tblPlannerPlaner' does not have a p
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="StamBladId" Type="int" />
-          <Property Name="KontakPersonNavn" Type="varchar" MaxLength="50" />
-          <Property Name="KontakPersonEmail" Type="varchar" MaxLength="50" />
-          <Property Name="KontakPersonTitel" Type="varchar" MaxLength="50" />
-          <Property Name="KontakPersonTelefon" Type="varchar" MaxLength="50" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StamBladId" Type="int" Nullable="false" />
+          <Property Name="KontakPersonNavn" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="KontakPersonEmail" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="KontakPersonTitel" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="KontakPersonTelefon" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="tblSupportBilag">
           <Key>
@@ -1045,7 +1069,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.tblPlannerPlaner' does not have a p
           <Property Name="eMails" Type="nvarchar" MaxLength="1000" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.tempPriser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.tempPriser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tempPriser">
           <Key>
             <PropertyRef Name="BladID" />
@@ -1071,7 +1095,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.tempPriser' does not have a primary
           <Property Name="ControlNavn" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.tmpNyeDeadlines' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.tmpNyeDeadlines' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tmpNyeDeadlines">
           <Key>
             <PropertyRef Name="BladID" />
@@ -1089,7 +1113,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.tmpNyeDeadlines' does not have a pr
           <Property Name="MaterialeTid" Type="nvarchar" MaxLength="5" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.tnpOrdreNr' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.tnpOrdreNr' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tnpOrdreNr">
           <Key>
             <PropertyRef Name="MedieplanNr" />
@@ -1097,7 +1121,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.tnpOrdreNr' does not have a primary
           <Property Name="MedieplanNr" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.tnpOrdreNr2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.tnpOrdreNr2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tnpOrdreNr2">
           <Key>
             <PropertyRef Name="MedieplanNr" />
@@ -1105,7 +1129,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.tnpOrdreNr2' does not have a primar
           <Property Name="MedieplanNr" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.tnpOrdreNr3' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.tnpOrdreNr3' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tnpOrdreNr3">
           <Key>
             <PropertyRef Name="MedieplanNr" />
@@ -1129,7 +1153,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.tnpOrdreNr3' does not have a primar
           <Property Name="jobfunction" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.AktiveUgeaviserMedAlleData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.AktiveUgeaviserMedAlleData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AktiveUgeaviserMedAlleData">
           <Key>
             <PropertyRef Name="BladID" />
@@ -1188,7 +1212,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.AktiveUgeaviserMedAlleData' does no
           <Property Name="SamannonceringsRabat" Type="text" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.FakturaFejlFindes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.FakturaFejlFindes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="FakturaFejlFindes">
           <Key>
             <PropertyRef Name="MedieplanNr" />
@@ -1199,7 +1223,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.FakturaFejlFindes' does not have a 
           <Property Name="FejlSum" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.FindFejlLinjer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.FindFejlLinjer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="FindFejlLinjer">
           <Key>
             <PropertyRef Name="Mm" />
@@ -1235,7 +1259,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.FindFejlLinjer' does not have a pri
           <Property Name="FejlTekst" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.GammelAnnoncørID' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.GammelAnnoncørID' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="GammelAnnoncørID">
           <Key>
             <PropertyRef Name="No_" />
@@ -1247,7 +1271,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.GammelAnnoncørID' does not have a 
           <Property Name="Gammelt Faktureres til ID" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.LPRoller' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.LPRoller' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="LPRoller">
           <Key>
             <PropertyRef Name="User ID" />
@@ -1257,7 +1281,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.LPRoller' does not have a primary k
           <Property Name="Role ID" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.NavisionContact' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.NavisionContact' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="NavisionContact">
           <Key>
             <PropertyRef Name="No_" />
@@ -1295,7 +1319,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.NavisionContact' does not have a pr
           <Property Name="ContactNoFilter" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.NavisionContact2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.NavisionContact2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="NavisionContact2">
           <Key>
             <PropertyRef Name="No_" />
@@ -1305,7 +1329,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.NavisionContact2' does not have a p
           <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.Salesperson' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.Salesperson' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Salesperson">
           <Key>
             <PropertyRef Name="Name" />
@@ -1323,7 +1347,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.Salesperson' does not have a primar
           <Property Name="Rolle" Type="varchar" MaxLength="20" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.UgeaviserTilGrid' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.UgeaviserTilGrid' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="UgeaviserTilGrid">
           <Key>
             <PropertyRef Name="BladID" />
@@ -1367,7 +1391,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.UgeaviserTilGrid' does not have a p
           <Property Name="MaterialedeadlineRubrik" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.viewBlade' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.viewBlade' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="viewBlade">
           <Key>
             <PropertyRef Name="BladID" />
@@ -1389,7 +1413,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewBlade' does not have a primary 
           <Property Name="Overført" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.viewBookingListe' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.viewBookingListe' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="viewBookingListe">
           <Key>
             <PropertyRef Name="MedieplanNr" />
@@ -1414,7 +1438,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewBookingListe' does not have a p
           <Property Name="IndrykningsÅr" Type="smallint" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.viewGrupper' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.viewGrupper' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="viewGrupper">
           <Key>
             <PropertyRef Name="GruppeID" />
@@ -1425,7 +1449,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewGrupper' does not have a primar
           <Property Name="GruppeNavn" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.viewLinjeDiff' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.viewLinjeDiff' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="viewLinjeDiff">
           <Key>
             <PropertyRef Name="MmRabatDiff" />
@@ -1459,7 +1483,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewLinjeDiff' does not have a prim
           <Property Name="Mm" Type="smallint" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.viewOrdre' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.viewOrdre' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="viewOrdre">
           <Key>
             <PropertyRef Name="OrdreNr" />
@@ -1505,7 +1529,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewOrdre' does not have a primary 
           <Property Name="Item Description" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.viewOrdreErSendt' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.viewOrdreErSendt' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="viewOrdreErSendt">
           <Key>
             <PropertyRef Name="MedieplanNr" />
@@ -1530,7 +1554,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewOrdreErSendt' does not have a p
           <Property Name="KonsulentCode" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.viewOrdreFIND' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.viewOrdreFIND' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="viewOrdreFIND">
           <Key>
             <PropertyRef Name="OrdreNr" />
@@ -1575,7 +1599,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewOrdreFIND' does not have a prim
           <Property Name="Previous Version" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.viewOrdreIkkeSendt' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.viewOrdreIkkeSendt' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="viewOrdreIkkeSendt">
           <Key>
             <PropertyRef Name="MedieplanNr" />
@@ -1603,7 +1627,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewOrdreIkkeSendt' does not have a
           <Property Name="Deadline" Type="nvarchar" MaxLength="16" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.viewOrdreLinjer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.viewOrdreLinjer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="viewOrdreLinjer">
           <Key>
             <PropertyRef Name="OrdreNr" />
@@ -1638,7 +1662,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewOrdreLinjer' does not have a pr
           <Property Name="Previous Version" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.viewOrdreLinjerFIND' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.viewOrdreLinjerFIND' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="viewOrdreLinjerFIND">
           <Key>
             <PropertyRef Name="OrdreNr" />
@@ -1668,7 +1692,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewOrdreLinjerFIND' does not have 
           <Property Name="MaterialePris" Type="smallmoney" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.viewOrdreSendtManglerMateriale' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.viewOrdreSendtManglerMateriale' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="viewOrdreSendtManglerMateriale">
           <Key>
             <PropertyRef Name="MedieplanNr" />
@@ -1696,7 +1720,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewOrdreSendtManglerMateriale' doe
           <Property Name="Deadline" Type="nvarchar" MaxLength="16" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.viewOversigt' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.viewOversigt' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="viewOversigt">
           <Key>
             <PropertyRef Name="MedieplanNr" />
@@ -1724,7 +1748,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewOversigt' does not have a prima
           <Property Name="Deadline" Type="nvarchar" MaxLength="16" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplan' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplan' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="viewUpdateStatusIMedieplan">
           <Key>
             <PropertyRef Name="MedieplanNr" />
@@ -1736,7 +1760,7 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplan' does no
           <Property Name="Status" Type="tinyint" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplanNr' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="viewUpdateStatusIMedieplanNr">
           <Key>
             <PropertyRef Name="MedieplanNr" />
@@ -2468,13 +2492,16 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplanNr' does 
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="DiMPdotNetModelStoreContainer">
           <EntitySet Name="dtproperties" EntityType="Self.dtproperties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KontaktTitler" EntityType="Self.KontaktTitler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OpdateringsTekst" EntityType="Self.OpdateringsTekst" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblAnnoncekontrol" EntityType="Self.tblAnnoncekontrol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblBladDækning" EntityType="Self.tblBladDækning" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBladKommentar" EntityType="Self.tblBladKommentar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblBladnavnMappingFraDO" EntityType="Self.tblBladnavnMappingFraDO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblBladStamdata" EntityType="Self.tblBladStamdata" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblBladStamdataKopi" EntityType="Self.tblBladStamdataKopi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBladTiLaegsType" EntityType="Self.tblBladTiLaegsType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblBrugerData" EntityType="Self.tblBrugerData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblDage" EntityType="Self.tblDage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblDelOmråde" EntityType="Self.tblDelOmråde" Schema="dbo" store:Type="Tables" />
@@ -3998,11 +4025,11 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplanNr' does 
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="StamBladId" Type="Int32" />
-          <Property Name="KontakPersonNavn" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="KontakPersonEmail" Type="String" />
-          <Property Name="KontakPersonTitel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="KontakPersonTelefon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StamBladId" Type="Int32" Nullable="false" />
+          <Property Name="KontakPersonNavn" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="KontakPersonEmail" Type="String" MaxLength="100" Nullable="false" Unicode="false" FixedLength="false" />
+          <Property Name="KontakPersonTitel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="KontakPersonTelefon" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="tblSupportBilag">
           <Key>
@@ -5733,6 +5760,9 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplanNr' does 
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="tblBladTiLaegsTypes" EntityType="DiMPdotNetModel.tblBladTiLaegsType" />
+          <EntitySet Name="KontaktTitlers" EntityType="DiMPdotNetModel.KontaktTitler" />
+          <EntitySet Name="tblBladKommentars" EntityType="DiMPdotNetModel.tblBladKommentar" />
         </EntityContainer>
         <ComplexType Name="dt_getpropertiesbyid_Result">
           <Property Type="String" Name="property" Nullable="false" MaxLength="64" />
@@ -5757,6 +5787,30 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplanNr' does 
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="tblBladTiLaegsType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bladid" Type="Int32" />
+          <Property Name="tillaegsTypeId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="KontaktTitler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblBladKommentar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bladid" Type="Int32" />
+          <Property Name="tekst" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -7305,6 +7359,33 @@ warning 6002: The table/view 'DiMPdotNet.dbo.viewUpdateStatusIMedieplanNr' does 
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DiMPdotNetModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DiMPdotNetModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="tblBladTiLaegsTypes">
+            <EntityTypeMapping TypeName="DiMPdotNetModel.tblBladTiLaegsType">
+              <MappingFragment StoreEntitySet="tblBladTiLaegsType">
+                <ScalarProperty Name="tillaegsTypeId" ColumnName="tillaegsTypeId" />
+                <ScalarProperty Name="bladid" ColumnName="bladid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KontaktTitlers">
+            <EntityTypeMapping TypeName="DiMPdotNetModel.KontaktTitler">
+              <MappingFragment StoreEntitySet="KontaktTitler">
+                <ScalarProperty Name="titel" ColumnName="titel" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBladKommentars">
+            <EntityTypeMapping TypeName="DiMPdotNetModel.tblBladKommentar">
+              <MappingFragment StoreEntitySet="tblBladKommentar">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="tekst" ColumnName="tekst" />
+                <ScalarProperty Name="bladid" ColumnName="bladid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

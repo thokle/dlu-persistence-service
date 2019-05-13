@@ -7,7 +7,7 @@ namespace dlu_persistence_api.services
     public class StamBladService: IStamBladService 
     {
         private StamBladsDao dao;
-        private IStamBladService _stamBladServiceImplementation;
+      
 
         public StamBladService()
         {

@@ -10,15 +10,10 @@ namespace dlu_persistence_api.services
 
         public PriserService()
         {
-            using (_dao = new PriserDao())
-            {
-                
-            }
+            _dao = new PriserDao();
+          
         }
-        public string GetPrislisterPrÅrByBladId(int bladid)
-        {
-            return _dao.GetPrislisterPrÅrByBladId(bladid);
-        }
+      
 
         public string GetPrisLigePrUge(int bladId)
         {
@@ -35,10 +30,29 @@ namespace dlu_persistence_api.services
             return _dao.GetPrisLister();
         }
 
-        public Task<int> AddPriserPrUge(int bladid)
+        public Task<int> AddPriserPrUge(int bladid, int prislisteId)
         {
+            return _dao.AddPriserPrUge(bladid, prislisteId);
+        }
 
-            return _dao.AddPriserPrUge(bladid);
+        public Task<int> CreatePrice(tblPriser tblPriser)
+        {
+            return _dao.CreatePrice(tblPriser);
+        }
+
+        public string GetPlacering()
+        {
+            return _dao.GetPlacering();
+        }
+
+        public string GetPriserFromBladId(int bladId)
+        {
+            return _dao.GetPriserFromBladId(bladId);
+        }
+
+        public string GetPrisListeFromBladidArPlacering(int bladId, int placering, int aar)
+        {
+            return _dao.GetPrisListeFromBladidArPlacering(bladId, placering, aar);
         }
     }
 }

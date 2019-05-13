@@ -131,6 +131,9 @@
         <AssociationConnector Association="DiMPdotNetModel.FK_tblPrislisterPrBladPrUge_tblPrislister" ManuallyRouted="false" />
         <AssociationConnector Association="DiMPdotNetModel.tblKontakterArbOmråderPrKontakt" ManuallyRouted="false" />
         <AssociationConnector Association="DiMPdotNetModel.tblKontaktFunktionerPrBlad" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DiMPdotNetModel.tblBladTiLaegsType" Width="1.5" PointX="24.375" PointY="27.75" />
+        <EntityTypeShape EntityType="DiMPdotNetModel.KontaktTitler" Width="1.5" PointX="26.375" PointY="27.75" />
+        <EntityTypeShape EntityType="DiMPdotNetModel.tblBladKommentar" Width="1.5" PointX="28.375" PointY="16.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

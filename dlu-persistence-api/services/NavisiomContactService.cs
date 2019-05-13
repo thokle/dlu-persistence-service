@@ -8,7 +8,7 @@ namespace dlu_persistence_api.services
 
         public NavisiomContactService()
         {
-            using (_dao = new NavisionContactDao());
+         _dao = new NavisionContactDao();
         }
         
         public string GetNavisionContactbySalesPersonId(string salesPersonId)
