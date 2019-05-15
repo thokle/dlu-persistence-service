@@ -28,15 +28,18 @@ namespace dlu_persistence_api.daos
         /// <param name="bladId"></param>
         /// <returns></returns>
         /// <exception cref="DaoExceptions"></exception>
-        public string GetPrisLigePrUge(int bladId)
+        public string GetPrisLigePrUge(int bladId, int year)
         {
             try
             {
                 var res = from p in di.tblPrislisterPrBladPrUges
-                    where p.BladID == bladId
-                    select new
+                    where p.BladID == bladId & p.År == year
+                    select new PriceListWeekModel()
                     {
-                        p.PrislisteID, p.Uge, p.År, p.BladID
+                        Uige = p.Uge,
+                        AAr = p.År,
+                        BladId = p.BladID,
+                         PrislisteId = p.PrislisteID
                     };
                 return JsonConvert.SerializeObject(res);
             }

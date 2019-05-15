@@ -13,11 +13,11 @@ namespace dlu_persistence_api.services
             _dao = new PriserDao();
           
         }
-      
 
-        public string GetPrisLigePrUge(int bladId)
+
+        public string GetPrisLigePrUge(int bladId, int year)
         {
-            return _dao.GetPrisLigePrUge(bladId);
+            return _dao.GetPrisLigePrUge(bladId, year);
         }
 
         public Task<int> CreateOrUpdatePrisListePrBladPrÅr(tblPrislisterPrBladPrÅr tbl)

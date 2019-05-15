@@ -1,3 +1,4 @@
+using System.Runtime.Remoting.Messaging;
 using dlu_persistence_api;
 using Nancy;
 using dlu_persistence_api.services;
@@ -13,7 +14,8 @@ namespace DLUPersistenceServiceModule.controllers
         public PriserController(PriserService service)
         {
           
-            Get("priser/GetPrisListePrUge/{bladid:int}", o => service.GetPrisLigePrUge(o.bladid));
+            Get("/priser/GetPrisListePrUge/{bladid:int}", o => service.GetPrisLigePrUge(o.bladid, 2018));
+            Get("/priser/{bladid}/add/{year}", o => "hello");
             Get("/priser/prislister", o => service.GetPrisLister() );
             Get("/priser/bladpriser/{bladid:int}", o => service.GetPriserFromBladId(o.bladid));
             Get("/priser/{bladid:int}/{placeringd:int}/{aar:int}", o => service.GetPrisListeFromBladidArPlacering(o.bladid, o.placeringd, o.aar));

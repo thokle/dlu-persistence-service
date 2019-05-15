@@ -5,7 +5,7 @@ namespace dlu_persistence_api.services
     public interface IPriserService
     {
      
-        string GetPrisLigePrUge(int bladId);
+         string GetPrisLigePrUge(int bladId, int year);
         Task<int> CreateOrUpdatePrisListePrBladPrÅr(tblPrislisterPrBladPrÅr tbl);
         string GetPrisLister();
         Task<int> AddPriserPrUge(int bladid, int prislisteId);

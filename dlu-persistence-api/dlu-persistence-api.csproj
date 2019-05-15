@@ -160,6 +160,7 @@
     </Compile>
     <Compile Include="models\Bladdaeknik.cs" />
     <Compile Include="models\DelOmraade.cs" />
+    <Compile Include="models\PriceListWeekModel.cs" />
     <Compile Include="models\PriserForBlad.cs" />
     <Compile Include="models\StamBlad.cs" />
     <Compile Include="NavisionContact.cs">
