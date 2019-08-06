@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace dlu_persistence_api.services.interfaces
 {
-   public interface IBladTillaegsTypeService
+    interface IAktiveAviserTIlGridService
     {
-        string GetBladTilKLaegs(int bladid);
-        Task<int> CreateBladTillaegs(tblBladTiLaegsType tblBladTiLaegsType);
-
+        string GetAllAvisetTilGrid();
 
     }
 }

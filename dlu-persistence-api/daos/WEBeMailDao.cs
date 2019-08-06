@@ -11,17 +11,15 @@ namespace dlu_persistence_api.daos
     /// <summary>
     /// 
     /// </summary>
-    public class WEBeMailDao: IDisposable
+    public class WEBeMailDao
     {
 
-        private DiMPdotNetEntities _entities;
+        private DiMPdotNetDevEntities _entities;
 
         public WEBeMailDao()
         {
-            using (_entities = new DiMPdotNetEntities())
-            {
-                _entities.Configuration.LazyLoadingEnabled = true;
-            }
+            _entities = new DiMPdotNetDevEntities();
+           
         }
 
         /// <summary>

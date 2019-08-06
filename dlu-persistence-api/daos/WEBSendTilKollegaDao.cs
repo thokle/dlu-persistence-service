@@ -8,16 +8,14 @@ using Newtonsoft.Json;
 
 namespace dlu_persistence_api.daos
 {
-    public class WEBSendTilKollegaDao: IDisposable
+    public class WEBSendTilKollegaDao
     {
-        private DiMPdotNetEntities _entities;
+        private DiMPdotNetDevEntities _entities;
 
         public WEBSendTilKollegaDao()
         {
-            using (_entities = new DiMPdotNetEntities())
-            {
-                _entities.Configuration.LazyLoadingEnabled = true;
-            }
+            _entities = new DiMPdotNetDevEntities();
+           
         }
 
         public string WEBSendTilKollegaDaoByPersonID(int personId)
@@ -92,9 +90,6 @@ namespace dlu_persistence_api.daos
             }   
         }
 
-        public void Dispose()
-        {
-            _entities?.Dispose();
-        }
+       
     }
 }

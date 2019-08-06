@@ -14,22 +14,22 @@ namespace DLUPersistenceServiceModule.controllers
 {
     public class BladTilLaegTypeController: Nancy.NancyModule
     {
-        public BladTilLaegTypeController(BladTillaegsTypeService service)
+        public BladTilLaegTypeController(BladTilaegsTypeService service)
         {
-            Get("/bladtillaegsType/{int:bladid}",  o => service.GetBladTilKLaegs(o.bladid));
-            Post("bladtillaegsType", o => {
+            Get("/bladtillaegsType/",  o => service.GetBladtillaegsTyper());
+            Post("bladtillaegsType/", o => {
 
               var s = RequestStream.FromStream(Request.Body).AsString();
 
 
-                return service.CreateBladTillaegs(Convert(s));
+                return service.CreateOrUpdate(Convert(s));
                 ;
             });
         }
 
-        public tblBladTiLaegsType Convert(string s)
+        public tblBladTillaegsType Convert(string s)
         {
-            var res = JsonConvert.DeserializeObject<tblBladTiLaegsType>(s);
+            var res = JsonConvert.DeserializeObject<tblBladTillaegsType>(s);
 
             return res;
         }

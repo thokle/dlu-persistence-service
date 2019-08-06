@@ -35,6 +35,9 @@
     <OutputPath>bin\dev\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="dlu-persistence-api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\SendMailService\Bin\dlu-persistence-api.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -74,10 +77,12 @@
     <Compile Include="bladtlfogfaxkopi.cs">
       <DependentUpon>LocalPlanner.tt</DependentUpon>
     </Compile>
+    <Compile Include="daos\AktiveAviserTIlGridDao.cs" />
     <Compile Include="daos\AnnoncekontrolDao.cs" />
     <Compile Include="daos\BladDækningDao.cs" />
     <Compile Include="daos\BladKommentarDao.cs" />
-    <Compile Include="daos\BladTilLaegDAO.cs" />
+    <Compile Include="daos\BladTilaegsDao.cs" />
+    <Compile Include="daos\BladTilaegsTypeDao.cs" />
     <Compile Include="daos\DelOmraadeDao.cs" />
     <Compile Include="daos\EjerforholdDao.cs" />
     <Compile Include="daos\FakturingsBilagDao.cs" />
@@ -88,18 +93,23 @@
     <Compile Include="daos\KonkurrenceDaekningDao.cs" />
     <Compile Include="daos\KontaktDao.cs" />
     <Compile Include="daos\KontakterPrBladDao.cs" />
+    <Compile Include="daos\KontaktTitlerDao.cs" />
     <Compile Include="daos\MaterialeDao.cs" />
     <Compile Include="daos\MediaPlanNrDao.cs" />
     <Compile Include="daos\MediePlanDao.cs" />
     <Compile Include="daos\MediePlanLinjerDao.cs" />
     <Compile Include="daos\MedieplanÆndringerDao.cs" />
     <Compile Include="daos\NavisionContactDao.cs" />
+    <Compile Include="daos\PlaceringDao.cs" />
     <Compile Include="daos\PostNrTableDao.cs" />
     <Compile Include="daos\PriceAskingDao.cs" />
+    <Compile Include="daos\PriserBladPrAarDao.cs" />
     <Compile Include="daos\RegionDao.cs" />
     <Compile Include="daos\SalespersonDao.cs" />
     <Compile Include="daos\StamBladKontakterDao.cs" />
     <Compile Include="daos\StamBladsDao.cs" />
+    <Compile Include="daos\StamBladUdsendigKontakterDao.cs" />
+    <Compile Include="daos\StambladUdsendingKontaktTyperDao.cs" />
     <Compile Include="daos\SupportBilagDao.cs" />
     <Compile Include="daos\OrdreGebyrNavisionDao.cs" />
     <Compile Include="daos\OrdreLinjerNavisionDao.cs" />
@@ -110,7 +120,6 @@
     <Compile Include="daos\WEBForespørgselDao.cs" />
     <Compile Include="daos\WEBForespørgselLinjerDao.cs" />
     <Compile Include="daos\WEBSendTilKollegaDao.cs" />
-    <Compile Include="daos\BladTillaegsTypeDao.cs" />
     <Compile Include="delPriser.cs">
       <DependentUpon>LocalPlanner.tt</DependentUpon>
     </Compile>
@@ -162,7 +171,9 @@
     <Compile Include="models\DelOmraade.cs" />
     <Compile Include="models\PriceListWeekModel.cs" />
     <Compile Include="models\PriserForBlad.cs" />
+    <Compile Include="models\PriserForTable.cs" />
     <Compile Include="models\StamBlad.cs" />
+    <Compile Include="models\UdsendingKontakter.cs" />
     <Compile Include="NavisionContact.cs">
       <DependentUpon>LocalPlanner.tt</DependentUpon>
     </Compile>
@@ -176,9 +187,11 @@
     <Compile Include="Salesperson.cs">
       <DependentUpon>LocalPlanner.tt</DependentUpon>
     </Compile>
+    <Compile Include="services\AktiveAviserTIlGridService.cs" />
     <Compile Include="services\AnnoceKontrolService.cs" />
     <Compile Include="services\BladDækningService.cs" />
-    <Compile Include="services\BladTillaegsTypeService.cs" />
+    <Compile Include="services\BladTilaegsServcie.cs" />
+    <Compile Include="services\BladTilaegsTypeService.cs" />
     <Compile Include="services\DelOmraadeService.cs" />
     <Compile Include="services\EjerforholdService.cs" />
     <Compile Include="services\FakturaFejlTekstService.cs" />
@@ -186,9 +199,11 @@
     <Compile Include="services\GeoCodeService.cs" />
     <Compile Include="services\GruppeService.cs" />
     <Compile Include="services\FejlTekstService.cs" />
+    <Compile Include="services\interfaces\IAktiveAviserTIlGridService.cs" />
     <Compile Include="services\interfaces\IAnnonceKontrolService.cs" />
     <Compile Include="services\interfaces\IBladDæknigService.cs" />
-    <Compile Include="services\interfaces\IBladTillaegsTypeService.cs" />
+    <Compile Include="services\interfaces\IBladTilaegsServcie.cs" />
+    <Compile Include="services\interfaces\IBladTilaegsTypeService.cs" />
     <Compile Include="services\interfaces\IDelOmraadeService.cs" />
     <Compile Include="services\interfaces\IEjerforholdService.cs" />
     <Compile Include="services\interfaces\IFakturingBilagService.cs" />
@@ -200,6 +215,7 @@
     <Compile Include="services\interfaces\IKonkurrenceDækningService.cs" />
     <Compile Include="services\interfaces\IKontakterPrBladService.cs" />
     <Compile Include="services\interfaces\IKontaktService.cs" />
+    <Compile Include="services\interfaces\IKontaktTitlerService.cs" />
     <Compile Include="services\interfaces\IMediePlanLinjerService.cs" />
     <Compile Include="services\interfaces\IMediePlanNrService.cs" />
     <Compile Include="services\interfaces\IMediePlanService.cs" />
@@ -207,13 +223,17 @@
     <Compile Include="services\interfaces\INavisiomContactService.cs" />
     <Compile Include="services\interfaces\IOrdreGebyrNavisionService.cs" />
     <Compile Include="services\interfaces\IOrdreLinjerNavisionService.cs" />
+    <Compile Include="services\interfaces\IPlaceringService.cs" />
     <Compile Include="services\interfaces\IPostNrTableService.cs" />
     <Compile Include="services\interfaces\IPriceAskingService.cs" />
+    <Compile Include="services\interfaces\IPriserPrBladAArService.cs" />
     <Compile Include="services\interfaces\IPriserService.cs" />
     <Compile Include="services\interfaces\IRegionService.cs" />
     <Compile Include="services\interfaces\IStambladKontakterService.cs" />
     <Compile Include="services\interfaces\IStambladKontaktPersonService.cs" />
     <Compile Include="services\interfaces\IStamBladService.cs" />
+    <Compile Include="services\interfaces\IStamBladUdsendigKontakterService.cs" />
+    <Compile Include="services\interfaces\IStambladUdsendingKontaktTypeService.cs" />
     <Compile Include="services\interfaces\ISupportBilagService.cs" />
     <Compile Include="services\interfaces\IUgeAviserTilGridServive.cs" />
     <Compile Include="services\interfaces\IUserService.cs" />
@@ -226,6 +246,7 @@
     <Compile Include="services\KonkurrenceDækningService.cs" />
     <Compile Include="services\KontakterPrBladService.cs" />
     <Compile Include="services\KontaktService.cs" />
+    <Compile Include="services\KontaktTitlerService.cs" />
     <Compile Include="services\MediePlanLinjerService.cs" />
     <Compile Include="services\MediePlanNrService.cs" />
     <Compile Include="services\MediePlanService.cs" />
@@ -233,13 +254,17 @@
     <Compile Include="services\NavisiomContactService.cs" />
     <Compile Include="services\OrdreGebyrNavisionService.cs" />
     <Compile Include="services\OrdreLinjerNavisionService.cs" />
+    <Compile Include="services\PlaceringService.cs" />
     <Compile Include="services\PostNrTableService.cs" />
     <Compile Include="services\PriceAskingService.cs" />
+    <Compile Include="services\PriserPrBladAArService.cs" />
     <Compile Include="services\PriserService.cs" />
+    <Compile Include="services\StamBladUdsendigKontakterService.cs" />
     <Compile Include="services\RegionService.cs" />
     <Compile Include="services\SalesPersonService.cs" />
     <Compile Include="services\StambladKontaktService.cs" />
     <Compile Include="services\StamBladService.cs" />
+    <Compile Include="services\StambladUdsendingKontaktTypeService.cs" />
     <Compile Include="services\SupportBilagService.cs" />
     <Compile Include="services\UgeAviserTilGridService.cs" />
     <Compile Include="services\UserService.cs" />
@@ -257,9 +282,6 @@
     <Compile Include="daos\PriserDao.cs" />
     <Compile Include="start.cs" />
     <Compile Include="sysdiagram.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Table_1.cs">
       <DependentUpon>LocalPlanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblAktiveVærdier.cs">
@@ -280,13 +302,24 @@
     <Compile Include="tblBladnavnMappingFraDO.cs">
       <DependentUpon>LocalPlanner.tt</DependentUpon>
     </Compile>
+    <Compile Include="tblBladRabatter.cs">
+      <DependentUpon>LocalPlanner.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblBladStamdata.cs">
       <DependentUpon>LocalPlanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBladStamdataKopi.cs">
       <DependentUpon>LocalPlanner.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblBladTiLaegsType.cs">
+    
+    <Compile Include="tblBladTillaeg.cs">
+      <DependentUpon>LocalPlanner.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblBladTillaegsType.cs">
+      <DependentUpon>LocalPlanner.tt</DependentUpon>
+    </Compile>
+  
+    <Compile Include="tblBladUdsendingKontakter.cs">
       <DependentUpon>LocalPlanner.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBrugerData.cs">
@@ -418,6 +451,9 @@
     <Compile Include="tblStambladKontakter.cs">
       <DependentUpon>LocalPlanner.tt</DependentUpon>
     </Compile>
+    <Compile Include="tblStambladUdsendingEmailTyper.cs">
+      <DependentUpon>LocalPlanner.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblSupportBilag.cs">
       <DependentUpon>LocalPlanner.tt</DependentUpon>
     </Compile>
@@ -502,10 +538,6 @@
     <None Include="App.Config">
       <SubType>Designer</SubType>
     </None>
-    <EntityDeploy Include="LocalPlanner.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>LocalPlanner.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="App.Debug.Config">
       <DependentUpon>App.Config</DependentUpon>
       <SubType>Designer</SubType>
@@ -517,6 +549,10 @@
       <DependentUpon>App.Config</DependentUpon>
       <SubType>Designer</SubType>
     </None>
+    <EntityDeploy Include="LocalPlanner.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LocalPlanner.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="LocalPlanner.edmx.diagram">
       <DependentUpon>LocalPlanner.edmx</DependentUpon>
     </None>

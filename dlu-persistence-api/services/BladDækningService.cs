@@ -26,5 +26,10 @@ namespace dlu_persistence_api.services
         {
             return _dao.OpretBladDækning(tblBladDækning);
         }
+
+        public Task<int> DeleteDaeking(int bladid, int postnr)
+        {
+            return _dao.DeleteDaeking(bladid, postnr);
+        }
     }
 }

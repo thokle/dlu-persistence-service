@@ -11,16 +11,14 @@ namespace dlu_persistence_api.daos
     /// <summary>
     /// 
     /// </summary>
-    public class WebForespørgselDao: IDisposable
+    public class WebForespørgselDao
     {
-        private DiMPdotNetEntities _entities;
+        private DiMPdotNetDevEntities _entities;
 
         public WebForespørgselDao()
         {
-            using (_entities = new DiMPdotNetEntities())
-            {
-                _entities.Configuration.LazyLoadingEnabled = true;
-            }
+            _entities = new DiMPdotNetDevEntities();
+           
         }
 
 

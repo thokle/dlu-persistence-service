@@ -10,11 +10,11 @@ namespace dlu_persistence_api.daos
     public class EjerforholdDao: IDisposable
 
     {
-    private DiMPdotNetEntities _entities;
+    private DiMPdotNetDevEntities _entities;
 
     public EjerforholdDao()
     {
-            _entities = new DiMPdotNetEntities();
+            _entities = new DiMPdotNetDevEntities();
 
    
             _entities.Configuration.LazyLoadingEnabled = true;

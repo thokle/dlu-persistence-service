@@ -11,11 +11,11 @@ namespace dlu_persistence_api.daos
 {
    public class StamBladKontakterDao
     {
-        private DiMPdotNetEntities entities;
+        private DiMPdotNetDevEntities entities;
 
         public StamBladKontakterDao()
         {
-            entities = new DiMPdotNetEntities();
+            entities = new DiMPdotNetDevEntities();
         }
 
 

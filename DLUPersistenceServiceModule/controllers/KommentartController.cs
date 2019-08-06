@@ -15,11 +15,12 @@ namespace DLUPersistenceServiceModule.controllers
     {
         public KommentartController(KommentartService service)
         {
-            Get("/kommentart/{bladid:int}", o => service.GetKommentarByStamBladId(o.bladid));
-            Post("/kommentart", o =>
+            Get("/kommentar/{bladid:int}", o => service.GetKommentarByStamBladId(o.bladid));
+            Post("/kommentar", o =>
             {
                 var res = RequestStream.FromStream(Request.Body).AsString();
-                return service.CreateBladKommentar(Convert(res));
+                 service.CreateBladKommentar(Convert(res));
+                return Response.AsJson("{\"kommentart\": \"oprettet\"}");
             });
         }
 

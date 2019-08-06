@@ -2,11 +2,13 @@
 using dlu_persistence_api.models;
 using Newtonsoft.Json;
 using System;
+using System.Data;
 using System.Data.Entity.Migrations;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+
 
 namespace dlu_persistence_api.daos
 {
@@ -15,12 +17,12 @@ namespace dlu_persistence_api.daos
     /// </summary>
     public class StamBladsDao
     {
-        private DiMPdotNetEntities di;
+        private DiMPdotNetDevEntities di;
 
         public StamBladsDao()
         {
-            di = new DiMPdotNetEntities();
-            di.Configuration.LazyLoadingEnabled = true;
+            di = new DiMPdotNetDevEntities();
+            di.Configuration.LazyLoadingEnabled = false;
         }
 
 
@@ -34,8 +36,25 @@ namespace dlu_persistence_api.daos
         {
             try
             {
-                var res = from en in di.tblBladStamdatas
-                    where en.BladID == bladId
+                var res = from en in di.tblBladStamdatas 
+                        join d in di.tblDages on en.UgedagID equals d.DagID into ds
+                        from d in ds.DefaultIfEmpty()
+                        join r in di.tblRegions on en.RegionID equals r.RegionID into  rs
+                        from r in  rs.DefaultIfEmpty()
+                        join h in di.tblHovedGruppes on en.HovedgruppeID equals h.HovedGruppeID into hs
+                        from  h in  hs.DefaultIfEmpty()
+                        join de in di.tblDelOmråde on en.DelOmrådeID equals de.DelOmrådeID into des
+                        from de in des.DefaultIfEmpty()
+
+                        join g in di.tblGeoKodes on en.GeoKodeID equals g.GeoKodeID into gs
+                        from g in gs.DefaultIfEmpty()
+
+                        
+                          where en.BladID == bladId
+
+                        
+                        
+                        
                     let p = new StamBlad()
                     {
                         BladId = en.BladID,
@@ -45,7 +64,7 @@ namespace dlu_persistence_api.daos
                         MedlemAAr = en.MedlemÅr,
                         Cvr = en.CVR,
                         Fax = en.Fax,
-                       
+                        
                         Tlf = en.Tlf,
                         Oplag = en.Oplag,
                         Emails = en.Emails,
@@ -71,7 +90,7 @@ namespace dlu_persistence_api.daos
                         PrimaerPct = en.PrimærPct,
                         GruppeRabat = en.GruppeRabat,
                         AnnonceEmail = en.AnnonceEmail,
-                        MedlemMaaned = en.MedlemMåned,
+                        setMedlemMaaned = en.MedlemMåned,
                        
                         HovedgruppeId = en.HovedgruppeID,
                         StamdataEmail = en.StamdataEmail,
@@ -109,7 +128,17 @@ namespace dlu_persistence_api.daos
                         MaterialeDeadlineTekstKl = en.MaterialeDeadlineTekstKl,
                         OrdreDeadlineTekstKl = en.OrdreDeadlineTekstKl,
                         MaterialeDeadlineTekstDag = en.MaterialeDeadlineTekstDag,
-                        MaterialeDeadlineRubrikDag = en.MaterialeDeadlineRubrikDag
+                        MaterialeDeadlineRubrikDag = en.MaterialeDeadlineRubrikDag,
+                        DelOmraadeNavn = de.DelOmrådeNavn,
+                        BogholderiKontaktperson = en.Kontaktperson,
+                        DiMpDelOmraadeKode = en.DiMPDelOmrådeKode,
+                        DagNavn = d.DagNavn,
+                        RegionNavn = r.RegionNavn,
+                       HovedGruppeNavn = h.HovedGruppeNavn,
+                      GeoKodeNavn = g.GeoKodeNavn
+                         
+                        
+                        
                     }
                     select p;
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
@@ -130,16 +159,116 @@ namespace dlu_persistence_api.daos
         {
             try
             {
-                var res = from en in di.tblBladStamdatas.Where(d => d.Navn.Contains(name)).OrderBy(s => s.Navn)
-                    select new StamBlad()
-                    {
-                        BladId = en.BladID,
-                    };
+                var res = from en in di.tblBladStamdatas
+                          join d in di.tblDages on en.UgedagID equals d.DagID into ds
+                          from d in ds.DefaultIfEmpty()
+                          join r in di.tblRegions on en.RegionID equals r.RegionID into rs
+                          from r in rs.DefaultIfEmpty()
+                          join h in di.tblHovedGruppes on en.HovedgruppeID equals h.HovedGruppeID into hs
+                          from h in hs.DefaultIfEmpty()
+                          join de in di.tblDelOmråde on en.DelOmrådeID equals de.DelOmrådeID into des
+                          from de in des.DefaultIfEmpty()
+
+                          join g in di.tblGeoKodes on en.GeoKodeID equals g.GeoKodeID into gs
+                          from g in gs.DefaultIfEmpty()
+
+
+                          where en.Navn.Contains(name)
+
+
+
+
+                          let p = new StamBlad()
+                          {
+                              BladId = en.BladID,
+                              Navn = en.Navn.Trim(),
+                              Navn2 = en.Navn2.Trim(),
+                              MatGodtBeloeb = en.MatGodtBeløb,
+                              MedlemAAr = en.MedlemÅr,
+                              Cvr = en.CVR,
+                              Fax = en.Fax,
+
+                              Tlf = en.Tlf,
+                              Oplag = en.Oplag,
+                              Emails = en.Emails,
+
+                              Format = en.Format,
+                              Adresse = en.Adresse,
+                              Koncern = en.Koncern,
+                              Ophoert = en.Ophørt,
+
+                              Primaer = en.Primær,
+                              Adresse2 = en.Adresse2,
+                              Overfoert = en.Overført,
+                              Timestamp = en.timestamp,
+                              Hjemmeside = en.Hjemmeside,
+                              Ejerforhold = en.Ejerforhold,
+                              Totalomraade = en.Totalområde,
+                              Kontaktperson = en.Kontaktperson,
+                              OrienteringEmails = en.OrienteringEmails,
+                              PostNr = en.PostNr,
+                              RegionId = en.RegionID,
+                              UgedagId = en.UgedagID,
+                              OrdreEmail = en.OrdreEmail,
+                              PrimaerPct = en.PrimærPct,
+                              GruppeRabat = en.GruppeRabat,
+                              AnnonceEmail = en.AnnonceEmail,
+                              setMedlemMaaned = en.MedlemMåned,
+
+                              HovedgruppeId = en.HovedgruppeID,
+                              StamdataEmail = en.StamdataEmail,
+                              MaterialeEmail = en.MaterialeEmail,
+                              RedaktionEmail = en.RedaktionEmail,
+                              OrdrecheckEmail = en.OrdrecheckEmail,
+                              TotalomraadePct = en.TotalområdePct,
+                              BilagsbladeEmail = en.BilagsbladeEmail,
+                              BogholderiEmails = en.BogholderiEmails,
+                              OrdredeadlineTekst = en.OrdredeadlineTekst,
+                              SendetidOrdrecheck = en.SendetidOrdrecheck,
+                              OrdredeadlineRubrik = en.OrdredeadlineRubrik,
+                              SamannonceringsRabat = en.SamannonceringsRabat,
+                              KontaktpersonerEmails = en.KontaktpersonerEmails,
+                              MaterialedeadlineTekst = en.MaterialedeadlineTekst,
+
+                              MaterialedeadlineRubrik = en.MaterialedeadlineRubrik,
+                              MaterialeDeadlineRubrikKl = en.MaterialeDeadlineRubrikKl,
+                              PrisforespoergselEmails = en.PrisforespørgselEmails,
+                              GeoKodeId = en.GeoKodeID,
+                              VisPaaWww = en.VisPåWWW,
+                              DelOmraadeId = en.DelOmrådeID,
+                              OrdreDeadlineTekstDag = en.OrdreDeadlineTekstDag,
+                              OrdreDeadlineRubrikDag = en.OrdreDeadlineRubrikDag,
+                              OrdreDeadlineRubrikKl = en.OrdreDeadlineRubrikKl,
+                              MedieNetKode = en.MedieNetKode,
+                              SalgsGruppeId = en.SalgsGruppeID,
+                              FakturaGruppeId = en.FakturaGruppeID,
+                              GiverWebTillaeg = en.GiverWebTillæg,
+                              SendIndevaerendeUge = en.SendIndeværendeUge,
+                              AnnonceKontrolEmail = en.AnnonceKontrolEmail,
+                              MaaGiveFarveRabat = en.MåGiveFarveRabat,
+                              OrdrecheckSendeDagId = en.OrdrecheckSendeDagID,
+                              WwwDaekningSomTekst = en.WWWDækningSomTekst,
+                              MaterialeDeadlineTekstKl = en.MaterialeDeadlineTekstKl,
+                              OrdreDeadlineTekstKl = en.OrdreDeadlineTekstKl,
+                              MaterialeDeadlineTekstDag = en.MaterialeDeadlineTekstDag,
+                              MaterialeDeadlineRubrikDag = en.MaterialeDeadlineRubrikDag,
+                              DelOmraadeNavn = de.DelOmrådeNavn,
+                              BogholderiKontaktperson = en.Kontaktperson,
+                              DiMpDelOmraadeKode = en.DiMPDelOmrådeKode,
+                              DagNavn = d.DagNavn,
+                              RegionNavn = r.RegionNavn,
+                              HovedGruppeNavn = h.HovedGruppeNavn,
+                              GeoKodeNavn = g.GeoKodeNavn
+
+
+
+                          }
+                          select p;
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
             catch (Exception e)
             {
-                throw new DaoExceptions("StamBladsDao GetStamBladByName ", e.InnerException);
+                throw new DaoExceptions(" StamBladsDao GetStamDataById ", e.InnerException);
             }
         }
 
@@ -333,20 +462,36 @@ namespace dlu_persistence_api.daos
         /// <param name="stamData"></param>
         /// <returns></returns>
         /// <exception cref="DaoExceptions"></exception>
-        public Task<int> OpretNytStamBlad(tblBladStamdata stamData)
+        public Tuple<string, int> OpretNytStamBlad(tblBladStamdata stamData)
 
         {
+           
+            string trace = null;
+            int i = 0;
             try
             {
                 di.tblBladStamdatas.AddOrUpdate(stamData);
 
-                return di.SaveChangesAsync();
+                 i =  di.SaveChanges();
+                 
             }
             catch (DbEntityValidationException e)
             {
-                var newException = new FormattedDbEntityValidationException(e);
-                throw newException;
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
             }
+            
+
+            return new Tuple<string, int>(trace, i);
         }
 
         /// <summary>
@@ -456,7 +601,7 @@ namespace dlu_persistence_api.daos
                                  PrimaerPct = en.PrimærPct,
                                  GruppeRabat = en.GruppeRabat,
                                  AnnonceEmail = en.AnnonceEmail,
-                                 MedlemMaaned = en.MedlemMåned,
+                                 setMedlemMaaned = en.MedlemMåned,
 
                                  HovedgruppeId = en.HovedgruppeID,
                                  StamdataEmail = en.StamdataEmail,

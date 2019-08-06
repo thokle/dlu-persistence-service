@@ -4,6 +4,8 @@ namespace dlu_persistence_api.models
 {
     public class StamBlad
     {
+       
+
         public StamBlad()
         {
             
@@ -28,13 +30,13 @@ namespace dlu_persistence_api.models
 
         public string Cvr { get; set; }
 
-        public string Fik { get; set; }
+       
 
         public string Kontaktperson { get; set; }
 
         public byte? HovedgruppeId { get; set; }
 
-        public byte? MedlemMaaned { get; set; }
+        private byte? medlemMaaned;
 
         public byte? MedlemAAr { get; set; }
 
@@ -151,7 +153,57 @@ namespace dlu_persistence_api.models
         public bool Overfoert { get; set; }
 
         public byte[] Timestamp { get; set; }
+        public string DelOmraadeNavn { get;  set; }
+        public string DagNavn { get;  set; }
+        public string HovedGruppeNavn { get;  set; }
+        public string GeoKodeNavn { get;  set; }
+        public string RegionNavn { get; set; }
+        public byte? setMedlemMaaned { set => medlemMaaned = value; }
+        public string getMedlemMaaned { get
+            {
+                var maaned = "";
+                switch(medlemMaaned)
+                {
+                    case 0:
+                        maaned = "Januar";
+                        break;
+                    case 1:
+                        maaned = "Febuar";
+                        break;
+                    case 2:
+                        maaned = "Marts";
+                        break;
+                    case 3:
+                        maaned = "April";
+                        break;
+                    case 4:
+                        maaned = "Maj";
+                        break;
+                    case 5:
+                        maaned = "Juni";
+                        break;
+                    case 6:
 
-      
+                        maaned = "Juli";  
+                        break;
+                    case 7:
+                        maaned = "August";
+                        break;
+                    case 8:
+                        maaned = "September";
+                        break;
+                    case 9:
+                        maaned = "Oktober";
+                        break;
+                    case 10:
+                        maaned = "November";
+                        break;
+                    case 11:
+                        maaned = "December";
+                        break;
+
+                }
+                return maaned;
+            } }
     }
 }

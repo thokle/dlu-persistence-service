@@ -54,7 +54,6 @@ namespace dlu_persistence_api
         public string Emails { get; set; }
         public string KontaktpersonerEmails { get; set; }
         public string BogholderiEmails { get; set; }
-        public string BogholderiKontaktperson { get; set; }
         public string MedieNetKode { get; set; }
         public string Hjemmeside { get; set; }
         public string RedaktionEmail { get; set; }

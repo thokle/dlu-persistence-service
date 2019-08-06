@@ -14,11 +14,11 @@ namespace dlu_persistence_api.daos
     /// </summary>
     public class PriceAskingDao
     {
-        private DiMPdotNetEntities _entities;
+        private DiMPdotNetDevEntities _entities;
 
         public PriceAskingDao()
         {
-            _entities = new DiMPdotNetEntities();
+            _entities = new DiMPdotNetDevEntities();
         }
 
         /// <summary>

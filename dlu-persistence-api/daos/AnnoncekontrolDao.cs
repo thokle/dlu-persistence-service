@@ -12,15 +12,13 @@ namespace dlu_persistence_api.daos
  /// </summary>
     public class AnnoncekontrolDao : IDisposable
     {
-        private DiMPdotNetEntities _entities;
+        private DiMPdotNetDevEntities _entities;
 
 
         public AnnoncekontrolDao()
         {
-            using (_entities = new DiMPdotNetEntities())
-            {
-                _entities.Configuration.LazyLoadingEnabled = true;
-            }
+            _entities = new DiMPdotNetDevEntities();
+          
         }
         /// <summary>
         /// 

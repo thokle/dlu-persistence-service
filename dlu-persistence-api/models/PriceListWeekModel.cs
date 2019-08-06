@@ -25,10 +25,12 @@ namespace dlu_persistence_api.models
             get => bladID;
             set => bladID = value;
         }
+        public string PrisListeNavn { get => prisListeNavn; set => prisListeNavn = value; }
 
         private  int prislisteID;
        private int uige;
        private  int aAr;
        private  int bladID;
+        private string prisListeNavn;
     }
 }

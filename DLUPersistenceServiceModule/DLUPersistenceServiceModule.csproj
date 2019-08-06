@@ -44,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="dlu-persistence-api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\SendMailService\Bin\dlu-persistence-api.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -224,8 +227,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrap.cs" />
+    <Compile Include="controllers\AktiveAviserTilGridController.cs" />
     <Compile Include="controllers\AnnonceKontrolController.cs" />
     <Compile Include="controllers\BladDækningController.cs" />
+    <Compile Include="controllers\BladTilLaegsController.cs" />
     <Compile Include="controllers\BladTilLaegTypeController.cs" />
     <Compile Include="controllers\DelOmraadeController.cs" />
     <Compile Include="controllers\EjerforholdController.cs" />
@@ -240,17 +245,22 @@
     <Compile Include="controllers\KonkurrenceDækningsController.cs" />
     <Compile Include="controllers\KontakterPrBladController.cs" />
     <Compile Include="controllers\KontaktController.cs" />
+    <Compile Include="controllers\KontaktTilerController.cs" />
     <Compile Include="controllers\MediePlanLinjerController.cs" />
     <Compile Include="controllers\MediePlanNrController.cs" />
     <Compile Include="controllers\MediePlanÆnmdringsController.cs" />
     <Compile Include="controllers\NavisionContactController.cs" />
     <Compile Include="controllers\OrdreGebyrNavisionController.cs" />
+    <Compile Include="controllers\PlaceringController.cs" />
     <Compile Include="controllers\PostNrTableController.cs" />
     <Compile Include="controllers\PriceAskingController.cs" />
     <Compile Include="controllers\PriserController.cs" />
+    <Compile Include="controllers\PriserPrBladAarController.cs" />
     <Compile Include="controllers\RegionsController.cs" />
     <Compile Include="controllers\StamBladController.cs" />
     <Compile Include="controllers\StamBladControllerMetadataModule.cs" />
+    <Compile Include="controllers\StamBladUdsendigKontakterController.cs" />
+    <Compile Include="controllers\StambladUdsendingKontaktTypeController.cs" />
     <Compile Include="controllers\StmbladKontaktController.cs" />
     <Compile Include="controllers\SupportBilagController.cs" />
     <Compile Include="controllers\UgeAviserTilGridController.cs" />
@@ -285,13 +295,13 @@
     <Analyzer Include="..\packages\AsyncUsageAnalyzers.1.0.0-alpha003\analyzers\dotnet\AsyncUsageAnalyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\dlu-persistence-api\dlu-persistence-api.csproj">
       <Project>{b8da807f-531c-42c0-b3f1-79ad6560e1aa}</Project>
       <Name>dlu-persistence-api</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

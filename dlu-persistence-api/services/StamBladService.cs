@@ -28,7 +28,7 @@ namespace dlu_persistence_api.services
             return dao.GetStamBladByPostNummer(postNr: postnr);
         }
 
-        public Task<int> CreaateOrUpdateStamBlad(tblBladStamdata tblBladStamdata)
+        public Tuple<string, int> CreaateOrUpdateStamBlad(tblBladStamdata tblBladStamdata)
         {
 
             return dao.OpretNytStamBlad(stamData: tblBladStamdata);

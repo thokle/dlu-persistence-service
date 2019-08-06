@@ -13,11 +13,11 @@ namespace dlu_persistence_api.daos
     /// </summary>
     public class GrupperDao: IDisposable
     {
-        private DiMPdotNetEntities _entities;
+        private DiMPdotNetDevEntities _entities;
 
         public GrupperDao()
         {
-            using (_entities = new DiMPdotNetEntities())
+            using (_entities = new DiMPdotNetDevEntities())
             {
                 _entities.Configuration.LazyLoadingEnabled = true;
             }

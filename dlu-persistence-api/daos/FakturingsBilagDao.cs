@@ -9,16 +9,13 @@ using  dlu_persistence_api.exceptions;
 
 namespace dlu_persistence_api.daos
 {
-    public class FakturingsBilagDao: IDisposable
+    public class FakturingsBilagDao
     {
-        private DiMPdotNetEntities _entities;
+        private DiMPdotNetDevEntities _entities;
 
         public FakturingsBilagDao()
         {
-            using (_entities = new DiMPdotNetEntities())
-            {
-                _entities.Configuration.LazyLoadingEnabled = true;
-            }
+            _entities = new DiMPdotNetDevEntities();           
         }
 
 

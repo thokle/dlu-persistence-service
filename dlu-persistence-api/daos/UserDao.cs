@@ -8,11 +8,11 @@ namespace dlu_persistence_api.daos
 {
     public class UserDao
     {
-        private DiMPdotNetEntities _entities;
+        private DiMPdotNetDevEntities _entities;
 
         public UserDao()
         {
-            _entities = new DiMPdotNetEntities();
+            _entities = new DiMPdotNetDevEntities();
             _entities.Configuration.LazyLoadingEnabled = true;
         }
 

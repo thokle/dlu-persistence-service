@@ -6,14 +6,12 @@ namespace dlu_persistence_api.daos
 {
     public class KontaktDao
     {
-        private readonly DiMPdotNetEntities _entities;
+        private readonly DiMPdotNetDevEntities _entities;
     
         public KontaktDao()
         {
-            using (_entities = new DiMPdotNetEntities())
-            {
-                _entities.Configuration.LazyLoadingEnabled = true;
-            }
+           _entities = new DiMPdotNetDevEntities();
+           
         }
         /// <summary>
         /// 

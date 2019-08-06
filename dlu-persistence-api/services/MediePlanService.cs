@@ -26,5 +26,10 @@ namespace dlu_persistence_api.services
             return _mediePlanDao.CreateOrUpdateMediePlan(tblMedieplan);
 
         }
+
+        public string GetAvisTilMediePlan(int bladid)
+        {
+            return _mediePlanDao.GetAvisTilMediePlan(bladid);
+        }
     }
 }

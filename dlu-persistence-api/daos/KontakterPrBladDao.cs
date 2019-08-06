@@ -8,11 +8,11 @@ namespace dlu_persistence_api.daos
      /// </summary>
     public class KontakterPrBladDao
     {
-        private DiMPdotNetEntities _entities;
+        private DiMPdotNetDevEntities _entities;
         
         public KontakterPrBladDao()
         {
-            using (_entities = new DiMPdotNetEntities())
+            using (_entities = new DiMPdotNetDevEntities())
             {
                 _entities.Configuration.LazyLoadingEnabled = true;
             }   

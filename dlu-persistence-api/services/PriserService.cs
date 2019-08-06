@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using dlu_persistence_api.daos;
 namespace dlu_persistence_api.services
 {
-    public class PriserService: IPriserService
+    public class PriserService : IPriserService
 
     {
 
@@ -11,7 +11,7 @@ namespace dlu_persistence_api.services
         public PriserService()
         {
             _dao = new PriserDao();
-          
+
         }
 
 
@@ -30,10 +30,7 @@ namespace dlu_persistence_api.services
             return _dao.GetPrisLister();
         }
 
-        public Task<int> AddPriserPrUge(int bladid, int prislisteId)
-        {
-            return _dao.AddPriserPrUge(bladid, prislisteId);
-        }
+    
 
         public Task<int> CreatePrice(tblPriser tblPriser)
         {
@@ -50,9 +47,29 @@ namespace dlu_persistence_api.services
             return _dao.GetPriserFromBladId(bladId);
         }
 
-        public string GetPrisListeFromBladidArPlacering(int bladId, int placering, int aar)
+        public string GetPrisListeFromBladidArPlacering(int bladId, int placering, int aar, int prislisteId)
         {
-            return _dao.GetPrisListeFromBladidArPlacering(bladId, placering, aar);
+            return _dao.GetPrisListeFromBladidArPlacering(bladId, placering, aar, prislisteId);
+        }
+
+        public Task<int> AddPriserPrUge(int bladid, int prislisteId, int yearParameter)
+        {
+            return _dao.AddPriserPrUge(bladid, prislisteId, yearParameter);
+        }
+
+        public Task<int> UpdateWeekListId(tblPrislisterPrBladPrUge tblPrislisterPrBladPrUge)
+        {
+            return _dao.UpdateWeekListId(tblPrislisterPrBladPrUge);
+        }
+
+        public int DeletePris(int bladid, int placeringId, int prislisteid, int year)
+        {
+            return _dao.DeletePris( bladid,  placeringId,  prislisteid,  year);
+        }
+
+        public string GetPrislisteFortable(int bladid, int aar, int prislisteId)
+        {
+            return _dao.GetPrislisteFortable(bladid, aar, prislisteId);
         }
     }
 }

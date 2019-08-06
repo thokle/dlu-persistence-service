@@ -13,14 +13,14 @@ namespace dlu_persistence_api.daos
     /// </summary>
     public class OrdreNavisionDao: IDisposable
     {
-        private DiMPdotNetEntities _entities;
+        private DiMPdotNetDevEntities _entities;
 
         public OrdreNavisionDao()
         {
-            using (_entities = new DiMPdotNetEntities())
-            {
-                _entities.Configuration.LazyLoadingEnabled = true;
-            }
+            _entities = new DiMPdotNetDevEntities();
+           
+                _entities.Configuration.LazyLoadingEnabled = false;
+            
         }
 
         /// <summary>

@@ -11,12 +11,12 @@ namespace dlu_persistence_api.daos
      /// </summary>
     public class PostNrTableDao
     {
-        private DiMPdotNetEntities _diMPdotNetEntities;
+        private DiMPdotNetDevEntities _diMPdotNetEntities;
 
 
         public PostNrTableDao()
         {
-            _diMPdotNetEntities = new DiMPdotNetEntities();
+            _diMPdotNetEntities = new DiMPdotNetDevEntities();
             
                 _diMPdotNetEntities.Configuration.LazyLoadingEnabled = true;
             

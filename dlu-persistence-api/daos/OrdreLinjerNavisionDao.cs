@@ -13,14 +13,12 @@ namespace dlu_persistence_api.daos
     /// </summary>
     public class OrdreLinjerNavisionDao: IDisposable
     {
-        private DiMPdotNetEntities _entities;
+        private DiMPdotNetDevEntities _entities;
 
         public OrdreLinjerNavisionDao()
         {
-            using (_entities = new DiMPdotNetEntities())
-            {
-                _entities.Configuration.LazyLoadingEnabled = true;
-            }
+            _entities = new DiMPdotNetDevEntities();
+           
         }
 
         public string GetOrderLinerByBladID(int bladId)

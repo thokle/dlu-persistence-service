@@ -13,11 +13,11 @@ namespace dlu_persistence_api.daos
     /// </summary>
     public class BladDækningDao
     {
-        private readonly DiMPdotNetEntities _entities;
+        private readonly DiMPdotNetDevEntities _entities;
 
         public BladDækningDao()
         {
-            _entities = new DiMPdotNetEntities();
+            _entities = new DiMPdotNetDevEntities();
             
                 _entities.Configuration.LazyLoadingEnabled = true;
             
@@ -32,15 +32,19 @@ namespace dlu_persistence_api.daos
         {
             try
             {
-                var res = from dg in _entities.tblBladDækning
-                    where dg.BladID == bladID
+                var res = from dg in _entities.tblBladDækning from e in _entities.tblPostNrs
+                          where dg.PostNr == e.PostNr   & dg.BladID == bladID
+                        
+        
+
                     select new Bladdaeknik()
                     {
                        BladID1 = dg.BladID,
                        DaekningsGrad1 = dg.DækningsGrad,
                        Oplag1 = dg.Oplag,
                        
-                        PostNr1 = dg.PostNr
+                        PostNr1 = dg.PostNr,
+                       Postby =  e.PostBy
                    
                     };
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
@@ -84,6 +88,7 @@ namespace dlu_persistence_api.daos
         public Task<int> OpretBladDækning(tblBladDækning tblBladDækning)
         {
 
+           
             try
             {
                 _entities.tblBladDækning.AddOrUpdate(tblBladDækning);
@@ -95,6 +100,17 @@ namespace dlu_persistence_api.daos
                 throw new DaoExceptions("BladDækningDao OpretBladDækning " , e.InnerException);
             }
         }
+
+        public Task<int> DeleteDaeking(int bladid, int postnr)
+        {
+            var res = from d in _entities.tblBladDækning where d.BladID == bladid & d.PostNr == postnr select d;
+
+            var table = res.Single();
+            _entities.tblBladDækning.Remove(table);
+            return _entities.SaveChangesAsync();
+;        }
+
+
     }
 
    

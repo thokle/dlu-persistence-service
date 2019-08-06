@@ -27,6 +27,12 @@ namespace DLUPersistenceServiceModule.controllers
         public  StamBladController(StamBladService stamBladDao, ISwaggerModelCatalog modelCatalog, ISwaggerTagCatalog tagCatalog)
 
         {
+            After.AddItemToEndOfPipeline((ctx) =>
+            {
+                ctx.Response.WithHeader("Access-Control-Allow-Origin", "*")
+                    .WithHeader("Access-Control-Allow-Methods", "POST,GET")
+                    .WithHeader("Access-Control-Allow-Headers", "Accept, Origin, Content-type");
+            });
             modelCatalog.AddModel<StamBlad>();
             
             tagCatalog.AddTag(new Tag()
@@ -47,7 +53,7 @@ namespace DLUPersistenceServiceModule.controllers
           
             Get("/stamblad/postnr/{postnr:int}", parameter => { return stamBladDao.GetStamBladByPostNummer(parameter.postnr); });
 
-            Get("/stamblad/navn/{name:string}", parameter => stamBladDao.GetStamBladByName(parameter.name));
+            Get("/stamblad/navn/{name}", parameter => stamBladDao.GetStamBladByName(parameter.name));
 
 
             Post("/stamblad", o =>
@@ -56,8 +62,8 @@ namespace DLUPersistenceServiceModule.controllers
 
               var stamData =  this.CreateStamData(body);
 
-                stamBladDao.CreaateOrUpdateStamBlad(stamData);
-                return Response.AsJson(body);
+              return  stamBladDao.CreaateOrUpdateStamBlad(stamData);
+                
             });
 
             Get("/stamblad/GeoCodes", o => { return stamBladDao.GetTableGeoCode(); });

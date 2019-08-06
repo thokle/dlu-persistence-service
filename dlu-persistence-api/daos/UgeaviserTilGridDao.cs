@@ -8,17 +8,15 @@ namespace dlu_persistence_api.daos
 {
     public class UgeaviserTilGridDao: IDisposable
     {
-        private DiMPdotNetEntities _entities;
+        private DiMPdotNetDevEntities _entities;
         
         /// <summary>
         /// 
         /// </summary>
         public UgeaviserTilGridDao()
         {
-            using (_entities = new DiMPdotNetEntities())
-            {
-                _entities.Configuration.LazyLoadingEnabled = true;
-            }
+            _entities = new DiMPdotNetDevEntities();
+           
         }
         
         /// <summary>

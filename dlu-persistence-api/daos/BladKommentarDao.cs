@@ -11,11 +11,11 @@ namespace dlu_persistence_api.daos
 {
     public class BladKommentarDao
     {
-        private DiMPdotNetEntities entities;
+        private DiMPdotNetDevEntities entities;
 
         public BladKommentarDao()
         {
-            entities = new DiMPdotNetEntities();
+            entities = new DiMPdotNetDevEntities();
         }
 
         public string GetKommentarByStamBladId(int bladid)

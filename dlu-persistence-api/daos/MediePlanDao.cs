@@ -10,17 +10,16 @@ namespace dlu_persistence_api.daos
 {    /// <summary>
      /// 
      /// </summary>
-    public class MediePlanDao: IDisposable
+    public class MediePlanDao
     {
-        private DiMPdotNetEntities entities;
+        private DiMPdotNetDevEntities entities;
       
         public MediePlanDao()
         {
-            using (entities =new DiMPdotNetEntities())
-            {
-             entities.Configuration.LazyLoadingEnabled = true;
-            }
+            entities = new DiMPdotNetDevEntities();
 
+            entities.Configuration.LazyLoadingEnabled = false;
+          
         }
 
         
@@ -88,10 +87,7 @@ namespace dlu_persistence_api.daos
             }
         }
     
-        public void Dispose()
-        {
-            entities?.Dispose();
-        }
+      
 
 
         public string getMediePlanByKontaktPerson(string name)
@@ -123,6 +119,41 @@ namespace dlu_persistence_api.daos
                 throw new  DaoExceptions("getMediePlanByKontaktPerson  " , e.InnerException);
             }
 
+        }
+
+        public string GetAvisTilMediePlan(int bladid)
+        {
+            try
+            {
+                var res = from a in entities.tblBladStamdatas
+                          join
+                          p in entities.tblPrisers on a.BladID equals p.BladID into ap
+                          from p in ap.DefaultIfEmpty()
+                          join g in entities.tblGeoKodes on a.GeoKodeID equals g.GeoKodeID into gp
+                          from g in gp.DefaultIfEmpty()
+                          join dl in entities.tblDelOmråde on a.DelOmrådeID equals dl.DelOmrådeID into dp
+                          from dl in dp.DefaultIfEmpty()
+                          join dk in entities.tblMedIGruppes on a.SalgsGruppeID equals dk.ID into grp
+                          from dk in grp.DefaultIfEmpty()
+                          join pyear in entities.tblPrislisterPrBladPrÅr on a.BladID equals  pyear.BladID into gpry
+                          from pyear in gpry.DefaultIfEmpty()
+                          join pw in entities.tblPrislisterPrBladPrUges on a.BladID equals pw.BladID into gpw
+                          from pw in gpw.DefaultIfEmpty()
+                          where a.BladID == bladid
+                          select new
+                          {
+                              
+                          };
+
+
+                return JsonConvert.SerializeObject(res, Formatting.Indented);
+                                
+            }
+            catch (Exception)
+            {
+                    
+                throw;
+            }
         }
         
     }

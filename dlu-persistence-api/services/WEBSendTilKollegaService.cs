@@ -9,10 +9,8 @@ namespace dlu_persistence_api.services
 
         public WEBSendTilKollegaService()
         {
-            using (_dao = new WEBSendTilKollegaDao())
-            {
-                
-            }
+            _dao = new WEBSendTilKollegaDao();
+          
         }
         
         public string WEBSendTilKollegaDaoByPersonID(int personId)

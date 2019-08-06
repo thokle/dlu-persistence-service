@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DiMPdotNetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DiMPdotNetDevModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6013: The table/view 'DiMPdotNetDev.dbo.BladDækningOpdater' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="BladDækningOpdater">
@@ -123,19 +123,6 @@ warning 6013: The table/view 'DiMPdotNetDev.dbo.NyeLæsertal' does not have a pr
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNetDev.dbo.Table_1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="Table_1">
-          <Key>
-            <PropertyRef Name="askingID" />
-            <PropertyRef Name="stambladId" />
-          </Key>
-          <Property Name="askingID" Type="int" Nullable="false" />
-          <Property Name="stambladId" Type="int" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="150" />
-          <Property Name="telefon" Type="varchar" MaxLength="50" />
-          <Property Name="mail" Type="varchar" MaxLength="100" />
-        </EntityType>
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'DiMPdotNetDev.dbo.tblAktiveVærdier' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="tblAktiveVærdier">
           <Key>
@@ -211,6 +198,26 @@ warning 6013: The table/view 'DiMPdotNetDev.dbo.tblBladDækningOpdatering' does 
           <Property Name="BladID" Type="int" Nullable="false" />
           <Property Name="DLUNavn" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="Medie" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblBladRabat">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ejerforholdid" Type="int" />
+          <Property Name="bladid" Type="int" />
+          <Property Name="rabat" Type="float" />
+          <Property Name="rabattype" Type="int" />
+        </EntityType>
+        <EntityType Name="tblBladRabatter">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bladid" Type="int" />
+          <Property Name="rabattype" Type="int" Nullable="false" />
+          <Property Name="pris" Type="float" Nullable="false" />
+          <Property Name="ejerforholdid" Type="int" />
         </EntityType>
         <EntityType Name="tblBladStamdata">
           <Key>
@@ -356,13 +363,33 @@ warning 6013: The table/view 'DiMPdotNetDev.dbo.tblBladDækningOpdatering' does 
           <Property Name="Overført" Type="bit" Nullable="false" />
           <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
-        <EntityType Name="tblBladTiLaegsType">
+        <EntityType Name="tblBladTillaeg">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bladId" Type="int" />
+          <Property Name="typeId" Type="int" />
+          <Property Name="pris" Type="float" />
+        </EntityType>
+        <EntityType Name="tblBladTillaegsType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="tblBladUdsendingKontakter">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="bladid" Type="int" />
-          <Property Name="tillaegsTypeId" Type="int" />
+          <Property Name="navn" Type="varchar" MaxLength="150" />
+          <Property Name="mail" Type="varchar" MaxLength="50" />
+          <Property Name="telefonnummer" Type="int" />
+          <Property Name="type" Type="int" />
+          <Property Name="titel" Type="int" />
         </EntityType>
         <EntityType Name="tblBrugerData">
           <Key>
@@ -842,6 +869,13 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.tblMmPrisWebApp' does not have a
           <Key>
             <PropertyRef Name="PlaceringID" />
           </Key>
+          <Property Name="PlaceringID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Betegnelse" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPlacering2">
+          <Key>
+            <PropertyRef Name="PlaceringID" />
+          </Key>
           <Property Name="PlaceringID" Type="tinyint" Nullable="false" />
           <Property Name="Betegnelse" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
@@ -985,6 +1019,13 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.tblPlannerPlaner' does not have 
           <Property Name="KontakPersonEmail" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="KontakPersonTitel" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="KontakPersonTelefon" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblStambladUdsendingEmailTyper">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="titel" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tblSupportBilag">
           <Key>
@@ -1157,10 +1198,11 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.AktiveUgeaviserMedAlleData' does
         <EntityType Name="AktiveUgeaviserMedAlleData">
           <Key>
             <PropertyRef Name="BladID" />
+            <PropertyRef Name="Navn" />
             <PropertyRef Name="Ejerforhold" />
           </Key>
           <Property Name="BladID" Type="int" Nullable="false" />
-          <Property Name="Navn" Type="nchar" MaxLength="30" />
+          <Property Name="Navn" Type="nchar" MaxLength="30" Nullable="false" />
           <Property Name="Adresse" Type="nchar" MaxLength="30" />
           <Property Name="PostNr" Type="int" />
           <Property Name="PostBy" Type="nvarchar" MaxLength="30" />
@@ -1199,7 +1241,6 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.AktiveUgeaviserMedAlleData' does
           <Property Name="Emails" Type="nvarchar" MaxLength="200" />
           <Property Name="KontaktpersonerEmails" Type="nvarchar" MaxLength="200" />
           <Property Name="BogholderiEmails" Type="nvarchar" MaxLength="200" />
-          <Property Name="BogholderiKontaktperson" Type="nvarchar" MaxLength="30" />
           <Property Name="MedieNetKode" Type="varchar" MaxLength="15" />
           <Property Name="Hjemmeside" Type="varchar" MaxLength="100" />
           <Property Name="RedaktionEmail" Type="nvarchar" MaxLength="50" />
@@ -2046,10 +2087,10 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblMedieplan_tblPlacering">
-          <End Role="tblPlacering" Type="Self.tblPlacering" Multiplicity="1" />
+          <End Role="tblPlacering2" Type="Self.tblPlacering2" Multiplicity="1" />
           <End Role="tblMedieplan" Type="Self.tblMedieplan" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tblPlacering">
+            <Principal Role="tblPlacering2">
               <PropertyRef Name="PlaceringID" />
             </Principal>
             <Dependent Role="tblMedieplan">
@@ -2186,10 +2227,10 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblPriser_tblPlacering">
-          <End Role="tblPlacering" Type="Self.tblPlacering" Multiplicity="1" />
+          <End Role="tblPlacering2" Type="Self.tblPlacering2" Multiplicity="1" />
           <End Role="tblPriser" Type="Self.tblPriser" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tblPlacering">
+            <Principal Role="tblPlacering2">
               <PropertyRef Name="PlaceringID" />
             </Principal>
             <Dependent Role="tblPriser">
@@ -2425,6 +2466,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="IndsætOrdreLinjerTilNavision" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="IndsætOrdreTilNavision" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="OpdatereDaekningtal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="OpdaterMedieplanNrTabel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MedieplanNr" Type="int" Mode="In" />
           <Parameter Name="AktivVersion" Type="smallint" Mode="In" />
@@ -2490,7 +2532,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <EntityContainer Name="DiMPdotNetModelStoreContainer">
+        <EntityContainer Name="DiMPdotNetDevModelStoreContainer">
           <EntitySet Name="dtproperties" EntityType="Self.dtproperties" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KontaktTitler" EntityType="Self.KontaktTitler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OpdateringsTekst" EntityType="Self.OpdateringsTekst" Schema="dbo" store:Type="Tables" />
@@ -2499,9 +2541,13 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <EntitySet Name="tblBladDækning" EntityType="Self.tblBladDækning" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblBladKommentar" EntityType="Self.tblBladKommentar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblBladnavnMappingFraDO" EntityType="Self.tblBladnavnMappingFraDO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBladRabat" EntityType="Self.tblBladRabat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBladRabatter" EntityType="Self.tblBladRabatter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblBladStamdata" EntityType="Self.tblBladStamdata" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblBladStamdataKopi" EntityType="Self.tblBladStamdataKopi" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblBladTiLaegsType" EntityType="Self.tblBladTiLaegsType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBladTillaeg" EntityType="Self.tblBladTillaeg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBladTillaegsType" EntityType="Self.tblBladTillaegsType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBladUdsendingKontakter" EntityType="Self.tblBladUdsendingKontakter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblBrugerData" EntityType="Self.tblBrugerData" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblDage" EntityType="Self.tblDage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblDelOmråde" EntityType="Self.tblDelOmråde" Schema="dbo" store:Type="Tables" />
@@ -2534,6 +2580,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <EntitySet Name="tblOrdreLinjerNavision" EntityType="Self.tblOrdreLinjerNavision" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblOrdreNavision" EntityType="Self.tblOrdreNavision" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPlacering" EntityType="Self.tblPlacering" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPlacering2" EntityType="Self.tblPlacering2" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPostNr" EntityType="Self.tblPostNr" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPostNrSøgning" EntityType="Self.tblPostNrSøgning" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPriceAsking" EntityType="Self.tblPriceAsking" Schema="dbo" store:Type="Tables" />
@@ -2544,6 +2591,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <EntitySet Name="tblRegion" EntityType="Self.tblRegion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblRemindereSendt" EntityType="Self.tblRemindereSendt" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblStambladKontakter" EntityType="Self.tblStambladKontakter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblStambladUdsendingEmailTyper" EntityType="Self.tblStambladUdsendingEmailTyper" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblSupportBilag" EntityType="Self.tblSupportBilag" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblWEBeMails" EntityType="Self.tblWEBeMails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblWEBForespørgsel" EntityType="Self.tblWEBForespørgsel" Schema="dbo" store:Type="Tables" />
@@ -2568,15 +2616,6 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
     [HerningFolkeblad].[BladID] AS [BladID], 
     [HerningFolkeblad].[Navn] AS [Navn]
     FROM [dbo].[HerningFolkeblad] AS [HerningFolkeblad]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Table_1" EntityType="Self.Table_1" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Table_1].[askingID] AS [askingID], 
-    [Table_1].[stambladId] AS [stambladId], 
-    [Table_1].[name] AS [name], 
-    [Table_1].[telefon] AS [telefon], 
-    [Table_1].[mail] AS [mail]
-    FROM [dbo].[Table_1] AS [Table_1]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="tblAktiveVærdier" EntityType="Self.tblAktiveVærdier" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -2714,7 +2753,6 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
     [AktiveUgeaviserMedAlleData].[Emails] AS [Emails], 
     [AktiveUgeaviserMedAlleData].[KontaktpersonerEmails] AS [KontaktpersonerEmails], 
     [AktiveUgeaviserMedAlleData].[BogholderiEmails] AS [BogholderiEmails], 
-    [AktiveUgeaviserMedAlleData].[BogholderiKontaktperson] AS [BogholderiKontaktperson], 
     [AktiveUgeaviserMedAlleData].[MedieNetKode] AS [MedieNetKode], 
     [AktiveUgeaviserMedAlleData].[Hjemmeside] AS [Hjemmeside], 
     [AktiveUgeaviserMedAlleData].[RedaktionEmail] AS [RedaktionEmail], 
@@ -3146,7 +3184,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             <End Role="tblMedieplan" EntitySet="tblMedieplan" />
           </AssociationSet>
           <AssociationSet Name="FK_tblMedieplan_tblPlacering" Association="Self.FK_tblMedieplan_tblPlacering">
-            <End Role="tblPlacering" EntitySet="tblPlacering" />
+            <End Role="tblPlacering2" EntitySet="tblPlacering2" />
             <End Role="tblMedieplan" EntitySet="tblMedieplan" />
           </AssociationSet>
           <AssociationSet Name="FK_tblMedieplanLinjer_tblBladStamdata" Association="Self.FK_tblMedieplanLinjer_tblBladStamdata">
@@ -3186,7 +3224,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             <End Role="tblPriser" EntitySet="tblPriser" />
           </AssociationSet>
           <AssociationSet Name="FK_tblPriser_tblPlacering" Association="Self.FK_tblPriser_tblPlacering">
-            <End Role="tblPlacering" EntitySet="tblPlacering" />
+            <End Role="tblPlacering2" EntitySet="tblPlacering2" />
             <End Role="tblPriser" EntitySet="tblPriser" />
           </AssociationSet>
           <AssociationSet Name="FK_tblPriser_tblPrislister" Association="Self.FK_tblPriser_tblPrislister">
@@ -3213,7 +3251,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DiMPdotNetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DiMPdotNetDevModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="dtproperty">
           <Key>
             <PropertyRef Name="id" />
@@ -3226,6 +3264,13 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <Property Name="uvalue" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="lvalue" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KontaktTitler">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="OpdateringsTekst">
           <Key>
@@ -3273,6 +3318,15 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <Property Name="Oplag" Type="Int32" Nullable="false" />
           <Property Name="DækningsGrad" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="tblBladKommentar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bladid" Type="Int32" />
+          <Property Name="tekst" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
         <EntityType Name="tblBladnavnMappingFraDO">
           <Key>
             <PropertyRef Name="BladID" />
@@ -3280,6 +3334,26 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <Property Name="BladID" Type="Int32" Nullable="false" />
           <Property Name="DLUNavn" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Medie" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblBladRabat">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ejerforholdid" Type="Int32" />
+          <Property Name="bladid" Type="Int32" />
+          <Property Name="rabat" Type="Double" />
+          <Property Name="rabattype" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblBladRabatter">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bladid" Type="Int32" />
+          <Property Name="rabattype" Type="Int32" Nullable="false" />
+          <Property Name="pris" Type="Double" Nullable="false" />
+          <Property Name="ejerforholdid" Type="Int32" />
         </EntityType>
         <EntityType Name="tblBladStamdata">
           <Key>
@@ -3437,6 +3511,34 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <Property Name="Overført" Type="Boolean" Nullable="false" />
           <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <NavigationProperty Name="tblKontakterPrBlads" Relationship="Self.FK_tblKontakterPrBlad_tblBladStamdataKopi" FromRole="tblBladStamdataKopi" ToRole="tblKontakterPrBlad" />
+        </EntityType>
+        <EntityType Name="tblBladTillaeg">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bladId" Type="Int32" />
+          <Property Name="typeId" Type="Int32" />
+          <Property Name="pris" Type="Double" />
+        </EntityType>
+        <EntityType Name="tblBladTillaegsType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblBladUdsendingKontakter">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bladid" Type="Int32" />
+          <Property Name="navn" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telefonnummer" Type="Int32" />
+          <Property Name="type" Type="Int32" />
+          <Property Name="titel" Type="Int32" />
         </EntityType>
         <EntityType Name="tblBrugerData">
           <Key>
@@ -3731,7 +3833,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <Property Name="OpkrævHelsingørMiljøTillæg" Type="Boolean" />
           <NavigationProperty Name="tblDPKulør" Relationship="Self.FK_tblMedieplan_tblDPKulør" FromRole="tblMedieplan" ToRole="tblDPKulør" />
           <NavigationProperty Name="tblMedieplanNr" Relationship="Self.FK_tblMedieplan_tblMedieplanNr" FromRole="tblMedieplan" ToRole="tblMedieplanNr" />
-          <NavigationProperty Name="tblPlacering" Relationship="Self.FK_tblMedieplan_tblPlacering" FromRole="tblMedieplan" ToRole="tblPlacering" />
+          <NavigationProperty Name="tblPlacering2" Relationship="Self.FK_tblMedieplan_tblPlacering" FromRole="tblMedieplan" ToRole="tblPlacering2" />
           <NavigationProperty Name="tblMedieplanLinjers" Relationship="Self.FK_tblMedieplanLinjer_tblMedieplan" FromRole="tblMedieplan" ToRole="tblMedieplanLinjer" />
         </EntityType>
         <EntityType Name="tblMedieplanÆndringer">
@@ -3902,10 +4004,17 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <Key>
             <PropertyRef Name="PlaceringID" />
           </Key>
+          <Property Name="PlaceringID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Betegnelse" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPlacering2">
+          <Key>
+            <PropertyRef Name="PlaceringID" />
+          </Key>
           <Property Name="PlaceringID" Type="Byte" Nullable="false" />
           <Property Name="Betegnelse" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="tblMedieplans" Relationship="Self.FK_tblMedieplan_tblPlacering" FromRole="tblPlacering" ToRole="tblMedieplan" />
-          <NavigationProperty Name="tblPrisers" Relationship="Self.FK_tblPriser_tblPlacering" FromRole="tblPlacering" ToRole="tblPriser" />
+          <NavigationProperty Name="tblMedieplans" Relationship="Self.FK_tblMedieplan_tblPlacering" FromRole="tblPlacering2" ToRole="tblMedieplan" />
+          <NavigationProperty Name="tblPrisers" Relationship="Self.FK_tblPriser_tblPlacering" FromRole="tblPlacering2" ToRole="tblPriser" />
         </EntityType>
         <EntityType Name="tblPostNr">
           <Key>
@@ -3961,7 +4070,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <Property Name="Farve4Max" Type="Decimal" Precision="10" Scale="4" />
           <Property Name="ControlNavn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tblBladStamdata" Relationship="Self.FK_tblPriser_tblBladStamdata" FromRole="tblPriser" ToRole="tblBladStamdata" />
-          <NavigationProperty Name="tblPlacering" Relationship="Self.FK_tblPriser_tblPlacering" FromRole="tblPriser" ToRole="tblPlacering" />
+          <NavigationProperty Name="tblPlacering2" Relationship="Self.FK_tblPriser_tblPlacering" FromRole="tblPriser" ToRole="tblPlacering2" />
           <NavigationProperty Name="tblPrislister" Relationship="Self.FK_tblPriser_tblPrislister" FromRole="tblPriser" ToRole="tblPrislister" />
         </EntityType>
         <EntityType Name="tblPrislister">
@@ -4024,12 +4133,19 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StamBladId" Type="Int32" Nullable="false" />
           <Property Name="KontakPersonNavn" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="KontakPersonEmail" Type="String" MaxLength="100" Nullable="false" Unicode="false" FixedLength="false" />
+          <Property Name="KontakPersonEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="KontakPersonTitel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="KontakPersonTelefon" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblStambladUdsendingEmailTyper">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="titel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblSupportBilag">
           <Key>
@@ -4152,17 +4268,6 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           </Key>
           <Property Name="BladID" Type="Int32" Nullable="false" />
           <Property Name="Navn" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Table_1">
-          <Key>
-            <PropertyRef Name="askingID" />
-            <PropertyRef Name="stambladId" />
-          </Key>
-          <Property Name="askingID" Type="Int32" Nullable="false" />
-          <Property Name="stambladId" Type="Int32" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblAktiveVærdier">
           <Key>
@@ -4298,10 +4403,11 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
         <EntityType Name="AktiveUgeaviserMedAlleData">
           <Key>
             <PropertyRef Name="BladID" />
+            <PropertyRef Name="Navn" />
             <PropertyRef Name="Ejerforhold" />
           </Key>
           <Property Name="BladID" Type="Int32" Nullable="false" />
-          <Property Name="Navn" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Navn" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Adresse" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
           <Property Name="PostNr" Type="Int32" />
           <Property Name="PostBy" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
@@ -4340,7 +4446,6 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <Property Name="Emails" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="KontaktpersonerEmails" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="BogholderiEmails" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="BogholderiKontaktperson" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="MedieNetKode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="Hjemmeside" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="RedaktionEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -5181,10 +5286,10 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblMedieplan_tblPlacering">
-          <End Role="tblPlacering" Type="Self.tblPlacering" Multiplicity="1" />
+          <End Role="tblPlacering2" Type="Self.tblPlacering2" Multiplicity="1" />
           <End Role="tblMedieplan" Type="Self.tblMedieplan" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tblPlacering">
+            <Principal Role="tblPlacering2">
               <PropertyRef Name="PlaceringID" />
             </Principal>
             <Dependent Role="tblMedieplan">
@@ -5241,10 +5346,10 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblPriser_tblPlacering">
-          <End Role="tblPlacering" Type="Self.tblPlacering" Multiplicity="1" />
+          <End Role="tblPlacering2" Type="Self.tblPlacering2" Multiplicity="1" />
           <End Role="tblPriser" Type="Self.tblPriser" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tblPlacering">
+            <Principal Role="tblPlacering2">
               <PropertyRef Name="PlaceringID" />
             </Principal>
             <Dependent Role="tblPriser">
@@ -5308,15 +5413,22 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <End Role="tblKontakterPrBlad" Type="Self.tblKontakterPrBlad" Multiplicity="*" />
           <End Role="tblKontaktFunktioner" Type="Self.tblKontaktFunktioner" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="DiMPdotNetEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DiMPdotNetDevEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="dtproperties" EntityType="Self.dtproperty" />
+          <EntitySet Name="KontaktTitlers" EntityType="Self.KontaktTitler" />
           <EntitySet Name="OpdateringsTeksts" EntityType="Self.OpdateringsTekst" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="tblAnnoncekontrols" EntityType="Self.tblAnnoncekontrol" />
           <EntitySet Name="tblBladDækning" EntityType="Self.tblBladDækning" />
+          <EntitySet Name="tblBladKommentars" EntityType="Self.tblBladKommentar" />
           <EntitySet Name="tblBladnavnMappingFraDOes" EntityType="Self.tblBladnavnMappingFraDO" />
+          <EntitySet Name="tblBladRabats" EntityType="Self.tblBladRabat" />
+          <EntitySet Name="tblBladRabatters" EntityType="Self.tblBladRabatter" />
           <EntitySet Name="tblBladStamdatas" EntityType="Self.tblBladStamdata" />
           <EntitySet Name="tblBladStamdataKopis" EntityType="Self.tblBladStamdataKopi" />
+          <EntitySet Name="tblBladTillaegs" EntityType="Self.tblBladTillaeg" />
+          <EntitySet Name="tblBladTillaegsTypes" EntityType="Self.tblBladTillaegsType" />
+          <EntitySet Name="tblBladUdsendingKontakters" EntityType="Self.tblBladUdsendingKontakter" />
           <EntitySet Name="tblBrugerDatas" EntityType="Self.tblBrugerData" />
           <EntitySet Name="tblDages" EntityType="Self.tblDage" />
           <EntitySet Name="tblDelOmråde" EntityType="Self.tblDelOmråde" />
@@ -5347,6 +5459,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <EntitySet Name="tblOrdreLinjerNavisions" EntityType="Self.tblOrdreLinjerNavision" />
           <EntitySet Name="tblOrdreNavisions" EntityType="Self.tblOrdreNavision" />
           <EntitySet Name="tblPlacerings" EntityType="Self.tblPlacering" />
+          <EntitySet Name="tblPlacering2" EntityType="Self.tblPlacering2" />
           <EntitySet Name="tblPostNrs" EntityType="Self.tblPostNr" />
           <EntitySet Name="tblPostNrSøgning" EntityType="Self.tblPostNrSøgning" />
           <EntitySet Name="tblPriceAskings" EntityType="Self.tblPriceAsking" />
@@ -5357,6 +5470,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <EntitySet Name="tblRegions" EntityType="Self.tblRegion" />
           <EntitySet Name="tblRemindereSendts" EntityType="Self.tblRemindereSendt" />
           <EntitySet Name="tblStambladKontakters" EntityType="Self.tblStambladKontakter" />
+          <EntitySet Name="tblStambladUdsendingEmailTypers" EntityType="Self.tblStambladUdsendingEmailTyper" />
           <EntitySet Name="tblSupportBilags" EntityType="Self.tblSupportBilag" />
           <EntitySet Name="tblWEBeMails" EntityType="Self.tblWEBeMail" />
           <EntitySet Name="tblWEBForespørgsel" EntityType="Self.tblWEBForespørgsel" />
@@ -5366,7 +5480,6 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <EntitySet Name="bladtlfogfaxkopis" EntityType="Self.bladtlfogfaxkopi" />
           <EntitySet Name="delPrisers" EntityType="Self.delPriser" />
           <EntitySet Name="HerningFolkeblads" EntityType="Self.HerningFolkeblad" />
-          <EntitySet Name="Table_1" EntityType="Self.Table_1" />
           <EntitySet Name="tblAktiveVærdier" EntityType="Self.tblAktiveVærdier" />
           <EntitySet Name="tblAktivGruppeVersions" EntityType="Self.tblAktivGruppeVersion" />
           <EntitySet Name="tblFarveTillægWebApp" EntityType="Self.tblFarveTillægWebApp" />
@@ -5497,7 +5610,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             <End Role="tblMedieplan" EntitySet="tblMedieplans" />
           </AssociationSet>
           <AssociationSet Name="FK_tblMedieplan_tblPlacering" Association="Self.FK_tblMedieplan_tblPlacering">
-            <End Role="tblPlacering" EntitySet="tblPlacerings" />
+            <End Role="tblPlacering2" EntitySet="tblPlacering2" />
             <End Role="tblMedieplan" EntitySet="tblMedieplans" />
           </AssociationSet>
           <AssociationSet Name="FK_tblMedieplanLinjer_tblMedieplan" Association="Self.FK_tblMedieplanLinjer_tblMedieplan">
@@ -5513,7 +5626,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             <End Role="tblOrdreLinjerNavision" EntitySet="tblOrdreLinjerNavisions" />
           </AssociationSet>
           <AssociationSet Name="FK_tblPriser_tblPlacering" Association="Self.FK_tblPriser_tblPlacering">
-            <End Role="tblPlacering" EntitySet="tblPlacerings" />
+            <End Role="tblPlacering2" EntitySet="tblPlacering2" />
             <End Role="tblPriser" EntitySet="tblPrisers" />
           </AssociationSet>
           <AssociationSet Name="FK_tblPostNrSøgning_tblPostNr" Association="Self.FK_tblPostNrSøgning_tblPostNr">
@@ -5626,11 +5739,11 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             <Parameter Name="property" Mode="In" Type="String" />
             <Parameter Name="uvalue" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="dt_getpropertiesbyid" ReturnType="Collection(DiMPdotNetModel.dt_getpropertiesbyid_Result)">
+          <FunctionImport Name="dt_getpropertiesbyid" ReturnType="Collection(DiMPdotNetDevModel.dt_getpropertiesbyid_Result)">
             <Parameter Name="id" Mode="In" Type="Int32" />
             <Parameter Name="property" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="dt_getpropertiesbyid_u" ReturnType="Collection(DiMPdotNetModel.dt_getpropertiesbyid_u_Result)">
+          <FunctionImport Name="dt_getpropertiesbyid_u" ReturnType="Collection(DiMPdotNetDevModel.dt_getpropertiesbyid_u_Result)">
             <Parameter Name="id" Mode="In" Type="Int32" />
             <Parameter Name="property" Mode="In" Type="String" />
           </FunctionImport>
@@ -5695,6 +5808,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           </FunctionImport>
           <FunctionImport Name="IndsætOrdreLinjerTilNavision" />
           <FunctionImport Name="IndsætOrdreTilNavision" />
+          <FunctionImport Name="OpdatereDaekningtal" />
           <FunctionImport Name="OpdaterMedieplanNrTabel">
             <Parameter Name="MedieplanNr" Mode="In" Type="Int32" />
             <Parameter Name="AktivVersion" Mode="In" Type="Int16" />
@@ -5746,11 +5860,11 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(DiMPdotNetModel.sp_helpdiagramdefinition_Result)">
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(DiMPdotNetDevModel.sp_helpdiagramdefinition_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(DiMPdotNetModel.sp_helpdiagrams_Result)">
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(DiMPdotNetDevModel.sp_helpdiagrams_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -5760,9 +5874,6 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <EntitySet Name="tblBladTiLaegsTypes" EntityType="DiMPdotNetModel.tblBladTiLaegsType" />
-          <EntitySet Name="KontaktTitlers" EntityType="DiMPdotNetModel.KontaktTitler" />
-          <EntitySet Name="tblBladKommentars" EntityType="DiMPdotNetModel.tblBladKommentar" />
         </EntityContainer>
         <ComplexType Name="dt_getpropertiesbyid_Result">
           <Property Type="String" Name="property" Nullable="false" MaxLength="64" />
@@ -5787,38 +5898,14 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <EntityType Name="tblBladTiLaegsType">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="bladid" Type="Int32" />
-          <Property Name="tillaegsTypeId" Type="Int32" />
-        </EntityType>
-        <EntityType Name="KontaktTitler">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="titel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="tblBladKommentar">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="bladid" Type="Int32" />
-          <Property Name="tekst" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DiMPdotNetModelStoreContainer" CdmEntityContainer="DiMPdotNetEntities">
+        <EntityContainerMapping StorageEntityContainer="DiMPdotNetDevModelStoreContainer" CdmEntityContainer="DiMPdotNetDevEntities">
           <EntitySetMapping Name="dtproperties">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.dtproperty">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.dtproperty">
               <MappingFragment StoreEntitySet="dtproperties">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="objectid" ColumnName="objectid" />
@@ -5830,8 +5917,16 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="KontaktTitlers">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.KontaktTitler">
+              <MappingFragment StoreEntitySet="KontaktTitler">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="titel" ColumnName="titel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="OpdateringsTeksts">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.OpdateringsTekst">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.OpdateringsTekst">
               <MappingFragment StoreEntitySet="OpdateringsTekst">
                 <ScalarProperty Name="LPVersion" ColumnName="LPVersion" />
                 <ScalarProperty Name="Beskrivelse" ColumnName="Beskrivelse" />
@@ -5839,7 +5934,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.sysdiagram">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -5850,7 +5945,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblAnnoncekontrols">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblAnnoncekontrol">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblAnnoncekontrol">
               <MappingFragment StoreEntitySet="tblAnnoncekontrol">
                 <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
                 <ScalarProperty Name="UgeavisID" ColumnName="UgeavisID" />
@@ -5867,7 +5962,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblBladDækning">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblBladDækning">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblBladDækning">
               <MappingFragment StoreEntitySet="tblBladDækning">
                 <ScalarProperty Name="BladID" ColumnName="BladID" />
                 <ScalarProperty Name="PostNr" ColumnName="PostNr" />
@@ -5876,8 +5971,18 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tblBladKommentars">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblBladKommentar">
+              <MappingFragment StoreEntitySet="tblBladKommentar">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="bladid" ColumnName="bladid" />
+                <ScalarProperty Name="tekst" ColumnName="tekst" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblBladnavnMappingFraDOes">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblBladnavnMappingFraDO">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblBladnavnMappingFraDO">
               <MappingFragment StoreEntitySet="tblBladnavnMappingFraDO">
                 <ScalarProperty Name="BladID" ColumnName="BladID" />
                 <ScalarProperty Name="DLUNavn" ColumnName="DLUNavn" />
@@ -5885,8 +5990,30 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tblBladRabats">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblBladRabat">
+              <MappingFragment StoreEntitySet="tblBladRabat">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ejerforholdid" ColumnName="ejerforholdid" />
+                <ScalarProperty Name="bladid" ColumnName="bladid" />
+                <ScalarProperty Name="rabat" ColumnName="rabat" />
+                <ScalarProperty Name="rabattype" ColumnName="rabattype" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBladRabatters">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblBladRabatter">
+              <MappingFragment StoreEntitySet="tblBladRabatter">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="bladid" ColumnName="bladid" />
+                <ScalarProperty Name="rabattype" ColumnName="rabattype" />
+                <ScalarProperty Name="pris" ColumnName="pris" />
+                <ScalarProperty Name="ejerforholdid" ColumnName="ejerforholdid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblBladStamdatas">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblBladStamdata">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblBladStamdata">
               <MappingFragment StoreEntitySet="tblBladStamdata">
                 <ScalarProperty Name="BladID" ColumnName="BladID" />
                 <ScalarProperty Name="Navn" ColumnName="Navn" />
@@ -5960,7 +6087,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblBladStamdataKopis">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblBladStamdataKopi">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblBladStamdataKopi">
               <MappingFragment StoreEntitySet="tblBladStamdataKopi">
                 <ScalarProperty Name="BladID" ColumnName="BladID" />
                 <ScalarProperty Name="Navn" ColumnName="Navn" />
@@ -6031,8 +6158,39 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tblBladTillaegs">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblBladTillaeg">
+              <MappingFragment StoreEntitySet="tblBladTillaeg">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="bladId" ColumnName="bladId" />
+                <ScalarProperty Name="typeId" ColumnName="typeId" />
+                <ScalarProperty Name="pris" ColumnName="pris" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBladTillaegsTypes">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblBladTillaegsType">
+              <MappingFragment StoreEntitySet="tblBladTillaegsType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBladUdsendingKontakters">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblBladUdsendingKontakter">
+              <MappingFragment StoreEntitySet="tblBladUdsendingKontakter">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="bladid" ColumnName="bladid" />
+                <ScalarProperty Name="navn" ColumnName="navn" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="telefonnummer" ColumnName="telefonnummer" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="titel" ColumnName="titel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblBrugerDatas">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblBrugerData">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblBrugerData">
               <MappingFragment StoreEntitySet="tblBrugerData">
                 <ScalarProperty Name="Initialer" ColumnName="Initialer" />
                 <ScalarProperty Name="SidsteLoginVersion" ColumnName="SidsteLoginVersion" />
@@ -6041,7 +6199,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblDages">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblDage">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblDage">
               <MappingFragment StoreEntitySet="tblDage">
                 <ScalarProperty Name="DagID" ColumnName="DagID" />
                 <ScalarProperty Name="DagNavn" ColumnName="DagNavn" />
@@ -6051,7 +6209,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblDelOmråde">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblDelOmråde">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblDelOmråde">
               <MappingFragment StoreEntitySet="tblDelOmråde">
                 <ScalarProperty Name="DelOmrådeID" ColumnName="DelOmrådeID" />
                 <ScalarProperty Name="DelOmrådeKode" ColumnName="DelOmrådeKode" />
@@ -6062,7 +6220,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblDPKulør">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblDPKulør">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblDPKulør">
               <MappingFragment StoreEntitySet="tblDPKulør">
                 <ScalarProperty Name="DPKulørID" ColumnName="DPKulørID" />
                 <ScalarProperty Name="Kulør" ColumnName="Kulør" />
@@ -6070,7 +6228,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblEjerforholds">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblEjerforhold">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblEjerforhold">
               <MappingFragment StoreEntitySet="tblEjerforhold">
                 <ScalarProperty Name="EjerforholdID" ColumnName="EjerforholdID" />
                 <ScalarProperty Name="Ejerforhold" ColumnName="Ejerforhold" />
@@ -6080,7 +6238,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblFakturaFejls">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblFakturaFejl">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblFakturaFejl">
               <MappingFragment StoreEntitySet="tblFakturaFejl">
                 <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
                 <ScalarProperty Name="Version" ColumnName="Version" />
@@ -6091,7 +6249,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblFakturaFejlTeksts">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblFakturaFejlTekst">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblFakturaFejlTekst">
               <MappingFragment StoreEntitySet="tblFakturaFejlTekst">
                 <ScalarProperty Name="FejlKode" ColumnName="FejlKode" />
                 <ScalarProperty Name="FejlTekst" ColumnName="FejlTekst" />
@@ -6099,7 +6257,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblFaktureringsBilags">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblFaktureringsBilag">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblFaktureringsBilag">
               <MappingFragment StoreEntitySet="tblFaktureringsBilag">
                 <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
                 <ScalarProperty Name="BemærkningNr" ColumnName="BemærkningNr" />
@@ -6114,7 +6272,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblFejlTeksts">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblFejlTekst">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblFejlTekst">
               <MappingFragment StoreEntitySet="tblFejlTekst">
                 <ScalarProperty Name="Fejlkode" ColumnName="Fejlkode" />
                 <ScalarProperty Name="FejlTekst" ColumnName="FejlTekst" />
@@ -6122,7 +6280,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblGeoKodes">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblGeoKode">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblGeoKode">
               <MappingFragment StoreEntitySet="tblGeoKode">
                 <ScalarProperty Name="GeoKodeID" ColumnName="GeoKodeID" />
                 <ScalarProperty Name="GeoKodeNavn" ColumnName="GeoKodeNavn" />
@@ -6132,7 +6290,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblGruppers">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblGrupper">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblGrupper">
               <MappingFragment StoreEntitySet="tblGrupper">
                 <ScalarProperty Name="GruppeID" ColumnName="GruppeID" />
                 <ScalarProperty Name="GruppeNavn" ColumnName="GruppeNavn" />
@@ -6147,7 +6305,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblGruppeRabatters">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblGruppeRabatter">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblGruppeRabatter">
               <MappingFragment StoreEntitySet="tblGruppeRabatter">
                 <ScalarProperty Name="RabatFormID" ColumnName="RabatFormID" />
                 <ScalarProperty Name="GruppeID" ColumnName="GruppeID" />
@@ -6166,7 +6324,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblHovedGruppes">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblHovedGruppe">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblHovedGruppe">
               <MappingFragment StoreEntitySet="tblHovedGruppe">
                 <ScalarProperty Name="HovedGruppeID" ColumnName="HovedGruppeID" />
                 <ScalarProperty Name="HovedGruppeNavn" ColumnName="HovedGruppeNavn" />
@@ -6176,7 +6334,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblKonkurrentDækning">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblKonkurrentDækning">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblKonkurrentDækning">
               <MappingFragment StoreEntitySet="tblKonkurrentDækning">
                 <ScalarProperty Name="KonkurrentID" ColumnName="KonkurrentID" />
                 <ScalarProperty Name="PostNr" ColumnName="PostNr" />
@@ -6186,7 +6344,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblKonkurrenters">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblKonkurrenter">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblKonkurrenter">
               <MappingFragment StoreEntitySet="tblKonkurrenter">
                 <ScalarProperty Name="KonkurrentID" ColumnName="KonkurrentID" />
                 <ScalarProperty Name="KonkurrentNavn" ColumnName="KonkurrentNavn" />
@@ -6197,7 +6355,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblKontaktArbOmråder">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblKontaktArbOmråder">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblKontaktArbOmråder">
               <MappingFragment StoreEntitySet="tblKontaktArbOmråder">
                 <ScalarProperty Name="ArbOmrådeID" ColumnName="ArbOmrådeID" />
                 <ScalarProperty Name="ArbOmråde" ColumnName="ArbOmråde" />
@@ -6205,7 +6363,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblKontakters">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblKontakter">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblKontakter">
               <MappingFragment StoreEntitySet="tblKontakter">
                 <ScalarProperty Name="KontaktID" ColumnName="KontaktID" />
                 <ScalarProperty Name="Fornavn" ColumnName="Fornavn" />
@@ -6218,7 +6376,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblKontakterPrBlads">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblKontakterPrBlad">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblKontakterPrBlad">
               <MappingFragment StoreEntitySet="tblKontakterPrBlad">
                 <ScalarProperty Name="BladID" ColumnName="BladID" />
                 <ScalarProperty Name="KontaktID" ColumnName="KontaktID" />
@@ -6226,7 +6384,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblKontaktFunktioners">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblKontaktFunktioner">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblKontaktFunktioner">
               <MappingFragment StoreEntitySet="tblKontaktFunktioner">
                 <ScalarProperty Name="FunktionID" ColumnName="FunktionID" />
                 <ScalarProperty Name="Funktion" ColumnName="Funktion" />
@@ -6234,7 +6392,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblKontaktTitlers">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblKontaktTitler">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblKontaktTitler">
               <MappingFragment StoreEntitySet="tblKontaktTitler">
                 <ScalarProperty Name="TitelID" ColumnName="TitelID" />
                 <ScalarProperty Name="Titel" ColumnName="Titel" />
@@ -6242,7 +6400,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblMateriales">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblMateriale">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblMateriale">
               <MappingFragment StoreEntitySet="tblMateriale">
                 <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
                 <ScalarProperty Name="UgeavisID" ColumnName="UgeavisID" />
@@ -6254,7 +6412,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblMedieplans">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblMedieplan">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblMedieplan">
               <MappingFragment StoreEntitySet="tblMedieplan">
                 <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
                 <ScalarProperty Name="Version" ColumnName="Version" />
@@ -6315,7 +6473,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblMedieplanÆndringer">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblMedieplanÆndringer">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblMedieplanÆndringer">
               <MappingFragment StoreEntitySet="tblMedieplanÆndringer">
                 <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
                 <ScalarProperty Name="Version" ColumnName="Version" />
@@ -6324,7 +6482,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblMedieplanLinjers">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblMedieplanLinjer">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblMedieplanLinjer">
               <MappingFragment StoreEntitySet="tblMedieplanLinjer">
                 <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
                 <ScalarProperty Name="Version" ColumnName="Version" />
@@ -6362,7 +6520,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblMedieplanNrs">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblMedieplanNr">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblMedieplanNr">
               <MappingFragment StoreEntitySet="tblMedieplanNr">
                 <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
                 <ScalarProperty Name="AktivVersion" ColumnName="AktivVersion" />
@@ -6382,7 +6540,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblMedIGruppes">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblMedIGruppe">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblMedIGruppe">
               <MappingFragment StoreEntitySet="tblMedIGruppe">
                 <ScalarProperty Name="GruppeID" ColumnName="GruppeID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -6392,7 +6550,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblOrdreGebyrNavisions">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblOrdreGebyrNavision">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblOrdreGebyrNavision">
               <MappingFragment StoreEntitySet="tblOrdreGebyrNavision">
                 <ScalarProperty Name="OrdreNr" ColumnName="OrdreNr" />
                 <ScalarProperty Name="Version" ColumnName="Version" />
@@ -6405,7 +6563,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblOrdreLinjerNavisions">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblOrdreLinjerNavision">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblOrdreLinjerNavision">
               <MappingFragment StoreEntitySet="tblOrdreLinjerNavision">
                 <ScalarProperty Name="OrdreNr" ColumnName="OrdreNr" />
                 <ScalarProperty Name="Version" ColumnName="Version" />
@@ -6428,7 +6586,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblOrdreNavisions">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblOrdreNavision">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblOrdreNavision">
               <MappingFragment StoreEntitySet="tblOrdreNavision">
                 <ScalarProperty Name="OrdreNr" ColumnName="OrdreNr" />
                 <ScalarProperty Name="Version" ColumnName="Version" />
@@ -6460,15 +6618,23 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblPlacerings">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblPlacering">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblPlacering">
               <MappingFragment StoreEntitySet="tblPlacering">
                 <ScalarProperty Name="PlaceringID" ColumnName="PlaceringID" />
                 <ScalarProperty Name="Betegnelse" ColumnName="Betegnelse" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tblPlacering2">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblPlacering2">
+              <MappingFragment StoreEntitySet="tblPlacering2">
+                <ScalarProperty Name="PlaceringID" ColumnName="PlaceringID" />
+                <ScalarProperty Name="Betegnelse" ColumnName="Betegnelse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblPostNrs">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblPostNr">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblPostNr">
               <MappingFragment StoreEntitySet="tblPostNr">
                 <ScalarProperty Name="PostNr" ColumnName="PostNr" />
                 <ScalarProperty Name="PostBy" ColumnName="PostBy" />
@@ -6478,7 +6644,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblPostNrSøgning">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblPostNrSøgning">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblPostNrSøgning">
               <MappingFragment StoreEntitySet="tblPostNrSøgning">
                 <ScalarProperty Name="BrugerNavn" ColumnName="BrugerNavn" />
                 <ScalarProperty Name="PostNr" ColumnName="PostNr" />
@@ -6486,7 +6652,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblPriceAskings">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblPriceAsking">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblPriceAsking">
               <MappingFragment StoreEntitySet="tblPriceAsking">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="stambladId" ColumnName="stambladId" />
@@ -6497,7 +6663,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblPrisers">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblPriser">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblPriser">
               <MappingFragment StoreEntitySet="tblPriser">
                 <ScalarProperty Name="BladID" ColumnName="BladID" />
                 <ScalarProperty Name="PlaceringID" ColumnName="PlaceringID" />
@@ -6517,7 +6683,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblPrislisters">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblPrislister">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblPrislister">
               <MappingFragment StoreEntitySet="tblPrislister">
                 <ScalarProperty Name="PrislisteID" ColumnName="PrislisteID" />
                 <ScalarProperty Name="PrislisteNavn" ColumnName="PrislisteNavn" />
@@ -6525,7 +6691,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblPrislisterPrBladPrÅr">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblPrislisterPrBladPrÅr">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblPrislisterPrBladPrÅr">
               <MappingFragment StoreEntitySet="tblPrislisterPrBladPrÅr">
                 <ScalarProperty Name="BladID" ColumnName="BladID" />
                 <ScalarProperty Name="År" ColumnName="År" />
@@ -6534,7 +6700,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblPrislisterPrBladPrUges">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblPrislisterPrBladPrUge">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblPrislisterPrBladPrUge">
               <MappingFragment StoreEntitySet="tblPrislisterPrBladPrUge">
                 <ScalarProperty Name="BladID" ColumnName="BladID" />
                 <ScalarProperty Name="Uge" ColumnName="Uge" />
@@ -6544,7 +6710,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblRegions">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblRegion">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblRegion">
               <MappingFragment StoreEntitySet="tblRegion">
                 <ScalarProperty Name="RegionID" ColumnName="RegionID" />
                 <ScalarProperty Name="RegionNavn" ColumnName="RegionNavn" />
@@ -6554,7 +6720,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblRemindereSendts">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblRemindereSendt">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblRemindereSendt">
               <MappingFragment StoreEntitySet="tblRemindereSendt">
                 <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
                 <ScalarProperty Name="UgeavisID" ColumnName="UgeavisID" />
@@ -6564,19 +6730,27 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblStambladKontakters">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblStambladKontakter">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblStambladKontakter">
               <MappingFragment StoreEntitySet="tblStambladKontakter">
-                <ScalarProperty Name="KontakPersonEmail" ColumnName="KontakPersonEmail" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="StamBladId" ColumnName="StamBladId" />
                 <ScalarProperty Name="KontakPersonNavn" ColumnName="KontakPersonNavn" />
+                <ScalarProperty Name="KontakPersonEmail" ColumnName="KontakPersonEmail" />
                 <ScalarProperty Name="KontakPersonTitel" ColumnName="KontakPersonTitel" />
                 <ScalarProperty Name="KontakPersonTelefon" ColumnName="KontakPersonTelefon" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tblStambladUdsendingEmailTypers">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblStambladUdsendingEmailTyper">
+              <MappingFragment StoreEntitySet="tblStambladUdsendingEmailTyper">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="titel" ColumnName="titel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblSupportBilags">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblSupportBilag">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblSupportBilag">
               <MappingFragment StoreEntitySet="tblSupportBilag">
                 <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
                 <ScalarProperty Name="IndrykningsUge" ColumnName="IndrykningsUge" />
@@ -6602,7 +6776,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblWEBeMails">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblWEBeMail">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblWEBeMail">
               <MappingFragment StoreEntitySet="tblWEBeMails">
                 <ScalarProperty Name="PersonID" ColumnName="PersonID" />
                 <ScalarProperty Name="eMail" ColumnName="eMail" />
@@ -6611,7 +6785,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblWEBForespørgsel">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblWEBForespørgsel">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblWEBForespørgsel">
               <MappingFragment StoreEntitySet="tblWEBForespørgsel">
                 <ScalarProperty Name="ForespørgselID" ColumnName="ForespørgselID" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
@@ -6633,7 +6807,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblWEBForespørgselLinjer">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblWEBForespørgselLinjer">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblWEBForespørgselLinjer">
               <MappingFragment StoreEntitySet="tblWEBForespørgselLinjer">
                 <ScalarProperty Name="ForespørgselID" ColumnName="ForespørgselID" />
                 <ScalarProperty Name="BladID" ColumnName="BladID" />
@@ -6652,7 +6826,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblWEBSendTilKollegas">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblWEBSendTilKollega">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblWEBSendTilKollega">
               <MappingFragment StoreEntitySet="tblWEBSendTilKollega">
                 <ScalarProperty Name="PersonID" ColumnName="PersonID" />
                 <ScalarProperty Name="BladID" ColumnName="BladID" />
@@ -6661,7 +6835,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.User">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="userID" ColumnName="userID" />
                 <ScalarProperty Name="username" ColumnName="username" />
@@ -6676,7 +6850,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="bladtlfogfaxkopis">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.bladtlfogfaxkopi">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.bladtlfogfaxkopi">
               <MappingFragment StoreEntitySet="bladtlfogfaxkopi">
                 <ScalarProperty Name="BladID" ColumnName="BladID" />
                 <ScalarProperty Name="Tlf" ColumnName="Tlf" />
@@ -6685,7 +6859,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="delPrisers">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.delPriser">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.delPriser">
               <MappingFragment StoreEntitySet="delPriser">
                 <ScalarProperty Name="BladID" ColumnName="BladID" />
                 <ScalarProperty Name="PlaceringID" ColumnName="PlaceringID" />
@@ -6693,26 +6867,15 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HerningFolkeblads">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.HerningFolkeblad">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.HerningFolkeblad">
               <MappingFragment StoreEntitySet="HerningFolkeblad">
                 <ScalarProperty Name="BladID" ColumnName="BladID" />
                 <ScalarProperty Name="Navn" ColumnName="Navn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Table_1">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.Table_1">
-              <MappingFragment StoreEntitySet="Table_1">
-                <ScalarProperty Name="askingID" ColumnName="askingID" />
-                <ScalarProperty Name="stambladId" ColumnName="stambladId" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="telefon" ColumnName="telefon" />
-                <ScalarProperty Name="mail" ColumnName="mail" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tblAktiveVærdier">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblAktiveVærdier">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblAktiveVærdier">
               <MappingFragment StoreEntitySet="tblAktiveVærdier">
                 <ScalarProperty Name="GruppeVersion" ColumnName="GruppeVersion" />
                 <ScalarProperty Name="MiljøTillæg" ColumnName="MiljøTillæg" />
@@ -6722,14 +6885,14 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblAktivGruppeVersions">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblAktivGruppeVersion">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblAktivGruppeVersion">
               <MappingFragment StoreEntitySet="tblAktivGruppeVersion">
                 <ScalarProperty Name="AktivVersion" ColumnName="AktivVersion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblFarveTillægWebApp">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblFarveTillægWebApp">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblFarveTillægWebApp">
               <MappingFragment StoreEntitySet="tblFarveTillægWebApp">
                 <ScalarProperty Name="BladID" ColumnName="BladID" />
                 <ScalarProperty Name="farvePris" ColumnName="farvePris" />
@@ -6744,7 +6907,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblMmPrisWebApps">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblMmPrisWebApp">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblMmPrisWebApp">
               <MappingFragment StoreEntitySet="tblMmPrisWebApp">
                 <ScalarProperty Name="BladID" ColumnName="BladID" />
                 <ScalarProperty Name="Placering" ColumnName="Placering" />
@@ -6753,7 +6916,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblPlannerPlaners">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblPlannerPlaner">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblPlannerPlaner">
               <MappingFragment StoreEntitySet="tblPlannerPlaner">
                 <ScalarProperty Name="PlannerID" ColumnName="PlannerID" />
                 <ScalarProperty Name="BrugerNavn" ColumnName="BrugerNavn" />
@@ -6772,7 +6935,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tempPrisers">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tempPriser">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tempPriser">
               <MappingFragment StoreEntitySet="tempPriser">
                 <ScalarProperty Name="BladID" ColumnName="BladID" />
                 <ScalarProperty Name="PlaceringID" ColumnName="PlaceringID" />
@@ -6792,7 +6955,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tmpNyeDeadlines">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tmpNyeDeadline">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tmpNyeDeadline">
               <MappingFragment StoreEntitySet="tmpNyeDeadlines">
                 <ScalarProperty Name="BladID" ColumnName="BladID" />
                 <ScalarProperty Name="Linje" ColumnName="Linje" />
@@ -6804,21 +6967,21 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tnpOrdreNrs">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tnpOrdreNr">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tnpOrdreNr">
               <MappingFragment StoreEntitySet="tnpOrdreNr">
                 <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tnpOrdreNr2">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tnpOrdreNr2">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tnpOrdreNr2">
               <MappingFragment StoreEntitySet="tnpOrdreNr2">
                 <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tnpOrdreNr3">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tnpOrdreNr3">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tnpOrdreNr3">
               <MappingFragment StoreEntitySet="tnpOrdreNr3">
                 <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
                 <ScalarProperty Name="Version" ColumnName="Version" />
@@ -6826,7 +6989,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AktiveUgeaviserMedAlleDatas">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.AktiveUgeaviserMedAlleData">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.AktiveUgeaviserMedAlleData">
               <MappingFragment StoreEntitySet="AktiveUgeaviserMedAlleData">
                 <ScalarProperty Name="BladID" ColumnName="BladID" />
                 <ScalarProperty Name="Navn" ColumnName="Navn" />
@@ -6868,7 +7031,6 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
                 <ScalarProperty Name="Emails" ColumnName="Emails" />
                 <ScalarProperty Name="KontaktpersonerEmails" ColumnName="KontaktpersonerEmails" />
                 <ScalarProperty Name="BogholderiEmails" ColumnName="BogholderiEmails" />
-                <ScalarProperty Name="BogholderiKontaktperson" ColumnName="BogholderiKontaktperson" />
                 <ScalarProperty Name="MedieNetKode" ColumnName="MedieNetKode" />
                 <ScalarProperty Name="Hjemmeside" ColumnName="Hjemmeside" />
                 <ScalarProperty Name="RedaktionEmail" ColumnName="RedaktionEmail" />
@@ -6883,7 +7045,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FakturaFejlFindes">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.FakturaFejlFinde">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.FakturaFejlFinde">
               <MappingFragment StoreEntitySet="FakturaFejlFindes">
                 <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
                 <ScalarProperty Name="UgeavisID" ColumnName="UgeavisID" />
@@ -6892,7 +7054,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FindFejlLinjers">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.FindFejlLinjer">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.FindFejlLinjer">
               <MappingFragment StoreEntitySet="FindFejlLinjer">
                 <ScalarProperty Name="Mm" ColumnName="Mm" />
                 <ScalarProperty Name="Navn" ColumnName="Navn" />
@@ -6913,7 +7075,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GammelAnnoncørID">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.GammelAnnoncørID">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.GammelAnnoncørID">
               <MappingFragment StoreEntitySet="GammelAnnoncørID">
                 <ScalarProperty Name="No_" ColumnName="No_" />
                 <ScalarProperty Name="Gammelt_AnnoncørID" ColumnName="Gammelt AnnoncørID" />
@@ -6922,7 +7084,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LPRollers">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.LPRoller">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.LPRoller">
               <MappingFragment StoreEntitySet="LPRoller">
                 <ScalarProperty Name="User_ID" ColumnName="User ID" />
                 <ScalarProperty Name="Role_ID" ColumnName="Role ID" />
@@ -6930,7 +7092,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NavisionContacts">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.NavisionContact">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.NavisionContact">
               <MappingFragment StoreEntitySet="NavisionContact">
                 <ScalarProperty Name="No_" ColumnName="No_" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -6952,7 +7114,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NavisionContact2">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.NavisionContact2">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.NavisionContact2">
               <MappingFragment StoreEntitySet="NavisionContact2">
                 <ScalarProperty Name="No_" ColumnName="No_" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -6960,7 +7122,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Salespersons">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.Salesperson">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.Salesperson">
               <MappingFragment StoreEntitySet="Salesperson">
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -6974,7 +7136,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UgeaviserTilGrids">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.UgeaviserTilGrid">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.UgeaviserTilGrid">
               <MappingFragment StoreEntitySet="UgeaviserTilGrid">
                 <ScalarProperty Name="BladID" ColumnName="BladID" />
                 <ScalarProperty Name="Navn" ColumnName="Navn" />
@@ -7007,7 +7169,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="viewBlades">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.viewBlade">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.viewBlade">
               <MappingFragment StoreEntitySet="viewBlade">
                 <ScalarProperty Name="BladID" ColumnName="BladID" />
                 <ScalarProperty Name="Navn" ColumnName="Navn" />
@@ -7025,7 +7187,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="viewBookingListes">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.viewBookingListe">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.viewBookingListe">
               <MappingFragment StoreEntitySet="viewBookingListe">
                 <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
                 <ScalarProperty Name="Version" ColumnName="Version" />
@@ -7041,7 +7203,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="viewGruppers">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.viewGrupper">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.viewGrupper">
               <MappingFragment StoreEntitySet="viewGrupper">
                 <ScalarProperty Name="GruppeID" ColumnName="GruppeID" />
                 <ScalarProperty Name="GruppeHovedbladID" ColumnName="GruppeHovedbladID" />
@@ -7050,7 +7212,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="viewLinjeDiffs">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.viewLinjeDiff">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.viewLinjeDiff">
               <MappingFragment StoreEntitySet="viewLinjeDiff">
                 <ScalarProperty Name="MmPrisDiff" ColumnName="MmPrisDiff" />
                 <ScalarProperty Name="MmRabatDiff" ColumnName="MmRabatDiff" />
@@ -7072,7 +7234,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="viewOrdres">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.viewOrdre">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.viewOrdre">
               <MappingFragment StoreEntitySet="viewOrdre">
                 <ScalarProperty Name="OrdreNr" ColumnName="OrdreNr" />
                 <ScalarProperty Name="Version" ColumnName="Version" />
@@ -7101,7 +7263,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="viewOrdreErSendts">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.viewOrdreErSendt">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.viewOrdreErSendt">
               <MappingFragment StoreEntitySet="viewOrdreErSendt">
                 <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
                 <ScalarProperty Name="Version" ColumnName="Version" />
@@ -7118,7 +7280,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="viewOrdreFINDs">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.viewOrdreFIND">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.viewOrdreFIND">
               <MappingFragment StoreEntitySet="viewOrdreFIND">
                 <ScalarProperty Name="OrdreNr" ColumnName="OrdreNr" />
                 <ScalarProperty Name="Version" ColumnName="Version" />
@@ -7146,7 +7308,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="viewOrdreIkkeSendts">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.viewOrdreIkkeSendt">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.viewOrdreIkkeSendt">
               <MappingFragment StoreEntitySet="viewOrdreIkkeSendt">
                 <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
                 <ScalarProperty Name="Version" ColumnName="Version" />
@@ -7165,7 +7327,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="viewOrdreLinjers">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.viewOrdreLinjer">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.viewOrdreLinjer">
               <MappingFragment StoreEntitySet="viewOrdreLinjer">
                 <ScalarProperty Name="OrdreNr" ColumnName="OrdreNr" />
                 <ScalarProperty Name="Version" ColumnName="Version" />
@@ -7186,7 +7348,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="viewOrdreLinjerFINDs">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.viewOrdreLinjerFIND">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.viewOrdreLinjerFIND">
               <MappingFragment StoreEntitySet="viewOrdreLinjerFIND">
                 <ScalarProperty Name="OrdreNr" ColumnName="OrdreNr" />
                 <ScalarProperty Name="Version" ColumnName="Version" />
@@ -7205,7 +7367,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="viewOrdreSendtManglerMateriales">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.viewOrdreSendtManglerMateriale">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.viewOrdreSendtManglerMateriale">
               <MappingFragment StoreEntitySet="viewOrdreSendtManglerMateriale">
                 <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
                 <ScalarProperty Name="Version" ColumnName="Version" />
@@ -7224,7 +7386,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="viewOversigts">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.viewOversigt">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.viewOversigt">
               <MappingFragment StoreEntitySet="viewOversigt">
                 <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
                 <ScalarProperty Name="Version" ColumnName="Version" />
@@ -7243,7 +7405,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="viewUpdateStatusIMedieplans">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.viewUpdateStatusIMedieplan">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.viewUpdateStatusIMedieplan">
               <MappingFragment StoreEntitySet="viewUpdateStatusIMedieplan">
                 <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
                 <ScalarProperty Name="Version" ColumnName="Version" />
@@ -7252,7 +7414,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="viewUpdateStatusIMedieplanNrs">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.viewUpdateStatusIMedieplanNr">
+            <EntityTypeMapping TypeName="DiMPdotNetDevModel.viewUpdateStatusIMedieplanNr">
               <MappingFragment StoreEntitySet="viewUpdateStatusIMedieplanNr">
                 <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
                 <ScalarProperty Name="AktivVersion" ColumnName="AktivVersion" />
@@ -7260,7 +7422,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="tblKontakterArbOmråderPrKontakt" TypeName="DiMPdotNetModel.tblKontakterArbOmråderPrKontakt" StoreEntitySet="tblKontakterArbOmråderPrKontakt">
+          <AssociationSetMapping Name="tblKontakterArbOmråderPrKontakt" TypeName="DiMPdotNetDevModel.tblKontakterArbOmråderPrKontakt" StoreEntitySet="tblKontakterArbOmråderPrKontakt">
             <EndProperty Name="tblKontaktArbOmråder">
               <ScalarProperty Name="ArbOmrådeID" ColumnName="ArbOmrådeID" />
             </EndProperty>
@@ -7268,7 +7430,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
               <ScalarProperty Name="KontaktID" ColumnName="KontaktID" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="tblKontaktFunktionerPrBlad" TypeName="DiMPdotNetModel.tblKontaktFunktionerPrBlad" StoreEntitySet="tblKontaktFunktionerPrBlad">
+          <AssociationSetMapping Name="tblKontaktFunktionerPrBlad" TypeName="DiMPdotNetDevModel.tblKontaktFunktionerPrBlad" StoreEntitySet="tblKontaktFunktionerPrBlad">
             <EndProperty Name="tblKontakterPrBlad">
               <ScalarProperty Name="BladID" ColumnName="BladID" />
               <ScalarProperty Name="KontaktID" ColumnName="KontaktID" />
@@ -7277,24 +7439,24 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
               <ScalarProperty Name="FunktionID" ColumnName="FunktionID" />
             </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="dt_addtosourcecontrol" FunctionName="DiMPdotNetModel.Store.dt_addtosourcecontrol" />
-          <FunctionImportMapping FunctionImportName="dt_addtosourcecontrol_u" FunctionName="DiMPdotNetModel.Store.dt_addtosourcecontrol_u" />
-          <FunctionImportMapping FunctionImportName="dt_adduserobject" FunctionName="DiMPdotNetModel.Store.dt_adduserobject" />
-          <FunctionImportMapping FunctionImportName="dt_adduserobject_vcs" FunctionName="DiMPdotNetModel.Store.dt_adduserobject_vcs" />
-          <FunctionImportMapping FunctionImportName="dt_checkinobject" FunctionName="DiMPdotNetModel.Store.dt_checkinobject" />
-          <FunctionImportMapping FunctionImportName="dt_checkinobject_u" FunctionName="DiMPdotNetModel.Store.dt_checkinobject_u" />
-          <FunctionImportMapping FunctionImportName="dt_checkoutobject" FunctionName="DiMPdotNetModel.Store.dt_checkoutobject" />
-          <FunctionImportMapping FunctionImportName="dt_checkoutobject_u" FunctionName="DiMPdotNetModel.Store.dt_checkoutobject_u" />
-          <FunctionImportMapping FunctionImportName="dt_displayoaerror" FunctionName="DiMPdotNetModel.Store.dt_displayoaerror" />
-          <FunctionImportMapping FunctionImportName="dt_displayoaerror_u" FunctionName="DiMPdotNetModel.Store.dt_displayoaerror_u" />
-          <FunctionImportMapping FunctionImportName="dt_droppropertiesbyid" FunctionName="DiMPdotNetModel.Store.dt_droppropertiesbyid" />
-          <FunctionImportMapping FunctionImportName="dt_dropuserobjectbyid" FunctionName="DiMPdotNetModel.Store.dt_dropuserobjectbyid" />
-          <FunctionImportMapping FunctionImportName="dt_generateansiname" FunctionName="DiMPdotNetModel.Store.dt_generateansiname" />
-          <FunctionImportMapping FunctionImportName="dt_getobjwithprop" FunctionName="DiMPdotNetModel.Store.dt_getobjwithprop" />
-          <FunctionImportMapping FunctionImportName="dt_getobjwithprop_u" FunctionName="DiMPdotNetModel.Store.dt_getobjwithprop_u" />
-          <FunctionImportMapping FunctionImportName="dt_getpropertiesbyid" FunctionName="DiMPdotNetModel.Store.dt_getpropertiesbyid">
+          <FunctionImportMapping FunctionImportName="dt_addtosourcecontrol" FunctionName="DiMPdotNetDevModel.Store.dt_addtosourcecontrol" />
+          <FunctionImportMapping FunctionImportName="dt_addtosourcecontrol_u" FunctionName="DiMPdotNetDevModel.Store.dt_addtosourcecontrol_u" />
+          <FunctionImportMapping FunctionImportName="dt_adduserobject" FunctionName="DiMPdotNetDevModel.Store.dt_adduserobject" />
+          <FunctionImportMapping FunctionImportName="dt_adduserobject_vcs" FunctionName="DiMPdotNetDevModel.Store.dt_adduserobject_vcs" />
+          <FunctionImportMapping FunctionImportName="dt_checkinobject" FunctionName="DiMPdotNetDevModel.Store.dt_checkinobject" />
+          <FunctionImportMapping FunctionImportName="dt_checkinobject_u" FunctionName="DiMPdotNetDevModel.Store.dt_checkinobject_u" />
+          <FunctionImportMapping FunctionImportName="dt_checkoutobject" FunctionName="DiMPdotNetDevModel.Store.dt_checkoutobject" />
+          <FunctionImportMapping FunctionImportName="dt_checkoutobject_u" FunctionName="DiMPdotNetDevModel.Store.dt_checkoutobject_u" />
+          <FunctionImportMapping FunctionImportName="dt_displayoaerror" FunctionName="DiMPdotNetDevModel.Store.dt_displayoaerror" />
+          <FunctionImportMapping FunctionImportName="dt_displayoaerror_u" FunctionName="DiMPdotNetDevModel.Store.dt_displayoaerror_u" />
+          <FunctionImportMapping FunctionImportName="dt_droppropertiesbyid" FunctionName="DiMPdotNetDevModel.Store.dt_droppropertiesbyid" />
+          <FunctionImportMapping FunctionImportName="dt_dropuserobjectbyid" FunctionName="DiMPdotNetDevModel.Store.dt_dropuserobjectbyid" />
+          <FunctionImportMapping FunctionImportName="dt_generateansiname" FunctionName="DiMPdotNetDevModel.Store.dt_generateansiname" />
+          <FunctionImportMapping FunctionImportName="dt_getobjwithprop" FunctionName="DiMPdotNetDevModel.Store.dt_getobjwithprop" />
+          <FunctionImportMapping FunctionImportName="dt_getobjwithprop_u" FunctionName="DiMPdotNetDevModel.Store.dt_getobjwithprop_u" />
+          <FunctionImportMapping FunctionImportName="dt_getpropertiesbyid" FunctionName="DiMPdotNetDevModel.Store.dt_getpropertiesbyid">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="DiMPdotNetModel.dt_getpropertiesbyid_Result">
+              <ComplexTypeMapping TypeName="DiMPdotNetDevModel.dt_getpropertiesbyid_Result">
                 <ScalarProperty Name="property" ColumnName="property" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="value" ColumnName="value" />
@@ -7302,9 +7464,9 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="dt_getpropertiesbyid_u" FunctionName="DiMPdotNetModel.Store.dt_getpropertiesbyid_u">
+          <FunctionImportMapping FunctionImportName="dt_getpropertiesbyid_u" FunctionName="DiMPdotNetDevModel.Store.dt_getpropertiesbyid_u">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="DiMPdotNetModel.dt_getpropertiesbyid_u_Result">
+              <ComplexTypeMapping TypeName="DiMPdotNetDevModel.dt_getpropertiesbyid_u_Result">
                 <ScalarProperty Name="property" ColumnName="property" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="uvalue" ColumnName="uvalue" />
@@ -7312,43 +7474,44 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="dt_getpropertiesbyid_vcs" FunctionName="DiMPdotNetModel.Store.dt_getpropertiesbyid_vcs" />
-          <FunctionImportMapping FunctionImportName="dt_getpropertiesbyid_vcs_u" FunctionName="DiMPdotNetModel.Store.dt_getpropertiesbyid_vcs_u" />
-          <FunctionImportMapping FunctionImportName="dt_isundersourcecontrol" FunctionName="DiMPdotNetModel.Store.dt_isundersourcecontrol" />
-          <FunctionImportMapping FunctionImportName="dt_isundersourcecontrol_u" FunctionName="DiMPdotNetModel.Store.dt_isundersourcecontrol_u" />
-          <FunctionImportMapping FunctionImportName="dt_removefromsourcecontrol" FunctionName="DiMPdotNetModel.Store.dt_removefromsourcecontrol" />
-          <FunctionImportMapping FunctionImportName="dt_setpropertybyid" FunctionName="DiMPdotNetModel.Store.dt_setpropertybyid" />
-          <FunctionImportMapping FunctionImportName="dt_setpropertybyid_u" FunctionName="DiMPdotNetModel.Store.dt_setpropertybyid_u" />
-          <FunctionImportMapping FunctionImportName="dt_validateloginparams" FunctionName="DiMPdotNetModel.Store.dt_validateloginparams" />
-          <FunctionImportMapping FunctionImportName="dt_validateloginparams_u" FunctionName="DiMPdotNetModel.Store.dt_validateloginparams_u" />
-          <FunctionImportMapping FunctionImportName="dt_vcsenabled" FunctionName="DiMPdotNetModel.Store.dt_vcsenabled" />
-          <FunctionImportMapping FunctionImportName="dt_verstamp006" FunctionName="DiMPdotNetModel.Store.dt_verstamp006" />
-          <FunctionImportMapping FunctionImportName="dt_verstamp007" FunctionName="DiMPdotNetModel.Store.dt_verstamp007" />
-          <FunctionImportMapping FunctionImportName="dt_whocheckedout" FunctionName="DiMPdotNetModel.Store.dt_whocheckedout" />
-          <FunctionImportMapping FunctionImportName="dt_whocheckedout_u" FunctionName="DiMPdotNetModel.Store.dt_whocheckedout_u" />
-          <FunctionImportMapping FunctionImportName="FindNæsteVersionsNrIMedieplan" FunctionName="DiMPdotNetModel.Store.FindNæsteVersionsNrIMedieplan" />
-          <FunctionImportMapping FunctionImportName="IndsætOrdreLinjerTilNavision" FunctionName="DiMPdotNetModel.Store.IndsætOrdreLinjerTilNavision" />
-          <FunctionImportMapping FunctionImportName="IndsætOrdreTilNavision" FunctionName="DiMPdotNetModel.Store.IndsætOrdreTilNavision" />
-          <FunctionImportMapping FunctionImportName="OpdaterMedieplanNrTabel" FunctionName="DiMPdotNetModel.Store.OpdaterMedieplanNrTabel" />
-          <FunctionImportMapping FunctionImportName="OpretForespørgsel" FunctionName="DiMPdotNetModel.Store.OpretForespørgsel" />
-          <FunctionImportMapping FunctionImportName="OpretForespørgselsLinjer" FunctionName="DiMPdotNetModel.Store.OpretForespørgselsLinjer" />
-          <FunctionImportMapping FunctionImportName="OpretKontakt" FunctionName="DiMPdotNetModel.Store.OpretKontakt" />
-          <FunctionImportMapping FunctionImportName="OpretNyMediePlan" FunctionName="DiMPdotNetModel.Store.OpretNyMediePlan" />
-          <FunctionImportMapping FunctionImportName="SearchAllTables" FunctionName="DiMPdotNetModel.Store.SearchAllTables" />
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="DiMPdotNetModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="DiMPdotNetModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="DiMPdotNetModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="DiMPdotNetModel.Store.sp_helpdiagramdefinition">
+          <FunctionImportMapping FunctionImportName="dt_getpropertiesbyid_vcs" FunctionName="DiMPdotNetDevModel.Store.dt_getpropertiesbyid_vcs" />
+          <FunctionImportMapping FunctionImportName="dt_getpropertiesbyid_vcs_u" FunctionName="DiMPdotNetDevModel.Store.dt_getpropertiesbyid_vcs_u" />
+          <FunctionImportMapping FunctionImportName="dt_isundersourcecontrol" FunctionName="DiMPdotNetDevModel.Store.dt_isundersourcecontrol" />
+          <FunctionImportMapping FunctionImportName="dt_isundersourcecontrol_u" FunctionName="DiMPdotNetDevModel.Store.dt_isundersourcecontrol_u" />
+          <FunctionImportMapping FunctionImportName="dt_removefromsourcecontrol" FunctionName="DiMPdotNetDevModel.Store.dt_removefromsourcecontrol" />
+          <FunctionImportMapping FunctionImportName="dt_setpropertybyid" FunctionName="DiMPdotNetDevModel.Store.dt_setpropertybyid" />
+          <FunctionImportMapping FunctionImportName="dt_setpropertybyid_u" FunctionName="DiMPdotNetDevModel.Store.dt_setpropertybyid_u" />
+          <FunctionImportMapping FunctionImportName="dt_validateloginparams" FunctionName="DiMPdotNetDevModel.Store.dt_validateloginparams" />
+          <FunctionImportMapping FunctionImportName="dt_validateloginparams_u" FunctionName="DiMPdotNetDevModel.Store.dt_validateloginparams_u" />
+          <FunctionImportMapping FunctionImportName="dt_vcsenabled" FunctionName="DiMPdotNetDevModel.Store.dt_vcsenabled" />
+          <FunctionImportMapping FunctionImportName="dt_verstamp006" FunctionName="DiMPdotNetDevModel.Store.dt_verstamp006" />
+          <FunctionImportMapping FunctionImportName="dt_verstamp007" FunctionName="DiMPdotNetDevModel.Store.dt_verstamp007" />
+          <FunctionImportMapping FunctionImportName="dt_whocheckedout" FunctionName="DiMPdotNetDevModel.Store.dt_whocheckedout" />
+          <FunctionImportMapping FunctionImportName="dt_whocheckedout_u" FunctionName="DiMPdotNetDevModel.Store.dt_whocheckedout_u" />
+          <FunctionImportMapping FunctionImportName="FindNæsteVersionsNrIMedieplan" FunctionName="DiMPdotNetDevModel.Store.FindNæsteVersionsNrIMedieplan" />
+          <FunctionImportMapping FunctionImportName="IndsætOrdreLinjerTilNavision" FunctionName="DiMPdotNetDevModel.Store.IndsætOrdreLinjerTilNavision" />
+          <FunctionImportMapping FunctionImportName="IndsætOrdreTilNavision" FunctionName="DiMPdotNetDevModel.Store.IndsætOrdreTilNavision" />
+          <FunctionImportMapping FunctionImportName="OpdatereDaekningtal" FunctionName="DiMPdotNetDevModel.Store.OpdatereDaekningtal" />
+          <FunctionImportMapping FunctionImportName="OpdaterMedieplanNrTabel" FunctionName="DiMPdotNetDevModel.Store.OpdaterMedieplanNrTabel" />
+          <FunctionImportMapping FunctionImportName="OpretForespørgsel" FunctionName="DiMPdotNetDevModel.Store.OpretForespørgsel" />
+          <FunctionImportMapping FunctionImportName="OpretForespørgselsLinjer" FunctionName="DiMPdotNetDevModel.Store.OpretForespørgselsLinjer" />
+          <FunctionImportMapping FunctionImportName="OpretKontakt" FunctionName="DiMPdotNetDevModel.Store.OpretKontakt" />
+          <FunctionImportMapping FunctionImportName="OpretNyMediePlan" FunctionName="DiMPdotNetDevModel.Store.OpretNyMediePlan" />
+          <FunctionImportMapping FunctionImportName="SearchAllTables" FunctionName="DiMPdotNetDevModel.Store.SearchAllTables" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="DiMPdotNetDevModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="DiMPdotNetDevModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="DiMPdotNetDevModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="DiMPdotNetDevModel.Store.sp_helpdiagramdefinition">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="DiMPdotNetModel.sp_helpdiagramdefinition_Result">
+              <ComplexTypeMapping TypeName="DiMPdotNetDevModel.sp_helpdiagramdefinition_Result">
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="DiMPdotNetModel.Store.sp_helpdiagrams">
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="DiMPdotNetDevModel.Store.sp_helpdiagrams">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="DiMPdotNetModel.sp_helpdiagrams_Result">
+              <ComplexTypeMapping TypeName="DiMPdotNetDevModel.sp_helpdiagrams_Result">
                 <ScalarProperty Name="Database" ColumnName="Database" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -7357,35 +7520,8 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DiMPdotNetModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DiMPdotNetModel.Store.sp_upgraddiagrams" />
-          <EntitySetMapping Name="tblBladTiLaegsTypes">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblBladTiLaegsType">
-              <MappingFragment StoreEntitySet="tblBladTiLaegsType">
-                <ScalarProperty Name="tillaegsTypeId" ColumnName="tillaegsTypeId" />
-                <ScalarProperty Name="bladid" ColumnName="bladid" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="KontaktTitlers">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.KontaktTitler">
-              <MappingFragment StoreEntitySet="KontaktTitler">
-                <ScalarProperty Name="titel" ColumnName="titel" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblBladKommentars">
-            <EntityTypeMapping TypeName="DiMPdotNetModel.tblBladKommentar">
-              <MappingFragment StoreEntitySet="tblBladKommentar">
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="tekst" ColumnName="tekst" />
-                <ScalarProperty Name="bladid" ColumnName="bladid" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DiMPdotNetDevModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DiMPdotNetDevModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

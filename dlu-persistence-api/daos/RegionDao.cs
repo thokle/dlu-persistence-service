@@ -13,11 +13,11 @@ namespace dlu_persistence_api.daos
      /// </summary>
     public class RegionDao
     {
-        private DiMPdotNetEntities _entities;
+        private DiMPdotNetDevEntities _entities;
 
         public RegionDao()
         {
-            _entities = new DiMPdotNetEntities();
+            _entities = new DiMPdotNetDevEntities();
             
                 _entities.Configuration.LazyLoadingEnabled = true;
             

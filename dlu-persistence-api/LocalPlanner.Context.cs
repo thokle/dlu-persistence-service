@@ -15,10 +15,10 @@ namespace dlu_persistence_api
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class DiMPdotNetEntities : DbContext
+    public partial class DiMPdotNetDevEntities : DbContext
     {
-        public DiMPdotNetEntities()
-            : base("name=DiMPdotNetEntities")
+        public DiMPdotNetDevEntities()
+            : base("name=DiMPdotNetDevEntities")
         {
         }
     
@@ -28,13 +28,20 @@ namespace dlu_persistence_api
         }
     
         public virtual DbSet<dtproperty> dtproperties { get; set; }
+        public virtual DbSet<KontaktTitler> KontaktTitlers { get; set; }
         public virtual DbSet<OpdateringsTekst> OpdateringsTeksts { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<tblAnnoncekontrol> tblAnnoncekontrols { get; set; }
         public virtual DbSet<tblBladDækning> tblBladDækning { get; set; }
+        public virtual DbSet<tblBladKommentar> tblBladKommentars { get; set; }
         public virtual DbSet<tblBladnavnMappingFraDO> tblBladnavnMappingFraDOes { get; set; }
+
+        public virtual DbSet<tblBladRabatter> tblBladRabatters { get; set; }
         public virtual DbSet<tblBladStamdata> tblBladStamdatas { get; set; }
         public virtual DbSet<tblBladStamdataKopi> tblBladStamdataKopis { get; set; }
+        public virtual DbSet<tblBladTillaeg> tblBladTillaegs { get; set; }
+        public virtual DbSet<tblBladTillaegsType> tblBladTillaegsTypes { get; set; }
+        public virtual DbSet<tblBladUdsendingKontakter> tblBladUdsendingKontakters { get; set; }
         public virtual DbSet<tblBrugerData> tblBrugerDatas { get; set; }
         public virtual DbSet<tblDage> tblDages { get; set; }
         public virtual DbSet<tblDelOmråde> tblDelOmråde { get; set; }
@@ -65,6 +72,7 @@ namespace dlu_persistence_api
         public virtual DbSet<tblOrdreLinjerNavision> tblOrdreLinjerNavisions { get; set; }
         public virtual DbSet<tblOrdreNavision> tblOrdreNavisions { get; set; }
         public virtual DbSet<tblPlacering> tblPlacerings { get; set; }
+
         public virtual DbSet<tblPostNr> tblPostNrs { get; set; }
         public virtual DbSet<tblPostNrSøgning> tblPostNrSøgning { get; set; }
         public virtual DbSet<tblPriceAsking> tblPriceAskings { get; set; }
@@ -75,6 +83,7 @@ namespace dlu_persistence_api
         public virtual DbSet<tblRegion> tblRegions { get; set; }
         public virtual DbSet<tblRemindereSendt> tblRemindereSendts { get; set; }
         public virtual DbSet<tblStambladKontakter> tblStambladKontakters { get; set; }
+        public virtual DbSet<tblStambladUdsendingEmailTyper> tblStambladUdsendingEmailTypers { get; set; }
         public virtual DbSet<tblSupportBilag> tblSupportBilags { get; set; }
         public virtual DbSet<tblWEBeMail> tblWEBeMails { get; set; }
         public virtual DbSet<tblWEBForespørgsel> tblWEBForespørgsel { get; set; }
@@ -84,7 +93,6 @@ namespace dlu_persistence_api
         public virtual DbSet<bladtlfogfaxkopi> bladtlfogfaxkopis { get; set; }
         public virtual DbSet<delPriser> delPrisers { get; set; }
         public virtual DbSet<HerningFolkeblad> HerningFolkeblads { get; set; }
-        public virtual DbSet<Table_1> Table_1 { get; set; }
         public virtual DbSet<tblAktiveVærdier> tblAktiveVærdier { get; set; }
         public virtual DbSet<tblAktivGruppeVersion> tblAktivGruppeVersions { get; set; }
         public virtual DbSet<tblFarveTillægWebApp> tblFarveTillægWebApp { get; set; }
@@ -118,9 +126,6 @@ namespace dlu_persistence_api
         public virtual DbSet<viewOversigt> viewOversigts { get; set; }
         public virtual DbSet<viewUpdateStatusIMedieplan> viewUpdateStatusIMedieplans { get; set; }
         public virtual DbSet<viewUpdateStatusIMedieplanNr> viewUpdateStatusIMedieplanNrs { get; set; }
-        public virtual DbSet<tblBladTiLaegsType> tblBladTiLaegsTypes { get; set; }
-        public virtual DbSet<KontaktTitler> KontaktTitlers { get; set; }
-        public virtual DbSet<tblBladKommentar> tblBladKommentars { get; set; }
     
         public virtual int dt_addtosourcecontrol(string vchSourceSafeINI, string vchProjectName, string vchComment, string vchLoginName, string vchPassword)
         {
@@ -654,6 +659,11 @@ namespace dlu_persistence_api
         public virtual int IndsætOrdreTilNavision()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("IndsætOrdreTilNavision");
+        }
+    
+        public virtual int OpdatereDaekningtal()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("OpdatereDaekningtal");
         }
     
         public virtual int OpdaterMedieplanNrTabel(Nullable<int> medieplanNr, Nullable<short> aktivVersion, Nullable<byte> status)

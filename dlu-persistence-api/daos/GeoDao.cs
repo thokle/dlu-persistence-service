@@ -11,10 +11,10 @@ namespace dlu_persistence_api.daos
    
     public     class GeoDao
     {
-        public DiMPdotNetEntities entities;
+        public DiMPdotNetDevEntities entities;
         public GeoDao()
         {
-            entities = new DiMPdotNetEntities();
+            entities = new DiMPdotNetDevEntities();
         }
 
 

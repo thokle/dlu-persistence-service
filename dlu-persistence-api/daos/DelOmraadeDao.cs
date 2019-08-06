@@ -8,11 +8,11 @@ namespace dlu_persistence_api.daos
 {
     public class DelOmraadeDao
     {
-        private DiMPdotNetEntities _entities;
+        private DiMPdotNetDevEntities _entities;
 
         public DelOmraadeDao()
         {
-         _entities = new DiMPdotNetEntities();
+         _entities = new DiMPdotNetDevEntities();
        
         }
 

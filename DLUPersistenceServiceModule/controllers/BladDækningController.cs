@@ -18,9 +18,17 @@ namespace DLUPersistenceServiceModule.controllers
             {
                 var body = RequestStream.FromStream(Request.Body).AsString();
                 var res = createBladDækning(body);
-              return service.OpretBladDækning(res);
+              service.OpretBladDækning(res);
+                return "";
+            });
+            Delete("/bladdaekning/delete/{bladid}/{postnr}", o =>
+            {
+                var body = RequestStream.FromStream(Request.Body).AsString();
+
+                return service.DeleteDaeking(o.bladid ,o.postnr);
             });
         }
+    
         
         private dlu_persistence_api.tblBladDækning createBladDækning(string jsonString)
         {

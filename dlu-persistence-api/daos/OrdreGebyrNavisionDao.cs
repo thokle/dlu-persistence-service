@@ -2,7 +2,7 @@ using System;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
-using AutoMapper.QueryableExtensions;
+
 using dlu_persistence_api.exceptions;
 using Newtonsoft.Json;
 
@@ -13,14 +13,12 @@ namespace dlu_persistence_api.daos
     /// </summary>
     public class OrdreGebyrNavisionDao: IDisposable
     {
-        private DiMPdotNetEntities _entities;
+        private DiMPdotNetDevEntities _entities;
 
         public OrdreGebyrNavisionDao()
         {
-            using (_entities = new DiMPdotNetEntities())
-            {
-                _entities.Configuration.LazyLoadingEnabled = true;
-            }
+            _entities = new DiMPdotNetDevEntities();
+            
         }
 
         /// <summary>

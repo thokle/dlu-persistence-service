@@ -8,7 +8,7 @@ namespace DLUPersistenceServiceModule.controllers
         public UgeAviserTilGridController(UgeAviserTilGridService service) 
         {
             Get("/ugeAviserTilGrid/postnr/{postnr:int}", o => service.GetAllUgeAviserGridPostNr(o.postnr));
-            Get("/ugeAviserTilGrid/all", o => service.GetAllUgerAviser());
+            Get("/ugeaviserTtilgrid/all", o => service.GetAllUgerAviser());
              Get("/ugeAviserTilGrid/bynavn/{bynavn:int}", o => service.GetAllUgeAviserByByNavn(o.bynavm));
         }
     }

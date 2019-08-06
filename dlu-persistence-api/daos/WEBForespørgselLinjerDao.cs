@@ -10,16 +10,15 @@ namespace dlu_persistence_api.daos{
 /// <summary>
 /// 
 /// </summary>
-    public class WEBForespørgselLinjerDao: IDisposable
+    public class WEBForespørgselLinjerDao
     {
-        private DiMPdotNetEntities _entities;
+        private DiMPdotNetDevEntities _entities;
 
         public WEBForespørgselLinjerDao()
         {
-            using (_entities = new DiMPdotNetEntities())
-            {
-                    
-            }
+            _entities = new DiMPdotNetDevEntities();
+             
+            
         }
         /// <summary>
         /// 

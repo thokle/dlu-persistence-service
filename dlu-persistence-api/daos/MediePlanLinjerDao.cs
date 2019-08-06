@@ -13,16 +13,13 @@ namespace dlu_persistence_api.daos
      /// </summary>
     public class MediePlanLinjerDao: IDisposable
     {
-        private DiMPdotNetEntities _entities;
+        private DiMPdotNetDevEntities _entities;
 
 
         public MediePlanLinjerDao()
         {
-            using (_entities = new DiMPdotNetEntities())
-            {
-                _entities.Configuration.LazyLoadingEnabled = true;
-                
-            }
+            _entities = new DiMPdotNetDevEntities();
+           
         }
 
         /// <summary>

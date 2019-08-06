@@ -10,16 +10,14 @@ namespace dlu_persistence_api.daos
     /// <summary>
     /// 
     /// </summary>
-    public class SalespersonDao: IDisposable
+    public class SalespersonDao
     {
-        private DiMPdotNetEntities _entities;
+        private DiMPdotNetDevEntities _entities;
 
         public SalespersonDao()
         {
-            using (_entities = new DiMPdotNetEntities())
-            {
-                _entities.Configuration.LazyLoadingEnabled = true;
-            }
+            _entities = new DiMPdotNetDevEntities();
+
         }
         /// <summary>
         /// 

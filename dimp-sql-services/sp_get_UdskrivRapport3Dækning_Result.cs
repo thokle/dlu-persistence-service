@@ -7,15 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace dlu_persistence_api
+namespace dimp_sql_services
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class tblBladTiLaegsType
+    public partial class sp_get_UdskrivRapport3Dækning_Result
     {
-        public int id { get; set; }
-        public Nullable<int> bladid { get; set; }
-        public Nullable<int> tillaegsTypeId { get; set; }
+        public int BladId { get; set; }
+        public string Text { get; set; }
+        public string Byen { get; set; }
+        public string Navn { get; set; }
     }
 }

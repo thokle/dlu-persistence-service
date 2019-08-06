@@ -36,5 +36,6 @@ namespace dlu_persistence_api.models
         public int PlaceringID1 { get => PlaceringID; set => PlaceringID = value; }
         public int PrislisteID1 { get => PrislisteID; set => PrislisteID = value; }
         public decimal? Farve4Max1 { get => Farve4Max; set => Farve4Max = value; }
+        public decimal? mmPris { get; internal set; }
     }
 }

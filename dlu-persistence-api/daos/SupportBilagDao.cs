@@ -11,14 +11,12 @@ namespace dlu_persistence_api.daos
     public class SupportBilagDao: IDisposable
     {
 
-        private DiMPdotNetEntities _entities;
+        private DiMPdotNetDevEntities _entities;
 
         public SupportBilagDao()
         {
-            using (_entities = new DiMPdotNetEntities())
-            {
-                _entities.Configuration.LazyLoadingEnabled = true;
-            }
+            _entities = new DiMPdotNetDevEntities();
+            
         }
 
 

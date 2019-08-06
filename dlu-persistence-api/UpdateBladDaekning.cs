@@ -14,11 +14,11 @@ namespace dlu_persistence_api
 {
     public class UpdateBladDaekning
     {
-        private DiMPdotNetEntities entities;
+        private DiMPdotNetDevEntities entities;
 
         public UpdateBladDaekning()
         {
-            entities = new DiMPdotNetEntities();
+            entities = new DiMPdotNetDevEntities();
         }
 
         public string importCSV()

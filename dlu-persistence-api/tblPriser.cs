@@ -30,7 +30,7 @@ namespace dlu_persistence_api
         public string ControlNavn { get; set; }
     
         public virtual tblBladStamdata tblBladStamdata { get; set; }
-        public virtual tblPlacering tblPlacering { get; set; }
+
         public virtual tblPrislister tblPrislister { get; set; }
     }
 }

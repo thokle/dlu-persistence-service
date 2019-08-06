@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using dlu_persistence_api.exceptions;
 using dlu_persistence_api.models;
+using System.Data.SqlClient;
+
 namespace dlu_persistence_api.daos
 {
     /// <summary>
@@ -14,11 +16,11 @@ namespace dlu_persistence_api.daos
     /// </summary>
     public class PriserDao
     {
-        private readonly DiMPdotNetEntities di;
+        private readonly DiMPdotNetDevEntities di;
 
         public PriserDao()
         {
-            di = new DiMPdotNetEntities();
+            di = new DiMPdotNetDevEntities();
         }
 
 
@@ -32,14 +34,17 @@ namespace dlu_persistence_api.daos
         {
             try
             {
-                var res = from p in di.tblPrislisterPrBladPrUges
-                    where p.BladID == bladId & p.År == year
+                var res = from p in di.tblPrislisterPrBladPrUges from u in di.tblPrislisters 
+                    where p.BladID == bladId & p.År == year & p.PrislisteID == u.PrislisteID
                     select new PriceListWeekModel()
                     {
                         Uige = p.Uge,
                         AAr = p.År,
                         BladId = p.BladID,
-                         PrislisteId = p.PrislisteID
+                         PrislisteId = p.PrislisteID,
+                         PrisListeNavn = u.PrislisteNavn
+                         
+
                     };
                 return JsonConvert.SerializeObject(res);
             }
@@ -95,11 +100,19 @@ namespace dlu_persistence_api.daos
 /// <param name="bladid"></param>
 /// <returns></returns>
 /// <exception cref="DaoExceptions"></exception>
-        public Task<int> AddPriserPrUge(int bladid, int prislisteId)
+        public Task<int> AddPriserPrUge(int bladid, int prislisteId, int yearParameter)
         {
             try
             {
-                var year = System.DateTime.Today.Year;
+                var year = 0;
+                if (yearParameter == 0)
+                {
+                     year = System.DateTime.Today.Year;
+                } else
+                {
+                    year = yearParameter;
+                }
+               
                 var numnberofWeeksInYear = GetWeeksInYear(year);
 
                 for (var i = 1; i < numnberofWeeksInYear; i++)
@@ -108,7 +121,9 @@ namespace dlu_persistence_api.daos
                     {
                         Uge = (byte)i,
                         BladID = bladid,
-                        PrislisteID = prislisteId
+                        PrislisteID = prislisteId,
+                        År = (short)yearParameter
+                    
                     };
                     di.tblPrislisterPrBladPrUges.Add(tblPrislisterPrBladPrUge);
                 }
@@ -201,12 +216,12 @@ namespace dlu_persistence_api.daos
             }
         }
 
-        public string GetPrisListeFromBladidArPlacering(int bladId, int placering, int aar)
+        public string GetPrisListeFromBladidArPlacering(int bladId, int placering, int aar, int prislisteId)
         {
             try
             {
                 var res = from pl in di.tblPrisers
-                          where pl.År == aar & pl.BladID == bladId & pl.PlaceringID == placering
+                          where pl.År == aar & pl.BladID == bladId & pl.PlaceringID == placering & pl.PrislisteID == prislisteId
                           select new PriserForBlad
                           {
                               AAr1 = pl.År,
@@ -221,7 +236,8 @@ namespace dlu_persistence_api.daos
                               FormatFra1 = pl.FormatFra,
                               FormatTil1 = pl.FormatTil,
                               PlaceringID1 = pl.PlaceringID,
-                              PrislisteID1 = pl.PlaceringID
+                              PrislisteID1 = pl.PlaceringID,
+                             mmPris =  pl.mmPris
 
                           };
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
@@ -229,6 +245,50 @@ namespace dlu_persistence_api.daos
             }
             catch (FormattedDbEntityValidationException e)
             {
+                throw new Exception(e.Message);
+            }
+        }
+
+
+        public string GetPrislisteFortable(int bladid, int aar, int prislisteId)
+        {
+            try
+            {
+                var res = from pl in di.tblPrisers
+                          join d in di.tblPrislisters on pl.PrislisteID equals d.PrislisteID into ds
+                          from d in ds.DefaultIfEmpty()
+                          join pi in di.tblPlacerings on pl.PlaceringID equals pi.PlaceringID into p
+                          from pi in p.DefaultIfEmpty()
+                          where pl.BladID == bladid & pl.År == aar & pl.PrislisteID == prislisteId select
+                        new PriserForTable
+                        {
+                            AAr1 = pl.År,
+                            Betegnelse1 = pi.Betegnelse,
+                            BladID1 = pl.BladID,
+                            Farve4Max1 = pl.Farve4Max,
+                            Farve4Min1 = pl.Farve4Min,
+                            Farve4Pris1 = pl.Farve4Pris,
+                            FarveMax1 = pl.FarveMax,
+                            FarveMin1 = pl.FarveMin,
+                            FarvePris1 = pl.FarvePris,
+                            FormatFra1 = pl.FormatFra,
+                            FormatTil1 = pl.FormatTil,
+                            PrislisteNavn1 = d.PrislisteNavn,
+                          MmPris =   pl.mmPris,
+                         PlaceringId1 = pl.PlaceringID,
+                         PrislisteID1 = pl.PrislisteID
+                    
+                        
+                       
+                            
+                         };
+
+                return JsonConvert.SerializeObject(res, Formatting.Indented);
+
+            }
+            catch (FormattedDbEntityValidationException e)
+            {
+
                 throw new Exception(e.Message);
             }
         }
@@ -245,6 +305,33 @@ namespace dlu_persistence_api.daos
             return cal.GetWeekOfYear(date1, dfi.CalendarWeekRule,
                 dfi.FirstDayOfWeek);
         }
+
+        public Task<int> UpdateWeekListId(tblPrislisterPrBladPrUge tblPrislisterPrBladPrUge)
+        {
+             di.tblPrislisterPrBladPrUges.AddOrUpdate(tblPrislisterPrBladPrUge);
+            return di.SaveChangesAsync();   
+        }
+
+
+    
+        public int DeletePris(int bladid, int placeringId, int prislisteid,  int year)
+        {
+            try {
+
+
+
+                return 0;         
+
+                
+                } catch (FormattedDbEntityValidationException e)
+            {
+                throw new Exception(e.Message);
+            }
+ 
+        
+
+        }
     }
 
+   
 }

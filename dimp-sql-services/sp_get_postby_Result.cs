@@ -7,17 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace dlu_persistence_api
+namespace dimp_sql_services
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Table_1
+    public partial class sp_get_postby_Result
     {
-        public int askingID { get; set; }
-        public int stambladId { get; set; }
-        public string name { get; set; }
-        public string telefon { get; set; }
-        public string mail { get; set; }
+        public string PostNr { get; set; }
+        public string Byen { get; set; }
     }
 }

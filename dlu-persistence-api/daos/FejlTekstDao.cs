@@ -11,12 +11,12 @@ namespace dlu_persistence_api.daos
   /// </summary>
     public class FejlTekstDao: IDisposable
     {
-    private DiMPdotNetEntities _entities;
+    private DiMPdotNetDevEntities _entities;
 
         
     public FejlTekstDao()
     {
-        using (_entities = new DiMPdotNetEntities())
+        using (_entities = new DiMPdotNetDevEntities())
         {
 
             _entities.Configuration.LazyLoadingEnabled = true;
