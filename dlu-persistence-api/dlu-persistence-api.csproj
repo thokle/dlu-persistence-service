@@ -72,10 +72,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AktiveUgeaviserMedAlleData.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="bladtlfogfaxkopi.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="daos\AktiveAviserTIlGridDao.cs" />
     <Compile Include="daos\AnnoncekontrolDao.cs" />
@@ -83,6 +83,7 @@
     <Compile Include="daos\BladKommentarDao.cs" />
     <Compile Include="daos\BladTilaegsDao.cs" />
     <Compile Include="daos\BladTilaegsTypeDao.cs" />
+    <Compile Include="daos\BladYear.cs" />
     <Compile Include="daos\DelOmraadeDao.cs" />
     <Compile Include="daos\EjerforholdDao.cs" />
     <Compile Include="daos\FakturingsBilagDao.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="daos\KontaktTitlerDao.cs" />
     <Compile Include="daos\MaterialeDao.cs" />
     <Compile Include="daos\MediaPlanNrDao.cs" />
+    <Compile Include="daos\MediePlanAviserDao.cs" />
     <Compile Include="daos\MediePlanDao.cs" />
     <Compile Include="daos\MediePlanLinjerDao.cs" />
     <Compile Include="daos\MedieplanÆndringerDao.cs" />
@@ -121,52 +123,53 @@
     <Compile Include="daos\WEBForespørgselLinjerDao.cs" />
     <Compile Include="daos\WEBSendTilKollegaDao.cs" />
     <Compile Include="delPriser.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DimpDotNett.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DimpDotNett.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DimpDotNett.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DimpDotNett.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DimpDotNett.edmx</DependentUpon>
     </Compile>
     <Compile Include="dtproperty.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="dt_getpropertiesbyid_Result.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="dt_getpropertiesbyid_u_Result.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="exceptions\DaoExceptions.cs" />
     <Compile Include="exceptions\FormattedDbEntityValidationException.cs" />
     <Compile Include="FakturaFejlFinde.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="FindFejlLinjer.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="GammelAnnoncørID.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="HerningFolkeblad.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="KontaktTitler.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LocalPlanner.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LocalPlanner.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LocalPlanner.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LocalPlanner.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LocalPlanner.edmx</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="LPRoller.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
+    <Compile Include="models\AvisTIlGrid.cs" />
     <Compile Include="models\Bladdaeknik.cs" />
     <Compile Include="models\DelOmraade.cs" />
     <Compile Include="models\PriceListWeekModel.cs" />
@@ -175,17 +178,17 @@
     <Compile Include="models\StamBlad.cs" />
     <Compile Include="models\UdsendingKontakter.cs" />
     <Compile Include="NavisionContact.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="NavisionContact2.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="OpdateringsTekst.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Salesperson.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="services\AktiveAviserTIlGridService.cs" />
     <Compile Include="services\AnnoceKontrolService.cs" />
@@ -216,6 +219,7 @@
     <Compile Include="services\interfaces\IKontakterPrBladService.cs" />
     <Compile Include="services\interfaces\IKontaktService.cs" />
     <Compile Include="services\interfaces\IKontaktTitlerService.cs" />
+    <Compile Include="services\interfaces\IMediePlanAviserService.cs" />
     <Compile Include="services\interfaces\IMediePlanLinjerService.cs" />
     <Compile Include="services\interfaces\IMediePlanNrService.cs" />
     <Compile Include="services\interfaces\IMediePlanService.cs" />
@@ -247,6 +251,7 @@
     <Compile Include="services\KontakterPrBladService.cs" />
     <Compile Include="services\KontaktService.cs" />
     <Compile Include="services\KontaktTitlerService.cs" />
+    <Compile Include="services\MediePlanAviserService.cs" />
     <Compile Include="services\MediePlanLinjerService.cs" />
     <Compile Include="services\MediePlanNrService.cs" />
     <Compile Include="services\MediePlanService.cs" />
@@ -273,265 +278,266 @@
     <Compile Include="services\WEBSendTilKollegaService.cs" />
     <Compile Include="services\WenForspørgelsesService.cs" />
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="StambladService.cs" />
     <Compile Include="daos\PriserDao.cs" />
     <Compile Include="start.cs" />
     <Compile Include="sysdiagram.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblAktiveVærdier.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblAktivGruppeVersion.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblAnnoncekontrol.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBladDækning.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBladKommentar.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBladnavnMappingFraDO.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblBladRabat.cs">
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBladRabatter.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBladStamdata.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBladStamdataKopi.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
-    
     <Compile Include="tblBladTillaeg.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBladTillaegsType.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
-  
     <Compile Include="tblBladUdsendingKontakter.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBrugerData.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblDage.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblDelOmråde.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblDPKulør.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblEjerforhold.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFakturaFejl.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFakturaFejlTekst.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFaktureringsBilag.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFarveTillægWebApp.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFejlTekst.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblGeoKode.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblGrupper.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblGruppeRabatter.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblHovedGruppe.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblKonkurrentDækning.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblKonkurrenter.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblKontaktArbOmråder.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblKontakter.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblKontakterPrBlad.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblKontaktFunktioner.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblKontaktTitler.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMateriale.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMedieplan.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMedieplanLinjer.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMedieplanNr.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMedieplanÆndringer.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMedIGruppe.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMmPrisWebApp.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblOrdreGebyrNavision.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblOrdreLinjerNavision.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblOrdreNavision.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPlacering.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPlannerPlaner.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPostNr.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPostNrSøgning.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPriceAsking.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPriser.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPrislister.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPrislisterPrBladPrUge.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPrislisterPrBladPrÅr.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblRegion.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblRemindereSendt.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblStambladKontakter.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblStambladUdsendingEmailTyper.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblSupportBilag.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblWEBeMail.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblWEBForespørgsel.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblWEBForespørgselLinjer.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tblWEBSendTilKollega.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tempPriser.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tmpNyeDeadline.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tnpOrdreNr.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tnpOrdreNr2.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="tnpOrdreNr3.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="UgeaviserTilGrid.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="UpdateBladDaekning.cs" />
     <Compile Include="User.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="viewBlade.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="viewBookingListe.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="viewGrupper.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="viewLinjeDiff.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="viewOrdre.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="viewOrdreErSendt.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="viewOrdreFIND.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="viewOrdreIkkeSendt.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="viewOrdreLinjer.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="viewOrdreLinjerFIND.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="viewOrdreSendtManglerMateriale.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="viewOversigt.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="viewUpdateStatusIMedieplan.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
     <Compile Include="viewUpdateStatusIMedieplanNr.cs">
-      <DependentUpon>LocalPlanner.tt</DependentUpon>
+      <DependentUpon>DimpDotNett.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -549,12 +555,12 @@
       <DependentUpon>App.Config</DependentUpon>
       <SubType>Designer</SubType>
     </None>
-    <EntityDeploy Include="LocalPlanner.edmx">
+    <EntityDeploy Include="DimpDotNett.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>LocalPlanner.Designer.cs</LastGenOutput>
+      <LastGenOutput>DimpDotNett.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="LocalPlanner.edmx.diagram">
-      <DependentUpon>LocalPlanner.edmx</DependentUpon>
+    <None Include="DimpDotNett.edmx.diagram">
+      <DependentUpon>DimpDotNett.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -562,15 +568,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="LocalPlanner.Context.tt">
+    <Content Include="DimpDotNett.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LocalPlanner.edmx</DependentUpon>
-      <LastGenOutput>LocalPlanner.Context.cs</LastGenOutput>
+      <DependentUpon>DimpDotNett.edmx</DependentUpon>
+      <LastGenOutput>DimpDotNett.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="LocalPlanner.tt">
+    <Content Include="DimpDotNett.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LocalPlanner.edmx</DependentUpon>
-      <LastGenOutput>LocalPlanner.cs</LastGenOutput>
+      <DependentUpon>DimpDotNett.edmx</DependentUpon>
+      <LastGenOutput>DimpDotNett.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

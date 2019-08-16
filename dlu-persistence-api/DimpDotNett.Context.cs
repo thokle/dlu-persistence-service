@@ -35,7 +35,7 @@ namespace dlu_persistence_api
         public virtual DbSet<tblBladDækning> tblBladDækning { get; set; }
         public virtual DbSet<tblBladKommentar> tblBladKommentars { get; set; }
         public virtual DbSet<tblBladnavnMappingFraDO> tblBladnavnMappingFraDOes { get; set; }
-
+        public virtual DbSet<tblBladRabat> tblBladRabats { get; set; }
         public virtual DbSet<tblBladRabatter> tblBladRabatters { get; set; }
         public virtual DbSet<tblBladStamdata> tblBladStamdatas { get; set; }
         public virtual DbSet<tblBladStamdataKopi> tblBladStamdataKopis { get; set; }
@@ -72,7 +72,6 @@ namespace dlu_persistence_api
         public virtual DbSet<tblOrdreLinjerNavision> tblOrdreLinjerNavisions { get; set; }
         public virtual DbSet<tblOrdreNavision> tblOrdreNavisions { get; set; }
         public virtual DbSet<tblPlacering> tblPlacerings { get; set; }
-
         public virtual DbSet<tblPostNr> tblPostNrs { get; set; }
         public virtual DbSet<tblPostNrSøgning> tblPostNrSøgning { get; set; }
         public virtual DbSet<tblPriceAsking> tblPriceAskings { get; set; }

@@ -869,13 +869,6 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.tblMmPrisWebApp' does not have a
           <Key>
             <PropertyRef Name="PlaceringID" />
           </Key>
-          <Property Name="PlaceringID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Betegnelse" Type="nvarchar" MaxLength="30" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tblPlacering2">
-          <Key>
-            <PropertyRef Name="PlaceringID" />
-          </Key>
           <Property Name="PlaceringID" Type="tinyint" Nullable="false" />
           <Property Name="Betegnelse" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
@@ -2087,10 +2080,10 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblMedieplan_tblPlacering">
-          <End Role="tblPlacering2" Type="Self.tblPlacering2" Multiplicity="1" />
+          <End Role="tblPlacering" Type="Self.tblPlacering" Multiplicity="1" />
           <End Role="tblMedieplan" Type="Self.tblMedieplan" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tblPlacering2">
+            <Principal Role="tblPlacering">
               <PropertyRef Name="PlaceringID" />
             </Principal>
             <Dependent Role="tblMedieplan">
@@ -2227,10 +2220,10 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblPriser_tblPlacering">
-          <End Role="tblPlacering2" Type="Self.tblPlacering2" Multiplicity="1" />
+          <End Role="tblPlacering" Type="Self.tblPlacering" Multiplicity="1" />
           <End Role="tblPriser" Type="Self.tblPriser" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tblPlacering2">
+            <Principal Role="tblPlacering">
               <PropertyRef Name="PlaceringID" />
             </Principal>
             <Dependent Role="tblPriser">
@@ -2580,7 +2573,6 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <EntitySet Name="tblOrdreLinjerNavision" EntityType="Self.tblOrdreLinjerNavision" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblOrdreNavision" EntityType="Self.tblOrdreNavision" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPlacering" EntityType="Self.tblPlacering" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tblPlacering2" EntityType="Self.tblPlacering2" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPostNr" EntityType="Self.tblPostNr" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPostNrSøgning" EntityType="Self.tblPostNrSøgning" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPriceAsking" EntityType="Self.tblPriceAsking" Schema="dbo" store:Type="Tables" />
@@ -3184,7 +3176,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             <End Role="tblMedieplan" EntitySet="tblMedieplan" />
           </AssociationSet>
           <AssociationSet Name="FK_tblMedieplan_tblPlacering" Association="Self.FK_tblMedieplan_tblPlacering">
-            <End Role="tblPlacering2" EntitySet="tblPlacering2" />
+            <End Role="tblPlacering" EntitySet="tblPlacering" />
             <End Role="tblMedieplan" EntitySet="tblMedieplan" />
           </AssociationSet>
           <AssociationSet Name="FK_tblMedieplanLinjer_tblBladStamdata" Association="Self.FK_tblMedieplanLinjer_tblBladStamdata">
@@ -3224,7 +3216,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             <End Role="tblPriser" EntitySet="tblPriser" />
           </AssociationSet>
           <AssociationSet Name="FK_tblPriser_tblPlacering" Association="Self.FK_tblPriser_tblPlacering">
-            <End Role="tblPlacering2" EntitySet="tblPlacering2" />
+            <End Role="tblPlacering" EntitySet="tblPlacering" />
             <End Role="tblPriser" EntitySet="tblPriser" />
           </AssociationSet>
           <AssociationSet Name="FK_tblPriser_tblPrislister" Association="Self.FK_tblPriser_tblPrislister">
@@ -3833,7 +3825,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <Property Name="OpkrævHelsingørMiljøTillæg" Type="Boolean" />
           <NavigationProperty Name="tblDPKulør" Relationship="Self.FK_tblMedieplan_tblDPKulør" FromRole="tblMedieplan" ToRole="tblDPKulør" />
           <NavigationProperty Name="tblMedieplanNr" Relationship="Self.FK_tblMedieplan_tblMedieplanNr" FromRole="tblMedieplan" ToRole="tblMedieplanNr" />
-          <NavigationProperty Name="tblPlacering2" Relationship="Self.FK_tblMedieplan_tblPlacering" FromRole="tblMedieplan" ToRole="tblPlacering2" />
+          <NavigationProperty Name="tblPlacering" Relationship="Self.FK_tblMedieplan_tblPlacering" FromRole="tblMedieplan" ToRole="tblPlacering" />
           <NavigationProperty Name="tblMedieplanLinjers" Relationship="Self.FK_tblMedieplanLinjer_tblMedieplan" FromRole="tblMedieplan" ToRole="tblMedieplanLinjer" />
         </EntityType>
         <EntityType Name="tblMedieplanÆndringer">
@@ -4004,17 +3996,10 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <Key>
             <PropertyRef Name="PlaceringID" />
           </Key>
-          <Property Name="PlaceringID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Betegnelse" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tblPlacering2">
-          <Key>
-            <PropertyRef Name="PlaceringID" />
-          </Key>
           <Property Name="PlaceringID" Type="Byte" Nullable="false" />
           <Property Name="Betegnelse" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="tblMedieplans" Relationship="Self.FK_tblMedieplan_tblPlacering" FromRole="tblPlacering2" ToRole="tblMedieplan" />
-          <NavigationProperty Name="tblPrisers" Relationship="Self.FK_tblPriser_tblPlacering" FromRole="tblPlacering2" ToRole="tblPriser" />
+          <NavigationProperty Name="tblMedieplans" Relationship="Self.FK_tblMedieplan_tblPlacering" FromRole="tblPlacering" ToRole="tblMedieplan" />
+          <NavigationProperty Name="tblPrisers" Relationship="Self.FK_tblPriser_tblPlacering" FromRole="tblPlacering" ToRole="tblPriser" />
         </EntityType>
         <EntityType Name="tblPostNr">
           <Key>
@@ -4070,7 +4055,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <Property Name="Farve4Max" Type="Decimal" Precision="10" Scale="4" />
           <Property Name="ControlNavn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tblBladStamdata" Relationship="Self.FK_tblPriser_tblBladStamdata" FromRole="tblPriser" ToRole="tblBladStamdata" />
-          <NavigationProperty Name="tblPlacering2" Relationship="Self.FK_tblPriser_tblPlacering" FromRole="tblPriser" ToRole="tblPlacering2" />
+          <NavigationProperty Name="tblPlacering" Relationship="Self.FK_tblPriser_tblPlacering" FromRole="tblPriser" ToRole="tblPlacering" />
           <NavigationProperty Name="tblPrislister" Relationship="Self.FK_tblPriser_tblPrislister" FromRole="tblPriser" ToRole="tblPrislister" />
         </EntityType>
         <EntityType Name="tblPrislister">
@@ -5286,10 +5271,10 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblMedieplan_tblPlacering">
-          <End Role="tblPlacering2" Type="Self.tblPlacering2" Multiplicity="1" />
+          <End Role="tblPlacering" Type="Self.tblPlacering" Multiplicity="1" />
           <End Role="tblMedieplan" Type="Self.tblMedieplan" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tblPlacering2">
+            <Principal Role="tblPlacering">
               <PropertyRef Name="PlaceringID" />
             </Principal>
             <Dependent Role="tblMedieplan">
@@ -5346,10 +5331,10 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_tblPriser_tblPlacering">
-          <End Role="tblPlacering2" Type="Self.tblPlacering2" Multiplicity="1" />
+          <End Role="tblPlacering" Type="Self.tblPlacering" Multiplicity="1" />
           <End Role="tblPriser" Type="Self.tblPriser" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tblPlacering2">
+            <Principal Role="tblPlacering">
               <PropertyRef Name="PlaceringID" />
             </Principal>
             <Dependent Role="tblPriser">
@@ -5459,7 +5444,6 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <EntitySet Name="tblOrdreLinjerNavisions" EntityType="Self.tblOrdreLinjerNavision" />
           <EntitySet Name="tblOrdreNavisions" EntityType="Self.tblOrdreNavision" />
           <EntitySet Name="tblPlacerings" EntityType="Self.tblPlacering" />
-          <EntitySet Name="tblPlacering2" EntityType="Self.tblPlacering2" />
           <EntitySet Name="tblPostNrs" EntityType="Self.tblPostNr" />
           <EntitySet Name="tblPostNrSøgning" EntityType="Self.tblPostNrSøgning" />
           <EntitySet Name="tblPriceAskings" EntityType="Self.tblPriceAsking" />
@@ -5610,7 +5594,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             <End Role="tblMedieplan" EntitySet="tblMedieplans" />
           </AssociationSet>
           <AssociationSet Name="FK_tblMedieplan_tblPlacering" Association="Self.FK_tblMedieplan_tblPlacering">
-            <End Role="tblPlacering2" EntitySet="tblPlacering2" />
+            <End Role="tblPlacering" EntitySet="tblPlacerings" />
             <End Role="tblMedieplan" EntitySet="tblMedieplans" />
           </AssociationSet>
           <AssociationSet Name="FK_tblMedieplanLinjer_tblMedieplan" Association="Self.FK_tblMedieplanLinjer_tblMedieplan">
@@ -5626,7 +5610,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             <End Role="tblOrdreLinjerNavision" EntitySet="tblOrdreLinjerNavisions" />
           </AssociationSet>
           <AssociationSet Name="FK_tblPriser_tblPlacering" Association="Self.FK_tblPriser_tblPlacering">
-            <End Role="tblPlacering2" EntitySet="tblPlacering2" />
+            <End Role="tblPlacering" EntitySet="tblPlacerings" />
             <End Role="tblPriser" EntitySet="tblPrisers" />
           </AssociationSet>
           <AssociationSet Name="FK_tblPostNrSøgning_tblPostNr" Association="Self.FK_tblPostNrSøgning_tblPostNr">
@@ -5669,7 +5653,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           </FunctionImport>
           <FunctionImport Name="dt_adduserobject" />
           <FunctionImport Name="dt_adduserobject_vcs">
-          <Parameter Name="vchProperty" Mode="In" Type="String" />
+            <Parameter Name="vchProperty" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="dt_checkinobject">
             <Parameter Name="chObjectType" Mode="In" Type="String" />
@@ -5726,10 +5710,10 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             <Parameter Name="property" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="dt_dropuserobjectbyid">
-          <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="dt_generateansiname">
-          <Parameter Name="name" Mode="InOut" Type="String" />
+            <Parameter Name="name" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="dt_getobjwithprop" ReturnType="Collection(Int32)">
             <Parameter Name="property" Mode="In" Type="String" />
@@ -5804,7 +5788,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             <Parameter Name="vchPassword" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="FindNæsteVersionsNrIMedieplan">
-          <Parameter Name="MedieplanNr" Mode="In" Type="Int32" />
+            <Parameter Name="MedieplanNr" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="IndsætOrdreLinjerTilNavision" />
           <FunctionImport Name="IndsætOrdreTilNavision" />
@@ -5838,11 +5822,11 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             <Parameter Name="DLUFarveRabat" Mode="In" Type="Double" />
           </FunctionImport>
           <FunctionImport Name="OpretKontakt" ReturnType="Collection(Decimal)">
-          <Parameter Name="EmailAdr" Mode="In" Type="String" />
+            <Parameter Name="EmailAdr" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="OpretNyMediePlan" ReturnType="Collection(Decimal)" />
           <FunctionImport Name="SearchAllTables">
-          <Parameter Name="SearchStr" Mode="In" Type="String" />
+            <Parameter Name="SearchStr" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -6620,14 +6604,6 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <EntitySetMapping Name="tblPlacerings">
             <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblPlacering">
               <MappingFragment StoreEntitySet="tblPlacering">
-                <ScalarProperty Name="PlaceringID" ColumnName="PlaceringID" />
-                <ScalarProperty Name="Betegnelse" ColumnName="Betegnelse" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblPlacering2">
-            <EntityTypeMapping TypeName="DiMPdotNetDevModel.tblPlacering2">
-              <MappingFragment StoreEntitySet="tblPlacering2">
                 <ScalarProperty Name="PlaceringID" ColumnName="PlaceringID" />
                 <ScalarProperty Name="Betegnelse" ColumnName="Betegnelse" />
               </MappingFragment>

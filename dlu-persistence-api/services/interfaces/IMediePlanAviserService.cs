@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace dlu_persistence_api.services.interfaces
 {
-    interface IAktiveAviserTIlGridService
+    public interface IMediePlanAviserService
     {
-        string GetAllAvisetTilGrid();
-        string getAktivAvisByNavn(string navn);
-        string getAktiveAvisByDaekningGrad(int daek);
-
+        string GetAllUgeAvisTilGrid(int bladid, int year);
     }
 }

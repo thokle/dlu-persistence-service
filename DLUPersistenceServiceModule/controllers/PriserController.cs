@@ -47,8 +47,8 @@ namespace DLUPersistenceServiceModule.controllers
                 var body = RequestStream.FromStream(this.Request.Body).AsString();
 
                 var priser = convertToTbLPriser(body);
-                 service.CreatePrice(priser);
-                return Response.AsJson("{\"pris er\": \"oprettet \"}");
+              var res=  service.CreatePrice(priser);
+                return Response.AsJson("{\"pris er\": \"oprettet \": "+res +"}");
             });
             Post("/priser/priserPrisListPrBladPrAar/", d =>
             {
@@ -61,6 +61,8 @@ namespace DLUPersistenceServiceModule.controllers
                 service.DeletePris(o.bladid, o.priserliste, o.placering, o.year);
                 return Response.AsJson("{\"pris er\": \"slettet \"}");
             }  );
+
+            Get("/priser/oprettetyears/{bladid}", o => service.GetCreateYearsFromBladId(o.bladid));
         }
 
         private tblPriser convertToTbLPriser(string s)

@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Thomas Kleist\source\repos\DLUPersistence-service-api\dlu-persistence-api\LocalPlanner.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Thomas Kleist\source\repos\DLUPersistence-service-api\dlu-persistence-api\DimpDotNett.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

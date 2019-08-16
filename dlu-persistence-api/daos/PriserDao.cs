@@ -21,6 +21,7 @@ namespace dlu_persistence_api.daos
         public PriserDao()
         {
             di = new DiMPdotNetDevEntities();
+           
         }
 
 
@@ -59,15 +60,15 @@ namespace dlu_persistence_api.daos
 /// <param name="tbl"></param>
 /// <returns></returns>
 /// <exception cref="DaoExceptions"></exception>
-        public Task<int> CreateOrUpdatePrisListePrBladPrÅr(tblPrislisterPrBladPrÅr tbl)
+        public int CreateOrUpdatePrisListePrBladPrÅr(tblPrislisterPrBladPrÅr tbl)
         {
             try
             {
                 di.tblPrislisterPrBladPrÅr.AddOrUpdate(tbl);
-                return di.SaveChangesAsync();
+                return di.SaveChanges();
+                 
 
-            }
-            catch (Exception e)
+            }  catch (Exception e)
             {
                 throw new DaoExceptions("CreateOrUpdatePrisListePrBladPrÅr ", e.InnerException);
             }
@@ -137,12 +138,14 @@ namespace dlu_persistence_api.daos
 
         }
 
-    public Task<int> CreatePrice(tblPriser tblPriser)
+    public int CreatePrice(tblPriser tblPriser)
         {
             try
             {
                 di.tblPrisers.AddOrUpdate(tblPriser);
-                return di.SaveChangesAsync();
+          var res = di.SaveChanges();
+               
+                return res;
             }
             catch (FormattedDbEntityValidationException e)
             {
@@ -222,6 +225,7 @@ namespace dlu_persistence_api.daos
             {
                 var res = from pl in di.tblPrisers
                           where pl.År == aar & pl.BladID == bladId & pl.PlaceringID == placering & pl.PrislisteID == prislisteId
+                          
                           select new PriserForBlad
                           {
                               AAr1 = pl.År,
@@ -259,7 +263,7 @@ namespace dlu_persistence_api.daos
                           from d in ds.DefaultIfEmpty()
                           join pi in di.tblPlacerings on pl.PlaceringID equals pi.PlaceringID into p
                           from pi in p.DefaultIfEmpty()
-                          where pl.BladID == bladid & pl.År == aar & pl.PrislisteID == prislisteId select
+                          where pl.BladID == bladid & pl.År == aar & pl.PrislisteID == prislisteId  orderby pl.PrislisteID ascending select
                         new PriserForTable
                         {
                             AAr1 = pl.År,
@@ -318,18 +322,25 @@ namespace dlu_persistence_api.daos
         {
             try {
 
-
-
-                return 0;         
-
+              var res =   di.tblPrisers.Where(c => c.BladID == bladid).Where(c => c.PlaceringID == placeringId).Where(c => c.PrislisteID == prislisteid).Where(c => c.År == year).First();
+                di.tblPrisers.Remove(res);
+                return di.SaveChanges();
                 
-                } catch (FormattedDbEntityValidationException e)
+                } catch (Exception e)
             {
                 throw new Exception(e.Message);
             }
  
         
 
+        }
+
+        public string GetCreateYearsFromBladId(int bladid)
+        {
+
+            var res = from pu in di.tblPrisers where pu.BladID == bladid select new BladYear() { year = pu.År};
+            
+            return JsonConvert.SerializeObject(res.Distinct(), Formatting.Indented);
         }
     }
 

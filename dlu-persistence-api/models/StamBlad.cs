@@ -168,7 +168,7 @@ namespace dlu_persistence_api.models
                         maaned = "Januar";
                         break;
                     case 1:
-                        maaned = "Febuar";
+                        maaned = "Februar";
                         break;
                     case 2:
                         maaned = "Marts";

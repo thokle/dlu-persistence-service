@@ -13,9 +13,11 @@ namespace DLUPersistenceServiceModule.controllers
 
         public MediePlanController(MediePlanService dao)
         {
-            Get("/mediePlan/medieId/{medieId:int}", parameters => { return dao.GetMediePlanById(parameters.medieId); });
+            Get("/mediePlan/medieId/{medieId:int}", parameters => { return dao.GetMediePlanByNumber(parameters.medieId); });
             Get("/mediePlan/kontaktPerson/{kon taktPerson:string", o => { return dao.GetMediePlanByKontakt(o.kontaktPerson); });
             Get("/mediePlan/tilgrid/{stambladid:int}", p => { return dao.GetAvisTilMediePlan(p.stambladid); });
+            Get("/mediePlan/annoncoer/{annoncoer}", p => dao.GetMediePlanByAnnoncoer(p.annoncoer));
+            Get("/mediePlan/toolbar/{mediePlan}/{annoncoer}/{bureau}", p => dao.findMediePlanToolbar(p.mediePlan, p.annoncoer, p.bureau ));
             Post("/mediePlan/create", o =>
             {
                 var mediePlan = this.Bind<tblMedieplan>();

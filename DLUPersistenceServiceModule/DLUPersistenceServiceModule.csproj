@@ -246,6 +246,7 @@
     <Compile Include="controllers\KontakterPrBladController.cs" />
     <Compile Include="controllers\KontaktController.cs" />
     <Compile Include="controllers\KontaktTilerController.cs" />
+    <Compile Include="controllers\MediePlanAviserController.cs" />
     <Compile Include="controllers\MediePlanLinjerController.cs" />
     <Compile Include="controllers\MediePlanNrController.cs" />
     <Compile Include="controllers\MediePlanÆnmdringsController.cs" />
@@ -278,7 +279,9 @@
     <Compile Include="swagger\StambladMetaPathItemMetaDataModule.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">

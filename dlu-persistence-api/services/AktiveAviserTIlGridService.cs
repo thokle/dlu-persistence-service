@@ -14,6 +14,17 @@ namespace dlu_persistence_api.services
         {
             gridDao = new AktiveAviserTIlGridDao();
         }
+
+        public string getAktivAvisByNavn(string navn)
+        {
+            return gridDao.getAktivAvisByNavn(navn);
+        }
+
+        public string getAktiveAvisByDaekningGrad(int daek)
+        {
+            return gridDao.getAktiveAvisByDaekningGrad(daek);
+        }
+
         public string GetAllAvisetTilGrid()
         {
             return gridDao.GetAllAvisetTilGrid();

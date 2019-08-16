@@ -20,7 +20,7 @@ namespace dlu_persistence_api.services
             return _dao.GetPrisLigePrUge(bladId, year);
         }
 
-        public Task<int> CreateOrUpdatePrisListePrBladPrÅr(tblPrislisterPrBladPrÅr tbl)
+        public int CreateOrUpdatePrisListePrBladPrÅr(tblPrislisterPrBladPrÅr tbl)
         {
             return _dao.CreateOrUpdatePrisListePrBladPrÅr(tbl);
         }
@@ -32,7 +32,7 @@ namespace dlu_persistence_api.services
 
     
 
-        public Task<int> CreatePrice(tblPriser tblPriser)
+        public int CreatePrice(tblPriser tblPriser)
         {
             return _dao.CreatePrice(tblPriser);
         }
@@ -70,6 +70,18 @@ namespace dlu_persistence_api.services
         public string GetPrislisteFortable(int bladid, int aar, int prislisteId)
         {
             return _dao.GetPrislisteFortable(bladid, aar, prislisteId);
+        }
+
+        int IPriserService.CreateOrUpdatePrisListePrBladPrÅr(tblPrislisterPrBladPrÅr tbl)
+        {
+            return _dao.CreateOrUpdatePrisListePrBladPrÅr(tbl);
+        }
+
+        public string GetCreateYearsFromBladId(int bladid)
+        {
+            return _dao.GetCreateYearsFromBladId(bladid);
+                
+               
         }
     }
 }

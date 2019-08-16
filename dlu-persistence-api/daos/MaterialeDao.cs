@@ -69,5 +69,10 @@ namespace dlu_persistence_api.daos
         {
             _entities.Dispose();
         }
+
+        public int GetNaesteVersionMediePlanNr()
+        {
+            return 0;
+        }
     }
 }
