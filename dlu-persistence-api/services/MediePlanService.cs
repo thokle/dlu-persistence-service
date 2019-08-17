@@ -43,7 +43,10 @@ namespace dlu_persistence_api.services
             return _mediePlanDao.GetMediePlanByNumber(medieplanNr);
         }
 
-        public string findMediePlanToolbar(string mediePlan = null, string annnoncør = null, string bureau = null, int fraUge = 0, int tilUge = 0, int aar = 0, bool visInAktiveAnnoncer = false, bool mediePlanCheckBox = false, bool bookingCheckBox = false, bool rtAkCheckBox = false, bool faktureing = false)
+        public string findMediePlanToolbar(string mediePlan = null, string annnoncør = null, string bureau = null,
+            int fraUge = 0, int tilUge = 0, int aar = 0, bool visInAktiveAnnoncer = false,
+            int mediePlanCheckBox = false, bool bookingCheckBox = false, bool rtAkCheckBox = false,
+            bool faktureing = false)
         {
             return _mediePlanDao.findMediePlanToolbar(mediePlan, annnoncør, bureau, fraUge, tilUge, aar, visInAktiveAnnoncer, mediePlanCheckBox, bookingCheckBox, rtAkCheckBox, faktureing);
         }

@@ -16,7 +16,7 @@ namespace dlu_persistence_api.daos
     public class MediePlanDao
     {
         private DiMPdotNetDevEntities entities;
-        private IQueryable<tblMedieplan> res;
+       
 
         public MediePlanDao()
         {
@@ -263,140 +263,99 @@ namespace dlu_persistence_api.daos
             }
         }
 
-        public string findMediePlanToolbar(string mediePlan = null, string annnoncør = null, string bureau = null, int fraUge = 0, int tilUge = 0, int aar = 0,
-            bool visInAktiveAnnoncer = false, bool mediePlanCheckBox = false, bool bookingCheckBox = false, bool rtAkCheckBox = false, bool faktureing = false)
+        public string findMediePlanToolbar(string mediePlan = null, string annnoncør = null, string bureau = null,
+            int fraUge = 0, int tilUge = 0, int aar = 0,
+            bool visInAktiveAnnoncer = false, int mediePlanCheckBox = 0, int bookingCheckBox = 0,
+            bool rtAkCheckBox = false, bool faktureing = false)
         {
 
-            var query = (from m in entities.tblMedieplans join ml in entities.tblMedieplanLinjers on m.MedieplanNr equals ml.MedieplanNr into mml
-                         from ml in mml.DefaultIfEmpty()
-                   
-                     if (mediePlan !="null")
-            {
-                res = entities.tblMedieplans.Where(m => m.MedieplanNr.ToString().StartsWith(mediePlan) || m.MedieplanNr.ToString().Contains(mediePlan) || m.MedieplanNr.ToString().EndsWith(mediePlan));
-            }
-                     if(annnoncør !="null")
-            {
-
-                res = res.Where(a => a.AnnoncørNo_.StartsWith(annnoncør) || a.AnnoncørNo_.Contains(annnoncør) || a.AnnoncørNo_.EndsWith(annnoncør));
-            
-            }
-             if (bureau !="null")
-            {
-                res = res.Where(b => b.BureauNo_.StartsWith(bureau) || b.BureauNo_.Contains(bureau) || b.BureauNo_.EndsWith(bureau));
-            } 
-             if(fraUge !=0 && tilUge !=0)
-            {
-                res = res.Where(fu => fu.IndrykningsUge > fraUge && tilUge <= fu.IndrykningsUge);
-            } if (aar !=0)
-            {
-                res = res.Where(ar => ar.IndrykningsÅr == aar);
-            } if(visInAktiveAnnoncer)
-            {
-                res = res.Where(vis => vis.)
-            }
-            var resulat = from m in res
-                          select new
-                          {
-                              m.AnnoncørNo_,
-                              m.AntalFarver,
-                              m.BemærkningTilAnnoncør,
-                              m.BemærkningTilBlade,
-                              m.Beskrivelse,
-                              m.BilagsBladeATT,
-                              m.BilagsBladeTil,
-                              m.BilagsBladeTilAdresse,
-                              m.BilagsBladeTilNavn,
-                              m.BilagsBladeTilPostNr,
-                              m.BrugMaterialeFraUge,
-                              m.BureauNo_,
-                              m.Credit_Reason,
-                              m.Document_Type,
-                              m.DPKulørID,
-                              m.Fakturering,
-                              m.Format1,
-                              m.Format2,
-                              m.FællesBureauOrdreNr,
-                              m.IndrykningsUge,
-                              m.IndrykningsÅr,
-                              m.InfoGodt,
-                              m.KonsulentCode,
-                              m.Kontaktperson,
-                              m.KontaktpersonTilhører,
-                              m.KunForhandlerBundForskellig,
-                              m.MaterialeFølgerFra,
-                              m.MaterialeFølgerFraLeverandør,
-                              m.MaterialeGodtgørelseAlle,
-                              m.MaterialeGodtgørelseTil,
-                              m.MedieplanNr,
-                              m.MiljøTillægOpkræves,
-                              m.OpkrævDSVPMiljøTillæg,
-                              m.OpkrævFynskeMiljøTillæg,
-                              m.OpkrævJyskeMedierASTillæg,
-                              m.OpkrævJyskeMiljøTillæg,
-                              m.OpkrævNordjyskeTillæg,
-                              m.OpkrævNorthMiljøTillæg,
-                              m.OprettetDato,
-                              m.OrdreDato,
-                              m.Overskrift,
-                              m.PlaceringID,
-                              m.Previous_Version,
-                              m.RekvisitionsNr,
-                              m.RettelserEfterAnnoncekontrol,
-                              m.SamletPris,
-                              m.SammeBureauOrdreNr,
-                              m.SammeMateriale,
-                              m.SikkerhedsGodt,
-                              m.Status
-                          };
-            
-
-            return JsonConvert.SerializeObject(resulat, Formatting.Indented);
-        }
-
-     
-
-        private  IQueryable mediePlanQuery(string mediePlan=null, string annnoncør=null, string bureau=null, int fraUge=0, int tilUge=0, int aar=0, 
-            bool visInAktiveAnnoncer=false, bool mediePlanCheckBox=false, bool bookingCheckBox = false, bool rtAkCheckBox=false, bool faktureing=false)
-        {
-#pragma warning disable CS0436 // Type conflicts with imported type
-            IQueryable<tblMedieplan> query = entities.Set<tblMedieplan>();
-#pragma warning restore CS0436 // Type conflicts with imported type
+            var query = (from m in entities.tblMedieplans
+                join ml in entities.tblMedieplanLinjers on m.MedieplanNr equals ml.MedieplanNr into mml
+                from ml in mml.DefaultIfEmpty()
+                join st in entities.tblBladStamdatas on ml.UgeavisID equals st.BladID into stml
+                from st in stml.DefaultIfEmpty()
+                select new
+                {
+                    m.MedieplanNr, ml.UgeavisID, m.AnnoncørNo_, m.BureauNo_, m.IndrykningsUge, m.IndrykningsÅr,
+                    st.Ophørt, m.Status
+                });
 
 
-            if ( mediePlan != "null")
+
+            if (mediePlan != "null")
+
             {
-                query = query.Where(m => m.MedieplanNr.ToString().StartsWith(mediePlan) || m.MedieplanNr.ToString().Contains(mediePlan) || m.MedieplanNr.ToString().EndsWith(mediePlan));
-         
+                query = query.Where(m =>
+                    m.MedieplanNr.ToString().StartsWith(mediePlan) || m.MedieplanNr.ToString().Contains(mediePlan) ||
+                    m.MedieplanNr.ToString().EndsWith(mediePlan));
             }
-            if(annnoncør !="null") {
-                query = query.Where(a => a.AnnoncørNo_.StartsWith(annnoncør) || a.AnnoncørNo_.Contains(annnoncør)  || a.AnnoncørNo_.EndsWith(annnoncør));
-            }
-            if(bureau !="null")
+
+            if (annnoncør != "null")
             {
-                query = query.Where(b => b.BureauNo_.StartsWith(bureau) || b.BureauNo_.Contains(bureau) || b.BureauNo_.EndsWith(bureau));
-              
-            } 
-            if(fraUge !=0 && tilUge !=0 )
-            {
-                query = query.Where(fu => fu.IndrykningsUge > fraUge || fu.IndrykningsUge <= tilUge);
+
+                query = query.Where(a =>
+                    a.AnnoncørNo_.StartsWith(annnoncør) || a.AnnoncørNo_.Contains(annnoncør) ||
+                    a.AnnoncørNo_.EndsWith(annnoncør));
+
             }
-            if(aar !=0)
+
+            if (bureau != "null")
+            {
+                query = query.Where(b =>
+                    b.BureauNo_.StartsWith(bureau) || b.BureauNo_.Contains(bureau) || b.BureauNo_.EndsWith(bureau));
+            }
+
+            if (fraUge != 0 && tilUge != 0)
+            {
+                query = query.Where(fu => fu.IndrykningsUge > fraUge && tilUge <= fu.IndrykningsUge);
+            }
+
+            if (aar != 0)
             {
                 query = query.Where(ar => ar.IndrykningsÅr == aar);
             }
-            if(visInAktiveAnnoncer == true)
+
+            if (visInAktiveAnnoncer)
+            {
+                query = query.Where(ak => ak.Ophørt == true);
+            }
+
+            if (bookingCheckBox == 1)
+            {
+                query = query.Where(b => b.Status == 1);
+            }
+
+            if (mediePlanCheckBox == 1)
             {
                 
             }
 
-            return query;
+            if (rtAkCheckBox)
+            {
+            }
+
+            if (faktureing)
+            {
+                
+            }
 
 
-
-
-
-      
+            return JsonConvert.SerializeObject(query.Select(s => new
+            {
+               s.MedieplanNr,
+                s.UgeavisID,
+                s.AnnoncørNo_,
+                s.BureauNo_,
+                s.IndrykningsUge,
+                s.IndrykningsÅr,
+                s.Ophørt, 
+                s.Status
+            }), Formatting.Indented);
         }
+
+     
+
+        
         
     }
 }
