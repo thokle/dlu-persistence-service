@@ -292,7 +292,7 @@ namespace dlu_persistence_api.daos
                 res = res.Where(ar => ar.IndrykningsÅr == aar);
             } if(visInAktiveAnnoncer)
             {
-                res = res.Where(vis => vis.)
+             
             }
             var resulat = from m in res
                           select new
