@@ -33,12 +33,23 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from m in _entities.tblMedieplanLinjers
-                    where m.MedieplanNr == medieId
+                    where m.MedieplanNr == medieId join mb in _entities.tblMedieplanÆndringer on m.MedieplanNr equals mb.MedieplanNr into mmb
+                    from mb in mmb.DefaultIfEmpty()
+                    join mae in _entities.tblMedieplanNrs on m.MedieplanNr equals mae.MedieplanNr into mmae 
+                    from mae in mmae.DefaultIfEmpty()
+       
+                    
                     orderby m.MedieplanNr
                     select new
                     {
-                        m.Bemærkning, m.Mm, m.Total, m.Version, m.FarveMax, m.FarveMin, m.FarveRabat, m.FarvePris,
-                        m.FarveTillæg, m.FarveTotal, m.ManueltÆndret, m.NormalMmPris
+                        m.UgeavisID , m.BureauOrdreNr, m.ErWeekendGruppe, m.MmRabat, m.MmTotal, m.Total, m.WebtillægFaktureresHer, m.TotalPris,
+                        m.Bemærkning, m.Mm, m.Version, m.FarveMax, m.FarveMin, m.FarveRabat, m.FarvePris,
+                        m.FarveTillæg, m.FarveTotal, m.ManueltÆndret, m.NormalMmPris , mb.ÆndringsTekst, mae.Kommentar,mae.MaterialeModtaget,mae.OverførtFraPrisforespørgsel, mae.Status, mae.SupportBilagVedlagt, mae.SupportBilagVist, mae.AktivVersion, mae.AnvendtMiljøTillæg, mae.AnvendtPrisberegningVersion, mae.BrugtGruppeVersion,
+                        mae.FakturaBemærkning1, mae.FakturaBemærkning2, mae.FakturaBemærkning3
+                    
+                 
+                      
+                        
 
                     };
                 return JsonConvert.SerializeObject(res, Formatting.Indented);

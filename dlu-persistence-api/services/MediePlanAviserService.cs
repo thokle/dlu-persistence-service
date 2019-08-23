@@ -18,9 +18,9 @@ namespace dlu_persistence_api.services
         {
             dao = new MediePlanAviserDao();
         }
-        public string GetAllUgeAvisTilGrid(int bladid, int year)
+        public string GetAllUgeAvisTilGrid(int bladid, int year, int placeringid)
         {
-            return dao.GetAllUgeAvisTilGrid(bladid, year);
+            return dao.GetAllUgeAvisTilGrid(bladid, year, placeringid);
         }
     }
 }

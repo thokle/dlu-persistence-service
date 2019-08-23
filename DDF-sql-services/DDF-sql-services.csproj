@@ -31,8 +31,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,7 +54,85 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="daos\DLUContactDao.cs" />
+    <Compile Include="DFF.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DFF.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DFF.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DFF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DFF.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DFF.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DLU_Contact.cs">
+      <DependentUpon>DFF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DLU_Contact_Alt__Address.cs">
+      <DependentUpon>DFF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DLU_Contact_Alt__Addr__Date_Range.cs">
+      <DependentUpon>DFF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DLU_Contact_Business_Relation.cs">
+      <DependentUpon>DFF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DLU_Contact_Duplicate.cs">
+      <DependentUpon>DFF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DLU_Contact_Industry_Group.cs">
+      <DependentUpon>DFF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DLU_Contact_Job_Responsibility.cs">
+      <DependentUpon>DFF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DLU_Contact_Mailing_Group.cs">
+      <DependentUpon>DFF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DLU_Contact_Profile_Answer.cs">
+      <DependentUpon>DFF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DLU_Contact_Value.cs">
+      <DependentUpon>DFF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DLU_Contact_Web_Source.cs">
+      <DependentUpon>DFF.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="DFF.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DFF.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DFF.edmx.diagram">
+      <DependentUpon>DFF.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DFF.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DFF.edmx</DependentUpon>
+      <LastGenOutput>DFF.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DFF.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DFF.edmx</DependentUpon>
+      <LastGenOutput>DFF.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

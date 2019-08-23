@@ -1,0 +1,660 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DDFModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DLU$Contact">
+          <Key>
+            <PropertyRef Name="No_" />
+          </Key>
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="No_" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Search Name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Name 2" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Address 2" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Phone No_" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Telex No_" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Customer Type" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Currency Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Language Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Salesperson Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Country Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Last Date Modified" Type="datetime" Nullable="false" />
+          <Property Name="Fax No_" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Telex Answer Back" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="VAT Registration No_" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Picture" Type="image" />
+          <Property Name="Post Code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="County" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="E-Mail" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Home Page" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="No_ Series" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Company No_" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Company Name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Lookup Contact No_" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="First Name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Middle Name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Job Title" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Initials" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Extension No_" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Mobile Phone No_" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Pager" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Organizational Level Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Exclude from Segment" Type="tinyint" Nullable="false" />
+          <Property Name="External ID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Correspondence Type" Type="int" Nullable="false" />
+          <Property Name="Salutation Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Search E-Mail" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Version No_" Type="int" Nullable="false" />
+          <Property Name="Last Time Modified" Type="datetime" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="Password Padding" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Login ID" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Notification Process Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Enablement Date" Type="datetime" Nullable="false" />
+          <Property Name="Queue Priority" Type="int" Nullable="false" />
+          <Property Name="Online User Type" Type="int" Nullable="false" />
+          <Property Name="On Behalf Of" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Catalog Set" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Sales Code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Budget Code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Primærkontakt" Type="tinyint" Nullable="false" />
+          <Property Name="EAN-nummer" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="Bill-to Contact No_" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Payment Terms Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Deaktiveret" Type="tinyint" Nullable="false" />
+          <Property Name="Sikkerhedsgodtgørelse" Type="tinyint" Nullable="false" />
+          <Property Name="Infogodtgørelse" Type="tinyint" Nullable="false" />
+          <Property Name="Gammelt AnnoncørID" Type="int" Nullable="false" />
+          <Property Name="Gammelt Faktureres til ID" Type="int" Nullable="false" />
+          <Property Name="Invoice Document Type" Type="int" Nullable="false" />
+          <Property Name="Extra Text" Type="image" />
+          <Property Name="ContactNoFilter" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DLU$Contact Alt_ Addr_ Date Range">
+          <Key>
+            <PropertyRef Name="Contact No_" />
+            <PropertyRef Name="Starting Date" />
+          </Key>
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Contact No_" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Starting Date" Type="datetime" Nullable="false" />
+          <Property Name="Contact Alt_ Address Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Ending Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DLU$Contact Alt_ Address">
+          <Key>
+            <PropertyRef Name="Contact No_" />
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Contact No_" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Company Name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Company Name 2" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Address 2" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Post Code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="County" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Country Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Phone No_" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Telex No_" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Extension No_" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Mobile Phone No_" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Pager" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="E-Mail" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Home Page" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Fax No_" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Telex Answer Back" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Last Date Modified" Type="datetime" Nullable="false" />
+          <Property Name="Search E-Mail" Type="varchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DLU$Contact Business Relation">
+          <Key>
+            <PropertyRef Name="Contact No_" />
+            <PropertyRef Name="Business Relation Code" />
+          </Key>
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Contact No_" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Business Relation Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Link to Table" Type="int" Nullable="false" />
+          <Property Name="No_" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DLU$Contact Duplicate">
+          <Key>
+            <PropertyRef Name="Contact  No_" />
+            <PropertyRef Name="Duplicate Contact No_" />
+          </Key>
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Contact  No_" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Duplicate Contact No_" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Separate Contacts" Type="tinyint" Nullable="false" />
+          <Property Name="No_ of Matching Strings" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DLU$Contact Industry Group">
+          <Key>
+            <PropertyRef Name="Contact No_" />
+            <PropertyRef Name="Industry Group Code" />
+          </Key>
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Contact No_" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Industry Group Code" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DLU$Contact Job Responsibility">
+          <Key>
+            <PropertyRef Name="Contact No_" />
+            <PropertyRef Name="Job Responsibility Code" />
+          </Key>
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Contact No_" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Job Responsibility Code" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DLU$Contact Mailing Group">
+          <Key>
+            <PropertyRef Name="Contact No_" />
+            <PropertyRef Name="Mailing Group Code" />
+          </Key>
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Contact No_" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Mailing Group Code" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DLU$Contact Profile Answer">
+          <Key>
+            <PropertyRef Name="Contact No_" />
+            <PropertyRef Name="Profile Questionnaire Code" />
+            <PropertyRef Name="Line No_" />
+          </Key>
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Contact No_" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Profile Questionnaire Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Line No_" Type="int" Nullable="false" />
+          <Property Name="Contact Company No_" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Profile Questionnaire Priority" Type="int" Nullable="false" />
+          <Property Name="Answer Priority" Type="int" Nullable="false" />
+          <Property Name="Last Date Updated" Type="datetime" Nullable="false" />
+          <Property Name="Questions Answered (%)" Type="decimal" Precision="38" Scale="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DLU$Contact Value">
+          <Key>
+            <PropertyRef Name="Contact No_" />
+          </Key>
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Contact No_" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Value" Type="decimal" Precision="38" Scale="20" Nullable="false" />
+          <Property Name="Last Date Updated" Type="datetime" Nullable="false" />
+          <Property Name="Questions Answered (%)" Type="decimal" Precision="38" Scale="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DLU$Contact Web Source">
+          <Key>
+            <PropertyRef Name="Contact No_" />
+            <PropertyRef Name="Web Source Code" />
+          </Key>
+          <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Contact No_" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Web Source Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Search Word" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DDFModelStoreContainer">
+          <EntitySet Name="DLU$Contact" EntityType="Self.DLU$Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DLU$Contact Alt_ Addr_ Date Range" EntityType="Self.DLU$Contact Alt_ Addr_ Date Range" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DLU$Contact Alt_ Address" EntityType="Self.DLU$Contact Alt_ Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DLU$Contact Business Relation" EntityType="Self.DLU$Contact Business Relation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DLU$Contact Duplicate" EntityType="Self.DLU$Contact Duplicate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DLU$Contact Industry Group" EntityType="Self.DLU$Contact Industry Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DLU$Contact Job Responsibility" EntityType="Self.DLU$Contact Job Responsibility" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DLU$Contact Mailing Group" EntityType="Self.DLU$Contact Mailing Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DLU$Contact Profile Answer" EntityType="Self.DLU$Contact Profile Answer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DLU$Contact Value" EntityType="Self.DLU$Contact Value" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DLU$Contact Web Source" EntityType="Self.DLU$Contact Web Source" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DDFModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DLU_Contact">
+          <Key>
+            <PropertyRef Name="No_" />
+          </Key>
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="No_" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Search_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name_2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address_2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone_No_" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telex_No_" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Customer_Type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Currency_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Language_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Salesperson_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Country_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Last_Date_Modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Fax_No_" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telex_Answer_Back" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VAT_Registration_No_" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Post_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="County" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="E_Mail" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Home_Page" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="No__Series" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Company_No_" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Company_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Lookup_Contact_No_" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="First_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Middle_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Job_Title" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Initials" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Extension_No_" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mobile_Phone_No_" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pager" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Organizational_Level_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Exclude_from_Segment" Type="Byte" Nullable="false" />
+          <Property Name="External_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Correspondence_Type" Type="Int32" Nullable="false" />
+          <Property Name="Salutation_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Search_E_Mail" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Version_No_" Type="Int32" Nullable="false" />
+          <Property Name="Last_Time_Modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Password" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password_Padding" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Login_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Notification_Process_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Enablement_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Queue_Priority" Type="Int32" Nullable="false" />
+          <Property Name="Online_User_Type" Type="Int32" Nullable="false" />
+          <Property Name="On_Behalf_Of" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Catalog_Set" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sales_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Budget_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Primærkontakt" Type="Byte" Nullable="false" />
+          <Property Name="EAN_nummer" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Bill_to_Contact_No_" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Payment_Terms_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Deaktiveret" Type="Byte" Nullable="false" />
+          <Property Name="Sikkerhedsgodtgørelse" Type="Byte" Nullable="false" />
+          <Property Name="Infogodtgørelse" Type="Byte" Nullable="false" />
+          <Property Name="Gammelt_AnnoncørID" Type="Int32" Nullable="false" />
+          <Property Name="Gammelt_Faktureres_til_ID" Type="Int32" Nullable="false" />
+          <Property Name="Invoice_Document_Type" Type="Int32" Nullable="false" />
+          <Property Name="Extra_Text" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ContactNoFilter" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DLU_Contact_Alt__Addr__Date_Range">
+          <Key>
+            <PropertyRef Name="Contact_No_" />
+            <PropertyRef Name="Starting_Date" />
+          </Key>
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Contact_No_" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Starting_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Contact_Alt__Address_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ending_Date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="DLU_Contact_Alt__Address">
+          <Key>
+            <PropertyRef Name="Contact_No_" />
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Contact_No_" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Company_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Company_Name_2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address_2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Post_Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="County" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Country_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Phone_No_" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telex_No_" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Extension_No_" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mobile_Phone_No_" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pager" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="E_Mail" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Home_Page" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fax_No_" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telex_Answer_Back" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Last_Date_Modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Search_E_Mail" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DLU_Contact_Business_Relation">
+          <Key>
+            <PropertyRef Name="Contact_No_" />
+            <PropertyRef Name="Business_Relation_Code" />
+          </Key>
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Contact_No_" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Business_Relation_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Link_to_Table" Type="Int32" Nullable="false" />
+          <Property Name="No_" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DLU_Contact_Duplicate">
+          <Key>
+            <PropertyRef Name="Contact__No_" />
+            <PropertyRef Name="Duplicate_Contact_No_" />
+          </Key>
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Contact__No_" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Duplicate_Contact_No_" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Separate_Contacts" Type="Byte" Nullable="false" />
+          <Property Name="No__of_Matching_Strings" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DLU_Contact_Industry_Group">
+          <Key>
+            <PropertyRef Name="Contact_No_" />
+            <PropertyRef Name="Industry_Group_Code" />
+          </Key>
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Contact_No_" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Industry_Group_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DLU_Contact_Job_Responsibility">
+          <Key>
+            <PropertyRef Name="Contact_No_" />
+            <PropertyRef Name="Job_Responsibility_Code" />
+          </Key>
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Contact_No_" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Job_Responsibility_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DLU_Contact_Mailing_Group">
+          <Key>
+            <PropertyRef Name="Contact_No_" />
+            <PropertyRef Name="Mailing_Group_Code" />
+          </Key>
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Contact_No_" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mailing_Group_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DLU_Contact_Profile_Answer">
+          <Key>
+            <PropertyRef Name="Contact_No_" />
+            <PropertyRef Name="Profile_Questionnaire_Code" />
+            <PropertyRef Name="Line_No_" />
+          </Key>
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Contact_No_" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Profile_Questionnaire_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Line_No_" Type="Int32" Nullable="false" />
+          <Property Name="Contact_Company_No_" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Profile_Questionnaire_Priority" Type="Int32" Nullable="false" />
+          <Property Name="Answer_Priority" Type="Int32" Nullable="false" />
+          <Property Name="Last_Date_Updated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Questions_Answered____" Type="Decimal" Precision="38" Scale="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DLU_Contact_Value">
+          <Key>
+            <PropertyRef Name="Contact_No_" />
+          </Key>
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Contact_No_" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Value" Type="Decimal" Precision="38" Scale="20" Nullable="false" />
+          <Property Name="Last_Date_Updated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Questions_Answered____" Type="Decimal" Precision="38" Scale="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DLU_Contact_Web_Source">
+          <Key>
+            <PropertyRef Name="Contact_No_" />
+            <PropertyRef Name="Web_Source_Code" />
+          </Key>
+          <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Contact_No_" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Web_Source_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Search_Word" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DDFEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DLU_Contact" EntityType="Self.DLU_Contact" />
+          <EntitySet Name="DLU_Contact_Alt__Addr__Date_Range" EntityType="Self.DLU_Contact_Alt__Addr__Date_Range" />
+          <EntitySet Name="DLU_Contact_Alt__Address" EntityType="Self.DLU_Contact_Alt__Address" />
+          <EntitySet Name="DLU_Contact_Business_Relation" EntityType="Self.DLU_Contact_Business_Relation" />
+          <EntitySet Name="DLU_Contact_Duplicate" EntityType="Self.DLU_Contact_Duplicate" />
+          <EntitySet Name="DLU_Contact_Industry_Group" EntityType="Self.DLU_Contact_Industry_Group" />
+          <EntitySet Name="DLU_Contact_Job_Responsibility" EntityType="Self.DLU_Contact_Job_Responsibility" />
+          <EntitySet Name="DLU_Contact_Mailing_Group" EntityType="Self.DLU_Contact_Mailing_Group" />
+          <EntitySet Name="DLU_Contact_Profile_Answer" EntityType="Self.DLU_Contact_Profile_Answer" />
+          <EntitySet Name="DLU_Contact_Value" EntityType="Self.DLU_Contact_Value" />
+          <EntitySet Name="DLU_Contact_Web_Source" EntityType="Self.DLU_Contact_Web_Source" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DDFModelStoreContainer" CdmEntityContainer="DDFEntities1">
+          <EntitySetMapping Name="DLU_Contact">
+            <EntityTypeMapping TypeName="DDFModel.DLU_Contact">
+              <MappingFragment StoreEntitySet="DLU$Contact">
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="No_" ColumnName="No_" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Search_Name" ColumnName="Search Name" />
+                <ScalarProperty Name="Name_2" ColumnName="Name 2" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Address_2" ColumnName="Address 2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Phone_No_" ColumnName="Phone No_" />
+                <ScalarProperty Name="Telex_No_" ColumnName="Telex No_" />
+                <ScalarProperty Name="Customer_Type" ColumnName="Customer Type" />
+                <ScalarProperty Name="Currency_Code" ColumnName="Currency Code" />
+                <ScalarProperty Name="Language_Code" ColumnName="Language Code" />
+                <ScalarProperty Name="Salesperson_Code" ColumnName="Salesperson Code" />
+                <ScalarProperty Name="Country_Code" ColumnName="Country Code" />
+                <ScalarProperty Name="Last_Date_Modified" ColumnName="Last Date Modified" />
+                <ScalarProperty Name="Fax_No_" ColumnName="Fax No_" />
+                <ScalarProperty Name="Telex_Answer_Back" ColumnName="Telex Answer Back" />
+                <ScalarProperty Name="VAT_Registration_No_" ColumnName="VAT Registration No_" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="Post_Code" ColumnName="Post Code" />
+                <ScalarProperty Name="County" ColumnName="County" />
+                <ScalarProperty Name="E_Mail" ColumnName="E-Mail" />
+                <ScalarProperty Name="Home_Page" ColumnName="Home Page" />
+                <ScalarProperty Name="No__Series" ColumnName="No_ Series" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Company_No_" ColumnName="Company No_" />
+                <ScalarProperty Name="Company_Name" ColumnName="Company Name" />
+                <ScalarProperty Name="Lookup_Contact_No_" ColumnName="Lookup Contact No_" />
+                <ScalarProperty Name="First_Name" ColumnName="First Name" />
+                <ScalarProperty Name="Middle_Name" ColumnName="Middle Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Job_Title" ColumnName="Job Title" />
+                <ScalarProperty Name="Initials" ColumnName="Initials" />
+                <ScalarProperty Name="Extension_No_" ColumnName="Extension No_" />
+                <ScalarProperty Name="Mobile_Phone_No_" ColumnName="Mobile Phone No_" />
+                <ScalarProperty Name="Pager" ColumnName="Pager" />
+                <ScalarProperty Name="Organizational_Level_Code" ColumnName="Organizational Level Code" />
+                <ScalarProperty Name="Exclude_from_Segment" ColumnName="Exclude from Segment" />
+                <ScalarProperty Name="External_ID" ColumnName="External ID" />
+                <ScalarProperty Name="Correspondence_Type" ColumnName="Correspondence Type" />
+                <ScalarProperty Name="Salutation_Code" ColumnName="Salutation Code" />
+                <ScalarProperty Name="Search_E_Mail" ColumnName="Search E-Mail" />
+                <ScalarProperty Name="Version_No_" ColumnName="Version No_" />
+                <ScalarProperty Name="Last_Time_Modified" ColumnName="Last Time Modified" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Password_Padding" ColumnName="Password Padding" />
+                <ScalarProperty Name="Login_ID" ColumnName="Login ID" />
+                <ScalarProperty Name="Notification_Process_Code" ColumnName="Notification Process Code" />
+                <ScalarProperty Name="Enablement_Date" ColumnName="Enablement Date" />
+                <ScalarProperty Name="Queue_Priority" ColumnName="Queue Priority" />
+                <ScalarProperty Name="Online_User_Type" ColumnName="Online User Type" />
+                <ScalarProperty Name="On_Behalf_Of" ColumnName="On Behalf Of" />
+                <ScalarProperty Name="Catalog_Set" ColumnName="Catalog Set" />
+                <ScalarProperty Name="Sales_Code" ColumnName="Sales Code" />
+                <ScalarProperty Name="Budget_Code" ColumnName="Budget Code" />
+                <ScalarProperty Name="Primærkontakt" ColumnName="Primærkontakt" />
+                <ScalarProperty Name="EAN_nummer" ColumnName="EAN-nummer" />
+                <ScalarProperty Name="Bill_to_Contact_No_" ColumnName="Bill-to Contact No_" />
+                <ScalarProperty Name="Payment_Terms_Code" ColumnName="Payment Terms Code" />
+                <ScalarProperty Name="Deaktiveret" ColumnName="Deaktiveret" />
+                <ScalarProperty Name="Sikkerhedsgodtgørelse" ColumnName="Sikkerhedsgodtgørelse" />
+                <ScalarProperty Name="Infogodtgørelse" ColumnName="Infogodtgørelse" />
+                <ScalarProperty Name="Gammelt_AnnoncørID" ColumnName="Gammelt AnnoncørID" />
+                <ScalarProperty Name="Gammelt_Faktureres_til_ID" ColumnName="Gammelt Faktureres til ID" />
+                <ScalarProperty Name="Invoice_Document_Type" ColumnName="Invoice Document Type" />
+                <ScalarProperty Name="Extra_Text" ColumnName="Extra Text" />
+                <ScalarProperty Name="ContactNoFilter" ColumnName="ContactNoFilter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DLU_Contact_Alt__Addr__Date_Range">
+            <EntityTypeMapping TypeName="DDFModel.DLU_Contact_Alt__Addr__Date_Range">
+              <MappingFragment StoreEntitySet="DLU$Contact Alt_ Addr_ Date Range">
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="Contact_No_" ColumnName="Contact No_" />
+                <ScalarProperty Name="Starting_Date" ColumnName="Starting Date" />
+                <ScalarProperty Name="Contact_Alt__Address_Code" ColumnName="Contact Alt_ Address Code" />
+                <ScalarProperty Name="Ending_Date" ColumnName="Ending Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DLU_Contact_Alt__Address">
+            <EntityTypeMapping TypeName="DDFModel.DLU_Contact_Alt__Address">
+              <MappingFragment StoreEntitySet="DLU$Contact Alt_ Address">
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="Contact_No_" ColumnName="Contact No_" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Company_Name" ColumnName="Company Name" />
+                <ScalarProperty Name="Company_Name_2" ColumnName="Company Name 2" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Address_2" ColumnName="Address 2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Post_Code" ColumnName="Post Code" />
+                <ScalarProperty Name="County" ColumnName="County" />
+                <ScalarProperty Name="Country_Code" ColumnName="Country Code" />
+                <ScalarProperty Name="Phone_No_" ColumnName="Phone No_" />
+                <ScalarProperty Name="Telex_No_" ColumnName="Telex No_" />
+                <ScalarProperty Name="Extension_No_" ColumnName="Extension No_" />
+                <ScalarProperty Name="Mobile_Phone_No_" ColumnName="Mobile Phone No_" />
+                <ScalarProperty Name="Pager" ColumnName="Pager" />
+                <ScalarProperty Name="E_Mail" ColumnName="E-Mail" />
+                <ScalarProperty Name="Home_Page" ColumnName="Home Page" />
+                <ScalarProperty Name="Fax_No_" ColumnName="Fax No_" />
+                <ScalarProperty Name="Telex_Answer_Back" ColumnName="Telex Answer Back" />
+                <ScalarProperty Name="Last_Date_Modified" ColumnName="Last Date Modified" />
+                <ScalarProperty Name="Search_E_Mail" ColumnName="Search E-Mail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DLU_Contact_Business_Relation">
+            <EntityTypeMapping TypeName="DDFModel.DLU_Contact_Business_Relation">
+              <MappingFragment StoreEntitySet="DLU$Contact Business Relation">
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="Contact_No_" ColumnName="Contact No_" />
+                <ScalarProperty Name="Business_Relation_Code" ColumnName="Business Relation Code" />
+                <ScalarProperty Name="Link_to_Table" ColumnName="Link to Table" />
+                <ScalarProperty Name="No_" ColumnName="No_" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DLU_Contact_Duplicate">
+            <EntityTypeMapping TypeName="DDFModel.DLU_Contact_Duplicate">
+              <MappingFragment StoreEntitySet="DLU$Contact Duplicate">
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="Contact__No_" ColumnName="Contact  No_" />
+                <ScalarProperty Name="Duplicate_Contact_No_" ColumnName="Duplicate Contact No_" />
+                <ScalarProperty Name="Separate_Contacts" ColumnName="Separate Contacts" />
+                <ScalarProperty Name="No__of_Matching_Strings" ColumnName="No_ of Matching Strings" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DLU_Contact_Industry_Group">
+            <EntityTypeMapping TypeName="DDFModel.DLU_Contact_Industry_Group">
+              <MappingFragment StoreEntitySet="DLU$Contact Industry Group">
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="Contact_No_" ColumnName="Contact No_" />
+                <ScalarProperty Name="Industry_Group_Code" ColumnName="Industry Group Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DLU_Contact_Job_Responsibility">
+            <EntityTypeMapping TypeName="DDFModel.DLU_Contact_Job_Responsibility">
+              <MappingFragment StoreEntitySet="DLU$Contact Job Responsibility">
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="Contact_No_" ColumnName="Contact No_" />
+                <ScalarProperty Name="Job_Responsibility_Code" ColumnName="Job Responsibility Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DLU_Contact_Mailing_Group">
+            <EntityTypeMapping TypeName="DDFModel.DLU_Contact_Mailing_Group">
+              <MappingFragment StoreEntitySet="DLU$Contact Mailing Group">
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="Contact_No_" ColumnName="Contact No_" />
+                <ScalarProperty Name="Mailing_Group_Code" ColumnName="Mailing Group Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DLU_Contact_Profile_Answer">
+            <EntityTypeMapping TypeName="DDFModel.DLU_Contact_Profile_Answer">
+              <MappingFragment StoreEntitySet="DLU$Contact Profile Answer">
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="Contact_No_" ColumnName="Contact No_" />
+                <ScalarProperty Name="Profile_Questionnaire_Code" ColumnName="Profile Questionnaire Code" />
+                <ScalarProperty Name="Line_No_" ColumnName="Line No_" />
+                <ScalarProperty Name="Contact_Company_No_" ColumnName="Contact Company No_" />
+                <ScalarProperty Name="Profile_Questionnaire_Priority" ColumnName="Profile Questionnaire Priority" />
+                <ScalarProperty Name="Answer_Priority" ColumnName="Answer Priority" />
+                <ScalarProperty Name="Last_Date_Updated" ColumnName="Last Date Updated" />
+                <ScalarProperty Name="Questions_Answered____" ColumnName="Questions Answered (%)" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DLU_Contact_Value">
+            <EntityTypeMapping TypeName="DDFModel.DLU_Contact_Value">
+              <MappingFragment StoreEntitySet="DLU$Contact Value">
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="Contact_No_" ColumnName="Contact No_" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Last_Date_Updated" ColumnName="Last Date Updated" />
+                <ScalarProperty Name="Questions_Answered____" ColumnName="Questions Answered (%)" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DLU_Contact_Web_Source">
+            <EntityTypeMapping TypeName="DDFModel.DLU_Contact_Web_Source">
+              <MappingFragment StoreEntitySet="DLU$Contact Web Source">
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="Contact_No_" ColumnName="Contact No_" />
+                <ScalarProperty Name="Web_Source_Code" ColumnName="Web Source Code" />
+                <ScalarProperty Name="Search_Word" ColumnName="Search Word" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

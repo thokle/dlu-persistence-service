@@ -18,5 +18,8 @@ namespace dlu_persistence_api
         public Nullable<int> bladId { get; set; }
         public Nullable<int> typeId { get; set; }
         public Nullable<double> pris { get; set; }
+    
+        public virtual tblBladStamdata tblBladStamdata { get; set; }
+        public virtual tblBladTillaegsType tblBladTillaegsType { get; set; }
     }
 }

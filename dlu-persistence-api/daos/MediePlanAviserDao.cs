@@ -16,7 +16,7 @@ namespace dlu_persistence_api.daos
             diMPdot = new DiMPdotNetDevEntities();
         }
 
-        public string GetAllUgeAvisTilGrid(int bladid, int year)
+        public string GetAllUgeAvisTilGrid(int bladid, int year,int placeringid)
         {
             try
             {
@@ -39,7 +39,8 @@ namespace dlu_persistence_api.daos
                            from pla in pplap.DefaultIfEmpty()
                            join prisl in diMPdot.tblPrislisters on p.PrislisteID equals prisl.PrislisteID into pprisl
                            from prisl in pprisl.DefaultIfEmpty()
-                           where b.BladID == bladid & b.Ophørt == false select new AvisTIlGrid { Adresse = b.Adresse, AnnonceEmail = b.Adresse2, BladID = b.BladID, CVR = b.CVR, Adresse2 = b.Adresse2, AnnonceKontrolEmail = b.AnnonceKontrolEmail,
+                 
+                           where b.BladID == bladid & b.Ophørt == false  & p.År == year  & p.PlaceringID == placeringid select new  { Adresse = b.Adresse, AnnonceEmail = b.Adresse2, BladID = b.BladID, CVR = b.CVR, Adresse2 = b.Adresse2, AnnonceKontrolEmail = b.AnnonceKontrolEmail,
                                Betegnelse = pla.Betegnelse, BilagsbladeEmail = b.BilagsbladeEmail, BogholderiEmails = b.BogholderiEmails, DaekningsGrad = d.DækningsGrad, DagNavn = da.DagNavn, DiMPDelOmraadeKode = b.DiMPDelOmrådeKode, Ejerforhold = b.Ejerforhold,
                                Emails = b.Emails, FakturaGruppeID = b.FakturaGruppeID, Farve4Max = p.Farve4Max, Farve4Min = p.Farve4Min, Farve4Pris = p.Farve4Pris, FarveMax = p.FarveMax, FarveMin = p.FarveMin, FarvePris = p.FarvePris, Fax = b.Fax, Format = b.Format,
                                FormatFra = p.FormatFra, FormatTil = p.FormatTil, GeoKodeNavn = geo.GeoKodeNavn, GiverWebTillaeg = b.GiverWebTillæg, GruppeRabat = b.GruppeRabat, Hjemmeside = b.Hjemmeside, HovedGruppeNavn = hg.HovedGruppeNavn, Husstande = pos.Husstande,
@@ -48,17 +49,29 @@ namespace dlu_persistence_api.daos
                                MaxDaekningsGrad = pos.MaxDækningsGrad, Medlemaar = b.MedlemÅr, MedlemMaaned = b.MedlemMåned, mmPris = p.mmPris, Navn = b.Navn, Navn2 = b.Navn2, Ophoert = b.Ophørt, Oplag = d.Oplag, OrdrecheckEmail = b.OrdrecheckEmail, OrdrecheckSendeDagID = b.OrdrecheckSendeDagID,
                                OrdredeadlineRubrik = b.OrdredeadlineRubrik, OrdreDeadlineRubrikDag = b.OrdreDeadlineRubrikDag, OrdreDeadlineRubrikKl = b.OrdreDeadlineRubrikKl, OrdredeadlineTekst = b.OrdredeadlineTekst, OrdreDeadlineTekstDag = b.OrdreDeadlineTekstDag, OrdreDeadlineTekstKl = b.OrdreDeadlineTekstKl,
                                OrdreEmail = b.OrdreEmail, OrienteringEmails = b.OrienteringEmails, Overfoert = b.Overført, PostBy = pos.PostBy, PostNr = b.PostNr, Primaer = b.Primær, PrimaerPct = b.PrimærPct, PrisforespoergselEmails = b.PrisforespørgselEmails, PrislisteNavn = prisl.PrislisteNavn, RedaktionEmail = b.RedaktionEmail,
-                               RegionNavn = r.RegionNavn, SamannonceringsRabat = b.SamannonceringsRabat, SendetidOrdrecheck = b.SendetidOrdrecheck, SendIndevaerendeUge = b.SendIndeværendeUge, StamdataEmail = b.StamdataEmail, Tlf = b.Tlf, Totalomraade = b.Totalområde, TotalomraadePct = b.TotalområdePct, VisPaaWWW = b.VisPåWWW, WWWDaekningSomTekst = b.WWWDækningSomTekst
-
-
-
-
+                               RegionNavn = r.RegionNavn, SamannonceringsRabat = b.SamannonceringsRabat, SendetidOrdrecheck = b.SendetidOrdrecheck, SendIndevaerendeUge = b.SendIndeværendeUge, StamdataEmail = b.StamdataEmail, Tlf = b.Tlf, Totalomraade = b.Totalområde, TotalomraadePct = b.TotalområdePct, VisPaaWWW = b.VisPåWWW, WWWDaekningSomTekst = b.WWWDækningSomTekst,
+                              
+                               MMPris = p.mmPris,
+                               totalPris = p.Farve4Max + p.Farve4Min + p.Farve4Pris + p.FarveMax + p.FarveMin + p.FarvePris+  p.mmPris,
+                               webtillages =   from wb in b.tblBladTillaegs select new
+                               {
+                                   wb.id, 
+                                   wb.pris,
+                                   type = wb.tblBladTillaegsType.type
+                               }
+                                               
+               
+                               
+                            
+                                               
+                                                  
+                       
                            };
                            
                       
                          
 
-                return JsonConvert.SerializeObject(res, Formatting.Indented);
+                return JsonConvert.SerializeObject(res.Take(1), Formatting.Indented);
 
                         
                         

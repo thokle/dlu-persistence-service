@@ -10,7 +10,7 @@ namespace DLUPersistenceServiceModule.controllers
     {
         public MediePlanAviserController(MediePlanAviserService service) 
         {
-            Get("/medieplanavis/{bladid}/{year}", o => service.GetAllUgeAvisTilGrid(o.bladid, o.year));                
+            Get("/medieplanavis/{bladid}/{year}/{placerigid}", o => service.GetAllUgeAvisTilGrid(o.bladid, o.year,o.placerigid));                
         }
     }
 }

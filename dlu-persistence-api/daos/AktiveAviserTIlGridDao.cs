@@ -46,6 +46,7 @@ namespace dlu_persistence_api.daos
                               PostBy = d.PostBy,
                               PostNr = d.PostNr,
                               RegionNavn = d.RegionNavn
+                      
                           };
 
        
@@ -185,5 +186,6 @@ namespace dlu_persistence_api.daos
         public string PostBy { get; set; }
         public int? PostNr { get; set; }
         public string RegionNavn { get; set; }
+        public object webtilLaegs { get; internal set; }
     }
 }

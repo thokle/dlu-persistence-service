@@ -75,6 +75,7 @@ namespace dlu_persistence_api.models
         public int FormatFra { get; set; }
         public int FormatTil { get; set; }
         public decimal? mmPris { get; set; }
+        public decimal? MMPris { get; internal set; }
         public string RegionNavn { get; set; }
         public int DaekningsGrad { get; set; }
         public int Oplag { get; set; }
@@ -87,5 +88,12 @@ namespace dlu_persistence_api.models
         public int? PostNr { get; set; }
         public string Betegnelse { get; set; }
         public string PrislisteNavn { get; set; }
+        public decimal? totalPris { get;  set; }
+
+      
+      public decimal? calTotalPris()
+        {
+          return  this.Farve4Max + Farve4Min + Farve4Pris + FarveMax + FarveMin + FarvePris;
+        }
     }
 }

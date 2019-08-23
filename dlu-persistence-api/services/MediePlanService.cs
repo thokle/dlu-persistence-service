@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using  dlu_persistence_api.daos;
 namespace dlu_persistence_api.services
@@ -28,6 +29,7 @@ namespace dlu_persistence_api.services
             return _mediePlanDao.GetAvisTilMediePlan(bladid);
         }
 
+
         public string getMediePlanByKontaktPerson(string name)
         {
             return _mediePlanDao.getMediePlanByKontaktPerson(name);
@@ -38,7 +40,7 @@ namespace dlu_persistence_api.services
             return _mediePlanDao.GetMediePlanByAnnoncoer(anoncoer);
         }
 
-        public string GetMediePlanByNumber(string medieplanNr)
+        public string GetMediePlanByNumber(int medieplanNr)
         {
             return _mediePlanDao.GetMediePlanByNumber(medieplanNr);
         }
@@ -47,5 +49,12 @@ namespace dlu_persistence_api.services
         {
             return _mediePlanDao.findMediePlanToolbar(mediePlan, annnoncør, bureau, fraUge, tilUge, aar, visInAktiveAnnoncer, mediePlanCheckBox, bookingCheckBox, rtAkCheckBox, faktureing);
         }
+
+        public Tuple<string, int> GetLatestMedienr()
+        {
+            return _mediePlanDao.GetLatestMedienr();
+        }
+
+      
     }
 }

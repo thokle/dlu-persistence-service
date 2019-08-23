@@ -138,6 +138,8 @@
         <AssociationConnector Association="DiMPdotNetDevModel.FK_tblPrislisterPrBladPrUge_tblPrislister" ManuallyRouted="false" />
         <AssociationConnector Association="DiMPdotNetDevModel.tblKontakterArbOmråderPrKontakt" ManuallyRouted="false" />
         <AssociationConnector Association="DiMPdotNetDevModel.tblKontaktFunktionerPrBlad" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblBladTillaeg_tblBladStamdata" />
+        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblBladTillaeg_tblBladTillaegsType" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
