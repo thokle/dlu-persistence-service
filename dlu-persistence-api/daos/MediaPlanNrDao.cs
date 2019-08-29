@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using  dlu_persistence_api.exceptions;
+using dlu_persistence_api.models;
 namespace dlu_persistence_api.daos
 {
     public class MediaPlanNrDao: IDisposable
@@ -27,14 +28,15 @@ namespace dlu_persistence_api.daos
             {
                 var res = from m in _entities.tblMedieplanNrs
 
-                    where m.MedieplanNr == mediePlanId
-                    orderby m.Status
-                    select new
-                    {
-                        m.MedieplanNr, m.AktivVersion, m.Status, m.SupportBilagVedlagt, m.SupportBilagVist,
-                        m.FakturaBemærkning1, m.FakturaBemærkning2, m.FakturaBemærkning3, m.MaterialeModtaget,
-                        m.AnvendtMiljøTillæg, m.AnvendtPrisberegningVersion, m.BrugtGruppeVersion,
-                        m.OverførtFraPrisforespørgsel
+                          where m.MedieplanNr == mediePlanId
+                          orderby m.Status
+                          select new MediePlanNr
+                          {
+                              AktivVersion = m.AktivVersion, AnvendtPrisberegningVersion = m.AnvendtPrisberegningVersion, AnvendtMiljoeTillaeg = m.AnvendtMiljøTillæg, BrugtGruppeVersion = m.BrugtGruppeVersion,
+                              MedieplanNr = m.MedieplanNr, FakturaBemaerkning1 = m.FakturaBemærkning1, FakturaBemaerkning2 = m.FakturaBemærkning2, FakturaBemaerkning3 = m.FakturaBemærkning3, Kommentar = m.Kommentar,
+                              MaterialeModtaget = m.MaterialeModtaget, OverførtFraPrisforespoergsel = m.OverførtFraPrisforespørgsel, Status = m.Status, SupportBilagVedlagt = m.SupportBilagVedlagt, SupportBilagVist = m.SupportBilagVist
+                         
+                            
 
 
 
@@ -53,13 +55,15 @@ namespace dlu_persistence_api.daos
         /// <param name="tblMedieplanNr"></param>
         /// <returns></returns>
         /// <exception cref="DaoExceptions"></exception>
-        public Task<int> CreateOrUpDateMediePlanNr(tblMedieplanNr tblMedieplanNr)
+        public Tuple<string, int> CreateOrUpDateMediePlanNr(tblMedieplanNr tblMedieplanNr)
         {
             try
             {
                 _entities.tblMedieplanNrs.AddOrUpdate(tblMedieplanNr);
-                return _entities.SaveChangesAsync();
-            }
+                _entities.SaveChanges();
+                var res = _entities.tblMedieplanNrs.OrderByDescending(o => o.MedieplanNr).First<tblMedieplanNr>();
+                return new Tuple<string, int>("MediePlanNr", res.MedieplanNr);
+             }
             catch (Exception e)
             {
                 throw new  FormattedDbEntityValidationException(e.InnerException);

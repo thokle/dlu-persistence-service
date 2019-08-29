@@ -10,6 +10,7 @@ using dlu_persistence_api.services;
 using DLUPersistenceServiceModule.swagger;
 
 namespace DLUPersistenceServiceModule.controllers
+    
 {
     public class UserController: NancyModule
     {

@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 
 namespace dlu_persistence_api.services
@@ -8,6 +9,6 @@ namespace dlu_persistence_api.services
 
         //
         string GetMediePlanNrByMedIePlanNr(int mediePlannr);
-        Task<int> CreateOrUpsateMediePlanNr(tblMedieplanNr tblMedieplanNr);
+        Tuple<string, int> CreateOrUpDateMediePlanNr(tblMedieplanNr tblMedieplanNr);
     }
 }

@@ -85,6 +85,7 @@
     <Compile Include="daos\BladTilaegsTypeDao.cs" />
     <Compile Include="daos\BladYear.cs" />
     <Compile Include="daos\DelOmraadeDao.cs" />
+    <Compile Include="daos\DPKuloerDao.cs" />
     <Compile Include="daos\EjerforholdDao.cs" />
     <Compile Include="daos\FakturingsBilagDao.cs" />
     <Compile Include="daos\FakuraFejlTekstDao.cs" />
@@ -172,6 +173,9 @@
     <Compile Include="models\AvisTIlGrid.cs" />
     <Compile Include="models\Bladdaeknik.cs" />
     <Compile Include="models\DelOmraade.cs" />
+    <Compile Include="models\MediePlanLinjer.cs" />
+    <Compile Include="models\MediePlanModel.cs" />
+    <Compile Include="models\MediePlanNr.cs" />
     <Compile Include="models\PriceListWeekModel.cs" />
     <Compile Include="models\PriserForBlad.cs" />
     <Compile Include="models\PriserForTable.cs" />
@@ -202,6 +206,8 @@
     <Compile Include="services\GeoCodeService.cs" />
     <Compile Include="services\GruppeService.cs" />
     <Compile Include="services\FejlTekstService.cs" />
+    <Compile Include="services\DPKuloerDaoService.cs" />
+    <Compile Include="services\interfaces\IDPKuloerDaoService.cs" />
     <Compile Include="services\interfaces\IAktiveAviserTIlGridService.cs" />
     <Compile Include="services\interfaces\IAnnonceKontrolService.cs" />
     <Compile Include="services\interfaces\IBladDæknigService.cs" />

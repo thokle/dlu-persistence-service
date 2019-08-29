@@ -1185,6 +1185,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.tnpOrdreNr3' does not have a pri
           <Property Name="password" Type="varchar" MaxLength="150" />
           <Property Name="color" Type="varchar" MaxLength="50" />
           <Property Name="jobfunction" Type="varchar" MaxLength="50" />
+          <Property Name="konsulentKode" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'DiMPdotNetDev.dbo.AktiveUgeaviserMedAlleData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -4265,6 +4266,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <Property Name="password" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="jobfunction" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="konsulentKode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="bladtlfogfaxkopi">
           <Key>
@@ -6885,6 +6887,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="DiMPdotNetDevModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="konsulentKode" ColumnName="konsulentKode" />
                 <ScalarProperty Name="userID" ColumnName="userID" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="firstname" ColumnName="firstname" />

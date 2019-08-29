@@ -140,7 +140,7 @@ namespace dlu_persistence_api.daos
              
 
 
-                    ).ToList()
+                    ).Take(1)
 
                 }).Where(mp => mp.MedieplanNr == medieplanNr);
 
@@ -165,17 +165,18 @@ namespace dlu_persistence_api.daos
         /// <param name="tblMedieplan"></param>
         /// <returns></returns>
         /// <exception cref="DaoExceptions"></exception>
-        public Task<int> CreateOrUpdateMediePlan(tblMedieplan tblMedieplan)
+        public Tuple<string, int> CreateOrUpdateMediePlan(tblMedieplan tblMedieplan)
         {
                  try
             {
-                entities.tblMedieplans.AddOrUpdate(tblMedieplan);
+         entities.tblMedieplans.AddOrUpdate(tblMedieplan);
 
-                return entities.SaveChangesAsync();
+                 var res = entities.SaveChanges();
+                return new Tuple<string, int>("status", res);
             }
-            catch (Exception e)
+            catch (Exception  e)
             {
-                throw new  FormattedDbEntityValidationException(e.InnerException);
+                throw new  Exception(e.HelpLink);
                  
             }
         }
@@ -514,7 +515,7 @@ namespace dlu_persistence_api.daos
                 m.Status
             });
 
-             return JsonConvert.SerializeObject(resultat, Formatting.Indented);
+             return JsonConvert.SerializeObject(resultat.Take(10), Formatting.Indented);
 
 
 

@@ -17,8 +17,9 @@ namespace dlu_persistence_api.services
             return _dao.GetMediePlanLinjerByMediePlanId(medieoid);
         }
 
-        public Task<int> CreateOrUpDate(tblMedieplanLinjer tblMedieplanLinjer)
+        public int CreateOrUpdateMediePlanLinjer(System.Collections.Generic.List<tblMedieplanLinjer> tblMedieplanLinjer)
         {
+            
             return _dao.CreateOrUpdateMediePlanLinjer(tblMedieplanLinjer);
         }
     }

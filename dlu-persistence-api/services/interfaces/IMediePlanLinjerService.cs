@@ -5,6 +5,6 @@ namespace dlu_persistence_api.services
     public interface IMediePlanLinjerService
     {
         string GetMediePlanLinjerByMedieId(int medieoid);
-        Task<int> CreateOrUpDate(tblMedieplanLinjer tblMedieplanLinjer);
-    }
+        int CreateOrUpdateMediePlanLinjer(System.Collections.Generic.List<tblMedieplanLinjer> tblMedieplanLinjer);
+    }  
 }

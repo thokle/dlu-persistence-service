@@ -233,6 +233,7 @@
     <Compile Include="controllers\BladTilLaegsController.cs" />
     <Compile Include="controllers\BladTilLaegTypeController.cs" />
     <Compile Include="controllers\DelOmraadeController.cs" />
+    <Compile Include="controllers\DPKulorController.cs" />
     <Compile Include="controllers\EjerforholdController.cs" />
     <Compile Include="controllers\FakturaFejlTekstController.cs" />
     <Compile Include="controllers\FakturingsBilagController.cs" />

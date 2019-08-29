@@ -18,7 +18,7 @@ namespace dlu_persistence_api.services
             return _mediePlanDao.getMediePlanByKontaktPerson(name);
         }
 
-        public Task<int> CreateOrUpdate(tblMedieplan tblMedieplan)
+        public Tuple<string, int> CreateOrUpdateMediePlan(tblMedieplan tblMedieplan)
         {
             return _mediePlanDao.CreateOrUpdateMediePlan(tblMedieplan);
 

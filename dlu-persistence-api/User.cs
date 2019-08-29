@@ -23,5 +23,6 @@ namespace dlu_persistence_api
         public string password { get; set; }
         public string color { get; set; }
         public string jobfunction { get; set; }
+        public string konsulentKode { get; set; }
     }
 }
