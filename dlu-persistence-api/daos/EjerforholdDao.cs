@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using dlu_persistence_api.exceptions;
 using Newtonsoft.Json;
-
+using System.Collections.Generic;
 namespace dlu_persistence_api.daos
 {
     public class EjerforholdDao: IDisposable
@@ -22,19 +22,19 @@ namespace dlu_persistence_api.daos
         
     }
 
-        public string GetEjerForholdName(string name)
+        public tblEjerforhold GetEjerForholdName(string name)
         {
 
             try
             {
                 var res = from ej in _entities.tblEjerforholds
                     where ej.Ejerforhold == name orderby ej.Ejerforhold
-                    select new
+                    select new tblEjerforhold
                     {
-                        ej.Ejerforhold, ej.EjerforholdID, ej.WebTillægRubrik, ej.WebTillægTekst 
+                       Ejerforhold =  ej.Ejerforhold, EjerforholdID =  ej.EjerforholdID, WebTillægRubrik =  ej.WebTillægRubrik, WebTillægTekst =  ej.WebTillægTekst 
                         
                     };
-                return JsonConvert.SerializeObject(res, Formatting.Indented);
+                return res.Single<tblEjerforhold>();
             }
             catch (Exception e)
             {
@@ -49,7 +49,7 @@ namespace dlu_persistence_api.daos
             {
                 var res = from ej in _entities.tblEjerforholds
                           orderby ej.Ejerforhold ascending
-                          select new
+                          select new 
                           {
                               ej.Ejerforhold,
                               ej.EjerforholdID,

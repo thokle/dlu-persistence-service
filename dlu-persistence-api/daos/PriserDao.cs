@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 using dlu_persistence_api.exceptions;
 using dlu_persistence_api.models;
 using System.Data.SqlClient;
-
+using System.Collections.Generic;
 namespace dlu_persistence_api.daos
 {
     /// <summary>
@@ -31,7 +31,7 @@ namespace dlu_persistence_api.daos
         /// <param name="bladId"></param>
         /// <returns></returns>
         /// <exception cref="DaoExceptions"></exception>
-        public string GetPrisLigePrUge(int bladId, int year)
+        public List<PriceListWeekModel> GetPrisLigePrUge(int bladId, int year)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace dlu_persistence_api.daos
                          
 
                     };
-                return JsonConvert.SerializeObject(res);
+                return res.ToList<PriceListWeekModel>();
             }
             catch (Exception e)
             {
@@ -78,17 +78,17 @@ namespace dlu_persistence_api.daos
 /// </summary>
 /// <returns></returns>
 /// <exception cref="DaoExceptions"></exception>
-        public string GetPrisLister()
+        public List<tblPrislister> GetPrisLister()
         {
             try
             {
                 var res = from p in di.tblPrislisters
                     orderby p.PrislisteNavn
-                    select new
+                    select new tblPrislister()
                     {
-                        p.PrislisteID, p.PrislisteNavn
+                       PrislisteID=  p.PrislisteID, PrislisteNavn = p.PrislisteNavn
                     };
-                return JsonConvert.SerializeObject(res, Formatting.Indented);
+                return res.ToList();
             }
             catch (Exception e)
             {
@@ -155,21 +155,21 @@ namespace dlu_persistence_api.daos
 
         }
 
-    public string  GetPrislister()
+    public List<tblPrislister>  GetPrislister()
         {
             try
             {
                 var res = from pl in di.tblPrislisters
                           orderby pl.PrislisteID
-                          select new
+                          select new tblPrislister
                           {
-                              pl.PrislisteID,
-                              pl.PrislisteNavn
+                             PrislisteID  = pl.PrislisteID,
+                             PrislisteNavn =  pl.PrislisteNavn
 
 
-                          };
-                return JsonConvert.SerializeObject(res, Formatting.Indented);
-            }
+
+
+                return res.ToList();
             catch (FormattedDbEntityValidationException e)
             {
                 throw new Exception(e.Message);
@@ -177,17 +177,17 @@ namespace dlu_persistence_api.daos
 
         }
 
-        public string GetPlacering()
+        public List<tblPlacering> GetPlacering()
         {
             try
             {
                 var res = from pla in di.tblPlacerings
                           orderby pla.PlaceringID
-                          select new
+                          select new tblPlacering
                           {
-                              pla.PlaceringID, pla.Betegnelse
+                             PlaceringID =  pla.PlaceringID, Betegnelse =  pla.Betegnelse
                           };
-                return JsonConvert.SerializeObject(res, Formatting.Indented);
+                return res.ToList();
             }
             catch (FormattedDbEntityValidationException e)
             {
@@ -219,32 +219,32 @@ namespace dlu_persistence_api.daos
             }
         }
 
-        public string GetPrisListeFromBladidArPlacering(int bladId, int placering, int aar, int prislisteId)
+        public List<tblPriser> GetPrisListeFromBladidArPlacering(int bladId, int placering, int aar, int prislisteId)
         {
             try
             {
                 var res = from pl in di.tblPrisers
                           where pl.År == aar & pl.BladID == bladId & pl.PlaceringID == placering & pl.PrislisteID == prislisteId
                           
-                          select new PriserForBlad
+                          select new tblPriser
                           {
-                              AAr1 = pl.År,
-                              BladID1 = pl.BladID,
-                              ControlNavn1 = pl.ControlNavn,
-                              Farve4Max1 = pl.Farve4Max,
-                              Farve4Min1 = pl.Farve4Min,
-                              Farve4Pris1 = pl.Farve4Pris,
-                              FarveMax1 = pl.FarveMax,
-                              FarveMin1 = pl.FarveMin,
-                              FarvePris1 = pl.FarvePris,
-                              FormatFra1 = pl.FormatFra,
-                              FormatTil1 = pl.FormatTil,
-                              PlaceringID1 = pl.PlaceringID,
-                              PrislisteID1 = pl.PlaceringID,
+                              År = pl.År,
+                              BladID = pl.BladID,
+                              ControlNavn = pl.ControlNavn,
+                              Farve4Max = pl.Farve4Max,
+                              Farve4Min = pl.Farve4Min,
+                              Farve4Pris = pl.Farve4Pris,
+                              FarveMax = pl.FarveMax,
+                              FarveMin = pl.FarveMin,
+                              FarvePris = pl.FarvePris,
+                              FormatFra = pl.FormatFra,
+                              FormatTil = pl.FormatTil,
+                              PlaceringID = pl.PlaceringID,
+                              PrislisteID = pl.PlaceringID,
                              mmPris =  pl.mmPris
 
                           };
-                return JsonConvert.SerializeObject(res, Formatting.Indented);
+                return res.ToList<tblPriser>();
 
             }
             catch (FormattedDbEntityValidationException e)
@@ -254,7 +254,7 @@ namespace dlu_persistence_api.daos
         }
 
 
-        public string GetPrislisteFortable(int bladid, int aar, int prislisteId)
+        public List<PriserForTable> GetPrislisteFortable(int bladid, int aar, int prislisteId)
         {
             try
             {
@@ -287,7 +287,7 @@ namespace dlu_persistence_api.daos
                             
                          };
 
-                return JsonConvert.SerializeObject(res, Formatting.Indented);
+                return res.ToList<PriserForTable>();
 
             }
             catch (FormattedDbEntityValidationException e)
@@ -335,12 +335,12 @@ namespace dlu_persistence_api.daos
 
         }
 
-        public string GetCreateYearsFromBladId(int bladid)
+        public BladYear GetCreateYearsFromBladId(int bladid)
         {
 
             var res = from pu in di.tblPrisers where pu.BladID == bladid select new BladYear() { year = pu.År};
-            
-            return JsonConvert.SerializeObject(res.Distinct(), Formatting.Indented);
+
+            return res.Single<BladYear>();
         }
     }
 

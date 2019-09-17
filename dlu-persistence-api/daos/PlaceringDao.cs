@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using dlu_persistence_api.exceptions;
+using System.Collections.Generic;
 namespace dlu_persistence_api.daos
 {
     public class PlaceringDao
@@ -18,17 +19,17 @@ namespace dlu_persistence_api.daos
         }
 
 
-        public string GetPlaceringer()
+        public List<tblPlacering> GetPlaceringer()
         {
             try
             {
                 var res = from pl in entities.tblPlacerings
-                          select new
+                          select new tblPlacering
                           {
-                              pl.PlaceringID,
-                              pl.Betegnelse
+                             PlaceringID =  pl.PlaceringID,
+                            Betegnelse =   pl.Betegnelse
                           };
-                return JsonConvert.SerializeObject(res, Formatting.Indented);
+                return res.ToList<tblPlacering>();
             }
             catch (Exception e)
             {

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using dlu_persistence_api.exceptions;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace dlu_persistence_api.daos
 {
@@ -18,18 +19,18 @@ namespace dlu_persistence_api.daos
             entities = new DiMPdotNetDevEntities();
         }
 
-        public string GetKommentarByStamBladId(int bladid)
+        public List<tblBladKommentar> GetKommentarByStamBladId(int bladid)
         {
             try
             {
                 var res = from bk in entities.tblBladKommentars
                           where bk.bladid == bladid
                           orderby bk.date
-                          select new
+                          select new tblBladKommentar
                           {
-                              bk.bladid, bk.tekst, bk.date
+                             bladid = bk.bladid,tekst =  bk.tekst, data = bk.date
                           };
-                return JsonConvert.SerializeObject(res, Formatting.Indented);
+                return res.ToList<tblBladKommentar>();
             }
             catch (FormattedDbEntityValidationException e)
             {

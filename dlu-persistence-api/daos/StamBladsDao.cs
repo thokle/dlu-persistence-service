@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using dlu_persistence_api.exceptions;
+using System.Collections.Generic;
 namespace dlu_persistence_api.daos
 {
     /// <summary>
@@ -514,14 +515,18 @@ namespace dlu_persistence_api.daos
         /// </summary>
         /// <returns></returns>
         /// <exception cref="DaoExceptions"></exception>
-        public string GetTblPostNr()
+        public List<By> GetTblPostNr()
         {
             try
             {
                 var post = from p in di.tblPostNrs
-                    orderby p.PostNr   ascending 
-                    select new {p.PostNr, p.PostBy, p.Husstande, p.MaxDækningsGrad};
-                return JsonConvert.SerializeObject(post, Formatting.Indented);
+                           orderby p.PostNr ascending
+                           select new By()
+                           {
+                               Husstane = p.Husstande, MaxDækningsGrad = p.MaxDækningsGrad, PostBy = p.PostBy, PostNr= p.PostNr
+                        
+                    };
+                return post.ToList();
             }
             catch (Exception e)
             {
@@ -785,7 +790,7 @@ namespace dlu_persistence_api.daos
             }
         }
 
-        public string GetAllIds()
+        public Console GetAllIds()
         {
             try
             {

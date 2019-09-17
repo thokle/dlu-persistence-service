@@ -3,7 +3,7 @@ using System.Linq;
 using  dlu_persistence_api.exceptions;
 using Newtonsoft.Json;
 using dlu_persistence_api.models;
-
+using System.Collections.Generic;
 namespace dlu_persistence_api.daos
 {
     public class DelOmraadeDao
@@ -17,7 +17,7 @@ namespace dlu_persistence_api.daos
         }
 
 
-        public string GetAllRegions()
+        public List<DelOmraade>  GetAllRegions()
         {
             try
             {
@@ -32,7 +32,7 @@ namespace dlu_persistence_api.daos
                       
                         
                        };
-                return JsonConvert.SerializeObject(res, Formatting.Indented);
+                return res.ToList();
             }
             catch (Exception e)
             {
@@ -40,7 +40,7 @@ namespace dlu_persistence_api.daos
             }
         }
         
-        public string GetDelOmraadeById(int delomraadeId)
+        public DelOmraade GetDelOmraadeById(int delomraadeId)
         {
             try
             {
@@ -54,7 +54,7 @@ namespace dlu_persistence_api.daos
                               DelOmraadeSortKey1 = ls.DelOmrådeSortKey,
                               Timestamp = ls.timestamp
                           };
-                return JsonConvert.SerializeObject(res, Formatting.Indented);
+                return res.Single<DelOmraade>();
                 
             }catch (Exception e)
             {

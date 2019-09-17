@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using  dlu_persistence_api.exceptions;
 using dlu_persistence_api.models;
+using System.Collections.Generic;
 namespace dlu_persistence_api.daos
 {
     /// <summary>
@@ -28,7 +29,7 @@ namespace dlu_persistence_api.daos
         /// <param name="bladID"></param>
         /// <returns></returns>
         /// <exception cref="DaoExceptions"></exception>
-        public string GetDækningGradByBladId(int bladID)
+        public List<Bladdaeknik> GetDækningGradByBladId(int bladID)
         {
             try
             {
@@ -47,7 +48,7 @@ namespace dlu_persistence_api.daos
                        Postby =  e.PostBy
                    
                     };
-                return JsonConvert.SerializeObject(res, Formatting.Indented);
+                return res.ToList<Bladdaeknik>();
             }
             catch (Exception e)
             {

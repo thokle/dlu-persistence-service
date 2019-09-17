@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Net.Http.Headers;
 using System.Net.Sockets;
 using dlu_persistence_api.exceptions;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace dlu_persistence_api.daos
@@ -28,7 +29,7 @@ namespace dlu_persistence_api.daos
         /// </summary>
         /// <returns></returns>
         /// <exception cref="DaoExceptions"></exception>
-        public string GetRegions()
+        public List<Regions> GetRegions()
         {
             try
             {
@@ -46,7 +47,7 @@ namespace dlu_persistence_api.daos
                  regions.Add(regiion);
                 }
 
-                return JsonConvert.SerializeObject(regions, formatting: Formatting.Indented);
+                return regions;
             }
             catch (Exception e)
             {
@@ -55,22 +56,22 @@ namespace dlu_persistence_api.daos
 
         }
 
-        public string GetRegsionById(int regionId)
+        public Regions GetRegsionById(int regionId)
         {
 
             try
             {
-                var res = from re in _entities.tblRegions
+                var res = (from re in _entities.tblRegions
                     where re.RegionID == regionId
                     select new Regions()
                     {
                          RegionId = re.RegionID,
                          RegionNavn1 = re.RegionNavn,
-                         RegionSortId1 = re.RegionSortKey
-                        
-                    };
+                        RegionSortId1 = re.RegionSortKey
 
-                return JsonConvert.SerializeObject(res, Formatting.Indented);
+                    }).Single();
+
+                return res;
             }
             
             catch (Exception e)
@@ -80,7 +81,7 @@ namespace dlu_persistence_api.daos
         }
     }
 
-     class Regions
+    public class Regions
      {
          private int RegionID;
          private string RegionNavn;

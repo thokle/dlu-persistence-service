@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using dlu_persistence_api.exceptions;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace dlu_persistence_api.daos
@@ -18,16 +19,16 @@ namespace dlu_persistence_api.daos
             DiMPdotNet = new DiMPdotNetDevEntities();
         }
 
-        public string GetBladtillaegsTyper()
+        public List<tblBladTillaegsType> GetBladtillaegsTyper()
         {
             try
             {
-                var res = from bt in DiMPdotNet.tblBladTillaegsTypes select new
+                var res = from bt in DiMPdotNet.tblBladTillaegsTypes select new tblBladTillaegsType
                 {
-                    bt.id, bt.type
+                  id =   bt.id, type=  bt.type
                 };
 
-                return JsonConvert.SerializeObject(res, Formatting.Indented);
+                return res.ToList();
             }
             catch (FormattedDbEntityValidationException e)
             {

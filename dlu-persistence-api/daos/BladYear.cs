@@ -1,6 +1,6 @@
 ﻿namespace dlu_persistence_api.daos
 {
-    internal class BladYear
+    public class BladYear
     {
         public BladYear()
         {
