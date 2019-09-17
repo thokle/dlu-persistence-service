@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dlu-persistence-api", "dlu-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DLUPersistenceServiceModule", "DLUPersistenceServiceModule\DLUPersistenceServiceModule.csproj", "{0E74F56C-0662-466B-9DC8-893EB6BF73D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendMailService", "SendMailService\SendMailService.csproj", "{1172E083-550A-4BF8-A02D-B115D994034B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dimp-sql-services", "dimp-sql-services\dimp-sql-services.csproj", "{934C3593-965C-4747-BBEC-A667F4CECDBE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDF-sql-services", "DDF-sql-services\DDF-sql-services.csproj", "{25B56147-3EAA-462C-8A4F-FD08EBF25B54}"
@@ -32,12 +30,6 @@ Global
 		{0E74F56C-0662-466B-9DC8-893EB6BF73D2}.dev|Any CPU.Build.0 = dev|Any CPU
 		{0E74F56C-0662-466B-9DC8-893EB6BF73D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E74F56C-0662-466B-9DC8-893EB6BF73D2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1172E083-550A-4BF8-A02D-B115D994034B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1172E083-550A-4BF8-A02D-B115D994034B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1172E083-550A-4BF8-A02D-B115D994034B}.dev|Any CPU.ActiveCfg = dev|Any CPU
-		{1172E083-550A-4BF8-A02D-B115D994034B}.dev|Any CPU.Build.0 = dev|Any CPU
-		{1172E083-550A-4BF8-A02D-B115D994034B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1172E083-550A-4BF8-A02D-B115D994034B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{934C3593-965C-4747-BBEC-A667F4CECDBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{934C3593-965C-4747-BBEC-A667F4CECDBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{934C3593-965C-4747-BBEC-A667F4CECDBE}.dev|Any CPU.ActiveCfg = Debug|Any CPU

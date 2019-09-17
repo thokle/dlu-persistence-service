@@ -27,6 +27,7 @@ namespace dlu_persistence_api.daos
                            from r in rb.DefaultIfEmpty()
                            join d in diMPdot.tblBladDækning on b.BladID equals d.BladID into db
                            from d in db.DefaultIfEmpty()
+                     
                            join da in diMPdot.tblDages on b.UgedagID equals da.DagID into dab
                            from da in dab.DefaultIfEmpty()
                            join geo in diMPdot.tblGeoKodes on b.GeoKodeID equals geo.GeoKodeID into bgeo
@@ -39,7 +40,7 @@ namespace dlu_persistence_api.daos
                            from pla in pplap.DefaultIfEmpty()
                            join prisl in diMPdot.tblPrislisters on p.PrislisteID equals prisl.PrislisteID into pprisl
                            from prisl in pprisl.DefaultIfEmpty()
-                 
+                              
                            where b.BladID == bladid & b.Ophørt == false  & p.År == year  & p.PlaceringID == placeringid select new  { Adresse = b.Adresse, AnnonceEmail = b.Adresse2, BladID = b.BladID, CVR = b.CVR, Adresse2 = b.Adresse2, AnnonceKontrolEmail = b.AnnonceKontrolEmail,
                                Betegnelse = pla.Betegnelse, BilagsbladeEmail = b.BilagsbladeEmail, BogholderiEmails = b.BogholderiEmails, DaekningsGrad = d.DækningsGrad, DagNavn = da.DagNavn, DiMPDelOmraadeKode = b.DiMPDelOmrådeKode, Ejerforhold = b.Ejerforhold,
                                Emails = b.Emails, FakturaGruppeID = b.FakturaGruppeID, Farve4Max = p.Farve4Max, Farve4Min = p.Farve4Min, Farve4Pris = p.Farve4Pris, FarveMax = p.FarveMax, FarveMin = p.FarveMin, FarvePris = p.FarvePris, Fax = b.Fax, Format = b.Format,
@@ -52,14 +53,18 @@ namespace dlu_persistence_api.daos
                                RegionNavn = r.RegionNavn, SamannonceringsRabat = b.SamannonceringsRabat, SendetidOrdrecheck = b.SendetidOrdrecheck, SendIndevaerendeUge = b.SendIndeværendeUge, StamdataEmail = b.StamdataEmail, Tlf = b.Tlf, Totalomraade = b.Totalområde, TotalomraadePct = b.TotalområdePct, VisPaaWWW = b.VisPåWWW, WWWDaekningSomTekst = b.WWWDækningSomTekst,
                               
                                MMPris = p.mmPris,
-                               totalPris = p.Farve4Max + p.Farve4Min + p.Farve4Pris + p.FarveMax + p.FarveMin + p.FarvePris+  p.mmPris,
+                            
                                webtillages =   from wb in b.tblBladTillaegs select new
                                {
                                    wb.id, 
                                    wb.pris,
                                    type = wb.tblBladTillaegsType.type
-                               }
-                                               
+                               },
+                          
+                                        
+
+                                          
+                             
                
                                
                             

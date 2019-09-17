@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.3.0-preview9-19423-04\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.3.0-preview9-19423-04\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,10 +10,12 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>dlu_persistence_api</RootNamespace>
     <AssemblyName>dlu-persistence-api</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,18 +37,27 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'dev|AnyCPU'">
     <OutputPath>bin\dev\</OutputPath>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="dlu-persistence-api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\SendMailService\Bin\dlu-persistence-api.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.3.0-preview9-19423-04\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.3.0-preview9-19423-04\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Json, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c6752e45808247c2, processorArchitecture=MSIL">
       <HintPath>..\packages\JSON.1.0.1\lib\net40\Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3-beta1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -63,19 +75,13 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="AutoMapper">
-      <HintPath>..\packages\AutoMapper.8.0.0\lib\net461\AutoMapper.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AktiveUgeaviserMedAlleData.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="bladtlfogfaxkopi.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="daos\AktiveAviserTIlGridDao.cs" />
     <Compile Include="daos\AnnoncekontrolDao.cs" />
@@ -124,52 +130,53 @@
     <Compile Include="daos\WEBForespørgselLinjerDao.cs" />
     <Compile Include="daos\WEBSendTilKollegaDao.cs" />
     <Compile Include="delPriser.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="DimpDotNett.Context.cs">
+    <Compile Include="DiMPdotNetDevEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DimpDotNett.Context.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DimpDotNett.cs">
+    <Compile Include="DiMPdotNetDevEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="DimpDotNett.Designer.cs">
+    <Compile Include="DiMPdotNetDevEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DimpDotNett.edmx</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="dtproperty.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="dt_getpropertiesbyid_Result.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="dt_getpropertiesbyid_u_Result.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="exceptions\DaoExceptions.cs" />
     <Compile Include="exceptions\FormattedDbEntityValidationException.cs" />
     <Compile Include="FakturaFejlFinde.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="FindFejlLinjer.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="GammelAnnoncørID.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="HerningFolkeblad.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="KontaktTitler.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="LPRoller.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="models\AenderingsTekst.cs" />
     <Compile Include="models\AvisTIlGrid.cs" />
     <Compile Include="models\Bladdaeknik.cs" />
     <Compile Include="models\DelOmraade.cs" />
@@ -182,17 +189,17 @@
     <Compile Include="models\StamBlad.cs" />
     <Compile Include="models\UdsendingKontakter.cs" />
     <Compile Include="NavisionContact.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="NavisionContact2.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="OpdateringsTekst.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Salesperson.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="services\AktiveAviserTIlGridService.cs" />
     <Compile Include="services\AnnoceKontrolService.cs" />
@@ -284,266 +291,266 @@
     <Compile Include="services\WEBSendTilKollegaService.cs" />
     <Compile Include="services\WenForspørgelsesService.cs" />
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="StambladService.cs" />
     <Compile Include="daos\PriserDao.cs" />
     <Compile Include="start.cs" />
     <Compile Include="sysdiagram.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblAktiveVærdier.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblAktivGruppeVersion.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblAnnoncekontrol.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBladDækning.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBladKommentar.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBladnavnMappingFraDO.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBladRabat.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBladRabatter.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBladStamdata.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBladStamdataKopi.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBladTillaeg.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBladTillaegsType.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBladUdsendingKontakter.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBrugerData.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblDage.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblDelOmråde.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblDPKulør.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblEjerforhold.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFakturaFejl.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFakturaFejlTekst.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFaktureringsBilag.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFarveTillægWebApp.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFejlTekst.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblGeoKode.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblGrupper.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblGruppeRabatter.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblHovedGruppe.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblKonkurrentDækning.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblKonkurrenter.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblKontaktArbOmråder.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblKontakter.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblKontakterPrBlad.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblKontaktFunktioner.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblKontaktTitler.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMateriale.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMedieplan.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMedieplanLinjer.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMedieplanNr.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMedieplanÆndringer.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMedIGruppe.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMmPrisWebApp.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblOrdreGebyrNavision.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblOrdreLinjerNavision.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblOrdreNavision.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPlacering.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPlannerPlaner.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPostNr.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPostNrSøgning.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPriceAsking.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPriser.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPrislister.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPrislisterPrBladPrUge.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPrislisterPrBladPrÅr.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblRegion.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblRemindereSendt.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblStambladKontakter.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblStambladUdsendingEmailTyper.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblSupportBilag.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblWEBeMail.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblWEBForespørgsel.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblWEBForespørgselLinjer.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblWEBSendTilKollega.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tempPriser.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tmpNyeDeadline.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tnpOrdreNr.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tnpOrdreNr2.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tnpOrdreNr3.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="UgeaviserTilGrid.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="UpdateBladDaekning.cs" />
     <Compile Include="User.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="viewBlade.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="viewBookingListe.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="viewGrupper.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="viewLinjeDiff.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="viewOrdre.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="viewOrdreErSendt.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="viewOrdreFIND.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="viewOrdreIkkeSendt.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="viewOrdreLinjer.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="viewOrdreLinjerFIND.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="viewOrdreSendtManglerMateriale.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="viewOversigt.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="viewUpdateStatusIMedieplan.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="viewUpdateStatusIMedieplanNr.cs">
-      <DependentUpon>DimpDotNett.tt</DependentUpon>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -561,12 +568,12 @@
       <DependentUpon>App.Config</DependentUpon>
       <SubType>Designer</SubType>
     </None>
-    <EntityDeploy Include="DimpDotNett.edmx">
+    <EntityDeploy Include="DiMPdotNetDevEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DimpDotNett.Designer.cs</LastGenOutput>
+      <LastGenOutput>DiMPdotNetDevEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DimpDotNett.edmx.diagram">
-      <DependentUpon>DimpDotNett.edmx</DependentUpon>
+    <None Include="DiMPdotNetDevEntities.edmx.diagram">
+      <DependentUpon>DiMPdotNetDevEntities.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -574,15 +581,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DimpDotNett.Context.tt">
+    <Content Include="DiMPdotNetDevEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DimpDotNett.edmx</DependentUpon>
-      <LastGenOutput>DimpDotNett.Context.cs</LastGenOutput>
+      <DependentUpon>DiMPdotNetDevEntities.edmx</DependentUpon>
+      <LastGenOutput>DiMPdotNetDevEntities.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="DimpDotNett.tt">
+    <Content Include="DiMPdotNetDevEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DimpDotNett.edmx</DependentUpon>
-      <LastGenOutput>DimpDotNett.cs</LastGenOutput>
+      <DependentUpon>DiMPdotNetDevEntities.edmx</DependentUpon>
+      <LastGenOutput>DiMPdotNetDevEntities.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -609,4 +616,12 @@
   <Target Name="LocalPlanner_edmx_AfterBuild" AfterTargets="AfterBuild" Condition="Exists('LocalPlanner.$(Configuration).edmx')">
     <TransformXml Source="LocalPlanner.edmx" Destination="$(OutputPath)LocalPlanner.edmx" Transform="LocalPlanner.$(Configuration).edmx" />
   </Target>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0-preview9-19423-04\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0-preview9-19423-04\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0-preview9-19423-04\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0-preview9-19423-04\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.3.0-preview9-19423-04\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.3.0-preview9-19423-04\build\EntityFramework.targets')" />
 </Project>

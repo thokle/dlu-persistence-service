@@ -6,6 +6,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using  dlu_persistence_api.exceptions;
+using dlu_persistence_api.models;
 namespace dlu_persistence_api.daos
 {
     /// <summary>
@@ -27,15 +28,15 @@ namespace dlu_persistence_api.daos
         /// <param name="mediePlan"></param>
         /// <returns></returns>
         /// <exception cref="DaoExceptions"></exception>
-        public string GetMediePlanÆndringerByMedieId(int mediePlan)
+        public string GetMediePlanÆndringerByMedieId(int mediePlan, int  version)
         {
             try
             {
                 var res = from m in _entities.tblMedieplanÆndringer
-                    where m.MedieplanNr == mediePlan
-                    select new
+                    where m.MedieplanNr == mediePlan & m.Version == version
+                    select new AenderingsTekst
                     {
-                        m.MedieplanNr, m.Version, m.ÆndringsTekst
+                       MedieplanNr =  m.MedieplanNr,Version = m.Version, AendringsTekst= m.ÆndringsTekst
                     };
 
                 return JsonConvert.SerializeObject(res, Formatting.Indented);

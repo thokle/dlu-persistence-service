@@ -7,5 +7,6 @@ namespace dlu_persistence_api.services
         string GetKomkurrenceDækningPrPostNr(int postnr);
         string GetKonkurrenceDækningPrDaeknngGrad(int daekg);
         Task<int> CreateOrUpdate(tblKonkurrentDækning tblKonkurrentDækning);
+        string GetKonkurrenter();
     }
 }

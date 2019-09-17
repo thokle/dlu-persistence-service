@@ -23,7 +23,27 @@ namespace dlu_persistence_api.daos
             _entities = new DiMPdotNetDevEntities();
        
     }
+        public string GetKonkurrenter()
+        {
+            try
+            {
+                var res = from k in _entities.tblKonkurrenters select new {
+                    k.KonkurentKode, k.KonkurrentID,k.KonkurrentNavn, k.MedieMappingFraDO, konkurrentDaekning = from kd   in k.tblKonkurrentDækning select new
+                    {
+                        kd.KonkurrentID, kd.Oplag, kd.PostNr
+                    }
+                };
+                return JsonConvert.SerializeObject(res, Formatting.Indented, new JsonSerializerSettings()
+                {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                });
+            }
+            catch (Exception e)
+            {
 
+                throw;
+            }
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -64,7 +84,7 @@ namespace dlu_persistence_api.daos
                     orderby k.DækningsGrad
                     select new
                     {
-                        k.PostNr, k.Oplag, k.DækningsGrad
+                        k.PostNr, k.Oplag, k.DækningsGrad,
                     };
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }

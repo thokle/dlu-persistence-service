@@ -27,5 +27,10 @@ namespace dlu_persistence_api.services
         {
             return _konkurrenceDaekningDao.CreateOrUpdate(tblKonkurrentDækning);
         }
+
+        public string GetKonkurrenter()
+        {
+            return _konkurrenceDaekningDao.GetKonkurrenter();
+        }
     }
 }

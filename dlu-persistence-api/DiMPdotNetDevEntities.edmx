@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DiMPdotNetDevModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DiMPdotNetDevModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6013: The table/view 'DiMPdotNetDev.dbo.BladDækningOpdater' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="BladDækningOpdater">
@@ -3275,7 +3275,8 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             <End Role="tblPrislisterPrBladPrUge" EntitySet="tblPrislisterPrBladPrUge" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DiMPdotNetDevModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -3462,11 +3463,11 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <NavigationProperty Name="tblHovedGruppe" Relationship="Self.FK_tblBladStamdata_tblHovedGruppe" FromRole="tblBladStamdata" ToRole="tblHovedGruppe" />
           <NavigationProperty Name="tblPostNr" Relationship="Self.FK_tblBladStamdata_tblPostNr" FromRole="tblBladStamdata" ToRole="tblPostNr" />
           <NavigationProperty Name="tblRegion" Relationship="Self.FK_tblBladStamdata_tblRegioner" FromRole="tblBladStamdata" ToRole="tblRegion" />
+          <NavigationProperty Name="tblBladTillaegs" Relationship="Self.FK_tblBladTillaeg_tblBladStamdata" FromRole="tblBladStamdata" ToRole="tblBladTillaeg" />
           <NavigationProperty Name="tblMedieplanLinjers" Relationship="Self.FK_tblMedieplanLinjer_tblBladStamdata" FromRole="tblBladStamdata" ToRole="tblMedieplanLinjer" />
           <NavigationProperty Name="tblPrisers" Relationship="Self.FK_tblPriser_tblBladStamdata" FromRole="tblBladStamdata" ToRole="tblPriser" />
           <NavigationProperty Name="tblPrislisterPrBladPrÅr" Relationship="Self.FK_tblPrislisterPrBladPrÅr_tblBladStamdata" FromRole="tblBladStamdata" ToRole="tblPrislisterPrBladPrÅr" />
           <NavigationProperty Name="tblPrislisterPrBladPrUges" Relationship="Self.FK_tblPrislisterPrBladPrUge_tblBladStamdata" FromRole="tblBladStamdata" ToRole="tblPrislisterPrBladPrUge" />
-          <NavigationProperty Name="tblBladTillaegs" Relationship="DiMPdotNetDevModel.FK_tblBladTillaeg_tblBladStamdata" FromRole="tblBladStamdata" ToRole="tblBladTillaeg" />
         </EntityType>
         <EntityType Name="tblBladStamdataKopi">
           <Key>
@@ -3548,8 +3549,8 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <Property Name="bladId" Type="Int32" />
           <Property Name="typeId" Type="Int32" />
           <Property Name="pris" Type="Double" />
-          <NavigationProperty Name="tblBladStamdata" Relationship="DiMPdotNetDevModel.FK_tblBladTillaeg_tblBladStamdata" FromRole="tblBladTillaeg" ToRole="tblBladStamdata" />
-          <NavigationProperty Name="tblBladTillaegsType" Relationship="DiMPdotNetDevModel.FK_tblBladTillaeg_tblBladTillaegsType" FromRole="tblBladTillaeg" ToRole="tblBladTillaegsType" />
+          <NavigationProperty Name="tblBladStamdata" Relationship="Self.FK_tblBladTillaeg_tblBladStamdata" FromRole="tblBladTillaeg" ToRole="tblBladStamdata" />
+          <NavigationProperty Name="tblBladTillaegsType" Relationship="Self.FK_tblBladTillaeg_tblBladTillaegsType" FromRole="tblBladTillaeg" ToRole="tblBladTillaegsType" />
         </EntityType>
         <EntityType Name="tblBladTillaegsType">
           <Key>
@@ -3557,7 +3558,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="type" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblBladTillaegs" Relationship="DiMPdotNetDevModel.FK_tblBladTillaeg_tblBladTillaegsType" FromRole="tblBladTillaegsType" ToRole="tblBladTillaeg" />
+          <NavigationProperty Name="tblBladTillaegs" Relationship="Self.FK_tblBladTillaeg_tblBladTillaegsType" FromRole="tblBladTillaegsType" ToRole="tblBladTillaeg" />
         </EntityType>
         <EntityType Name="tblBladUdsendingKontakter">
           <Key>
@@ -5122,6 +5123,20 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_tblBladTillaeg_tblBladStamdata">
+          <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblBladTillaeg" Type="Self.tblBladTillaeg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBladStamdata">
+              <PropertyRef Name="BladID" />
+            </Principal>
+            <Dependent Role="tblBladTillaeg">
+              <PropertyRef Name="bladId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblMedieplanLinjer_tblBladStamdata">
           <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="1" />
           <End Role="tblMedieplanLinjer" Type="Self.tblMedieplanLinjer" Multiplicity="*" />
@@ -5187,6 +5202,18 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             </Principal>
             <Dependent Role="tblKontakterPrBlad">
               <PropertyRef Name="BladID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblBladTillaeg_tblBladTillaegsType">
+          <End Role="tblBladTillaegsType" Type="Self.tblBladTillaegsType" Multiplicity="0..1" />
+          <End Role="tblBladTillaeg" Type="Self.tblBladTillaeg" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBladTillaegsType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tblBladTillaeg">
+              <PropertyRef Name="typeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -5577,6 +5604,10 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             <End Role="tblRegion" EntitySet="tblRegions" />
             <End Role="tblBladStamdata" EntitySet="tblBladStamdatas" />
           </AssociationSet>
+          <AssociationSet Name="FK_tblBladTillaeg_tblBladStamdata" Association="Self.FK_tblBladTillaeg_tblBladStamdata">
+            <End Role="tblBladStamdata" EntitySet="tblBladStamdatas" />
+            <End Role="tblBladTillaeg" EntitySet="tblBladTillaegs" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblMedieplanLinjer_tblBladStamdata" Association="Self.FK_tblMedieplanLinjer_tblBladStamdata">
             <End Role="tblBladStamdata" EntitySet="tblBladStamdatas" />
             <End Role="tblMedieplanLinjer" EntitySet="tblMedieplanLinjers" />
@@ -5596,6 +5627,10 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <AssociationSet Name="FK_tblKontakterPrBlad_tblBladStamdataKopi" Association="Self.FK_tblKontakterPrBlad_tblBladStamdataKopi">
             <End Role="tblBladStamdataKopi" EntitySet="tblBladStamdataKopis" />
             <End Role="tblKontakterPrBlad" EntitySet="tblKontakterPrBlads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblBladTillaeg_tblBladTillaegsType" Association="Self.FK_tblBladTillaeg_tblBladTillaegsType">
+            <End Role="tblBladTillaegsType" EntitySet="tblBladTillaegsTypes" />
+            <End Role="tblBladTillaeg" EntitySet="tblBladTillaegs" />
           </AssociationSet>
           <AssociationSet Name="FK_tblMedieplan_tblDPKulør" Association="Self.FK_tblMedieplan_tblDPKulør">
             <End Role="tblDPKulør" EntitySet="tblDPKulør" />
@@ -5693,7 +5728,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           </FunctionImport>
           <FunctionImport Name="dt_adduserobject" />
           <FunctionImport Name="dt_adduserobject_vcs">
-          <Parameter Name="vchProperty" Mode="In" Type="String" />
+            <Parameter Name="vchProperty" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="dt_checkinobject">
             <Parameter Name="chObjectType" Mode="In" Type="String" />
@@ -5750,10 +5785,10 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             <Parameter Name="property" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="dt_dropuserobjectbyid">
-          <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="dt_generateansiname">
-          <Parameter Name="name" Mode="InOut" Type="String" />
+            <Parameter Name="name" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="dt_getobjwithprop" ReturnType="Collection(Int32)">
             <Parameter Name="property" Mode="In" Type="String" />
@@ -5828,7 +5863,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             <Parameter Name="vchPassword" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="FindNæsteVersionsNrIMedieplan">
-          <Parameter Name="MedieplanNr" Mode="In" Type="Int32" />
+            <Parameter Name="MedieplanNr" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="IndsætOrdreLinjerTilNavision" />
           <FunctionImport Name="IndsætOrdreTilNavision" />
@@ -5862,11 +5897,11 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             <Parameter Name="DLUFarveRabat" Mode="In" Type="Double" />
           </FunctionImport>
           <FunctionImport Name="OpretKontakt" ReturnType="Collection(Decimal)">
-          <Parameter Name="EmailAdr" Mode="In" Type="String" />
+            <Parameter Name="EmailAdr" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="OpretNyMediePlan" ReturnType="Collection(Decimal)" />
           <FunctionImport Name="SearchAllTables">
-          <Parameter Name="SearchStr" Mode="In" Type="String" />
+            <Parameter Name="SearchStr" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -5898,14 +5933,6 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <AssociationSet Name="FK_tblBladTillaeg_tblBladStamdata" Association="DiMPdotNetDevModel.FK_tblBladTillaeg_tblBladStamdata">
-            <End Role="tblBladStamdata" EntitySet="tblBladStamdatas" />
-            <End Role="tblBladTillaeg" EntitySet="tblBladTillaegs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tblBladTillaeg_tblBladTillaegsType" Association="DiMPdotNetDevModel.FK_tblBladTillaeg_tblBladTillaegsType">
-            <End Role="tblBladTillaegsType" EntitySet="tblBladTillaegsTypes" />
-            <End Role="tblBladTillaeg" EntitySet="tblBladTillaegs" />
-          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="dt_getpropertiesbyid_Result">
           <Property Type="String" Name="property" Nullable="false" MaxLength="64" />
@@ -5930,32 +5957,6 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <Association Name="FK_tblBladTillaeg_tblBladStamdata">
-          <End Type="DiMPdotNetDevModel.tblBladStamdata" Role="tblBladStamdata" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="DiMPdotNetDevModel.tblBladTillaeg" Role="tblBladTillaeg" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblBladStamdata">
-              <PropertyRef Name="BladID" />
-            </Principal>
-            <Dependent Role="tblBladTillaeg">
-              <PropertyRef Name="bladId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tblBladTillaeg_tblBladTillaegsType">
-          <End Type="DiMPdotNetDevModel.tblBladTillaegsType" Role="tblBladTillaegsType" Multiplicity="0..1" />
-          <End Type="DiMPdotNetDevModel.tblBladTillaeg" Role="tblBladTillaeg" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblBladTillaegsType">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="tblBladTillaeg">
-              <PropertyRef Name="typeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -6887,7 +6888,6 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="DiMPdotNetDevModel.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="konsulentKode" ColumnName="konsulentKode" />
                 <ScalarProperty Name="userID" ColumnName="userID" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="firstname" ColumnName="firstname" />
@@ -6897,6 +6897,7 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="color" ColumnName="color" />
                 <ScalarProperty Name="jobfunction" ColumnName="jobfunction" />
+                <ScalarProperty Name="konsulentKode" ColumnName="konsulentKode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
