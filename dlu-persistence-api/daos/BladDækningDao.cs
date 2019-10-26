@@ -34,18 +34,19 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from dg in _entities.tblBladDækning from e in _entities.tblPostNrs
-                          where dg.PostNr == e.PostNr   & dg.BladID == bladID
-                        
-        
+                          where dg.PostNr == e.PostNr & dg.BladID == bladID
 
-                    select new Bladdaeknik()
-                    {
-                       BladID1 = dg.BladID,
-                       DaekningsGrad1 = dg.DækningsGrad,
-                       Oplag1 = dg.Oplag,
-                       
-                        PostNr1 = dg.PostNr,
-                       Postby =  e.PostBy
+
+
+                          select new Bladdaeknik()
+                          {
+                              BladID1 = dg.BladID,
+                              DaekningsGrad1 = dg.DækningsGrad,
+                              Oplag1 = dg.Oplag,
+
+                              PostNr1 = dg.PostNr,
+                              Postby = e.PostBy,
+                            
                    
                     };
                 return res.ToList<Bladdaeknik>();

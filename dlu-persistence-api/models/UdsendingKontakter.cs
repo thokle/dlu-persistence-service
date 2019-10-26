@@ -3,11 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using dlu_persistence_api.daos;
 
 namespace dlu_persistence_api.models
 {
+    
     public class UdsendingKontakter
     {
+
+        private DiMPdotNetDevEntities DiMPdotNetDevEntities;
+
+        public UdsendingKontakter()
+        {
+            DiMPdotNetDevEntities = new DiMPdotNetDevEntities();
+            KontaktTyper = (from kt in DiMPdotNetDevEntities.tblStambladUdsendingEmailTypers
+                            select new StambladUdsendingEmailTyper()
+                            {
+                                id = kt.id, titel = kt.titel
+                            }).ToList<StambladUdsendingEmailTyper>();
+
+            KontaktTitlers  = (from t in DiMPdotNetDevEntities.tblKontaktTitlers
+                          select new Titler()
+                          {
+                              id = t.TitelID, titel = t.Titel
+                          }).ToList<Titler>(); 
+        }
         private int? bladId;
         private int id;
         private string name;
@@ -22,5 +42,18 @@ namespace dlu_persistence_api.models
         public int? BladId { get => bladId; set => bladId = value; }
         public int Id { get => id; set => id = value; }
         public string Titel { get => titel; set => titel = value; }
+         public List<StambladUdsendingEmailTyper> KontaktTyper { get; set; }
+        public List<Titler>  KontaktTitlers { get; set; }
+
+    }
+
+    public class Titler
+    {
+        public Titler()
+        {
+        }
+
+        public int id { get; set; }
+        public string titel { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace dlu_persistence_api.daos
    
             _entities.Configuration.LazyLoadingEnabled = true;
       
-        
+         
     }
 
         public tblEjerforhold GetEjerForholdName(string name)
@@ -43,21 +43,21 @@ namespace dlu_persistence_api.daos
 
         }
 
-        public string GetAllEjerforhold()
+        public List<EjerForhold> GetAllEjerforhold()
         {
             try
             {
                 var res = from ej in _entities.tblEjerforholds
                           orderby ej.Ejerforhold ascending
-                          select new 
+                          select new EjerForhold()
                           {
-                              ej.Ejerforhold,
-                              ej.EjerforholdID,
-                              ej.WebTillægRubrik,
-                              ej.WebTillægTekst
+                            Ejerforhold=    ej.Ejerforhold,
+                              EjerforholdID =   ej.EjerforholdID,
+                              WebTillægRubrik=  ej.WebTillægRubrik,
+                              WebTillægTekst =  ej.WebTillægTekst
 
                           };
-                return JsonConvert.SerializeObject(res, Formatting.Indented);
+                return res.ToList<EjerForhold>();
             }
             catch (Exception e)
             {

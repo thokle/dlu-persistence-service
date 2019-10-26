@@ -43,7 +43,7 @@ namespace dlu_persistence_api.daos
                         AAr = p.År,
                         BladId = p.BladID,
                          PrislisteId = p.PrislisteID,
-                         PrisListeNavn = u.PrislisteNavn
+                         Navn = u.PrislisteNavn
                          
 
                     };
@@ -78,13 +78,13 @@ namespace dlu_persistence_api.daos
 /// </summary>
 /// <returns></returns>
 /// <exception cref="DaoExceptions"></exception>
-        public List<tblPrislister> GetPrisLister()
+        public List<Prislister> GetPrisLister()
         {
             try
             {
                 var res = from p in di.tblPrislisters
                     orderby p.PrislisteNavn
-                    select new tblPrislister()
+                    select new Prislister()
                     {
                        PrislisteID=  p.PrislisteID, PrislisteNavn = p.PrislisteNavn
                     };
@@ -101,7 +101,7 @@ namespace dlu_persistence_api.daos
 /// <param name="bladid"></param>
 /// <returns></returns>
 /// <exception cref="DaoExceptions"></exception>
-        public Task<int> AddPriserPrUge(int bladid, int prislisteId, int yearParameter)
+        public int AddPriserPrUge(int bladid, int prislisteId, int yearParameter)
         {
             try
             {
@@ -129,7 +129,7 @@ namespace dlu_persistence_api.daos
                     di.tblPrislisterPrBladPrUges.Add(tblPrislisterPrBladPrUge);
                 }
 
-                return di.SaveChangesAsync();
+                return di.SaveChanges();
             }
             catch (FormattedDbEntityValidationException e)
             {
@@ -155,21 +155,22 @@ namespace dlu_persistence_api.daos
 
         }
 
-    public List<tblPrislister>  GetPrislister()
+    public List<Prislister>  GetPrislister()
         {
             try
             {
                 var res = from pl in di.tblPrislisters
                           orderby pl.PrislisteID
-                          select new tblPrislister
+                          select new Prislister
                           {
-                             PrislisteID  = pl.PrislisteID,
-                             PrislisteNavn =  pl.PrislisteNavn
+                              PrislisteID = pl.PrislisteID,
+                              PrislisteNavn = pl.PrislisteNavn
 
-
+                          };
 
 
                 return res.ToList();
+            }
             catch (FormattedDbEntityValidationException e)
             {
                 throw new Exception(e.Message);
@@ -177,15 +178,15 @@ namespace dlu_persistence_api.daos
 
         }
 
-        public List<tblPlacering> GetPlacering()
+        public List<Placering> GetPlacering()
         {
             try
             {
                 var res = from pla in di.tblPlacerings
                           orderby pla.PlaceringID
-                          select new tblPlacering
+                          select new Placering
                           {
-                             PlaceringID =  pla.PlaceringID, Betegnelse =  pla.Betegnelse
+                             PlaceringID =  pla.PlaceringID, Betegenlse =  pla.Betegnelse
                           };
                 return res.ToList();
             }
@@ -195,66 +196,11 @@ namespace dlu_persistence_api.daos
             }
         }
 
-        public string GetPriserFromBladId(int bladId)
-        {
-            try
-            {
-                var res = from psl in di.tblPrisers
-                          where psl.BladID == bladId
-                          orderby psl.År
-                          select new PriserForBlad
-                          {
-                              
-                              
-                            AAr1 = psl.År , BladID1 = psl.BladID, ControlNavn1 = psl.ControlNavn, Farve4Max1 = psl.Farve4Max, Farve4Min1 = psl.Farve4Min, Farve4Pris1 = psl.Farve4Pris, FarveMax1 = psl.FarveMax, FarveMin1 = psl.FarveMin,
-                            FarvePris1 = psl.FarvePris, FormatFra1 =psl.FormatFra, FormatTil1 =psl.FormatTil, PlaceringID1 = psl.PlaceringID, PrislisteID1 = psl.PlaceringID
-                              
-                          };
+    
 
-                return JsonConvert.SerializeObject(res, Formatting.Indented);
-            }
-            catch (FormattedDbEntityValidationException e)
-            {
-                throw new Exception(e.Message);
-            }
-        }
+      
 
-        public List<tblPriser> GetPrisListeFromBladidArPlacering(int bladId, int placering, int aar, int prislisteId)
-        {
-            try
-            {
-                var res = from pl in di.tblPrisers
-                          where pl.År == aar & pl.BladID == bladId & pl.PlaceringID == placering & pl.PrislisteID == prislisteId
-                          
-                          select new tblPriser
-                          {
-                              År = pl.År,
-                              BladID = pl.BladID,
-                              ControlNavn = pl.ControlNavn,
-                              Farve4Max = pl.Farve4Max,
-                              Farve4Min = pl.Farve4Min,
-                              Farve4Pris = pl.Farve4Pris,
-                              FarveMax = pl.FarveMax,
-                              FarveMin = pl.FarveMin,
-                              FarvePris = pl.FarvePris,
-                              FormatFra = pl.FormatFra,
-                              FormatTil = pl.FormatTil,
-                              PlaceringID = pl.PlaceringID,
-                              PrislisteID = pl.PlaceringID,
-                             mmPris =  pl.mmPris
-
-                          };
-                return res.ToList<tblPriser>();
-
-            }
-            catch (FormattedDbEntityValidationException e)
-            {
-                throw new Exception(e.Message);
-            }
-        }
-
-
-        public List<PriserForTable> GetPrislisteFortable(int bladid, int aar, int prislisteId)
+        public List<Priser> GetPrislisteFortable(int bladid, int aar, int prislisteId)
         {
             try
             {
@@ -264,30 +210,32 @@ namespace dlu_persistence_api.daos
                           join pi in di.tblPlacerings on pl.PlaceringID equals pi.PlaceringID into p
                           from pi in p.DefaultIfEmpty()
                           where pl.BladID == bladid & pl.År == aar & pl.PrislisteID == prislisteId  orderby pl.PrislisteID ascending select
-                        new PriserForTable
+                        new Priser
                         {
-                            AAr1 = pl.År,
-                            Betegnelse1 = pi.Betegnelse,
-                            BladID1 = pl.BladID,
-                            Farve4Max1 = pl.Farve4Max,
-                            Farve4Min1 = pl.Farve4Min,
-                            Farve4Pris1 = pl.Farve4Pris,
-                            FarveMax1 = pl.FarveMax,
-                            FarveMin1 = pl.FarveMin,
-                            FarvePris1 = pl.FarvePris,
-                            FormatFra1 = pl.FormatFra,
-                            FormatTil1 = pl.FormatTil,
-                            PrislisteNavn1 = d.PrislisteNavn,
-                          MmPris =   pl.mmPris,
-                         PlaceringId1 = pl.PlaceringID,
-                         PrislisteID1 = pl.PrislisteID
+                            År = pl.År,
+                            Betegnelse = pi.Betegnelse,
+                            BladID = pl.BladID,
+                            Farve4Max = pl.Farve4Max,
+                            Farve4Min = pl.Farve4Min,
+                            Farve4Pris = pl.Farve4Pris,
+                            FarveMax = pl.FarveMax,
+                            FarveMin = pl.FarveMin,
+                            FarvePris = pl.FarvePris,
+                            FormatFra = pl.FormatFra,
+                            FormatTil = pl.FormatTil,
+                            PrislisteNavn = d.PrislisteNavn,
+                          mmPris =   pl.mmPris,
+                         PlaceringID = pl.PlaceringID,
+                         PrislisteID = pl.PrislisteID,
+                    
+                         
                     
                         
                        
                             
                          };
 
-                return res.ToList<PriserForTable>();
+                return res.ToList<Priser>();
 
             }
             catch (FormattedDbEntityValidationException e)

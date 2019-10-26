@@ -1,48 +1,29 @@
 using System;
+using System.Collections.Generic;
 using System.Data.Entity.Core.Common;
 using System.Threading.Tasks;
 using dlu_persistence_api.daos;
 namespace dlu_persistence_api.services
 {
-    public class StamBladService: IStamBladService 
+    public class StamBladService
     {
-        private StamBladsDao dao;
+        private StamBladDao dao;
       
 
         public StamBladService()
         {
-            dao = new StamBladsDao();
+            dao = new StamBladDao();
         }
-        public string GetStamBladById(int id)
-        {
-            return dao.GetStamDataById(bladId: id);
-        }
+     
 
-        public string GetStamBladByName(string name)
-        {
-            return dao.GetStamBladByName(name: name);
-        }
-
-        public string GetStamBladByPostNummer(int postnr)
-        {
-            return dao.GetStamBladByPostNummer(postNr: postnr);
-        }
-
-        public Tuple<string, int> CreaateOrUpdateStamBlad(tblBladStamdata tblBladStamdata)
-        {
-
-            return dao.OpretNytStamBlad(stamData: tblBladStamdata);
-        }
+     
 
         public string GetTableGeoCode()
         {
             return dao.GetTblGetKode();
         }
 
-        public string GetTablePostNr()
-        {
-            return dao.GetTblPostNr(); 
-        }
+     
 
         public string GetTablePostNrSøgning()
         {
@@ -66,7 +47,7 @@ namespace dlu_persistence_api.services
 
         public int GetNumbersOfStamblad()
         {
-            return dao.GetNumbersOfStamblad();
+            return dao.GetNumbersOfstamBlad();
         }
 
         public string GetByNavnPostNr(int postnr)
@@ -79,9 +60,9 @@ namespace dlu_persistence_api.services
             return dao.GetLatestId();
         }
 
-        public string GetStamBladEfterEjerforhold(string ejerforhold)
+        public List<tblBladStamdata> GetStamBladEfterEjerforhold(string ejerforhold)
         {
-            return dao.GetStamBladEfterEjerforhold(ejerforhold);
+            return dao.GetstamBladEfterEjerforhold(ejerforhold);
         }
 
         public Task<int> UpdateEjerforholdForAviser(string oldejeforhold, string newejerforhold)
@@ -89,9 +70,6 @@ namespace dlu_persistence_api.services
             return dao.UpdateEjerforholdForAviser(oldejeforhold, newejerforhold);
         }
 
-        public string GetAllIds()
-        {
-            return dao.GetAllIds();
-        }
+      
     }
 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using dlu_persistence_api.exceptions;
 using Newtonsoft.Json;
 using dlu_persistence_api.models;
+using System.Collections.Generic;
 namespace dlu_persistence_api.daos
 {
 
@@ -21,7 +22,7 @@ namespace dlu_persistence_api.daos
         }
 
 
-        public string GetUdsendingKontakterPrBladId(int bladId)
+        public List<UdsendingKontakter> GetUdsendingKontakterPrBladId(int bladId)
         {
             try
             {
@@ -42,13 +43,18 @@ namespace dlu_persistence_api.daos
                         Id = tuk.id,
                         BladId = tuk.bladid,
                         Telefonnummer = tuk.telefonnummer,
-                        Titel = tukl.Titel
+                        Titel = tukl.Titel, 
+                        KontaktTyper = (from kt in entities.tblStambladUdsendingEmailTypers select new StambladUdsendingEmailTyper()
+                        {
+                           id = kt.id , titel = kt.titel
+                           
+                        }).ToList<StambladUdsendingEmailTyper>()
                        
                     };
-                   
-                
-             
-                return JsonConvert.SerializeObject(res, Formatting.Indented);
+
+
+
+                return res.ToList<UdsendingKontakter>();
             }
             catch (FormattedDbEntityValidationException e)
             {

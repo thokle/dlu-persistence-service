@@ -125,6 +125,9 @@ namespace dlu_persistence_api
         public virtual DbSet<viewOversigt> viewOversigts { get; set; }
         public virtual DbSet<viewUpdateStatusIMedieplan> viewUpdateStatusIMedieplans { get; set; }
         public virtual DbSet<viewUpdateStatusIMedieplanNr> viewUpdateStatusIMedieplanNrs { get; set; }
+        public virtual DbSet<tblOphørtBlad> tblOphørtBlad { get; set; }
+        public virtual DbSet<tblStamBladBogHolderi> tblStamBladBogHolderis { get; set; }
+        public virtual DbSet<tblStambladKoncern> tblStambladKoncerns { get; set; }
     
         public virtual int dt_addtosourcecontrol(string vchSourceSafeINI, string vchProjectName, string vchComment, string vchLoginName, string vchPassword)
         {

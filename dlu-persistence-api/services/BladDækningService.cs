@@ -12,10 +12,7 @@ namespace dlu_persistence_api.services
             _dao = new BladDækningDao();
         }
 
-        public string GetBladDækningByBladId(int bladId)
-        {
-            return _dao.GetDækningGradByBladId(bladId);
-        }
+       
 
         public string GetBladDækningByPostnr(int postnr)
         {

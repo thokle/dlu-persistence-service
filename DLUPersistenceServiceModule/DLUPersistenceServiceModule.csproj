@@ -337,6 +337,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
+      <UserProperties BuildVersion_StartDate="2000/1/1" />
     </VisualStudio>
     <MonoDevelop>
       <Properties>

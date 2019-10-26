@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net.Sockets;
 using Newtonsoft.Json;
 using  dlu_persistence_api.exceptions;
+using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 
 namespace dlu_persistence_api.daos
 {    /// <summary>
@@ -27,22 +29,24 @@ namespace dlu_persistence_api.daos
         /// </summary>
         /// <returns></returns>
         /// <exception cref="DaoExceptions"></exception>
-        public string GetPostNrListe()
+        public List<PostNrModel> GetPostNrListe()
         {
             try
             {
                 var postnrs = from ps in _diMPdotNetEntities.tblPostNrs
-                    orderby ps.PostBy
-                    select new
-                    {
-                        ps.PostNr, ps.Husstande, ps.PostBy
+                              orderby ps.PostBy
+                              select new PostNrModel()
+                              {
+                                  PostNr = ps.PostNr,
+                                  Hustande = ps.Husstande,
+                                  PostBy = ps.PostBy
 
-                    };
-                return JsonConvert.SerializeObject(postnrs, Formatting.Indented);
+                              };
+                return postnrs.ToList<PostNrModel>();
             }
             catch (Exception e)
             {
-                throw new DaoExceptions("PostNrTableDao GetPostNrListe " , e.InnerException);
+                throw new Exception(e.HelpLink);
             }
         
     }
@@ -69,6 +73,7 @@ namespace dlu_persistence_api.daos
         }
 
 
+
         public string GetByBYPostNr(int postnr)
         {
             try
@@ -89,10 +94,31 @@ namespace dlu_persistence_api.daos
                 throw new DaoExceptions("GetByBYPostNr " , e.InnerException);
             }   
         }
-
-        public void Dispose()
+        
+        public int CheckIfPostNrExist(int postnr)
         {
-            _diMPdotNetEntities?.Dispose();
+            int returnValue = 0;
+            var res = (from p in _diMPdotNetEntities.tblPostNrs
+                       where p.PostNr == postnr
+                       select new PostNrModel()
+                       {
+                           Hustande = p.Husstande, PostBy =  p.PostBy, PostNr =p.PostNr
+                       });
+
+            if ((int)res.Count() > 0)
+            {
+                returnValue =  1;
+            } else if (res.Count() < 1)
+            {
+                returnValue =  0;
+            }
+            return returnValue;     
+        }
+       
+        public int AddOrUpdate(tblPostNr tbl)
+        {
+            _diMPdotNetEntities.tblPostNrs.AddOrUpdate(tbl);
+            return _diMPdotNetEntities.SaveChanges();
         }
     }
 }

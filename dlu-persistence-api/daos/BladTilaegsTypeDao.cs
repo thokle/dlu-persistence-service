@@ -38,12 +38,12 @@ namespace dlu_persistence_api.daos
         }
 
 
-        public Task<int> CreateOrUpdate(tblBladTillaegsType tblBladTillaegsType)
+        public int CreateOrUpdate(tblBladTillaegsType tblBladTillaegsType)
         {
             try
             {
                 DiMPdotNet.tblBladTillaegsTypes.AddOrUpdate(tblBladTillaegsType);
-                return DiMPdotNet.SaveChangesAsync();
+                return DiMPdotNet.SaveChanges();
             }
             catch (FormattedDbEntityValidationException e)
             {

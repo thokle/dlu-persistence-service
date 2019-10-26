@@ -44,9 +44,6 @@
     <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="dlu-persistence-api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\SendMailService\Bin\dlu-persistence-api.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
       <HintPath>..\packages\EntityFramework.6.3.0-rc1-19458-04\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -86,19 +83,36 @@
       <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="daos\AktiveAviserTIlGridDao.cs" />
+    <Compile Include="daos\AktiveUgeaviserMedAlleDatas.cs" />
     <Compile Include="daos\AnnoncekontrolDao.cs" />
     <Compile Include="daos\BladDækningDao.cs" />
+    <Compile Include="daos\BladKommentar.cs" />
     <Compile Include="daos\BladKommentarDao.cs" />
+    <Compile Include="daos\BladOphørtDao.cs" />
+    <Compile Include="daos\BladTillæg.cs" />
+    <Compile Include="daos\BladTillægsTyper.cs" />
+    <Compile Include="daos\BogholderiDao.cs" />
+    <Compile Include="daos\Priser.cs" />
+    <Compile Include="daos\PrislisteDao.cs" />
+    <Compile Include="daos\Prislister.cs" />
+    <Compile Include="daos\StamBladBogHolderi.cs" />
+    <Compile Include="daos\StamBladKoncernDao.cs" />
+    <Compile Include="models\EjerForhold.cs" />
+    <Compile Include="daos\StambladUdsendingEmailTyper.cs" />
+    <Compile Include="models\BladStamdata.cs" />
     <Compile Include="daos\BladTilaegsDao.cs" />
     <Compile Include="daos\BladTilaegsTypeDao.cs" />
     <Compile Include="daos\BladYear.cs" />
+    <Compile Include="daos\DagDao.cs" />
+    <Compile Include="models\Dage.cs" />
     <Compile Include="daos\DelOmraadeDao.cs" />
     <Compile Include="daos\DPKuloerDao.cs" />
     <Compile Include="daos\EjerforholdDao.cs" />
     <Compile Include="daos\FakturingsBilagDao.cs" />
     <Compile Include="daos\FakuraFejlTekstDao.cs" />
     <Compile Include="daos\FejlTekstDao.cs" />
-    <Compile Include="daos\GeoDao.cs" />
+    <Compile Include="models\GeoDao.cs" />
+    <Compile Include="daos\GeoKode.cs" />
     <Compile Include="daos\GrupperDao.cs" />
     <Compile Include="daos\KonkurrenceDaekningDao.cs" />
     <Compile Include="daos\KontaktDao.cs" />
@@ -112,13 +126,14 @@
     <Compile Include="daos\MedieplanÆndringerDao.cs" />
     <Compile Include="daos\NavisionContactDao.cs" />
     <Compile Include="daos\PlaceringDao.cs" />
+    <Compile Include="models\PostNrModel.cs" />
     <Compile Include="daos\PostNrTableDao.cs" />
     <Compile Include="daos\PriceAskingDao.cs" />
     <Compile Include="daos\PriserBladPrAarDao.cs" />
     <Compile Include="daos\RegionDao.cs" />
     <Compile Include="daos\SalespersonDao.cs" />
     <Compile Include="daos\StamBladKontakterDao.cs" />
-    <Compile Include="daos\StamBladsDao.cs" />
+    <Compile Include="daos\StamBladDao.cs" />
     <Compile Include="daos\StamBladUdsendigKontakterDao.cs" />
     <Compile Include="daos\StambladUdsendingKontaktTyperDao.cs" />
     <Compile Include="daos\SupportBilagDao.cs" />
@@ -186,8 +201,6 @@
     <Compile Include="models\MediePlanModel.cs" />
     <Compile Include="models\MediePlanNr.cs" />
     <Compile Include="models\PriceListWeekModel.cs" />
-    <Compile Include="models\PriserForBlad.cs" />
-    <Compile Include="models\PriserForTable.cs" />
     <Compile Include="models\StamBlad.cs" />
     <Compile Include="models\UdsendingKontakter.cs" />
     <Compile Include="NavisionContact.cs">
@@ -427,6 +440,9 @@
     <Compile Include="tblMmPrisWebApp.cs">
       <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="tblOphørtBlad.cs">
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblOrdreGebyrNavision.cs">
       <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
@@ -467,6 +483,12 @@
       <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblRemindereSendt.cs">
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblStamBladBogHolderi.cs">
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblStambladKoncern.cs">
       <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="tblStambladKontakter.cs">
@@ -589,6 +611,7 @@
       <DependentUpon>DiMPdotNetDevEntities.edmx</DependentUpon>
       <LastGenOutput>DiMPdotNetDevEntities.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="DiMPdotNetDevEntities.edmx.sql" />
     <Content Include="DiMPdotNetDevEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DiMPdotNetDevEntities.edmx</DependentUpon>
@@ -627,4 +650,9 @@
     <Error Condition="!Exists('..\packages\EntityFramework.6.3.0-rc1-19458-04\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0-rc1-19458-04\build\EntityFramework.targets'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.3.0-rc1-19458-04\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.3.0-rc1-19458-04\build\EntityFramework.targets')" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" BuildVersion_StartDate="2000/1/1" BuildVersion_UseGlobalSettings="True" BuildVersion_UseUniversalClock="True" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

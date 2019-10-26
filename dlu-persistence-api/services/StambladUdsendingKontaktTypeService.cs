@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using dlu_persistence_api.services.interfaces;
 using dlu_persistence_api.daos;
+using System.Collections.Generic;
 namespace dlu_persistence_api.services
 {
-    public class StambladUdsendingKontaktTypeService : IStambladUdsendingKontaktTypeService
+    public class StambladUdsendingKontaktTypeService
     {
         private StambladUdsendingKontaktTyperDao kontakterDao;
 
@@ -16,7 +17,7 @@ namespace dlu_persistence_api.services
         {
             kontakterDao = new StambladUdsendingKontaktTyperDao();
         }
-        public string GetStamBladUdsendingKontaktType()
+        public List<StambladUdsendingEmailTyper> GetStamBladUdsendingKontaktType()
 
 
         {

@@ -7,7 +7,7 @@ using dlu_persistence_api.services.interfaces;
 using dlu_persistence_api.daos;
 namespace dlu_persistence_api.services
 {
-    public class KommentartService : IKommentartService
+    public class KommentartService 
     {
         private BladKommentarDao dao;
 
@@ -20,9 +20,6 @@ namespace dlu_persistence_api.services
             return dao.CreateBladKommentar(tblBladKommentar);
         }
 
-        public string GetKommentarByStamBladId(int bladid)
-        {
-            return dao.GetKommentarByStamBladId(bladid);
-        }
+     
     }
 }

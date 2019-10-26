@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using dlu_persistence_api.exceptions;
 using dlu_persistence_api.models;
+
 namespace dlu_persistence_api.daos
 {
     public class AktiveAviserTIlGridDao
@@ -17,40 +18,68 @@ namespace dlu_persistence_api.daos
             entities = new DiMPdotNetDevEntities();
         }
 
-        public string GetAllAvisetTilGrid()
+        public List<AktiveUgeaviserMedAlleDatas> GetAllAvisetTilGrid()
         {
             try
             {
-                var res = from d in entities.UgeaviserTilGrids
-                          select new AktiveAviserModel
+                var res = from d in entities.AktiveUgeaviserMedAlleDatas
+                          select new AktiveUgeaviserMedAlleDatas
                           {
+                           
+                          Adress=  d.Adresse,
+                           AnnonceEmail = d.AnnonceEmail,
+                     AnnonceKontrolEmail = d.AnnonceKontrolEmail,
+                              BilagsbladeEmail =     d.BilagsbladeEmail,
+                              BladID =   d.BladID,
+                              BogholderiEmails =    d.BogholderiEmails,
+                             CVR =  d.CVR,
+                              DelOmrådeNavn =     d.DelOmrådeNavn,
+                              DiMPDelOmrådeKode =       d.DiMPDelOmrådeKode,
+                              Ejerforhold =    d.Ejerforhold,
+                              Emails =    d.Emails,
+                              FakturaGruppe =    d.FakturaGruppe, 
+                           Format =    d.Format,
+                              GeoKodeNavn =    d.GeoKodeNavn,
+                            GruppeRabat =   d.GruppeRabat,
+                           Hjemmeside =  d.Hjemmeside,
+                              HovedGruppeNavn =   d.HovedGruppeNavn,
+                              Kontaktperson =      d.Kontaktperson,
+                              KontaktpersonerEmails =      d.KontaktpersonerEmails,
+                              MaterialedeadlineRubrik =     d.MaterialedeadlineRubrik,
+                              MaterialedeadlineTekst= d.MaterialedeadlineTekst,
+                              MaterialeEmail =     d.MaterialeEmail,
+                              MedieNetKode =      d.MedieNetKode,
+                              MedlemMåned =    d.MedlemMåned,
+                              MedlemÅr =     d.MedlemÅr,
+                              Navn =   d.Navn, 
+                             Oplag =  d.Oplag,
+                              OrdrecheckEmail =   d.OrdrecheckEmail,
+                              OrdrecheckSendeDag =    d.OrdrecheckSendeDag,
+                              OrdredeadlineRubrik =  d.OrdredeadlineRubrik,
+                              OrdredeadlineTekst =   d.OrdredeadlineTekst,
+                              OrdreEmail =  d.OrdreEmail,
+                              OrienteringEmails =     d.OrienteringEmails,
+                              PostBy =       d.PostBy,
+                             PostNr =  d.PostNr,
+                            Primær =  d.Primær,
+                          PrimærPct  =   d.PrimærPct,
+                              PrisforespørgselEmails =   d.PrisforespørgselEmails,
+                              RedaktionEmail =   d.RedaktionEmail,
+                              RegionNavn =   d.RegionNavn,
+                              SamannonceringsRabat =   d.SamannonceringsRabat,
+                              SendetidOrdrecheck =  d.SendetidOrdrecheck,
+                              SendIndeværendeUge =   d.SendIndeværendeUge,
+                              StamdataEmail =     d.StamdataEmail,
+                              Tlf =  d.Tlf,
+                              Totalområde =    d.Totalområde,
+                              TotalområdePct = d.TotalområdePct,
+                            Udgivelsesdag =   d.Udgivelsesdag,
+                              WWWDækningSomTekst =   d.WWWDækningSomTekst
 
-                              Adresse = d.Adresse,
-                              Adresse2 = d.Adresse2,
-                              BladID = d.BladID,
-                              CVR = d.CVR,
-                              DaekningsGrad = d.DækningsGrad,
-                              DagNavn = d.DagNavn,
-                              DelOmraadeNavn = d.DelOmrådeNavn,
-                              GeoKodeNavn = d.GeoKodeNavn,
-                              GruppeNavn = d.GruppeNavn,
-                              HovedGruppeNavn = d.HovedGruppeNavn,
-                              Kontaktperson = d.Kontaktperson,
-                              MaterialedeadlineRubrik = d.MaterialedeadlineRubrik,
-                              MaterialedeadlineTekst = d.MaterialedeadlineTekst,
-                              Navn = d.Navn,
-                              Navn2 = d.Navn2,
-                              Oplag = d.Oplag,
-                              OrdredeadlineRubrik = d.OrdredeadlineRubrik,
-                              OrdredeadlineTekst = d.OrdredeadlineTekst,
-                              PostBy = d.PostBy,
-                              PostNr = d.PostNr,
-                              RegionNavn = d.RegionNavn
-                      
                           };
 
-       
-                return JsonConvert.SerializeObject(res, Formatting.Indented);
+
+                return res.ToList();
             }
             
             catch (FormattedDbEntityValidationException  e)
@@ -60,7 +89,7 @@ namespace dlu_persistence_api.daos
             }
         }
 
-        public string getAktivAvisByNavn(string navn)
+        public List<AktiveAviserModel> getAktivAvisByNavn(string navn)
         {
             try
             {
@@ -97,7 +126,7 @@ namespace dlu_persistence_api.daos
                     data.data[i] = a;
                     i++;
                 }
-                return JsonConvert.SerializeObject(data, Formatting.None, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore, Formatting = Formatting.Indented });
+                return res.ToList();
             }
             catch (FormattedDbEntityValidationException e)
             {
@@ -106,7 +135,7 @@ namespace dlu_persistence_api.daos
             }
         }
 
-        public string getAktiveAvisByDaekningGrad(int daek)
+        public List<AktiveAviserModel> getAktiveAvisByDaekningGrad(int daek)
         {
             try
             {
@@ -144,7 +173,7 @@ namespace dlu_persistence_api.daos
                     data.data[i] = a;
                     i++;
                 }
-                return JsonConvert.SerializeObject(data, Formatting.None, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore, Formatting = Formatting.Indented });
+                return res.ToList();
             }
             catch (FormattedDbEntityValidationException e )
             {
@@ -163,7 +192,7 @@ namespace dlu_persistence_api.daos
         }
         public AktiveAviserModel[] data { get; set; }
     }
-    internal class AktiveAviserModel
+    public class AktiveAviserModel
     {
         public string Adresse { get; set; }
         public string Adresse2 { get; set; }
@@ -186,6 +215,6 @@ namespace dlu_persistence_api.daos
         public string PostBy { get; set; }
         public int? PostNr { get; set; }
         public string RegionNavn { get; set; }
-        public object webtilLaegs { get; internal set; }
+    
     }
 }

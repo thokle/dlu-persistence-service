@@ -7,7 +7,7 @@ using dlu_persistence_api.services.interfaces;
 using dlu_persistence_api.daos;
 namespace dlu_persistence_api.services
 {
-    public class AktiveAviserTIlGridService : IAktiveAviserTIlGridService
+    public class AktiveAviserTIlGridService 
     {
         private AktiveAviserTIlGridDao gridDao;
         public AktiveAviserTIlGridService()
@@ -15,17 +15,17 @@ namespace dlu_persistence_api.services
             gridDao = new AktiveAviserTIlGridDao();
         }
 
-        public string getAktivAvisByNavn(string navn)
+        public List<AktiveAviserModel> getAktivAvisByNavn(string navn)
         {
             return gridDao.getAktivAvisByNavn(navn);
         }
 
-        public string getAktiveAvisByDaekningGrad(int daek)
+        public List<AktiveAviserModel> getAktiveAvisByDaekningGrad(int daek)
         {
             return gridDao.getAktiveAvisByDaekningGrad(daek);
         }
 
-        public string GetAllAvisetTilGrid()
+        public List<AktiveUgeaviserMedAlleDatas> GetAllAvisetTilGrid()
         {
             return gridDao.GetAllAvisetTilGrid();
         }

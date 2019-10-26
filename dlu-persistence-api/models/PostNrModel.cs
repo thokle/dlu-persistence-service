@@ -1,14 +1,13 @@
 ﻿namespace dlu_persistence_api.daos
 {
-    internal class PostNrModel
+    public class PostNrModel
     {
-        private string bynavn;
-
-        private int postnr;
         public PostNrModel()
         {
-          
         }
-       
+
+        public string PostBy { get;  set; }
+        public int Hustande { get;  set; }
+        public int PostNr { get;  set; }
     }
 }

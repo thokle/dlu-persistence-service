@@ -19,18 +19,18 @@ namespace dlu_persistence_api.daos
             entities = new DiMPdotNetDevEntities();
         }
 
-        public List<tblBladKommentar> GetKommentarByStamBladId(int bladid)
+        public List<BladKommentar> GetKommentarByStamBladId(int bladid)
         {
             try
             {
                 var res = from bk in entities.tblBladKommentars
                           where bk.bladid == bladid
                           orderby bk.date
-                          select new tblBladKommentar
+                          select new BladKommentar
                           {
-                             bladid = bk.bladid,tekst =  bk.tekst, data = bk.date
+                             bladid = bk.bladid,tekst =  bk.tekst, date = bk.date
                           };
-                return res.ToList<tblBladKommentar>();
+                return res.ToList<BladKommentar>();
             }
             catch (FormattedDbEntityValidationException e)
             {

@@ -2,7 +2,7 @@ using dlu_persistence_api.daos;
 
 namespace dlu_persistence_api.services
 {
-    public class PostNrTableService : IPostNrTableService
+    public class PostNrTableService 
     {
         private  PostNrTableDao _dao;
 
@@ -11,10 +11,7 @@ namespace dlu_persistence_api.services
             _dao = new PostNrTableDao();
         }
 
-        public string GetPostNrListe()
-        {
-            return _dao.GetPostNrListe();
-        }
+      
 
         public string GetPostNrAfByNavn(string bynavn)
         {

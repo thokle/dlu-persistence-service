@@ -8,7 +8,7 @@ using dlu_persistence_api.daos;
 
 namespace dlu_persistence_api.services
 {
-    public class BladTilaegsServcie : IBladTilaegsServcie
+    public class BladTilaegsServcie
     {
         private BladTilaegsDao dao;
 
@@ -21,7 +21,7 @@ namespace dlu_persistence_api.services
             return dao.CreateOrUpdate(tblBladTillaeg);
         }
 
-        public string GetTillaegsTypeByBladId(int bladid)
+        public List<BladTillæg> GetTillaegsTypeByBladId(int bladid)
         {
 
             return dao.GetTillaegsTypeByBladId(bladid);

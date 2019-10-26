@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using dlu_persistence_api.exceptions;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace dlu_persistence_api.daos
 {
@@ -18,21 +19,23 @@ namespace dlu_persistence_api.daos
             entities = new DiMPdotNetDevEntities();
         }
 
-        public string GetTillaegsTypeByBladId(int bladid)
+        public List<BladTillæg> GetTillaegsTypeByBladId(int bladid)
         {
             try
             {
-                var res = from bl in entities.tblBladTillaegs
+                var res = (from bl in entities.tblBladTillaegs
                           join d in entities.tblBladTillaegsTypes on bl.typeId equals d.id into ds
                           from d in ds.DefaultIfEmpty()
                           where bl.bladId == bladid
-                          select new
+                          select new BladTillæg()
                           {
-                              bl.bladId,
-                              bl.pris,
-                              d.type
-                          };
-                return JsonConvert.SerializeObject(res, Formatting.Indented);
+                            BladId =   bl.bladId,
+                            Pris =   bl.pris,
+                            type =   d.type,
+                            
+                            
+                          }).ToList<BladTillæg>();
+                return res;
              }
             catch (Exception)
             {

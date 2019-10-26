@@ -23,6 +23,7 @@ namespace dlu_persistence_api
             this.tblPrisers = new HashSet<tblPriser>();
             this.tblPrislisterPrBladPrÅr = new HashSet<tblPrislisterPrBladPrÅr>();
             this.tblPrislisterPrBladPrUges = new HashSet<tblPrislisterPrBladPrUge>();
+            this.tblStamBladBogHolderis = new HashSet<tblStamBladBogHolderi>();
         }
     
         public int BladID { get; set; }
@@ -113,5 +114,7 @@ namespace dlu_persistence_api
         public virtual ICollection<tblPrislisterPrBladPrÅr> tblPrislisterPrBladPrÅr { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblPrislisterPrBladPrUge> tblPrislisterPrBladPrUges { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblStamBladBogHolderi> tblStamBladBogHolderis { get; set; }
     }
 }
