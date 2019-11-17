@@ -7,10 +7,22 @@ using System.Threading.Tasks;
 
 namespace dlu_persistence_api.models
 {
-    public class AvisTIlGrid: System.ComponentModel.INotifyPropertyChanged
+    public class AvisTIlGrid : System.ComponentModel.INotifyPropertyChanged
     {
-        public string Adresse { get { return Adresse; } set { Adresse = value; NotifyPropertyChanged("Adresse"); } }
-        public string Adresse2 { get; set; }
+        string adresse =  String.Empty
+           ;
+        public string Adresse { get
+            { return adresse; }
+            set { adresse = value; NotifyPropertyChanged("Adresse"); } }
+
+        string adresse2 = String.Empty;
+
+        public string Adresse2
+        {
+            get { return adresse2; }
+            set { adresse2 = value; NotifyPropertyChanged("Adresse2"); }
+        }
+
         public string AnnonceEmail { get; set; }
         public string AnnonceKontrolEmail { get; set; }
         public string BilagsbladeEmail { get; set; }
