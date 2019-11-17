@@ -4,54 +4,54 @@
     {
   
 
-        public string Adress { get; internal set; }
-        public string AnnonceEmail { get; internal set; }
-        public string AnnonceKontrolEmail { get; internal set; }
-        public string BilagsbladeEmail { get; internal set; }
-        public int BladID { get; internal set; }
-        public string BogholderiEmails { get; internal set; }
-        public string CVR { get; internal set; }
-        public string DelOmrådeNavn { get; internal set; }
-        public string DiMPDelOmrådeKode { get; internal set; }
-        public string Ejerforhold { get; internal set; }
-        public string Emails { get; internal set; }
-        public string FakturaGruppe { get; internal set; }
-        public string Format { get; internal set; }
-        public string GeoKodeNavn { get; internal set; }
-        public string Hjemmeside { get; internal set; }
-        public string GruppeRabat { get; internal set; }
-        public string HovedGruppeNavn { get; internal set; }
-        public string Kontaktperson { get; internal set; }
-        public string KontaktpersonerEmails { get; internal set; }
-        public string MaterialedeadlineRubrik { get; internal set; }
-        public string MaterialedeadlineTekst { get; internal set; }
-        public string MaterialeEmail { get; internal set; }
-        public string MedieNetKode { get; internal set; }
-        public byte? MedlemMåned { get; internal set; }
-        public byte? MedlemÅr { get; internal set; }
-        public string Navn { get; internal set; }
-        public string OrdrecheckEmail { get; internal set; }
-        public string OrdrecheckSendeDag { get; internal set; }
-        public string OrdredeadlineRubrik { get; internal set; }
-        public string OrdredeadlineTekst { get; internal set; }
-        public string OrdreEmail { get; internal set; }
-        public string OrienteringEmails { get; internal set; }
-        public string PostBy { get; internal set; }
-        public int? PostNr { get; internal set; }
-        public int? Primær { get; internal set; }
-        public byte? PrimærPct { get; internal set; }
-        public string PrisforespørgselEmails { get; internal set; }
-        public string RedaktionEmail { get; internal set; }
-        public string RegionNavn { get; internal set; }
-        public string SamannonceringsRabat { get; internal set; }
-        public string SendetidOrdrecheck { get; internal set; }
-        public bool? SendIndeværendeUge { get; internal set; }
-        public string Tlf { get; internal set; }
-        public int? Totalområde { get; internal set; }
-        public byte? TotalområdePct { get; internal set; }
-        public string Udgivelsesdag { get; internal set; }
-        public string WWWDækningSomTekst { get; internal set; }
-        public int? Oplag { get; internal set; }
-        public string StamdataEmail { get; internal set; }
+        public string Adress { get;  set; }
+        public string AnnonceEmail { get;  set; }
+        public string AnnonceKontrolEmail { get;  set; }
+        public string BilagsbladeEmail { get;  set; }
+        public int BladID { get;  set; }
+        public string BogholderiEmails { get;  set; }
+        public string CVR { get;  set; }
+        public string DelOmrådeNavn { get;  set; }
+        public string DiMPDelOmrådeKode { get;  set; }
+        public string Ejerforhold { get;  set; }
+        public string Emails { get;  set; }
+        public string FakturaGruppe { get;  set; }
+        public string Format { get;  set; }
+        public string GeoKodeNavn { get;  set; }
+        public string Hjemmeside { get;  set; }
+        public string GruppeRabat { get;  set; }
+        public string HovedGruppeNavn { get;  set; }
+        public string Kontaktperson { get;  set; }
+        public string KontaktpersonerEmails { get;  set; }
+        public string MaterialedeadlineRubrik { get;  set; }
+        public string MaterialedeadlineTekst { get;  set; }
+        public string MaterialeEmail { get;  set; }
+        public string MedieNetKode { get;  set; }
+        public byte? MedlemMåned { get;  set; }
+        public byte? MedlemÅr { get;  set; }
+        public string Navn { get;  set; }
+        public string OrdrecheckEmail { get;  set; }
+        public string OrdrecheckSendeDag { get;  set; }
+        public string OrdredeadlineRubrik { get;  set; }
+        public string OrdredeadlineTekst { get;  set; }
+        public string OrdreEmail { get;  set; }
+        public string OrienteringEmails { get;  set; }
+        public string PostBy { get;  set; }
+        public int? PostNr { get;  set; }
+        public int? Primær { get;  set; }
+        public byte? PrimærPct { get;  set; }
+        public string PrisforespørgselEmails { get;  set; }
+        public string RedaktionEmail { get;  set; }
+        public string RegionNavn { get;  set; }
+        public string SamannonceringsRabat { get;  set; }
+        public string SendetidOrdrecheck { get;  set; }
+        public bool? SendIndeværendeUge { get;  set; }
+        public string Tlf { get;  set; }
+        public int? Totalområde { get;  set; }
+        public byte? TotalområdePct { get;  set; }
+        public string Udgivelsesdag { get;  set; }
+        public string WWWDækningSomTekst { get;  set; }
+        public int? Oplag { get;  set; }
+        public string StamdataEmail { get;  set; }
     }
 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using  dlu_persistence_api.exceptions;
 using dlu_persistence_api.models;
+using System.Collections.Generic;
 namespace dlu_persistence_api.daos
 {
     /// <summary>
@@ -28,7 +29,7 @@ namespace dlu_persistence_api.daos
         /// <param name="mediePlan"></param>
         /// <returns></returns>
         /// <exception cref="DaoExceptions"></exception>
-        public string GetMediePlanÆndringerByMedieId(int mediePlan, int  version)
+        public List<AenderingsTekst> GetMediePlanÆndringerByMedieId(int mediePlan, int  version)
         {
             try
             {
@@ -39,7 +40,7 @@ namespace dlu_persistence_api.daos
                        MedieplanNr =  m.MedieplanNr,Version = m.Version, AendringsTekst= m.ÆndringsTekst
                     };
 
-                return JsonConvert.SerializeObject(res, Formatting.Indented);
+                return res.ToList();
             }
             catch (Exception e)
             {

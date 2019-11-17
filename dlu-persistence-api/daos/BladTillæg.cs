@@ -18,5 +18,7 @@ namespace dlu_persistence_api.daos
         public double? Pris { get;  set; }
         public string type { get;  set; }
         public List<BladTillægsTyper> bladTillægsTypers { get; set; }
+        public bool? fastpris { get;  set; }
+        public bool? mmpris { get;  set; }
     }
 }

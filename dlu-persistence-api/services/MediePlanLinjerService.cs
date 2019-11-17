@@ -3,7 +3,7 @@ using dlu_persistence_api.daos;
 
 namespace dlu_persistence_api.services
 {
-    public class MediePlanLinjerService : IMediePlanLinjerService
+    public class MediePlanLinjerService
     {
         private readonly MediePlanLinjerDao _dao;
 
@@ -17,7 +17,7 @@ namespace dlu_persistence_api.services
             return _dao.GetMediePlanLinjerByMediePlanId(medieoid);
         }
 
-        public int CreateOrUpdateMediePlanLinjer(System.Collections.Generic.List<tblMedieplanLinjer> tblMedieplanLinjer)
+        public Task<int> CreateOrUpdateMediePlanLinjer(tblMedieplanLinjer tblMedieplanLinjer)
         {
             
             return _dao.CreateOrUpdateMediePlanLinjer(tblMedieplanLinjer);

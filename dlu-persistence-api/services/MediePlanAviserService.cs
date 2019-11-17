@@ -9,7 +9,7 @@ using dlu_persistence_api.services.interfaces;
 namespace dlu_persistence_api.services
 
 {
-    public class MediePlanAviserService: IMediePlanAviserService
+    public class MediePlanAviserService
     {
         private MediePlanAviserDao dao;
 
@@ -18,7 +18,7 @@ namespace dlu_persistence_api.services
         {
             dao = new MediePlanAviserDao();
         }
-        public string GetAllUgeAvisTilGrid(int bladid, int year, int placeringid)
+        public AviserTilGrid GetAllUgeAvisTilGrid(int bladid, int year, int placeringid)
         {
             return dao.GetAllUgeAvisTilGrid(bladid, year, placeringid);
         }

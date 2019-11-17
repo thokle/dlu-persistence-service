@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using  dlu_persistence_api.exceptions;
 using dlu_persistence_api.models;
+using System.Collections.Generic;
 namespace dlu_persistence_api.daos
 {
     public class MediaPlanNrDao: IDisposable
@@ -22,7 +23,7 @@ namespace dlu_persistence_api.daos
         /// <param name="mediePlanId"></param>
         /// <returns></returns>
         /// <exception cref="DaoExceptions"></exception>
-        public string GetMediePlanNrDaoByMedPlanId(int mediePlanId)
+        public List<MediePlanNr> GetMediePlanNrDaoByMedPlanId(int mediePlanId)
         {
             try
             {
@@ -41,7 +42,7 @@ namespace dlu_persistence_api.daos
 
 
                     };
-                return JsonConvert.SerializeObject(res, Formatting.Indented);
+                return res.ToList();
             }
             catch (Exception e)
             {

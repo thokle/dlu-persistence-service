@@ -1,7 +1,9 @@
 ﻿using dlu_persistence_api.exceptions;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace dlu_persistence_api.daos
@@ -353,115 +355,139 @@ namespace dlu_persistence_api.daos
                 throw;
             }
         }
-
-        public string findMediePlanToolbar(int mediePlan = 0, string annnoncør = null, string bureau = null, int fraUge = 0, int tilUge = 0, int aar = 0,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+        public List<FundetMediePlaner> findMediePlanToolbar(int mediePlan = 0, string annnoncør = null, string bureau = null, int fraUge = 0, int tilUge = 0, int aar = 0,
             bool visInAktiveAnnoncer = false, bool mediePlanCheckBox = false, bool bookingCheckBox = false, bool rtAkCheckBox = false, bool faktureing = false)
         {
-            var mp = entities.Set<tblMedieplan>();
-            var mlt = entities.Set<tblMedieplanLinjer>();
 
 
-            var query = from m in entities.tblMedieplans
-                        join ml in entities.tblMedieplanLinjers on m.MedieplanNr equals ml.MedieplanNr into mml
-                        from ml in mml.DefaultIfEmpty()
-                        join mlnr in entities.tblMedieplanLinjers on m.MedieplanNr equals mlnr.MedieplanNr into mlnrm
-                        from mlnr in mlnrm.DefaultIfEmpty()
-                        join mmlt in entities.tblMateriales on m.MedieplanNr equals mmlt.MedieplanNr into mmlmt
 
-                        from mmlt in mmlmt.DefaultIfEmpty()
-                        where m.Version == ml.Version
-                        select new
-                        {
-                         
-                            m.AnnoncørNo_,
-                            m.BureauNo_,
-                            m.Format1,
-                            m.Format2,
-                            m.AntalFarver,
-                            m.IndrykningsUge,
-                            m.Beskrivelse,
-                            m.KonsulentCode,
-                            m.Status,
-                     
-                            m.Version,
-                            m.MedieplanNr,
-                            m.Kontaktperson,
-                            m.KontaktpersonTilhører,
-                            m.Overskrift,
-                            m.RettelserEfterAnnoncekontrol,
-                            m.OprettetDato
+            try {
+                var query = from m in entities.tblMedieplans
+                            join ml in entities.tblMedieplanLinjers on m.MedieplanNr equals ml.MedieplanNr into mml
+                            from ml in mml.DefaultIfEmpty()
+                            join mlnr in entities.tblMedieplanLinjers on m.MedieplanNr equals mlnr.MedieplanNr into mlnrm
+                            from mlnr in mlnrm.DefaultIfEmpty()
+                            join mmlt in entities.tblMateriales on m.MedieplanNr equals mmlt.MedieplanNr into mmlmt
 
-                        } into plan
-                        group plan by new { plan.AnnoncørNo_  ,
-                            plan.BureauNo_,
-                            plan.Format1,
-                            plan.Format2,
-                            plan.AntalFarver,
-                            plan.IndrykningsUge,
-                            plan.Beskrivelse,
-                            plan.KonsulentCode,
-                            plan.Status,
+                            from mmlt in mmlmt.DefaultIfEmpty()
+                           join nv in entities.NavisionContacts on m.AnnoncørNo_ equals nv.No_ into nvm
+                           from nv in nvm.DefaultIfEmpty()
 
-                            plan.Version,
-                            plan.MedieplanNr,
-                            plan.Kontaktperson,
-                            plan.KontaktpersonTilhører,
-                            plan.Overskrift,
-                            plan.RettelserEfterAnnoncekontrol,
-                            plan.OprettetDato
-                        } into mg
-                        select new { mg.Key.MedieplanNr ,
-                        mg.Key.AnnoncørNo_,
-                            mg.Key.BureauNo_,
-                            mg.Key.Format1,
-                            mg.Key.Format2,
-                            mg.Key.AntalFarver,
-                            mg.Key.IndrykningsUge,
-                            mg.Key.Beskrivelse,
-                            mg.Key.KonsulentCode,
-                            mg.Key.Status,
+                            select new
+                            {
 
-                            mg.Key.Version,
-                          
-                          
-                            mg.Key.Kontaktperson,
-                            mg.Key.KontaktpersonTilhører,
-                            mg.Key.Overskrift,
-                            mg.Key.RettelserEfterAnnoncekontrol,
-                            mg.Key.OprettetDato
-                        };
-                       
-                   
-                     if (mediePlan != 0)
-            {
-                query = query.Where(m => m.MedieplanNr == mediePlan);
+                                AnnoncørNo_ = m.AnnoncørNo_,
+                                BureauNo_ = m.BureauNo_,
+                                Format1 = m.Format1,
+                                Format2 = m.Format2,
+                                AntalFarver = m.AntalFarver,
+                                IndrykningsUge = m.IndrykningsUge,
+                                Beskrivelse = m.Beskrivelse,
+                                KonsulentCode = m.KonsulentCode,
+                                Status = m.Status,
+
+                                Version = m.Version,
+                                MedieplanNr = m.MedieplanNr,
+                                Kontaktperson = m.Kontaktperson,
+                                KontaktpersonTilhører = m.KontaktpersonTilhører,
+                                Overskrift = m.Overskrift,
+
+                                OprettetDato = m.OprettetDato,
+                               Name = nv.Name
+
+                            } into plan
+                            group plan by new
+                            {
+                                plan.AnnoncørNo_,
+                                plan.BureauNo_,
+                                plan.Format1,
+                                plan.Format2,
+                                plan.AntalFarver,
+                                plan.IndrykningsUge,
+                                plan.Beskrivelse,
+                                plan.KonsulentCode,
+                                plan.Status,
+
+                                plan.Version,
+                                plan.MedieplanNr,
+                                plan.Kontaktperson,
+                                plan.KontaktpersonTilhører,
+                                plan.Overskrift,
+
+                                plan.OprettetDato,
+                               plan.Name
+                                
+                             
+                            } into mg
+                            select new FundetMediePlaner()
+                            {
+                                MedieplanNr = mg.Key.MedieplanNr,
+                                AnnoncørNo_ = mg.Key.AnnoncørNo_,
+                                BureauNo_ = mg.Key.BureauNo_,
+                                Format1 = mg.Key.Format1,
+                                Format2 = mg.Key.Format2,
+                                AntalFarver = mg.Key.AntalFarver,
+                                IndrykningsUge = mg.Key.IndrykningsUge,
+                                Beskrivelse = mg.Key.Beskrivelse,
+                                KonsulentCode = mg.Key.KonsulentCode,
+                                Status = mg.Key.Status,
+
+                                Version = mg.Key.Version,
+
+
+                                Kontaktperson = mg.Key.Kontaktperson,
+                                KontaktpersonTilhører = mg.Key.KontaktpersonTilhører,
+                                Overskrift = mg.Key.Overskrift,
+
+                                OprettetDato = mg.Key.OprettetDato,
+                               navision_name = mg.Key.Name
+
+                            };
+
+
+                if (mediePlan != 0)
+                {
+                    query = query.Where(m => m.MedieplanNr == mediePlan);
+                }
+                if (annnoncør != "")
+                {
+
+                    query = query.Where(a => a.AnnoncørNo_.StartsWith(annnoncør) || a.AnnoncørNo_.Contains(annnoncør) || a.AnnoncørNo_.EndsWith(annnoncør));
+
+                }
+                if (bureau != "")
+                {
+                    query = query.Where(b => b.BureauNo_.StartsWith(bureau) || b.BureauNo_.Contains(bureau) || b.BureauNo_.EndsWith(bureau));
+                }
+                if (fraUge != 0 && tilUge != 0)
+                {
+                    query = query.Where(fu => fu.IndrykningsUge > fraUge && tilUge <= fu.IndrykningsUge);
+                }
+                if (aar != 0)
+                {
+                    res = res.Where(ar => ar.IndrykningsÅr == aar);
+                }
+                if (visInAktiveAnnoncer)
+                {
+
+                }
+
+
+
+
+
+                return query.ToList();
+
+
+
             }
-                     if(annnoncør !="null")
+            catch(Exception e)
             {
-
-                query = query.Where(a => a.AnnoncørNo_.StartsWith(annnoncør) || a.AnnoncørNo_.Contains(annnoncør) || a.AnnoncørNo_.EndsWith(annnoncør));
-            
-            }
-             if (bureau !="null")
-            {
-                query = query.Where(b => b.BureauNo_.StartsWith(bureau) || b.BureauNo_.Contains(bureau) || b.BureauNo_.EndsWith(bureau));
-            } 
-             if(fraUge !=0 && tilUge !=0)
-            {
-                query = query.Where(fu => fu.IndrykningsUge > fraUge && tilUge <= fu.IndrykningsUge);
-            } if (aar !=0)
-            {
-                res = res.Where(ar => ar.IndrykningsÅr == aar);
-            } if(visInAktiveAnnoncer)
-            {
-             
+                throw e;
             }
 
-    
-
-
-            Console.WriteLine(query.ToList());
-            return JsonConvert.SerializeObject(query, Formatting.Indented);
+         
 
 
 

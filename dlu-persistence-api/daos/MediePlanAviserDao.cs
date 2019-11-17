@@ -16,7 +16,7 @@ namespace dlu_persistence_api.daos
             diMPdot = new DiMPdotNetDevEntities();
         }
 
-        public string GetAllUgeAvisTilGrid(int bladid, int year,int placeringid)
+        public AviserTilGrid GetAllUgeAvisTilGrid(int bladid, int year,  int placeringid=0)
         {
             try
             {
@@ -41,7 +41,7 @@ namespace dlu_persistence_api.daos
                            join prisl in diMPdot.tblPrislisters on p.PrislisteID equals prisl.PrislisteID into pprisl
                            from prisl in pprisl.DefaultIfEmpty()
                               
-                           where b.BladID == bladid & b.Ophørt == false  & p.År == year  & p.PlaceringID == placeringid select new  { Adresse = b.Adresse, AnnonceEmail = b.Adresse2, BladID = b.BladID, CVR = b.CVR, Adresse2 = b.Adresse2, AnnonceKontrolEmail = b.AnnonceKontrolEmail,
+                           where b.BladID == bladid & b.Ophørt == false  & p.År == year  & p.PlaceringID == placeringid select new AviserTilGrid  { Adresse = b.Adresse, AnnonceEmail = b.Adresse2, BladID = b.BladID, CVR = b.CVR, Adresse2 = b.Adresse2, AnnonceKontrolEmail = b.AnnonceKontrolEmail,
                                Betegnelse = pla.Betegnelse, BilagsbladeEmail = b.BilagsbladeEmail, BogholderiEmails = b.BogholderiEmails, DaekningsGrad = d.DækningsGrad, DagNavn = da.DagNavn, DiMPDelOmraadeKode = b.DiMPDelOmrådeKode, Ejerforhold = b.Ejerforhold,
                                Emails = b.Emails, FakturaGruppeID = b.FakturaGruppeID, Farve4Max = p.Farve4Max, Farve4Min = p.Farve4Min, Farve4Pris = p.Farve4Pris, FarveMax = p.FarveMax, FarveMin = p.FarveMin, FarvePris = p.FarvePris, Fax = b.Fax, Format = b.Format,
                                FormatFra = p.FormatFra, FormatTil = p.FormatTil, GeoKodeNavn = geo.GeoKodeNavn, GiverWebTillaeg = b.GiverWebTillæg, GruppeRabat = b.GruppeRabat, Hjemmeside = b.Hjemmeside, HovedGruppeNavn = hg.HovedGruppeNavn, Husstande = pos.Husstande,
@@ -54,12 +54,13 @@ namespace dlu_persistence_api.daos
                               
                                MMPris = p.mmPris,
                             
-                               webtillages =   from wb in b.tblBladTillaegs select new
+                               webtillages =  ( from wb in b.tblBladTillaegs where wb.bladId == bladid select new webtilLæg
                                {
-                                   wb.id, 
-                                   wb.pris,
+                                  wbId =   wb.id, 
+                                  wpPris = wb.pris,
                                    type = wb.tblBladTillaegsType.type
-                               },
+                                
+                               }).ToList()
                           
                                         
 
@@ -72,11 +73,11 @@ namespace dlu_persistence_api.daos
                                                   
                        
                            };
-                           
-                      
-                         
 
-                return JsonConvert.SerializeObject(res.Take(1), Formatting.Indented);
+
+
+
+                return res.First();
 
                         
                         
@@ -87,5 +88,90 @@ namespace dlu_persistence_api.daos
                 throw new Exception(e.HelpLink);
             }
         }
+    }
+
+    public class AviserTilGrid
+    {
+        public string Adresse { get; set; }
+        public string AnnonceEmail { get; set; }
+        public int BladID { get; set; }
+        public string CVR { get; set; }
+        public string Adresse2 { get; set; }
+        public string AnnonceKontrolEmail { get; set; }
+        public string Betegnelse { get; set; }
+        public string BilagsbladeEmail { get; set; }
+        public string BogholderiEmails { get; set; }
+        public int DaekningsGrad { get; set; }
+        public string DagNavn { get; set; }
+        public string DiMPDelOmraadeKode { get; set; }
+        public string Ejerforhold { get; set; }
+        public string Emails { get; set; }
+        public int FakturaGruppeID { get; set; }
+        public decimal? Farve4Max { get; set; }
+        public decimal? Farve4Min { get; set; }
+        public decimal? Farve4Pris { get; set; }
+        public decimal? FarveMax { get; set; }
+        public decimal? FarveMin { get; set; }
+        public decimal? FarvePris { get; set; }
+        public string Fax { get; set; }
+        public string Format { get; set; }
+        public int FormatFra { get; set; }
+        public int FormatTil { get; set; }
+        public string GeoKodeNavn { get; set; }
+        public bool GiverWebTillaeg { get; set; }
+        public string GruppeRabat { get; set; }
+        public string Hjemmeside { get; set; }
+        public string HovedGruppeNavn { get; set; }
+        public int Husstande { get; set; }
+        public string Koncern { get; set; }
+        public string Kontaktperson { get; set; }
+        public string KontaktpersonerEmails { get; set; }
+        public bool? MaaGiveFarveRabat { get; set; }
+        public string MaterialedeadlineRubrik { get; set; }
+        public byte? MaterialeDeadlineRubrikDag { get; set; }
+        public byte? MatGodtBeloeb { get; set; }
+        public string MaterialeDeadlineRubrikKl { get; set; }
+        public string MaterialedeadlineTekst { get; set; }
+        public byte? MaterialeDeadlineTekstDag { get; set; }
+        public string MaterialeDeadlineTekstKl { get; set; }
+        public string MaterialeEmail { get; set; }
+        public byte MaxDaekningsGrad { get; set; }
+        public byte? Medlemaar { get; set; }
+        public byte? MedlemMaaned { get; set; }
+        public decimal? mmPris { get; set; }
+        public decimal? MMPris { get; set; }
+        public string Navn { get; set; }
+        public string Navn2 { get; set; }
+        public bool Ophoert { get; set; }
+        public int Oplag { get; set; }
+        public string OrdrecheckEmail { get; set; }
+        public byte? OrdrecheckSendeDagID { get; set; }
+        public string OrdredeadlineRubrik { get; set; }
+        public byte? OrdreDeadlineRubrikDag { get; set; }
+        public string OrdreDeadlineRubrikKl { get; set; }
+        public string OrdredeadlineTekst { get; set; }
+        public byte? OrdreDeadlineTekstDag { get; set; }
+        public string OrdreDeadlineTekstKl { get; set; }
+        public string OrdreEmail { get; set; }
+        public string OrienteringEmails { get; set; }
+        public bool Overfoert { get; set; }
+        public string PostBy { get; set; }
+        public int? PostNr { get; set; }
+        public int? Primaer { get; set; }
+        public byte? PrimaerPct { get; set; }
+        public string PrisforespoergselEmails { get; set; }
+        public string PrislisteNavn { get; set; }
+        public string RedaktionEmail { get; set; }
+        public string RegionNavn { get; set; }
+        public string SamannonceringsRabat { get; set; }
+        public string SendetidOrdrecheck { get; set; }
+        public bool? SendIndevaerendeUge { get; set; }
+        public string StamdataEmail { get; set; }
+        public string Tlf { get; set; }
+        public int? Totalomraade { get; set; }
+        public byte? TotalomraadePct { get; set; }
+        public bool VisPaaWWW { get; set; }
+        public string WWWDaekningSomTekst { get; set; }
+        public List<webtilLæg> webtillages { get; set; }
     }
 }

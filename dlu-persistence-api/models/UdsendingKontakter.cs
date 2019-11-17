@@ -16,17 +16,18 @@ namespace dlu_persistence_api.models
         public UdsendingKontakter()
         {
             DiMPdotNetDevEntities = new DiMPdotNetDevEntities();
+          
             KontaktTyper = (from kt in DiMPdotNetDevEntities.tblStambladUdsendingEmailTypers
                             select new StambladUdsendingEmailTyper()
                             {
                                 id = kt.id, titel = kt.titel
-                            }).ToList<StambladUdsendingEmailTyper>();
+                            }).ToList();
 
             KontaktTitlers  = (from t in DiMPdotNetDevEntities.tblKontaktTitlers
                           select new Titler()
                           {
-                              id = t.TitelID, titel = t.Titel
-                          }).ToList<Titler>(); 
+                              Id = t.TitelID , Titel = t.Titel
+                          }).ToList(); 
         }
         private int? bladId;
         private int id;
@@ -53,7 +54,7 @@ namespace dlu_persistence_api.models
         {
         }
 
-        public int id { get; set; }
-        public string titel { get; set; }
+        public int Id { get; set; }
+        public string Titel { get; set; }
     }
 }

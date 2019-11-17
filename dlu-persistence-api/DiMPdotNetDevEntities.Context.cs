@@ -68,6 +68,7 @@ namespace dlu_persistence_api
         public virtual DbSet<tblMedieplanLinjer> tblMedieplanLinjers { get; set; }
         public virtual DbSet<tblMedieplanNr> tblMedieplanNrs { get; set; }
         public virtual DbSet<tblMedIGruppe> tblMedIGruppes { get; set; }
+        public virtual DbSet<tblOphørtBlad> tblOphørtBlad { get; set; }
         public virtual DbSet<tblOrdreGebyrNavision> tblOrdreGebyrNavisions { get; set; }
         public virtual DbSet<tblOrdreLinjerNavision> tblOrdreLinjerNavisions { get; set; }
         public virtual DbSet<tblOrdreNavision> tblOrdreNavisions { get; set; }
@@ -81,6 +82,8 @@ namespace dlu_persistence_api
         public virtual DbSet<tblPrislisterPrBladPrUge> tblPrislisterPrBladPrUges { get; set; }
         public virtual DbSet<tblRegion> tblRegions { get; set; }
         public virtual DbSet<tblRemindereSendt> tblRemindereSendts { get; set; }
+        public virtual DbSet<tblStamBladBogHolderi> tblStamBladBogHolderis { get; set; }
+        public virtual DbSet<tblStambladKoncern> tblStambladKoncerns { get; set; }
         public virtual DbSet<tblStambladKontakter> tblStambladKontakters { get; set; }
         public virtual DbSet<tblStambladUdsendingEmailTyper> tblStambladUdsendingEmailTypers { get; set; }
         public virtual DbSet<tblSupportBilag> tblSupportBilags { get; set; }
@@ -125,9 +128,6 @@ namespace dlu_persistence_api
         public virtual DbSet<viewOversigt> viewOversigts { get; set; }
         public virtual DbSet<viewUpdateStatusIMedieplan> viewUpdateStatusIMedieplans { get; set; }
         public virtual DbSet<viewUpdateStatusIMedieplanNr> viewUpdateStatusIMedieplanNrs { get; set; }
-        public virtual DbSet<tblOphørtBlad> tblOphørtBlad { get; set; }
-        public virtual DbSet<tblStamBladBogHolderi> tblStamBladBogHolderis { get; set; }
-        public virtual DbSet<tblStambladKoncern> tblStambladKoncerns { get; set; }
     
         public virtual int dt_addtosourcecontrol(string vchSourceSafeINI, string vchProjectName, string vchComment, string vchLoginName, string vchPassword)
         {

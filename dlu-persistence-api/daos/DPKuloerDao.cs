@@ -16,18 +16,18 @@ namespace dlu_persistence_api.daos
             devEntities = new DiMPdotNetDevEntities();
         }
 
-        public string GetDPKuloer()
+        public List<DPKulør> GetDPKuloer()
         {
             try
             {
                 var res = from ku in devEntities.tblDPKulør
                           orderby ku.DPKulørID ascending
-                          select new
+                          select new DPKulør()
                           {
                              DPKuloerId =  ku.DPKulørID, kuloer=  ku.Kulør
                                    
                           };
-                return JsonConvert.SerializeObject(res, Formatting.Indented);
+                return res.ToList();
 
             }
             catch (Exception e)

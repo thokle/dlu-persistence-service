@@ -1,9 +1,11 @@
 using System.Threading.Tasks;
 using dlu_persistence_api.daos;
+using dlu_persistence_api.models;
+using System.Collections.Generic;
 namespace dlu_persistence_api.services
 {
     
-    public class MediePlanÆndringsService: IMediePlanÆndringerService
+    public class MediePlanÆndringsService
     {
 
         private MedieplanÆndringerDao _ændringerDao;
@@ -13,7 +15,7 @@ namespace dlu_persistence_api.services
             _ændringerDao = new MedieplanÆndringerDao();
         }
         
-        public string GetMediePlanÆndringerByMedieId(int mediePlan, int version)
+        public List<AenderingsTekst> GetMediePlanÆndringerByMedieId(int mediePlan, int version)
         {
             return _ændringerDao.GetMediePlanÆndringerByMedieId(mediePlan, version);
         }

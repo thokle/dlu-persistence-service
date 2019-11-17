@@ -18,7 +18,8 @@ namespace dlu_persistence_api.daos
         public StamBladUdsendigKontakterDao()
         {
             entities = new DiMPdotNetDevEntities();
-            entities.Configuration.LazyLoadingEnabled = true;
+            entities.Configuration.LazyLoadingEnabled = false;
+            
         }
 
 
@@ -32,7 +33,7 @@ namespace dlu_persistence_api.daos
                     from tuk in entities.tblBladUdsendingKontakters
                     join tl in entities.tblKontaktTitlers on tuk.titel equals tl.TitelID into tuktl
                     from tukl in tuktl.DefaultIfEmpty()
-             
+
 
                     join du in entities.tblStambladUdsendingEmailTypers on tuk.type equals du.id where tuk.bladid == bladId
                     select new UdsendingKontakter
@@ -43,13 +44,10 @@ namespace dlu_persistence_api.daos
                         Id = tuk.id,
                         BladId = tuk.bladid,
                         Telefonnummer = tuk.telefonnummer,
-                        Titel = tukl.Titel, 
-                        KontaktTyper = (from kt in entities.tblStambladUdsendingEmailTypers select new StambladUdsendingEmailTyper()
-                        {
-                           id = kt.id , titel = kt.titel
-                           
-                        }).ToList<StambladUdsendingEmailTyper>()
-                       
+                        Titel = tukl.Titel,
+                      
+                     
+                        
                     };
 
 

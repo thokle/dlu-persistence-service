@@ -16,6 +16,7 @@ namespace dlu_persistence_api.daos
         public StamBladKontakterDao()
         {
             entities = new DiMPdotNetDevEntities();
+            entities.Configuration.LazyLoadingEnabled = false;
         }
 
 

@@ -9,6 +9,7 @@ namespace dlu_persistence_api.daos
         public Priser()
         {
             di = new DiMPdotNetDevEntities();
+            di.Configuration.LazyLoadingEnabled = false;
             placerings = (from pl in di.tblPlacerings
                       select new Placering()
                       {
@@ -31,7 +32,7 @@ namespace dlu_persistence_api.daos
         public int PrislisteID { get; set; }
         public decimal? mmPris { get; set; }
         public string placering { get; set; }
-        public List<Placering> placerings { get; set; }
+        public List<Placering> placerings{ get; set; }
         public string Betegnelse { get;  set; }
         public string PrislisteNavn { get;  set; }
     }

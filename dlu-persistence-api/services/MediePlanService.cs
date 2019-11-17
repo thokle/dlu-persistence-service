@@ -1,9 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using  dlu_persistence_api.daos;
 namespace dlu_persistence_api.services
 {
-    public class MediePlanService: IMediePlanService
+    public class MediePlanService
     {
         private MediePlanDao _mediePlanDao;
 
@@ -45,7 +46,7 @@ namespace dlu_persistence_api.services
             return _mediePlanDao.GetMediePlanByNumber(medieplanNr, version);
         }
 
-        public string findMediePlanToolbar(int mediePlan = 0, string annnoncør = null, string bureau = null, int fraUge = 0, int tilUge = 0, int aar = 0, bool visInAktiveAnnoncer = false, bool mediePlanCheckBox = false, bool bookingCheckBox = false, bool rtAkCheckBox = false, bool faktureing = false)
+        public List<FundetMediePlaner> findMediePlanToolbar(int mediePlan = 0, string annnoncør = null, string bureau = null, int fraUge = 0, int tilUge = 0, int aar = 0, bool visInAktiveAnnoncer = false, bool mediePlanCheckBox = false, bool bookingCheckBox = false, bool rtAkCheckBox = false, bool faktureing = false)
         {
             return _mediePlanDao.findMediePlanToolbar(mediePlan, annnoncør, bureau, fraUge, tilUge, aar, visInAktiveAnnoncer, mediePlanCheckBox, bookingCheckBox, rtAkCheckBox, faktureing);
         }

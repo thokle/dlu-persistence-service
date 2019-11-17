@@ -34,7 +34,7 @@ namespace dlu_persistence_api.daos
             try
             {
                 var postnrs = from ps in _diMPdotNetEntities.tblPostNrs
-                              orderby ps.PostBy
+                              orderby ps.PostNr ascending
                               select new PostNrModel()
                               {
                                   PostNr = ps.PostNr,

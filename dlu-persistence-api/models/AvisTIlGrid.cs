@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace dlu_persistence_api.models
 {
-    public class AvisTIlGrid
+    public class AvisTIlGrid: System.ComponentModel.INotifyPropertyChanged
     {
-        public string Adresse { get; set; }
+        public string Adresse { get { return Adresse; } set { Adresse = value; NotifyPropertyChanged("Adresse"); } }
         public string Adresse2 { get; set; }
         public string AnnonceEmail { get; set; }
         public string AnnonceKontrolEmail { get; set; }
@@ -89,9 +90,16 @@ namespace dlu_persistence_api.models
         public string Betegnelse { get; set; }
         public string PrislisteNavn { get; set; }
         public decimal? totalPris { get;  set; }
+        public string bemærkning { get; set; }
 
-      
-      public decimal? calTotalPris()
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged(String info)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(info));
+        }
+
+        public decimal? calTotalPris()
         {
           return  this.Farve4Max + Farve4Min + Farve4Pris + FarveMax + FarveMin + FarvePris;
         }

@@ -3,7 +3,7 @@ using dlu_persistence_api.daos;
 
 namespace dlu_persistence_api.services
 {
-    public class BladDækningService : IBladDæknigService
+    public class BladDækningService
     {
         private readonly BladDækningDao _dao;
 
@@ -24,7 +24,7 @@ namespace dlu_persistence_api.services
             return _dao.OpretBladDækning(tblBladDækning);
         }
 
-        public Task<int> DeleteDaeking(int bladid, int postnr)
+        public int DeleteDaeking(int bladid, int postnr)
         {
             return _dao.DeleteDaeking(bladid, postnr);
         }

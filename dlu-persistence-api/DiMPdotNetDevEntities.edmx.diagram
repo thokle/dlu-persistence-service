@@ -4,146 +4,146 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="19541e07e9b040a2addad5399c92efd4" Name="Diagram1">
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.dtproperty" Width="1.5" PointX="7.75" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.KontaktTitler" Width="1.5" PointX="7.75" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.OpdateringsTekst" Width="1.5" PointX="14.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.sysdiagram" Width="1.5" PointX="13.75" PointY="16.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblAnnoncekontrol" Width="1.5" PointX="6" PointY="28.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblBladDækning" Width="1.5" PointX="15.75" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblBladKommentar" Width="1.5" PointX="15.75" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblBladnavnMappingFraDO" Width="1.5" PointX="15.75" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblBladRabat" Width="1.5" PointX="15.75" PointY="14.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblBladRabatter" Width="1.5" PointX="15.75" PointY="17.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblBladStamdata" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblBladStamdataKopi" Width="1.5" PointX="8" PointY="54.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblBladTillaeg" Width="1.5" PointX="5.25" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblBladTillaegsType" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblBladUdsendingKontakter" Width="1.5" PointX="17.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblBrugerData" Width="1.5" PointX="17.75" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblDage" Width="1.5" PointX="0.75" PointY="12.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblDelOmråde" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblDPKulør" Width="1.5" PointX="3.75" PointY="45.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblEjerforhold" Width="1.5" PointX="17.75" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblFakturaFejl" Width="1.5" PointX="17.75" PointY="12.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblFakturaFejlTekst" Width="1.5" PointX="17.75" PointY="15.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblFaktureringsBilag" Width="1.5" PointX="17.75" PointY="18.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblFejlTekst" Width="1.5" PointX="3.75" PointY="29" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblGeoKode" Width="1.5" PointX="0.75" PointY="21" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblGrupper" Width="1.5" PointX="3" PointY="41.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblGruppeRabatter" Width="1.5" PointX="13.75" PointY="20.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblHovedGruppe" Width="1.5" PointX="0.75" PointY="23.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblKonkurrentDækning" Width="1.5" PointX="6" PointY="17.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblKonkurrenter" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblKontaktArbOmråder" Width="1.5" PointX="5.75" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblKontakter" Width="1.5" PointX="8" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblKontakterPrBlad" Width="1.5" PointX="10.375" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblKontaktFunktioner" Width="1.5" PointX="12.5" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblKontaktTitler" Width="1.5" PointX="5.75" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblMateriale" Width="1.5" PointX="6" PointY="33.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblMedieplan" Width="1.5" PointX="6" PointY="41.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblMedieplanÆndringer" Width="1.5" PointX="19.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblMedieplanLinjer" Width="1.5" PointX="8.25" PointY="14.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblMedieplanNr" Width="1.5" PointX="3.75" PointY="32.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblMedIGruppe" Width="1.5" PointX="5.25" PointY="20.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblOrdreGebyrNavision" Width="1.5" PointX="13" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblOrdreLinjerNavision" Width="1.5" PointX="13" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblOrdreNavision" Width="1.5" PointX="10.75" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblPlacering" Width="1.5" PointX="3.75" PointY="47.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblPostNr" Width="1.5" PointX="0.75" PointY="17.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblPostNrSøgning" Width="1.5" PointX="3" PointY="38.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblPriceAsking" Width="1.5" PointX="19.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblPriser" Width="1.5" PointX="11.25" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblPrislister" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblPrislisterPrBladPrÅr" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblPrislisterPrBladPrUge" Width="1.5" PointX="5.25" PointY="23.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblRegion" Width="1.5" PointX="0.75" PointY="26.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblRemindereSendt" Width="1.5" PointX="19.75" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblStambladKontakter" Width="1.5" PointX="19.75" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblStambladUdsendingEmailTyper" Width="1.5" PointX="19.75" PointY="14.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblSupportBilag" Width="1.5" PointX="19.75" PointY="17.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblWEBeMail" Width="1.5" PointX="10.75" PointY="22.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblWEBForespørgsel" Width="1.5" PointX="15.75" PointY="22.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblWEBForespørgselLinjer" Width="1.5" PointX="21.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblWEBSendTilKollega" Width="1.5" PointX="21.75" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.User" Width="1.5" PointX="21.75" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.bladtlfogfaxkopi" Width="1.5" PointX="21.75" PointY="14.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.delPriser" Width="1.5" PointX="21.75" PointY="17.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.HerningFolkeblad" Width="1.5" PointX="17.75" PointY="23.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblAktiveVærdier" Width="1.5" PointX="21.75" PointY="20.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblAktivGruppeVersion" Width="1.5" PointX="19.75" PointY="23.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblFarveTillægWebApp" Width="1.5" PointX="21.75" PointY="23.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblMmPrisWebApp" Width="1.5" PointX="7.75" PointY="24.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblPlannerPlaner" Width="1.5" PointX="23.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tempPriser" Width="1.5" PointX="23.75" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tmpNyeDeadline" Width="1.5" PointX="9.75" PointY="25.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tnpOrdreNr" Width="1.5" PointX="23.75" PointY="12.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tnpOrdreNr2" Width="1.5" PointX="11.75" PointY="25.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tnpOrdreNr3" Width="1.5" PointX="23.75" PointY="14.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.AktiveUgeaviserMedAlleData" Width="1.5" PointX="23.75" PointY="17.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.FakturaFejlFinde" Width="1.5" PointX="17.75" PointY="26.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.FindFejlLinjer" Width="1.5" PointX="25.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.GammelAnnoncørID" Width="1.5" PointX="25.75" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.LPRoller" Width="1.5" PointX="25.75" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.NavisionContact" Width="1.5" PointX="25.75" PointY="13.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.NavisionContact2" Width="1.5" PointX="11.75" PointY="27.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.Salesperson" Width="1.5" PointX="13.75" PointY="27.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.UgeaviserTilGrid" Width="1.5" PointX="25.75" PointY="18.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.viewBlade" Width="1.5" PointX="19.75" PointY="27.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.viewBookingListe" Width="1.5" PointX="25.75" PointY="25.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.viewGrupper" Width="1.5" PointX="8.75" PointY="28.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.viewLinjeDiff" Width="1.5" PointX="27.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.viewOrdre" Width="1.5" PointX="0.75" PointY="29.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.viewOrdreErSendt" Width="1.5" PointX="27.75" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.viewOrdreFIND" Width="1.5" PointX="27.75" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.viewOrdreIkkeSendt" Width="1.5" PointX="27.75" PointY="17.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.viewOrdreLinjer" Width="1.5" PointX="15.75" PointY="29.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.viewOrdreLinjerFIND" Width="1.5" PointX="27.75" PointY="22.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.viewOrdreSendtManglerMateriale" Width="1.5" PointX="21.75" PointY="29.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.viewOversigt" Width="1.5" PointX="23.75" PointY="29.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.viewUpdateStatusIMedieplan" Width="1.5" PointX="27.75" PointY="27.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.viewUpdateStatusIMedieplanNr" Width="1.5" PointX="10.75" PointY="30.375" IsExpanded="true" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblFejl_tblFejlTekst" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblMedieplanLinjer_tblFejl" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblBladeIGrupper_tblBladStamdata" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblBladStamdata_OrdrecheckSendeDagID_tblDage_DagID" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblBladStamdata_UgedagID_tblDage_DagID" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblBladStamdata_tblDelOmråde" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblBladStamdata_tblGeoKoder" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblBladStamdata_tblHovedGruppe" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblBladStamdata_tblPostNr" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblBladStamdata_tblRegioner" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblBladTillaeg_tblBladStamdata" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblMedieplanLinjer_tblBladStamdata" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblPriser_tblBladStamdata" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblPrislisterPrBladPrÅr_tblBladStamdata" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblPrislisterPrBladPrUge_tblBladStamdata" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblKontakterPrBlad_tblBladStamdataKopi" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblBladTillaeg_tblBladTillaegsType" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblMedieplan_tblDPKulør" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblMedIGruppe_tblGrupper" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblKonkurrentDækning_tblKonkurrenter" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblKonkurrentDækning_tblPostNr" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblKontakter_tblKontaktTitler" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblKontakterPrBlad_tblKontakter" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblMateriale_tblMedieplanNr" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblMedieplanLinjer_tblMateriale" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblMedieplan_tblMedieplanNr" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblMedieplan_tblPlacering" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblMedieplanLinjer_tblMedieplan" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblOrdreGebyrNavision_tblOrdreNavision" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblOrdreLinjerNavision_tblOrdreNavision" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblPriser_tblPlacering" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblPostNrSøgning_tblPostNr" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblPriser_tblPrislister" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblPrislisterPrBladPrÅr_tblPrislister" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblPrislisterPrBladPrUge_tblPrislister" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.tblKontakterArbOmråderPrKontakt" ManuallyRouted="false" />
-        <AssociationConnector Association="DiMPdotNetDevModel.tblKontaktFunktionerPrBlad" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblOphørtBlad" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblStamBladBogHolderi" Width="1.5" PointX="5.25" PointY="37.75" />
-        <AssociationConnector Association="DiMPdotNetDevModel.FK_tblStamBladBogHolderi_tblBladStamdata" />
-        <EntityTypeShape EntityType="DiMPdotNetDevModel.tblStambladKoncern" Width="1.5" PointX="10.375" PointY="0.75" />
+      <Diagram DiagramId="b9e97bfccff847b397fd438c973ed5ee" Name="Diagram1">
+        <EntityTypeShape EntityType="DiMPdotNetDev.dtproperty" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.KontaktTitler" Width="1.5" PointX="7.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.OpdateringsTekst" Width="1.5" PointX="8.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.sysdiagram" Width="1.5" PointX="9.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblAnnoncekontrol" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblBladDækning" Width="1.5" PointX="10.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblBladKommentar" Width="1.5" PointX="7.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblBladnavnMappingFraDO" Width="1.5" PointX="9.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblBladRabat" Width="1.5" PointX="12.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblBladRabatter" Width="1.5" PointX="10.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblBladStamdata" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblBladStamdataKopi" Width="1.5" PointX="8" PointY="61.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblBladTillaeg" Width="1.5" PointX="5.25" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblBladTillaegsType" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblBladUdsendingKontakter" Width="1.5" PointX="14.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblBrugerData" Width="1.5" PointX="14.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblDage" Width="1.5" PointX="0.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblDelOmråde" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblDPKulør" Width="1.5" PointX="3.75" PointY="52" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblEjerforhold" Width="1.5" PointX="16.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblFakturaFejl" Width="1.5" PointX="16.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblFakturaFejlTekst" Width="1.5" PointX="13.75" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblFaktureringsBilag" Width="1.5" PointX="15.75" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblFejlTekst" Width="1.5" PointX="3.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblGeoKode" Width="1.5" PointX="0.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblGrupper" Width="1.5" PointX="3" PointY="35" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblGruppeRabatter" Width="1.5" PointX="17.75" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblHovedGruppe" Width="1.5" PointX="0.75" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblKonkurrentDækning" Width="1.5" PointX="6" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblKonkurrenter" Width="1.5" PointX="3.75" PointY="48.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblKontaktArbOmråder" Width="1.5" PointX="5.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblKontakter" Width="1.5" PointX="8" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblKontakterPrBlad" Width="1.5" PointX="10.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblKontaktFunktioner" Width="1.5" PointX="12.5" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblKontaktTitler" Width="1.5" PointX="5.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblMateriale" Width="1.5" PointX="6" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblMedieplan" Width="1.5" PointX="6" PointY="47.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblMedieplanÆndringer" Width="1.5" PointX="18.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblMedieplanLinjer" Width="1.5" PointX="8.25" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblMedieplanNr" Width="1.5" PointX="3.75" PointY="30" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblMedIGruppe" Width="1.5" PointX="5.25" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblOphørtBlad" Width="1.5" PointX="18.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblOrdreGebyrNavision" Width="1.5" PointX="16" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblOrdreLinjerNavision" Width="1.5" PointX="16" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblOrdreNavision" Width="1.5" PointX="13.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblPlacering" Width="1.5" PointX="3.75" PointY="54.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblPostNr" Width="1.5" PointX="0.75" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblPostNrSøgning" Width="1.5" PointX="3" PointY="40.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblPriceAsking" Width="1.5" PointX="18.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblPriser" Width="1.5" PointX="11.25" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblPrislister" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblPrislisterPrBladPrÅr" Width="1.5" PointX="5.25" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblPrislisterPrBladPrUge" Width="1.5" PointX="5.25" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblRegion" Width="1.5" PointX="0.75" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblRemindereSendt" Width="1.5" PointX="18.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblStamBladBogHolderi" Width="1.5" PointX="5.25" PointY="44.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblStambladKoncern" Width="1.5" PointX="18.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblStambladKontakter" Width="1.5" PointX="19.75" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblStambladUdsendingEmailTyper" Width="1.5" PointX="19.75" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblSupportBilag" Width="1.5" PointX="20.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblWEBeMail" Width="1.5" PointX="20.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblWEBForespørgsel" Width="1.5" PointX="20.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblWEBForespørgselLinjer" Width="1.5" PointX="10.75" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblWEBSendTilKollega" Width="1.5" PointX="12.75" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.User" Width="1.5" PointX="21.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.bladtlfogfaxkopi" Width="1.5" PointX="14.75" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.delPriser" Width="1.5" PointX="21.75" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.HerningFolkeblad" Width="1.5" PointX="19.75" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblAktiveVærdier" Width="1.5" PointX="21.75" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblAktivGruppeVersion" Width="1.5" PointX="22.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblFarveTillægWebApp" Width="1.5" PointX="22.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblMmPrisWebApp" Width="1.5" PointX="22.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tblPlannerPlaner" Width="1.5" PointX="22.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tempPriser" Width="1.5" PointX="16.75" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tmpNyeDeadline" Width="1.5" PointX="7.75" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tnpOrdreNr" Width="1.5" PointX="23.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tnpOrdreNr2" Width="1.5" PointX="23.75" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.tnpOrdreNr3" Width="1.5" PointX="23.75" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.AktiveUgeaviserMedAlleData" Width="1.5" PointX="23.75" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.FakturaFejlFinde" Width="1.5" PointX="24.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.FindFejlLinjer" Width="1.5" PointX="24.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.GammelAnnoncørID" Width="1.5" PointX="24.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.LPRoller" Width="1.5" PointX="24.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.NavisionContact" Width="1.5" PointX="12.75" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.NavisionContact2" Width="1.5" PointX="18.75" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.Salesperson" Width="1.5" PointX="20.75" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.UgeaviserTilGrid" Width="1.5" PointX="25.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.viewBlade" Width="1.5" PointX="25.75" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.viewBookingListe" Width="1.5" PointX="26.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.viewGrupper" Width="1.5" PointX="26.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.viewLinjeDiff" Width="1.5" PointX="26.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.viewOrdre" Width="1.5" PointX="8.75" PointY="28.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.viewOrdreErSendt" Width="1.5" PointX="25.75" PointY="28.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.viewOrdreFIND" Width="1.5" PointX="27.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.viewOrdreIkkeSendt" Width="1.5" PointX="14.75" PointY="29.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.viewOrdreLinjer" Width="1.5" PointX="16.75" PointY="29.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.viewOrdreLinjerFIND" Width="1.5" PointX="27.75" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.viewOrdreSendtManglerMateriale" Width="1.5" PointX="27.75" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.viewOversigt" Width="1.5" PointX="28.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.viewUpdateStatusIMedieplan" Width="1.5" PointX="28.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiMPdotNetDev.viewUpdateStatusIMedieplanNr" Width="1.5" PointX="28.75" PointY="10.5" IsExpanded="true" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblFejl_tblFejlTekst" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblMedieplanLinjer_tblFejl" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblBladeIGrupper_tblBladStamdata" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblBladStamdata_OrdrecheckSendeDagID_tblDage_DagID" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblBladStamdata_UgedagID_tblDage_DagID" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblBladStamdata_tblDelOmråde" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblBladStamdata_tblGeoKoder" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblBladStamdata_tblHovedGruppe" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblBladStamdata_tblPostNr" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblBladStamdata_tblRegioner" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblBladTillaeg_tblBladStamdata" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblMedieplanLinjer_tblBladStamdata" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblPriser_tblBladStamdata" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblPrislisterPrBladPrÅr_tblBladStamdata" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblPrislisterPrBladPrUge_tblBladStamdata" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblStamBladBogHolderi_tblBladStamdata" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblKontakterPrBlad_tblBladStamdataKopi" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblBladTillaeg_tblBladTillaegsType" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblMedieplan_tblDPKulør" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblMedIGruppe_tblGrupper" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblKonkurrentDækning_tblKonkurrenter" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblKonkurrentDækning_tblPostNr" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblKontakter_tblKontaktTitler" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblKontakterPrBlad_tblKontakter" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblMateriale_tblMedieplanNr" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblMedieplanLinjer_tblMateriale" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblMedieplan_tblMedieplanNr" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblMedieplan_tblPlacering" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblMedieplanLinjer_tblMedieplan" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblOrdreGebyrNavision_tblOrdreNavision" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblOrdreLinjerNavision_tblOrdreNavision" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblPriser_tblPlacering" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblPostNrSøgning_tblPostNr" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblPriser_tblPrislister" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblPrislisterPrBladPrÅr_tblPrislister" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.FK_tblPrislisterPrBladPrUge_tblPrislister" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.tblKontakterArbOmråderPrKontakt" ManuallyRouted="false" />
+        <AssociationConnector Association="DiMPdotNetDev.tblKontaktFunktionerPrBlad" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

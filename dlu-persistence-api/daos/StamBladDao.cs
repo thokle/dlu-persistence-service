@@ -132,7 +132,10 @@ namespace dlu_persistence_api.daos
             }
             catch (Exception e)
             {
-                throw new FormattedDbEntityValidationException(e.InnerException);
+                return new BladStamdata()
+                {
+
+                };
             }
         }
 

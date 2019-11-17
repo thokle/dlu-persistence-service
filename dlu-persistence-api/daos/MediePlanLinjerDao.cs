@@ -65,13 +65,13 @@ namespace dlu_persistence_api.daos
         /// <param name="tblMedieplanLinjer"></param>
         /// <returns></returns>
         /// <exception cref="DaoExceptions"></exception>
-        public int CreateOrUpdateMediePlanLinjer(System.Collections.Generic.List<tblMedieplanLinjer> tblMedieplanLinjer)
+        public Task<int> CreateOrUpdateMediePlanLinjer(tblMedieplanLinjer tblMedieplanLinjer)
         {
-            int res = 0;
+            Task<int> res = null;
             try
             {
-            _entities.tblMedieplanLinjers.AddRange(tblMedieplanLinjer);
-               res = _entities.SaveChanges();
+            _entities.tblMedieplanLinjers.AddOrUpdate(tblMedieplanLinjer);
+               res = _entities.SaveChangesAsync();
           
           
             }

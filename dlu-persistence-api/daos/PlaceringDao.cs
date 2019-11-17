@@ -19,17 +19,17 @@ namespace dlu_persistence_api.daos
         }
 
 
-        public List<tblPlacering> GetPlaceringer()
+        public List<Placering> GetPlaceringer()
         {
             try
             {
                 var res = from pl in entities.tblPlacerings
-                          select new tblPlacering
+                          select new Placering
                           {
                              PlaceringID =  pl.PlaceringID,
-                            Betegnelse =   pl.Betegnelse
+                            Betegenlse =   pl.Betegnelse
                           };
-                return res.ToList<tblPlacering>();
+                return res.ToList<Placering>();
             }
             catch (Exception e)
             {

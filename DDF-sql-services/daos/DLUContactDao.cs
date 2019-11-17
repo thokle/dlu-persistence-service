@@ -9,11 +9,11 @@ namespace DDF_sql_services.daos
 {
    public class DLUContactDao
     {
-        private DDFEntities1 entities1;
+        private DDFEntities entities1;
         
         public DLUContactDao()
         {
-            entities1 = new DDFEntities1();
+            entities1 = new DDFEntities();
             entities1.Configuration.LazyLoadingEnabled = true;
         }
 

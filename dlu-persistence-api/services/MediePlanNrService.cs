@@ -1,9 +1,12 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using dlu_persistence_api.daos;
+using dlu_persistence_api.models;
+
 namespace dlu_persistence_api.services
 {
-    public class MediePlanNrService: IMediePlanNrService
+    public class MediePlanNrService
     {
 
         private MediaPlanNrDao MediaPlanNrDao;
@@ -13,7 +16,7 @@ namespace dlu_persistence_api.services
             MediaPlanNrDao = new MediaPlanNrDao();
         }
 
-    public string GetMediePlanNrByMedIePlanNr(int mediePlannr)
+    public List<MediePlanNr> GetMediePlanNrByMedIePlanNr(int mediePlannr)
         {
             return MediaPlanNrDao.GetMediePlanNrDaoByMedPlanId(mediePlanId: mediePlannr);
         }

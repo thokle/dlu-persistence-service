@@ -32,6 +32,8 @@ namespace dlu_persistence_api.daos
                             BladId =   bl.bladId,
                             Pris =   bl.pris,
                             type =   d.type,
+                          fastpris =   bl.fastpris,
+                         mmpris = bl.mmpris
                             
                             
                           }).ToList<BladTillæg>();

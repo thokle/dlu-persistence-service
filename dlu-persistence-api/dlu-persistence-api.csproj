@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.3.0-rc1-19458-04\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.3.0-rc1-19458-04\build\EntityFramework.props')" />
+  <Import Project="..\packages\EntityFramework.6.4.0-preview2-19525-03\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0-preview2-19525-03\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -44,19 +44,17 @@
     <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-      <HintPath>..\packages\EntityFramework.6.3.0-rc1-19458-04\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0-preview2-19525-03\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-      <HintPath>..\packages\EntityFramework.6.3.0-rc1-19458-04\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0-preview2-19525-03\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Json, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c6752e45808247c2, processorArchitecture=MSIL">
       <HintPath>..\packages\JSON.1.0.1\lib\net40\Json.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3-beta1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3-beta2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -92,11 +90,60 @@
     <Compile Include="daos\BladTillæg.cs" />
     <Compile Include="daos\BladTillægsTyper.cs" />
     <Compile Include="daos\BogholderiDao.cs" />
+    <Compile Include="daos\DPKulør.cs" />
+    <Compile Include="daos\FundetMediePlaner.cs" />
+    <Compile Include="daos\Navision.cs" />
     <Compile Include="daos\Priser.cs" />
     <Compile Include="daos\PrislisteDao.cs" />
     <Compile Include="daos\Prislister.cs" />
     <Compile Include="daos\StamBladBogHolderi.cs" />
     <Compile Include="daos\StamBladKoncernDao.cs" />
+    <Compile Include="daos\webtilLæg.cs" />
+    <Compile Include="delPriser.cs">
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DiMPdotNetDevEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DiMPdotNetDevEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DiMPdotNetDevEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DiMPdotNetDevEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DiMPdotNetDevEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="dtproperty.cs">
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dt_getpropertiesbyid_Result.cs">
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dt_getpropertiesbyid_u_Result.cs">
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FakturaFejlFinde.cs">
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FindFejlLinjer.cs">
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GammelAnnoncørID.cs">
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HerningFolkeblad.cs">
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KontaktTitler.cs">
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LPRoller.cs">
+      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="models\EjerForhold.cs" />
     <Compile Include="daos\StambladUdsendingEmailTyper.cs" />
     <Compile Include="models\BladStamdata.cs" />
@@ -146,53 +193,8 @@
     <Compile Include="daos\WEBForespørgselDao.cs" />
     <Compile Include="daos\WEBForespørgselLinjerDao.cs" />
     <Compile Include="daos\WEBSendTilKollegaDao.cs" />
-    <Compile Include="delPriser.cs">
-      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DiMPdotNetDevEntities.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DiMPdotNetDevEntities.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DiMPdotNetDevEntities.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DiMPdotNetDevEntities.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DiMPdotNetDevEntities.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="dtproperty.cs">
-      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="dt_getpropertiesbyid_Result.cs">
-      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="dt_getpropertiesbyid_u_Result.cs">
-      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="exceptions\DaoExceptions.cs" />
     <Compile Include="exceptions\FormattedDbEntityValidationException.cs" />
-    <Compile Include="FakturaFejlFinde.cs">
-      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FindFejlLinjer.cs">
-      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GammelAnnoncørID.cs">
-      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HerningFolkeblad.cs">
-      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="KontaktTitler.cs">
-      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LPRoller.cs">
-      <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="models\AenderingsTekst.cs" />
     <Compile Include="models\AvisTIlGrid.cs" />
     <Compile Include="models\Bladdaeknik.cs" />
@@ -531,6 +533,7 @@
       <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="UpdateBladDaekning.cs" />
+    <Compile Include="models\By.cs" />
     <Compile Include="User.cs">
       <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
@@ -576,7 +579,6 @@
     <Compile Include="viewUpdateStatusIMedieplanNr.cs">
       <DependentUpon>DiMPdotNetDevEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="models\By.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config">
@@ -601,6 +603,9 @@
       <DependentUpon>DiMPdotNetDevEntities.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="XMLSchema1.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -642,17 +647,17 @@
   <Target Name="LocalPlanner_edmx_AfterBuild" AfterTargets="AfterBuild" Condition="Exists('LocalPlanner.$(Configuration).edmx')">
     <TransformXml Source="LocalPlanner.edmx" Destination="$(OutputPath)LocalPlanner.edmx" Transform="LocalPlanner.$(Configuration).edmx" />
   </Target>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0-rc1-19458-04\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0-rc1-19458-04\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0-rc1-19458-04\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0-rc1-19458-04\build\EntityFramework.targets'))" />
-  </Target>
-  <Import Project="..\packages\EntityFramework.6.3.0-rc1-19458-04\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.3.0-rc1-19458-04\build\EntityFramework.targets')" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" BuildVersion_StartDate="2000/1/1" BuildVersion_UseGlobalSettings="True" BuildVersion_UseUniversalClock="True" />
+      <UserProperties BuildVersion_UseUniversalClock="True" BuildVersion_UseGlobalSettings="True" BuildVersion_StartDate="2000/1/1" BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" />
     </VisualStudio>
   </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0-preview2-19525-03\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0-preview2-19525-03\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0-preview2-19525-03\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0-preview2-19525-03\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0-preview2-19525-03\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0-preview2-19525-03\build\EntityFramework.targets')" />
 </Project>

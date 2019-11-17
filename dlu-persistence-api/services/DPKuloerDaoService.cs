@@ -7,7 +7,7 @@ using dlu_persistence_api.services.interfaces;
 using dlu_persistence_api.daos;
 namespace dlu_persistence_api.services
 {
-    public class DPKuloerDaoService : IDPKuloerDaoService
+    public class DPKuloerDaoService 
     {
         private DPKuloerDao kuloerDao;
 
@@ -15,7 +15,7 @@ namespace dlu_persistence_api.services
         {
             kuloerDao = new DPKuloerDao();
         }
-        public string GetDPKuloer()
+        public List<DPKulør> GetDPKuloer()
         {
             return kuloerDao.GetDPKuloer();
         }

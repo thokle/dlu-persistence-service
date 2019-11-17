@@ -103,13 +103,13 @@ namespace dlu_persistence_api.daos
             }
         }
 
-        public Task<int> DeleteDaeking(int bladid, int postnr)
+        public int DeleteDaeking(int bladid, int postnr)
         {
             var res = from d in _entities.tblBladDækning where d.BladID == bladid & d.PostNr == postnr select d;
 
             var table = res.Single();
             _entities.tblBladDækning.Remove(table);
-            return _entities.SaveChangesAsync();
+            return _entities.SaveChanges();
 ;        }
 
 

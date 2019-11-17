@@ -74,8 +74,9 @@ namespace dlu_persistence_api.daos
                               Totalområde =    d.Totalområde,
                               TotalområdePct = d.TotalområdePct,
                             Udgivelsesdag =   d.Udgivelsesdag,
-                              WWWDækningSomTekst =   d.WWWDækningSomTekst
-
+                              WWWDækningSomTekst =   d.WWWDækningSomTekst,
+                              
+                             
                           };
 
 
