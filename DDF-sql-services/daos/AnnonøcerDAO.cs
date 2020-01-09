@@ -40,8 +40,8 @@ namespace DDF_sql_services.daos
 
     public class Annoncøer
     {
-        public string Annoncør { get; internal set; }
-        public string AnnoncørID { get; internal set; }
-        public string Bill_to_Contact_No_ { get; internal set; }
+        public string Annoncør { get;  set; }
+        public string AnnoncørID { get;  set; }
+        public string Bill_to_Contact_No_ { get;  set; }
     }
 }
