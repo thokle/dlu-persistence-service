@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 
 namespace dlu_persistence_api.daos
 {
@@ -24,7 +25,10 @@ namespace dlu_persistence_api.daos
         public string Kontaktperson { get; internal set; }
         public byte KontaktpersonTilhører { get; internal set; }
         public string Overskrift { get; internal set; }
-        public DateTime OprettetDato { get; internal set; }
+       
         public string navision_name { get; internal set; }
+        public short IndrykningsÅr { get; internal set; }
+        public int AntalAviser { get; set; }
+       // public DateTime OprettetDate { get; set; }
     }
 }

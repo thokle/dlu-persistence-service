@@ -20,6 +20,7 @@ namespace dlu_persistence_api
         public Nullable<double> pris { get; set; }
         public Nullable<bool> mmpris { get; set; }
         public Nullable<bool> fastpris { get; set; }
+        public Nullable<decimal> sum { get; set; }
     
         public virtual tblBladStamdata tblBladStamdata { get; set; }
         public virtual tblBladTillaegsType tblBladTillaegsType { get; set; }

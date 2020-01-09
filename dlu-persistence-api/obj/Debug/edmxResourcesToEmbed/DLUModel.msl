@@ -1,0 +1,1529 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DiMPdotNetModelStoreContainer" CdmEntityContainer="DiMPdotNetEntities">
+    <EntitySetMapping Name="dtproperties">
+      <EntityTypeMapping TypeName="IsTypeOf(DiMPdotNetModel.dtproperty)">
+        <MappingFragment StoreEntitySet="dtproperties">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="property" ColumnName="property" />
+          <ScalarProperty Name="objectid" ColumnName="objectid" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="uvalue" ColumnName="uvalue" />
+          <ScalarProperty Name="lvalue" ColumnName="lvalue" />
+          <ScalarProperty Name="version" ColumnName="version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="IsTypeOf(DiMPdotNetModel.sysdiagram)">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblBladDækning">
+      <EntityTypeMapping TypeName="IsTypeOf(DiMPdotNetModel.tblBladDækning)">
+        <MappingFragment StoreEntitySet="tblBladDækning">
+          <ScalarProperty Name="BladID" ColumnName="BladID" />
+          <ScalarProperty Name="PostNr" ColumnName="PostNr" />
+          <ScalarProperty Name="Oplag" ColumnName="Oplag" />
+          <ScalarProperty Name="DækningsGrad" ColumnName="DækningsGrad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDelOmråde">
+      <EntityTypeMapping TypeName="IsTypeOf(DiMPdotNetModel.tblDelOmråde)">
+        <MappingFragment StoreEntitySet="tblDelOmråde">
+          <ScalarProperty Name="DelOmrådeID" ColumnName="DelOmrådeID" />
+          <ScalarProperty Name="DelOmrådeKode" ColumnName="DelOmrådeKode" />
+          <ScalarProperty Name="DelOmrådeNavn" ColumnName="DelOmrådeNavn" />
+          <ScalarProperty Name="DelOmrådeSortKey" ColumnName="DelOmrådeSortKey" />
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDPKulør">
+      <EntityTypeMapping TypeName="IsTypeOf(DiMPdotNetModel.tblDPKulør)">
+        <MappingFragment StoreEntitySet="tblDPKulør">
+          <ScalarProperty Name="DPKulørID" ColumnName="DPKulørID" />
+          <ScalarProperty Name="Kulør" ColumnName="Kulør" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblKonkurrentDækning">
+      <EntityTypeMapping TypeName="IsTypeOf(DiMPdotNetModel.tblKonkurrentDækning)">
+        <MappingFragment StoreEntitySet="tblKonkurrentDækning">
+          <ScalarProperty Name="KonkurrentID" ColumnName="KonkurrentID" />
+          <ScalarProperty Name="PostNr" ColumnName="PostNr" />
+          <ScalarProperty Name="Oplag" ColumnName="Oplag" />
+          <ScalarProperty Name="DækningsGrad" ColumnName="DækningsGrad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblKontaktArbOmråder">
+      <EntityTypeMapping TypeName="IsTypeOf(DiMPdotNetModel.tblKontaktArbOmråder)">
+        <MappingFragment StoreEntitySet="tblKontaktArbOmråder">
+          <ScalarProperty Name="ArbOmrådeID" ColumnName="ArbOmrådeID" />
+          <ScalarProperty Name="ArbOmråde" ColumnName="ArbOmråde" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMedieplanÆndringer">
+      <EntityTypeMapping TypeName="IsTypeOf(DiMPdotNetModel.tblMedieplanÆndringer)">
+        <MappingFragment StoreEntitySet="tblMedieplanÆndringer">
+          <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="ÆndringsTekst" ColumnName="ÆndringsTekst" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPostNrSøgning">
+      <EntityTypeMapping TypeName="IsTypeOf(DiMPdotNetModel.tblPostNrSøgning)">
+        <MappingFragment StoreEntitySet="tblPostNrSøgning">
+          <ScalarProperty Name="BrugerNavn" ColumnName="BrugerNavn" />
+          <ScalarProperty Name="PostNr" ColumnName="PostNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPrislisterPrBladPrÅr">
+      <EntityTypeMapping TypeName="IsTypeOf(DiMPdotNetModel.tblPrislisterPrBladPrÅr)">
+        <MappingFragment StoreEntitySet="tblPrislisterPrBladPrÅr">
+          <ScalarProperty Name="BladID" ColumnName="BladID" />
+          <ScalarProperty Name="År" ColumnName="År" />
+          <ScalarProperty Name="PrislisteID" ColumnName="PrislisteID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblWEBeMails">
+      <EntityTypeMapping TypeName="IsTypeOf(DiMPdotNetModel.tblWEBeMail)">
+        <MappingFragment StoreEntitySet="tblWEBeMails">
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          <ScalarProperty Name="eMail" ColumnName="eMail" />
+          <ScalarProperty Name="PersonNavn" ColumnName="PersonNavn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblWEBForespørgsel">
+      <EntityTypeMapping TypeName="IsTypeOf(DiMPdotNetModel.tblWEBForespørgsel)">
+        <MappingFragment StoreEntitySet="tblWEBForespørgsel">
+          <ScalarProperty Name="ForespørgselID" ColumnName="ForespørgselID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
+          <ScalarProperty Name="AnnoncørNo_" ColumnName="AnnoncørNo_" />
+          <ScalarProperty Name="Mediebureau" ColumnName="Mediebureau" />
+          <ScalarProperty Name="KonsulentCode" ColumnName="KonsulentCode" />
+          <ScalarProperty Name="AntalBlade" ColumnName="AntalBlade" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+          <ScalarProperty Name="AntalFarver" ColumnName="AntalFarver" />
+          <ScalarProperty Name="PlaceringID" ColumnName="PlaceringID" />
+          <ScalarProperty Name="AntalIndrykninger" ColumnName="AntalIndrykninger" />
+          <ScalarProperty Name="SvarInden" ColumnName="SvarInden" />
+          <ScalarProperty Name="Afsluttet" ColumnName="Afsluttet" />
+          <ScalarProperty Name="AntalUdsendinger" ColumnName="AntalUdsendinger" />
+          <ScalarProperty Name="Bemærkning" ColumnName="Bemærkning" />
+          <ScalarProperty Name="PlaceringUB" ColumnName="PlaceringUB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblWEBForespørgselLinjer">
+      <EntityTypeMapping TypeName="IsTypeOf(DiMPdotNetModel.tblWEBForespørgselLinjer)">
+        <MappingFragment StoreEntitySet="tblWEBForespørgselLinjer">
+          <ScalarProperty Name="ForespørgselID" ColumnName="ForespørgselID" />
+          <ScalarProperty Name="BladID" ColumnName="BladID" />
+          <ScalarProperty Name="BesvaretAf" ColumnName="BesvaretAf" />
+          <ScalarProperty Name="DLUMmPris" ColumnName="DLUMmPris" />
+          <ScalarProperty Name="DLUMmRabat" ColumnName="DLUMmRabat" />
+          <ScalarProperty Name="DLUFarveTillæg" ColumnName="DLUFarveTillæg" />
+          <ScalarProperty Name="DLUFarveRabat" ColumnName="DLUFarveRabat" />
+          <ScalarProperty Name="PlaceringUB" ColumnName="PlaceringUB" />
+          <ScalarProperty Name="BladMmPris" ColumnName="BladMmPris" />
+          <ScalarProperty Name="BladMmRabat" ColumnName="BladMmRabat" />
+          <ScalarProperty Name="BladFarveTillæg" ColumnName="BladFarveTillæg" />
+          <ScalarProperty Name="BladFarveRabat" ColumnName="BladFarveRabat" />
+          <ScalarProperty Name="BladBemærkning" ColumnName="BladBemærkning" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblAktiveVærdier">
+      <EntityTypeMapping TypeName="IsTypeOf(DiMPdotNetModel.tblAktiveVærdier)">
+        <MappingFragment StoreEntitySet="tblAktiveVærdier">
+          <ScalarProperty Name="GruppeVersion" ColumnName="GruppeVersion" />
+          <ScalarProperty Name="MiljøTillæg" ColumnName="MiljøTillæg" />
+          <ScalarProperty Name="PrisberegningVersion" ColumnName="PrisberegningVersion" />
+          <ScalarProperty Name="BilagsBladeSendeUge" ColumnName="BilagsBladeSendeUge" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblFarveTillægWebApp">
+      <EntityTypeMapping TypeName="IsTypeOf(DiMPdotNetModel.tblFarveTillægWebApp)">
+        <MappingFragment StoreEntitySet="tblFarveTillægWebApp">
+          <ScalarProperty Name="BladID" ColumnName="BladID" />
+          <ScalarProperty Name="farvePris" ColumnName="farvePris" />
+          <ScalarProperty Name="farveMin" ColumnName="farveMin" />
+          <ScalarProperty Name="farveMax" ColumnName="farveMax" />
+          <ScalarProperty Name="farve4Pris" ColumnName="farve4Pris" />
+          <ScalarProperty Name="farve4Min" ColumnName="farve4Min" />
+          <ScalarProperty Name="farve4Max" ColumnName="farve4Max" />
+          <ScalarProperty Name="Godkendt" ColumnName="Godkendt" />
+          <ScalarProperty Name="PrisBemærkning" ColumnName="PrisBemærkning" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tmpNyeDeadlines">
+      <EntityTypeMapping TypeName="IsTypeOf(DiMPdotNetModel.tmpNyeDeadline)">
+        <MappingFragment StoreEntitySet="tmpNyeDeadlines">
+          <ScalarProperty Name="BladID" ColumnName="BladID" />
+          <ScalarProperty Name="Linje" ColumnName="Linje" />
+          <ScalarProperty Name="OrdreDeadline" ColumnName="OrdreDeadline" />
+          <ScalarProperty Name="OrdreTid" ColumnName="OrdreTid" />
+          <ScalarProperty Name="MaterialeDeadline" ColumnName="MaterialeDeadline" />
+          <ScalarProperty Name="MaterialeTid" ColumnName="MaterialeTid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tnpOrdreNr2">
+      <EntityTypeMapping TypeName="IsTypeOf(DiMPdotNetModel.tnpOrdreNr2)">
+        <MappingFragment StoreEntitySet="tnpOrdreNr2">
+          <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tnpOrdreNr3">
+      <EntityTypeMapping TypeName="IsTypeOf(DiMPdotNetModel.tnpOrdreNr3)">
+        <MappingFragment StoreEntitySet="tnpOrdreNr3">
+          <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FakturaFejlFindes">
+      <EntityTypeMapping TypeName="IsTypeOf(DiMPdotNetModel.FakturaFejlFinde)">
+        <MappingFragment StoreEntitySet="FakturaFejlFindes">
+          <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
+          <ScalarProperty Name="UgeavisID" ColumnName="UgeavisID" />
+          <ScalarProperty Name="FejlSum" ColumnName="FejlSum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GammelAnnoncørID">
+      <EntityTypeMapping TypeName="IsTypeOf(DiMPdotNetModel.GammelAnnoncørID)">
+        <MappingFragment StoreEntitySet="GammelAnnoncørID">
+          <ScalarProperty Name="Gammelt_Faktureres_til_ID1" ColumnName="Gammelt Faktureres til ID" />
+          <ScalarProperty Name="Gammelt_AnnoncørID1" ColumnName="Gammelt AnnoncørID" />
+          <ScalarProperty Name="No_" ColumnName="No_" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NavisionContact2">
+      <EntityTypeMapping TypeName="IsTypeOf(DiMPdotNetModel.NavisionContact2)">
+        <MappingFragment StoreEntitySet="NavisionContact2">
+          <ScalarProperty Name="No_" ColumnName="No_" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTable2">
+      <EntityTypeMapping TypeName="IsTypeOf(DiMPdotNetModel.UserTable2)">
+        <MappingFragment StoreEntitySet="UserTable2">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="jobfunction" ColumnName="jobfunction" />
+          <ScalarProperty Name="colorvalue" ColumnName="colorvalue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="tblKontakterArbOmråderPrKontakt" TypeName="DiMPdotNetModel.tblKontakterArbOmråderPrKontakt" StoreEntitySet="tblKontakterArbOmråderPrKontakt" />
+    <AssociationSetMapping Name="tblKontaktFunktionerPrBlad" TypeName="DiMPdotNetModel.tblKontaktFunktionerPrBlad" StoreEntitySet="tblKontaktFunktionerPrBlad" />
+    <EntitySetMapping Name="OpdateringsTekst1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.OpdateringsTekst1">
+        <MappingFragment StoreEntitySet="OpdateringsTekst">
+          <ScalarProperty Name="Beskrivelse" ColumnName="Beskrivelse" />
+          <ScalarProperty Name="LPVersion" ColumnName="LPVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StamBladKontaktPersoner1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.StamBladKontaktPersoner1">
+        <MappingFragment StoreEntitySet="StamBladKontaktPersoner">
+          <ScalarProperty Name="KontakPersonTitel" ColumnName="KontakPersonTitel" />
+          <ScalarProperty Name="KontakPersonTelefon" ColumnName="KontakPersonTelefon" />
+          <ScalarProperty Name="KontakPersonEmail" ColumnName="KontakPersonEmail" />
+          <ScalarProperty Name="KontakPersonNavn" ColumnName="KontakPersonNavn" />
+          <ScalarProperty Name="StamBladId" ColumnName="StamBladId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblAnnoncekontrol1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblAnnoncekontrol1">
+        <MappingFragment StoreEntitySet="tblAnnoncekontrol">
+          <ScalarProperty Name="SidePlacering" ColumnName="SidePlacering" />
+          <ScalarProperty Name="FaktureresTil" ColumnName="FaktureresTil" />
+          <ScalarProperty Name="IndrykketPåSide" ColumnName="IndrykketPåSide" />
+          <ScalarProperty Name="Ansvar" ColumnName="Ansvar" />
+          <ScalarProperty Name="Fejlkode" ColumnName="Fejlkode" />
+          <ScalarProperty Name="KontrolleretAfDLU" ColumnName="KontrolleretAfDLU" />
+          <ScalarProperty Name="KontrollørEmail" ColumnName="KontrollørEmail" />
+          <ScalarProperty Name="KontrolTidspunkt" ColumnName="KontrolTidspunkt" />
+          <ScalarProperty Name="ErKontrolleret" ColumnName="ErKontrolleret" />
+          <ScalarProperty Name="UgeavisID" ColumnName="UgeavisID" />
+          <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblBladnavnMappingFraDO1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblBladnavnMappingFraDO1">
+        <MappingFragment StoreEntitySet="tblBladnavnMappingFraDO">
+          <ScalarProperty Name="Medie" ColumnName="Medie" />
+          <ScalarProperty Name="DLUNavn" ColumnName="DLUNavn" />
+          <ScalarProperty Name="BladID" ColumnName="BladID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblBladStamdata1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblBladStamdata1">
+        <MappingFragment StoreEntitySet="tblBladStamdata">
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+          <ScalarProperty Name="Overført" ColumnName="Overført" />
+          <ScalarProperty Name="MaterialeDeadlineRubrikKl" ColumnName="MaterialeDeadlineRubrikKl" />
+          <ScalarProperty Name="MaterialeDeadlineRubrikDag" ColumnName="MaterialeDeadlineRubrikDag" />
+          <ScalarProperty Name="OrdreDeadlineRubrikKl" ColumnName="OrdreDeadlineRubrikKl" />
+          <ScalarProperty Name="OrdreDeadlineRubrikDag" ColumnName="OrdreDeadlineRubrikDag" />
+          <ScalarProperty Name="MaterialeDeadlineTekstKl" ColumnName="MaterialeDeadlineTekstKl" />
+          <ScalarProperty Name="MaterialeDeadlineTekstDag" ColumnName="MaterialeDeadlineTekstDag" />
+          <ScalarProperty Name="OrdreDeadlineTekstKl" ColumnName="OrdreDeadlineTekstKl" />
+          <ScalarProperty Name="OrdreDeadlineTekstDag" ColumnName="OrdreDeadlineTekstDag" />
+          <ScalarProperty Name="GiverWebTillæg" ColumnName="GiverWebTillæg" />
+          <ScalarProperty Name="MåGiveFarveRabat" ColumnName="MåGiveFarveRabat" />
+          <ScalarProperty Name="SamannonceringsRabat" ColumnName="SamannonceringsRabat" />
+          <ScalarProperty Name="GruppeRabat" ColumnName="GruppeRabat" />
+          <ScalarProperty Name="SalgsGruppeID" ColumnName="SalgsGruppeID" />
+          <ScalarProperty Name="FakturaGruppeID" ColumnName="FakturaGruppeID" />
+          <ScalarProperty Name="BilagsbladeEmail" ColumnName="BilagsbladeEmail" />
+          <ScalarProperty Name="AnnonceKontrolEmail" ColumnName="AnnonceKontrolEmail" />
+          <ScalarProperty Name="MaterialeEmail" ColumnName="MaterialeEmail" />
+          <ScalarProperty Name="AnnonceEmail" ColumnName="AnnonceEmail" />
+          <ScalarProperty Name="RedaktionEmail" ColumnName="RedaktionEmail" />
+          <ScalarProperty Name="Hjemmeside" ColumnName="Hjemmeside" />
+          <ScalarProperty Name="MatGodtBeløb" ColumnName="MatGodtBeløb" />
+          <ScalarProperty Name="MedieNetKode" ColumnName="MedieNetKode" />
+          <ScalarProperty Name="BogholderiKontaktperson" ColumnName="BogholderiKontaktperson" />
+          <ScalarProperty Name="BogholderiEmails" ColumnName="BogholderiEmails" />
+          <ScalarProperty Name="KontaktpersonerEmails" ColumnName="KontaktpersonerEmails" />
+          <ScalarProperty Name="Emails" ColumnName="Emails" />
+          <ScalarProperty Name="OrienteringEmails" ColumnName="OrienteringEmails" />
+          <ScalarProperty Name="PrisforespørgselEmails" ColumnName="PrisforespørgselEmails" />
+          <ScalarProperty Name="StamdataEmail" ColumnName="StamdataEmail" />
+          <ScalarProperty Name="SendIndeværendeUge" ColumnName="SendIndeværendeUge" />
+          <ScalarProperty Name="SendetidOrdrecheck" ColumnName="SendetidOrdrecheck" />
+          <ScalarProperty Name="OrdrecheckSendeDagID" ColumnName="OrdrecheckSendeDagID" />
+          <ScalarProperty Name="OrdrecheckEmail" ColumnName="OrdrecheckEmail" />
+          <ScalarProperty Name="OrdreEmail" ColumnName="OrdreEmail" />
+          <ScalarProperty Name="MaterialedeadlineRubrik" ColumnName="MaterialedeadlineRubrik" />
+          <ScalarProperty Name="MaterialedeadlineTekst" ColumnName="MaterialedeadlineTekst" />
+          <ScalarProperty Name="OrdredeadlineRubrik" ColumnName="OrdredeadlineRubrik" />
+          <ScalarProperty Name="OrdredeadlineTekst" ColumnName="OrdredeadlineTekst" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+          <ScalarProperty Name="UgedagID" ColumnName="UgedagID" />
+          <ScalarProperty Name="Oplag" ColumnName="Oplag" />
+          <ScalarProperty Name="WWWDækningSomTekst" ColumnName="WWWDækningSomTekst" />
+          <ScalarProperty Name="PrimærPct" ColumnName="PrimærPct" />
+          <ScalarProperty Name="Primær" ColumnName="Primær" />
+          <ScalarProperty Name="TotalområdePct" ColumnName="TotalområdePct" />
+          <ScalarProperty Name="Totalområde" ColumnName="Totalområde" />
+          <ScalarProperty Name="GeoKodeID" ColumnName="GeoKodeID" />
+          <ScalarProperty Name="DiMPDelOmrådeKode" ColumnName="DiMPDelOmrådeKode" />
+          <ScalarProperty Name="DelOmrådeID" ColumnName="DelOmrådeID" />
+          <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+          <ScalarProperty Name="VisPåWWW" ColumnName="VisPåWWW" />
+          <ScalarProperty Name="Ophørt" ColumnName="Ophørt" />
+          <ScalarProperty Name="Koncern" ColumnName="Koncern" />
+          <ScalarProperty Name="Ejerforhold" ColumnName="Ejerforhold" />
+          <ScalarProperty Name="MedlemSiden" ColumnName="MedlemSiden" />
+          <ScalarProperty Name="MedlemÅr" ColumnName="MedlemÅr" />
+          <ScalarProperty Name="MedlemMåned" ColumnName="MedlemMåned" />
+          <ScalarProperty Name="HovedgruppeID" ColumnName="HovedgruppeID" />
+          <ScalarProperty Name="Kontaktperson" ColumnName="Kontaktperson" />
+          <ScalarProperty Name="FIK" ColumnName="FIK" />
+          <ScalarProperty Name="CVR" ColumnName="CVR" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Tlf" ColumnName="Tlf" />
+          <ScalarProperty Name="PostNr" ColumnName="PostNr" />
+          <ScalarProperty Name="Adresse2" ColumnName="Adresse2" />
+          <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+          <ScalarProperty Name="Navn2" ColumnName="Navn2" />
+          <ScalarProperty Name="Navn" ColumnName="Navn" />
+          <ScalarProperty Name="BladID" ColumnName="BladID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblBladStamdataKopi1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblBladStamdataKopi1">
+        <MappingFragment StoreEntitySet="tblBladStamdataKopi">
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+          <ScalarProperty Name="Overført" ColumnName="Overført" />
+          <ScalarProperty Name="MaterialeDeadlineRubrikKl" ColumnName="MaterialeDeadlineRubrikKl" />
+          <ScalarProperty Name="MaterialeDeadlineRubrikDag" ColumnName="MaterialeDeadlineRubrikDag" />
+          <ScalarProperty Name="OrdreDeadlineRubrikKl" ColumnName="OrdreDeadlineRubrikKl" />
+          <ScalarProperty Name="OrdreDeadlineRubrikDag" ColumnName="OrdreDeadlineRubrikDag" />
+          <ScalarProperty Name="MaterialeDeadlineTekstKl" ColumnName="MaterialeDeadlineTekstKl" />
+          <ScalarProperty Name="MaterialeDeadlineTekstDag" ColumnName="MaterialeDeadlineTekstDag" />
+          <ScalarProperty Name="OrdreDeadlineTekstKl" ColumnName="OrdreDeadlineTekstKl" />
+          <ScalarProperty Name="OrdreDeadlineTekstDag" ColumnName="OrdreDeadlineTekstDag" />
+          <ScalarProperty Name="GiverWebTillæg" ColumnName="GiverWebTillæg" />
+          <ScalarProperty Name="MåGiveFarveRabat" ColumnName="MåGiveFarveRabat" />
+          <ScalarProperty Name="SamannonceringsRabat" ColumnName="SamannonceringsRabat" />
+          <ScalarProperty Name="GruppeRabat" ColumnName="GruppeRabat" />
+          <ScalarProperty Name="SalgsGruppeID" ColumnName="SalgsGruppeID" />
+          <ScalarProperty Name="FakturaGruppeID" ColumnName="FakturaGruppeID" />
+          <ScalarProperty Name="BilagsbladeEmail" ColumnName="BilagsbladeEmail" />
+          <ScalarProperty Name="AnnonceKontrolEmail" ColumnName="AnnonceKontrolEmail" />
+          <ScalarProperty Name="MaterialeEmail" ColumnName="MaterialeEmail" />
+          <ScalarProperty Name="AnnonceEmail" ColumnName="AnnonceEmail" />
+          <ScalarProperty Name="RedaktionEmail" ColumnName="RedaktionEmail" />
+          <ScalarProperty Name="Hjemmeside" ColumnName="Hjemmeside" />
+          <ScalarProperty Name="MatGodtBeløb" ColumnName="MatGodtBeløb" />
+          <ScalarProperty Name="MedieNetKode" ColumnName="MedieNetKode" />
+          <ScalarProperty Name="BogholderiKontaktperson" ColumnName="BogholderiKontaktperson" />
+          <ScalarProperty Name="BogholderiEmails" ColumnName="BogholderiEmails" />
+          <ScalarProperty Name="KontaktpersonerEmails" ColumnName="KontaktpersonerEmails" />
+          <ScalarProperty Name="Emails" ColumnName="Emails" />
+          <ScalarProperty Name="OrienteringEmails" ColumnName="OrienteringEmails" />
+          <ScalarProperty Name="PrisforespørgselEmails" ColumnName="PrisforespørgselEmails" />
+          <ScalarProperty Name="StamdataEmail" ColumnName="StamdataEmail" />
+          <ScalarProperty Name="SendIndeværendeUge" ColumnName="SendIndeværendeUge" />
+          <ScalarProperty Name="SendetidOrdrecheck" ColumnName="SendetidOrdrecheck" />
+          <ScalarProperty Name="OrdrecheckSendeDagID" ColumnName="OrdrecheckSendeDagID" />
+          <ScalarProperty Name="OrdrecheckEmail" ColumnName="OrdrecheckEmail" />
+          <ScalarProperty Name="OrdreEmail" ColumnName="OrdreEmail" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+          <ScalarProperty Name="UgedagID" ColumnName="UgedagID" />
+          <ScalarProperty Name="Oplag" ColumnName="Oplag" />
+          <ScalarProperty Name="WWWDækningSomTekst" ColumnName="WWWDækningSomTekst" />
+          <ScalarProperty Name="PrimærPct" ColumnName="PrimærPct" />
+          <ScalarProperty Name="Primær" ColumnName="Primær" />
+          <ScalarProperty Name="TotalområdePct" ColumnName="TotalområdePct" />
+          <ScalarProperty Name="Totalområde" ColumnName="Totalområde" />
+          <ScalarProperty Name="GeoKodeID" ColumnName="GeoKodeID" />
+          <ScalarProperty Name="DiMPDelOmrådeKode" ColumnName="DiMPDelOmrådeKode" />
+          <ScalarProperty Name="DelOmrådeID" ColumnName="DelOmrådeID" />
+          <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+          <ScalarProperty Name="VisPåWWW" ColumnName="VisPåWWW" />
+          <ScalarProperty Name="Ophørt" ColumnName="Ophørt" />
+          <ScalarProperty Name="Ejerforhold" ColumnName="Ejerforhold" />
+          <ScalarProperty Name="MedlemSiden" ColumnName="MedlemSiden" />
+          <ScalarProperty Name="MedlemÅr" ColumnName="MedlemÅr" />
+          <ScalarProperty Name="MedlemMåned" ColumnName="MedlemMåned" />
+          <ScalarProperty Name="HovedgruppeID" ColumnName="HovedgruppeID" />
+          <ScalarProperty Name="Kontaktperson" ColumnName="Kontaktperson" />
+          <ScalarProperty Name="FIK" ColumnName="FIK" />
+          <ScalarProperty Name="CVR" ColumnName="CVR" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Tlf" ColumnName="Tlf" />
+          <ScalarProperty Name="PostNr" ColumnName="PostNr" />
+          <ScalarProperty Name="Adresse2" ColumnName="Adresse2" />
+          <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+          <ScalarProperty Name="Navn2" ColumnName="Navn2" />
+          <ScalarProperty Name="Navn" ColumnName="Navn" />
+          <ScalarProperty Name="BladID" ColumnName="BladID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblBrugerData1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblBrugerData1">
+        <MappingFragment StoreEntitySet="tblBrugerData">
+          <ScalarProperty Name="NulstilLayout" ColumnName="NulstilLayout" />
+          <ScalarProperty Name="SidsteLoginVersion" ColumnName="SidsteLoginVersion" />
+          <ScalarProperty Name="Initialer" ColumnName="Initialer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDage1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblDage1">
+        <MappingFragment StoreEntitySet="tblDage">
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+          <ScalarProperty Name="DagType" ColumnName="DagType" />
+          <ScalarProperty Name="DagNavn" ColumnName="DagNavn" />
+          <ScalarProperty Name="DagID" ColumnName="DagID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEjerforhold1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblEjerforhold1">
+        <MappingFragment StoreEntitySet="tblEjerforhold">
+          <ScalarProperty Name="WebTillægRubrik" ColumnName="WebTillægRubrik" />
+          <ScalarProperty Name="WebTillægTekst" ColumnName="WebTillægTekst" />
+          <ScalarProperty Name="Ejerforhold" ColumnName="Ejerforhold" />
+          <ScalarProperty Name="EjerforholdID" ColumnName="EjerforholdID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblFakturaFejl1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblFakturaFejl1">
+        <MappingFragment StoreEntitySet="tblFakturaFejl">
+          <ScalarProperty Name="Ansvarlig" ColumnName="Ansvarlig" />
+          <ScalarProperty Name="FejlKode" ColumnName="FejlKode" />
+          <ScalarProperty Name="UgeavisID" ColumnName="UgeavisID" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblFakturaFejlTekst1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblFakturaFejlTekst1">
+        <MappingFragment StoreEntitySet="tblFakturaFejlTekst">
+          <ScalarProperty Name="FejlTekst" ColumnName="FejlTekst" />
+          <ScalarProperty Name="FejlKode" ColumnName="FejlKode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblFaktureringsBilag1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblFaktureringsBilag1">
+        <MappingFragment StoreEntitySet="tblFaktureringsBilag">
+          <ScalarProperty Name="Tekst" ColumnName="Tekst" />
+          <ScalarProperty Name="ErRettet" ColumnName="ErRettet" />
+          <ScalarProperty Name="RettetKl" ColumnName="RettetKl" />
+          <ScalarProperty Name="RettetAf" ColumnName="RettetAf" />
+          <ScalarProperty Name="OprettetAf" ColumnName="OprettetAf" />
+          <ScalarProperty Name="Oprettet" ColumnName="Oprettet" />
+          <ScalarProperty Name="UgeavisNavn" ColumnName="UgeavisNavn" />
+          <ScalarProperty Name="BemærkningNr" ColumnName="BemærkningNr" />
+          <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblFejlTekst1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblFejlTekst1">
+        <MappingFragment StoreEntitySet="tblFejlTekst">
+          <ScalarProperty Name="FejlTekst" ColumnName="FejlTekst" />
+          <ScalarProperty Name="Fejlkode" ColumnName="Fejlkode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblGeoKode1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblGeoKode1">
+        <MappingFragment StoreEntitySet="tblGeoKode">
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+          <ScalarProperty Name="GeoKodeSortKey" ColumnName="GeoKodeSortKey" />
+          <ScalarProperty Name="GeoKodeNavn" ColumnName="GeoKodeNavn" />
+          <ScalarProperty Name="GeoKodeID" ColumnName="GeoKodeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblGrupper1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblGrupper1">
+        <MappingFragment StoreEntitySet="tblGrupper">
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="MaterialeModtager" ColumnName="MaterialeModtager" />
+          <ScalarProperty Name="OrdreEmail" ColumnName="OrdreEmail" />
+          <ScalarProperty Name="GruppeHovedbladID" ColumnName="GruppeHovedbladID" />
+          <ScalarProperty Name="AntalBladeForValg" ColumnName="AntalBladeForValg" />
+          <ScalarProperty Name="GruppeType" ColumnName="GruppeType" />
+          <ScalarProperty Name="GruppeNavn" ColumnName="GruppeNavn" />
+          <ScalarProperty Name="GruppeID" ColumnName="GruppeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblGruppeRabatter1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblGruppeRabatter1">
+        <MappingFragment StoreEntitySet="tblGruppeRabatter">
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="PrisInclFarver" ColumnName="PrisInclFarver" />
+          <ScalarProperty Name="FarveTillæg" ColumnName="FarveTillæg" />
+          <ScalarProperty Name="FarveMax" ColumnName="FarveMax" />
+          <ScalarProperty Name="FarveMin" ColumnName="FarveMin" />
+          <ScalarProperty Name="MmPris" ColumnName="MmPris" />
+          <ScalarProperty Name="FarveRabat" ColumnName="FarveRabat" />
+          <ScalarProperty Name="MmRabat" ColumnName="MmRabat" />
+          <ScalarProperty Name="AntalTil" ColumnName="AntalTil" />
+          <ScalarProperty Name="AntalFra" ColumnName="AntalFra" />
+          <ScalarProperty Name="PlaceringID" ColumnName="PlaceringID" />
+          <ScalarProperty Name="GruppeID" ColumnName="GruppeID" />
+          <ScalarProperty Name="RabatFormID" ColumnName="RabatFormID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblHovedGruppe1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblHovedGruppe1">
+        <MappingFragment StoreEntitySet="tblHovedGruppe">
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+          <ScalarProperty Name="HovedGruppeSortKey" ColumnName="HovedGruppeSortKey" />
+          <ScalarProperty Name="HovedGruppeNavn" ColumnName="HovedGruppeNavn" />
+          <ScalarProperty Name="HovedGruppeID" ColumnName="HovedGruppeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblKonkurrenter1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblKonkurrenter1">
+        <MappingFragment StoreEntitySet="tblKonkurrenter">
+          <ScalarProperty Name="MedieMappingFraDO" ColumnName="MedieMappingFraDO" />
+          <ScalarProperty Name="BladTypeMappingFraDO" ColumnName="BladTypeMappingFraDO" />
+          <ScalarProperty Name="KonkurentKode" ColumnName="KonkurentKode" />
+          <ScalarProperty Name="KonkurrentNavn" ColumnName="KonkurrentNavn" />
+          <ScalarProperty Name="KonkurrentID" ColumnName="KonkurrentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblKontakter1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblKontakter1">
+        <MappingFragment StoreEntitySet="tblKontakter">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobilnr" ColumnName="Mobilnr" />
+          <ScalarProperty Name="Tlfnr" ColumnName="Tlfnr" />
+          <ScalarProperty Name="TitelID" ColumnName="TitelID" />
+          <ScalarProperty Name="Efternavn" ColumnName="Efternavn" />
+          <ScalarProperty Name="Fornavn" ColumnName="Fornavn" />
+          <ScalarProperty Name="KontaktID" ColumnName="KontaktID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblKontakterPrBlad1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblKontakterPrBlad1">
+        <MappingFragment StoreEntitySet="tblKontakterPrBlad">
+          <ScalarProperty Name="KontaktID" ColumnName="KontaktID" />
+          <ScalarProperty Name="BladID" ColumnName="BladID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblKontaktFunktioner1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblKontaktFunktioner1">
+        <MappingFragment StoreEntitySet="tblKontaktFunktioner">
+          <ScalarProperty Name="Funktion" ColumnName="Funktion" />
+          <ScalarProperty Name="FunktionID" ColumnName="FunktionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblKontaktTitler1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblKontaktTitler1">
+        <MappingFragment StoreEntitySet="tblKontaktTitler">
+          <ScalarProperty Name="Titel" ColumnName="Titel" />
+          <ScalarProperty Name="TitelID" ColumnName="TitelID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMateriale1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblMateriale1">
+        <MappingFragment StoreEntitySet="tblMateriale">
+          <ScalarProperty Name="FilSti" ColumnName="FilSti" />
+          <ScalarProperty Name="SkalSendes" ColumnName="SkalSendes" />
+          <ScalarProperty Name="ErSendt" ColumnName="ErSendt" />
+          <ScalarProperty Name="FilNavn" ColumnName="FilNavn" />
+          <ScalarProperty Name="UgeavisID" ColumnName="UgeavisID" />
+          <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMedieplan1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblMedieplan1">
+        <MappingFragment StoreEntitySet="tblMedieplan">
+          <ScalarProperty Name="OpkrævHelsingørMiljøTillæg" ColumnName="OpkrævHelsingørMiljøTillæg" />
+          <ScalarProperty Name="OpkrævJyskeMedierASTillæg" ColumnName="OpkrævJyskeMedierASTillæg" />
+          <ScalarProperty Name="OpkrævNordjyskeTillæg" ColumnName="OpkrævNordjyskeTillæg" />
+          <ScalarProperty Name="OpkrævDSVPMiljøTillæg" ColumnName="OpkrævDSVPMiljøTillæg" />
+          <ScalarProperty Name="OpkrævNorthMiljøTillæg" ColumnName="OpkrævNorthMiljøTillæg" />
+          <ScalarProperty Name="OpkrævFynskeMiljøTillæg" ColumnName="OpkrævFynskeMiljøTillæg" />
+          <ScalarProperty Name="OpkrævJyskeMiljøTillæg" ColumnName="OpkrævJyskeMiljøTillæg" />
+          <ScalarProperty Name="MiljøTillægOpkræves" ColumnName="MiljøTillægOpkræves" />
+          <ScalarProperty Name="WebTillægOpkræves" ColumnName="WebTillægOpkræves" />
+          <ScalarProperty Name="BemærkningTilBlade" ColumnName="BemærkningTilBlade" />
+          <ScalarProperty Name="BemærkningTilAnnoncør" ColumnName="BemærkningTilAnnoncør" />
+          <ScalarProperty Name="FællesBureauOrdreNr" ColumnName="FællesBureauOrdreNr" />
+          <ScalarProperty Name="SammeBureauOrdreNr" ColumnName="SammeBureauOrdreNr" />
+          <ScalarProperty Name="KunForhandlerBundForskellig" ColumnName="KunForhandlerBundForskellig" />
+          <ScalarProperty Name="SammeMateriale" ColumnName="SammeMateriale" />
+          <ScalarProperty Name="Previous_Version" ColumnName="Previous Version" />
+          <ScalarProperty Name="Credit_Reason" ColumnName="Credit Reason" />
+          <ScalarProperty Name="Document_Type" ColumnName="Document Type" />
+          <ScalarProperty Name="TilladMmSærRabat" ColumnName="TilladMmSærRabat" />
+          <ScalarProperty Name="TilladFarveSærRabat" ColumnName="TilladFarveSærRabat" />
+          <ScalarProperty Name="RettelserEfterAnnoncekontrol" ColumnName="RettelserEfterAnnoncekontrol" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="KonsulentCode" ColumnName="KonsulentCode" />
+          <ScalarProperty Name="OrdreDato" ColumnName="OrdreDato" />
+          <ScalarProperty Name="OprettetDato" ColumnName="OprettetDato" />
+          <ScalarProperty Name="SamletPris" ColumnName="SamletPris" />
+          <ScalarProperty Name="InfoGodt" ColumnName="InfoGodt" />
+          <ScalarProperty Name="SikkerhedsGodt" ColumnName="SikkerhedsGodt" />
+          <ScalarProperty Name="MaterialeGodtgørelseAlle" ColumnName="MaterialeGodtgørelseAlle" />
+          <ScalarProperty Name="BrugMaterialeFraUge" ColumnName="BrugMaterialeFraUge" />
+          <ScalarProperty Name="MaterialeFølgerFraLeverandør" ColumnName="MaterialeFølgerFraLeverandør" />
+          <ScalarProperty Name="MaterialeFølgerFra" ColumnName="MaterialeFølgerFra" />
+          <ScalarProperty Name="MaterialeGodtgørelseTil" ColumnName="MaterialeGodtgørelseTil" />
+          <ScalarProperty Name="BilagsBladeATT" ColumnName="BilagsBladeATT" />
+          <ScalarProperty Name="BilagsBladeTilPostNr" ColumnName="BilagsBladeTilPostNr" />
+          <ScalarProperty Name="BilagsBladeTilAdresse" ColumnName="BilagsBladeTilAdresse" />
+          <ScalarProperty Name="BilagsBladeTilNavn" ColumnName="BilagsBladeTilNavn" />
+          <ScalarProperty Name="BilagsBladeTil" ColumnName="BilagsBladeTil" />
+          <ScalarProperty Name="RekvisitionsNr" ColumnName="RekvisitionsNr" />
+          <ScalarProperty Name="Fakturering" ColumnName="Fakturering" />
+          <ScalarProperty Name="KontaktpersonTilhører" ColumnName="KontaktpersonTilhører" />
+          <ScalarProperty Name="Kontaktperson" ColumnName="Kontaktperson" />
+          <ScalarProperty Name="Overskrift" ColumnName="Overskrift" />
+          <ScalarProperty Name="Beskrivelse" ColumnName="Beskrivelse" />
+          <ScalarProperty Name="IndrykningsÅr" ColumnName="IndrykningsÅr" />
+          <ScalarProperty Name="IndrykningsUge" ColumnName="IndrykningsUge" />
+          <ScalarProperty Name="PlaceringID" ColumnName="PlaceringID" />
+          <ScalarProperty Name="DPKulørID" ColumnName="DPKulørID" />
+          <ScalarProperty Name="AntalFarver" ColumnName="AntalFarver" />
+          <ScalarProperty Name="Format2" ColumnName="Format2" />
+          <ScalarProperty Name="Format1" ColumnName="Format1" />
+          <ScalarProperty Name="BureauNo_" ColumnName="BureauNo_" />
+          <ScalarProperty Name="AnnoncørNo_" ColumnName="AnnoncørNo_" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMedieplanLinjer1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblMedieplanLinjer1">
+        <MappingFragment StoreEntitySet="tblMedieplanLinjer">
+          <ScalarProperty Name="PrisLåst" ColumnName="PrisLåst" />
+          <ScalarProperty Name="TotalInclTillæg" ColumnName="TotalInclTillæg" />
+          <ScalarProperty Name="MiljøTillæg" ColumnName="MiljøTillæg" />
+          <ScalarProperty Name="Bemærkning" ColumnName="Bemærkning" />
+          <ScalarProperty Name="MaterialeNr" ColumnName="MaterialeNr" />
+          <ScalarProperty Name="BureauOrdreNr" ColumnName="BureauOrdreNr" />
+          <ScalarProperty Name="MedIGrupper" ColumnName="MedIGrupper" />
+          <ScalarProperty Name="RabatGruppe" ColumnName="RabatGruppe" />
+          <ScalarProperty Name="SendeGruppe" ColumnName="SendeGruppe" />
+          <ScalarProperty Name="WebtillægFaktureresHer" ColumnName="WebtillægFaktureresHer" />
+          <ScalarProperty Name="ErWeekendGruppe" ColumnName="ErWeekendGruppe" />
+          <ScalarProperty Name="ManueltÆndret" ColumnName="ManueltÆndret" />
+          <ScalarProperty Name="TotalPris" ColumnName="TotalPris" />
+          <ScalarProperty Name="MaterialeGodtgørelsePris" ColumnName="MaterialeGodtgørelsePris" />
+          <ScalarProperty Name="SkalGiveMaterialeGodtgørelse" ColumnName="SkalGiveMaterialeGodtgørelse" />
+          <ScalarProperty Name="MåGiveMaterialeGodtgørelse" ColumnName="MåGiveMaterialeGodtgørelse" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="FarveTotal" ColumnName="FarveTotal" />
+          <ScalarProperty Name="FarveMax" ColumnName="FarveMax" />
+          <ScalarProperty Name="FarveMin" ColumnName="FarveMin" />
+          <ScalarProperty Name="FarveRabat" ColumnName="FarveRabat" />
+          <ScalarProperty Name="FarvePris" ColumnName="FarvePris" />
+          <ScalarProperty Name="FarveTillæg" ColumnName="FarveTillæg" />
+          <ScalarProperty Name="MmTotal" ColumnName="MmTotal" />
+          <ScalarProperty Name="MåGiveMmRabat" ColumnName="MåGiveMmRabat" />
+          <ScalarProperty Name="MmRabat" ColumnName="MmRabat" />
+          <ScalarProperty Name="MmPris" ColumnName="MmPris" />
+          <ScalarProperty Name="NormalMmPris" ColumnName="NormalMmPris" />
+          <ScalarProperty Name="Mm" ColumnName="Mm" />
+          <ScalarProperty Name="UgeavisID" ColumnName="UgeavisID" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMedieplanNr1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblMedieplanNr1">
+        <MappingFragment StoreEntitySet="tblMedieplanNr">
+          <ScalarProperty Name="Kommentar" ColumnName="Kommentar" />
+          <ScalarProperty Name="AnvendtPrisberegningVersion" ColumnName="AnvendtPrisberegningVersion" />
+          <ScalarProperty Name="AnvendtMiljøTillæg" ColumnName="AnvendtMiljøTillæg" />
+          <ScalarProperty Name="OverførtFraPrisforespørgsel" ColumnName="OverførtFraPrisforespørgsel" />
+          <ScalarProperty Name="BrugtGruppeVersion" ColumnName="BrugtGruppeVersion" />
+          <ScalarProperty Name="MaterialeModtaget" ColumnName="MaterialeModtaget" />
+          <ScalarProperty Name="FakturaBemærkning3" ColumnName="FakturaBemærkning3" />
+          <ScalarProperty Name="FakturaBemærkning2" ColumnName="FakturaBemærkning2" />
+          <ScalarProperty Name="FakturaBemærkning1" ColumnName="FakturaBemærkning1" />
+          <ScalarProperty Name="SupportBilagVist" ColumnName="SupportBilagVist" />
+          <ScalarProperty Name="SupportBilagVedlagt" ColumnName="SupportBilagVedlagt" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="AktivVersion" ColumnName="AktivVersion" />
+          <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMedIGruppe1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblMedIGruppe1">
+        <MappingFragment StoreEntitySet="tblMedIGruppe">
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="ErTillægsAvis" ColumnName="ErTillægsAvis" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="GruppeID" ColumnName="GruppeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblOrdreGebyrNavision1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblOrdreGebyrNavision1">
+        <MappingFragment StoreEntitySet="tblOrdreGebyrNavision">
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="BladId" ColumnName="BladId" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Document_Type" ColumnName="Document Type" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="OrdreNr" ColumnName="OrdreNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblOrdreLinjerNavision1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblOrdreLinjerNavision1">
+        <MappingFragment StoreEntitySet="tblOrdreLinjerNavision">
+          <ScalarProperty Name="BureauOrdreNr" ColumnName="BureauOrdreNr" />
+          <ScalarProperty Name="FirstTime" ColumnName="FirstTime" />
+          <ScalarProperty Name="Previous_Version" ColumnName="Previous Version" />
+          <ScalarProperty Name="Previous_Order_No" ColumnName="Previous Order No" />
+          <ScalarProperty Name="MaterialePris" ColumnName="MaterialePris" />
+          <ScalarProperty Name="TotalPris" ColumnName="TotalPris" />
+          <ScalarProperty Name="MaterialeGodt" ColumnName="MaterialeGodt" />
+          <ScalarProperty Name="FarveTillægsRabat" ColumnName="FarveTillægsRabat" />
+          <ScalarProperty Name="FarveTillægsPris" ColumnName="FarveTillægsPris" />
+          <ScalarProperty Name="SpecialRabat" ColumnName="SpecialRabat" />
+          <ScalarProperty Name="AnvendtPris" ColumnName="AnvendtPris" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+          <ScalarProperty Name="Mm" ColumnName="Mm" />
+          <ScalarProperty Name="BladId" ColumnName="BladId" />
+          <ScalarProperty Name="Document_Type" ColumnName="Document Type" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="OrdreNr" ColumnName="OrdreNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblOrdreNavision1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblOrdreNavision1">
+        <MappingFragment StoreEntitySet="tblOrdreNavision">
+          <ScalarProperty Name="SammeBureauOrdreNr" ColumnName="SammeBureauOrdreNr" />
+          <ScalarProperty Name="Placement" ColumnName="Placement" />
+          <ScalarProperty Name="Advertiser" ColumnName="Advertiser" />
+          <ScalarProperty Name="Item_Description" ColumnName="Item Description" />
+          <ScalarProperty Name="Previous_Version" ColumnName="Previous Version" />
+          <ScalarProperty Name="Credit_Reason" ColumnName="Credit Reason" />
+          <ScalarProperty Name="Previous_Order_No" ColumnName="Previous Order No" />
+          <ScalarProperty Name="MaterialeGodtgørelseTil" ColumnName="MaterialeGodtgørelseTil" />
+          <ScalarProperty Name="FakBem3" ColumnName="FakBem3" />
+          <ScalarProperty Name="FakBem2" ColumnName="FakBem2" />
+          <ScalarProperty Name="FakBem1" ColumnName="FakBem1" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="EnOrdre" ColumnName="EnOrdre" />
+          <ScalarProperty Name="Bureau" ColumnName="Bureau" />
+          <ScalarProperty Name="BureauOrdreNr" ColumnName="BureauOrdreNr" />
+          <ScalarProperty Name="InfoGodt" ColumnName="InfoGodt" />
+          <ScalarProperty Name="SikkerhedsGodt" ColumnName="SikkerhedsGodt" />
+          <ScalarProperty Name="SælgerKode" ColumnName="SælgerKode" />
+          <ScalarProperty Name="SamletPris" ColumnName="SamletPris" />
+          <ScalarProperty Name="OrdreDato" ColumnName="OrdreDato" />
+          <ScalarProperty Name="AntalFarver" ColumnName="AntalFarver" />
+          <ScalarProperty Name="Uge" ColumnName="Uge" />
+          <ScalarProperty Name="AnnoncørID" ColumnName="AnnoncørID" />
+          <ScalarProperty Name="Document_Type" ColumnName="Document Type" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="OrdreNr" ColumnName="OrdreNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPlacering1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblPlacering1">
+        <MappingFragment StoreEntitySet="tblPlacering">
+          <ScalarProperty Name="Betegnelse" ColumnName="Betegnelse" />
+          <ScalarProperty Name="PlaceringID" ColumnName="PlaceringID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPostNr1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblPostNr1">
+        <MappingFragment StoreEntitySet="tblPostNr">
+          <ScalarProperty Name="MaxDækningsGrad" ColumnName="MaxDækningsGrad" />
+          <ScalarProperty Name="Husstande" ColumnName="Husstande" />
+          <ScalarProperty Name="PostBy" ColumnName="PostBy" />
+          <ScalarProperty Name="PostNr" ColumnName="PostNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPriser1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblPriser1">
+        <MappingFragment StoreEntitySet="tblPriser">
+          <ScalarProperty Name="ControlNavn" ColumnName="ControlNavn" />
+          <ScalarProperty Name="Farve4Max" ColumnName="Farve4Max" />
+          <ScalarProperty Name="Farve4Min" ColumnName="Farve4Min" />
+          <ScalarProperty Name="Farve4Pris" ColumnName="Farve4Pris" />
+          <ScalarProperty Name="FarveMax" ColumnName="FarveMax" />
+          <ScalarProperty Name="FarveMin" ColumnName="FarveMin" />
+          <ScalarProperty Name="FarvePris" ColumnName="FarvePris" />
+          <ScalarProperty Name="mmPris" ColumnName="mmPris" />
+          <ScalarProperty Name="FormatTil" ColumnName="FormatTil" />
+          <ScalarProperty Name="FormatFra" ColumnName="FormatFra" />
+          <ScalarProperty Name="PrislisteID" ColumnName="PrislisteID" />
+          <ScalarProperty Name="År" ColumnName="År" />
+          <ScalarProperty Name="PlaceringID" ColumnName="PlaceringID" />
+          <ScalarProperty Name="BladID" ColumnName="BladID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPrislister1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblPrislister1">
+        <MappingFragment StoreEntitySet="tblPrislister">
+          <ScalarProperty Name="PrislisteNavn" ColumnName="PrislisteNavn" />
+          <ScalarProperty Name="PrislisteID" ColumnName="PrislisteID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPrislisterPrBladPrUge1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblPrislisterPrBladPrUge1">
+        <MappingFragment StoreEntitySet="tblPrislisterPrBladPrUge">
+          <ScalarProperty Name="PrislisteID" ColumnName="PrislisteID" />
+          <ScalarProperty Name="År" ColumnName="År" />
+          <ScalarProperty Name="Uge" ColumnName="Uge" />
+          <ScalarProperty Name="BladID" ColumnName="BladID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblRegion1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblRegion1">
+        <MappingFragment StoreEntitySet="tblRegion">
+          <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+          <ScalarProperty Name="RegionSortKey" ColumnName="RegionSortKey" />
+          <ScalarProperty Name="RegionNavn" ColumnName="RegionNavn" />
+          <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblRemindereSendt1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblRemindereSendt1">
+        <MappingFragment StoreEntitySet="tblRemindereSendt">
+          <ScalarProperty Name="AntalRemindere" ColumnName="AntalRemindere" />
+          <ScalarProperty Name="ReminderType" ColumnName="ReminderType" />
+          <ScalarProperty Name="UgeavisID" ColumnName="UgeavisID" />
+          <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSupportBilag1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblSupportBilag1">
+        <MappingFragment StoreEntitySet="tblSupportBilag">
+          <ScalarProperty Name="BilagsBladeTilPostNr" ColumnName="BilagsBladeTilPostNr" />
+          <ScalarProperty Name="BilagsBladeTilAdresse" ColumnName="BilagsBladeTilAdresse" />
+          <ScalarProperty Name="BilagsBladeTilNavn" ColumnName="BilagsBladeTilNavn" />
+          <ScalarProperty Name="BilagsBladeTil" ColumnName="BilagsBladeTil" />
+          <ScalarProperty Name="Overskrift" ColumnName="Overskrift" />
+          <ScalarProperty Name="BemærkningTilSupport" ColumnName="BemærkningTilSupport" />
+          <ScalarProperty Name="BemærkningTilBlade" ColumnName="BemærkningTilBlade" />
+          <ScalarProperty Name="LøbendeOrdre" ColumnName="LøbendeOrdre" />
+          <ScalarProperty Name="BilagsbladeAtt" ColumnName="BilagsbladeAtt" />
+          <ScalarProperty Name="Bilagsblade" ColumnName="Bilagsblade" />
+          <ScalarProperty Name="BureauOrdresedlerLiggerIIndbakke" ColumnName="BureauOrdresedlerLiggerIIndbakke" />
+          <ScalarProperty Name="Fakturering" ColumnName="Fakturering" />
+          <ScalarProperty Name="KunForhandlerBundForskellig" ColumnName="KunForhandlerBundForskellig" />
+          <ScalarProperty Name="SammeMateriale" ColumnName="SammeMateriale" />
+          <ScalarProperty Name="BrugMaterialeFraUge" ColumnName="BrugMaterialeFraUge" />
+          <ScalarProperty Name="MaterialeFølgerFraLeverandør" ColumnName="MaterialeFølgerFraLeverandør" />
+          <ScalarProperty Name="MaterialeFølgerFra" ColumnName="MaterialeFølgerFra" />
+          <ScalarProperty Name="MaterialeGodtgørelseTil" ColumnName="MaterialeGodtgørelseTil" />
+          <ScalarProperty Name="IndrykningsUge" ColumnName="IndrykningsUge" />
+          <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblWEBSendTilKollega1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblWEBSendTilKollega1">
+        <MappingFragment StoreEntitySet="tblWEBSendTilKollega">
+          <ScalarProperty Name="eMails" ColumnName="eMails" />
+          <ScalarProperty Name="BladID" ColumnName="BladID" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bladtlfogfaxkopi1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.bladtlfogfaxkopi1">
+        <MappingFragment StoreEntitySet="bladtlfogfaxkopi">
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Tlf" ColumnName="Tlf" />
+          <ScalarProperty Name="BladID" ColumnName="BladID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="delPriser1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.delPriser1">
+        <MappingFragment StoreEntitySet="delPriser">
+          <ScalarProperty Name="PlaceringID" ColumnName="PlaceringID" />
+          <ScalarProperty Name="BladID" ColumnName="BladID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HerningFolkeblad1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.HerningFolkeblad1">
+        <MappingFragment StoreEntitySet="HerningFolkeblad">
+          <ScalarProperty Name="Navn" ColumnName="Navn" />
+          <ScalarProperty Name="BladID" ColumnName="BladID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblAktivGruppeVersion1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblAktivGruppeVersion1">
+        <MappingFragment StoreEntitySet="tblAktivGruppeVersion">
+          <ScalarProperty Name="AktivVersion" ColumnName="AktivVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblMmPrisWebApp1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblMmPrisWebApp1">
+        <MappingFragment StoreEntitySet="tblMmPrisWebApp">
+          <ScalarProperty Name="Pris" ColumnName="Pris" />
+          <ScalarProperty Name="Placering" ColumnName="Placering" />
+          <ScalarProperty Name="BladID" ColumnName="BladID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPlannerPlaner1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tblPlannerPlaner1">
+        <MappingFragment StoreEntitySet="tblPlannerPlaner">
+          <ScalarProperty Name="Oprettet" ColumnName="Oprettet" />
+          <ScalarProperty Name="KonsulentCode" ColumnName="KonsulentCode" />
+          <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
+          <ScalarProperty Name="Ugeaviser" ColumnName="Ugeaviser" />
+          <ScalarProperty Name="Placering" ColumnName="Placering" />
+          <ScalarProperty Name="AntalFarver" ColumnName="AntalFarver" />
+          <ScalarProperty Name="Format2" ColumnName="Format2" />
+          <ScalarProperty Name="Format1" ColumnName="Format1" />
+          <ScalarProperty Name="Bureau" ColumnName="Bureau" />
+          <ScalarProperty Name="Annoncør" ColumnName="Annoncør" />
+          <ScalarProperty Name="BrugerEmail" ColumnName="BrugerEmail" />
+          <ScalarProperty Name="BrugerNavn" ColumnName="BrugerNavn" />
+          <ScalarProperty Name="PlannerID" ColumnName="PlannerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tempPriser1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tempPriser1">
+        <MappingFragment StoreEntitySet="tempPriser">
+          <ScalarProperty Name="ControlNavn" ColumnName="ControlNavn" />
+          <ScalarProperty Name="Farve4Max" ColumnName="Farve4Max" />
+          <ScalarProperty Name="Farve4Min" ColumnName="Farve4Min" />
+          <ScalarProperty Name="Farve4Pris" ColumnName="Farve4Pris" />
+          <ScalarProperty Name="FarveMax" ColumnName="FarveMax" />
+          <ScalarProperty Name="FarveMin" ColumnName="FarveMin" />
+          <ScalarProperty Name="FarvePris" ColumnName="FarvePris" />
+          <ScalarProperty Name="mmPris" ColumnName="mmPris" />
+          <ScalarProperty Name="FormatTil" ColumnName="FormatTil" />
+          <ScalarProperty Name="FormatFra" ColumnName="FormatFra" />
+          <ScalarProperty Name="PrislisteID" ColumnName="PrislisteID" />
+          <ScalarProperty Name="År" ColumnName="År" />
+          <ScalarProperty Name="PlaceringID" ColumnName="PlaceringID" />
+          <ScalarProperty Name="BladID" ColumnName="BladID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tnpOrdreNr1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.tnpOrdreNr1">
+        <MappingFragment StoreEntitySet="tnpOrdreNr">
+          <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AktiveUgeaviserMedAlleData1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.AktiveUgeaviserMedAlleData1">
+        <MappingFragment StoreEntitySet="AktiveUgeaviserMedAlleData">
+          <ScalarProperty Name="SamannonceringsRabat" ColumnName="SamannonceringsRabat" />
+          <ScalarProperty Name="GruppeRabat" ColumnName="GruppeRabat" />
+          <ScalarProperty Name="FakturaGruppe" ColumnName="FakturaGruppe" />
+          <ScalarProperty Name="BilagsbladeEmail" ColumnName="BilagsbladeEmail" />
+          <ScalarProperty Name="AnnonceKontrolEmail" ColumnName="AnnonceKontrolEmail" />
+          <ScalarProperty Name="MaterialeEmail" ColumnName="MaterialeEmail" />
+          <ScalarProperty Name="AnnonceEmail" ColumnName="AnnonceEmail" />
+          <ScalarProperty Name="RedaktionEmail" ColumnName="RedaktionEmail" />
+          <ScalarProperty Name="Hjemmeside" ColumnName="Hjemmeside" />
+          <ScalarProperty Name="MedieNetKode" ColumnName="MedieNetKode" />
+          <ScalarProperty Name="BogholderiKontaktperson" ColumnName="BogholderiKontaktperson" />
+          <ScalarProperty Name="BogholderiEmails" ColumnName="BogholderiEmails" />
+          <ScalarProperty Name="KontaktpersonerEmails" ColumnName="KontaktpersonerEmails" />
+          <ScalarProperty Name="Emails" ColumnName="Emails" />
+          <ScalarProperty Name="OrienteringEmails" ColumnName="OrienteringEmails" />
+          <ScalarProperty Name="PrisforespørgselEmails" ColumnName="PrisforespørgselEmails" />
+          <ScalarProperty Name="StamdataEmail" ColumnName="StamdataEmail" />
+          <ScalarProperty Name="SendIndeværendeUge" ColumnName="SendIndeværendeUge" />
+          <ScalarProperty Name="SendetidOrdrecheck" ColumnName="SendetidOrdrecheck" />
+          <ScalarProperty Name="OrdrecheckSendeDag" ColumnName="OrdrecheckSendeDag" />
+          <ScalarProperty Name="OrdrecheckEmail" ColumnName="OrdrecheckEmail" />
+          <ScalarProperty Name="OrdreEmail" ColumnName="OrdreEmail" />
+          <ScalarProperty Name="MaterialedeadlineRubrik" ColumnName="MaterialedeadlineRubrik" />
+          <ScalarProperty Name="MaterialedeadlineTekst" ColumnName="MaterialedeadlineTekst" />
+          <ScalarProperty Name="OrdredeadlineRubrik" ColumnName="OrdredeadlineRubrik" />
+          <ScalarProperty Name="OrdredeadlineTekst" ColumnName="OrdredeadlineTekst" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+          <ScalarProperty Name="Udgivelsesdag" ColumnName="Udgivelsesdag" />
+          <ScalarProperty Name="Oplag" ColumnName="Oplag" />
+          <ScalarProperty Name="WWWDækningSomTekst" ColumnName="WWWDækningSomTekst" />
+          <ScalarProperty Name="PrimærPct" ColumnName="PrimærPct" />
+          <ScalarProperty Name="Primær" ColumnName="Primær" />
+          <ScalarProperty Name="TotalområdePct" ColumnName="TotalområdePct" />
+          <ScalarProperty Name="Totalområde" ColumnName="Totalområde" />
+          <ScalarProperty Name="GeoKodeNavn" ColumnName="GeoKodeNavn" />
+          <ScalarProperty Name="DiMPDelOmrådeKode" ColumnName="DiMPDelOmrådeKode" />
+          <ScalarProperty Name="DelOmrådeNavn" ColumnName="DelOmrådeNavn" />
+          <ScalarProperty Name="RegionNavn" ColumnName="RegionNavn" />
+          <ScalarProperty Name="Ejerforhold" ColumnName="Ejerforhold" />
+          <ScalarProperty Name="MedlemÅr" ColumnName="MedlemÅr" />
+          <ScalarProperty Name="MedlemMåned" ColumnName="MedlemMåned" />
+          <ScalarProperty Name="HovedGruppeNavn" ColumnName="HovedGruppeNavn" />
+          <ScalarProperty Name="Kontaktperson" ColumnName="Kontaktperson" />
+          <ScalarProperty Name="CVR" ColumnName="CVR" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Tlf" ColumnName="Tlf" />
+          <ScalarProperty Name="PostBy" ColumnName="PostBy" />
+          <ScalarProperty Name="PostNr" ColumnName="PostNr" />
+          <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+          <ScalarProperty Name="Navn" ColumnName="Navn" />
+          <ScalarProperty Name="BladID" ColumnName="BladID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FindFejlLinjer1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.FindFejlLinjer1">
+        <MappingFragment StoreEntitySet="FindFejlLinjer">
+          <ScalarProperty Name="FejlTekst" ColumnName="FejlTekst" />
+          <ScalarProperty Name="Ansvar" ColumnName="Ansvar" />
+          <ScalarProperty Name="MaterialeGodtgørelsePris" ColumnName="MaterialeGodtgørelsePris" />
+          <ScalarProperty Name="SkalGiveMaterialeGodtgørelse" ColumnName="SkalGiveMaterialeGodtgørelse" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="FarveTotal" ColumnName="FarveTotal" />
+          <ScalarProperty Name="FarveRabat" ColumnName="FarveRabat" />
+          <ScalarProperty Name="FarvePris" ColumnName="FarvePris" />
+          <ScalarProperty Name="MmTotal" ColumnName="MmTotal" />
+          <ScalarProperty Name="MmRabat" ColumnName="MmRabat" />
+          <ScalarProperty Name="MmPris" ColumnName="MmPris" />
+          <ScalarProperty Name="AnnoncørNo_" ColumnName="AnnoncørNo_" />
+          <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
+          <ScalarProperty Name="Navn" ColumnName="Navn" />
+          <ScalarProperty Name="Mm" ColumnName="Mm" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LPRoller1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.LPRoller1">
+        <MappingFragment StoreEntitySet="LPRoller">
+          <ScalarProperty Name="Role_ID" ColumnName="Role ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NavisionContact1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.NavisionContact1">
+        <MappingFragment StoreEntitySet="NavisionContact">
+          <ScalarProperty Name="ContactNoFilter" ColumnName="ContactNoFilter" />
+          <ScalarProperty Name="Invoice_Document_Type" ColumnName="Invoice Document Type" />
+          <ScalarProperty Name="Deaktiveret" ColumnName="Deaktiveret" />
+          <ScalarProperty Name="Payment_Terms_Code" ColumnName="Payment Terms Code" />
+          <ScalarProperty Name="Bill_to_Contact_No_" ColumnName="Bill-to Contact No_" />
+          <ScalarProperty Name="Salesperson_Code" ColumnName="Salesperson Code" />
+          <ScalarProperty Name="EAN_nummer" ColumnName="EAN-nummer" />
+          <ScalarProperty Name="VAT_Registration_No_" ColumnName="VAT Registration No_" />
+          <ScalarProperty Name="Infogodtgørelse" ColumnName="Infogodtgørelse" />
+          <ScalarProperty Name="Sikkerhedsgodtgørelse" ColumnName="Sikkerhedsgodtgørelse" />
+          <ScalarProperty Name="Phone_No_" ColumnName="Phone No_" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Post_Code" ColumnName="Post Code" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="No_" ColumnName="No_" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Salesperson1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.Salesperson1">
+        <MappingFragment StoreEntitySet="Salesperson">
+          <ScalarProperty Name="Rolle" ColumnName="Rolle" />
+          <ScalarProperty Name="NulstilLayout" ColumnName="NulstilLayout" />
+          <ScalarProperty Name="SidsteLoginVersion" ColumnName="SidsteLoginVersion" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Phone_No_" ColumnName="Phone No_" />
+          <ScalarProperty Name="E_Mail" ColumnName="E-Mail" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UgeaviserTilGrid1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.UgeaviserTilGrid1">
+        <MappingFragment StoreEntitySet="UgeaviserTilGrid">
+          <ScalarProperty Name="MaterialedeadlineRubrik" ColumnName="MaterialedeadlineRubrik" />
+          <ScalarProperty Name="MaterialedeadlineTekst" ColumnName="MaterialedeadlineTekst" />
+          <ScalarProperty Name="OrdredeadlineRubrik" ColumnName="OrdredeadlineRubrik" />
+          <ScalarProperty Name="OrdredeadlineTekst" ColumnName="OrdredeadlineTekst" />
+          <ScalarProperty Name="Kontaktperson" ColumnName="Kontaktperson" />
+          <ScalarProperty Name="CVR" ColumnName="CVR" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Tlf" ColumnName="Tlf" />
+          <ScalarProperty Name="Adresse2" ColumnName="Adresse2" />
+          <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+          <ScalarProperty Name="Navn2" ColumnName="Navn2" />
+          <ScalarProperty Name="GruppeNavn" ColumnName="GruppeNavn" />
+          <ScalarProperty Name="DagNavn" ColumnName="DagNavn" />
+          <ScalarProperty Name="DelOmrådeSortKey" ColumnName="DelOmrådeSortKey" />
+          <ScalarProperty Name="DelOmrådeNavn" ColumnName="DelOmrådeNavn" />
+          <ScalarProperty Name="HovedGruppeSortKey" ColumnName="HovedGruppeSortKey" />
+          <ScalarProperty Name="HovedGruppeNavn" ColumnName="HovedGruppeNavn" />
+          <ScalarProperty Name="GeoKodeSortKey" ColumnName="GeoKodeSortKey" />
+          <ScalarProperty Name="GeoKodeNavn" ColumnName="GeoKodeNavn" />
+          <ScalarProperty Name="RegionSortKey" ColumnName="RegionSortKey" />
+          <ScalarProperty Name="RegionNavn" ColumnName="RegionNavn" />
+          <ScalarProperty Name="DækningsGrad" ColumnName="DækningsGrad" />
+          <ScalarProperty Name="Oplag" ColumnName="Oplag" />
+          <ScalarProperty Name="PostBy" ColumnName="PostBy" />
+          <ScalarProperty Name="PostNr" ColumnName="PostNr" />
+          <ScalarProperty Name="Navn" ColumnName="Navn" />
+          <ScalarProperty Name="BladID" ColumnName="BladID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewBlade1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.viewBlade1">
+        <MappingFragment StoreEntitySet="viewBlade">
+          <ScalarProperty Name="Overført" ColumnName="Overført" />
+          <ScalarProperty Name="Homepage" ColumnName="Homepage" />
+          <ScalarProperty Name="MatGodt50" ColumnName="MatGodt50" />
+          <ScalarProperty Name="CVR" ColumnName="CVR" />
+          <ScalarProperty Name="GruppeID" ColumnName="GruppeID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Tlf" ColumnName="Tlf" />
+          <ScalarProperty Name="PostNr" ColumnName="PostNr" />
+          <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+          <ScalarProperty Name="Navn" ColumnName="Navn" />
+          <ScalarProperty Name="BladID" ColumnName="BladID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewBookingListe1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.viewBookingListe1">
+        <MappingFragment StoreEntitySet="viewBookingListe">
+          <ScalarProperty Name="IndrykningsÅr" ColumnName="IndrykningsÅr" />
+          <ScalarProperty Name="KonsulentCode" ColumnName="KonsulentCode" />
+          <ScalarProperty Name="SamletPris" ColumnName="SamletPris" />
+          <ScalarProperty Name="IndrykningsUge" ColumnName="IndrykningsUge" />
+          <ScalarProperty Name="AntalFarver" ColumnName="AntalFarver" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+          <ScalarProperty Name="BureauNo_" ColumnName="BureauNo_" />
+          <ScalarProperty Name="AnnoncørNo_" ColumnName="AnnoncørNo_" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewGrupper1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.viewGrupper1">
+        <MappingFragment StoreEntitySet="viewGrupper">
+          <ScalarProperty Name="GruppeNavn" ColumnName="GruppeNavn" />
+          <ScalarProperty Name="GruppeHovedbladID" ColumnName="GruppeHovedbladID" />
+          <ScalarProperty Name="GruppeID" ColumnName="GruppeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewLinjeDiff1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.viewLinjeDiff1">
+        <MappingFragment StoreEntitySet="viewLinjeDiff">
+          <ScalarProperty Name="Mm" ColumnName="Mm" />
+          <ScalarProperty Name="MaterialeGodtgørelsePris" ColumnName="MaterialeGodtgørelsePris" />
+          <ScalarProperty Name="SkalGiveMaterialeGodtgørelse" ColumnName="SkalGiveMaterialeGodtgørelse" />
+          <ScalarProperty Name="InfoGodt" ColumnName="InfoGodt" />
+          <ScalarProperty Name="SikkerhedsGodt" ColumnName="SikkerhedsGodt" />
+          <ScalarProperty Name="FarveTotal" ColumnName="FarveTotal" />
+          <ScalarProperty Name="MmTotal" ColumnName="MmTotal" />
+          <ScalarProperty Name="MatGodtDiff" ColumnName="MatGodtDiff" />
+          <ScalarProperty Name="MmTotalDiff" ColumnName="MmTotalDiff" />
+          <ScalarProperty Name="UgeavisID" ColumnName="UgeavisID" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
+          <ScalarProperty Name="FarveRabatDiff" ColumnName="FarveRabatDiff" />
+          <ScalarProperty Name="FarvePrisDiff" ColumnName="FarvePrisDiff" />
+          <ScalarProperty Name="MmRabatDiff" ColumnName="MmRabatDiff" />
+          <ScalarProperty Name="MmPrisDiff" ColumnName="MmPrisDiff" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewOrdre1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.viewOrdre1">
+        <MappingFragment StoreEntitySet="viewOrdre">
+          <ScalarProperty Name="Item_Description" ColumnName="Item Description" />
+          <ScalarProperty Name="Previous_Version" ColumnName="Previous Version" />
+          <ScalarProperty Name="Credit_Reason" ColumnName="Credit Reason" />
+          <ScalarProperty Name="Previous_Order_No" ColumnName="Previous Order No" />
+          <ScalarProperty Name="MaterialeGodtgørelseTil" ColumnName="MaterialeGodtgørelseTil" />
+          <ScalarProperty Name="FakBem3" ColumnName="FakBem3" />
+          <ScalarProperty Name="FakBem2" ColumnName="FakBem2" />
+          <ScalarProperty Name="FakBem1" ColumnName="FakBem1" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="EnOrdre" ColumnName="EnOrdre" />
+          <ScalarProperty Name="Bureau" ColumnName="Bureau" />
+          <ScalarProperty Name="BureauOrdreNr" ColumnName="BureauOrdreNr" />
+          <ScalarProperty Name="InfoGodt" ColumnName="InfoGodt" />
+          <ScalarProperty Name="SikkerhedsGodt" ColumnName="SikkerhedsGodt" />
+          <ScalarProperty Name="SælgerKode" ColumnName="SælgerKode" />
+          <ScalarProperty Name="SamletPris" ColumnName="SamletPris" />
+          <ScalarProperty Name="OrdreDato" ColumnName="OrdreDato" />
+          <ScalarProperty Name="AntalFarver" ColumnName="AntalFarver" />
+          <ScalarProperty Name="Uge" ColumnName="Uge" />
+          <ScalarProperty Name="AnnoncørID" ColumnName="AnnoncørID" />
+          <ScalarProperty Name="Document_Type" ColumnName="Document Type" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="OrdreNr" ColumnName="OrdreNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewOrdreErSendt1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.viewOrdreErSendt1">
+        <MappingFragment StoreEntitySet="viewOrdreErSendt">
+          <ScalarProperty Name="KonsulentCode" ColumnName="KonsulentCode" />
+          <ScalarProperty Name="MaterialeUdsendt" ColumnName="MaterialeUdsendt" />
+          <ScalarProperty Name="MaterialeFra" ColumnName="MaterialeFra" />
+          <ScalarProperty Name="OrdreUdsendt" ColumnName="OrdreUdsendt" />
+          <ScalarProperty Name="IndrykningsUge" ColumnName="IndrykningsUge" />
+          <ScalarProperty Name="AntalFarver" ColumnName="AntalFarver" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+          <ScalarProperty Name="BureauNo_" ColumnName="BureauNo_" />
+          <ScalarProperty Name="AnnoncørNo_" ColumnName="AnnoncørNo_" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewOrdreFIND1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.viewOrdreFIND1">
+        <MappingFragment StoreEntitySet="viewOrdreFIND">
+          <ScalarProperty Name="Previous_Version" ColumnName="Previous Version" />
+          <ScalarProperty Name="Credit_Reason" ColumnName="Credit Reason" />
+          <ScalarProperty Name="Previous_Order_No" ColumnName="Previous Order No" />
+          <ScalarProperty Name="MaterialeGodtgørelseTil" ColumnName="MaterialeGodtgørelseTil" />
+          <ScalarProperty Name="FakBem3" ColumnName="FakBem3" />
+          <ScalarProperty Name="FakBem2" ColumnName="FakBem2" />
+          <ScalarProperty Name="FakBem1" ColumnName="FakBem1" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="EnOrdre" ColumnName="EnOrdre" />
+          <ScalarProperty Name="Bureau" ColumnName="Bureau" />
+          <ScalarProperty Name="BureauOrdreNr" ColumnName="BureauOrdreNr" />
+          <ScalarProperty Name="InfoGodt" ColumnName="InfoGodt" />
+          <ScalarProperty Name="SikkerhedsGodt" ColumnName="SikkerhedsGodt" />
+          <ScalarProperty Name="SælgerKode" ColumnName="SælgerKode" />
+          <ScalarProperty Name="SamletPris" ColumnName="SamletPris" />
+          <ScalarProperty Name="OrdreDato" ColumnName="OrdreDato" />
+          <ScalarProperty Name="AntalFarver" ColumnName="AntalFarver" />
+          <ScalarProperty Name="Uge" ColumnName="Uge" />
+          <ScalarProperty Name="AnnoncørID" ColumnName="AnnoncørID" />
+          <ScalarProperty Name="Document_Type" ColumnName="Document Type" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="OrdreNr" ColumnName="OrdreNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewOrdreIkkeSendt1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.viewOrdreIkkeSendt1">
+        <MappingFragment StoreEntitySet="viewOrdreIkkeSendt">
+          <ScalarProperty Name="Deadline" ColumnName="Deadline" />
+          <ScalarProperty Name="Overskrift" ColumnName="Overskrift" />
+          <ScalarProperty Name="KonsulentCode" ColumnName="KonsulentCode" />
+          <ScalarProperty Name="MaterialeUdsendt" ColumnName="MaterialeUdsendt" />
+          <ScalarProperty Name="MaterialeFra" ColumnName="MaterialeFra" />
+          <ScalarProperty Name="OrdreUdsendt" ColumnName="OrdreUdsendt" />
+          <ScalarProperty Name="IndrykningsUge" ColumnName="IndrykningsUge" />
+          <ScalarProperty Name="AntalFarver" ColumnName="AntalFarver" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+          <ScalarProperty Name="BureauNo_" ColumnName="BureauNo_" />
+          <ScalarProperty Name="AnnoncørNo_" ColumnName="AnnoncørNo_" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewOrdreLinjer1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.viewOrdreLinjer1">
+        <MappingFragment StoreEntitySet="viewOrdreLinjer">
+          <ScalarProperty Name="Previous_Version" ColumnName="Previous Version" />
+          <ScalarProperty Name="Previous_Order_No" ColumnName="Previous Order No" />
+          <ScalarProperty Name="MaterialePris" ColumnName="MaterialePris" />
+          <ScalarProperty Name="TotalPris" ColumnName="TotalPris" />
+          <ScalarProperty Name="MaterialeGodt" ColumnName="MaterialeGodt" />
+          <ScalarProperty Name="FarveTillægsRabat" ColumnName="FarveTillægsRabat" />
+          <ScalarProperty Name="FarveTillægsPris" ColumnName="FarveTillægsPris" />
+          <ScalarProperty Name="SpecialRabat" ColumnName="SpecialRabat" />
+          <ScalarProperty Name="AnvendtPris" ColumnName="AnvendtPris" />
+          <ScalarProperty Name="Mm" ColumnName="Mm" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+          <ScalarProperty Name="BladId" ColumnName="BladId" />
+          <ScalarProperty Name="Document_Type" ColumnName="Document Type" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="OrdreNr" ColumnName="OrdreNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewOrdreLinjerFIND1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.viewOrdreLinjerFIND1">
+        <MappingFragment StoreEntitySet="viewOrdreLinjerFIND">
+          <ScalarProperty Name="MaterialePris" ColumnName="MaterialePris" />
+          <ScalarProperty Name="TotalPris" ColumnName="TotalPris" />
+          <ScalarProperty Name="MaterialeGodt" ColumnName="MaterialeGodt" />
+          <ScalarProperty Name="FarveTillægsRabat" ColumnName="FarveTillægsRabat" />
+          <ScalarProperty Name="FarveTillægsPris" ColumnName="FarveTillægsPris" />
+          <ScalarProperty Name="SpecialRabat" ColumnName="SpecialRabat" />
+          <ScalarProperty Name="AnvendtPris" ColumnName="AnvendtPris" />
+          <ScalarProperty Name="Mm" ColumnName="Mm" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+          <ScalarProperty Name="BladId" ColumnName="BladId" />
+          <ScalarProperty Name="Document_Type" ColumnName="Document Type" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="OrdreNr" ColumnName="OrdreNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewOrdreSendtManglerMateriale1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.viewOrdreSendtManglerMateriale1">
+        <MappingFragment StoreEntitySet="viewOrdreSendtManglerMateriale">
+          <ScalarProperty Name="Deadline" ColumnName="Deadline" />
+          <ScalarProperty Name="Overskrift" ColumnName="Overskrift" />
+          <ScalarProperty Name="KonsulentCode" ColumnName="KonsulentCode" />
+          <ScalarProperty Name="MaterialeUdsendt" ColumnName="MaterialeUdsendt" />
+          <ScalarProperty Name="MaterialeFra" ColumnName="MaterialeFra" />
+          <ScalarProperty Name="OrdreUdsendt" ColumnName="OrdreUdsendt" />
+          <ScalarProperty Name="IndrykningsUge" ColumnName="IndrykningsUge" />
+          <ScalarProperty Name="AntalFarver" ColumnName="AntalFarver" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+          <ScalarProperty Name="BureauNo_" ColumnName="BureauNo_" />
+          <ScalarProperty Name="AnnoncørNo_" ColumnName="AnnoncørNo_" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewOversigt1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.viewOversigt1">
+        <MappingFragment StoreEntitySet="viewOversigt">
+          <ScalarProperty Name="Deadline" ColumnName="Deadline" />
+          <ScalarProperty Name="Overskrift" ColumnName="Overskrift" />
+          <ScalarProperty Name="KonsulentCode" ColumnName="KonsulentCode" />
+          <ScalarProperty Name="MaterialeUdsendt" ColumnName="MaterialeUdsendt" />
+          <ScalarProperty Name="MaterialeFra" ColumnName="MaterialeFra" />
+          <ScalarProperty Name="OrdreUdsendt" ColumnName="OrdreUdsendt" />
+          <ScalarProperty Name="IndrykningsUge" ColumnName="IndrykningsUge" />
+          <ScalarProperty Name="AntalFarver" ColumnName="AntalFarver" />
+          <ScalarProperty Name="Format" ColumnName="Format" />
+          <ScalarProperty Name="BureauNo_" ColumnName="BureauNo_" />
+          <ScalarProperty Name="AnnoncørNo_" ColumnName="AnnoncørNo_" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewUpdateStatusIMedieplan1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.viewUpdateStatusIMedieplan1">
+        <MappingFragment StoreEntitySet="viewUpdateStatusIMedieplan">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewUpdateStatusIMedieplanNr1">
+      <EntityTypeMapping TypeName="DiMPdotNetModel.viewUpdateStatusIMedieplanNr1">
+        <MappingFragment StoreEntitySet="viewUpdateStatusIMedieplanNr">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="AktivVersion" ColumnName="AktivVersion" />
+          <ScalarProperty Name="MedieplanNr" ColumnName="MedieplanNr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="tblKontakterArbOmråderPrKontakt1" TypeName="DiMPdotNetModel.tblKontakterArbOmråderPrKontakt1" StoreEntitySet="tblKontakterArbOmråderPrKontakt">
+      <EndProperty Name="tblKontakter1">
+        <ScalarProperty Name="KontaktID" ColumnName="KontaktID" />
+      </EndProperty>
+      <EndProperty Name="tblKontaktArbOmråder">
+        <ScalarProperty Name="ArbOmrådeID" ColumnName="ArbOmrådeID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="tblKontaktFunktionerPrBlad1" TypeName="DiMPdotNetModel.tblKontaktFunktionerPrBlad1" StoreEntitySet="tblKontaktFunktionerPrBlad">
+      <EndProperty Name="tblKontaktFunktioner1">
+        <ScalarProperty Name="FunktionID" ColumnName="FunktionID" />
+      </EndProperty>
+      <EndProperty Name="tblKontakterPrBlad1">
+        <ScalarProperty Name="KontaktID" ColumnName="KontaktID" />
+        <ScalarProperty Name="BladID" ColumnName="BladID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="dt_addtosourcecontrol1" FunctionName="DiMPdotNetModel.Store.dt_addtosourcecontrol" />
+    <FunctionImportMapping FunctionImportName="dt_addtosourcecontrol_u1" FunctionName="DiMPdotNetModel.Store.dt_addtosourcecontrol_u" />
+    <FunctionImportMapping FunctionImportName="dt_adduserobject1" FunctionName="DiMPdotNetModel.Store.dt_adduserobject" />
+    <FunctionImportMapping FunctionImportName="dt_adduserobject_vcs1" FunctionName="DiMPdotNetModel.Store.dt_adduserobject_vcs" />
+    <FunctionImportMapping FunctionImportName="dt_checkinobject1" FunctionName="DiMPdotNetModel.Store.dt_checkinobject" />
+    <FunctionImportMapping FunctionImportName="dt_checkinobject_u1" FunctionName="DiMPdotNetModel.Store.dt_checkinobject_u" />
+    <FunctionImportMapping FunctionImportName="dt_checkoutobject1" FunctionName="DiMPdotNetModel.Store.dt_checkoutobject" />
+    <FunctionImportMapping FunctionImportName="dt_checkoutobject_u1" FunctionName="DiMPdotNetModel.Store.dt_checkoutobject_u" />
+    <FunctionImportMapping FunctionImportName="dt_displayoaerror1" FunctionName="DiMPdotNetModel.Store.dt_displayoaerror" />
+    <FunctionImportMapping FunctionImportName="dt_displayoaerror_u1" FunctionName="DiMPdotNetModel.Store.dt_displayoaerror_u" />
+    <FunctionImportMapping FunctionImportName="dt_droppropertiesbyid1" FunctionName="DiMPdotNetModel.Store.dt_droppropertiesbyid" />
+    <FunctionImportMapping FunctionImportName="dt_dropuserobjectbyid1" FunctionName="DiMPdotNetModel.Store.dt_dropuserobjectbyid" />
+    <FunctionImportMapping FunctionImportName="dt_generateansiname1" FunctionName="DiMPdotNetModel.Store.dt_generateansiname" />
+    <FunctionImportMapping FunctionImportName="dt_getobjwithprop1" FunctionName="DiMPdotNetModel.Store.dt_getobjwithprop" />
+    <FunctionImportMapping FunctionImportName="dt_getobjwithprop_u1" FunctionName="DiMPdotNetModel.Store.dt_getobjwithprop_u" />
+    <FunctionImportMapping FunctionImportName="dt_getpropertiesbyid1" FunctionName="DiMPdotNetModel.Store.dt_getpropertiesbyid">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DiMPdotNetModel.dt_getpropertiesbyid1_Result">
+          <ScalarProperty Name="property" ColumnName="property" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="lvalue" ColumnName="lvalue" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="dt_getpropertiesbyid_u1" FunctionName="DiMPdotNetModel.Store.dt_getpropertiesbyid_u">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DiMPdotNetModel.dt_getpropertiesbyid_u1_Result">
+          <ScalarProperty Name="property" ColumnName="property" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="uvalue" ColumnName="uvalue" />
+          <ScalarProperty Name="lvalue" ColumnName="lvalue" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="dt_getpropertiesbyid_vcs1" FunctionName="DiMPdotNetModel.Store.dt_getpropertiesbyid_vcs" />
+    <FunctionImportMapping FunctionImportName="dt_getpropertiesbyid_vcs_u1" FunctionName="DiMPdotNetModel.Store.dt_getpropertiesbyid_vcs_u" />
+    <FunctionImportMapping FunctionImportName="dt_isundersourcecontrol1" FunctionName="DiMPdotNetModel.Store.dt_isundersourcecontrol" />
+    <FunctionImportMapping FunctionImportName="dt_isundersourcecontrol_u1" FunctionName="DiMPdotNetModel.Store.dt_isundersourcecontrol_u" />
+    <FunctionImportMapping FunctionImportName="dt_removefromsourcecontrol1" FunctionName="DiMPdotNetModel.Store.dt_removefromsourcecontrol" />
+    <FunctionImportMapping FunctionImportName="dt_setpropertybyid1" FunctionName="DiMPdotNetModel.Store.dt_setpropertybyid" />
+    <FunctionImportMapping FunctionImportName="dt_setpropertybyid_u1" FunctionName="DiMPdotNetModel.Store.dt_setpropertybyid_u" />
+    <FunctionImportMapping FunctionImportName="dt_validateloginparams1" FunctionName="DiMPdotNetModel.Store.dt_validateloginparams" />
+    <FunctionImportMapping FunctionImportName="dt_validateloginparams_u1" FunctionName="DiMPdotNetModel.Store.dt_validateloginparams_u" />
+    <FunctionImportMapping FunctionImportName="dt_vcsenabled1" FunctionName="DiMPdotNetModel.Store.dt_vcsenabled" />
+    <FunctionImportMapping FunctionImportName="dt_verstamp0061" FunctionName="DiMPdotNetModel.Store.dt_verstamp006" />
+    <FunctionImportMapping FunctionImportName="dt_verstamp0071" FunctionName="DiMPdotNetModel.Store.dt_verstamp007" />
+    <FunctionImportMapping FunctionImportName="dt_whocheckedout1" FunctionName="DiMPdotNetModel.Store.dt_whocheckedout" />
+    <FunctionImportMapping FunctionImportName="dt_whocheckedout_u1" FunctionName="DiMPdotNetModel.Store.dt_whocheckedout_u" />
+    <FunctionImportMapping FunctionImportName="FindNæsteVersionsNrIMedieplan1" FunctionName="DiMPdotNetModel.Store.FindNæsteVersionsNrIMedieplan" />
+    <FunctionImportMapping FunctionImportName="IndsætOrdreLinjerTilNavision1" FunctionName="DiMPdotNetModel.Store.IndsætOrdreLinjerTilNavision" />
+    <FunctionImportMapping FunctionImportName="IndsætOrdreTilNavision1" FunctionName="DiMPdotNetModel.Store.IndsætOrdreTilNavision" />
+    <FunctionImportMapping FunctionImportName="OpdaterMedieplanNrTabel1" FunctionName="DiMPdotNetModel.Store.OpdaterMedieplanNrTabel" />
+    <FunctionImportMapping FunctionImportName="OpretForespørgsel1" FunctionName="DiMPdotNetModel.Store.OpretForespørgsel" />
+    <FunctionImportMapping FunctionImportName="OpretForespørgselsLinjer1" FunctionName="DiMPdotNetModel.Store.OpretForespørgselsLinjer" />
+    <FunctionImportMapping FunctionImportName="OpretKontakt1" FunctionName="DiMPdotNetModel.Store.OpretKontakt" />
+    <FunctionImportMapping FunctionImportName="OpretNyMediePlan1" FunctionName="DiMPdotNetModel.Store.OpretNyMediePlan" />
+    <FunctionImportMapping FunctionImportName="SearchAllTables1" FunctionName="DiMPdotNetModel.Store.SearchAllTables" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram1" FunctionName="DiMPdotNetModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram1" FunctionName="DiMPdotNetModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram1" FunctionName="DiMPdotNetModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition1" FunctionName="DiMPdotNetModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DiMPdotNetModel.sp_helpdiagramdefinition1_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams1" FunctionName="DiMPdotNetModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DiMPdotNetModel.sp_helpdiagrams1_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram1" FunctionName="DiMPdotNetModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams1" FunctionName="DiMPdotNetModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,1887 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DiMPdotNetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'DiMPdotNet.dbo.Ark1$' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Ark1$">
+          <Property Name="Blad Id" Type="float" />
+          <Property Name="Post nr" Type="float" />
+          <Property Name="Oplagstal" Type="float" />
+          <Property Name="DG Beregnet" Type="int" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'DiMPdotNet.dbo.BladDækningOpdater' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="BladDækningOpdater">
+          <Property Name="Blad ID" Type="int" />
+          <Property Name="Postnr" Type="int" />
+          <Property Name="Oplagstal" Type="int" />
+          <Property Name="DG Beregnet" Type="int" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'DiMPdotNet.dbo.BladSlet' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="BladSlet">
+          <Property Name="Blad ID" Type="int" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DiMPdotNet.dbo.bladtlfogfaxkopi' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="bladtlfogfaxkopi">
+    <Key>
+      <PropertyRef Name="BladID" />
+      <PropertyRef Name="Tlf" />
+      <PropertyRef Name="Fax" />
+    </Key>
+    <Property Name="BladID" Type="int" Nullable="false" />
+    <Property Name="Tlf" Type="char" MaxLength="15" Nullable="false" />
+    <Property Name="Fax" Type="char" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'DiMPdotNet.dbo.DeadlinesJyskFynske' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="DeadlinesJyskFynske">
+          <Property Name="Lokal Ugeavis" Type="nvarchar" MaxLength="255" />
+          <Property Name="T Ordre Dag" Type="float" />
+          <Property Name="T Ordre Kl" Type="nvarchar" MaxLength="255" />
+          <Property Name="T Mater Dag" Type="float" />
+          <Property Name="T Mater Kl" Type="nvarchar" MaxLength="255" />
+          <Property Name="Rub Ordre Dag" Type="float" />
+          <Property Name="Rub Ordre Kl" Type="nvarchar" MaxLength="255" />
+          <Property Name="Rub Mater Dag" Type="float" />
+          <Property Name="Rub Mater Kl" Type="nvarchar" MaxLength="255" />
+          <Property Name="BladID" Type="float" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DiMPdotNet.dbo.delPriser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="delPriser">
+    <Key>
+      <PropertyRef Name="BladID" />
+      <PropertyRef Name="PlaceringID" />
+    </Key>
+    <Property Name="BladID" Type="int" Nullable="false" />
+    <Property Name="PlaceringID" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="dtproperties">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="property" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="objectid" Type="int" />
+    <Property Name="property" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="value" Type="varchar" MaxLength="255" />
+    <Property Name="uvalue" Type="nvarchar" MaxLength="255" />
+    <Property Name="lvalue" Type="image" />
+    <Property Name="version" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DiMPdotNet.dbo.HerningFolkeblad' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="HerningFolkeblad">
+    <Key>
+      <PropertyRef Name="BladID" />
+      <PropertyRef Name="Navn" />
+    </Key>
+    <Property Name="BladID" Type="int" Nullable="false" />
+    <Property Name="Navn" Type="nchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'DiMPdotNet.dbo.Jysk-Fynske' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Jysk-Fynske">
+          <Property Name="ID" Type="float" />
+          <Property Name="Avis" Type="nvarchar" MaxLength="255" />
+          <Property Name="Bemærkning" Type="nvarchar" MaxLength="255" />
+          <Property Name="Ordrer" Type="nvarchar" MaxLength="255" />
+          <Property Name="Materiale" Type="nvarchar" MaxLength="255" />
+          <Property Name="Tjeklister" Type="nvarchar" MaxLength="255" />
+          <Property Name="Annoncekontrol " Type="nvarchar" MaxLength="255" />
+          <Property Name="Bilagsblade" Type="nvarchar" MaxLength="255" />
+          <Property Name="Stamdata" Type="nvarchar" MaxLength="255" />
+          <Property Name="Prisforespørgsler" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+  <EntityType Name="OpdateringsTekst">
+    <Key>
+      <PropertyRef Name="LPVersion" />
+    </Key>
+    <Property Name="LPVersion" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Beskrivelse" Type="ntext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DiMPdotNet.dbo.tblAktiveVærdier' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tblAktiveVærdier">
+    <Key>
+      <PropertyRef Name="GruppeVersion" />
+      <PropertyRef Name="MiljøTillæg" />
+      <PropertyRef Name="PrisberegningVersion" />
+      <PropertyRef Name="BilagsBladeSendeUge" />
+    </Key>
+    <Property Name="GruppeVersion" Type="tinyint" Nullable="false" />
+    <Property Name="MiljøTillæg" Type="smallmoney" Nullable="false" />
+    <Property Name="PrisberegningVersion" Type="tinyint" Nullable="false" />
+    <Property Name="BilagsBladeSendeUge" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DiMPdotNet.dbo.tblAktivGruppeVersion' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tblAktivGruppeVersion">
+    <Key>
+      <PropertyRef Name="AktivVersion" />
+    </Key>
+    <Property Name="AktivVersion" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblAnnoncekontrol">
+    <Key>
+      <PropertyRef Name="MedieplanNr" />
+      <PropertyRef Name="UgeavisID" />
+    </Key>
+    <Property Name="MedieplanNr" Type="int" Nullable="false" />
+    <Property Name="UgeavisID" Type="int" Nullable="false" />
+    <Property Name="ErKontrolleret" Type="bit" Nullable="false" />
+    <Property Name="KontrolTidspunkt" Type="datetime" Nullable="false" />
+    <Property Name="KontrollørEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="KontrolleretAfDLU" Type="bit" Nullable="false" />
+    <Property Name="Fejlkode" Type="tinyint" Nullable="false" />
+    <Property Name="Ansvar" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="IndrykketPåSide" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="FaktureresTil" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="SidePlacering" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblBladDækning">
+    <Key>
+      <PropertyRef Name="BladID" />
+      <PropertyRef Name="PostNr" />
+    </Key>
+    <Property Name="BladID" Type="int" Nullable="false" />
+    <Property Name="PostNr" Type="int" Nullable="false" />
+    <Property Name="Oplag" Type="int" Nullable="false" />
+    <Property Name="DækningsGrad" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'DiMPdotNet.dbo.tblBladDækningOpdatering' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tblBladDækningOpdatering">
+          <Property Name="Blad-Id" Type="int" />
+          <Property Name="Postnr" Type="int" />
+          <Property Name="Oplagstal" Type="int" />
+          <Property Name="Samtlige husstande" Type="int" />
+          <Property Name="Reklamer Nej tak %" Type="float" />
+          <Property Name="Gratisaviser nej tak %1" Type="float" />
+          <Property Name="DG beregnet" Type="int" />
+        </EntityType>-->
+  <EntityType Name="tblBladnavnMappingFraDO">
+    <Key>
+      <PropertyRef Name="BladID" />
+    </Key>
+    <Property Name="BladID" Type="int" Nullable="false" />
+    <Property Name="DLUNavn" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Medie" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblBladStamdata">
+    <Key>
+      <PropertyRef Name="BladID" />
+    </Key>
+    <Property Name="BladID" Type="int" Nullable="false" />
+    <Property Name="Navn" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="Navn2" Type="nvarchar" MaxLength="30" />
+    <Property Name="Adresse" Type="nchar" MaxLength="30" />
+    <Property Name="Adresse2" Type="nvarchar" MaxLength="30" />
+    <Property Name="PostNr" Type="int" />
+    <Property Name="Tlf" Type="char" MaxLength="15" />
+    <Property Name="Fax" Type="char" MaxLength="15" />
+    <Property Name="CVR" Type="char" MaxLength="15" />
+    <Property Name="FIK" Type="nvarchar" MaxLength="15" />
+    <Property Name="Kontaktperson" Type="nvarchar" MaxLength="30" />
+    <Property Name="HovedgruppeID" Type="tinyint" />
+    <Property Name="MedlemMåned" Type="tinyint" />
+    <Property Name="MedlemÅr" Type="tinyint" />
+    <Property Name="MedlemSiden" Type="smalldatetime" />
+    <Property Name="Ejerforhold" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Koncern" Type="nvarchar" MaxLength="30" />
+    <Property Name="Ophørt" Type="bit" Nullable="false" />
+    <Property Name="VisPåWWW" Type="bit" Nullable="false" />
+    <Property Name="RegionID" Type="tinyint" />
+    <Property Name="DelOmrådeID" Type="tinyint" />
+    <Property Name="DiMPDelOmrådeKode" Type="nvarchar" MaxLength="2" />
+    <Property Name="GeoKodeID" Type="tinyint" />
+    <Property Name="Totalområde" Type="int" />
+    <Property Name="TotalområdePct" Type="tinyint" />
+    <Property Name="Primær" Type="int" />
+    <Property Name="PrimærPct" Type="tinyint" />
+    <Property Name="WWWDækningSomTekst" Type="ntext" />
+    <Property Name="Oplag" Type="int" />
+    <Property Name="UgedagID" Type="tinyint" />
+    <Property Name="Format" Type="nchar" MaxLength="15" />
+    <Property Name="OrdredeadlineTekst" Type="nvarchar" MaxLength="20" />
+    <Property Name="OrdredeadlineRubrik" Type="nvarchar" MaxLength="20" />
+    <Property Name="MaterialedeadlineTekst" Type="nvarchar" MaxLength="20" />
+    <Property Name="MaterialedeadlineRubrik" Type="nvarchar" MaxLength="20" />
+    <Property Name="OrdreEmail" Type="nvarchar" MaxLength="200" />
+    <Property Name="OrdrecheckEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="OrdrecheckSendeDagID" Type="tinyint" />
+    <Property Name="SendetidOrdrecheck" Type="char" MaxLength="5" />
+    <Property Name="SendIndeværendeUge" Type="bit" />
+    <Property Name="StamdataEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="PrisforespørgselEmails" Type="nvarchar" MaxLength="200" />
+    <Property Name="OrienteringEmails" Type="nvarchar" MaxLength="200" />
+    <Property Name="Emails" Type="nvarchar" MaxLength="200" />
+    <Property Name="KontaktpersonerEmails" Type="nvarchar" MaxLength="200" />
+    <Property Name="BogholderiEmails" Type="nvarchar" MaxLength="200" />
+    <Property Name="BogholderiKontaktperson" Type="nvarchar" MaxLength="30" />
+    <Property Name="MedieNetKode" Type="varchar" MaxLength="15" />
+    <Property Name="MatGodtBeløb" Type="tinyint" />
+    <Property Name="Hjemmeside" Type="varchar" MaxLength="100" />
+    <Property Name="RedaktionEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="AnnonceEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaterialeEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="AnnonceKontrolEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="BilagsbladeEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="FakturaGruppeID" Type="int" Nullable="false" />
+    <Property Name="SalgsGruppeID" Type="int" />
+    <Property Name="GruppeRabat" Type="text" />
+    <Property Name="SamannonceringsRabat" Type="text" />
+    <Property Name="MåGiveFarveRabat" Type="bit" />
+    <Property Name="GiverWebTillæg" Type="bit" Nullable="false" />
+    <Property Name="OrdreDeadlineTekstDag" Type="tinyint" />
+    <Property Name="OrdreDeadlineTekstKl" Type="nvarchar" MaxLength="5" />
+    <Property Name="MaterialeDeadlineTekstDag" Type="tinyint" />
+    <Property Name="MaterialeDeadlineTekstKl" Type="nvarchar" MaxLength="5" />
+    <Property Name="OrdreDeadlineRubrikDag" Type="tinyint" />
+    <Property Name="OrdreDeadlineRubrikKl" Type="nvarchar" MaxLength="5" />
+    <Property Name="MaterialeDeadlineRubrikDag" Type="tinyint" />
+    <Property Name="MaterialeDeadlineRubrikKl" Type="nvarchar" MaxLength="5" />
+    <Property Name="Overført" Type="bit" Nullable="false" />
+    <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblBladStamdataKopi">
+    <Key>
+      <PropertyRef Name="BladID" />
+    </Key>
+    <Property Name="BladID" Type="int" Nullable="false" />
+    <Property Name="Navn" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Navn2" Type="nvarchar" MaxLength="30" />
+    <Property Name="Adresse" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Adresse2" Type="nvarchar" MaxLength="30" />
+    <Property Name="PostNr" Type="int" />
+    <Property Name="Tlf" Type="char" MaxLength="15" Nullable="false" />
+    <Property Name="Fax" Type="char" MaxLength="15" Nullable="false" />
+    <Property Name="CVR" Type="char" MaxLength="15" />
+    <Property Name="FIK" Type="nvarchar" MaxLength="15" />
+    <Property Name="Kontaktperson" Type="nvarchar" MaxLength="30" />
+    <Property Name="HovedgruppeID" Type="tinyint" />
+    <Property Name="MedlemMåned" Type="tinyint" />
+    <Property Name="MedlemÅr" Type="tinyint" />
+    <Property Name="MedlemSiden" Type="smalldatetime" />
+    <Property Name="Ejerforhold" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Ophørt" Type="bit" Nullable="false" />
+    <Property Name="VisPåWWW" Type="bit" Nullable="false" />
+    <Property Name="RegionID" Type="tinyint" />
+    <Property Name="DelOmrådeID" Type="tinyint" />
+    <Property Name="DiMPDelOmrådeKode" Type="nvarchar" MaxLength="2" />
+    <Property Name="GeoKodeID" Type="tinyint" />
+    <Property Name="Totalområde" Type="int" />
+    <Property Name="TotalområdePct" Type="tinyint" />
+    <Property Name="Primær" Type="int" />
+    <Property Name="PrimærPct" Type="tinyint" />
+    <Property Name="WWWDækningSomTekst" Type="ntext" />
+    <Property Name="Oplag" Type="int" />
+    <Property Name="UgedagID" Type="tinyint" />
+    <Property Name="Format" Type="nchar" MaxLength="15" />
+    <Property Name="OrdreEmail" Type="nvarchar" MaxLength="200" />
+    <Property Name="OrdrecheckEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="OrdrecheckSendeDagID" Type="tinyint" />
+    <Property Name="SendetidOrdrecheck" Type="char" MaxLength="5" />
+    <Property Name="SendIndeværendeUge" Type="bit" />
+    <Property Name="StamdataEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="PrisforespørgselEmails" Type="nvarchar" MaxLength="200" />
+    <Property Name="OrienteringEmails" Type="nvarchar" MaxLength="200" />
+    <Property Name="Emails" Type="nvarchar" MaxLength="200" />
+    <Property Name="KontaktpersonerEmails" Type="nvarchar" MaxLength="200" />
+    <Property Name="BogholderiEmails" Type="nvarchar" MaxLength="200" />
+    <Property Name="BogholderiKontaktperson" Type="nvarchar" MaxLength="30" />
+    <Property Name="MedieNetKode" Type="varchar" MaxLength="15" />
+    <Property Name="MatGodtBeløb" Type="tinyint" />
+    <Property Name="Hjemmeside" Type="nvarchar" MaxLength="100" />
+    <Property Name="RedaktionEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="AnnonceEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaterialeEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="AnnonceKontrolEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="BilagsbladeEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="FakturaGruppeID" Type="int" Nullable="false" />
+    <Property Name="SalgsGruppeID" Type="int" />
+    <Property Name="GruppeRabat" Type="text" />
+    <Property Name="SamannonceringsRabat" Type="text" />
+    <Property Name="MåGiveFarveRabat" Type="bit" />
+    <Property Name="GiverWebTillæg" Type="bit" />
+    <Property Name="OrdreDeadlineTekstDag" Type="tinyint" Nullable="false" />
+    <Property Name="OrdreDeadlineTekstKl" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="MaterialeDeadlineTekstDag" Type="tinyint" Nullable="false" />
+    <Property Name="MaterialeDeadlineTekstKl" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="OrdreDeadlineRubrikDag" Type="tinyint" Nullable="false" />
+    <Property Name="OrdreDeadlineRubrikKl" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="MaterialeDeadlineRubrikDag" Type="tinyint" Nullable="false" />
+    <Property Name="MaterialeDeadlineRubrikKl" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="Overført" Type="bit" Nullable="false" />
+    <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblBrugerData">
+    <Key>
+      <PropertyRef Name="Initialer" />
+    </Key>
+    <Property Name="Initialer" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="SidsteLoginVersion" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="NulstilLayout" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblDage">
+    <Key>
+      <PropertyRef Name="DagID" />
+    </Key>
+    <Property Name="DagID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DagNavn" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="DagType" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblDelOmråde">
+    <Key>
+      <PropertyRef Name="DelOmrådeID" />
+    </Key>
+    <Property Name="DelOmrådeID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DelOmrådeKode" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="DelOmrådeNavn" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="DelOmrådeSortKey" Type="tinyint" Nullable="false" />
+    <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblDPKulør">
+    <Key>
+      <PropertyRef Name="DPKulørID" />
+    </Key>
+    <Property Name="DPKulørID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Kulør" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblEjerforhold">
+    <Key>
+      <PropertyRef Name="EjerforholdID" />
+    </Key>
+    <Property Name="EjerforholdID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ejerforhold" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="WebTillægTekst" Type="smallmoney" Nullable="false" />
+    <Property Name="WebTillægRubrik" Type="smallmoney" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblFakturaFejl">
+    <Key>
+      <PropertyRef Name="MedieplanNr" />
+      <PropertyRef Name="Version" />
+      <PropertyRef Name="UgeavisID" />
+    </Key>
+    <Property Name="MedieplanNr" Type="int" Nullable="false" />
+    <Property Name="Version" Type="smallint" Nullable="false" />
+    <Property Name="UgeavisID" Type="int" Nullable="false" />
+    <Property Name="FejlKode" Type="smallint" Nullable="false" />
+    <Property Name="Ansvarlig" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblFakturaFejlTekst">
+    <Key>
+      <PropertyRef Name="FejlKode" />
+    </Key>
+    <Property Name="FejlKode" Type="tinyint" Nullable="false" />
+    <Property Name="FejlTekst" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblFaktureringsBilag">
+    <Key>
+      <PropertyRef Name="MedieplanNr" />
+      <PropertyRef Name="BemærkningNr" />
+    </Key>
+    <Property Name="MedieplanNr" Type="int" Nullable="false" />
+    <Property Name="BemærkningNr" Type="smallint" Nullable="false" />
+    <Property Name="UgeavisNavn" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Oprettet" Type="smalldatetime" Nullable="false" />
+    <Property Name="OprettetAf" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="RettetAf" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="RettetKl" Type="smalldatetime" Nullable="false" />
+    <Property Name="ErRettet" Type="bit" Nullable="false" />
+    <Property Name="Tekst" Type="ntext" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DiMPdotNet.dbo.tblFarveTillægWebApp' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tblFarveTillægWebApp">
+    <Key>
+      <PropertyRef Name="BladID" />
+    </Key>
+    <Property Name="BladID" Type="int" Nullable="false" />
+    <Property Name="farvePris" Type="money" />
+    <Property Name="farveMin" Type="smallint" />
+    <Property Name="farveMax" Type="smallint" />
+    <Property Name="farve4Pris" Type="money" />
+    <Property Name="farve4Min" Type="smallint" />
+    <Property Name="farve4Max" Type="smallint" />
+    <Property Name="Godkendt" Type="bit" />
+    <Property Name="PrisBemærkning" Type="text" />
+  </EntityType>
+  <EntityType Name="tblFejlTekst">
+    <Key>
+      <PropertyRef Name="Fejlkode" />
+    </Key>
+    <Property Name="Fejlkode" Type="tinyint" Nullable="false" />
+    <Property Name="FejlTekst" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblGeoKode">
+    <Key>
+      <PropertyRef Name="GeoKodeID" />
+    </Key>
+    <Property Name="GeoKodeID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GeoKodeNavn" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="GeoKodeSortKey" Type="tinyint" Nullable="false" />
+    <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblGrupper">
+    <Key>
+      <PropertyRef Name="GruppeID" />
+      <PropertyRef Name="Version" />
+    </Key>
+    <Property Name="GruppeID" Type="int" Nullable="false" />
+    <Property Name="GruppeNavn" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GruppeType" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="AntalBladeForValg" Type="tinyint" Nullable="false" />
+    <Property Name="GruppeHovedbladID" Type="int" />
+    <Property Name="OrdreEmail" Type="nvarchar" MaxLength="200" />
+    <Property Name="MaterialeModtager" Type="nvarchar" MaxLength="50" />
+    <Property Name="Version" Type="tinyint" Nullable="false" />
+    <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblGruppeRabatter">
+    <Key>
+      <PropertyRef Name="RabatFormID" />
+      <PropertyRef Name="Version" />
+    </Key>
+    <Property Name="RabatFormID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GruppeID" Type="int" Nullable="false" />
+    <Property Name="PlaceringID" Type="tinyint" Nullable="false" />
+    <Property Name="AntalFra" Type="tinyint" Nullable="false" />
+    <Property Name="AntalTil" Type="tinyint" Nullable="false" />
+    <Property Name="MmRabat" Type="real" />
+    <Property Name="FarveRabat" Type="real" />
+    <Property Name="MmPris" Type="smallmoney" />
+    <Property Name="FarveMin" Type="smallmoney" />
+    <Property Name="FarveMax" Type="smallmoney" />
+    <Property Name="FarveTillæg" Type="smallmoney" />
+    <Property Name="PrisInclFarver" Type="smallmoney" />
+    <Property Name="Version" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblHovedGruppe">
+    <Key>
+      <PropertyRef Name="HovedGruppeID" />
+    </Key>
+    <Property Name="HovedGruppeID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HovedGruppeNavn" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="HovedGruppeSortKey" Type="tinyint" Nullable="false" />
+    <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblKonkurrentDækning">
+    <Key>
+      <PropertyRef Name="KonkurrentID" />
+      <PropertyRef Name="PostNr" />
+    </Key>
+    <Property Name="KonkurrentID" Type="tinyint" Nullable="false" />
+    <Property Name="PostNr" Type="int" Nullable="false" />
+    <Property Name="Oplag" Type="int" Nullable="false" />
+    <Property Name="DækningsGrad" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblKonkurrenter">
+    <Key>
+      <PropertyRef Name="KonkurrentID" />
+    </Key>
+    <Property Name="KonkurrentID" Type="tinyint" Nullable="false" />
+    <Property Name="KonkurrentNavn" Type="nvarchar" MaxLength="35" Nullable="false" />
+    <Property Name="KonkurentKode" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="BladTypeMappingFraDO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MedieMappingFraDO" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblKontaktArbOmråder">
+    <Key>
+      <PropertyRef Name="ArbOmrådeID" />
+    </Key>
+    <Property Name="ArbOmrådeID" Type="int" Nullable="false" />
+    <Property Name="ArbOmråde" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblKontakter">
+    <Key>
+      <PropertyRef Name="KontaktID" />
+    </Key>
+    <Property Name="KontaktID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fornavn" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Efternavn" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TitelID" Type="int" />
+    <Property Name="Tlfnr" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Mobilnr" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblKontakterArbOmråderPrKontakt">
+    <Key>
+      <PropertyRef Name="KontaktID" />
+      <PropertyRef Name="ArbOmrådeID" />
+    </Key>
+    <Property Name="KontaktID" Type="int" Nullable="false" />
+    <Property Name="ArbOmrådeID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblKontakterPrBlad">
+    <Key>
+      <PropertyRef Name="BladID" />
+      <PropertyRef Name="KontaktID" />
+    </Key>
+    <Property Name="BladID" Type="int" Nullable="false" />
+    <Property Name="KontaktID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblKontaktFunktioner">
+    <Key>
+      <PropertyRef Name="FunktionID" />
+    </Key>
+    <Property Name="FunktionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Funktion" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblKontaktFunktionerPrBlad">
+    <Key>
+      <PropertyRef Name="BladID" />
+      <PropertyRef Name="KontaktID" />
+      <PropertyRef Name="FunktionID" />
+    </Key>
+    <Property Name="BladID" Type="int" Nullable="false" />
+    <Property Name="KontaktID" Type="int" Nullable="false" />
+    <Property Name="FunktionID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblKontaktTitler">
+    <Key>
+      <PropertyRef Name="TitelID" />
+    </Key>
+    <Property Name="TitelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Titel" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblMateriale">
+    <Key>
+      <PropertyRef Name="MedieplanNr" />
+      <PropertyRef Name="UgeavisID" />
+    </Key>
+    <Property Name="MedieplanNr" Type="int" Nullable="false" />
+    <Property Name="UgeavisID" Type="int" Nullable="false" />
+    <Property Name="FilNavn" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ErSendt" Type="bit" Nullable="false" />
+    <Property Name="SkalSendes" Type="bit" Nullable="false" />
+    <Property Name="FilSti" Type="nvarchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblMedieplan">
+    <Key>
+      <PropertyRef Name="MedieplanNr" />
+      <PropertyRef Name="Version" />
+    </Key>
+    <Property Name="MedieplanNr" Type="int" Nullable="false" />
+    <Property Name="Version" Type="smallint" Nullable="false" />
+    <Property Name="AnnoncørNo_" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="BureauNo_" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Format1" Type="tinyint" Nullable="false" />
+    <Property Name="Format2" Type="smallint" Nullable="false" />
+    <Property Name="AntalFarver" Type="tinyint" Nullable="false" />
+    <Property Name="DPKulørID" Type="tinyint" Nullable="false" />
+    <Property Name="PlaceringID" Type="tinyint" Nullable="false" />
+    <Property Name="IndrykningsUge" Type="tinyint" Nullable="false" />
+    <Property Name="IndrykningsÅr" Type="smallint" Nullable="false" />
+    <Property Name="Beskrivelse" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Overskrift" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Kontaktperson" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="KontaktpersonTilhører" Type="tinyint" Nullable="false" />
+    <Property Name="Fakturering" Type="tinyint" Nullable="false" />
+    <Property Name="RekvisitionsNr" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="BilagsBladeTil" Type="smallint" Nullable="false" />
+    <Property Name="BilagsBladeTilNavn" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="BilagsBladeTilAdresse" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="BilagsBladeTilPostNr" Type="int" Nullable="false" />
+    <Property Name="BilagsBladeATT" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="MaterialeGodtgørelseTil" Type="tinyint" Nullable="false" />
+    <Property Name="MaterialeFølgerFra" Type="tinyint" Nullable="false" />
+    <Property Name="MaterialeFølgerFraLeverandør" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="BrugMaterialeFraUge" Type="tinyint" Nullable="false" />
+    <Property Name="MaterialeGodtgørelseAlle" Type="bit" Nullable="false" />
+    <Property Name="SikkerhedsGodt" Type="bit" Nullable="false" />
+    <Property Name="InfoGodt" Type="bit" Nullable="false" />
+    <Property Name="SamletPris" Type="money" Nullable="false" />
+    <Property Name="OprettetDato" Type="smalldatetime" Nullable="false" />
+    <Property Name="OrdreDato" Type="smalldatetime" Nullable="false" />
+    <Property Name="KonsulentCode" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="RettelserEfterAnnoncekontrol" Type="bit" Nullable="false" />
+    <Property Name="TilladFarveSærRabat" Type="bit" Nullable="false" />
+    <Property Name="TilladMmSærRabat" Type="bit" Nullable="false" />
+    <Property Name="Document Type" Type="tinyint" Nullable="false" />
+    <Property Name="Credit Reason" Type="nvarchar" MaxLength="50" />
+    <Property Name="Previous Version" Type="int" />
+    <Property Name="SammeMateriale" Type="bit" Nullable="false" />
+    <Property Name="KunForhandlerBundForskellig" Type="bit" Nullable="false" />
+    <Property Name="SammeBureauOrdreNr" Type="bit" Nullable="false" />
+    <Property Name="FællesBureauOrdreNr" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="BemærkningTilAnnoncør" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="BemærkningTilBlade" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="WebTillægOpkræves" Type="bit" />
+    <Property Name="MiljøTillægOpkræves" Type="bit" />
+    <Property Name="OpkrævJyskeMiljøTillæg" Type="bit" />
+    <Property Name="OpkrævFynskeMiljøTillæg" Type="bit" />
+    <Property Name="OpkrævNorthMiljøTillæg" Type="bit" />
+    <Property Name="OpkrævDSVPMiljøTillæg" Type="bit" />
+    <Property Name="OpkrævNordjyskeTillæg" Type="bit" />
+    <Property Name="OpkrævJyskeMedierASTillæg" Type="bit" />
+  </EntityType>
+  <EntityType Name="tblMedieplanLinjer">
+    <Key>
+      <PropertyRef Name="MedieplanNr" />
+      <PropertyRef Name="Version" />
+      <PropertyRef Name="UgeavisID" />
+    </Key>
+    <Property Name="MedieplanNr" Type="int" Nullable="false" />
+    <Property Name="Version" Type="smallint" Nullable="false" />
+    <Property Name="UgeavisID" Type="int" Nullable="false" />
+    <Property Name="Mm" Type="smallint" Nullable="false" />
+    <Property Name="NormalMmPris" Type="smallmoney" Nullable="false" />
+    <Property Name="MmPris" Type="smallmoney" Nullable="false" />
+    <Property Name="MmRabat" Type="real" Nullable="false" />
+    <Property Name="MåGiveMmRabat" Type="bit" />
+    <Property Name="MmTotal" Type="smallmoney" Nullable="false" />
+    <Property Name="FarveTillæg" Type="smallmoney" Nullable="false" />
+    <Property Name="FarvePris" Type="smallmoney" Nullable="false" />
+    <Property Name="FarveRabat" Type="real" Nullable="false" />
+    <Property Name="FarveMin" Type="smallmoney" Nullable="false" />
+    <Property Name="FarveMax" Type="smallmoney" Nullable="false" />
+    <Property Name="FarveTotal" Type="smallmoney" Nullable="false" />
+    <Property Name="Total" Type="smallmoney" Nullable="false" />
+    <Property Name="MåGiveMaterialeGodtgørelse" Type="bit" Nullable="false" />
+    <Property Name="SkalGiveMaterialeGodtgørelse" Type="bit" Nullable="false" />
+    <Property Name="MaterialeGodtgørelsePris" Type="smallmoney" Nullable="false" />
+    <Property Name="TotalPris" Type="money" />
+    <Property Name="ManueltÆndret" Type="bit" Nullable="false" />
+    <Property Name="ErWeekendGruppe" Type="bit" Nullable="false" />
+    <Property Name="WebtillægFaktureresHer" Type="bit" Nullable="false" />
+    <Property Name="SendeGruppe" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RabatGruppe" Type="nvarchar" MaxLength="50" />
+    <Property Name="MedIGrupper" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="BureauOrdreNr" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="MaterialeNr" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Bemærkning" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="MiljøTillæg" Type="smallmoney" Nullable="false" />
+    <Property Name="TotalInclTillæg" Type="smallmoney" Nullable="false" />
+    <Property Name="PrisLåst" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblMedieplanNr">
+    <Key>
+      <PropertyRef Name="MedieplanNr" />
+    </Key>
+    <Property Name="MedieplanNr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AktivVersion" Type="smallint" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="SupportBilagVedlagt" Type="bit" Nullable="false" />
+    <Property Name="SupportBilagVist" Type="bit" Nullable="false" />
+    <Property Name="FakturaBemærkning1" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FakturaBemærkning2" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FakturaBemærkning3" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MaterialeModtaget" Type="bit" Nullable="false" />
+    <Property Name="BrugtGruppeVersion" Type="tinyint" Nullable="false" />
+    <Property Name="OverførtFraPrisforespørgsel" Type="bit" Nullable="false" />
+    <Property Name="AnvendtMiljøTillæg" Type="smallmoney" Nullable="false" />
+    <Property Name="AnvendtPrisberegningVersion" Type="tinyint" Nullable="false" />
+    <Property Name="Kommentar" Type="nvarchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblMedieplanÆndringer">
+    <Key>
+      <PropertyRef Name="MedieplanNr" />
+      <PropertyRef Name="Version" />
+    </Key>
+    <Property Name="MedieplanNr" Type="int" Nullable="false" />
+    <Property Name="Version" Type="smallint" Nullable="false" />
+    <Property Name="ÆndringsTekst" Type="text" />
+  </EntityType>
+  <EntityType Name="tblMedIGruppe">
+    <Key>
+      <PropertyRef Name="GruppeID" />
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Version" />
+    </Key>
+    <Property Name="GruppeID" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ErTillægsAvis" Type="bit" Nullable="false" />
+    <Property Name="Version" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DiMPdotNet.dbo.tblMmPrisWebApp' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tblMmPrisWebApp">
+    <Key>
+      <PropertyRef Name="BladID" />
+      <PropertyRef Name="Placering" />
+    </Key>
+    <Property Name="BladID" Type="int" Nullable="false" />
+    <Property Name="Placering" Type="tinyint" Nullable="false" />
+    <Property Name="Pris" Type="money" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'DiMPdotNet.dbo.tblMængdeRabat' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tblMængdeRabat">
+          <Property Name="GeoKode" Type="nvarchar" MaxLength="8" />
+          <Property Name="AntalBlade" Type="tinyint" />
+          <Property Name="RabatPct" Type="tinyint" />
+        </EntityType>-->
+  <EntityType Name="tblOrdreGebyrNavision">
+    <Key>
+      <PropertyRef Name="OrdreNr" />
+      <PropertyRef Name="Version" />
+      <PropertyRef Name="Document Type" />
+      <PropertyRef Name="Type" />
+      <PropertyRef Name="BladId" />
+    </Key>
+    <Property Name="OrdreNr" Type="int" Nullable="false" />
+    <Property Name="Version" Type="smallint" Nullable="false" />
+    <Property Name="Document Type" Type="tinyint" Nullable="false" />
+    <Property Name="Type" Type="tinyint" Nullable="false" />
+    <Property Name="BladId" Type="int" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="59" Nullable="false" />
+    <Property Name="Amount" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblOrdreLinjerNavision">
+    <Key>
+      <PropertyRef Name="OrdreNr" />
+      <PropertyRef Name="Version" />
+      <PropertyRef Name="Document Type" />
+      <PropertyRef Name="BladId" />
+    </Key>
+    <Property Name="OrdreNr" Type="int" Nullable="false" />
+    <Property Name="Version" Type="smallint" Nullable="false" />
+    <Property Name="Document Type" Type="tinyint" Nullable="false" />
+    <Property Name="BladId" Type="int" Nullable="false" />
+    <Property Name="Mm" Type="smallint" Nullable="false" />
+    <Property Name="Format" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="AnvendtPris" Type="smallmoney" Nullable="false" />
+    <Property Name="SpecialRabat" Type="real" Nullable="false" />
+    <Property Name="FarveTillægsPris" Type="smallmoney" Nullable="false" />
+    <Property Name="FarveTillægsRabat" Type="real" Nullable="false" />
+    <Property Name="MaterialeGodt" Type="bit" Nullable="false" />
+    <Property Name="TotalPris" Type="money" Nullable="false" />
+    <Property Name="MaterialePris" Type="smallmoney" Nullable="false" />
+    <Property Name="Previous Order No" Type="int" Nullable="false" />
+    <Property Name="Previous Version" Type="int" />
+    <Property Name="FirstTime" Type="smalldatetime" />
+    <Property Name="BureauOrdreNr" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblOrdreNavision">
+    <Key>
+      <PropertyRef Name="OrdreNr" />
+      <PropertyRef Name="Version" />
+      <PropertyRef Name="Document Type" />
+    </Key>
+    <Property Name="OrdreNr" Type="int" Nullable="false" />
+    <Property Name="Version" Type="smallint" Nullable="false" />
+    <Property Name="Document Type" Type="tinyint" Nullable="false" />
+    <Property Name="AnnoncørID" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Uge" Type="tinyint" Nullable="false" />
+    <Property Name="AntalFarver" Type="tinyint" Nullable="false" />
+    <Property Name="OrdreDato" Type="smalldatetime" Nullable="false" />
+    <Property Name="SamletPris" Type="money" Nullable="false" />
+    <Property Name="SælgerKode" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="SikkerhedsGodt" Type="bit" Nullable="false" />
+    <Property Name="InfoGodt" Type="bit" Nullable="false" />
+    <Property Name="BureauOrdreNr" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Bureau" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="EnOrdre" Type="tinyint" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="FakBem1" Type="nvarchar" MaxLength="50" />
+    <Property Name="FakBem2" Type="nvarchar" MaxLength="50" />
+    <Property Name="FakBem3" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaterialeGodtgørelseTil" Type="tinyint" Nullable="false" />
+    <Property Name="Previous Order No" Type="int" Nullable="false" />
+    <Property Name="Credit Reason" Type="nvarchar" MaxLength="50" />
+    <Property Name="Previous Version" Type="int" />
+    <Property Name="Item Description" Type="nvarchar" MaxLength="30" />
+    <Property Name="Advertiser" Type="nvarchar" MaxLength="50" />
+    <Property Name="Placement" Type="nvarchar" MaxLength="50" />
+    <Property Name="SammeBureauOrdreNr" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblPlacering">
+    <Key>
+      <PropertyRef Name="PlaceringID" />
+    </Key>
+    <Property Name="PlaceringID" Type="tinyint" Nullable="false" />
+    <Property Name="Betegnelse" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DiMPdotNet.dbo.tblPlannerPlaner' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tblPlannerPlaner">
+    <Key>
+      <PropertyRef Name="PlannerID" />
+      <PropertyRef Name="BrugerNavn" />
+      <PropertyRef Name="BrugerEmail" />
+      <PropertyRef Name="Annoncør" />
+      <PropertyRef Name="Bureau" />
+      <PropertyRef Name="Format1" />
+      <PropertyRef Name="Format2" />
+      <PropertyRef Name="AntalFarver" />
+      <PropertyRef Name="Placering" />
+      <PropertyRef Name="Ugeaviser" />
+      <PropertyRef Name="MedieplanNr" />
+      <PropertyRef Name="KonsulentCode" />
+      <PropertyRef Name="Oprettet" />
+    </Key>
+    <Property Name="PlannerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BrugerNavn" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BrugerEmail" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Annoncør" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Bureau" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Format1" Type="tinyint" Nullable="false" />
+    <Property Name="Format2" Type="smallint" Nullable="false" />
+    <Property Name="AntalFarver" Type="tinyint" Nullable="false" />
+    <Property Name="Placering" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Ugeaviser" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="MedieplanNr" Type="int" Nullable="false" />
+    <Property Name="KonsulentCode" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Oprettet" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblPostNr">
+    <Key>
+      <PropertyRef Name="PostNr" />
+    </Key>
+    <Property Name="PostNr" Type="int" Nullable="false" />
+    <Property Name="PostBy" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Husstande" Type="int" Nullable="false" />
+    <Property Name="MaxDækningsGrad" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblPostNrSøgning">
+    <Key>
+      <PropertyRef Name="BrugerNavn" />
+      <PropertyRef Name="PostNr" />
+    </Key>
+    <Property Name="BrugerNavn" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PostNr" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblPriser">
+    <Key>
+      <PropertyRef Name="BladID" />
+      <PropertyRef Name="PlaceringID" />
+      <PropertyRef Name="År" />
+      <PropertyRef Name="PrislisteID" />
+      <PropertyRef Name="FormatFra" />
+    </Key>
+    <Property Name="BladID" Type="int" Nullable="false" />
+    <Property Name="PlaceringID" Type="tinyint" Nullable="false" />
+    <Property Name="År" Type="smallint" Nullable="false" />
+    <Property Name="PrislisteID" Type="int" Nullable="false" />
+    <Property Name="FormatFra" Type="int" Nullable="false" />
+    <Property Name="FormatTil" Type="int" Nullable="false" />
+    <Property Name="mmPris" Type="smallmoney" />
+    <Property Name="FarvePris" Type="smallmoney" />
+    <Property Name="FarveMin" Type="smallmoney" />
+    <Property Name="FarveMax" Type="smallmoney" />
+    <Property Name="Farve4Pris" Type="smallmoney" />
+    <Property Name="Farve4Min" Type="smallmoney" />
+    <Property Name="Farve4Max" Type="smallmoney" />
+    <Property Name="ControlNavn" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblPrislister">
+    <Key>
+      <PropertyRef Name="PrislisteID" />
+    </Key>
+    <Property Name="PrislisteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PrislisteNavn" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblPrislisterPrBladPrUge">
+    <Key>
+      <PropertyRef Name="BladID" />
+      <PropertyRef Name="Uge" />
+      <PropertyRef Name="År" />
+    </Key>
+    <Property Name="BladID" Type="int" Nullable="false" />
+    <Property Name="Uge" Type="tinyint" Nullable="false" />
+    <Property Name="År" Type="smallint" Nullable="false" />
+    <Property Name="PrislisteID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblPrislisterPrBladPrÅr">
+    <Key>
+      <PropertyRef Name="BladID" />
+      <PropertyRef Name="År" />
+      <PropertyRef Name="PrislisteID" />
+    </Key>
+    <Property Name="BladID" Type="int" Nullable="false" />
+    <Property Name="År" Type="smallint" Nullable="false" />
+    <Property Name="PrislisteID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblRegion">
+    <Key>
+      <PropertyRef Name="RegionID" />
+    </Key>
+    <Property Name="RegionID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RegionNavn" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="RegionSortKey" Type="tinyint" Nullable="false" />
+    <Property Name="timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblRemindereSendt">
+    <Key>
+      <PropertyRef Name="MedieplanNr" />
+      <PropertyRef Name="UgeavisID" />
+      <PropertyRef Name="ReminderType" />
+    </Key>
+    <Property Name="MedieplanNr" Type="int" Nullable="false" />
+    <Property Name="UgeavisID" Type="int" Nullable="false" />
+    <Property Name="ReminderType" Type="smallint" Nullable="false" />
+    <Property Name="AntalRemindere" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblSupportBilag">
+    <Key>
+      <PropertyRef Name="MedieplanNr" />
+    </Key>
+    <Property Name="MedieplanNr" Type="int" Nullable="false" />
+    <Property Name="IndrykningsUge" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="MaterialeGodtgørelseTil" Type="tinyint" Nullable="false" />
+    <Property Name="MaterialeFølgerFra" Type="tinyint" Nullable="false" />
+    <Property Name="MaterialeFølgerFraLeverandør" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="BrugMaterialeFraUge" Type="nvarchar" MaxLength="2" Nullable="false" />
+    <Property Name="SammeMateriale" Type="bit" Nullable="false" />
+    <Property Name="KunForhandlerBundForskellig" Type="bit" Nullable="false" />
+    <Property Name="Fakturering" Type="tinyint" Nullable="false" />
+    <Property Name="BureauOrdresedlerLiggerIIndbakke" Type="tinyint" Nullable="false" />
+    <Property Name="Bilagsblade" Type="tinyint" Nullable="false" />
+    <Property Name="BilagsbladeAtt" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="LøbendeOrdre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BemærkningTilBlade" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="BemærkningTilSupport" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Overskrift" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="BilagsBladeTil" Type="smallint" Nullable="false" />
+    <Property Name="BilagsBladeTilNavn" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="BilagsBladeTilAdresse" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="BilagsBladeTilPostNr" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblWEBeMails">
+    <Key>
+      <PropertyRef Name="PersonID" />
+    </Key>
+    <Property Name="PersonID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="eMail" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="PersonNavn" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tblWEBForespørgsel">
+    <Key>
+      <PropertyRef Name="ForespørgselID" />
+    </Key>
+    <Property Name="ForespørgselID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="tinyint" Nullable="false" />
+    <Property Name="MedieplanNr" Type="int" Nullable="false" />
+    <Property Name="AnnoncørNo_" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Mediebureau" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="KonsulentCode" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="AntalBlade" Type="tinyint" Nullable="false" />
+    <Property Name="Format" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="AntalFarver" Type="tinyint" Nullable="false" />
+    <Property Name="PlaceringID" Type="tinyint" Nullable="false" />
+    <Property Name="AntalIndrykninger" Type="tinyint" Nullable="false" />
+    <Property Name="SvarInden" Type="datetime" />
+    <Property Name="Afsluttet" Type="bit" Nullable="false" />
+    <Property Name="AntalUdsendinger" Type="smallint" Nullable="false" />
+    <Property Name="Bemærkning" Type="nvarchar" MaxLength="2000" />
+    <Property Name="PlaceringUB" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblWEBForespørgselLinjer">
+    <Key>
+      <PropertyRef Name="ForespørgselID" />
+      <PropertyRef Name="BladID" />
+    </Key>
+    <Property Name="ForespørgselID" Type="int" Nullable="false" />
+    <Property Name="BladID" Type="int" Nullable="false" />
+    <Property Name="BesvaretAf" Type="int" />
+    <Property Name="DLUMmPris" Type="money" Nullable="false" />
+    <Property Name="DLUMmRabat" Type="float" Nullable="false" />
+    <Property Name="DLUFarveTillæg" Type="money" Nullable="false" />
+    <Property Name="DLUFarveRabat" Type="float" Nullable="false" />
+    <Property Name="PlaceringUB" Type="tinyint" Nullable="false" />
+    <Property Name="BladMmPris" Type="money" Nullable="false" />
+    <Property Name="BladMmRabat" Type="float" Nullable="false" />
+    <Property Name="BladFarveTillæg" Type="money" Nullable="false" />
+    <Property Name="BladFarveRabat" Type="float" Nullable="false" />
+    <Property Name="BladBemærkning" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="tblWEBSendTilKollega">
+    <Key>
+      <PropertyRef Name="PersonID" />
+      <PropertyRef Name="BladID" />
+    </Key>
+    <Property Name="PersonID" Type="int" Nullable="false" />
+    <Property Name="BladID" Type="int" Nullable="false" />
+    <Property Name="eMails" Type="nvarchar" MaxLength="1000" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DiMPdotNet.dbo.tempPriser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tempPriser">
+    <Key>
+      <PropertyRef Name="BladID" />
+      <PropertyRef Name="PlaceringID" />
+      <PropertyRef Name="År" />
+      <PropertyRef Name="PrislisteID" />
+      <PropertyRef Name="FormatFra" />
+      <PropertyRef Name="FormatTil" />
+    </Key>
+    <Property Name="BladID" Type="int" Nullable="false" />
+    <Property Name="PlaceringID" Type="tinyint" Nullable="false" />
+    <Property Name="År" Type="smallint" Nullable="false" />
+    <Property Name="PrislisteID" Type="int" Nullable="false" />
+    <Property Name="FormatFra" Type="int" Nullable="false" />
+    <Property Name="FormatTil" Type="int" Nullable="false" />
+    <Property Name="mmPris" Type="smallmoney" />
+    <Property Name="FarvePris" Type="smallmoney" />
+    <Property Name="FarveMin" Type="smallmoney" />
+    <Property Name="FarveMax" Type="smallmoney" />
+    <Property Name="Farve4Pris" Type="smallmoney" />
+    <Property Name="Farve4Min" Type="smallmoney" />
+    <Property Name="Farve4Max" Type="smallmoney" />
+    <Property Name="ControlNavn" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DiMPdotNet.dbo.tmpNyeDeadlines' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tmpNyeDeadlines">
+    <Key>
+      <PropertyRef Name="BladID" />
+      <PropertyRef Name="Linje" />
+      <PropertyRef Name="OrdreDeadline" />
+      <PropertyRef Name="OrdreTid" />
+      <PropertyRef Name="MaterialeDeadline" />
+      <PropertyRef Name="MaterialeTid" />
+    </Key>
+    <Property Name="BladID" Type="int" Nullable="false" />
+    <Property Name="Linje" Type="smallint" Nullable="false" />
+    <Property Name="OrdreDeadline" Type="tinyint" Nullable="false" />
+    <Property Name="OrdreTid" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="MaterialeDeadline" Type="tinyint" Nullable="false" />
+    <Property Name="MaterialeTid" Type="nvarchar" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DiMPdotNet.dbo.tnpOrdreNr' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tnpOrdreNr">
+    <Key>
+      <PropertyRef Name="MedieplanNr" />
+    </Key>
+    <Property Name="MedieplanNr" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DiMPdotNet.dbo.tnpOrdreNr2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tnpOrdreNr2">
+    <Key>
+      <PropertyRef Name="MedieplanNr" />
+    </Key>
+    <Property Name="MedieplanNr" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DiMPdotNet.dbo.tnpOrdreNr3' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tnpOrdreNr3">
+    <Key>
+      <PropertyRef Name="MedieplanNr" />
+      <PropertyRef Name="Version" />
+    </Key>
+    <Property Name="MedieplanNr" Type="int" Nullable="false" />
+    <Property Name="Version" Type="smallint" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_tblBladeIGrupper_tblBladStamdata">
+    <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblMedIGruppe" Type="Self.tblMedIGruppe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBladStamdata">
+        <PropertyRef Name="BladID" />
+      </Principal>
+      <Dependent Role="tblMedIGruppe">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblBladStamdata_OrdrecheckSendeDagID_tblDage_DagID">
+    <End Role="tblDage" Type="Self.tblDage" Multiplicity="0..1" />
+    <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDage">
+        <PropertyRef Name="DagID" />
+      </Principal>
+      <Dependent Role="tblBladStamdata">
+        <PropertyRef Name="OrdrecheckSendeDagID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblBladStamdata_UgedagID_tblDage_DagID">
+    <End Role="tblDage" Type="Self.tblDage" Multiplicity="0..1" />
+    <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDage">
+        <PropertyRef Name="DagID" />
+      </Principal>
+      <Dependent Role="tblBladStamdata">
+        <PropertyRef Name="UgedagID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblBladStamdata_tblDelOmråde">
+    <End Role="tblDelOmråde" Type="Self.tblDelOmråde" Multiplicity="0..1" />
+    <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDelOmråde">
+        <PropertyRef Name="DelOmrådeID" />
+      </Principal>
+      <Dependent Role="tblBladStamdata">
+        <PropertyRef Name="DelOmrådeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblBladStamdata_tblGeoKoder">
+    <End Role="tblGeoKode" Type="Self.tblGeoKode" Multiplicity="0..1" />
+    <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblGeoKode">
+        <PropertyRef Name="GeoKodeID" />
+      </Principal>
+      <Dependent Role="tblBladStamdata">
+        <PropertyRef Name="GeoKodeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblBladStamdata_tblHovedGruppe">
+    <End Role="tblHovedGruppe" Type="Self.tblHovedGruppe" Multiplicity="0..1" />
+    <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblHovedGruppe">
+        <PropertyRef Name="HovedGruppeID" />
+      </Principal>
+      <Dependent Role="tblBladStamdata">
+        <PropertyRef Name="HovedgruppeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblBladStamdata_tblPostNr">
+    <End Role="tblPostNr" Type="Self.tblPostNr" Multiplicity="0..1" />
+    <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblPostNr">
+        <PropertyRef Name="PostNr" />
+      </Principal>
+      <Dependent Role="tblBladStamdata">
+        <PropertyRef Name="PostNr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblBladStamdata_tblRegioner">
+    <End Role="tblRegion" Type="Self.tblRegion" Multiplicity="0..1" />
+    <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblRegion">
+        <PropertyRef Name="RegionID" />
+      </Principal>
+      <Dependent Role="tblBladStamdata">
+        <PropertyRef Name="RegionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblFejl_tblFejlTekst">
+    <End Role="tblFejlTekst" Type="Self.tblFejlTekst" Multiplicity="1" />
+    <End Role="tblAnnoncekontrol" Type="Self.tblAnnoncekontrol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblFejlTekst">
+        <PropertyRef Name="Fejlkode" />
+      </Principal>
+      <Dependent Role="tblAnnoncekontrol">
+        <PropertyRef Name="Fejlkode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblKonkurrentDækning_tblKonkurrenter">
+    <End Role="tblKonkurrenter" Type="Self.tblKonkurrenter" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblKonkurrentDækning" Type="Self.tblKonkurrentDækning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblKonkurrenter">
+        <PropertyRef Name="KonkurrentID" />
+      </Principal>
+      <Dependent Role="tblKonkurrentDækning">
+        <PropertyRef Name="KonkurrentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblKonkurrentDækning_tblPostNr">
+    <End Role="tblPostNr" Type="Self.tblPostNr" Multiplicity="1" />
+    <End Role="tblKonkurrentDækning" Type="Self.tblKonkurrentDækning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblPostNr">
+        <PropertyRef Name="PostNr" />
+      </Principal>
+      <Dependent Role="tblKonkurrentDækning">
+        <PropertyRef Name="PostNr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblKontakter_tblKontaktTitler">
+    <End Role="tblKontaktTitler" Type="Self.tblKontaktTitler" Multiplicity="0..1" />
+    <End Role="tblKontakter" Type="Self.tblKontakter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblKontaktTitler">
+        <PropertyRef Name="TitelID" />
+      </Principal>
+      <Dependent Role="tblKontakter">
+        <PropertyRef Name="TitelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblKontakterArbOmråderPrKontakt_tblKontaktArbOmråder">
+    <End Role="tblKontaktArbOmråder" Type="Self.tblKontaktArbOmråder" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblKontakterArbOmråderPrKontakt" Type="Self.tblKontakterArbOmråderPrKontakt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblKontaktArbOmråder">
+        <PropertyRef Name="ArbOmrådeID" />
+      </Principal>
+      <Dependent Role="tblKontakterArbOmråderPrKontakt">
+        <PropertyRef Name="ArbOmrådeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblKontakterArbOmråderPrKontakt_tblKontakter">
+    <End Role="tblKontakter" Type="Self.tblKontakter" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblKontakterArbOmråderPrKontakt" Type="Self.tblKontakterArbOmråderPrKontakt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblKontakter">
+        <PropertyRef Name="KontaktID" />
+      </Principal>
+      <Dependent Role="tblKontakterArbOmråderPrKontakt">
+        <PropertyRef Name="KontaktID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblKontakterPrBlad_tblBladStamdataKopi">
+    <End Role="tblBladStamdataKopi" Type="Self.tblBladStamdataKopi" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblKontakterPrBlad" Type="Self.tblKontakterPrBlad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBladStamdataKopi">
+        <PropertyRef Name="BladID" />
+      </Principal>
+      <Dependent Role="tblKontakterPrBlad">
+        <PropertyRef Name="BladID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblKontakterPrBlad_tblKontakter">
+    <End Role="tblKontakter" Type="Self.tblKontakter" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblKontakterPrBlad" Type="Self.tblKontakterPrBlad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblKontakter">
+        <PropertyRef Name="KontaktID" />
+      </Principal>
+      <Dependent Role="tblKontakterPrBlad">
+        <PropertyRef Name="KontaktID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblKontaktFunktionerPrBlad_tblKontakterPrBlad">
+    <End Role="tblKontakterPrBlad" Type="Self.tblKontakterPrBlad" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblKontaktFunktionerPrBlad" Type="Self.tblKontaktFunktionerPrBlad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblKontakterPrBlad">
+        <PropertyRef Name="KontaktID" />
+        <PropertyRef Name="BladID" />
+      </Principal>
+      <Dependent Role="tblKontaktFunktionerPrBlad">
+        <PropertyRef Name="KontaktID" />
+        <PropertyRef Name="BladID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblKontaktFunktionerPrBlad_tblKontaktFunktioner">
+    <End Role="tblKontaktFunktioner" Type="Self.tblKontaktFunktioner" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblKontaktFunktionerPrBlad" Type="Self.tblKontaktFunktionerPrBlad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblKontaktFunktioner">
+        <PropertyRef Name="FunktionID" />
+      </Principal>
+      <Dependent Role="tblKontaktFunktionerPrBlad">
+        <PropertyRef Name="FunktionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblMateriale_tblMedieplanNr">
+    <End Role="tblMedieplanNr" Type="Self.tblMedieplanNr" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblMateriale" Type="Self.tblMateriale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMedieplanNr">
+        <PropertyRef Name="MedieplanNr" />
+      </Principal>
+      <Dependent Role="tblMateriale">
+        <PropertyRef Name="MedieplanNr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblMedieplan_tblDPKulør">
+    <End Role="tblDPKulør" Type="Self.tblDPKulør" Multiplicity="1" />
+    <End Role="tblMedieplan" Type="Self.tblMedieplan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDPKulør">
+        <PropertyRef Name="DPKulørID" />
+      </Principal>
+      <Dependent Role="tblMedieplan">
+        <PropertyRef Name="DPKulørID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblMedieplan_tblMedieplanNr">
+    <End Role="tblMedieplanNr" Type="Self.tblMedieplanNr" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblMedieplan" Type="Self.tblMedieplan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMedieplanNr">
+        <PropertyRef Name="MedieplanNr" />
+      </Principal>
+      <Dependent Role="tblMedieplan">
+        <PropertyRef Name="MedieplanNr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblMedieplan_tblPlacering">
+    <End Role="tblPlacering" Type="Self.tblPlacering" Multiplicity="1" />
+    <End Role="tblMedieplan" Type="Self.tblMedieplan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblPlacering">
+        <PropertyRef Name="PlaceringID" />
+      </Principal>
+      <Dependent Role="tblMedieplan">
+        <PropertyRef Name="PlaceringID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblMedieplanLinjer_tblBladStamdata">
+    <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="1" />
+    <End Role="tblMedieplanLinjer" Type="Self.tblMedieplanLinjer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBladStamdata">
+        <PropertyRef Name="BladID" />
+      </Principal>
+      <Dependent Role="tblMedieplanLinjer">
+        <PropertyRef Name="UgeavisID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblMedieplanLinjer_tblFejl">
+    <End Role="tblAnnoncekontrol" Type="Self.tblAnnoncekontrol" Multiplicity="1" />
+    <End Role="tblMedieplanLinjer" Type="Self.tblMedieplanLinjer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblAnnoncekontrol">
+        <PropertyRef Name="MedieplanNr" />
+        <PropertyRef Name="UgeavisID" />
+      </Principal>
+      <Dependent Role="tblMedieplanLinjer">
+        <PropertyRef Name="MedieplanNr" />
+        <PropertyRef Name="UgeavisID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblMedieplanLinjer_tblMateriale">
+    <End Role="tblMateriale" Type="Self.tblMateriale" Multiplicity="1" />
+    <End Role="tblMedieplanLinjer" Type="Self.tblMedieplanLinjer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMateriale">
+        <PropertyRef Name="MedieplanNr" />
+        <PropertyRef Name="UgeavisID" />
+      </Principal>
+      <Dependent Role="tblMedieplanLinjer">
+        <PropertyRef Name="MedieplanNr" />
+        <PropertyRef Name="UgeavisID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblMedieplanLinjer_tblMedieplan">
+    <End Role="tblMedieplan" Type="Self.tblMedieplan" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblMedieplanLinjer" Type="Self.tblMedieplanLinjer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMedieplan">
+        <PropertyRef Name="MedieplanNr" />
+        <PropertyRef Name="Version" />
+      </Principal>
+      <Dependent Role="tblMedieplanLinjer">
+        <PropertyRef Name="MedieplanNr" />
+        <PropertyRef Name="Version" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblMedIGruppe_tblGrupper">
+    <End Role="tblGrupper" Type="Self.tblGrupper" Multiplicity="1" />
+    <End Role="tblMedIGruppe" Type="Self.tblMedIGruppe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblGrupper">
+        <PropertyRef Name="GruppeID" />
+        <PropertyRef Name="Version" />
+      </Principal>
+      <Dependent Role="tblMedIGruppe">
+        <PropertyRef Name="GruppeID" />
+        <PropertyRef Name="Version" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOrdreGebyrNavision_tblOrdreNavision">
+    <End Role="tblOrdreNavision" Type="Self.tblOrdreNavision" Multiplicity="1" />
+    <End Role="tblOrdreGebyrNavision" Type="Self.tblOrdreGebyrNavision" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblOrdreNavision">
+        <PropertyRef Name="OrdreNr" />
+        <PropertyRef Name="Version" />
+        <PropertyRef Name="Document Type" />
+      </Principal>
+      <Dependent Role="tblOrdreGebyrNavision">
+        <PropertyRef Name="OrdreNr" />
+        <PropertyRef Name="Version" />
+        <PropertyRef Name="Document Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOrdreLinjerNavision_tblOrdreNavision">
+    <End Role="tblOrdreNavision" Type="Self.tblOrdreNavision" Multiplicity="1" />
+    <End Role="tblOrdreLinjerNavision" Type="Self.tblOrdreLinjerNavision" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblOrdreNavision">
+        <PropertyRef Name="OrdreNr" />
+        <PropertyRef Name="Version" />
+        <PropertyRef Name="Document Type" />
+      </Principal>
+      <Dependent Role="tblOrdreLinjerNavision">
+        <PropertyRef Name="OrdreNr" />
+        <PropertyRef Name="Version" />
+        <PropertyRef Name="Document Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPostNrSøgning_tblPostNr">
+    <End Role="tblPostNr" Type="Self.tblPostNr" Multiplicity="1" />
+    <End Role="tblPostNrSøgning" Type="Self.tblPostNrSøgning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblPostNr">
+        <PropertyRef Name="PostNr" />
+      </Principal>
+      <Dependent Role="tblPostNrSøgning">
+        <PropertyRef Name="PostNr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPriser_tblBladStamdata">
+    <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblPriser" Type="Self.tblPriser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBladStamdata">
+        <PropertyRef Name="BladID" />
+      </Principal>
+      <Dependent Role="tblPriser">
+        <PropertyRef Name="BladID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPriser_tblPlacering">
+    <End Role="tblPlacering" Type="Self.tblPlacering" Multiplicity="1" />
+    <End Role="tblPriser" Type="Self.tblPriser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblPlacering">
+        <PropertyRef Name="PlaceringID" />
+      </Principal>
+      <Dependent Role="tblPriser">
+        <PropertyRef Name="PlaceringID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPriser_tblPrislister">
+    <End Role="tblPrislister" Type="Self.tblPrislister" Multiplicity="1" />
+    <End Role="tblPriser" Type="Self.tblPriser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblPrislister">
+        <PropertyRef Name="PrislisteID" />
+      </Principal>
+      <Dependent Role="tblPriser">
+        <PropertyRef Name="PrislisteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPrislisterPrBladPrUge_tblBladStamdata">
+    <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblPrislisterPrBladPrUge" Type="Self.tblPrislisterPrBladPrUge" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBladStamdata">
+        <PropertyRef Name="BladID" />
+      </Principal>
+      <Dependent Role="tblPrislisterPrBladPrUge">
+        <PropertyRef Name="BladID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPrislisterPrBladPrUge_tblPrislister">
+    <End Role="tblPrislister" Type="Self.tblPrislister" Multiplicity="1" />
+    <End Role="tblPrislisterPrBladPrUge" Type="Self.tblPrislisterPrBladPrUge" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblPrislister">
+        <PropertyRef Name="PrislisteID" />
+      </Principal>
+      <Dependent Role="tblPrislisterPrBladPrUge">
+        <PropertyRef Name="PrislisteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPrislisterPrBladPrÅr_tblBladStamdata">
+    <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblPrislisterPrBladPrÅr" Type="Self.tblPrislisterPrBladPrÅr" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBladStamdata">
+        <PropertyRef Name="BladID" />
+      </Principal>
+      <Dependent Role="tblPrislisterPrBladPrÅr">
+        <PropertyRef Name="BladID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPrislisterPrBladPrÅr_tblPrislister">
+    <End Role="tblPrislister" Type="Self.tblPrislister" Multiplicity="1" />
+    <End Role="tblPrislisterPrBladPrÅr" Type="Self.tblPrislisterPrBladPrÅr" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblPrislister">
+        <PropertyRef Name="PrislisteID" />
+      </Principal>
+      <Dependent Role="tblPrislisterPrBladPrÅr">
+        <PropertyRef Name="PrislisteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DiMPdotNetModelStoreContainer">
+    <EntitySet Name="dtproperties" EntityType="Self.dtproperties" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OpdateringsTekst" EntityType="Self.OpdateringsTekst" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblAnnoncekontrol" EntityType="Self.tblAnnoncekontrol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblBladDækning" EntityType="Self.tblBladDækning" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblBladnavnMappingFraDO" EntityType="Self.tblBladnavnMappingFraDO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblBladStamdata" EntityType="Self.tblBladStamdata" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblBladStamdataKopi" EntityType="Self.tblBladStamdataKopi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblBrugerData" EntityType="Self.tblBrugerData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblDage" EntityType="Self.tblDage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblDelOmråde" EntityType="Self.tblDelOmråde" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblDPKulør" EntityType="Self.tblDPKulør" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblEjerforhold" EntityType="Self.tblEjerforhold" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblFakturaFejl" EntityType="Self.tblFakturaFejl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblFakturaFejlTekst" EntityType="Self.tblFakturaFejlTekst" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblFaktureringsBilag" EntityType="Self.tblFaktureringsBilag" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblFejlTekst" EntityType="Self.tblFejlTekst" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblGeoKode" EntityType="Self.tblGeoKode" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblGrupper" EntityType="Self.tblGrupper" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblGruppeRabatter" EntityType="Self.tblGruppeRabatter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblHovedGruppe" EntityType="Self.tblHovedGruppe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblKonkurrentDækning" EntityType="Self.tblKonkurrentDækning" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblKonkurrenter" EntityType="Self.tblKonkurrenter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblKontaktArbOmråder" EntityType="Self.tblKontaktArbOmråder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblKontakter" EntityType="Self.tblKontakter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblKontakterArbOmråderPrKontakt" EntityType="Self.tblKontakterArbOmråderPrKontakt" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblKontakterPrBlad" EntityType="Self.tblKontakterPrBlad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblKontaktFunktioner" EntityType="Self.tblKontaktFunktioner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblKontaktFunktionerPrBlad" EntityType="Self.tblKontaktFunktionerPrBlad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblKontaktTitler" EntityType="Self.tblKontaktTitler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblMateriale" EntityType="Self.tblMateriale" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblMedieplan" EntityType="Self.tblMedieplan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblMedieplanLinjer" EntityType="Self.tblMedieplanLinjer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblMedieplanNr" EntityType="Self.tblMedieplanNr" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblMedieplanÆndringer" EntityType="Self.tblMedieplanÆndringer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblMedIGruppe" EntityType="Self.tblMedIGruppe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblOrdreGebyrNavision" EntityType="Self.tblOrdreGebyrNavision" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblOrdreLinjerNavision" EntityType="Self.tblOrdreLinjerNavision" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblOrdreNavision" EntityType="Self.tblOrdreNavision" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblPlacering" EntityType="Self.tblPlacering" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblPostNr" EntityType="Self.tblPostNr" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblPostNrSøgning" EntityType="Self.tblPostNrSøgning" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblPriser" EntityType="Self.tblPriser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblPrislister" EntityType="Self.tblPrislister" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblPrislisterPrBladPrUge" EntityType="Self.tblPrislisterPrBladPrUge" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblPrislisterPrBladPrÅr" EntityType="Self.tblPrislisterPrBladPrÅr" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblRegion" EntityType="Self.tblRegion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblRemindereSendt" EntityType="Self.tblRemindereSendt" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSupportBilag" EntityType="Self.tblSupportBilag" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblWEBeMails" EntityType="Self.tblWEBeMails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblWEBForespørgsel" EntityType="Self.tblWEBForespørgsel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblWEBForespørgselLinjer" EntityType="Self.tblWEBForespørgselLinjer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblWEBSendTilKollega" EntityType="Self.tblWEBSendTilKollega" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="bladtlfogfaxkopi" EntityType="Self.bladtlfogfaxkopi" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [bladtlfogfaxkopi].[BladID] AS [BladID], 
+    [bladtlfogfaxkopi].[Tlf] AS [Tlf], 
+    [bladtlfogfaxkopi].[Fax] AS [Fax]
+    FROM [dbo].[bladtlfogfaxkopi] AS [bladtlfogfaxkopi]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="delPriser" EntityType="Self.delPriser" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [delPriser].[BladID] AS [BladID], 
+    [delPriser].[PlaceringID] AS [PlaceringID]
+    FROM [dbo].[delPriser] AS [delPriser]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="HerningFolkeblad" EntityType="Self.HerningFolkeblad" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [HerningFolkeblad].[BladID] AS [BladID], 
+    [HerningFolkeblad].[Navn] AS [Navn]
+    FROM [dbo].[HerningFolkeblad] AS [HerningFolkeblad]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tblAktiveVærdier" EntityType="Self.tblAktiveVærdier" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblAktiveVærdier].[GruppeVersion] AS [GruppeVersion], 
+    [tblAktiveVærdier].[MiljøTillæg] AS [MiljøTillæg], 
+    [tblAktiveVærdier].[PrisberegningVersion] AS [PrisberegningVersion], 
+    [tblAktiveVærdier].[BilagsBladeSendeUge] AS [BilagsBladeSendeUge]
+    FROM [dbo].[tblAktiveVærdier] AS [tblAktiveVærdier]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tblAktivGruppeVersion" EntityType="Self.tblAktivGruppeVersion" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblAktivGruppeVersion].[AktivVersion] AS [AktivVersion]
+    FROM [dbo].[tblAktivGruppeVersion] AS [tblAktivGruppeVersion]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tblFarveTillægWebApp" EntityType="Self.tblFarveTillægWebApp" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblFarveTillægWebApp].[BladID] AS [BladID], 
+    [tblFarveTillægWebApp].[farvePris] AS [farvePris], 
+    [tblFarveTillægWebApp].[farveMin] AS [farveMin], 
+    [tblFarveTillægWebApp].[farveMax] AS [farveMax], 
+    [tblFarveTillægWebApp].[farve4Pris] AS [farve4Pris], 
+    [tblFarveTillægWebApp].[farve4Min] AS [farve4Min], 
+    [tblFarveTillægWebApp].[farve4Max] AS [farve4Max], 
+    [tblFarveTillægWebApp].[Godkendt] AS [Godkendt], 
+    [tblFarveTillægWebApp].[PrisBemærkning] AS [PrisBemærkning]
+    FROM [dbo].[tblFarveTillægWebApp] AS [tblFarveTillægWebApp]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tblMmPrisWebApp" EntityType="Self.tblMmPrisWebApp" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblMmPrisWebApp].[BladID] AS [BladID], 
+    [tblMmPrisWebApp].[Placering] AS [Placering], 
+    [tblMmPrisWebApp].[Pris] AS [Pris]
+    FROM [dbo].[tblMmPrisWebApp] AS [tblMmPrisWebApp]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tblPlannerPlaner" EntityType="Self.tblPlannerPlaner" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tblPlannerPlaner].[PlannerID] AS [PlannerID], 
+    [tblPlannerPlaner].[BrugerNavn] AS [BrugerNavn], 
+    [tblPlannerPlaner].[BrugerEmail] AS [BrugerEmail], 
+    [tblPlannerPlaner].[Annoncør] AS [Annoncør], 
+    [tblPlannerPlaner].[Bureau] AS [Bureau], 
+    [tblPlannerPlaner].[Format1] AS [Format1], 
+    [tblPlannerPlaner].[Format2] AS [Format2], 
+    [tblPlannerPlaner].[AntalFarver] AS [AntalFarver], 
+    [tblPlannerPlaner].[Placering] AS [Placering], 
+    [tblPlannerPlaner].[Ugeaviser] AS [Ugeaviser], 
+    [tblPlannerPlaner].[MedieplanNr] AS [MedieplanNr], 
+    [tblPlannerPlaner].[KonsulentCode] AS [KonsulentCode], 
+    [tblPlannerPlaner].[Oprettet] AS [Oprettet]
+    FROM [dbo].[tblPlannerPlaner] AS [tblPlannerPlaner]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tempPriser" EntityType="Self.tempPriser" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tempPriser].[BladID] AS [BladID], 
+    [tempPriser].[PlaceringID] AS [PlaceringID], 
+    [tempPriser].[År] AS [År], 
+    [tempPriser].[PrislisteID] AS [PrislisteID], 
+    [tempPriser].[FormatFra] AS [FormatFra], 
+    [tempPriser].[FormatTil] AS [FormatTil], 
+    [tempPriser].[mmPris] AS [mmPris], 
+    [tempPriser].[FarvePris] AS [FarvePris], 
+    [tempPriser].[FarveMin] AS [FarveMin], 
+    [tempPriser].[FarveMax] AS [FarveMax], 
+    [tempPriser].[Farve4Pris] AS [Farve4Pris], 
+    [tempPriser].[Farve4Min] AS [Farve4Min], 
+    [tempPriser].[Farve4Max] AS [Farve4Max], 
+    [tempPriser].[ControlNavn] AS [ControlNavn]
+    FROM [dbo].[tempPriser] AS [tempPriser]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tmpNyeDeadlines" EntityType="Self.tmpNyeDeadlines" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tmpNyeDeadlines].[BladID] AS [BladID], 
+    [tmpNyeDeadlines].[Linje] AS [Linje], 
+    [tmpNyeDeadlines].[OrdreDeadline] AS [OrdreDeadline], 
+    [tmpNyeDeadlines].[OrdreTid] AS [OrdreTid], 
+    [tmpNyeDeadlines].[MaterialeDeadline] AS [MaterialeDeadline], 
+    [tmpNyeDeadlines].[MaterialeTid] AS [MaterialeTid]
+    FROM [dbo].[tmpNyeDeadlines] AS [tmpNyeDeadlines]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tnpOrdreNr" EntityType="Self.tnpOrdreNr" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tnpOrdreNr].[MedieplanNr] AS [MedieplanNr]
+    FROM [dbo].[tnpOrdreNr] AS [tnpOrdreNr]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tnpOrdreNr2" EntityType="Self.tnpOrdreNr2" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tnpOrdreNr2].[MedieplanNr] AS [MedieplanNr]
+    FROM [dbo].[tnpOrdreNr2] AS [tnpOrdreNr2]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tnpOrdreNr3" EntityType="Self.tnpOrdreNr3" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tnpOrdreNr3].[MedieplanNr] AS [MedieplanNr], 
+    [tnpOrdreNr3].[Version] AS [Version]
+    FROM [dbo].[tnpOrdreNr3] AS [tnpOrdreNr3]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_tblBladeIGrupper_tblBladStamdata" Association="Self.FK_tblBladeIGrupper_tblBladStamdata">
+      <End Role="tblBladStamdata" EntitySet="tblBladStamdata" />
+      <End Role="tblMedIGruppe" EntitySet="tblMedIGruppe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblBladStamdata_OrdrecheckSendeDagID_tblDage_DagID" Association="Self.FK_tblBladStamdata_OrdrecheckSendeDagID_tblDage_DagID">
+      <End Role="tblDage" EntitySet="tblDage" />
+      <End Role="tblBladStamdata" EntitySet="tblBladStamdata" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblBladStamdata_UgedagID_tblDage_DagID" Association="Self.FK_tblBladStamdata_UgedagID_tblDage_DagID">
+      <End Role="tblDage" EntitySet="tblDage" />
+      <End Role="tblBladStamdata" EntitySet="tblBladStamdata" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblBladStamdata_tblDelOmråde" Association="Self.FK_tblBladStamdata_tblDelOmråde">
+      <End Role="tblDelOmråde" EntitySet="tblDelOmråde" />
+      <End Role="tblBladStamdata" EntitySet="tblBladStamdata" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblBladStamdata_tblGeoKoder" Association="Self.FK_tblBladStamdata_tblGeoKoder">
+      <End Role="tblGeoKode" EntitySet="tblGeoKode" />
+      <End Role="tblBladStamdata" EntitySet="tblBladStamdata" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblBladStamdata_tblHovedGruppe" Association="Self.FK_tblBladStamdata_tblHovedGruppe">
+      <End Role="tblHovedGruppe" EntitySet="tblHovedGruppe" />
+      <End Role="tblBladStamdata" EntitySet="tblBladStamdata" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblBladStamdata_tblPostNr" Association="Self.FK_tblBladStamdata_tblPostNr">
+      <End Role="tblPostNr" EntitySet="tblPostNr" />
+      <End Role="tblBladStamdata" EntitySet="tblBladStamdata" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblBladStamdata_tblRegioner" Association="Self.FK_tblBladStamdata_tblRegioner">
+      <End Role="tblRegion" EntitySet="tblRegion" />
+      <End Role="tblBladStamdata" EntitySet="tblBladStamdata" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblFejl_tblFejlTekst" Association="Self.FK_tblFejl_tblFejlTekst">
+      <End Role="tblFejlTekst" EntitySet="tblFejlTekst" />
+      <End Role="tblAnnoncekontrol" EntitySet="tblAnnoncekontrol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblKonkurrentDækning_tblKonkurrenter" Association="Self.FK_tblKonkurrentDækning_tblKonkurrenter">
+      <End Role="tblKonkurrenter" EntitySet="tblKonkurrenter" />
+      <End Role="tblKonkurrentDækning" EntitySet="tblKonkurrentDækning" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblKonkurrentDækning_tblPostNr" Association="Self.FK_tblKonkurrentDækning_tblPostNr">
+      <End Role="tblPostNr" EntitySet="tblPostNr" />
+      <End Role="tblKonkurrentDækning" EntitySet="tblKonkurrentDækning" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblKontakter_tblKontaktTitler" Association="Self.FK_tblKontakter_tblKontaktTitler">
+      <End Role="tblKontaktTitler" EntitySet="tblKontaktTitler" />
+      <End Role="tblKontakter" EntitySet="tblKontakter" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblKontakterArbOmråderPrKontakt_tblKontaktArbOmråder" Association="Self.FK_tblKontakterArbOmråderPrKontakt_tblKontaktArbOmråder">
+      <End Role="tblKontaktArbOmråder" EntitySet="tblKontaktArbOmråder" />
+      <End Role="tblKontakterArbOmråderPrKontakt" EntitySet="tblKontakterArbOmråderPrKontakt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblKontakterArbOmråderPrKontakt_tblKontakter" Association="Self.FK_tblKontakterArbOmråderPrKontakt_tblKontakter">
+      <End Role="tblKontakter" EntitySet="tblKontakter" />
+      <End Role="tblKontakterArbOmråderPrKontakt" EntitySet="tblKontakterArbOmråderPrKontakt" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblKontakterPrBlad_tblBladStamdataKopi" Association="Self.FK_tblKontakterPrBlad_tblBladStamdataKopi">
+      <End Role="tblBladStamdataKopi" EntitySet="tblBladStamdataKopi" />
+      <End Role="tblKontakterPrBlad" EntitySet="tblKontakterPrBlad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblKontakterPrBlad_tblKontakter" Association="Self.FK_tblKontakterPrBlad_tblKontakter">
+      <End Role="tblKontakter" EntitySet="tblKontakter" />
+      <End Role="tblKontakterPrBlad" EntitySet="tblKontakterPrBlad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblKontaktFunktionerPrBlad_tblKontakterPrBlad" Association="Self.FK_tblKontaktFunktionerPrBlad_tblKontakterPrBlad">
+      <End Role="tblKontakterPrBlad" EntitySet="tblKontakterPrBlad" />
+      <End Role="tblKontaktFunktionerPrBlad" EntitySet="tblKontaktFunktionerPrBlad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblKontaktFunktionerPrBlad_tblKontaktFunktioner" Association="Self.FK_tblKontaktFunktionerPrBlad_tblKontaktFunktioner">
+      <End Role="tblKontaktFunktioner" EntitySet="tblKontaktFunktioner" />
+      <End Role="tblKontaktFunktionerPrBlad" EntitySet="tblKontaktFunktionerPrBlad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblMateriale_tblMedieplanNr" Association="Self.FK_tblMateriale_tblMedieplanNr">
+      <End Role="tblMedieplanNr" EntitySet="tblMedieplanNr" />
+      <End Role="tblMateriale" EntitySet="tblMateriale" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblMedieplan_tblDPKulør" Association="Self.FK_tblMedieplan_tblDPKulør">
+      <End Role="tblDPKulør" EntitySet="tblDPKulør" />
+      <End Role="tblMedieplan" EntitySet="tblMedieplan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblMedieplan_tblMedieplanNr" Association="Self.FK_tblMedieplan_tblMedieplanNr">
+      <End Role="tblMedieplanNr" EntitySet="tblMedieplanNr" />
+      <End Role="tblMedieplan" EntitySet="tblMedieplan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblMedieplan_tblPlacering" Association="Self.FK_tblMedieplan_tblPlacering">
+      <End Role="tblPlacering" EntitySet="tblPlacering" />
+      <End Role="tblMedieplan" EntitySet="tblMedieplan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblMedieplanLinjer_tblBladStamdata" Association="Self.FK_tblMedieplanLinjer_tblBladStamdata">
+      <End Role="tblBladStamdata" EntitySet="tblBladStamdata" />
+      <End Role="tblMedieplanLinjer" EntitySet="tblMedieplanLinjer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblMedieplanLinjer_tblFejl" Association="Self.FK_tblMedieplanLinjer_tblFejl">
+      <End Role="tblAnnoncekontrol" EntitySet="tblAnnoncekontrol" />
+      <End Role="tblMedieplanLinjer" EntitySet="tblMedieplanLinjer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblMedieplanLinjer_tblMateriale" Association="Self.FK_tblMedieplanLinjer_tblMateriale">
+      <End Role="tblMateriale" EntitySet="tblMateriale" />
+      <End Role="tblMedieplanLinjer" EntitySet="tblMedieplanLinjer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblMedieplanLinjer_tblMedieplan" Association="Self.FK_tblMedieplanLinjer_tblMedieplan">
+      <End Role="tblMedieplan" EntitySet="tblMedieplan" />
+      <End Role="tblMedieplanLinjer" EntitySet="tblMedieplanLinjer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblMedIGruppe_tblGrupper" Association="Self.FK_tblMedIGruppe_tblGrupper">
+      <End Role="tblGrupper" EntitySet="tblGrupper" />
+      <End Role="tblMedIGruppe" EntitySet="tblMedIGruppe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOrdreGebyrNavision_tblOrdreNavision" Association="Self.FK_tblOrdreGebyrNavision_tblOrdreNavision">
+      <End Role="tblOrdreNavision" EntitySet="tblOrdreNavision" />
+      <End Role="tblOrdreGebyrNavision" EntitySet="tblOrdreGebyrNavision" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOrdreLinjerNavision_tblOrdreNavision" Association="Self.FK_tblOrdreLinjerNavision_tblOrdreNavision">
+      <End Role="tblOrdreNavision" EntitySet="tblOrdreNavision" />
+      <End Role="tblOrdreLinjerNavision" EntitySet="tblOrdreLinjerNavision" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPostNrSøgning_tblPostNr" Association="Self.FK_tblPostNrSøgning_tblPostNr">
+      <End Role="tblPostNr" EntitySet="tblPostNr" />
+      <End Role="tblPostNrSøgning" EntitySet="tblPostNrSøgning" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPriser_tblBladStamdata" Association="Self.FK_tblPriser_tblBladStamdata">
+      <End Role="tblBladStamdata" EntitySet="tblBladStamdata" />
+      <End Role="tblPriser" EntitySet="tblPriser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPriser_tblPlacering" Association="Self.FK_tblPriser_tblPlacering">
+      <End Role="tblPlacering" EntitySet="tblPlacering" />
+      <End Role="tblPriser" EntitySet="tblPriser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPriser_tblPrislister" Association="Self.FK_tblPriser_tblPrislister">
+      <End Role="tblPrislister" EntitySet="tblPrislister" />
+      <End Role="tblPriser" EntitySet="tblPriser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPrislisterPrBladPrUge_tblBladStamdata" Association="Self.FK_tblPrislisterPrBladPrUge_tblBladStamdata">
+      <End Role="tblBladStamdata" EntitySet="tblBladStamdata" />
+      <End Role="tblPrislisterPrBladPrUge" EntitySet="tblPrislisterPrBladPrUge" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPrislisterPrBladPrUge_tblPrislister" Association="Self.FK_tblPrislisterPrBladPrUge_tblPrislister">
+      <End Role="tblPrislister" EntitySet="tblPrislister" />
+      <End Role="tblPrislisterPrBladPrUge" EntitySet="tblPrislisterPrBladPrUge" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPrislisterPrBladPrÅr_tblBladStamdata" Association="Self.FK_tblPrislisterPrBladPrÅr_tblBladStamdata">
+      <End Role="tblBladStamdata" EntitySet="tblBladStamdata" />
+      <End Role="tblPrislisterPrBladPrÅr" EntitySet="tblPrislisterPrBladPrÅr" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPrislisterPrBladPrÅr_tblPrislister" Association="Self.FK_tblPrislisterPrBladPrÅr_tblPrislister">
+      <End Role="tblPrislister" EntitySet="tblPrislister" />
+      <End Role="tblPrislisterPrBladPrÅr" EntitySet="tblPrislisterPrBladPrÅr" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

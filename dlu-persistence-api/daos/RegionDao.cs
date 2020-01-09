@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Net.Http.Headers;
 using System.Net.Sockets;
 using dlu_persistence_api.exceptions;
-using System.Collections.Generic;
+
 using Newtonsoft.Json;
 
 namespace dlu_persistence_api.daos

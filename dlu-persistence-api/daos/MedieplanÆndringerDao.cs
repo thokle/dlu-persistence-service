@@ -54,12 +54,12 @@ namespace dlu_persistence_api.daos
         /// <param name="tblMedieplanÆndringer"></param>
         /// <returns></returns>
         /// <exception cref="DaoExceptions"></exception>
-        public Task<int> CreateOrUpdate(tblMedieplanÆndringer tblMedieplanÆndringer)
+        public int CreateOrUpdate(tblMedieplanÆndringer tblMedieplanÆndringer)
         {
             try
             {
                 _entities.tblMedieplanÆndringer.AddOrUpdate(tblMedieplanÆndringer);
-                return _entities.SaveChangesAsync();
+                return _entities.SaveChanges();
             }
             catch (Exception e)
             {

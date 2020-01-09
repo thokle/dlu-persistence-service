@@ -4,25 +4,14 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using dlu_persistence_api.daos;
 
 namespace dlu_persistence_api.models
 {
-    public class AvisTIlGrid : System.ComponentModel.INotifyPropertyChanged
+    public class AvisTIlGrid
     {
-        string adresse =  String.Empty
-           ;
-        public string Adresse { get
-            { return adresse; }
-            set { adresse = value; NotifyPropertyChanged("Adresse"); } }
-
-        string adresse2 = String.Empty;
-
-        public string Adresse2
-        {
-            get { return adresse2; }
-            set { adresse2 = value; NotifyPropertyChanged("Adresse2"); }
-        }
-
+        public string Adresse { get; set; }
+        public string Adresse2 { get; set; }
         public string AnnonceEmail { get; set; }
         public string AnnonceKontrolEmail { get; set; }
         public string BilagsbladeEmail { get; set; }
@@ -39,29 +28,30 @@ namespace dlu_persistence_api.models
         public string GruppeRabat { get; set; }
         public string Hjemmeside { get; set; }
         public string Koncern { get; set; }
+        public string koncern { get; internal set; }
         public string Kontaktperson { get; set; }
         public string KontaktpersonerEmails { get; set; }
         public string MaterialedeadlineRubrik { get; set; }
-        public byte? MaterialeDeadlineRubrikDag { get; set; }
+        public string MaterialeDeadlineRubrikDag { get; set; }
         public string MaterialeDeadlineRubrikKl { get; set; }
         public string MaterialedeadlineTekst { get; set; }
-        public byte? MaterialeDeadlineTekstDag { get; set; }
+        public string MaterialeDeadlineTekstDag { get; set; }
         public string MaterialeDeadlineTekstKl { get; set; }
         public string MaterialeEmail { get; set; }
         public byte? MatGodtBeloeb { get; set; }
-        public byte? MedlemMaaned { get; set; }
+        public string MedlemMaaned { get; set; }
         public byte? Medlemaar { get; set; }
         public bool? MaaGiveFarveRabat { get; set; }
         public string Navn { get; set; }
         public string Navn2 { get; set; }
         public bool Ophoert { get; set; }
         public string OrdrecheckEmail { get; set; }
-        public byte? OrdrecheckSendeDagID { get; set; }
+        public string OrdrecheckSendeDagID { get; set; }
         public string OrdredeadlineRubrik { get; set; }
-        public byte? OrdreDeadlineRubrikDag { get; set; }
+        public string OrdreDeadlineRubrikDag { get; set; }
         public string OrdreDeadlineRubrikKl { get; set; }
         public string OrdredeadlineTekst { get; set; }
-        public byte? OrdreDeadlineTekstDag { get; set; }
+        public string OrdreDeadlineTekstDag { get; set; }
         public string OrdreDeadlineTekstKl { get; set; }
         public string OrdreEmail { get; set; }
         public string OrienteringEmails { get; set; }
@@ -87,8 +77,8 @@ namespace dlu_persistence_api.models
         public decimal? FarvePris { get; set; }
         public int FormatFra { get; set; }
         public int FormatTil { get; set; }
-        public decimal? mmPris { get; set; }
-        public decimal? MMPris { get; internal set; }
+
+        public decimal? MmPris { get; set; }
         public string RegionNavn { get; set; }
         public int DaekningsGrad { get; set; }
         public int Oplag { get; set; }
@@ -101,16 +91,45 @@ namespace dlu_persistence_api.models
         public int? PostNr { get; set; }
         public string Betegnelse { get; set; }
         public string PrislisteNavn { get; set; }
-        public decimal? totalPris { get;  set; }
+        public decimal? totalPris { get; set; }
         public string bemærkning { get; set; }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public decimal? TotalIncltillæg { get; set; }
+        public float FarveRabat { get; set; }
+        public decimal FarveTillæg { get; set; }
+        public decimal FarveTotal { get; set; }
+        public short Mm { get; set; }
+        public float MmRabat { get; set; }
+        public decimal MmTotal { get; set; }
 
-        private void NotifyPropertyChanged(String info)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(info));
-        }
-
+        public float farveTotal { get; set; }
+        public int MedieplanNr { get; set; }
+        public string BureauOrdreNr { get; set; }
+        public bool ErWeekendGruppe { get; set; }
+        public bool ManueltÆndret { get; set; }
+        public decimal MaterialeGodtgørelsePris { get; set; }
+        public string MaterialeNr { get; set; }
+        public string MedIGrupper { get; set; }
+        public decimal MiljøTillæg { get; set; }
+ 
+        public bool? MåGiveMmRabat { get; set; }
+        public decimal NormalMmPris { get; set; }
+        public bool MåGiveMaterialeGodtgørelse { get; set; }
+        public bool PrisLåst { get; set; }
+        public string SendeGruppe { get; set; }
+        public string RabatGruppe { get; set; }
+        public decimal OldMmtotal { get; set; }
+        public bool SkalGiveMaterialeGodtgørelse { get; set; }
+        public double? web_tillæg { get; set; }
+        public decimal avis_tillæg { get; set; }
+        public decimal andet_tillæg {get; set;}
+        public string webtillæg_type { get; set; }
+        public decimal oldTotalPris { get; set; }
+        public double? sum_bladtilæg { get;  set; }
+        public decimal oldFarveTotal { get; set; }
+        public List<webtilLæg> webtillages { get; set; }
+        public List<string> tillæg { get; set; }
+        public int BureaoOrdreNr { get; set; }
         public decimal? calTotalPris()
         {
           return  this.Farve4Max + Farve4Min + Farve4Pris + FarveMax + FarveMin + FarvePris;

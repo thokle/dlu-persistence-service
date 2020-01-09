@@ -1,0 +1,5 @@
+C:\Users\Thomas Kleist\source\repos\DLUPersistence-service-api\dlu-persistence-api\obj\dev\dlu_persistence_api.Properties.Resources.resources
+C:\Users\Thomas Kleist\source\repos\DLUPersistence-service-api\dlu-persistence-api\obj\dev\dlu-persistence-api.csproj.GenerateResource.cache
+C:\Users\Thomas Kleist\source\repos\DLUPersistence-service-api\dlu-persistence-api\obj\dev\dlu-persistence-api.csproj.CoreCompileInputs.cache
+C:\Users\Thomas Kleist\source\repos\DLUPersistence-service-api\dlu-persistence-api\obj\dev\dlu-persistence-api.dll
+C:\Users\Thomas Kleist\source\repos\DLUPersistence-service-api\dlu-persistence-api\obj\dev\dlu-persistence-api.csprojAssemblyReference.cache

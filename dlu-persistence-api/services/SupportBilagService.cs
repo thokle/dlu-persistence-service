@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using dlu_persistence_api.daos;
 namespace dlu_persistence_api.services
 {
-    public class SupportBilagService: ISupportBilagService
+    public class SupportBilagService
     {
         private SupportBilagDao _dao;
 
@@ -10,12 +10,12 @@ namespace dlu_persistence_api.services
         {
             _dao = new SupportBilagDao();
         }
-        public string GetSupportBilagByMedieId(int medieId)
+        public SupporBillag GetSupportBilagByMedieId(int medieId)
         {
             return _dao.GetSupportBilagByMedieId(medieId: medieId);
         }
 
-        public Task<int> CreateOrUpdate(tblSupportBilag tblSupportBilag)
+        public int CreateOrUpdate(tblSupportBilag tblSupportBilag)
         {
             return _dao.CreateOrUpdate(tblSupportBilag);
         }

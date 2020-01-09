@@ -4,13 +4,9 @@ using Newtonsoft.Json;
 using System;
 using System.Data;
 using System.Data.Entity.Migrations;
-using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-
-using dlu_persistence_api.exceptions;
-using dlu_persistence_api.models;
 using System.Collections.Generic;
 namespace dlu_persistence_api.daos
 {

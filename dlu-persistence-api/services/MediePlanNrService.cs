@@ -21,7 +21,7 @@ namespace dlu_persistence_api.services
             return MediaPlanNrDao.GetMediePlanNrDaoByMedPlanId(mediePlanId: mediePlannr);
         }
 
-       public Tuple<string, int> CreateOrUpDateMediePlanNr(tblMedieplanNr tblMedieplanNr)
+       public  Tuple<int,int, short>  CreateOrUpDateMediePlanNr(tblMedieplanNr tblMedieplanNr)
         {
             return MediaPlanNrDao.CreateOrUpDateMediePlanNr(tblMedieplanNr);
         }

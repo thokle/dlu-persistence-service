@@ -41,5 +41,9 @@ namespace dlu_persistence_api.models
         public decimal TotalInclTillaeg { get; set; }
         public bool PrisLaast { get; set; }
         public bool? MaaGiveRabat { get; internal set; }
+        public bool ManueltÆndret { get; internal set; }
+        public decimal MaterialeGodtgørelsePris { get; internal set; }
+        public decimal MiljøTillæg { get; internal set; }
+        public bool MåGiveMaterialeGodtgørelse { get; internal set; }
     }
 }

@@ -65,29 +65,21 @@ namespace dlu_persistence_api.daos
         /// <param name="tblMedieplanLinjer"></param>
         /// <returns></returns>
         /// <exception cref="DaoExceptions"></exception>
-        public Task<int> CreateOrUpdateMediePlanLinjer(tblMedieplanLinjer tblMedieplanLinjer)
+        public int CreateOrUpdateMediePlanLinjer(tblMedieplanLinjer tblMedieplanLinjer)
         {
-            Task<int> res = null;
+            int res = 0;
             try
             {
             _entities.tblMedieplanLinjers.AddOrUpdate(tblMedieplanLinjer);
-               res = _entities.SaveChangesAsync();
-          
-          
+               res = _entities.SaveChanges();
+
+                return res;
             }
             catch (Exception e) 
             {
-                if (e is System.Data.Entity.Validation.DbEntityValidationException)
-                {
-                    throw new FormattedDbEntityValidationException(e.InnerException);
-                }
-           
-                if (e is Exception)
-                {
-                    throw new Exception(e.Message);
-                }
+                throw new Exception();
             }
-            return res;
+           
 
         }
 

@@ -55,6 +55,8 @@ namespace dlu_persistence_api
         public virtual DbSet<tblGrupper> tblGruppers { get; set; }
         public virtual DbSet<tblGruppeRabatter> tblGruppeRabatters { get; set; }
         public virtual DbSet<tblHovedGruppe> tblHovedGruppes { get; set; }
+        public virtual DbSet<tblKoncern> tblKoncerns { get; set; }
+        public virtual DbSet<tblKoncernMiljøTillæg> tblKoncernMiljøTillæg { get; set; }
         public virtual DbSet<tblKonkurrentDækning> tblKonkurrentDækning { get; set; }
         public virtual DbSet<tblKonkurrenter> tblKonkurrenters { get; set; }
         public virtual DbSet<tblKontaktArbOmråder> tblKontaktArbOmråder { get; set; }
@@ -62,6 +64,7 @@ namespace dlu_persistence_api
         public virtual DbSet<tblKontakterPrBlad> tblKontakterPrBlads { get; set; }
         public virtual DbSet<tblKontaktFunktioner> tblKontaktFunktioners { get; set; }
         public virtual DbSet<tblKontaktTitler> tblKontaktTitlers { get; set; }
+        public virtual DbSet<tblMåneder> tblMåneder { get; set; }
         public virtual DbSet<tblMateriale> tblMateriales { get; set; }
         public virtual DbSet<tblMedieplan> tblMedieplans { get; set; }
         public virtual DbSet<tblMedieplanÆndringer> tblMedieplanÆndringer { get; set; }

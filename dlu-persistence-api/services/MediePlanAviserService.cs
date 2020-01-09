@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using dlu_persistence_api.daos;
 using dlu_persistence_api.exceptions;
 using dlu_persistence_api.services.interfaces;
+using dlu_persistence_api.models;
 namespace dlu_persistence_api.services
 
 {
@@ -18,7 +19,7 @@ namespace dlu_persistence_api.services
         {
             dao = new MediePlanAviserDao();
         }
-        public AviserTilGrid GetAllUgeAvisTilGrid(int bladid, int year, int placeringid)
+        public AvisTIlGrid GetAllUgeAvisTilGrid(int bladid, int year, int placeringid)
         {
             return dao.GetAllUgeAvisTilGrid(bladid, year, placeringid);
         }

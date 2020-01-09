@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.Data.Entity.Migrations;
 using System.Data.Entity.Validation;
@@ -23,20 +24,18 @@ namespace dlu_persistence_api.daos
             _entities = new DiMPdotNetDevEntities();
        
     }
-        public string GetKonkurrenter()
+
+        public List<KonkurentDaekningDao> GetKonkurrenterById(byte konkurrentId)
         {
             try
             {
-                var res = from k in _entities.tblKonkurrenters select new {
-                    k.KonkurentKode, k.KonkurrentID,k.KonkurrentNavn, k.MedieMappingFraDO, konkurrentDaekning = from kd   in k.tblKonkurrentDækning select new
-                    {
-                        kd.KonkurrentID, kd.Oplag, kd.PostNr
-                    }
+                var res = from k in _entities.tblKonkurrentDækning where k.KonkurrentID == konkurrentId select new KonkurentDaekningDao {
+                    KonkurrentID = k.KonkurrentID,
+                    Oplag =      k.Oplag,
+                    PostNr =    k.PostNr ,
+                    DækningsGrad = k.DækningsGrad
                 };
-                return JsonConvert.SerializeObject(res, Formatting.Indented, new JsonSerializerSettings()
-                {
-                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                });
+                return res.ToList();
             }
             catch (Exception e)
             {
@@ -120,5 +119,13 @@ namespace dlu_persistence_api.daos
         {
            _entities.Dispose();
         }
+    }
+
+    public class KonkurentDaekningDao
+    {
+        public byte KonkurrentID { get; internal set; }
+        public int Oplag { get; internal set; }
+        public int PostNr { get; internal set; }
+        public int DækningsGrad { get; internal set; }
     }
 }

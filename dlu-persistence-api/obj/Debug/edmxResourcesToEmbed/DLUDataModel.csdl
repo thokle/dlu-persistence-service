@@ -1,0 +1,1686 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DiMPdotNetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="dtproperties">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="property" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="objectid" Type="Int32" />
+    <Property Name="property" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="value" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="uvalue" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="lvalue" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="version" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OpdateringsTekst">
+    <Key>
+      <PropertyRef Name="LPVersion" />
+    </Key>
+    <Property Name="LPVersion" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Beskrivelse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tblAnnoncekontrol">
+    <Key>
+      <PropertyRef Name="MedieplanNr" />
+      <PropertyRef Name="UgeavisID" />
+    </Key>
+    <Property Name="MedieplanNr" Type="Int32" Nullable="false" />
+    <Property Name="UgeavisID" Type="Int32" Nullable="false" />
+    <Property Name="ErKontrolleret" Type="Boolean" Nullable="false" />
+    <Property Name="KontrolTidspunkt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="KontrollørEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="KontrolleretAfDLU" Type="Boolean" Nullable="false" />
+    <Property Name="Fejlkode" Type="Byte" Nullable="false" />
+    <Property Name="Ansvar" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IndrykketPåSide" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FaktureresTil" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SidePlacering" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="tblFejlTekst" Relationship="Self.FK_tblFejl_tblFejlTekst" FromRole="tblAnnoncekontrol" ToRole="tblFejlTekst" />
+    <NavigationProperty Name="tblMedieplanLinjer" Relationship="Self.FK_tblMedieplanLinjer_tblFejl" FromRole="tblAnnoncekontrol" ToRole="tblMedieplanLinjer" />
+  </EntityType>
+  <EntityType Name="tblBladDækning">
+    <Key>
+      <PropertyRef Name="BladID" />
+      <PropertyRef Name="PostNr" />
+    </Key>
+    <Property Name="BladID" Type="Int32" Nullable="false" />
+    <Property Name="PostNr" Type="Int32" Nullable="false" />
+    <Property Name="Oplag" Type="Int32" Nullable="false" />
+    <Property Name="DækningsGrad" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblBladnavnMappingFraDO">
+    <Key>
+      <PropertyRef Name="BladID" />
+    </Key>
+    <Property Name="BladID" Type="Int32" Nullable="false" />
+    <Property Name="DLUNavn" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Medie" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblBladStamdata">
+    <Key>
+      <PropertyRef Name="BladID" />
+    </Key>
+    <Property Name="BladID" Type="Int32" Nullable="false" />
+    <Property Name="Navn" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Navn2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Adresse" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="Adresse2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PostNr" Type="Int32" />
+    <Property Name="Tlf" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="Fax" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="CVR" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="FIK" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Kontaktperson" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="HovedgruppeID" Type="Byte" />
+    <Property Name="MedlemMåned" Type="Byte" />
+    <Property Name="MedlemÅr" Type="Byte" />
+    <Property Name="MedlemSiden" Type="DateTime" Precision="0" />
+    <Property Name="Ejerforhold" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Koncern" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Ophørt" Type="Boolean" Nullable="false" />
+    <Property Name="VisPåWWW" Type="Boolean" Nullable="false" />
+    <Property Name="RegionID" Type="Byte" />
+    <Property Name="DelOmrådeID" Type="Byte" />
+    <Property Name="DiMPDelOmrådeKode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="GeoKodeID" Type="Byte" />
+    <Property Name="Totalområde" Type="Int32" />
+    <Property Name="TotalområdePct" Type="Byte" />
+    <Property Name="Primær" Type="Int32" />
+    <Property Name="PrimærPct" Type="Byte" />
+    <Property Name="WWWDækningSomTekst" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Oplag" Type="Int32" />
+    <Property Name="UgedagID" Type="Byte" />
+    <Property Name="Format" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="OrdredeadlineTekst" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="OrdredeadlineRubrik" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="MaterialedeadlineTekst" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="MaterialedeadlineRubrik" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="OrdreEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="OrdrecheckEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrdrecheckSendeDagID" Type="Byte" />
+    <Property Name="SendetidOrdrecheck" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="SendIndeværendeUge" Type="Boolean" />
+    <Property Name="StamdataEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrisforespørgselEmails" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="OrienteringEmails" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Emails" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="KontaktpersonerEmails" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="BogholderiEmails" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="BogholderiKontaktperson" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="MedieNetKode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="MatGodtBeløb" Type="Byte" />
+    <Property Name="Hjemmeside" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="RedaktionEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AnnonceEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaterialeEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AnnonceKontrolEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BilagsbladeEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FakturaGruppeID" Type="Int32" Nullable="false" />
+    <Property Name="SalgsGruppeID" Type="Int32" />
+    <Property Name="GruppeRabat" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SamannonceringsRabat" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="MåGiveFarveRabat" Type="Boolean" />
+    <Property Name="GiverWebTillæg" Type="Boolean" Nullable="false" />
+    <Property Name="OrdreDeadlineTekstDag" Type="Byte" />
+    <Property Name="OrdreDeadlineTekstKl" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="MaterialeDeadlineTekstDag" Type="Byte" />
+    <Property Name="MaterialeDeadlineTekstKl" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="OrdreDeadlineRubrikDag" Type="Byte" />
+    <Property Name="OrdreDeadlineRubrikKl" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="MaterialeDeadlineRubrikDag" Type="Byte" />
+    <Property Name="MaterialeDeadlineRubrikKl" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Overført" Type="Boolean" Nullable="false" />
+    <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="tblMedIGruppe" Relationship="Self.FK_tblBladeIGrupper_tblBladStamdata" FromRole="tblBladStamdata" ToRole="tblMedIGruppe" />
+    <NavigationProperty Name="tblDage" Relationship="Self.FK_tblBladStamdata_OrdrecheckSendeDagID_tblDage_DagID" FromRole="tblBladStamdata" ToRole="tblDage" />
+    <NavigationProperty Name="tblDage1" Relationship="Self.FK_tblBladStamdata_UgedagID_tblDage_DagID" FromRole="tblBladStamdata" ToRole="tblDage" />
+    <NavigationProperty Name="tblDelOmråde" Relationship="Self.FK_tblBladStamdata_tblDelOmråde" FromRole="tblBladStamdata" ToRole="tblDelOmråde" />
+    <NavigationProperty Name="tblGeoKode" Relationship="Self.FK_tblBladStamdata_tblGeoKoder" FromRole="tblBladStamdata" ToRole="tblGeoKode" />
+    <NavigationProperty Name="tblHovedGruppe" Relationship="Self.FK_tblBladStamdata_tblHovedGruppe" FromRole="tblBladStamdata" ToRole="tblHovedGruppe" />
+    <NavigationProperty Name="tblPostNr" Relationship="Self.FK_tblBladStamdata_tblPostNr" FromRole="tblBladStamdata" ToRole="tblPostNr" />
+    <NavigationProperty Name="tblRegion" Relationship="Self.FK_tblBladStamdata_tblRegioner" FromRole="tblBladStamdata" ToRole="tblRegion" />
+    <NavigationProperty Name="tblMedieplanLinjer" Relationship="Self.FK_tblMedieplanLinjer_tblBladStamdata" FromRole="tblBladStamdata" ToRole="tblMedieplanLinjer" />
+    <NavigationProperty Name="tblPriser" Relationship="Self.FK_tblPriser_tblBladStamdata" FromRole="tblBladStamdata" ToRole="tblPriser" />
+    <NavigationProperty Name="tblPrislisterPrBladPrUge" Relationship="Self.FK_tblPrislisterPrBladPrUge_tblBladStamdata" FromRole="tblBladStamdata" ToRole="tblPrislisterPrBladPrUge" />
+    <NavigationProperty Name="tblPrislisterPrBladPrÅr" Relationship="Self.FK_tblPrislisterPrBladPrÅr_tblBladStamdata" FromRole="tblBladStamdata" ToRole="tblPrislisterPrBladPrÅr" />
+  </EntityType>
+  <EntityType Name="tblBladStamdataKopi">
+    <Key>
+      <PropertyRef Name="BladID" />
+    </Key>
+    <Property Name="BladID" Type="Int32" Nullable="false" />
+    <Property Name="Navn" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Navn2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Adresse" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Adresse2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PostNr" Type="Int32" />
+    <Property Name="Tlf" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Fax" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CVR" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="FIK" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Kontaktperson" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="HovedgruppeID" Type="Byte" />
+    <Property Name="MedlemMåned" Type="Byte" />
+    <Property Name="MedlemÅr" Type="Byte" />
+    <Property Name="MedlemSiden" Type="DateTime" Precision="0" />
+    <Property Name="Ejerforhold" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ophørt" Type="Boolean" Nullable="false" />
+    <Property Name="VisPåWWW" Type="Boolean" Nullable="false" />
+    <Property Name="RegionID" Type="Byte" />
+    <Property Name="DelOmrådeID" Type="Byte" />
+    <Property Name="DiMPDelOmrådeKode" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="GeoKodeID" Type="Byte" />
+    <Property Name="Totalområde" Type="Int32" />
+    <Property Name="TotalområdePct" Type="Byte" />
+    <Property Name="Primær" Type="Int32" />
+    <Property Name="PrimærPct" Type="Byte" />
+    <Property Name="WWWDækningSomTekst" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Oplag" Type="Int32" />
+    <Property Name="UgedagID" Type="Byte" />
+    <Property Name="Format" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="OrdreEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="OrdrecheckEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrdrecheckSendeDagID" Type="Byte" />
+    <Property Name="SendetidOrdrecheck" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="SendIndeværendeUge" Type="Boolean" />
+    <Property Name="StamdataEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrisforespørgselEmails" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="OrienteringEmails" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Emails" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="KontaktpersonerEmails" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="BogholderiEmails" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="BogholderiKontaktperson" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="MedieNetKode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="MatGodtBeløb" Type="Byte" />
+    <Property Name="Hjemmeside" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="RedaktionEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AnnonceEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaterialeEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AnnonceKontrolEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BilagsbladeEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FakturaGruppeID" Type="Int32" Nullable="false" />
+    <Property Name="SalgsGruppeID" Type="Int32" />
+    <Property Name="GruppeRabat" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SamannonceringsRabat" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="MåGiveFarveRabat" Type="Boolean" />
+    <Property Name="GiverWebTillæg" Type="Boolean" />
+    <Property Name="OrdreDeadlineTekstDag" Type="Byte" Nullable="false" />
+    <Property Name="OrdreDeadlineTekstKl" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaterialeDeadlineTekstDag" Type="Byte" Nullable="false" />
+    <Property Name="MaterialeDeadlineTekstKl" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OrdreDeadlineRubrikDag" Type="Byte" Nullable="false" />
+    <Property Name="OrdreDeadlineRubrikKl" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaterialeDeadlineRubrikDag" Type="Byte" Nullable="false" />
+    <Property Name="MaterialeDeadlineRubrikKl" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Overført" Type="Boolean" Nullable="false" />
+    <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="tblKontakterPrBlad" Relationship="Self.FK_tblKontakterPrBlad_tblBladStamdataKopi" FromRole="tblBladStamdataKopi" ToRole="tblKontakterPrBlad" />
+  </EntityType>
+  <EntityType Name="tblBrugerData">
+    <Key>
+      <PropertyRef Name="Initialer" />
+    </Key>
+    <Property Name="Initialer" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SidsteLoginVersion" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NulstilLayout" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblDage">
+    <Key>
+      <PropertyRef Name="DagID" />
+    </Key>
+    <Property Name="DagID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DagNavn" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DagType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="tblBladStamdata" Relationship="Self.FK_tblBladStamdata_OrdrecheckSendeDagID_tblDage_DagID" FromRole="tblDage" ToRole="tblBladStamdata" />
+    <NavigationProperty Name="tblBladStamdata1" Relationship="Self.FK_tblBladStamdata_UgedagID_tblDage_DagID" FromRole="tblDage" ToRole="tblBladStamdata" />
+  </EntityType>
+  <EntityType Name="tblDelOmråde">
+    <Key>
+      <PropertyRef Name="DelOmrådeID" />
+    </Key>
+    <Property Name="DelOmrådeID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DelOmrådeKode" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="DelOmrådeNavn" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DelOmrådeSortKey" Type="Byte" Nullable="false" />
+    <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="tblBladStamdata" Relationship="Self.FK_tblBladStamdata_tblDelOmråde" FromRole="tblDelOmråde" ToRole="tblBladStamdata" />
+  </EntityType>
+  <EntityType Name="tblDPKulør">
+    <Key>
+      <PropertyRef Name="DPKulørID" />
+    </Key>
+    <Property Name="DPKulørID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Kulør" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblMedieplan" Relationship="Self.FK_tblMedieplan_tblDPKulør" FromRole="tblDPKulør" ToRole="tblMedieplan" />
+  </EntityType>
+  <EntityType Name="tblEjerforhold">
+    <Key>
+      <PropertyRef Name="EjerforholdID" />
+    </Key>
+    <Property Name="EjerforholdID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ejerforhold" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="WebTillægTekst" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="WebTillægRubrik" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblFakturaFejl">
+    <Key>
+      <PropertyRef Name="MedieplanNr" />
+      <PropertyRef Name="Version" />
+      <PropertyRef Name="UgeavisID" />
+    </Key>
+    <Property Name="MedieplanNr" Type="Int32" Nullable="false" />
+    <Property Name="Version" Type="Int16" Nullable="false" />
+    <Property Name="UgeavisID" Type="Int32" Nullable="false" />
+    <Property Name="FejlKode" Type="Int16" Nullable="false" />
+    <Property Name="Ansvarlig" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblFakturaFejlTekst">
+    <Key>
+      <PropertyRef Name="FejlKode" />
+    </Key>
+    <Property Name="FejlKode" Type="Byte" Nullable="false" />
+    <Property Name="FejlTekst" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblFaktureringsBilag">
+    <Key>
+      <PropertyRef Name="MedieplanNr" />
+      <PropertyRef Name="BemærkningNr" />
+    </Key>
+    <Property Name="MedieplanNr" Type="Int32" Nullable="false" />
+    <Property Name="BemærkningNr" Type="Int16" Nullable="false" />
+    <Property Name="UgeavisNavn" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Oprettet" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="OprettetAf" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RettetAf" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RettetKl" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ErRettet" Type="Boolean" Nullable="false" />
+    <Property Name="Tekst" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblFejlTekst">
+    <Key>
+      <PropertyRef Name="Fejlkode" />
+    </Key>
+    <Property Name="Fejlkode" Type="Byte" Nullable="false" />
+    <Property Name="FejlTekst" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblAnnoncekontrol" Relationship="Self.FK_tblFejl_tblFejlTekst" FromRole="tblFejlTekst" ToRole="tblAnnoncekontrol" />
+  </EntityType>
+  <EntityType Name="tblGeoKode">
+    <Key>
+      <PropertyRef Name="GeoKodeID" />
+    </Key>
+    <Property Name="GeoKodeID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GeoKodeNavn" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GeoKodeSortKey" Type="Byte" Nullable="false" />
+    <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="tblBladStamdata" Relationship="Self.FK_tblBladStamdata_tblGeoKoder" FromRole="tblGeoKode" ToRole="tblBladStamdata" />
+  </EntityType>
+  <EntityType Name="tblGrupper">
+    <Key>
+      <PropertyRef Name="GruppeID" />
+      <PropertyRef Name="Version" />
+    </Key>
+    <Property Name="GruppeID" Type="Int32" Nullable="false" />
+    <Property Name="GruppeNavn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="GruppeType" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="AntalBladeForValg" Type="Byte" Nullable="false" />
+    <Property Name="GruppeHovedbladID" Type="Int32" />
+    <Property Name="OrdreEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="MaterialeModtager" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Version" Type="Byte" Nullable="false" />
+    <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="tblMedIGruppe" Relationship="Self.FK_tblMedIGruppe_tblGrupper" FromRole="tblGrupper" ToRole="tblMedIGruppe" />
+  </EntityType>
+  <EntityType Name="tblGruppeRabatter">
+    <Key>
+      <PropertyRef Name="RabatFormID" />
+      <PropertyRef Name="Version" />
+    </Key>
+    <Property Name="RabatFormID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GruppeID" Type="Int32" Nullable="false" />
+    <Property Name="PlaceringID" Type="Byte" Nullable="false" />
+    <Property Name="AntalFra" Type="Byte" Nullable="false" />
+    <Property Name="AntalTil" Type="Byte" Nullable="false" />
+    <Property Name="MmRabat" Type="Single" />
+    <Property Name="FarveRabat" Type="Single" />
+    <Property Name="MmPris" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="FarveMin" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="FarveMax" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="FarveTillæg" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="PrisInclFarver" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="Version" Type="Byte" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblHovedGruppe">
+    <Key>
+      <PropertyRef Name="HovedGruppeID" />
+    </Key>
+    <Property Name="HovedGruppeID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HovedGruppeNavn" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HovedGruppeSortKey" Type="Byte" Nullable="false" />
+    <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="tblBladStamdata" Relationship="Self.FK_tblBladStamdata_tblHovedGruppe" FromRole="tblHovedGruppe" ToRole="tblBladStamdata" />
+  </EntityType>
+  <EntityType Name="tblKonkurrentDækning">
+    <Key>
+      <PropertyRef Name="KonkurrentID" />
+      <PropertyRef Name="PostNr" />
+    </Key>
+    <Property Name="KonkurrentID" Type="Byte" Nullable="false" />
+    <Property Name="PostNr" Type="Int32" Nullable="false" />
+    <Property Name="Oplag" Type="Int32" Nullable="false" />
+    <Property Name="DækningsGrad" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblKonkurrenter" Relationship="Self.FK_tblKonkurrentDækning_tblKonkurrenter" FromRole="tblKonkurrentDækning" ToRole="tblKonkurrenter" />
+    <NavigationProperty Name="tblPostNr" Relationship="Self.FK_tblKonkurrentDækning_tblPostNr" FromRole="tblKonkurrentDækning" ToRole="tblPostNr" />
+  </EntityType>
+  <EntityType Name="tblKonkurrenter">
+    <Key>
+      <PropertyRef Name="KonkurrentID" />
+    </Key>
+    <Property Name="KonkurrentID" Type="Byte" Nullable="false" />
+    <Property Name="KonkurrentNavn" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="KonkurentKode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BladTypeMappingFraDO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MedieMappingFraDO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblKonkurrentDækning" Relationship="Self.FK_tblKonkurrentDækning_tblKonkurrenter" FromRole="tblKonkurrenter" ToRole="tblKonkurrentDækning" />
+  </EntityType>
+  <EntityType Name="tblKontaktArbOmråder">
+    <Key>
+      <PropertyRef Name="ArbOmrådeID" />
+    </Key>
+    <Property Name="ArbOmrådeID" Type="Int32" Nullable="false" />
+    <Property Name="ArbOmråde" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblKontakter" Relationship="Self.tblKontakterArbOmråderPrKontakt" FromRole="tblKontaktArbOmråder" ToRole="tblKontakter" />
+  </EntityType>
+  <EntityType Name="tblKontakter">
+    <Key>
+      <PropertyRef Name="KontaktID" />
+    </Key>
+    <Property Name="KontaktID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fornavn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Efternavn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TitelID" Type="Int32" />
+    <Property Name="Tlfnr" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mobilnr" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblKontaktTitler" Relationship="Self.FK_tblKontakter_tblKontaktTitler" FromRole="tblKontakter" ToRole="tblKontaktTitler" />
+    <NavigationProperty Name="tblKontakterPrBlad" Relationship="Self.FK_tblKontakterPrBlad_tblKontakter" FromRole="tblKontakter" ToRole="tblKontakterPrBlad" />
+    <NavigationProperty Name="tblKontaktArbOmråder" Relationship="Self.tblKontakterArbOmråderPrKontakt" FromRole="tblKontakter" ToRole="tblKontaktArbOmråder" />
+  </EntityType>
+  <EntityType Name="tblKontakterPrBlad">
+    <Key>
+      <PropertyRef Name="BladID" />
+      <PropertyRef Name="KontaktID" />
+    </Key>
+    <Property Name="BladID" Type="Int32" Nullable="false" />
+    <Property Name="KontaktID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblBladStamdataKopi" Relationship="Self.FK_tblKontakterPrBlad_tblBladStamdataKopi" FromRole="tblKontakterPrBlad" ToRole="tblBladStamdataKopi" />
+    <NavigationProperty Name="tblKontakter" Relationship="Self.FK_tblKontakterPrBlad_tblKontakter" FromRole="tblKontakterPrBlad" ToRole="tblKontakter" />
+    <NavigationProperty Name="tblKontaktFunktioner" Relationship="Self.tblKontaktFunktionerPrBlad" FromRole="tblKontakterPrBlad" ToRole="tblKontaktFunktioner" />
+  </EntityType>
+  <EntityType Name="tblKontaktFunktioner">
+    <Key>
+      <PropertyRef Name="FunktionID" />
+    </Key>
+    <Property Name="FunktionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Funktion" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblKontakterPrBlad" Relationship="Self.tblKontaktFunktionerPrBlad" FromRole="tblKontaktFunktioner" ToRole="tblKontakterPrBlad" />
+  </EntityType>
+  <EntityType Name="tblKontaktTitler">
+    <Key>
+      <PropertyRef Name="TitelID" />
+    </Key>
+    <Property Name="TitelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Titel" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblKontakter" Relationship="Self.FK_tblKontakter_tblKontaktTitler" FromRole="tblKontaktTitler" ToRole="tblKontakter" />
+  </EntityType>
+  <EntityType Name="tblMateriale">
+    <Key>
+      <PropertyRef Name="MedieplanNr" />
+      <PropertyRef Name="UgeavisID" />
+    </Key>
+    <Property Name="MedieplanNr" Type="Int32" Nullable="false" />
+    <Property Name="UgeavisID" Type="Int32" Nullable="false" />
+    <Property Name="FilNavn" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ErSendt" Type="Boolean" Nullable="false" />
+    <Property Name="SkalSendes" Type="Boolean" Nullable="false" />
+    <Property Name="FilSti" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblMedieplanNr" Relationship="Self.FK_tblMateriale_tblMedieplanNr" FromRole="tblMateriale" ToRole="tblMedieplanNr" />
+    <NavigationProperty Name="tblMedieplanLinjer" Relationship="Self.FK_tblMedieplanLinjer_tblMateriale" FromRole="tblMateriale" ToRole="tblMedieplanLinjer" />
+  </EntityType>
+  <EntityType Name="tblMedieplan">
+    <Key>
+      <PropertyRef Name="MedieplanNr" />
+      <PropertyRef Name="Version" />
+    </Key>
+    <Property Name="MedieplanNr" Type="Int32" Nullable="false" />
+    <Property Name="Version" Type="Int16" Nullable="false" />
+    <Property Name="AnnoncørNo_" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BureauNo_" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Format1" Type="Byte" Nullable="false" />
+    <Property Name="Format2" Type="Int16" Nullable="false" />
+    <Property Name="AntalFarver" Type="Byte" Nullable="false" />
+    <Property Name="DPKulørID" Type="Byte" Nullable="false" />
+    <Property Name="PlaceringID" Type="Byte" Nullable="false" />
+    <Property Name="IndrykningsUge" Type="Byte" Nullable="false" />
+    <Property Name="IndrykningsÅr" Type="Int16" Nullable="false" />
+    <Property Name="Beskrivelse" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Overskrift" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Kontaktperson" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="KontaktpersonTilhører" Type="Byte" Nullable="false" />
+    <Property Name="Fakturering" Type="Byte" Nullable="false" />
+    <Property Name="RekvisitionsNr" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BilagsBladeTil" Type="Int16" Nullable="false" />
+    <Property Name="BilagsBladeTilNavn" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BilagsBladeTilAdresse" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BilagsBladeTilPostNr" Type="Int32" Nullable="false" />
+    <Property Name="BilagsBladeATT" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaterialeGodtgørelseTil" Type="Byte" Nullable="false" />
+    <Property Name="MaterialeFølgerFra" Type="Byte" Nullable="false" />
+    <Property Name="MaterialeFølgerFraLeverandør" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BrugMaterialeFraUge" Type="Byte" Nullable="false" />
+    <Property Name="MaterialeGodtgørelseAlle" Type="Boolean" Nullable="false" />
+    <Property Name="SikkerhedsGodt" Type="Boolean" Nullable="false" />
+    <Property Name="InfoGodt" Type="Boolean" Nullable="false" />
+    <Property Name="SamletPris" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="OprettetDato" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="OrdreDato" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="KonsulentCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Status" Type="Byte" Nullable="false" />
+    <Property Name="RettelserEfterAnnoncekontrol" Type="Boolean" Nullable="false" />
+    <Property Name="TilladFarveSærRabat" Type="Boolean" Nullable="false" />
+    <Property Name="TilladMmSærRabat" Type="Boolean" Nullable="false" />
+    <Property Name="Document_Type" Type="Byte" Nullable="false" />
+    <Property Name="Credit_Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Previous_Version" Type="Int32" />
+    <Property Name="SammeMateriale" Type="Boolean" Nullable="false" />
+    <Property Name="KunForhandlerBundForskellig" Type="Boolean" Nullable="false" />
+    <Property Name="SammeBureauOrdreNr" Type="Boolean" Nullable="false" />
+    <Property Name="FællesBureauOrdreNr" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BemærkningTilAnnoncør" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BemærkningTilBlade" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="WebTillægOpkræves" Type="Boolean" />
+    <Property Name="MiljøTillægOpkræves" Type="Boolean" />
+    <Property Name="OpkrævJyskeMiljøTillæg" Type="Boolean" />
+    <Property Name="OpkrævFynskeMiljøTillæg" Type="Boolean" />
+    <Property Name="OpkrævNorthMiljøTillæg" Type="Boolean" />
+    <Property Name="OpkrævDSVPMiljøTillæg" Type="Boolean" />
+    <Property Name="OpkrævNordjyskeTillæg" Type="Boolean" />
+    <Property Name="OpkrævJyskeMedierASTillæg" Type="Boolean" />
+    <NavigationProperty Name="tblDPKulør" Relationship="Self.FK_tblMedieplan_tblDPKulør" FromRole="tblMedieplan" ToRole="tblDPKulør" />
+    <NavigationProperty Name="tblMedieplanNr" Relationship="Self.FK_tblMedieplan_tblMedieplanNr" FromRole="tblMedieplan" ToRole="tblMedieplanNr" />
+    <NavigationProperty Name="tblPlacering" Relationship="Self.FK_tblMedieplan_tblPlacering" FromRole="tblMedieplan" ToRole="tblPlacering" />
+    <NavigationProperty Name="tblMedieplanLinjer" Relationship="Self.FK_tblMedieplanLinjer_tblMedieplan" FromRole="tblMedieplan" ToRole="tblMedieplanLinjer" />
+  </EntityType>
+  <EntityType Name="tblMedieplanLinjer">
+    <Key>
+      <PropertyRef Name="MedieplanNr" />
+      <PropertyRef Name="Version" />
+      <PropertyRef Name="UgeavisID" />
+    </Key>
+    <Property Name="MedieplanNr" Type="Int32" Nullable="false" />
+    <Property Name="Version" Type="Int16" Nullable="false" />
+    <Property Name="UgeavisID" Type="Int32" Nullable="false" />
+    <Property Name="Mm" Type="Int16" Nullable="false" />
+    <Property Name="NormalMmPris" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="MmPris" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="MmRabat" Type="Single" Nullable="false" />
+    <Property Name="MåGiveMmRabat" Type="Boolean" />
+    <Property Name="MmTotal" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="FarveTillæg" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="FarvePris" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="FarveRabat" Type="Single" Nullable="false" />
+    <Property Name="FarveMin" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="FarveMax" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="FarveTotal" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="Total" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="MåGiveMaterialeGodtgørelse" Type="Boolean" Nullable="false" />
+    <Property Name="SkalGiveMaterialeGodtgørelse" Type="Boolean" Nullable="false" />
+    <Property Name="MaterialeGodtgørelsePris" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="TotalPris" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ManueltÆndret" Type="Boolean" Nullable="false" />
+    <Property Name="ErWeekendGruppe" Type="Boolean" Nullable="false" />
+    <Property Name="WebtillægFaktureresHer" Type="Boolean" Nullable="false" />
+    <Property Name="SendeGruppe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RabatGruppe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MedIGrupper" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BureauOrdreNr" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaterialeNr" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Bemærkning" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MiljøTillæg" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="TotalInclTillæg" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="PrisLåst" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tblAnnoncekontrol" Relationship="Self.FK_tblMedieplanLinjer_tblFejl" FromRole="tblMedieplanLinjer" ToRole="tblAnnoncekontrol" />
+    <NavigationProperty Name="tblBladStamdata" Relationship="Self.FK_tblMedieplanLinjer_tblBladStamdata" FromRole="tblMedieplanLinjer" ToRole="tblBladStamdata" />
+    <NavigationProperty Name="tblMateriale" Relationship="Self.FK_tblMedieplanLinjer_tblMateriale" FromRole="tblMedieplanLinjer" ToRole="tblMateriale" />
+    <NavigationProperty Name="tblMedieplan" Relationship="Self.FK_tblMedieplanLinjer_tblMedieplan" FromRole="tblMedieplanLinjer" ToRole="tblMedieplan" />
+  </EntityType>
+  <EntityType Name="tblMedieplanNr">
+    <Key>
+      <PropertyRef Name="MedieplanNr" />
+    </Key>
+    <Property Name="MedieplanNr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AktivVersion" Type="Int16" Nullable="false" />
+    <Property Name="Status" Type="Byte" Nullable="false" />
+    <Property Name="SupportBilagVedlagt" Type="Boolean" Nullable="false" />
+    <Property Name="SupportBilagVist" Type="Boolean" Nullable="false" />
+    <Property Name="FakturaBemærkning1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FakturaBemærkning2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FakturaBemærkning3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaterialeModtaget" Type="Boolean" Nullable="false" />
+    <Property Name="BrugtGruppeVersion" Type="Byte" Nullable="false" />
+    <Property Name="OverførtFraPrisforespørgsel" Type="Boolean" Nullable="false" />
+    <Property Name="AnvendtMiljøTillæg" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="AnvendtPrisberegningVersion" Type="Byte" Nullable="false" />
+    <Property Name="Kommentar" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblMateriale" Relationship="Self.FK_tblMateriale_tblMedieplanNr" FromRole="tblMedieplanNr" ToRole="tblMateriale" />
+    <NavigationProperty Name="tblMedieplan" Relationship="Self.FK_tblMedieplan_tblMedieplanNr" FromRole="tblMedieplanNr" ToRole="tblMedieplan" />
+  </EntityType>
+  <EntityType Name="tblMedieplanÆndringer">
+    <Key>
+      <PropertyRef Name="MedieplanNr" />
+      <PropertyRef Name="Version" />
+    </Key>
+    <Property Name="MedieplanNr" Type="Int32" Nullable="false" />
+    <Property Name="Version" Type="Int16" Nullable="false" />
+    <Property Name="ÆndringsTekst" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblMedIGruppe">
+    <Key>
+      <PropertyRef Name="GruppeID" />
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Version" />
+    </Key>
+    <Property Name="GruppeID" Type="Int32" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ErTillægsAvis" Type="Boolean" Nullable="false" />
+    <Property Name="Version" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="tblBladStamdata" Relationship="Self.FK_tblBladeIGrupper_tblBladStamdata" FromRole="tblMedIGruppe" ToRole="tblBladStamdata" />
+    <NavigationProperty Name="tblGrupper" Relationship="Self.FK_tblMedIGruppe_tblGrupper" FromRole="tblMedIGruppe" ToRole="tblGrupper" />
+  </EntityType>
+  <EntityType Name="tblOrdreGebyrNavision">
+    <Key>
+      <PropertyRef Name="OrdreNr" />
+      <PropertyRef Name="Version" />
+      <PropertyRef Name="Document_Type" />
+      <PropertyRef Name="Type" />
+      <PropertyRef Name="BladId" />
+    </Key>
+    <Property Name="OrdreNr" Type="Int32" Nullable="false" />
+    <Property Name="Version" Type="Int16" Nullable="false" />
+    <Property Name="Document_Type" Type="Byte" Nullable="false" />
+    <Property Name="Type" Type="Byte" Nullable="false" />
+    <Property Name="BladId" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="59" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="tblOrdreNavision" Relationship="Self.FK_tblOrdreGebyrNavision_tblOrdreNavision" FromRole="tblOrdreGebyrNavision" ToRole="tblOrdreNavision" />
+  </EntityType>
+  <EntityType Name="tblOrdreLinjerNavision">
+    <Key>
+      <PropertyRef Name="OrdreNr" />
+      <PropertyRef Name="Version" />
+      <PropertyRef Name="Document_Type" />
+      <PropertyRef Name="BladId" />
+    </Key>
+    <Property Name="OrdreNr" Type="Int32" Nullable="false" />
+    <Property Name="Version" Type="Int16" Nullable="false" />
+    <Property Name="Document_Type" Type="Byte" Nullable="false" />
+    <Property Name="BladId" Type="Int32" Nullable="false" />
+    <Property Name="Mm" Type="Int16" Nullable="false" />
+    <Property Name="Format" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AnvendtPris" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="SpecialRabat" Type="Single" Nullable="false" />
+    <Property Name="FarveTillægsPris" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="FarveTillægsRabat" Type="Single" Nullable="false" />
+    <Property Name="MaterialeGodt" Type="Boolean" Nullable="false" />
+    <Property Name="TotalPris" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="MaterialePris" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="Previous_Order_No" Type="Int32" Nullable="false" />
+    <Property Name="Previous_Version" Type="Int32" />
+    <Property Name="FirstTime" Type="DateTime" Precision="0" />
+    <Property Name="BureauOrdreNr" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblOrdreNavision" Relationship="Self.FK_tblOrdreLinjerNavision_tblOrdreNavision" FromRole="tblOrdreLinjerNavision" ToRole="tblOrdreNavision" />
+  </EntityType>
+  <EntityType Name="tblOrdreNavision">
+    <Key>
+      <PropertyRef Name="OrdreNr" />
+      <PropertyRef Name="Version" />
+      <PropertyRef Name="Document_Type" />
+    </Key>
+    <Property Name="OrdreNr" Type="Int32" Nullable="false" />
+    <Property Name="Version" Type="Int16" Nullable="false" />
+    <Property Name="Document_Type" Type="Byte" Nullable="false" />
+    <Property Name="AnnoncørID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Uge" Type="Byte" Nullable="false" />
+    <Property Name="AntalFarver" Type="Byte" Nullable="false" />
+    <Property Name="OrdreDato" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="SamletPris" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="SælgerKode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SikkerhedsGodt" Type="Boolean" Nullable="false" />
+    <Property Name="InfoGodt" Type="Boolean" Nullable="false" />
+    <Property Name="BureauOrdreNr" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Bureau" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EnOrdre" Type="Byte" Nullable="false" />
+    <Property Name="Status" Type="Byte" Nullable="false" />
+    <Property Name="FakBem1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FakBem2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FakBem3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaterialeGodtgørelseTil" Type="Byte" Nullable="false" />
+    <Property Name="Previous_Order_No" Type="Int32" Nullable="false" />
+    <Property Name="Credit_Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Previous_Version" Type="Int32" />
+    <Property Name="Item_Description" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Advertiser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Placement" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SammeBureauOrdreNr" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tblOrdreGebyrNavision" Relationship="Self.FK_tblOrdreGebyrNavision_tblOrdreNavision" FromRole="tblOrdreNavision" ToRole="tblOrdreGebyrNavision" />
+    <NavigationProperty Name="tblOrdreLinjerNavision" Relationship="Self.FK_tblOrdreLinjerNavision_tblOrdreNavision" FromRole="tblOrdreNavision" ToRole="tblOrdreLinjerNavision" />
+  </EntityType>
+  <EntityType Name="tblPlacering">
+    <Key>
+      <PropertyRef Name="PlaceringID" />
+    </Key>
+    <Property Name="PlaceringID" Type="Byte" Nullable="false" />
+    <Property Name="Betegnelse" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblMedieplan" Relationship="Self.FK_tblMedieplan_tblPlacering" FromRole="tblPlacering" ToRole="tblMedieplan" />
+    <NavigationProperty Name="tblPriser" Relationship="Self.FK_tblPriser_tblPlacering" FromRole="tblPlacering" ToRole="tblPriser" />
+  </EntityType>
+  <EntityType Name="tblPostNr">
+    <Key>
+      <PropertyRef Name="PostNr" />
+    </Key>
+    <Property Name="PostNr" Type="Int32" Nullable="false" />
+    <Property Name="PostBy" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Husstande" Type="Int32" Nullable="false" />
+    <Property Name="MaxDækningsGrad" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="tblBladStamdata" Relationship="Self.FK_tblBladStamdata_tblPostNr" FromRole="tblPostNr" ToRole="tblBladStamdata" />
+    <NavigationProperty Name="tblKonkurrentDækning" Relationship="Self.FK_tblKonkurrentDækning_tblPostNr" FromRole="tblPostNr" ToRole="tblKonkurrentDækning" />
+    <NavigationProperty Name="tblPostNrSøgning" Relationship="Self.FK_tblPostNrSøgning_tblPostNr" FromRole="tblPostNr" ToRole="tblPostNrSøgning" />
+  </EntityType>
+  <EntityType Name="tblPostNrSøgning">
+    <Key>
+      <PropertyRef Name="BrugerNavn" />
+      <PropertyRef Name="PostNr" />
+    </Key>
+    <Property Name="BrugerNavn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PostNr" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblPostNr" Relationship="Self.FK_tblPostNrSøgning_tblPostNr" FromRole="tblPostNrSøgning" ToRole="tblPostNr" />
+  </EntityType>
+  <EntityType Name="tblPriser">
+    <Key>
+      <PropertyRef Name="BladID" />
+      <PropertyRef Name="PlaceringID" />
+      <PropertyRef Name="År" />
+      <PropertyRef Name="PrislisteID" />
+      <PropertyRef Name="FormatFra" />
+    </Key>
+    <Property Name="BladID" Type="Int32" Nullable="false" />
+    <Property Name="PlaceringID" Type="Byte" Nullable="false" />
+    <Property Name="År" Type="Int16" Nullable="false" />
+    <Property Name="PrislisteID" Type="Int32" Nullable="false" />
+    <Property Name="FormatFra" Type="Int32" Nullable="false" />
+    <Property Name="FormatTil" Type="Int32" Nullable="false" />
+    <Property Name="mmPris" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="FarvePris" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="FarveMin" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="FarveMax" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="Farve4Pris" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="Farve4Min" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="Farve4Max" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="ControlNavn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblBladStamdata" Relationship="Self.FK_tblPriser_tblBladStamdata" FromRole="tblPriser" ToRole="tblBladStamdata" />
+    <NavigationProperty Name="tblPlacering" Relationship="Self.FK_tblPriser_tblPlacering" FromRole="tblPriser" ToRole="tblPlacering" />
+    <NavigationProperty Name="tblPrislister" Relationship="Self.FK_tblPriser_tblPrislister" FromRole="tblPriser" ToRole="tblPrislister" />
+  </EntityType>
+  <EntityType Name="tblPrislister">
+    <Key>
+      <PropertyRef Name="PrislisteID" />
+    </Key>
+    <Property Name="PrislisteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PrislisteNavn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="tblPriser" Relationship="Self.FK_tblPriser_tblPrislister" FromRole="tblPrislister" ToRole="tblPriser" />
+    <NavigationProperty Name="tblPrislisterPrBladPrUge" Relationship="Self.FK_tblPrislisterPrBladPrUge_tblPrislister" FromRole="tblPrislister" ToRole="tblPrislisterPrBladPrUge" />
+    <NavigationProperty Name="tblPrislisterPrBladPrÅr" Relationship="Self.FK_tblPrislisterPrBladPrÅr_tblPrislister" FromRole="tblPrislister" ToRole="tblPrislisterPrBladPrÅr" />
+  </EntityType>
+  <EntityType Name="tblPrislisterPrBladPrUge">
+    <Key>
+      <PropertyRef Name="BladID" />
+      <PropertyRef Name="Uge" />
+      <PropertyRef Name="År" />
+    </Key>
+    <Property Name="BladID" Type="Int32" Nullable="false" />
+    <Property Name="Uge" Type="Byte" Nullable="false" />
+    <Property Name="År" Type="Int16" Nullable="false" />
+    <Property Name="PrislisteID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblBladStamdata" Relationship="Self.FK_tblPrislisterPrBladPrUge_tblBladStamdata" FromRole="tblPrislisterPrBladPrUge" ToRole="tblBladStamdata" />
+    <NavigationProperty Name="tblPrislister" Relationship="Self.FK_tblPrislisterPrBladPrUge_tblPrislister" FromRole="tblPrislisterPrBladPrUge" ToRole="tblPrislister" />
+  </EntityType>
+  <EntityType Name="tblPrislisterPrBladPrÅr">
+    <Key>
+      <PropertyRef Name="BladID" />
+      <PropertyRef Name="År" />
+      <PropertyRef Name="PrislisteID" />
+    </Key>
+    <Property Name="BladID" Type="Int32" Nullable="false" />
+    <Property Name="År" Type="Int16" Nullable="false" />
+    <Property Name="PrislisteID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tblBladStamdata" Relationship="Self.FK_tblPrislisterPrBladPrÅr_tblBladStamdata" FromRole="tblPrislisterPrBladPrÅr" ToRole="tblBladStamdata" />
+    <NavigationProperty Name="tblPrislister" Relationship="Self.FK_tblPrislisterPrBladPrÅr_tblPrislister" FromRole="tblPrislisterPrBladPrÅr" ToRole="tblPrislister" />
+  </EntityType>
+  <EntityType Name="tblRegion">
+    <Key>
+      <PropertyRef Name="RegionID" />
+    </Key>
+    <Property Name="RegionID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RegionNavn" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RegionSortKey" Type="Byte" Nullable="false" />
+    <Property Name="timestamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="tblBladStamdata" Relationship="Self.FK_tblBladStamdata_tblRegioner" FromRole="tblRegion" ToRole="tblBladStamdata" />
+  </EntityType>
+  <EntityType Name="tblRemindereSendt">
+    <Key>
+      <PropertyRef Name="MedieplanNr" />
+      <PropertyRef Name="UgeavisID" />
+      <PropertyRef Name="ReminderType" />
+    </Key>
+    <Property Name="MedieplanNr" Type="Int32" Nullable="false" />
+    <Property Name="UgeavisID" Type="Int32" Nullable="false" />
+    <Property Name="ReminderType" Type="Int16" Nullable="false" />
+    <Property Name="AntalRemindere" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblSupportBilag">
+    <Key>
+      <PropertyRef Name="MedieplanNr" />
+    </Key>
+    <Property Name="MedieplanNr" Type="Int32" Nullable="false" />
+    <Property Name="IndrykningsUge" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaterialeGodtgørelseTil" Type="Byte" Nullable="false" />
+    <Property Name="MaterialeFølgerFra" Type="Byte" Nullable="false" />
+    <Property Name="MaterialeFølgerFraLeverandør" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BrugMaterialeFraUge" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SammeMateriale" Type="Boolean" Nullable="false" />
+    <Property Name="KunForhandlerBundForskellig" Type="Boolean" Nullable="false" />
+    <Property Name="Fakturering" Type="Byte" Nullable="false" />
+    <Property Name="BureauOrdresedlerLiggerIIndbakke" Type="Byte" Nullable="false" />
+    <Property Name="Bilagsblade" Type="Byte" Nullable="false" />
+    <Property Name="BilagsbladeAtt" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LøbendeOrdre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BemærkningTilBlade" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BemærkningTilSupport" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Overskrift" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BilagsBladeTil" Type="Int16" Nullable="false" />
+    <Property Name="BilagsBladeTilNavn" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BilagsBladeTilAdresse" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BilagsBladeTilPostNr" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblWEBeMails">
+    <Key>
+      <PropertyRef Name="PersonID" />
+    </Key>
+    <Property Name="PersonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="eMail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PersonNavn" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblWEBForespørgsel">
+    <Key>
+      <PropertyRef Name="ForespørgselID" />
+    </Key>
+    <Property Name="ForespørgselID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="Byte" Nullable="false" />
+    <Property Name="MedieplanNr" Type="Int32" Nullable="false" />
+    <Property Name="AnnoncørNo_" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Mediebureau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="KonsulentCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AntalBlade" Type="Byte" Nullable="false" />
+    <Property Name="Format" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AntalFarver" Type="Byte" Nullable="false" />
+    <Property Name="PlaceringID" Type="Byte" Nullable="false" />
+    <Property Name="AntalIndrykninger" Type="Byte" Nullable="false" />
+    <Property Name="SvarInden" Type="DateTime" Precision="3" />
+    <Property Name="Afsluttet" Type="Boolean" Nullable="false" />
+    <Property Name="AntalUdsendinger" Type="Int16" Nullable="false" />
+    <Property Name="Bemærkning" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="PlaceringUB" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblWEBForespørgselLinjer">
+    <Key>
+      <PropertyRef Name="ForespørgselID" />
+      <PropertyRef Name="BladID" />
+    </Key>
+    <Property Name="ForespørgselID" Type="Int32" Nullable="false" />
+    <Property Name="BladID" Type="Int32" Nullable="false" />
+    <Property Name="BesvaretAf" Type="Int32" />
+    <Property Name="DLUMmPris" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="DLUMmRabat" Type="Double" Nullable="false" />
+    <Property Name="DLUFarveTillæg" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="DLUFarveRabat" Type="Double" Nullable="false" />
+    <Property Name="PlaceringUB" Type="Byte" Nullable="false" />
+    <Property Name="BladMmPris" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="BladMmRabat" Type="Double" Nullable="false" />
+    <Property Name="BladFarveTillæg" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="BladFarveRabat" Type="Double" Nullable="false" />
+    <Property Name="BladBemærkning" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblWEBSendTilKollega">
+    <Key>
+      <PropertyRef Name="PersonID" />
+      <PropertyRef Name="BladID" />
+    </Key>
+    <Property Name="PersonID" Type="Int32" Nullable="false" />
+    <Property Name="BladID" Type="Int32" Nullable="false" />
+    <Property Name="eMails" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="bladtlfogfaxkopi">
+    <Key>
+      <PropertyRef Name="BladID" />
+      <PropertyRef Name="Tlf" />
+      <PropertyRef Name="Fax" />
+    </Key>
+    <Property Name="BladID" Type="Int32" Nullable="false" />
+    <Property Name="Tlf" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Fax" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="delPriser">
+    <Key>
+      <PropertyRef Name="BladID" />
+      <PropertyRef Name="PlaceringID" />
+    </Key>
+    <Property Name="BladID" Type="Int32" Nullable="false" />
+    <Property Name="PlaceringID" Type="Byte" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HerningFolkeblad">
+    <Key>
+      <PropertyRef Name="BladID" />
+      <PropertyRef Name="Navn" />
+    </Key>
+    <Property Name="BladID" Type="Int32" Nullable="false" />
+    <Property Name="Navn" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblAktiveVærdier">
+    <Key>
+      <PropertyRef Name="GruppeVersion" />
+      <PropertyRef Name="MiljøTillæg" />
+      <PropertyRef Name="PrisberegningVersion" />
+      <PropertyRef Name="BilagsBladeSendeUge" />
+    </Key>
+    <Property Name="GruppeVersion" Type="Byte" Nullable="false" />
+    <Property Name="MiljøTillæg" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+    <Property Name="PrisberegningVersion" Type="Byte" Nullable="false" />
+    <Property Name="BilagsBladeSendeUge" Type="Byte" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblAktivGruppeVersion">
+    <Key>
+      <PropertyRef Name="AktivVersion" />
+    </Key>
+    <Property Name="AktivVersion" Type="Byte" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblFarveTillægWebApp">
+    <Key>
+      <PropertyRef Name="BladID" />
+    </Key>
+    <Property Name="BladID" Type="Int32" Nullable="false" />
+    <Property Name="farvePris" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="farveMin" Type="Int16" />
+    <Property Name="farveMax" Type="Int16" />
+    <Property Name="farve4Pris" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="farve4Min" Type="Int16" />
+    <Property Name="farve4Max" Type="Int16" />
+    <Property Name="Godkendt" Type="Boolean" />
+    <Property Name="PrisBemærkning" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tblMmPrisWebApp">
+    <Key>
+      <PropertyRef Name="BladID" />
+      <PropertyRef Name="Placering" />
+    </Key>
+    <Property Name="BladID" Type="Int32" Nullable="false" />
+    <Property Name="Placering" Type="Byte" Nullable="false" />
+    <Property Name="Pris" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="tblPlannerPlaner">
+    <Key>
+      <PropertyRef Name="PlannerID" />
+      <PropertyRef Name="BrugerNavn" />
+      <PropertyRef Name="BrugerEmail" />
+      <PropertyRef Name="Annoncør" />
+      <PropertyRef Name="Bureau" />
+      <PropertyRef Name="Format1" />
+      <PropertyRef Name="Format2" />
+      <PropertyRef Name="AntalFarver" />
+      <PropertyRef Name="Placering" />
+      <PropertyRef Name="Ugeaviser" />
+      <PropertyRef Name="MedieplanNr" />
+      <PropertyRef Name="KonsulentCode" />
+      <PropertyRef Name="Oprettet" />
+    </Key>
+    <Property Name="PlannerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BrugerNavn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BrugerEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Annoncør" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Bureau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Format1" Type="Byte" Nullable="false" />
+    <Property Name="Format2" Type="Int16" Nullable="false" />
+    <Property Name="AntalFarver" Type="Byte" Nullable="false" />
+    <Property Name="Placering" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ugeaviser" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MedieplanNr" Type="Int32" Nullable="false" />
+    <Property Name="KonsulentCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Oprettet" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="tempPriser">
+    <Key>
+      <PropertyRef Name="BladID" />
+      <PropertyRef Name="PlaceringID" />
+      <PropertyRef Name="År" />
+      <PropertyRef Name="PrislisteID" />
+      <PropertyRef Name="FormatFra" />
+      <PropertyRef Name="FormatTil" />
+    </Key>
+    <Property Name="BladID" Type="Int32" Nullable="false" />
+    <Property Name="PlaceringID" Type="Byte" Nullable="false" />
+    <Property Name="År" Type="Int16" Nullable="false" />
+    <Property Name="PrislisteID" Type="Int32" Nullable="false" />
+    <Property Name="FormatFra" Type="Int32" Nullable="false" />
+    <Property Name="FormatTil" Type="Int32" Nullable="false" />
+    <Property Name="mmPris" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="FarvePris" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="FarveMin" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="FarveMax" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="Farve4Pris" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="Farve4Min" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="Farve4Max" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="ControlNavn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tmpNyeDeadlines">
+    <Key>
+      <PropertyRef Name="BladID" />
+      <PropertyRef Name="Linje" />
+      <PropertyRef Name="OrdreDeadline" />
+      <PropertyRef Name="OrdreTid" />
+      <PropertyRef Name="MaterialeDeadline" />
+      <PropertyRef Name="MaterialeTid" />
+    </Key>
+    <Property Name="BladID" Type="Int32" Nullable="false" />
+    <Property Name="Linje" Type="Int16" Nullable="false" />
+    <Property Name="OrdreDeadline" Type="Byte" Nullable="false" />
+    <Property Name="OrdreTid" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaterialeDeadline" Type="Byte" Nullable="false" />
+    <Property Name="MaterialeTid" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tnpOrdreNr">
+    <Key>
+      <PropertyRef Name="MedieplanNr" />
+    </Key>
+    <Property Name="MedieplanNr" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tnpOrdreNr2">
+    <Key>
+      <PropertyRef Name="MedieplanNr" />
+    </Key>
+    <Property Name="MedieplanNr" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tnpOrdreNr3">
+    <Key>
+      <PropertyRef Name="MedieplanNr" />
+      <PropertyRef Name="Version" />
+    </Key>
+    <Property Name="MedieplanNr" Type="Int32" Nullable="false" />
+    <Property Name="Version" Type="Int16" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_tblFejl_tblFejlTekst">
+    <End Role="tblFejlTekst" Type="Self.tblFejlTekst" Multiplicity="1" />
+    <End Role="tblAnnoncekontrol" Type="Self.tblAnnoncekontrol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblFejlTekst">
+        <PropertyRef Name="Fejlkode" />
+      </Principal>
+      <Dependent Role="tblAnnoncekontrol">
+        <PropertyRef Name="Fejlkode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblMedieplanLinjer_tblFejl">
+    <End Role="tblAnnoncekontrol" Type="Self.tblAnnoncekontrol" Multiplicity="1" />
+    <End Role="tblMedieplanLinjer" Type="Self.tblMedieplanLinjer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblAnnoncekontrol">
+        <PropertyRef Name="MedieplanNr" />
+        <PropertyRef Name="UgeavisID" />
+      </Principal>
+      <Dependent Role="tblMedieplanLinjer">
+        <PropertyRef Name="MedieplanNr" />
+        <PropertyRef Name="UgeavisID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblBladeIGrupper_tblBladStamdata">
+    <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblMedIGruppe" Type="Self.tblMedIGruppe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBladStamdata">
+        <PropertyRef Name="BladID" />
+      </Principal>
+      <Dependent Role="tblMedIGruppe">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblBladStamdata_OrdrecheckSendeDagID_tblDage_DagID">
+    <End Role="tblDage" Type="Self.tblDage" Multiplicity="0..1" />
+    <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDage">
+        <PropertyRef Name="DagID" />
+      </Principal>
+      <Dependent Role="tblBladStamdata">
+        <PropertyRef Name="OrdrecheckSendeDagID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblBladStamdata_UgedagID_tblDage_DagID">
+    <End Role="tblDage" Type="Self.tblDage" Multiplicity="0..1" />
+    <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDage">
+        <PropertyRef Name="DagID" />
+      </Principal>
+      <Dependent Role="tblBladStamdata">
+        <PropertyRef Name="UgedagID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblBladStamdata_tblDelOmråde">
+    <End Role="tblDelOmråde" Type="Self.tblDelOmråde" Multiplicity="0..1" />
+    <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDelOmråde">
+        <PropertyRef Name="DelOmrådeID" />
+      </Principal>
+      <Dependent Role="tblBladStamdata">
+        <PropertyRef Name="DelOmrådeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblBladStamdata_tblGeoKoder">
+    <End Role="tblGeoKode" Type="Self.tblGeoKode" Multiplicity="0..1" />
+    <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblGeoKode">
+        <PropertyRef Name="GeoKodeID" />
+      </Principal>
+      <Dependent Role="tblBladStamdata">
+        <PropertyRef Name="GeoKodeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblBladStamdata_tblHovedGruppe">
+    <End Role="tblHovedGruppe" Type="Self.tblHovedGruppe" Multiplicity="0..1" />
+    <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblHovedGruppe">
+        <PropertyRef Name="HovedGruppeID" />
+      </Principal>
+      <Dependent Role="tblBladStamdata">
+        <PropertyRef Name="HovedgruppeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblBladStamdata_tblPostNr">
+    <End Role="tblPostNr" Type="Self.tblPostNr" Multiplicity="0..1" />
+    <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblPostNr">
+        <PropertyRef Name="PostNr" />
+      </Principal>
+      <Dependent Role="tblBladStamdata">
+        <PropertyRef Name="PostNr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblBladStamdata_tblRegioner">
+    <End Role="tblRegion" Type="Self.tblRegion" Multiplicity="0..1" />
+    <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblRegion">
+        <PropertyRef Name="RegionID" />
+      </Principal>
+      <Dependent Role="tblBladStamdata">
+        <PropertyRef Name="RegionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblMedieplanLinjer_tblBladStamdata">
+    <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="1" />
+    <End Role="tblMedieplanLinjer" Type="Self.tblMedieplanLinjer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBladStamdata">
+        <PropertyRef Name="BladID" />
+      </Principal>
+      <Dependent Role="tblMedieplanLinjer">
+        <PropertyRef Name="UgeavisID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPriser_tblBladStamdata">
+    <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblPriser" Type="Self.tblPriser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBladStamdata">
+        <PropertyRef Name="BladID" />
+      </Principal>
+      <Dependent Role="tblPriser">
+        <PropertyRef Name="BladID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPrislisterPrBladPrUge_tblBladStamdata">
+    <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblPrislisterPrBladPrUge" Type="Self.tblPrislisterPrBladPrUge" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBladStamdata">
+        <PropertyRef Name="BladID" />
+      </Principal>
+      <Dependent Role="tblPrislisterPrBladPrUge">
+        <PropertyRef Name="BladID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPrislisterPrBladPrÅr_tblBladStamdata">
+    <End Role="tblBladStamdata" Type="Self.tblBladStamdata" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblPrislisterPrBladPrÅr" Type="Self.tblPrislisterPrBladPrÅr" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBladStamdata">
+        <PropertyRef Name="BladID" />
+      </Principal>
+      <Dependent Role="tblPrislisterPrBladPrÅr">
+        <PropertyRef Name="BladID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblKontakterPrBlad_tblBladStamdataKopi">
+    <End Role="tblBladStamdataKopi" Type="Self.tblBladStamdataKopi" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblKontakterPrBlad" Type="Self.tblKontakterPrBlad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBladStamdataKopi">
+        <PropertyRef Name="BladID" />
+      </Principal>
+      <Dependent Role="tblKontakterPrBlad">
+        <PropertyRef Name="BladID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblMedieplan_tblDPKulør">
+    <End Role="tblDPKulør" Type="Self.tblDPKulør" Multiplicity="1" />
+    <End Role="tblMedieplan" Type="Self.tblMedieplan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblDPKulør">
+        <PropertyRef Name="DPKulørID" />
+      </Principal>
+      <Dependent Role="tblMedieplan">
+        <PropertyRef Name="DPKulørID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblMedIGruppe_tblGrupper">
+    <End Role="tblGrupper" Type="Self.tblGrupper" Multiplicity="1" />
+    <End Role="tblMedIGruppe" Type="Self.tblMedIGruppe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblGrupper">
+        <PropertyRef Name="GruppeID" />
+        <PropertyRef Name="Version" />
+      </Principal>
+      <Dependent Role="tblMedIGruppe">
+        <PropertyRef Name="GruppeID" />
+        <PropertyRef Name="Version" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblKonkurrentDækning_tblKonkurrenter">
+    <End Role="tblKonkurrenter" Type="Self.tblKonkurrenter" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblKonkurrentDækning" Type="Self.tblKonkurrentDækning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblKonkurrenter">
+        <PropertyRef Name="KonkurrentID" />
+      </Principal>
+      <Dependent Role="tblKonkurrentDækning">
+        <PropertyRef Name="KonkurrentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblKonkurrentDækning_tblPostNr">
+    <End Role="tblPostNr" Type="Self.tblPostNr" Multiplicity="1" />
+    <End Role="tblKonkurrentDækning" Type="Self.tblKonkurrentDækning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblPostNr">
+        <PropertyRef Name="PostNr" />
+      </Principal>
+      <Dependent Role="tblKonkurrentDækning">
+        <PropertyRef Name="PostNr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblKontakter_tblKontaktTitler">
+    <End Role="tblKontaktTitler" Type="Self.tblKontaktTitler" Multiplicity="0..1" />
+    <End Role="tblKontakter" Type="Self.tblKontakter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblKontaktTitler">
+        <PropertyRef Name="TitelID" />
+      </Principal>
+      <Dependent Role="tblKontakter">
+        <PropertyRef Name="TitelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblKontakterPrBlad_tblKontakter">
+    <End Role="tblKontakter" Type="Self.tblKontakter" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblKontakterPrBlad" Type="Self.tblKontakterPrBlad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblKontakter">
+        <PropertyRef Name="KontaktID" />
+      </Principal>
+      <Dependent Role="tblKontakterPrBlad">
+        <PropertyRef Name="KontaktID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblMateriale_tblMedieplanNr">
+    <End Role="tblMedieplanNr" Type="Self.tblMedieplanNr" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblMateriale" Type="Self.tblMateriale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMedieplanNr">
+        <PropertyRef Name="MedieplanNr" />
+      </Principal>
+      <Dependent Role="tblMateriale">
+        <PropertyRef Name="MedieplanNr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblMedieplanLinjer_tblMateriale">
+    <End Role="tblMateriale" Type="Self.tblMateriale" Multiplicity="1" />
+    <End Role="tblMedieplanLinjer" Type="Self.tblMedieplanLinjer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMateriale">
+        <PropertyRef Name="MedieplanNr" />
+        <PropertyRef Name="UgeavisID" />
+      </Principal>
+      <Dependent Role="tblMedieplanLinjer">
+        <PropertyRef Name="MedieplanNr" />
+        <PropertyRef Name="UgeavisID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblMedieplan_tblMedieplanNr">
+    <End Role="tblMedieplanNr" Type="Self.tblMedieplanNr" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblMedieplan" Type="Self.tblMedieplan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMedieplanNr">
+        <PropertyRef Name="MedieplanNr" />
+      </Principal>
+      <Dependent Role="tblMedieplan">
+        <PropertyRef Name="MedieplanNr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblMedieplan_tblPlacering">
+    <End Role="tblPlacering" Type="Self.tblPlacering" Multiplicity="1" />
+    <End Role="tblMedieplan" Type="Self.tblMedieplan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblPlacering">
+        <PropertyRef Name="PlaceringID" />
+      </Principal>
+      <Dependent Role="tblMedieplan">
+        <PropertyRef Name="PlaceringID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblMedieplanLinjer_tblMedieplan">
+    <End Role="tblMedieplan" Type="Self.tblMedieplan" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblMedieplanLinjer" Type="Self.tblMedieplanLinjer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblMedieplan">
+        <PropertyRef Name="MedieplanNr" />
+        <PropertyRef Name="Version" />
+      </Principal>
+      <Dependent Role="tblMedieplanLinjer">
+        <PropertyRef Name="MedieplanNr" />
+        <PropertyRef Name="Version" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOrdreGebyrNavision_tblOrdreNavision">
+    <End Role="tblOrdreNavision" Type="Self.tblOrdreNavision" Multiplicity="1" />
+    <End Role="tblOrdreGebyrNavision" Type="Self.tblOrdreGebyrNavision" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblOrdreNavision">
+        <PropertyRef Name="OrdreNr" />
+        <PropertyRef Name="Version" />
+        <PropertyRef Name="Document_Type" />
+      </Principal>
+      <Dependent Role="tblOrdreGebyrNavision">
+        <PropertyRef Name="OrdreNr" />
+        <PropertyRef Name="Version" />
+        <PropertyRef Name="Document_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblOrdreLinjerNavision_tblOrdreNavision">
+    <End Role="tblOrdreNavision" Type="Self.tblOrdreNavision" Multiplicity="1" />
+    <End Role="tblOrdreLinjerNavision" Type="Self.tblOrdreLinjerNavision" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblOrdreNavision">
+        <PropertyRef Name="OrdreNr" />
+        <PropertyRef Name="Version" />
+        <PropertyRef Name="Document_Type" />
+      </Principal>
+      <Dependent Role="tblOrdreLinjerNavision">
+        <PropertyRef Name="OrdreNr" />
+        <PropertyRef Name="Version" />
+        <PropertyRef Name="Document_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPriser_tblPlacering">
+    <End Role="tblPlacering" Type="Self.tblPlacering" Multiplicity="1" />
+    <End Role="tblPriser" Type="Self.tblPriser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblPlacering">
+        <PropertyRef Name="PlaceringID" />
+      </Principal>
+      <Dependent Role="tblPriser">
+        <PropertyRef Name="PlaceringID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPostNrSøgning_tblPostNr">
+    <End Role="tblPostNr" Type="Self.tblPostNr" Multiplicity="1" />
+    <End Role="tblPostNrSøgning" Type="Self.tblPostNrSøgning" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblPostNr">
+        <PropertyRef Name="PostNr" />
+      </Principal>
+      <Dependent Role="tblPostNrSøgning">
+        <PropertyRef Name="PostNr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPriser_tblPrislister">
+    <End Role="tblPrislister" Type="Self.tblPrislister" Multiplicity="1" />
+    <End Role="tblPriser" Type="Self.tblPriser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblPrislister">
+        <PropertyRef Name="PrislisteID" />
+      </Principal>
+      <Dependent Role="tblPriser">
+        <PropertyRef Name="PrislisteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPrislisterPrBladPrUge_tblPrislister">
+    <End Role="tblPrislister" Type="Self.tblPrislister" Multiplicity="1" />
+    <End Role="tblPrislisterPrBladPrUge" Type="Self.tblPrislisterPrBladPrUge" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblPrislister">
+        <PropertyRef Name="PrislisteID" />
+      </Principal>
+      <Dependent Role="tblPrislisterPrBladPrUge">
+        <PropertyRef Name="PrislisteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPrislisterPrBladPrÅr_tblPrislister">
+    <End Role="tblPrislister" Type="Self.tblPrislister" Multiplicity="1" />
+    <End Role="tblPrislisterPrBladPrÅr" Type="Self.tblPrislisterPrBladPrÅr" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblPrislister">
+        <PropertyRef Name="PrislisteID" />
+      </Principal>
+      <Dependent Role="tblPrislisterPrBladPrÅr">
+        <PropertyRef Name="PrislisteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tblKontakterArbOmråderPrKontakt">
+    <End Role="tblKontaktArbOmråder" Type="Self.tblKontaktArbOmråder" Multiplicity="*" />
+    <End Role="tblKontakter" Type="Self.tblKontakter" Multiplicity="*" />
+  </Association>
+  <Association Name="tblKontaktFunktionerPrBlad">
+    <End Role="tblKontakterPrBlad" Type="Self.tblKontakterPrBlad" Multiplicity="*" />
+    <End Role="tblKontaktFunktioner" Type="Self.tblKontaktFunktioner" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="DiMPdotNetEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="dtproperties" EntityType="Self.dtproperties" />
+    <EntitySet Name="OpdateringsTekst" EntityType="Self.OpdateringsTekst" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="tblAnnoncekontrol" EntityType="Self.tblAnnoncekontrol" />
+    <EntitySet Name="tblBladDækning" EntityType="Self.tblBladDækning" />
+    <EntitySet Name="tblBladnavnMappingFraDO" EntityType="Self.tblBladnavnMappingFraDO" />
+    <EntitySet Name="tblBladStamdata" EntityType="Self.tblBladStamdata" />
+    <EntitySet Name="tblBladStamdataKopi" EntityType="Self.tblBladStamdataKopi" />
+    <EntitySet Name="tblBrugerData" EntityType="Self.tblBrugerData" />
+    <EntitySet Name="tblDage" EntityType="Self.tblDage" />
+    <EntitySet Name="tblDelOmråde" EntityType="Self.tblDelOmråde" />
+    <EntitySet Name="tblDPKulør" EntityType="Self.tblDPKulør" />
+    <EntitySet Name="tblEjerforhold" EntityType="Self.tblEjerforhold" />
+    <EntitySet Name="tblFakturaFejl" EntityType="Self.tblFakturaFejl" />
+    <EntitySet Name="tblFakturaFejlTekst" EntityType="Self.tblFakturaFejlTekst" />
+    <EntitySet Name="tblFaktureringsBilag" EntityType="Self.tblFaktureringsBilag" />
+    <EntitySet Name="tblFejlTekst" EntityType="Self.tblFejlTekst" />
+    <EntitySet Name="tblGeoKode" EntityType="Self.tblGeoKode" />
+    <EntitySet Name="tblGrupper" EntityType="Self.tblGrupper" />
+    <EntitySet Name="tblGruppeRabatter" EntityType="Self.tblGruppeRabatter" />
+    <EntitySet Name="tblHovedGruppe" EntityType="Self.tblHovedGruppe" />
+    <EntitySet Name="tblKonkurrentDækning" EntityType="Self.tblKonkurrentDækning" />
+    <EntitySet Name="tblKonkurrenter" EntityType="Self.tblKonkurrenter" />
+    <EntitySet Name="tblKontaktArbOmråder" EntityType="Self.tblKontaktArbOmråder" />
+    <EntitySet Name="tblKontakter" EntityType="Self.tblKontakter" />
+    <EntitySet Name="tblKontakterPrBlad" EntityType="Self.tblKontakterPrBlad" />
+    <EntitySet Name="tblKontaktFunktioner" EntityType="Self.tblKontaktFunktioner" />
+    <EntitySet Name="tblKontaktTitler" EntityType="Self.tblKontaktTitler" />
+    <EntitySet Name="tblMateriale" EntityType="Self.tblMateriale" />
+    <EntitySet Name="tblMedieplan" EntityType="Self.tblMedieplan" />
+    <EntitySet Name="tblMedieplanLinjer" EntityType="Self.tblMedieplanLinjer" />
+    <EntitySet Name="tblMedieplanNr" EntityType="Self.tblMedieplanNr" />
+    <EntitySet Name="tblMedieplanÆndringer" EntityType="Self.tblMedieplanÆndringer" />
+    <EntitySet Name="tblMedIGruppe" EntityType="Self.tblMedIGruppe" />
+    <EntitySet Name="tblOrdreGebyrNavision" EntityType="Self.tblOrdreGebyrNavision" />
+    <EntitySet Name="tblOrdreLinjerNavision" EntityType="Self.tblOrdreLinjerNavision" />
+    <EntitySet Name="tblOrdreNavision" EntityType="Self.tblOrdreNavision" />
+    <EntitySet Name="tblPlacering" EntityType="Self.tblPlacering" />
+    <EntitySet Name="tblPostNr" EntityType="Self.tblPostNr" />
+    <EntitySet Name="tblPostNrSøgning" EntityType="Self.tblPostNrSøgning" />
+    <EntitySet Name="tblPriser" EntityType="Self.tblPriser" />
+    <EntitySet Name="tblPrislister" EntityType="Self.tblPrislister" />
+    <EntitySet Name="tblPrislisterPrBladPrUge" EntityType="Self.tblPrislisterPrBladPrUge" />
+    <EntitySet Name="tblPrislisterPrBladPrÅr" EntityType="Self.tblPrislisterPrBladPrÅr" />
+    <EntitySet Name="tblRegion" EntityType="Self.tblRegion" />
+    <EntitySet Name="tblRemindereSendt" EntityType="Self.tblRemindereSendt" />
+    <EntitySet Name="tblSupportBilag" EntityType="Self.tblSupportBilag" />
+    <EntitySet Name="tblWEBeMails" EntityType="Self.tblWEBeMails" />
+    <EntitySet Name="tblWEBForespørgsel" EntityType="Self.tblWEBForespørgsel" />
+    <EntitySet Name="tblWEBForespørgselLinjer" EntityType="Self.tblWEBForespørgselLinjer" />
+    <EntitySet Name="tblWEBSendTilKollega" EntityType="Self.tblWEBSendTilKollega" />
+    <EntitySet Name="bladtlfogfaxkopi" EntityType="Self.bladtlfogfaxkopi" />
+    <EntitySet Name="delPriser" EntityType="Self.delPriser" />
+    <EntitySet Name="HerningFolkeblad" EntityType="Self.HerningFolkeblad" />
+    <EntitySet Name="tblAktiveVærdier" EntityType="Self.tblAktiveVærdier" />
+    <EntitySet Name="tblAktivGruppeVersion" EntityType="Self.tblAktivGruppeVersion" />
+    <EntitySet Name="tblFarveTillægWebApp" EntityType="Self.tblFarveTillægWebApp" />
+    <EntitySet Name="tblMmPrisWebApp" EntityType="Self.tblMmPrisWebApp" />
+    <EntitySet Name="tblPlannerPlaner" EntityType="Self.tblPlannerPlaner" />
+    <EntitySet Name="tempPriser" EntityType="Self.tempPriser" />
+    <EntitySet Name="tmpNyeDeadlines" EntityType="Self.tmpNyeDeadlines" />
+    <EntitySet Name="tnpOrdreNr" EntityType="Self.tnpOrdreNr" />
+    <EntitySet Name="tnpOrdreNr2" EntityType="Self.tnpOrdreNr2" />
+    <EntitySet Name="tnpOrdreNr3" EntityType="Self.tnpOrdreNr3" />
+    <AssociationSet Name="FK_tblFejl_tblFejlTekst" Association="Self.FK_tblFejl_tblFejlTekst">
+      <End Role="tblFejlTekst" EntitySet="tblFejlTekst" />
+      <End Role="tblAnnoncekontrol" EntitySet="tblAnnoncekontrol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblMedieplanLinjer_tblFejl" Association="Self.FK_tblMedieplanLinjer_tblFejl">
+      <End Role="tblAnnoncekontrol" EntitySet="tblAnnoncekontrol" />
+      <End Role="tblMedieplanLinjer" EntitySet="tblMedieplanLinjer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblBladeIGrupper_tblBladStamdata" Association="Self.FK_tblBladeIGrupper_tblBladStamdata">
+      <End Role="tblBladStamdata" EntitySet="tblBladStamdata" />
+      <End Role="tblMedIGruppe" EntitySet="tblMedIGruppe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblBladStamdata_OrdrecheckSendeDagID_tblDage_DagID" Association="Self.FK_tblBladStamdata_OrdrecheckSendeDagID_tblDage_DagID">
+      <End Role="tblDage" EntitySet="tblDage" />
+      <End Role="tblBladStamdata" EntitySet="tblBladStamdata" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblBladStamdata_UgedagID_tblDage_DagID" Association="Self.FK_tblBladStamdata_UgedagID_tblDage_DagID">
+      <End Role="tblDage" EntitySet="tblDage" />
+      <End Role="tblBladStamdata" EntitySet="tblBladStamdata" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblBladStamdata_tblDelOmråde" Association="Self.FK_tblBladStamdata_tblDelOmråde">
+      <End Role="tblDelOmråde" EntitySet="tblDelOmråde" />
+      <End Role="tblBladStamdata" EntitySet="tblBladStamdata" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblBladStamdata_tblGeoKoder" Association="Self.FK_tblBladStamdata_tblGeoKoder">
+      <End Role="tblGeoKode" EntitySet="tblGeoKode" />
+      <End Role="tblBladStamdata" EntitySet="tblBladStamdata" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblBladStamdata_tblHovedGruppe" Association="Self.FK_tblBladStamdata_tblHovedGruppe">
+      <End Role="tblHovedGruppe" EntitySet="tblHovedGruppe" />
+      <End Role="tblBladStamdata" EntitySet="tblBladStamdata" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblBladStamdata_tblPostNr" Association="Self.FK_tblBladStamdata_tblPostNr">
+      <End Role="tblPostNr" EntitySet="tblPostNr" />
+      <End Role="tblBladStamdata" EntitySet="tblBladStamdata" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblBladStamdata_tblRegioner" Association="Self.FK_tblBladStamdata_tblRegioner">
+      <End Role="tblRegion" EntitySet="tblRegion" />
+      <End Role="tblBladStamdata" EntitySet="tblBladStamdata" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblMedieplanLinjer_tblBladStamdata" Association="Self.FK_tblMedieplanLinjer_tblBladStamdata">
+      <End Role="tblBladStamdata" EntitySet="tblBladStamdata" />
+      <End Role="tblMedieplanLinjer" EntitySet="tblMedieplanLinjer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPriser_tblBladStamdata" Association="Self.FK_tblPriser_tblBladStamdata">
+      <End Role="tblBladStamdata" EntitySet="tblBladStamdata" />
+      <End Role="tblPriser" EntitySet="tblPriser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPrislisterPrBladPrUge_tblBladStamdata" Association="Self.FK_tblPrislisterPrBladPrUge_tblBladStamdata">
+      <End Role="tblBladStamdata" EntitySet="tblBladStamdata" />
+      <End Role="tblPrislisterPrBladPrUge" EntitySet="tblPrislisterPrBladPrUge" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPrislisterPrBladPrÅr_tblBladStamdata" Association="Self.FK_tblPrislisterPrBladPrÅr_tblBladStamdata">
+      <End Role="tblBladStamdata" EntitySet="tblBladStamdata" />
+      <End Role="tblPrislisterPrBladPrÅr" EntitySet="tblPrislisterPrBladPrÅr" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblKontakterPrBlad_tblBladStamdataKopi" Association="Self.FK_tblKontakterPrBlad_tblBladStamdataKopi">
+      <End Role="tblBladStamdataKopi" EntitySet="tblBladStamdataKopi" />
+      <End Role="tblKontakterPrBlad" EntitySet="tblKontakterPrBlad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblMedieplan_tblDPKulør" Association="Self.FK_tblMedieplan_tblDPKulør">
+      <End Role="tblDPKulør" EntitySet="tblDPKulør" />
+      <End Role="tblMedieplan" EntitySet="tblMedieplan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblMedIGruppe_tblGrupper" Association="Self.FK_tblMedIGruppe_tblGrupper">
+      <End Role="tblGrupper" EntitySet="tblGrupper" />
+      <End Role="tblMedIGruppe" EntitySet="tblMedIGruppe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblKonkurrentDækning_tblKonkurrenter" Association="Self.FK_tblKonkurrentDækning_tblKonkurrenter">
+      <End Role="tblKonkurrenter" EntitySet="tblKonkurrenter" />
+      <End Role="tblKonkurrentDækning" EntitySet="tblKonkurrentDækning" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblKonkurrentDækning_tblPostNr" Association="Self.FK_tblKonkurrentDækning_tblPostNr">
+      <End Role="tblPostNr" EntitySet="tblPostNr" />
+      <End Role="tblKonkurrentDækning" EntitySet="tblKonkurrentDækning" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblKontakter_tblKontaktTitler" Association="Self.FK_tblKontakter_tblKontaktTitler">
+      <End Role="tblKontaktTitler" EntitySet="tblKontaktTitler" />
+      <End Role="tblKontakter" EntitySet="tblKontakter" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblKontakterPrBlad_tblKontakter" Association="Self.FK_tblKontakterPrBlad_tblKontakter">
+      <End Role="tblKontakter" EntitySet="tblKontakter" />
+      <End Role="tblKontakterPrBlad" EntitySet="tblKontakterPrBlad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblMateriale_tblMedieplanNr" Association="Self.FK_tblMateriale_tblMedieplanNr">
+      <End Role="tblMedieplanNr" EntitySet="tblMedieplanNr" />
+      <End Role="tblMateriale" EntitySet="tblMateriale" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblMedieplanLinjer_tblMateriale" Association="Self.FK_tblMedieplanLinjer_tblMateriale">
+      <End Role="tblMateriale" EntitySet="tblMateriale" />
+      <End Role="tblMedieplanLinjer" EntitySet="tblMedieplanLinjer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblMedieplan_tblMedieplanNr" Association="Self.FK_tblMedieplan_tblMedieplanNr">
+      <End Role="tblMedieplanNr" EntitySet="tblMedieplanNr" />
+      <End Role="tblMedieplan" EntitySet="tblMedieplan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblMedieplan_tblPlacering" Association="Self.FK_tblMedieplan_tblPlacering">
+      <End Role="tblPlacering" EntitySet="tblPlacering" />
+      <End Role="tblMedieplan" EntitySet="tblMedieplan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblMedieplanLinjer_tblMedieplan" Association="Self.FK_tblMedieplanLinjer_tblMedieplan">
+      <End Role="tblMedieplan" EntitySet="tblMedieplan" />
+      <End Role="tblMedieplanLinjer" EntitySet="tblMedieplanLinjer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOrdreGebyrNavision_tblOrdreNavision" Association="Self.FK_tblOrdreGebyrNavision_tblOrdreNavision">
+      <End Role="tblOrdreNavision" EntitySet="tblOrdreNavision" />
+      <End Role="tblOrdreGebyrNavision" EntitySet="tblOrdreGebyrNavision" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblOrdreLinjerNavision_tblOrdreNavision" Association="Self.FK_tblOrdreLinjerNavision_tblOrdreNavision">
+      <End Role="tblOrdreNavision" EntitySet="tblOrdreNavision" />
+      <End Role="tblOrdreLinjerNavision" EntitySet="tblOrdreLinjerNavision" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPriser_tblPlacering" Association="Self.FK_tblPriser_tblPlacering">
+      <End Role="tblPlacering" EntitySet="tblPlacering" />
+      <End Role="tblPriser" EntitySet="tblPriser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPostNrSøgning_tblPostNr" Association="Self.FK_tblPostNrSøgning_tblPostNr">
+      <End Role="tblPostNr" EntitySet="tblPostNr" />
+      <End Role="tblPostNrSøgning" EntitySet="tblPostNrSøgning" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPriser_tblPrislister" Association="Self.FK_tblPriser_tblPrislister">
+      <End Role="tblPrislister" EntitySet="tblPrislister" />
+      <End Role="tblPriser" EntitySet="tblPriser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPrislisterPrBladPrUge_tblPrislister" Association="Self.FK_tblPrislisterPrBladPrUge_tblPrislister">
+      <End Role="tblPrislister" EntitySet="tblPrislister" />
+      <End Role="tblPrislisterPrBladPrUge" EntitySet="tblPrislisterPrBladPrUge" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPrislisterPrBladPrÅr_tblPrislister" Association="Self.FK_tblPrislisterPrBladPrÅr_tblPrislister">
+      <End Role="tblPrislister" EntitySet="tblPrislister" />
+      <End Role="tblPrislisterPrBladPrÅr" EntitySet="tblPrislisterPrBladPrÅr" />
+    </AssociationSet>
+    <AssociationSet Name="tblKontakterArbOmråderPrKontakt" Association="Self.tblKontakterArbOmråderPrKontakt">
+      <End Role="tblKontaktArbOmråder" EntitySet="tblKontaktArbOmråder" />
+      <End Role="tblKontakter" EntitySet="tblKontakter" />
+    </AssociationSet>
+    <AssociationSet Name="tblKontaktFunktionerPrBlad" Association="Self.tblKontaktFunktionerPrBlad">
+      <End Role="tblKontakterPrBlad" EntitySet="tblKontakterPrBlad" />
+      <End Role="tblKontaktFunktioner" EntitySet="tblKontaktFunktioner" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using  dlu_persistence_api.daos;
 namespace dlu_persistence_api.services
 {
-    public class KonkurrenceDækningService: IKonkurrenceDækningService
+    public class KonkurrenceDækningService
 
     {
         private KonkurrenceDaekningDao _konkurrenceDaekningDao;
@@ -28,9 +28,9 @@ namespace dlu_persistence_api.services
             return _konkurrenceDaekningDao.CreateOrUpdate(tblKonkurrentDækning);
         }
 
-        public string GetKonkurrenter()
+        public System.Collections.Generic.List<KonkurentDaekningDao> GetKonkurrenter(byte konkurrentid)
         {
-            return _konkurrenceDaekningDao.GetKonkurrenter();
+            return _konkurrenceDaekningDao.GetKonkurrenterById(konkurrentid);
         }
     }
 }

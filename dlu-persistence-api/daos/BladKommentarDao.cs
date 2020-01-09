@@ -5,8 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using dlu_persistence_api.exceptions;
-using Newtonsoft.Json;
-using System.Collections.Generic;
+
 
 namespace dlu_persistence_api.daos
 {

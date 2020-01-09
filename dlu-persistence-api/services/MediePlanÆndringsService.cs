@@ -20,7 +20,7 @@ namespace dlu_persistence_api.services
             return _ændringerDao.GetMediePlanÆndringerByMedieId(mediePlan, version);
         }
 
-        public Task<int> CreateOrUpdate(tblMedieplanÆndringer tblMedieplanÆndringer)
+        public int CreateOrUpdate(tblMedieplanÆndringer tblMedieplanÆndringer)
         {
             return _ændringerDao.CreateOrUpdate(tblMedieplanÆndringer);
         }

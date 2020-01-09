@@ -9,7 +9,7 @@ using dlu_persistence_api.models;
 using System.Collections.Generic;
 namespace dlu_persistence_api.daos
 {
-    public class MediaPlanNrDao: IDisposable
+    public class MediaPlanNrDao
     {
         private DiMPdotNetDevEntities _entities;
 
@@ -56,23 +56,51 @@ namespace dlu_persistence_api.daos
         /// <param name="tblMedieplanNr"></param>
         /// <returns></returns>
         /// <exception cref="DaoExceptions"></exception>
-        public Tuple<string, int> CreateOrUpDateMediePlanNr(tblMedieplanNr tblMedieplanNr)
+        public Tuple<int,int,short> CreateOrUpDateMediePlanNr(tblMedieplanNr tblMedieplanNr)
         {
             try
             {
                 _entities.tblMedieplanNrs.AddOrUpdate(tblMedieplanNr);
-                _entities.SaveChanges();
-                var res = _entities.tblMedieplanNrs.OrderByDescending(o => o.MedieplanNr).First<tblMedieplanNr>();
-                return new Tuple<string, int>("MediePlanNr", res.MedieplanNr);
+             var s =   _entities.SaveChanges();
+                var mediePlanNr = GetNextMediePlanNr();
+                return new Tuple<int, int,short>(s, mediePlanNr.Item1, mediePlanNr.Item2);
              }
             catch (Exception e)
             {
-                throw new  FormattedDbEntityValidationException(e.InnerException);
+                Console.WriteLine("Create Or UpdateMediePlanNr Error " + e.InnerException + " " + e.StackTrace);
+                throw new Exception();
             }
         }
-        public void Dispose()
+      
+
+        private Tuple<int,short> GetNextMediePlanNr()
         {
-            _entities.Dispose();
+            try
+            {
+                var res = _entities.tblMedieplanNrs.OrderByDescending(s => s.MedieplanNr).First();
+                return new Tuple<int,short>(res.MedieplanNr, res.AktivVersion);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Get NextMedioePlanNr Error " + ex.StackTrace);
+                throw new Exception();
+            }
+    
+           
+        }
+
+
+    }
+
+    class MediePlanNummner
+    {
+        private int medieplanNr;
+
+        public int MediePlanNr
+        {
+            get { return medieplanNr; }
+            set { value = medieplanNr; }
         }
     }
 }

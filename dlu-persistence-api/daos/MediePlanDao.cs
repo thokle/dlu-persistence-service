@@ -1,15 +1,21 @@
 ﻿using dlu_persistence_api.exceptions;
+using dlu_persistence_api.models;
+
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
-using System.Data.SqlClient;
 using System.Linq;
+using System.Management.Instrumentation;
+using System.Runtime.Remoting.Messaging;
+using LinqKit;
 
 namespace dlu_persistence_api.daos
-{    /// <summary>
-     /// 
-     /// </summary>
+{
+    /// <summary>
+    /// 
+    /// </summary>
     public class MediePlanDao
     {
         private DiMPdotNetDevEntities entities;
@@ -20,11 +26,8 @@ namespace dlu_persistence_api.daos
             entities = new DiMPdotNetDevEntities();
 
             entities.Configuration.LazyLoadingEnabled = true;
-          
         }
 
-        
-        
 
         /// <summary>
         /// 
@@ -32,46 +35,44 @@ namespace dlu_persistence_api.daos
         /// <param name="medieplanNr"></param>
         /// <returns></returns>
         /// <exception cref="DaoExceptions"></exception>
-        public string GetMediePlanByNumber(int medieplanNr, int version)
+        public MediePlan GetMediePlanByNumber(int medieplanNr, int version)
         {
-
             try
             {
-
-
-                var res = entities.tblMedieplans.Select(mp => new
+                var res = entities.tblMedieplans.Select(mp => new MediePlan()
                 {
                     annoncoer_no = mp.AnnoncørNo_,
-                    
-                    mp.AntalFarver,
+                    PlaceringID = mp.PlaceringID,
+                    DPKulørID = mp.DPKulørID,
+                    AntalFarver = mp.AntalFarver,
                     bemaerkning_til_annoncoer = mp.BemærkningTilAnnoncør,
-                    mp.BemærkningTilBlade,
-                    mp.Beskrivelse,
-                    mp.BilagsBladeATT,
-                    mp.BilagsBladeTil,
-                    mp.BilagsBladeTilAdresse,
-                    mp.BilagsBladeTilNavn,
-                    mp.BilagsBladeTilPostNr,
-                    mp.BrugMaterialeFraUge,
-                    mp.BureauNo_,
-                    mp.Credit_Reason,
-                    mp.Document_Type,
-                    mp.Fakturering,
-                    mp.Format1,
-                    mp.Format2,
-                    mp.FællesBureauOrdreNr,
-                    mp.IndrykningsUge,
-                    mp.IndrykningsÅr,
-                    mp.InfoGodt,
-                    mp.KonsulentCode,
-                    mp.Kontaktperson,
+                    BemærkningTilBlade = mp.BemærkningTilBlade,
+                    Beskrivelse = mp.Beskrivelse,
+                    BilagsBladeATT = mp.BilagsBladeATT,
+                    BilagsBladeTil = mp.BilagsBladeTil,
+                    BilagsBladeTilAdresse = mp.BilagsBladeTilAdresse,
+                    BilagsBladeTilNavn = mp.BilagsBladeTilNavn,
+                    BilagsBladeTilPostNr = mp.BilagsBladeTilPostNr,
+                    BrugMaterialeFraUge = mp.BrugMaterialeFraUge,
+                    BureauNo_ = mp.BureauNo_,
+                    Credit_Reason = mp.Credit_Reason,
+                    Document_Type = mp.Document_Type,
+                    Fakturering = mp.Fakturering,
+                    Format1 = mp.Format1,
+                    Format2 = mp.Format2,
+                    FællesBureauOrdreNr = mp.FællesBureauOrdreNr,
+                    IndrykningsUge = mp.IndrykningsUge,
+                    IndrykningsÅr = mp.IndrykningsÅr,
+                    InfoGodt = mp.InfoGodt,
+                    KonsulentCode = mp.KonsulentCode,
+                    Kontaktperson = mp.Kontaktperson,
                     kontaktperson_tilhoerer = mp.KontaktpersonTilhører,
-                    mp.KunForhandlerBundForskellig,
-                    mp.MaterialeFølgerFra,
+                    KunForhandlerBundForskellig = mp.KunForhandlerBundForskellig,
+                    MaterialeFølgerFra = mp.MaterialeFølgerFra,
                     materiale_foelger_fra_leveerandoer = mp.MaterialeFølgerFraLeverandør,
                     materiale_godtgoerle_alle = mp.MaterialeGodtgørelseAlle,
                     materiale_godtgoerelse_til = mp.MaterialeGodtgørelseTil,
-                    mp.MedieplanNr,
+                    MedieplanNr = mp.MedieplanNr,
                     miljoe_tillaeg_opkraeves = mp.MiljøTillægOpkræves,
                     opkraev_dsvp_miljotillaeg = mp.OpkrævDSVPMiljøTillæg,
                     opkraev_fynsk_miljoetilaeg = mp.OpkrævFynskeMiljøTillæg,
@@ -80,10 +81,10 @@ namespace dlu_persistence_api.daos
                     opkraev_jyske_miljoetillaeg = mp.OpkrævJyskeMiljøTillæg,
                     opkrav_nordjysk_miljoetillaeg = mp.OpkrævNordjyskeTillæg,
                     opkrae_north_miljoetilaeg = mp.OpkrævNorthMiljøTillæg,
-                    mp.OprettetDato,
-                    mp.OrdreDato,
-                    mp.Overskrift,
-
+                    OprettetDato = mp.OprettetDato,
+                    OrdreDato = mp.OrdreDato,
+                    Overskrift = mp.Overskrift,
+RekvisitionsNr = mp.RekvisitionsNr,
                     placering_betegnelse = mp.tblPlacering.Betegnelse,
                     kuloer = mp.tblDPKulør.Kulør,
                     mediePlanNr_AktiveVesion = mp.tblMedieplanNr.AktivVersion,
@@ -93,70 +94,87 @@ namespace dlu_persistence_api.daos
                     mediePlanNr_faktura_bemaerkning2 = mp.tblMedieplanNr.FakturaBemærkning2,
                     mediePlanNr_faktura_bemaerkning3 = mp.tblMedieplanNr.FakturaBemærkning3,
                     mediePlanNr_kommentar = mp.tblMedieplanNr.Kommentar,
-                    mediePlanNr_materiale_modtaget =mp.tblMedieplanNr.MaterialeModtaget,
-                    mediePlanNr_overfoert_fra_pris_forsporgelse  = mp.tblMedieplanNr.OverførtFraPrisforespørgsel,
-                   mediePlanNr_status =  mp.tblMedieplanNr.Status,
-               mediePlanNr_supportbillag_vedlagt =     mp.tblMedieplanNr.SupportBilagVedlagt,
-             medieplanNr_supoortbilag_vist =       mp.tblMedieplanNr.SupportBilagVist,
-                tillad_farve_saer_rabat = mp.TilladFarveSærRabat,
-                 tillad_mm_saer_rabat =   mp.TilladMmSærRabat,
-               version =   mp.Version,
-               web_tillaeg_opkraves = mp.WebTillægOpkræves,
-                    medieplannlinjer = mp.tblMedieplanLinjers.Select(mplj => new {
-                        mplj.MedieplanNr,
-                   bemaerkning =      mplj.Bemærkning,
-                        mplj.BureauOrdreNr,
-                        mplj.ErWeekendGruppe,
-                        mplj.FarveMax,
-                        mplj.FarveMin,
-                        mplj.FarvePris,
-                        mplj.FarveRabat,
-                   farve_tillaeg =      mplj.FarveTillæg,
-                        mplj.FarveTotal,
-                 manueltaendret =       mplj.ManueltÆndret,
-                 materiale_godtgoerelses_pris =        mplj.MaterialeGodtgørelsePris,
-                        mplj.MaterialeNr,
-                        mplj.MedIGrupper,
-                     miljoetillaeg =    mplj.MiljøTillæg,
-                        mplj.Mm,
-                        mplj.MmPris,
-                        mplj.MmRabat,
-                        mplj.MmTotal,
-                   maa_give_materiale_godtgoerlse =      mplj.MåGiveMaterialeGodtgørelse,
-                        mplj.MåGiveMmRabat,
-                        mplj.NormalMmPris,
-                pris_laast =         mplj.PrisLåst,
-                        mplj.RabatGruppe,
-                        mplj.SendeGruppe,
+                    mediePlanNr_materiale_modtaget = mp.tblMedieplanNr.MaterialeModtaget,
+                    mediePlanNr_overfoert_fra_pris_forsporgelse = mp.tblMedieplanNr.OverførtFraPrisforespørgsel,
+                    mediePlanNr_status = mp.tblMedieplanNr.Status,
+                    mediePlanNr_supportbillag_vedlagt = mp.tblMedieplanNr.SupportBilagVedlagt,
+                    medieplanNr_supoortbilag_vist = mp.tblMedieplanNr.SupportBilagVist,
+                    tillad_farve_saer_rabat = mp.TilladFarveSærRabat,
+                    tillad_mm_saer_rabat = mp.TilladMmSærRabat,
+                    version = mp.Version,
+                    web_tillaeg_opkraves = mp.WebTillægOpkræves,
+                    medieplannlinjer = mp.tblMedieplanLinjers.Join(entities.tblBladStamdatas, linjer => linjer.UgeavisID, stamdata => stamdata.BladID, (linjer, stamdata) => new
+                    {
+                        linjer.RabatGruppe,
+                       linjer.MedieplanNr,
+                         linjer.Bemærkning,
+                         linjer.BureauOrdreNr,
+                       linjer.ErWeekendGruppe,
+                       linjer.FarveMax,
+                     linjer.FarveMin,
+                      linjer.FarvePris,
+                      linjer.FarveRabat,
+                        linjer.FarveTillæg,
+                        linjer.FarveTotal,
+                       linjer.ManueltÆndret,
+                        linjer.MaterialeGodtgørelsePris,
+                         linjer.MaterialeNr,
+                        linjer.MedIGrupper,
+                       linjer.MiljøTillæg,
+                      linjer.Mm,
+                         linjer.MmPris,
+                        linjer.MmRabat,
+                         linjer.MmTotal,
+                         linjer.MåGiveMaterialeGodtgørelse,
+                         linjer.MåGiveMmRabat,
+                         linjer.NormalMmPris,
+                         linjer.PrisLåst,
+                       linjer.SendeGruppe,
 
-                        mplj.SkalGiveMaterialeGodtgørelse
-, 
-                    }
-                   
-               
-               
-             
-
-
-                    )
-
+                        SkalGiveMaterialeGodtgørelse = linjer.SkalGiveMaterialeGodtgørelse,
+                        stamdata.Navn
+                        
+                    } ).Select(mplj => new AvisTIlGrid()
+                        {
+                            MedieplanNr = mplj.MedieplanNr,
+                            bemærkning = mplj.Bemærkning,
+                            BureauOrdreNr = mplj.BureauOrdreNr,
+                            ErWeekendGruppe = mplj.ErWeekendGruppe,
+                            FarveMax = mplj.FarveMax,
+                            FarveMin = mplj.FarveMin,
+                            FarvePris = mplj.FarvePris,
+                            FarveRabat = mplj.FarveRabat,
+                            FarveTillæg = mplj.FarveTillæg,
+                            FarveTotal = mplj.FarveTotal,
+                            ManueltÆndret = mplj.ManueltÆndret,
+                            MaterialeGodtgørelsePris = mplj.MaterialeGodtgørelsePris,
+                            MaterialeNr = mplj.MaterialeNr,
+                            MedIGrupper = mplj.MedIGrupper,
+                            MiljøTillæg = mplj.MiljøTillæg,
+                            Mm = mplj.Mm,
+                            MmPris = mplj.MmPris,
+                            MmRabat = mplj.MmRabat,
+                            MmTotal = mplj.MmTotal,
+                            MåGiveMaterialeGodtgørelse = mplj.MåGiveMaterialeGodtgørelse,
+                            MåGiveMmRabat = mplj.MåGiveMmRabat,
+                            NormalMmPris = mplj.NormalMmPris,
+                            PrisLåst = mplj.PrisLåst,
+                            RabatGruppe = mplj.RabatGruppe,
+                            SendeGruppe = mplj.SendeGruppe,
+Navn =  mplj.Navn,
+                            SkalGiveMaterialeGodtgørelse = mplj.SkalGiveMaterialeGodtgørelse,
+                        }
+                    ).ToList<AvisTIlGrid>()
                 }).Where(mp => mp.MedieplanNr == medieplanNr).Where(mp => mp.version == version);
 
-                return JsonConvert.SerializeObject(res, Formatting.Indented, new JsonSerializerSettings()
-                {
-
-                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-
-
-                });
+                return res.FirstOrDefault<MediePlan>();
             }
             catch (Exception e)
             {
                 throw new DaoExceptions("MediePlanDao GetMediePlanByNumber", e.InnerException);
             }
-
-
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -165,28 +183,44 @@ namespace dlu_persistence_api.daos
         /// <exception cref="DaoExceptions"></exception>
         public Tuple<string, int> CreateOrUpdateMediePlan(tblMedieplan tblMedieplan)
         {
-                 try
+            try
             {
-         entities.tblMedieplans.AddOrUpdate(tblMedieplan);
+                //  var res =  DeleteIFExist(tblMedieplan.MedieplanNr);
+                entities.tblMedieplans.AddOrUpdate(tblMedieplan);
 
-                 var res = entities.SaveChanges();
-                return new Tuple<string, int>("status", res);
+
+                var w = entities.SaveChanges();
+                return new Tuple<string, int>("status", w);
             }
-            catch (Exception  e)
+            catch (Exception ex)
             {
-                throw new  Exception(e.HelpLink);
-                 
+                throw new Exception();
             }
         }
-    
-      
+
+
+        private int DeleteIFExist(int mediePlanMR)
+        {
+            var res = entities.tblMedieplans.Where(w => w.MedieplanNr == mediePlanMR).FirstOrDefault();
+
+            if (res.MedieplanNr == mediePlanMR)
+            {
+                entities.tblMedieplans.Attach(res);
+                entities.tblMedieplans.Remove(res);
+                return entities.SaveChanges();
+            }
+
+            return 0;
+        }
 
 
         public string getMediePlanByKontaktPerson(string name)
         {
             try
             {
-                var res = entities.tblMedieplans.Where(m => m.Kontaktperson.StartsWith(name) || m.Kontaktperson.Contains(name) || m.Kontaktperson.EndsWith(name)).Select(m => new
+                var res = entities.tblMedieplans.Where(m =>
+                    m.Kontaktperson.StartsWith(name) || m.Kontaktperson.Contains(name) ||
+                    m.Kontaktperson.EndsWith(name)).Select(m => new
                 {
                     m.AnnoncørNo_,
                     m.AntalFarver,
@@ -239,21 +273,23 @@ namespace dlu_persistence_api.daos
                     m.SikkerhedsGodt,
                     m.Status
                 });
-                  
+
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
             catch (Exception e)
             {
-                throw new  DaoExceptions("getMediePlanByKontaktPerson  " , e.InnerException);
+                throw new DaoExceptions("getMediePlanByKontaktPerson  ", e.InnerException);
             }
-
         }
 
         public string GetMediePlanByAnnoncoer(string anoncoer)
         {
             try
             {
-                var res = entities.tblMedieplans.Where(m => m.AnnoncørNo_.StartsWith(anoncoer) || m.AnnoncørNo_.Contains(anoncoer) || m.AnnoncørNo_.EndsWith(anoncoer)).Select(m => new {
+                var res = entities.tblMedieplans.Where(m =>
+                    m.AnnoncørNo_.StartsWith(anoncoer) || m.AnnoncørNo_.Contains(anoncoer) ||
+                    m.AnnoncørNo_.EndsWith(anoncoer)).Select(m => new
+                {
                     m.AnnoncørNo_,
                     m.AntalFarver,
                     m.BemærkningTilAnnoncør,
@@ -310,12 +346,9 @@ namespace dlu_persistence_api.daos
                 {
                     ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
                 });
-                
-         
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -324,175 +357,147 @@ namespace dlu_persistence_api.daos
         {
             try
             {
-            
                 var res = from a in entities.tblBladStamdatas
-                          join
-                          p in entities.tblPrisers on a.BladID equals p.BladID into ap
-                          from p in ap.DefaultIfEmpty()
-                          join g in entities.tblGeoKodes on a.GeoKodeID equals g.GeoKodeID into gp
-                          from g in gp.DefaultIfEmpty()
-                          join dl in entities.tblDelOmråde on a.DelOmrådeID equals dl.DelOmrådeID into dp
-                          from dl in dp.DefaultIfEmpty()
-                          join dk in entities.tblMedIGruppes on a.SalgsGruppeID equals dk.ID into grp
-                          from dk in grp.DefaultIfEmpty()
-                          join pyear in entities.tblPrislisterPrBladPrÅr on a.BladID equals  pyear.BladID into gpry
-                          from pyear in gpry.DefaultIfEmpty()
-                          join pw in entities.tblPrislisterPrBladPrUges on a.BladID equals pw.BladID into gpw
-                          from pw in gpw.DefaultIfEmpty()
-                          where a.BladID == bladid
-                          select new
-                          {
-                              
-                          };
+                    join
+                        p in entities.tblPrisers on a.BladID equals p.BladID into ap
+                    from p in ap.DefaultIfEmpty()
+                    join g in entities.tblGeoKodes on a.GeoKodeID equals g.GeoKodeID into gp
+                    from g in gp.DefaultIfEmpty()
+                    join dl in entities.tblDelOmråde on a.DelOmrådeID equals dl.DelOmrådeID into dp
+                    from dl in dp.DefaultIfEmpty()
+                    join dk in entities.tblMedIGruppes on a.SalgsGruppeID equals dk.ID into grp
+                    from dk in grp.DefaultIfEmpty()
+                    join pyear in entities.tblPrislisterPrBladPrÅr on a.BladID equals pyear.BladID into gpry
+                    from pyear in gpry.DefaultIfEmpty()
+                    join pw in entities.tblPrislisterPrBladPrUges on a.BladID equals pw.BladID into gpw
+                    from pw in gpw.DefaultIfEmpty()
+                    where a.BladID == bladid
+                    select new
+                    {
+                    };
 
 
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
-                                
             }
             catch (Exception)
             {
-                    
                 throw;
             }
         }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-        public List<FundetMediePlaner> findMediePlanToolbar(int mediePlan = 0, string annnoncør = null, string bureau = null, int fraUge = 0, int tilUge = 0, int aar = 0,
-            bool visInAktiveAnnoncer = false, bool mediePlanCheckBox = false, bool bookingCheckBox = false, bool rtAkCheckBox = false, bool faktureing = false)
+
+
+        public List<FundetMediePlaner> findMediePlanToolbar(int mediePlan = 0, string annnoncør = null,
+            string bureau = null, byte fraUge = 0, byte tilUge = 0, short aar = 0,
+            bool visInAktiveAnnoncer = false, bool mediePlanCheckBox = false, bool bookingCheckBox = false,
+            bool rtAkCheckBox = false, bool faktureing = false)
         {
+            try
+            {
+                var pre = PredicateBuilder.New<FundetMediePlaner>();
 
 
-
-            try {
-                var query = from m in entities.tblMedieplans
-                            join ml in entities.tblMedieplanLinjers on m.MedieplanNr equals ml.MedieplanNr into mml
-                            from ml in mml.DefaultIfEmpty()
-                            join mlnr in entities.tblMedieplanLinjers on m.MedieplanNr equals mlnr.MedieplanNr into mlnrm
-                            from mlnr in mlnrm.DefaultIfEmpty()
-                            join mmlt in entities.tblMateriales on m.MedieplanNr equals mmlt.MedieplanNr into mmlmt
-
-                            from mmlt in mmlmt.DefaultIfEmpty()
-                           join nv in entities.NavisionContacts on m.AnnoncørNo_ equals nv.No_ into nvm
-                           from nv in nvm.DefaultIfEmpty()
-
-                            select new
-                            {
-
-                                AnnoncørNo_ = m.AnnoncørNo_,
-                                BureauNo_ = m.BureauNo_,
-                                Format1 = m.Format1,
-                                Format2 = m.Format2,
-                                AntalFarver = m.AntalFarver,
-                                IndrykningsUge = m.IndrykningsUge,
-                                Beskrivelse = m.Beskrivelse,
-                                KonsulentCode = m.KonsulentCode,
-                                Status = m.Status,
-
-                                Version = m.Version,
-                                MedieplanNr = m.MedieplanNr,
-                                Kontaktperson = m.Kontaktperson,
-                                KontaktpersonTilhører = m.KontaktpersonTilhører,
-                                Overskrift = m.Overskrift,
-
-                                OprettetDato = m.OprettetDato,
-                               Name = nv.Name
-
-                            } into plan
-                            group plan by new
-                            {
-                                plan.AnnoncørNo_,
-                                plan.BureauNo_,
-                                plan.Format1,
-                                plan.Format2,
-                                plan.AntalFarver,
-                                plan.IndrykningsUge,
-                                plan.Beskrivelse,
-                                plan.KonsulentCode,
-                                plan.Status,
-
-                                plan.Version,
-                                plan.MedieplanNr,
-                                plan.Kontaktperson,
-                                plan.KontaktpersonTilhører,
-                                plan.Overskrift,
-
-                                plan.OprettetDato,
-                               plan.Name
-                                
-                             
-                            } into mg
-                            select new FundetMediePlaner()
-                            {
-                                MedieplanNr = mg.Key.MedieplanNr,
-                                AnnoncørNo_ = mg.Key.AnnoncørNo_,
-                                BureauNo_ = mg.Key.BureauNo_,
-                                Format1 = mg.Key.Format1,
-                                Format2 = mg.Key.Format2,
-                                AntalFarver = mg.Key.AntalFarver,
-                                IndrykningsUge = mg.Key.IndrykningsUge,
-                                Beskrivelse = mg.Key.Beskrivelse,
-                                KonsulentCode = mg.Key.KonsulentCode,
-                                Status = mg.Key.Status,
-
-                                Version = mg.Key.Version,
-
-
-                                Kontaktperson = mg.Key.Kontaktperson,
-                                KontaktpersonTilhører = mg.Key.KontaktpersonTilhører,
-                                Overskrift = mg.Key.Overskrift,
-
-                                OprettetDato = mg.Key.OprettetDato,
-                               navision_name = mg.Key.Name
-
-                            };
-
-
+                
                 if (mediePlan != 0)
                 {
-                    query = query.Where(m => m.MedieplanNr == mediePlan);
+                    pre = pre.And(a => a.MedieplanNr == mediePlan);
                 }
+
                 if (annnoncør != "")
                 {
-
-                    query = query.Where(a => a.AnnoncørNo_.StartsWith(annnoncør) || a.AnnoncørNo_.Contains(annnoncør) || a.AnnoncørNo_.EndsWith(annnoncør));
-
+                    pre = pre.And(m =>
+                        m.AnnoncørNo_.StartsWith(annnoncør) || m.AnnoncørNo_.Contains(annnoncør) ||
+                        m.AnnoncørNo_.EndsWith(annnoncør));
                 }
+
                 if (bureau != "")
                 {
-                    query = query.Where(b => b.BureauNo_.StartsWith(bureau) || b.BureauNo_.Contains(bureau) || b.BureauNo_.EndsWith(bureau));
+                    pre = pre.And(m =>
+                        m.BureauNo_.StartsWith(bureau) || m.BureauNo_.Contains(bureau) || m.BureauNo_.EndsWith(bureau));
                 }
-                if (fraUge != 0 && tilUge != 0)
+
+                if (fraUge  > 0 && (tilUge  >1 && tilUge < 53) && mediePlan == 0)
                 {
-                    query = query.Where(fu => fu.IndrykningsUge > fraUge && tilUge <= fu.IndrykningsUge);
+                    pre = pre.And(u => u.IndrykningsUge > fraUge || u.IndrykningsUge <= tilUge);
+                    pre = pre.And(a => a.IndrykningsÅr == aar);
+
+
+                    if (visInAktiveAnnoncer)
+                    {
+                        pre = pre.And(planer => planer.Version.ToString().Length > 3);
+                    }
+
+                    if (mediePlanCheckBox)
+                    {
+                        pre = pre.And(planer => planer.Version.ToString().Length == 1);
+                    }
+
+                    if (bookingCheckBox)
+                    {
+                        pre = pre.And(p => p.Version.ToString().Length == 2);
+                    }
                 }
-                if (aar != 0)
+
+                var res =  entities.tblMedieplans.Join(entities.tblMedieplanLinjers, mp => mp.MedieplanNr,
+                    mpl => mpl.MedieplanNr,
+                    (mp, mpl) => new
+                    {
+                        mp.PlaceringID, mp.AnnoncørNo_, mp.Beskrivelse, mp.Fakturering, mp.Format1, mp.Format2,
+                       mp.SamletPris,
+                        mp.Kontaktperson, mp.Overskrift, mp.IndrykningsÅr, mp.IndrykningsUge, mp.Version, mp.Status,
+                        mp.MedieplanNr, mp.AntalFarver, mp.BureauNo_, mp.KonsulentCode, mp.KontaktpersonTilhører,
+                      
+                    }).Join(entities.tblPlacerings, mp => mp.PlaceringID,
+                    pl => pl.PlaceringID,
+                    (mp, pl) => new
+                    {
+                        mp.PlaceringID, pl.Betegnelse, mp.AnnoncørNo_, mp.Beskrivelse, mp.Fakturering, mp.Format1,
+                        mp.Format2, mp.Kontaktperson, mp.Overskrift, mp.IndrykningsÅr, mp.IndrykningsUge, mp.Version,
+                        mp.Status, mp.MedieplanNr, mp.AntalFarver, mp.BureauNo_, mp.KonsulentCode,
+                        mp.KontaktpersonTilhører
+                    }).Join(entities.NavisionContacts, mp => mp.AnnoncørNo_, contact => contact.No_,
+                    (mp, contact) => new
+                    {
+                        mp.PlaceringID, mp.AnnoncørNo_, mp.Beskrivelse, mp.Fakturering, mp.Format1, mp.Format2,
+                        mp.Kontaktperson, mp.Overskrift, mp.IndrykningsÅr, mp.IndrykningsUge, mp.Version, contact.Name,
+                        contact.Bill_to_Contact_No_, mp.Status, mp.MedieplanNr, mp.AntalFarver, mp.BureauNo_,
+                        mp.KonsulentCode, mp.KontaktpersonTilhører, 
+                    }).GroupBy(arg => new
                 {
-                    res = res.Where(ar => ar.IndrykningsÅr == aar);
-                }
-                if (visInAktiveAnnoncer)
+                    arg.Beskrivelse, arg.PlaceringID, arg.AnnoncørNo_, arg.Fakturering, arg.Format1, arg.Format2,
+                    arg.Kontaktperson, arg.Overskrift, arg.IndrykningsÅr, arg.IndrykningsUge, arg.Version, arg.Name,
+                    arg.AntalFarver, arg.BureauNo_, arg.KonsulentCode,
+                    arg.Bill_to_Contact_No_, arg.Status, arg.MedieplanNr, arg.KontaktpersonTilhører
+                }).Select(a => new FundetMediePlaner()
                 {
+                   AntalAviser = entities.tblMedieplanLinjers.Where(l => l.MedieplanNr == a.Key.MedieplanNr).Select(s => new { s.MedieplanNr}).Count(),
+               
+                    Beskrivelse = a.Key.Beskrivelse, Format1 = a.Key.Format1, Format2 = a.Key.Format1,
+                    Kontaktperson = a.Key.Kontaktperson, Overskrift = a.Key.Overskrift, navision_name = a.Key.Name,
+                    Status = a.Key.Status, Version = a.Key.Version, AnnoncørNo_ = a.Key.AnnoncørNo_,
+                    AntalFarver = a.Key.AntalFarver, BureauNo_ = a.Key.BureauNo_, IndrykningsUge = a.Key.IndrykningsUge,
+                    IndrykningsÅr = a.Key.IndrykningsÅr,
+                    KonsulentCode = a.Key.KonsulentCode, KontaktpersonTilhører = a.Key.KontaktpersonTilhører,
+                    MedieplanNr = a.Key.MedieplanNr
+                }).Select(a => new FundetMediePlaner()
+                {
+                    AntalAviser = entities.tblMedieplanLinjers.Where(l => l.MedieplanNr == a.MedieplanNr).Select(s => new { s.MedieplanNr}).Count(),
+               
+                    Beskrivelse = a.Beskrivelse, Format1 = a.Format1, Format2 = a.Format1,
+                    Kontaktperson = a.Kontaktperson, Overskrift = a.Overskrift, navision_name = a.navision_name,
+                    Status = a.Status, Version = a.Version, AnnoncørNo_ = a.AnnoncørNo_,
+                    AntalFarver = a.AntalFarver, BureauNo_ = a.BureauNo_, IndrykningsUge = a.IndrykningsUge,
+                    IndrykningsÅr = a.IndrykningsÅr,
+                    KonsulentCode = a.KonsulentCode, KontaktpersonTilhører = a.KontaktpersonTilhører,
+                    MedieplanNr = a.MedieplanNr
+                } );
 
-                }
-
-
-
-
-
-                return query.ToList();
-
-
-
+                List<FundetMediePlaner> liet = res.Where(pre).ToList();
+                return liet;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
-
-         
-
-
-
-
-
         }
 
         public Tuple<string, int> GetLatestMedienr()
@@ -504,19 +509,79 @@ namespace dlu_persistence_api.daos
             }
             catch (EntryPointNotFoundException e)
             {
-
                 throw new Exception(e.HelpLink);
             }
-          
         }
-        
+    }
+
+    public class MediePlan
+    {
+        public MediePlan()
+        {
+        }
+
+        public string annoncoer_no { get; set; }
+        public byte AntalFarver { get; set; }
+        public string bemaerkning_til_annoncoer { get; set; }
+        public string BemærkningTilBlade { get; set; }
+        public string Beskrivelse { get; set; }
+        public string BilagsBladeATT { get; set; }
+        public short BilagsBladeTil { get; set; }
+        public string BilagsBladeTilAdresse { get; set; }
+        public string BilagsBladeTilNavn { get; set; }
+        public int BilagsBladeTilPostNr { get; set; }
+        public byte BrugMaterialeFraUge { get; set; }
+        public string BureauNo_ { get; set; }
+        public string Credit_Reason { get; set; }
+        public byte Document_Type { get; set; }
+        public byte Fakturering { get; set; }
+        public byte Format1 { get; set; }
+        public short Format2 { get; set; }
+        public string FællesBureauOrdreNr { get; set; }
+        public byte IndrykningsUge { get; set; }
+        public short IndrykningsÅr { get; set; }
+        public bool InfoGodt { get; set; }
+        public string KonsulentCode { get; set; }
+        public string Kontaktperson { get; set; }
+        public byte kontaktperson_tilhoerer { get; set; }
+        public bool KunForhandlerBundForskellig { get; set; }
+        public byte MaterialeFølgerFra { get; set; }
+        public string materiale_foelger_fra_leveerandoer { get; set; }
+        public bool materiale_godtgoerle_alle { get; set; }
+        public byte materiale_godtgoerelse_til { get; set; }
+        public int MedieplanNr { get; set; }
+        public bool? miljoe_tillaeg_opkraeves { get; set; }
+        public bool? opkraev_dsvp_miljotillaeg { get; set; }
+        public bool? opkraev_fynsk_miljoetilaeg { get; set; }
+        public bool? opkraev_helsingoer_miljoetilaeg { get; set; }
+        public bool? opkraev_jyskemedier_as_tilaeg { get; set; }
+        public bool? opkraev_jyske_miljoetillaeg { get; set; }
+        public bool? opkrav_nordjysk_miljoetillaeg { get; set; }
+        public bool? opkrae_north_miljoetilaeg { get; set; }
+        public DateTime OprettetDato { get; set; }
+        public DateTime OrdreDato { get; set; }
+        public string Overskrift { get; set; }
+        public string placering_betegnelse { get; set; }
+        public string kuloer { get; set; }
+        public short mediePlanNr_AktiveVesion { get; set; }
+        public decimal mediePlanNr_andvendtmiloetillaeg { get; set; }
+        public byte mediePlanNr_anvendtPrisBeregner_version { get; set; }
+        public string mediePlanNr_faktura_bemaerkning1 { get; set; }
+        public string mediePlanNr_faktura_bemaerkning2 { get; set; }
+        public string mediePlanNr_faktura_bemaerkning3 { get; set; }
+        public string mediePlanNr_kommentar { get; set; }
+        public bool mediePlanNr_materiale_modtaget { get; set; }
+        public bool mediePlanNr_overfoert_fra_pris_forsporgelse { get; set; }
+        public byte mediePlanNr_status { get; set; }
+        public bool mediePlanNr_supportbillag_vedlagt { get; set; }
+        public bool medieplanNr_supoortbilag_vist { get; set; }
+        public bool tillad_farve_saer_rabat { get; set; }
+        public bool tillad_mm_saer_rabat { get; set; }
+        public short version { get; set; }
+        public bool? web_tillaeg_opkraves { get; set; }
+        public List<AvisTIlGrid> medieplannlinjer { get; set; }
+        public byte PlaceringID { get; set; }
+        public byte DPKulørID { get; set; }
+        public string RekvisitionsNr { get; set; }
     }
 }
-
-
-
-        
-
-
-
-
