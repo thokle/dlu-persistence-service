@@ -8,7 +8,7 @@ namespace dlu_persistence_api.services
   
         string GetMediePlanByKontakt(string name);
          string getMediePlanByKontaktPerson(string name);
-        string  GetMediePlanByNumber(int medieplanNr, int version);
+        string  GetMediePlanByNumber(int medieplanNr, int version, int status);
         string GetMediePlanByAnnoncoer(string anoncoer);
         Tuple<string, int> CreateOrUpdateMediePlan(tblMedieplan tblMedieplan);
  

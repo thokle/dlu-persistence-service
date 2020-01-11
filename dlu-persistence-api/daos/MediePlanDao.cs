@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Management.Instrumentation;
@@ -35,11 +36,15 @@ namespace dlu_persistence_api.daos
         /// <param name="medieplanNr"></param>
         /// <returns></returns>
         /// <exception cref="DaoExceptions"></exception>
-        public MediePlan GetMediePlanByNumber(int medieplanNr, int version)
+        public MediePlan GetMediePlanByNumber(int medieplanNr, int version,int ststus )
         {
             try
             {
-                var res = entities.tblMedieplans.Select(mp => new MediePlan()
+                
+                
+
+
+            var res = entities.tblMedieplans.Where(medieplan => medieplan.MedieplanNr == medieplanNr && medieplan.Version == version && medieplan.Status == ststus ).Select(mp => new MediePlan()
                 {
                     annoncoer_no = mp.AnnoncørNo_,
                     PlaceringID = mp.PlaceringID,
@@ -103,69 +108,44 @@ RekvisitionsNr = mp.RekvisitionsNr,
                     tillad_mm_saer_rabat = mp.TilladMmSærRabat,
                     version = mp.Version,
                     web_tillaeg_opkraves = mp.WebTillægOpkræves,
-                    medieplannlinjer = mp.tblMedieplanLinjers.Join(entities.tblBladStamdatas, linjer => linjer.UgeavisID, stamdata => stamdata.BladID, (linjer, stamdata) => new
-                    {
-                        linjer.RabatGruppe,
-                       linjer.MedieplanNr,
-                         linjer.Bemærkning,
-                         linjer.BureauOrdreNr,
-                       linjer.ErWeekendGruppe,
-                       linjer.FarveMax,
-                     linjer.FarveMin,
-                      linjer.FarvePris,
-                      linjer.FarveRabat,
-                        linjer.FarveTillæg,
-                        linjer.FarveTotal,
-                       linjer.ManueltÆndret,
-                        linjer.MaterialeGodtgørelsePris,
-                         linjer.MaterialeNr,
-                        linjer.MedIGrupper,
-                       linjer.MiljøTillæg,
-                      linjer.Mm,
-                         linjer.MmPris,
-                        linjer.MmRabat,
-                         linjer.MmTotal,
-                         linjer.MåGiveMaterialeGodtgørelse,
-                         linjer.MåGiveMmRabat,
-                         linjer.NormalMmPris,
-                         linjer.PrisLåst,
-                       linjer.SendeGruppe,
-
-                        SkalGiveMaterialeGodtgørelse = linjer.SkalGiveMaterialeGodtgørelse,
-                        stamdata.Navn
+                    medieplannlinjer = (from linjer in mp.tblMedieplanLinjers where  linjer.MedieplanNr == medieplanNr & linjer.Version == version
+                        join re in entities.tblBladStamdatas on linjer.UgeavisID equals  re.BladID into reres from re in reres.DefaultIfEmpty()
                         
-                    } ).Select(mplj => new AvisTIlGrid()
-                        {
-                            MedieplanNr = mplj.MedieplanNr,
-                            bemærkning = mplj.Bemærkning,
-                            BureauOrdreNr = mplj.BureauOrdreNr,
-                            ErWeekendGruppe = mplj.ErWeekendGruppe,
-                            FarveMax = mplj.FarveMax,
-                            FarveMin = mplj.FarveMin,
-                            FarvePris = mplj.FarvePris,
-                            FarveRabat = mplj.FarveRabat,
-                            FarveTillæg = mplj.FarveTillæg,
-                            FarveTotal = mplj.FarveTotal,
-                            ManueltÆndret = mplj.ManueltÆndret,
-                            MaterialeGodtgørelsePris = mplj.MaterialeGodtgørelsePris,
-                            MaterialeNr = mplj.MaterialeNr,
-                            MedIGrupper = mplj.MedIGrupper,
-                            MiljøTillæg = mplj.MiljøTillæg,
-                            Mm = mplj.Mm,
-                            MmPris = mplj.MmPris,
-                            MmRabat = mplj.MmRabat,
-                            MmTotal = mplj.MmTotal,
-                            MåGiveMaterialeGodtgørelse = mplj.MåGiveMaterialeGodtgørelse,
-                            MåGiveMmRabat = mplj.MåGiveMmRabat,
-                            NormalMmPris = mplj.NormalMmPris,
-                            PrisLåst = mplj.PrisLåst,
-                            RabatGruppe = mplj.RabatGruppe,
-                            SendeGruppe = mplj.SendeGruppe,
-Navn =  mplj.Navn,
-                            SkalGiveMaterialeGodtgørelse = mplj.SkalGiveMaterialeGodtgørelse,
-                        }
-                    ).ToList<AvisTIlGrid>()
-                }).Where(mp => mp.MedieplanNr == medieplanNr).Where(mp => mp.version == version);
+                        select  new AvisTIlGrid()
+                    {
+                      RabatGruppe  = linjer.RabatGruppe,
+                      MedieplanNr = linjer.MedieplanNr,
+                       bemærkning  = linjer.Bemærkning,
+                        BureauOrdreNr = linjer.BureauOrdreNr,
+                     ErWeekendGruppe  = linjer.ErWeekendGruppe,
+                    Farve4Max   = linjer.FarveMax,
+                    FarveMin = linjer.FarveMin,
+                      FarvePris = linjer.FarvePris,
+                     FarveRabat = linjer.FarveRabat,
+                       FarveTillæg = linjer.FarveTillæg,
+                       FarveTotal = linjer.FarveTotal,
+                       ManueltÆndret = linjer.ManueltÆndret,
+                        MaterialeGodtgørelsePris = linjer.MaterialeGodtgørelsePris,
+                       MaterialeNr  = linjer.MaterialeNr,
+                        MedIGrupper = linjer.MedIGrupper,
+                     MiljøTillæg  = linjer.MiljøTillæg,
+                     Mm = linjer.Mm,
+                       MmPris  = linjer.MmPris,
+                       MmRabat = linjer.MmRabat,
+                        MmTotal = linjer.MmTotal,
+                        MåGiveMaterialeGodtgørelse = linjer.MåGiveMaterialeGodtgørelse,
+                        MåGiveMmRabat = linjer.MåGiveMmRabat,
+                        NormalMmPris = linjer.NormalMmPris,
+                         PrisLåst = linjer.PrisLåst,
+                       SendeGruppe = linjer.SendeGruppe,
+
+                        SkalGiveMaterialeGodtgørelse =  linjer.SkalGiveMaterialeGodtgørelse,
+                        Navn = re.Navn,
+                        Navn2 =  re.Navn2
+                       
+                    
+                        
+                    }).ToList()});
 
                 return res.FirstOrDefault<MediePlan>();
             }
