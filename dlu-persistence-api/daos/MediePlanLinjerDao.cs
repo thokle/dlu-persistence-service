@@ -83,6 +83,17 @@ namespace dlu_persistence_api.daos
 
         }
 
+
+        public MediePlanLinjer GetMediePlanLinjerForNavision(int indrykningsuge) {
+            var res = (from mp in _entities.tblMedieplanLinjers
+                       join mpnr in _entities.tblMedieplanNrs on mp.MedieplanNr equals mpnr.MedieplanNr into mpmnpr
+                       from mpnr in mpmnpr.DefaultIfEmpty()
+                       where mpnr.AktivVersion == 6
+                       select new MediePlanLinjer() { }).OrderByDescending(e => e.MedieplanNr).SingleOrDefault();
+
+            return res;
+        }
+
         public void Dispose()
         {
             _entities?.Dispose();
