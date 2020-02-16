@@ -46,9 +46,9 @@ namespace dlu_persistence_api.services
             return _mediePlanDao.GetMediePlanByNumber(medieplanNr, version, status);
         }
 
-        public List<FundetMediePlaner> findMediePlanToolbar(int mediePlan = 0, string annnoncør = null, string bureau = null, byte fraUge = 0, byte tilUge = 0, short aar = 0, bool visInAktiveAnnoncer = false, bool mediePlanCheckBox = false, bool bookingCheckBox = false, bool rtAkCheckBox = false, bool faktureing = false)
+        public List<FundetMediePlaner> findMediePlanToolbar(int mediePlan = 0, string annnoncÃ¸r = null, string bureau = null, byte fraUge = 0, byte tilUge = 0, short aar = 0, bool visInAktiveAnnoncer = false, bool mediePlanCheckBox = false, bool bookingCheckBox = false, bool rtAkCheckBox = false, bool faktureing = false)
         {
-            return _mediePlanDao.findMediePlanToolbar(mediePlan, annnoncør, bureau, fraUge, tilUge, aar, visInAktiveAnnoncer, mediePlanCheckBox, bookingCheckBox, rtAkCheckBox, faktureing);
+            return _mediePlanDao.findMediePlanToolbar(mediePlan, annnoncÃ¸r, bureau, fraUge, tilUge, aar, visInAktiveAnnoncer, mediePlanCheckBox, bookingCheckBox, rtAkCheckBox, faktureing);
         }
 
         public Tuple<string, int> GetLatestMedienr()

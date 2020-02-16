@@ -26,8 +26,8 @@ namespace dlu_persistence_api.daos
         {
             entities = new DiMPdotNetDevEntities();
 
-            entities.Configuration.LazyLoadingEnabled = true;
-        }
+            entities.Configuration.LazyLoadingEnabled = false;
+                                                            }
 
 
         /// <summary>
@@ -46,6 +46,7 @@ namespace dlu_persistence_api.daos
 
             var res = entities.tblMedieplans.Where(medieplan => medieplan.MedieplanNr == medieplanNr && medieplan.Version == version && medieplan.Status == ststus ).Select(mp => new MediePlan()
                 {
+                    Statius = mp.Status,
                     annoncoer_no = mp.AnnoncørNo_,
                     PlaceringID = mp.PlaceringID,
                     DPKulørID = mp.DPKulørID,
@@ -108,6 +109,7 @@ RekvisitionsNr = mp.RekvisitionsNr,
                     tillad_mm_saer_rabat = mp.TilladMmSærRabat,
                     version = mp.Version,
                     web_tillaeg_opkraves = mp.WebTillægOpkræves,
+                    
                     medieplannlinjer = (from linjer in mp.tblMedieplanLinjers where  linjer.MedieplanNr == medieplanNr & linjer.Version == version
                         join re in entities.tblBladStamdatas on linjer.UgeavisID equals  re.BladID into reres from re in reres.DefaultIfEmpty()
                         
@@ -118,8 +120,9 @@ RekvisitionsNr = mp.RekvisitionsNr,
                        bemærkning  = linjer.Bemærkning,
                         BureauOrdreNr = linjer.BureauOrdreNr,
                      ErWeekendGruppe  = linjer.ErWeekendGruppe,
-                    Farve4Max   = linjer.FarveMax,
+                    FarveMax = linjer.FarveMax,
                     FarveMin = linjer.FarveMin,
+
                       FarvePris = linjer.FarvePris,
                      FarveRabat = linjer.FarveRabat,
                        FarveTillæg = linjer.FarveTillæg,
@@ -133,6 +136,7 @@ RekvisitionsNr = mp.RekvisitionsNr,
                        MmPris  = linjer.MmPris,
                        MmRabat = linjer.MmRabat,
                         MmTotal = linjer.MmTotal,
+
                         MåGiveMaterialeGodtgørelse = linjer.MåGiveMaterialeGodtgørelse,
                         MåGiveMmRabat = linjer.MåGiveMmRabat,
                         NormalMmPris = linjer.NormalMmPris,
@@ -141,9 +145,12 @@ RekvisitionsNr = mp.RekvisitionsNr,
 
                         SkalGiveMaterialeGodtgørelse =  linjer.SkalGiveMaterialeGodtgørelse,
                         Navn = re.Navn,
-                        Navn2 =  re.Navn2
-                       
-                    
+                        Navn2 =  re.Navn2,
+                        Total = linjer.Total,
+                        totalPris = linjer.TotalPris,
+                            UgeavisID = linjer.UgeavisID
+                     
+                  
                         
                     }).ToList()});
 
@@ -406,6 +413,7 @@ RekvisitionsNr = mp.RekvisitionsNr,
                         pre = pre.And(planer => planer.Version.ToString().Length > 3);
                     }
 
+
                     if (mediePlanCheckBox)
                     {
                         pre = pre.And(planer => planer.Version.ToString().Length == 1);
@@ -413,7 +421,15 @@ RekvisitionsNr = mp.RekvisitionsNr,
 
                     if (bookingCheckBox)
                     {
-                        pre = pre.And(p => p.Version.ToString().Length == 2);
+                        pre = pre.And(p => p.Version.ToString().Length > 1);
+                    }
+                    if (faktureing)
+                    {
+                        pre = pre.And(p => p.Version.ToString().Length == 3);
+                    }
+                    if(bookingCheckBox && mediePlanCheckBox)
+                    {
+                        pre = pre.And(p => p.Version.ToString().Length == 1 && p.Version.ToString().Length > 1);
                     }
                 }
 
@@ -460,7 +476,7 @@ RekvisitionsNr = mp.RekvisitionsNr,
                     MedieplanNr = a.Key.MedieplanNr
                 }).Select(a => new FundetMediePlaner()
                 {
-                    AntalAviser = entities.tblMedieplanLinjers.Where(l => l.MedieplanNr == a.MedieplanNr).Select(s => new { s.MedieplanNr}).Count(),
+                    AntalAviser = entities.tblMedieplanLinjers.Where(l => l.MedieplanNr == a.MedieplanNr).Select(s => new { s.MedieplanNr}).Distinct().Count(),
                
                     Beskrivelse = a.Beskrivelse, Format1 = a.Format1, Format2 = a.Format1,
                     Kontaktperson = a.Kontaktperson, Overskrift = a.Overskrift, navision_name = a.navision_name,
@@ -478,6 +494,59 @@ RekvisitionsNr = mp.RekvisitionsNr,
             {
                 throw e;
             }
+        }
+
+        public MediePlan GetMediePlanFornavision(int indrykningsUge)
+        {
+
+            var res = (from mp in entities.tblMedieplans
+                       join mpl in entities.tblMedieplanNrs on mp.MedieplanNr equals mpl.MedieplanNr into mpmpl
+
+                       from mpl in mpmpl.DefaultIfEmpty()
+                       where mp.Version == mpl.AktivVersion & mpl.Status == 6 & mpl.AktivVersion < 100 & mp.IndrykningsUge == indrykningsUge
+                       select new MediePlan()
+                       {
+                           annoncoer_no = mp.AnnoncørNo_,
+                           AntalFarver = mp.AntalFarver,
+                           bemaerkning_til_annoncoer = mp.BemærkningTilAnnoncør,
+                           BemærkningTilBlade = mp.BemærkningTilBlade,
+                           opkraev_helsingoer_miljoetilaeg = mp.OpkrævHelsingørMiljøTillæg,
+                           Beskrivelse = mp.Beskrivelse,
+                           BilagsBladeATT = mp.BilagsBladeATT,
+                           BilagsBladeTil = mp.BilagsBladeTil,
+                           BilagsBladeTilAdresse = mp.BilagsBladeTilAdresse,
+                           BilagsBladeTilNavn = mp.BilagsBladeTilNavn,
+                           mediePlanNr_AktiveVesion = mpl.AktivVersion,
+                           BilagsBladeTilPostNr = mp.BilagsBladeTilPostNr,
+                           MedieplanNr = mp.MedieplanNr,
+                           mediePlanNr_andvendtmiloetillaeg = mpl.AnvendtMiljøTillæg,
+                           BrugMaterialeFraUge = mp.BrugMaterialeFraUge,
+                           BureauNo_ = mp.BureauNo_,
+                           Credit_Reason = mp.Credit_Reason,
+                           Document_Type = mp.Document_Type,
+                           DPKulørID = mp.DPKulørID,
+                           Fakturering = mp.Fakturering,
+                           Format1 = mp.Format1,
+                           Format2 = mp.Format2,
+                           FællesBureauOrdreNr = mp.FællesBureauOrdreNr,
+                           IndrykningsUge = mp.IndrykningsUge,
+                           IndrykningsÅr = mp.IndrykningsÅr,
+                           mediePlanNr_anvendtPrisBeregner_version = mpl.AnvendtPrisberegningVersion,
+                           InfoGodt = mp.InfoGodt,
+                           KonsulentCode = mp.KonsulentCode,
+                           Kontaktperson = mp.Kontaktperson,
+                           kontaktperson_tilhoerer = mp.KontaktpersonTilhører,
+                           version = Convert.ToInt16(mp.Version * Convert.ToInt16(10) + Convert.ToInt16(1)),
+                           mediePlanNr_kommentar = mpl.Kommentar, mediePlanNr_status = mp.Status, OprettetDato = mp.OprettetDato
+                       }).OrderByDescending(s => s.version).Single();
+
+
+
+
+
+
+            return res;
+
         }
 
         public Tuple<string, int> GetLatestMedienr()
@@ -563,5 +632,8 @@ RekvisitionsNr = mp.RekvisitionsNr,
         public byte PlaceringID { get; set; }
         public byte DPKulørID { get; set; }
         public string RekvisitionsNr { get; set; }
+        public byte Statius { get; set; }
+        public int? Previous_Version { get; internal set; }
+        public bool RettelserEfterAnnoncekontrol { get; internal set; }
     }
 }

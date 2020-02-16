@@ -23,7 +23,7 @@ namespace dlu_persistence_api.daos
         /// <param name="mediePlanId"></param>
         /// <returns></returns>
         /// <exception cref="DaoExceptions"></exception>
-        public List<MediePlanNr> GetMediePlanNrDaoByMedPlanId(int mediePlanId)
+        public MediePlanNr GetMediePlanNrDaoByMedPlanId(int mediePlanId)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace dlu_persistence_api.daos
 
 
                     };
-                return res.ToList();
+                return res.FirstOrDefault();
             }
             catch (Exception e)
             {

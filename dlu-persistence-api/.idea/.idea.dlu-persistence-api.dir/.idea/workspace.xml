@@ -1,48 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f1d17a59-b552-402f-b298-e3b43ad60cbe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/daos/ViewBookingListeDao.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DDF-sql-services/Properties/AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../DDF-sql-services/Properties/AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DDF-sql-services/daos/AnnonøcerDAO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../DDF-sql-services/daos/AnnonøcerDAO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DDF-sql-services/daos/BureaoDao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../DDF-sql-services/daos/BureaoDao.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.Config" beforeDir="false" afterPath="$PROJECT_DIR$/App.Config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiMPdotNetDevEntities.Context.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DiMPdotNetDevEntities.Context.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiMPdotNetDevEntities.edmx" beforeDir="false" afterPath="$PROJECT_DIR$/DiMPdotNetDevEntities.edmx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiMPdotNetDevEntities.edmx.diagram" beforeDir="false" afterPath="$PROJECT_DIR$/DiMPdotNetDevEntities.edmx.diagram" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DiMPdotNetDevEntities.edmx.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Properties/AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Properties/AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daos/BladKommentarDao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/daos/BladKommentarDao.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daos/BladOphørtDao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/daos/BladOphørtDao.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daos/BladTilaegsDao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/daos/BladTilaegsDao.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daos/BladTilaegsTypeDao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/daos/BladTilaegsTypeDao.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daos/DagDao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/daos/DagDao.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daos/FundetMediePlaner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/daos/FundetMediePlaner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daos/KonkurrenceDaekningDao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/daos/KonkurrenceDaekningDao.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daos/MediaPlanNrDao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/daos/MediaPlanNrDao.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daos/MediePlanAviserDao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/daos/MediePlanAviserDao.cs" afterDir="false" />
+    <list default="true" id="f1d17a59-b552-402f-b298-e3b43ad60cbe" name="Default Changelist" comment="commit">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.dlu-persistence-api.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.dlu-persistence-api.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/System.Collections.Immutable.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/System.Collections.Immutable.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/System.Collections.Immutable.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/System.Runtime.CompilerServices.Unsafe.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/System.Runtime.CompilerServices.Unsafe.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/System.Runtime.CompilerServices.Unsafe.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/dlu-persistence-api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/dlu-persistence-api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/dlu-persistence-api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/dlu-persistence-api.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daos/MediePlanDao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/daos/MediePlanDao.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daos/MediePlanLinjerDao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/daos/MediePlanLinjerDao.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daos/MedieplanÆndringerDao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/daos/MedieplanÆndringerDao.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daos/PlaceringDao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/daos/PlaceringDao.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daos/RegionDao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/daos/RegionDao.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daos/StamBladDao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/daos/StamBladDao.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daos/StamBladUdsendigKontakterDao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/daos/StamBladUdsendigKontakterDao.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daos/StambladUdsendingKontaktTyperDao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/daos/StambladUdsendingKontaktTyperDao.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daos/SupportBilagDao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/daos/SupportBilagDao.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daos/webtilLæg.cs" beforeDir="false" afterPath="$PROJECT_DIR$/daos/webtilLæg.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dlu-persistence-api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/dlu-persistence-api.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/AvisTIlGrid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/models/AvisTIlGrid.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/MediePlanLinjer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/models/MediePlanLinjer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages.config" beforeDir="false" afterPath="$PROJECT_DIR$/packages.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/KonkurrenceDækningService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/services/KonkurrenceDækningService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/MediePlanAviserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/services/MediePlanAviserService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/MediePlanLinjerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/services/MediePlanLinjerService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/MediePlanNrService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/services/MediePlanNrService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/dlu-persistence-api.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/dlu-persistence-api.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/dlu-persistence-api.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/dlu-persistence-api.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/dlu-persistence-api.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/dlu-persistence-api.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/dlu-persistence-api.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/dlu-persistence-api.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/MediePlanService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/services/MediePlanService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/MediePlanÆndringsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/services/MediePlanÆndringsService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/SupportBilagService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/services/SupportBilagService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tblBladTillaeg.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tblBladTillaeg.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,12 +40,16 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/daos/MediePlanDao.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../DDF-sql-services/daos/BureaoDao.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/daos/MaterialeDao.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/daos/SupportBilagDao.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/App.Config" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../DDF-sql-services/Properties/AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/daos/MediaPlanNrDao.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/daos/ViewBookingListeDao.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/services/SupportBilagService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/daos/MediePlanLinjerDao.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/services/MediePlanService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/DiMPdotNetDevEntities.Context.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/viewBookingListe.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/daos/BladOphørtDao.cs" root0="FORCE_HIGHLIGHTING" />
@@ -92,8 +68,9 @@
         <option value="$PROJECT_DIR$/daos/ViewMediePlanerTIlBookingDao.cs" />
         <option value="$PROJECT_DIR$/daos/SupportBilagDao.cs" />
         <option value="$PROJECT_DIR$/services/SupportBilagService.cs" />
-        <option value="$PROJECT_DIR$/daos/MediePlanDao.cs" />
         <option value="$PROJECT_DIR$/daos/ViewBookingListeDao.cs" />
+        <option value="$PROJECT_DIR$/services/MediePlanService.cs" />
+        <option value="$PROJECT_DIR$/daos/MediePlanDao.cs" />
       </list>
     </option>
   </component>
@@ -142,8 +119,27 @@
       <workItem from="1578230923029" duration="1233000" />
       <workItem from="1578340093495" duration="772000" />
       <workItem from="1578420069295" duration="3742000" />
-      <workItem from="1578586801713" duration="1488000" />
+      <workItem from="1578586801713" duration="2021000" />
+      <workItem from="1578684344814" duration="1147000" />
+      <workItem from="1578735228285" duration="2028000" />
+      <workItem from="1578768445185" duration="1144000" />
+      <workItem from="1578776290174" duration="857000" />
     </task>
+    <task id="LOCAL-00001" summary="commit">
+      <created>1578595701637</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1578595701637</updated>
+    </task>
+    <task id="LOCAL-00002" summary="commit">
+      <created>1578595721288</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1578595721288</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,7 +160,23 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="93" y="93" width="2118" height="1224" key="DiffContextDialog" timestamp="1578769589376">
+      <screen x="0" y="0" width="2304" height="1410" />
+    </state>
+    <state x="93" y="93" width="2118" height="1224" key="DiffContextDialog/0.0.2304.1410@0.0.2304.1410" timestamp="1578769589375" />
+    <state x="848" y="417" key="RollbackChangesDialog" timestamp="1578776332300">
+      <screen x="0" y="0" width="2304" height="1410" />
+    </state>
+    <state x="848" y="417" key="RollbackChangesDialog/0.0.2304.1410@0.0.2304.1410" timestamp="1578776332300" />
+    <state x="745" y="439" key="Vcs.Push.Dialog.v2" timestamp="1578595740495">
+      <screen x="0" y="0" width="2304" height="1410" />
+    </state>
+    <state x="745" y="439" key="Vcs.Push.Dialog.v2/0.0.2304.1410@0.0.2304.1410" timestamp="1578595740495" />
     <state x="92" y="92" width="3656" height="1946" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1578422877738">
       <screen x="0" y="0" width="3840" height="2130" />
     </state>
@@ -177,6 +189,10 @@
       <screen x="0" y="0" width="3840" height="2130" />
     </state>
     <state x="1690" y="755" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.3840.2130@0.0.3840.2130" timestamp="1578420873482" />
+    <state x="855" y="497" key="git4idea.merge.GitPullDialog" timestamp="1578776349624">
+      <screen x="0" y="0" width="2304" height="1410" />
+    </state>
+    <state x="855" y="497" key="git4idea.merge.GitPullDialog/0.0.2304.1410@0.0.2304.1410" timestamp="1578776349624" />
     <state x="1576" y="513" key="run.anything.popup" timestamp="1577965384669">
       <screen x="0" y="0" width="3840" height="2130" />
     </state>
@@ -191,7 +207,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/daos/MediePlanDao.cs</url>
-          <line>439</line>
+          <line>421</line>
           <properties documentPath="$PROJECT_DIR$/daos/MediePlanDao.cs" initialLine="406">
             <startOffsets>
               <option value="-1" />
@@ -204,26 +220,26 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/daos/MediePlanDao.cs</url>
-          <line>493</line>
+          <line>475</line>
           <properties documentPath="$PROJECT_DIR$/daos/MediePlanDao.cs" initialLine="461">
             <startOffsets>
-              <option value="22546" />
+              <option value="21569" />
             </startOffsets>
             <endOffsets>
-              <option value="22601" />
+              <option value="21624" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/daos/MediePlanDao.cs</url>
-          <line>494</line>
+          <line>476</line>
           <properties documentPath="$PROJECT_DIR$/daos/MediePlanDao.cs" initialLine="462">
             <startOffsets>
-              <option value="22618" />
+              <option value="21641" />
             </startOffsets>
             <endOffsets>
-              <option value="22630" />
+              <option value="21653" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="5" />

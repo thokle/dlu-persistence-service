@@ -142,8 +142,9 @@ namespace dlu_persistence_api.daos
                               MmTotal = (decimal)(p.mmPris * 10),
 
                               MiljøTillæg = know.miljøtilæg.Value!= 0 ? know.miljøtilæg.Value : 0,
-                            koncern =   know.koncern
-                        
+                            koncern =   know.koncern,
+
+                            UgeavisID = d.BladID
                               
                           };
 

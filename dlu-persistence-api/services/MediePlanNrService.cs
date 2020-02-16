@@ -16,11 +16,11 @@ namespace dlu_persistence_api.services
             MediaPlanNrDao = new MediaPlanNrDao();
         }
 
-    public List<MediePlanNr> GetMediePlanNrByMedIePlanNr(int mediePlannr)
+        public MediePlanNr GetMediePlanNrByMedIePlanNr(int mediePlannr)
         {
             return MediaPlanNrDao.GetMediePlanNrDaoByMedPlanId(mediePlanId: mediePlannr);
-        }
 
+        }
        public  Tuple<int,int, short>  CreateOrUpDateMediePlanNr(tblMedieplanNr tblMedieplanNr)
         {
             return MediaPlanNrDao.CreateOrUpDateMediePlanNr(tblMedieplanNr);

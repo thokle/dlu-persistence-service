@@ -130,6 +130,9 @@ namespace dlu_persistence_api.models
         public List<webtilLæg> webtillages { get; set; }
         public List<string> tillæg { get; set; }
         public int BureaoOrdreNr { get; set; }
+        public decimal Total { get;  set; }
+        public int UgeavisID { get;  set; }
+        public string bureauOrdreNr { get; set; }
         public decimal? calTotalPris()
         {
           return  this.Farve4Max + Farve4Min + Farve4Pris + FarveMax + FarveMin + FarvePris;
