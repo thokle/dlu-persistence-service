@@ -94,6 +94,29 @@ namespace dlu_persistence_api.daos
             return res;
         }
 
+        public MediePlanLinjer GetMediePlanLinjertblOrdreLinjerNavision(int indryknignsuge)
+        {
+
+            var res = (from mplj in _entities.tblMedieplanLinjers
+                       join mp in _entities.tblMedieplans on mplj.MedieplanNr equals mp.MedieplanNr into mpmplj
+                       from mp in mpmplj.DefaultIfEmpty()
+                       join mplnr in _entities.tblMedieplanNrs on mplj.MedieplanNr equals mplnr.MedieplanNr into mpljmplnr
+                       from mplnr in mpljmplnr.DefaultIfEmpty()
+                       join stam in _entities.tblBladStamdatas on mplj.UgeavisID equals stam.BladID into stammplj
+                       from stam in stammplj.DefaultIfEmpty()
+                       where mplj.Version == mp.Version & mplnr.AktivVersion == mp.Version & mplnr.Status == 6 & mp.IndrykningsUge == indryknignsuge
+                       select new MediePlanLinjer() {
+                       
+                       
+                       }
+                       
+
+                       ).FirstOrDefault() ;
+
+
+            return res;
+        }
+
         public void Dispose()
         {
             _entities?.Dispose();

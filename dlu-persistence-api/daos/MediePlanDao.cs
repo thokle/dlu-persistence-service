@@ -496,6 +496,26 @@ RekvisitionsNr = mp.RekvisitionsNr,
             }
         }
 
+
+        public MediePlan GetMediePlanFortableOrdreNavision(int indrykningsuge)
+        {
+            var res = (from mp in entities.tblMedieplans
+                       join mplnr in entities.tblMedieplanNrs on mp.MedieplanNr equals mplnr.MedieplanNr into mpmpnlr
+                       from mplnr in mpmpnlr.DefaultIfEmpty()
+                       join nav in entities.NavisionContacts on mp.AnnoncørNo_ equals nav.No_ into mpnav
+                       from nav in mpnav.DefaultIfEmpty()
+                       where mp.IndrykningsUge == indrykningsuge & mplnr.AktivVersion > 100 & mplnr.Status == 6 
+                       select new MediePlan()
+                       {
+
+                       }
+
+                       ).SingleOrDefault();
+
+
+            return res;
+        }
+
         public MediePlan GetMediePlanFornavision(int indrykningsUge)
         {
 

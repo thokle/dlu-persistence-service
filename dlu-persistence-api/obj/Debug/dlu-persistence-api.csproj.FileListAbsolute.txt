@@ -41,3 +41,6 @@ C:/Users/Thomas Kleist/source/repos/DLUPersistence-service-api/dlu-persistence-a
 /Users/thomaskleist/Projects/dlu-persistence-service/dlu-persistence-api/obj/Debug/dlu-persistence-api.csprojAssemblyReference.cache
 /Users/thomaskleist/Projects/dlu-persistence-service/dlu-persistence-api/obj/Debug/dlu-persistence-api.dll
 /Users/thomaskleist/Projects/dlu-persistence-service/dlu-persistence-api/obj/Debug/dlu-persistence-api.pdb
+C:\Users\Thomas Kleist\source\repos\DLUPersistence-service-api\dlu-persistence-api\obj\Debug\dlu-persistence-api.csprojAssemblyReference.cache
+C:\Users\Thomas Kleist\source\repos\DLUPersistence-service-api\dlu-persistence-api\obj\Debug\dlu-persistence-api.dll
+C:\Users\Thomas Kleist\source\repos\DLUPersistence-service-api\dlu-persistence-api\obj\Debug\dlu-persistence-api.pdb
