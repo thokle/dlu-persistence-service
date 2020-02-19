@@ -97,6 +97,8 @@ namespace dlu_persistence_api.daos
         public MediePlanLinjer GetMediePlanLinjertblOrdreLinjerNavision(int indryknignsuge)
         {
 
+
+            _entities.Database.SqlQuery("", null).  
             var res = (from mplj in _entities.tblMedieplanLinjers
                        join mp in _entities.tblMedieplans on mplj.MedieplanNr equals mp.MedieplanNr into mpmplj
                        from mp in mpmplj.DefaultIfEmpty()
