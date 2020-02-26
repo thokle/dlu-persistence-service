@@ -1,33 +1,32 @@
+using dlu_persistence_api.daos;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Core.Common;
 using System.Threading.Tasks;
-using dlu_persistence_api.daos;
 namespace dlu_persistence_api.services
 {
     public class StamBladService
     {
         private StamBladDao dao;
-      
+
 
         public StamBladService()
         {
             dao = new StamBladDao();
         }
-     
 
-     
+
+
 
         public string GetTableGeoCode()
         {
             return dao.GetTblGetKode();
         }
 
-     
+
 
         public string GetTablePostNrSøgning()
         {
-             return dao.GetPostNrSøgning();
+            return dao.GetPostNrSøgning();
         }
 
         public string GetTableHoveedGruppe()
@@ -70,6 +69,6 @@ namespace dlu_persistence_api.services
             return dao.UpdateEjerforholdForAviser(oldejeforhold, newejerforhold);
         }
 
-      
+
     }
 }

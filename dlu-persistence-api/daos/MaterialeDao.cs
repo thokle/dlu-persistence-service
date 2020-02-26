@@ -1,10 +1,9 @@
+using dlu_persistence_api.exceptions;
+using Newtonsoft.Json;
 using System;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using dlu_persistence_api.exceptions;
 
 namespace dlu_persistence_api.daos
 {
@@ -17,8 +16,8 @@ namespace dlu_persistence_api.daos
 
         public MaterialeDao()
         {
-           _entities = new DiMPdotNetDevEntities();
-           
+            _entities = new DiMPdotNetDevEntities();
+
         }
         /// <summary>
         /// 
@@ -31,12 +30,17 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from m in _entities.tblMateriales
-                    where m.MedieplanNr == ma
-                    select new
-                    {
-                        m.MedieplanNr, m.ErSendt, m.FilNavn, m.FilSti, m.SkalSendes, m.UgeavisID
+                          where m.MedieplanNr == ma
+                          select new
+                          {
+                              m.MedieplanNr,
+                              m.ErSendt,
+                              m.FilNavn,
+                              m.FilSti,
+                              m.SkalSendes,
+                              m.UgeavisID
 
-                    };
+                          };
 
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
@@ -61,7 +65,7 @@ namespace dlu_persistence_api.daos
             }
             catch (Exception e)
             {
-                throw new FormattedDbEntityValidationException(e.InnerException );
+                throw new FormattedDbEntityValidationException(e.InnerException);
             }
         }
 

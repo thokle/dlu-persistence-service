@@ -1,24 +1,24 @@
+using dlu_persistence_api.daos;
 using System.Threading.Tasks;
-using  dlu_persistence_api.daos;
 namespace dlu_persistence_api.services
 {
-    public class OrdreGebyrNavisionService: IOrdreGebyrNavisionService
+    public class OrdreGebyrNavisionService : IOrdreGebyrNavisionService
     {
 
         private OrdreGebyrNavisionDao _navisionDao;
 
         public OrdreGebyrNavisionService()
         {
-            _navisionDao = new OrdreGebyrNavisionDao() ;
+            _navisionDao = new OrdreGebyrNavisionDao();
         }
-       
+
         public string GetOrderGebyNavisionByOrderId(int orderid)
         {
             return _navisionDao.GetOrderGebyNavisionByOrderId(orderid);
         }
 
-       
-      
+
+
 
         public string GetOrderGebyNavisionBySælgerkode(string saelgerkode)
         {

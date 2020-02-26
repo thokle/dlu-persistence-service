@@ -1,10 +1,10 @@
 using dlu_persistence_api;
-using  Nancy;
 using dlu_persistence_api.services;
-using  Nancy.ModelBinding;
+using Nancy;
+using Nancy.ModelBinding;
 namespace DLUPersistenceServiceModule.controllers
 {
-    public sealed class AnnonceKontrolController: NancyModule
+    public sealed class AnnonceKontrolController : NancyModule
     {
         public AnnonceKontrolController(AnnoceKontrolService service)
         {
@@ -14,10 +14,10 @@ namespace DLUPersistenceServiceModule.controllers
             {
                 var res = this.Bind<tblAnnoncekontrol>();
 
-               return service.CreateOrUpdate(res);
+                return service.CreateOrUpdate(res);
 
             });
-            
+
         }
     }
 }

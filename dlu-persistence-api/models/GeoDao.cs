@@ -1,13 +1,12 @@
-﻿using System;
+﻿using dlu_persistence_api.exceptions;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using dlu_persistence_api.exceptions;
-using Newtonsoft.Json;
-using dlu_persistence_api.models;
 namespace dlu_persistence_api.daos
 {
 
-    public     class GeoDao
+    public class GeoDao
     {
         public DiMPdotNetDevEntities entities;
         public GeoDao()
@@ -25,7 +24,7 @@ namespace dlu_persistence_api.daos
                           {
                               GeoKodeID1 = gc.GeoKodeID,
                               GeoKodeNavn1 = gc.GeoKodeNavn,
-                            
+
                           };
                 return res.ToList<GeoKode>();
             }
@@ -49,13 +48,14 @@ namespace dlu_persistence_api.daos
                               gc.GeoKodeSortKey
 
                           };
-                   return JsonConvert.SerializeObject(res, Formatting.Indented);
-            } catch(Exception e)
+                return JsonConvert.SerializeObject(res, Formatting.Indented);
+            }
+            catch (Exception e)
             {
                 throw new FormattedDbEntityValidationException(e.InnerException);
             }
         }
 
-        
+
     }
 }

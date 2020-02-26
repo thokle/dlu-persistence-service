@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using dlu_persistence_api.daos;
 using System.Threading.Tasks;
-using dlu_persistence_api.services.interfaces;
-using dlu_persistence_api.daos;
 namespace dlu_persistence_api.services
 {
-    public class KommentartService 
+    public class KommentartService
     {
         private BladKommentarDao dao;
 
@@ -20,6 +15,6 @@ namespace dlu_persistence_api.services
             return dao.CreateBladKommentar(tblBladKommentar);
         }
 
-     
+
     }
 }

@@ -1,16 +1,13 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DDF_sql_services.daos
 {
-   public class DLUContactDao
+    public class DLUContactDao
     {
         private DDFEntities entities1;
-        
+
         public DLUContactDao()
         {
             entities1 = new DDFEntities();
@@ -23,7 +20,7 @@ namespace DDF_sql_services.daos
             {
                 var res = from dlucontac in entities1.DLU_Contact select new { };
 
-                return JsonConvert.SerializeObject(res,  Formatting.Indented, new JsonSerializerSettings()
+                return JsonConvert.SerializeObject(res, Formatting.Indented, new JsonSerializerSettings()
                 {
                     ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                 });

@@ -1,5 +1,4 @@
 using System;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace dlu_persistence_api.services
@@ -20,11 +19,11 @@ namespace dlu_persistence_api.services
         string GetByNavnPostNr(int postnr);
         Tuple<string, int> GetLatestId();
 
-       string GetStamBladEfterEjerforhold(string ejerforhold);
+        string GetStamBladEfterEjerforhold(string ejerforhold);
 
-       Task<int> UpdateEjerforholdForAviser(string oldejeforhold, string newejerforhold);
+        Task<int> UpdateEjerforholdForAviser(string oldejeforhold, string newejerforhold);
 
-         string GetAllIds();
+        string GetAllIds();
 
     }
 }

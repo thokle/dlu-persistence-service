@@ -1,17 +1,15 @@
+using dlu_persistence_api.exceptions;
+using Newtonsoft.Json;
 using System;
-using System.Data.Entity.Core.Metadata.Edm;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using dlu_persistence_api.exceptions;
 namespace dlu_persistence_api.daos
 {
     /// <summary>
     /// 
     /// </summary>
-    public class GrupperDao: IDisposable
+    public class GrupperDao : IDisposable
     {
         private DiMPdotNetDevEntities _entities;
 
@@ -22,7 +20,7 @@ namespace dlu_persistence_api.daos
                 _entities.Configuration.LazyLoadingEnabled = true;
             }
         }
-        
+
         public void Dispose()
         {
             _entities?.Dispose();
@@ -39,18 +37,25 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from gr in _entities.tblGruppers
-                    where gr.GruppeID == id
-                    orderby gr.GruppeID
-                    select new
-                    {
-                        gr.GruppeID, gr.timestamp, gr.Version, gr.GruppeNavn, gr.GruppeType, gr.MaterialeModtager,
-                        gr.OrdreEmail, gr.AntalBladeForValg, gr.GruppeHovedbladID
-                    };
+                          where gr.GruppeID == id
+                          orderby gr.GruppeID
+                          select new
+                          {
+                              gr.GruppeID,
+                              gr.timestamp,
+                              gr.Version,
+                              gr.GruppeNavn,
+                              gr.GruppeType,
+                              gr.MaterialeModtager,
+                              gr.OrdreEmail,
+                              gr.AntalBladeForValg,
+                              gr.GruppeHovedbladID
+                          };
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
             catch (Exception e)
             {
-                throw new  DaoExceptions("GetGruppeByGruppeID", e.InnerException);
+                throw new DaoExceptions("GetGruppeByGruppeID", e.InnerException);
             }
         }
         /// <summary>
@@ -64,13 +69,20 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from gr in _entities.tblGruppers
-                    where gr.GruppeNavn == gruppeNavn
-                    orderby gr.GruppeNavn
-                    select new
-                    {
-                        gr.GruppeID, gr.timestamp, gr.Version, gr.GruppeNavn, gr.GruppeType, gr.MaterialeModtager,
-                        gr.OrdreEmail, gr.AntalBladeForValg, gr.GruppeHovedbladID
-                    };
+                          where gr.GruppeNavn == gruppeNavn
+                          orderby gr.GruppeNavn
+                          select new
+                          {
+                              gr.GruppeID,
+                              gr.timestamp,
+                              gr.Version,
+                              gr.GruppeNavn,
+                              gr.GruppeType,
+                              gr.MaterialeModtager,
+                              gr.OrdreEmail,
+                              gr.AntalBladeForValg,
+                              gr.GruppeHovedbladID
+                          };
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
             catch (Exception e)
@@ -89,15 +101,22 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from gr in _entities.tblGruppers
-                    where gr.GruppeID == type
-                    orderby gr.GruppeNavn
-                    select new
-                    {
-                        gr.GruppeID, gr.timestamp, gr.Version, gr.GruppeNavn, gr.GruppeType, gr.MaterialeModtager,
-                        gr.OrdreEmail, gr.AntalBladeForValg, gr.GruppeHovedbladID
-                    };
+                          where gr.GruppeID == type
+                          orderby gr.GruppeNavn
+                          select new
+                          {
+                              gr.GruppeID,
+                              gr.timestamp,
+                              gr.Version,
+                              gr.GruppeNavn,
+                              gr.GruppeType,
+                              gr.MaterialeModtager,
+                              gr.OrdreEmail,
+                              gr.AntalBladeForValg,
+                              gr.GruppeHovedbladID
+                          };
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
-                
+
             }
             catch (Exception e)
             {
@@ -116,12 +135,13 @@ namespace dlu_persistence_api.daos
             {
                 _entities.tblGruppers.AddOrUpdate(tblGrupper);
                 return _entities.SaveChangesAsync();
-            } catch(Exception e)
+            }
+            catch (Exception e)
 
             {
                 throw new FormattedDbEntityValidationException(e.InnerException);
             }
         }
-       
+
     }
 }

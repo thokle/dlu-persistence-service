@@ -1,14 +1,12 @@
-using System;
-
 namespace dlu_persistence_api.models
 {
     public class StamBlad
     {
-       
+
 
         public StamBlad()
         {
-            
+
         }
 
 
@@ -16,7 +14,7 @@ namespace dlu_persistence_api.models
 
         public string Navn { get; set; }
 
-        public string Navn2{ get; set; }
+        public string Navn2 { get; set; }
 
         public string Adresse { get; set; }
 
@@ -30,7 +28,7 @@ namespace dlu_persistence_api.models
 
         public string Cvr { get; set; }
 
-       
+
 
         public string Kontaktperson { get; set; }
 
@@ -40,7 +38,7 @@ namespace dlu_persistence_api.models
 
         public byte? MedlemAAr { get; set; }
 
-    
+
 
         public string Ejerforhold { get; set; }
 
@@ -153,16 +151,18 @@ namespace dlu_persistence_api.models
         public bool Overfoert { get; set; }
 
         public byte[] Timestamp { get; set; }
-        public string DelOmraadeNavn { get;  set; }
-        public string DagNavn { get;  set; }
-        public string HovedGruppeNavn { get;  set; }
-        public string GeoKodeNavn { get;  set; }
+        public string DelOmraadeNavn { get; set; }
+        public string DagNavn { get; set; }
+        public string HovedGruppeNavn { get; set; }
+        public string GeoKodeNavn { get; set; }
         public string RegionNavn { get; set; }
         public byte? setMedlemMaaned { set => medlemMaaned = value; }
-        public string getMedlemMaaned { get
+        public string getMedlemMaaned
+        {
+            get
             {
                 var maaned = "";
-                switch(medlemMaaned)
+                switch (medlemMaaned)
                 {
                     case 0:
                         maaned = "Januar";
@@ -184,7 +184,7 @@ namespace dlu_persistence_api.models
                         break;
                     case 6:
 
-                        maaned = "Juli";  
+                        maaned = "Juli";
                         break;
                     case 7:
                         maaned = "August";
@@ -204,6 +204,7 @@ namespace dlu_persistence_api.models
 
                 }
                 return maaned;
-            } }
+            }
+        }
     }
 }

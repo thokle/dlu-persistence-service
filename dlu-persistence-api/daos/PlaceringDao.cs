@@ -1,11 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using dlu_persistence_api.exceptions;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using dlu_persistence_api.exceptions;
 namespace dlu_persistence_api.daos
 {
     public class PlaceringDao
@@ -25,8 +23,8 @@ namespace dlu_persistence_api.daos
                 var res = from pl in entities.tblPlacerings
                           select new Placering
                           {
-                             PlaceringID =  pl.PlaceringID,
-                            Betegenlse =   pl.Betegnelse
+                              PlaceringID = pl.PlaceringID,
+                              Betegenlse = pl.Betegnelse
                           };
                 return res.ToList<Placering>();
             }
@@ -50,7 +48,7 @@ namespace dlu_persistence_api.daos
 
                 throw new Exception(e.Message);
             }
-           
+
         }
 
         private byte GetLatestID()

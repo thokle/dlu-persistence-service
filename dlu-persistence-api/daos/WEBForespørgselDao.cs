@@ -1,10 +1,9 @@
+using dlu_persistence_api.exceptions;
+using Newtonsoft.Json;
 using System;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using System.Threading.Tasks;
-using dlu_persistence_api.exceptions;
-using Newtonsoft.Json;
 
 namespace dlu_persistence_api.daos
 {
@@ -18,7 +17,7 @@ namespace dlu_persistence_api.daos
         public WebForespørgselDao()
         {
             _entities = new DiMPdotNetDevEntities();
-           
+
         }
 
 
@@ -33,13 +32,27 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from we in _entities.tblWEBForespørgsel
-                    where we.MedieplanNr == mediePlanNr
-                    orderby we.MedieplanNr
-                    select new
-                    {
-                        we.MedieplanNr, we.Afsluttet, we.Bemærkning, we.Format, we.Mediebureau, we.Type, we.AnnoncørNo_, we.AntalBlade, we.AntalFarver, we.AntalIndrykninger,
-                        we.AntalUdsendinger, we.KonsulentCode, we.SvarInden, we.ForespørgselID, we.PlaceringID, we.PlaceringUB 
-                    };
+                          where we.MedieplanNr == mediePlanNr
+                          orderby we.MedieplanNr
+                          select new
+                          {
+                              we.MedieplanNr,
+                              we.Afsluttet,
+                              we.Bemærkning,
+                              we.Format,
+                              we.Mediebureau,
+                              we.Type,
+                              we.AnnoncørNo_,
+                              we.AntalBlade,
+                              we.AntalFarver,
+                              we.AntalIndrykninger,
+                              we.AntalUdsendinger,
+                              we.KonsulentCode,
+                              we.SvarInden,
+                              we.ForespørgselID,
+                              we.PlaceringID,
+                              we.PlaceringUB
+                          };
 
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
@@ -48,7 +61,7 @@ namespace dlu_persistence_api.daos
                 throw new DaoExceptions("GetWEBForespørgselByMedieplanNr ", e.InnerException);
             }
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -61,13 +74,27 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from we in _entities.tblWEBForespørgsel
-                    where we.AnnoncørNo_ == annoncørid
-                    orderby we.AnnoncørNo_
-                    select new
-                    {
-                        we.MedieplanNr, we.Afsluttet, we.Bemærkning, we.Format, we.Mediebureau, we.Type, we.AnnoncørNo_, we.AntalBlade, we.AntalFarver, we.AntalIndrykninger,
-                        we.AntalUdsendinger, we.KonsulentCode, we.SvarInden, we.ForespørgselID, we.PlaceringID, we.PlaceringUB 
-                    };
+                          where we.AnnoncørNo_ == annoncørid
+                          orderby we.AnnoncørNo_
+                          select new
+                          {
+                              we.MedieplanNr,
+                              we.Afsluttet,
+                              we.Bemærkning,
+                              we.Format,
+                              we.Mediebureau,
+                              we.Type,
+                              we.AnnoncørNo_,
+                              we.AntalBlade,
+                              we.AntalFarver,
+                              we.AntalIndrykninger,
+                              we.AntalUdsendinger,
+                              we.KonsulentCode,
+                              we.SvarInden,
+                              we.ForespørgselID,
+                              we.PlaceringID,
+                              we.PlaceringUB
+                          };
 
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
@@ -76,7 +103,7 @@ namespace dlu_persistence_api.daos
                 throw new DaoExceptions("GetWEBForespørgselByAnnoncørNo ", e.InnerException);
             }
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -88,19 +115,33 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from we in _entities.tblWEBForespørgsel
-                    where we.Mediebureau == burea
-                    orderby we.Mediebureau
-                    select new
-                    {
-                        we.MedieplanNr, we.Afsluttet, we.Bemærkning, we.Format, we.Mediebureau, we.Type, we.AnnoncørNo_, we.AntalBlade, we.AntalFarver, we.AntalIndrykninger,
-                        we.AntalUdsendinger, we.KonsulentCode, we.SvarInden, we.ForespørgselID, we.PlaceringID, we.PlaceringUB 
-                    };
+                          where we.Mediebureau == burea
+                          orderby we.Mediebureau
+                          select new
+                          {
+                              we.MedieplanNr,
+                              we.Afsluttet,
+                              we.Bemærkning,
+                              we.Format,
+                              we.Mediebureau,
+                              we.Type,
+                              we.AnnoncørNo_,
+                              we.AntalBlade,
+                              we.AntalFarver,
+                              we.AntalIndrykninger,
+                              we.AntalUdsendinger,
+                              we.KonsulentCode,
+                              we.SvarInden,
+                              we.ForespørgselID,
+                              we.PlaceringID,
+                              we.PlaceringUB
+                          };
 
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
             catch (Exception e)
             {
-                throw new DaoExceptions("GetWEBForespørgselByMediebureau " , e.InnerException);
+                throw new DaoExceptions("GetWEBForespørgselByMediebureau ", e.InnerException);
             }
         }
 
@@ -122,8 +163,8 @@ namespace dlu_persistence_api.daos
                 throw new FormattedDbEntityValidationException(e);
             }
         }
-        
-        
+
+
         public void Dispose()
         {
             _entities?.Dispose();

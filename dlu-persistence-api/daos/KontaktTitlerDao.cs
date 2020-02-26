@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using dlu_persistence_api.exceptions;
+using Newtonsoft.Json;
+using System;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using dlu_persistence_api.exceptions;
-using Newtonsoft.Json;
 
 namespace dlu_persistence_api.daos
 {
@@ -25,7 +22,8 @@ namespace dlu_persistence_api.daos
                 var res = from di in entities.tblKontaktTitlers
                           select new
                           {
-                            di.TitelID, di.Titel
+                              di.TitelID,
+                              di.Titel
                           };
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }

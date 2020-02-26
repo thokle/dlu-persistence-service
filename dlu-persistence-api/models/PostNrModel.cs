@@ -6,8 +6,8 @@
         {
         }
 
-        public string PostBy { get;  set; }
-        public int Hustande { get;  set; }
-        public int PostNr { get;  set; }
+        public string PostBy { get; set; }
+        public int Hustande { get; set; }
+        public int PostNr { get; set; }
     }
 }

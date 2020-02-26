@@ -1,12 +1,8 @@
+using dlu_persistence_api.exceptions;
+using dlu_persistence_api.models;
 using System;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using  dlu_persistence_api.exceptions;
-using dlu_persistence_api.models;
-using System.Collections.Generic;
 namespace dlu_persistence_api.daos
 {
     public class MediaPlanNrDao
@@ -33,20 +29,31 @@ namespace dlu_persistence_api.daos
                           orderby m.Status
                           select new MediePlanNr
                           {
-                              AktivVersion = m.AktivVersion, AnvendtPrisberegningVersion = m.AnvendtPrisberegningVersion, AnvendtMiljoeTillaeg = m.AnvendtMiljøTillæg, BrugtGruppeVersion = m.BrugtGruppeVersion,
-                              MedieplanNr = m.MedieplanNr, FakturaBemaerkning1 = m.FakturaBemærkning1, FakturaBemaerkning2 = m.FakturaBemærkning2, FakturaBemaerkning3 = m.FakturaBemærkning3, Kommentar = m.Kommentar,
-                              MaterialeModtaget = m.MaterialeModtaget, OverførtFraPrisforespoergsel = m.OverførtFraPrisforespørgsel, Status = m.Status, SupportBilagVedlagt = m.SupportBilagVedlagt, SupportBilagVist = m.SupportBilagVist
-                         
-                            
+                              AktivVersion = m.AktivVersion,
+                              AnvendtPrisberegningVersion = m.AnvendtPrisberegningVersion,
+                              AnvendtMiljoeTillaeg = m.AnvendtMiljøTillæg,
+                              BrugtGruppeVersion = m.BrugtGruppeVersion,
+                              MedieplanNr = m.MedieplanNr,
+                              FakturaBemaerkning1 = m.FakturaBemærkning1,
+                              FakturaBemaerkning2 = m.FakturaBemærkning2,
+                              FakturaBemaerkning3 = m.FakturaBemærkning3,
+                              Kommentar = m.Kommentar,
+                              MaterialeModtaget = m.MaterialeModtaget,
+                              OverførtFraPrisforespoergsel = m.OverførtFraPrisforespørgsel,
+                              Status = m.Status,
+                              SupportBilagVedlagt = m.SupportBilagVedlagt,
+                              SupportBilagVist = m.SupportBilagVist
 
 
 
-                    };
+
+
+                          };
                 return res.FirstOrDefault();
             }
             catch (Exception e)
             {
-                throw new DaoExceptions("MediaPlanNrDao GetMediePlanNrDaoByMedPlanId " , e.InnerException);
+                throw new DaoExceptions("MediaPlanNrDao GetMediePlanNrDaoByMedPlanId ", e.InnerException);
             }
         }
 
@@ -56,29 +63,29 @@ namespace dlu_persistence_api.daos
         /// <param name="tblMedieplanNr"></param>
         /// <returns></returns>
         /// <exception cref="DaoExceptions"></exception>
-        public Tuple<int,int,short> CreateOrUpDateMediePlanNr(tblMedieplanNr tblMedieplanNr)
+        public Tuple<int, int, short> CreateOrUpDateMediePlanNr(tblMedieplanNr tblMedieplanNr)
         {
             try
             {
                 _entities.tblMedieplanNrs.AddOrUpdate(tblMedieplanNr);
-             var s =   _entities.SaveChanges();
+                var s = _entities.SaveChanges();
                 var mediePlanNr = GetNextMediePlanNr();
-                return new Tuple<int, int,short>(s, mediePlanNr.Item1, mediePlanNr.Item2);
-             }
+                return new Tuple<int, int, short>(s, mediePlanNr.Item1, mediePlanNr.Item2);
+            }
             catch (Exception e)
             {
                 Console.WriteLine("Create Or UpdateMediePlanNr Error " + e.InnerException + " " + e.StackTrace);
                 throw new Exception();
             }
         }
-      
 
-        private Tuple<int,short> GetNextMediePlanNr()
+
+        private Tuple<int, short> GetNextMediePlanNr()
         {
             try
             {
                 var res = _entities.tblMedieplanNrs.OrderByDescending(s => s.MedieplanNr).First();
-                return new Tuple<int,short>(res.MedieplanNr, res.AktivVersion);
+                return new Tuple<int, short>(res.MedieplanNr, res.AktivVersion);
 
             }
             catch (Exception ex)
@@ -86,8 +93,8 @@ namespace dlu_persistence_api.daos
                 Console.WriteLine("Get NextMedioePlanNr Error " + ex.StackTrace);
                 throw new Exception();
             }
-    
-           
+
+
         }
 
 

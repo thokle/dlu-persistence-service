@@ -12,7 +12,7 @@ namespace dlu_persistence_api.exceptions
         {
         }
 
-        public DaoExceptions(string message, Exception inner): base(message, inner)
+        public DaoExceptions(string message, Exception inner) : base(message, inner)
         {
         }
 

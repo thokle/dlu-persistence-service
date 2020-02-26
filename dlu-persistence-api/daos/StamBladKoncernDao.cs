@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace dlu_persistence_api.daos
 {
@@ -19,8 +16,12 @@ namespace dlu_persistence_api.daos
 
         public List<Koncern> GetAllKoncers()
         {
-            var res = (from k in entities.tblStambladKoncerns orderby k.koncern_name ascending select new Koncern {
-            koncern_name =  k.koncern_name } ).ToList<Koncern>();
+            var res = (from k in entities.tblStambladKoncerns
+                       orderby k.koncern_name ascending
+                       select new Koncern
+                       {
+                           koncern_name = k.koncern_name
+                       }).ToList<Koncern>();
             return res;
         }
 
@@ -28,7 +29,7 @@ namespace dlu_persistence_api.daos
         {
             entities.tblStambladKoncerns.AddOrUpdate(tbl);
             return entities.SaveChanges();
-               
+
         }
     }
 

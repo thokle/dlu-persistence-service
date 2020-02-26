@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Nancy;
-using dlu_persistence_api;
+﻿using dlu_persistence_api;
 using dlu_persistence_api.services;
-using Newtonsoft.Json;
-using Nancy.IO;
+using Nancy;
 using Nancy.Extensions;
+using Nancy.IO;
+using Newtonsoft.Json;
 
 namespace DLUPersistenceServiceModule.controllers
 {
-    public class KommentartController: NancyModule
+    public class KommentartController : NancyModule
     {
         public KommentartController(KommentartService service)
         {
@@ -19,7 +15,7 @@ namespace DLUPersistenceServiceModule.controllers
             Post("/kommentar", o =>
             {
                 var res = RequestStream.FromStream(Request.Body).AsString();
-                 service.CreateBladKommentar(Convert(res));
+                service.CreateBladKommentar(Convert(res));
                 return Response.AsJson("{\"kommentart\": \"oprettet\"}");
             });
         }
@@ -29,7 +25,7 @@ namespace DLUPersistenceServiceModule.controllers
             var res = JsonConvert.DeserializeObject<tblBladKommentar>(i);
             return res;
 
-              
+
         }
 
 

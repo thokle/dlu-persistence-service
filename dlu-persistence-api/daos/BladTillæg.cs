@@ -8,17 +8,18 @@ namespace dlu_persistence_api.daos
         public BladTillæg()
         {
             bladTillægsTypers = (from bt in di.tblBladTillaegsTypes
-                       select new BladTillægsTyper()
-                       {
-                           id = bt.id, type = bt.type
-                       }).ToList<BladTillægsTyper>();
+                                 select new BladTillægsTyper()
+                                 {
+                                     id = bt.id,
+                                     type = bt.type
+                                 }).ToList<BladTillægsTyper>();
         }
 
-        public int? BladId { get;  set; }
-        public double? Pris { get;  set; }
-        public string type { get;  set; }
+        public int? BladId { get; set; }
+        public double? Pris { get; set; }
+        public string type { get; set; }
         public List<BladTillægsTyper> bladTillægsTypers { get; set; }
-        public bool? fastpris { get;  set; }
-        public bool? mmpris { get;  set; }
+        public bool? fastpris { get; set; }
+        public bool? mmpris { get; set; }
     }
 }

@@ -1,13 +1,8 @@
-﻿using System;
+﻿using dlu_persistence_api.daos;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using dlu_persistence_api.services.interfaces;
-using dlu_persistence_api.daos;
 namespace dlu_persistence_api.services
 {
-    public class AktiveAviserTIlGridService 
+    public class AktiveAviserTIlGridService
     {
         private AktiveAviserTIlGridDao gridDao;
         public AktiveAviserTIlGridService()

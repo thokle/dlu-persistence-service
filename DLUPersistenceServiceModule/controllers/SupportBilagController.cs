@@ -1,11 +1,11 @@
 using dlu_persistence_api;
-using Nancy;
-using  Nancy.ModelBinding;
 using dlu_persistence_api.services;
+using Nancy;
+using Nancy.ModelBinding;
 
 namespace DLUPersistenceServiceModule.controllers
 {
-    public sealed class SupportBilagController: NancyModule
+    public sealed class SupportBilagController : NancyModule
     {
         public SupportBilagController(SupportBilagService service)
         {

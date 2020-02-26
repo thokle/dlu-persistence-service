@@ -1,13 +1,12 @@
-﻿using System;
-namespace dlu_persistence_api.models
+﻿namespace dlu_persistence_api.models
 {
     public class By
     {
 
         private int postNr;
-private string postBy;
-private int husstane;
- private double maxDækningsGrad;
+        private string postBy;
+        private int husstane;
+        private double maxDækningsGrad;
         public By()
         {
         }

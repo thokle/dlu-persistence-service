@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.Migrations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity.Migrations;
 
 namespace dlu_persistence_api.daos
 {
-   public class PrislisteDao
+    public class PrislisteDao
     {
         private DiMPdotNetDevEntities entities;
 

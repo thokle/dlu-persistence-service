@@ -1,16 +1,15 @@
 using dlu_persistence_api;
 using dlu_persistence_api.services;
 using Nancy;
-using  Nancy.Json.Converters;
 using Nancy.ModelBinding;
 
 namespace DLUPersistenceServiceModule.controllers
 {
-    public sealed class WebforspørgelsesLinjerController: NancyModule 
+    public sealed class WebforspørgelsesLinjerController : NancyModule
     {
         public WebforspørgelsesLinjerController(WebforspørgelsesLinjerService service)
         {
-            Get("/webforspørgelsesLinjer/bladid/{bladid:int}", o => service.GetForspørgelsesLinjerByBladId(o.bladid) );
+            Get("/webforspørgelsesLinjer/bladid/{bladid:int}", o => service.GetForspørgelsesLinjerByBladId(o.bladid));
             Post("/webforspørgelsesLinjer/create", o =>
             {
 

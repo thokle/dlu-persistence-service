@@ -1,5 +1,5 @@
+using dlu_persistence_api.daos;
 using System.Threading.Tasks;
-using  dlu_persistence_api.daos;
 namespace dlu_persistence_api.services
 {
     public class KonkurrenceDækningService
@@ -11,7 +11,7 @@ namespace dlu_persistence_api.services
         {
             _konkurrenceDaekningDao = new KonkurrenceDaekningDao();
         }
-        
+
         public string GetKomkurrenceDækningPrPostNr(int postnr)
         {
 

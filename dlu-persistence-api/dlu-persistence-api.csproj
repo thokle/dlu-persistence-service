@@ -401,9 +401,11 @@
     </Compile>
     <Compile Include="services\AktiveAviserTIlGridService.cs" />
     <Compile Include="services\AnnoceKontrolService.cs" />
+    <Compile Include="services\AnnonceKontrolService.cs" />
     <Compile Include="services\BladDækningService.cs" />
     <Compile Include="services\BladTilaegsServcie.cs" />
     <Compile Include="services\BladTilaegsTypeService.cs" />
+    <Compile Include="services\ChangeStatusService.cs" />
     <Compile Include="services\DelOmraadeService.cs" />
     <Compile Include="services\EjerforholdService.cs" />
     <Compile Include="services\FakturaFejlTekstService.cs" />
@@ -475,6 +477,7 @@
     <Compile Include="services\PriceAskingService.cs" />
     <Compile Include="services\PriserPrBladAArService.cs" />
     <Compile Include="services\PriserService.cs" />
+    <Compile Include="services\SendTilNavisionService.cs" />
     <Compile Include="services\StamBladUdsendigKontakterService.cs" />
     <Compile Include="services\RegionService.cs" />
     <Compile Include="services\SalesPersonService.cs" />
@@ -838,7 +841,7 @@
   </Target>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" BuildVersion_StartDate="2000/1/1" BuildVersion_UseGlobalSettings="True" BuildVersion_UseUniversalClock="True" />
+      <UserProperties BuildVersion_UseUniversalClock="True" BuildVersion_UseGlobalSettings="True" BuildVersion_StartDate="2000/1/1" BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" />
     </VisualStudio>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

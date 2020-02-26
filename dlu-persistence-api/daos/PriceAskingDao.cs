@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using dlu_persistence_api.exceptions;
+using Newtonsoft.Json;
+using System;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using  dlu_persistence_api.exceptions;
-using Newtonsoft.Json;
 
 namespace dlu_persistence_api.daos
 {
@@ -40,14 +38,14 @@ namespace dlu_persistence_api.daos
                               p.name
 
                           };
-                return Newtonsoft.Json.JsonConvert.SerializeObject(res ,Formatting.Indented);
+                return Newtonsoft.Json.JsonConvert.SerializeObject(res, Formatting.Indented);
             }
             catch (Exception e)
             {
                 throw new FormattedDbEntityValidationException(e.InnerException);
             }
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -67,7 +65,7 @@ namespace dlu_persistence_api.daos
             {
                 throw new FormattedDbEntityValidationException(e.InnerException);
             }
-           
+
         }
     }
 }

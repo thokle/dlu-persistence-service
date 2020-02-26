@@ -1,14 +1,14 @@
+using dlu_persistence_api.daos;
 using System.Threading.Tasks;
-using  dlu_persistence_api.daos;
 namespace dlu_persistence_api.services
 {
-    public class OrdreLinjerNavisionService: IOrdreLinjerNavisionService
+    public class OrdreLinjerNavisionService : IOrdreLinjerNavisionService
     {
         private OrdreLinjerNavisionDao _dao;
 
         public OrdreLinjerNavisionService()
         {
-            _dao = new OrdreLinjerNavisionDao() ;
+            _dao = new OrdreLinjerNavisionDao();
         }
         public string GetOrderLinerByBladID(int bladId)
         {

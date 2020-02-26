@@ -1,9 +1,9 @@
-using System.Threading.Tasks;
 using dlu_persistence_api.daos;
+using System.Threading.Tasks;
 namespace dlu_persistence_api.services
 {
-    
-    public class FejlTekstService: IFejlTekstService
+
+    public class FejlTekstService : IFejlTekstService
     {
 
 
@@ -12,7 +12,7 @@ namespace dlu_persistence_api.services
         public FejlTekstService()
         {
             _fejlTekstDao = new FejlTekstDao();
-            
+
         }
         public string GetFejlTekstDaoByMedieId(int medieId)
         {
@@ -23,7 +23,7 @@ namespace dlu_persistence_api.services
         public Task<int> CreateOrUpDateFejlTekst(tblFakturaFejl t)
         {
 
-          return  _fejlTekstDao.CreateOrUpDateFejlTekst(t);
+            return _fejlTekstDao.CreateOrUpDateFejlTekst(t);
         }
 
         public string GetFejlodeTekstDaoByAnsvarlig(string ansvartlig)

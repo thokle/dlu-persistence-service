@@ -1,16 +1,12 @@
+using dlu_persistence_api.exceptions;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using dlu_persistence_api.exceptions;
-
-using Newtonsoft.Json;
 
 namespace dlu_persistence_api.daos
 {
-   public  class BladTilaegsTypeDao
+    public class BladTilaegsTypeDao
     {
         private DiMPdotNetDevEntities DiMPdotNet;
 
@@ -23,10 +19,12 @@ namespace dlu_persistence_api.daos
         {
             try
             {
-                var res = from bt in DiMPdotNet.tblBladTillaegsTypes select new tblBladTillaegsType
-                {
-                  id =   bt.id, type=  bt.type
-                };
+                var res = from bt in DiMPdotNet.tblBladTillaegsTypes
+                          select new tblBladTillaegsType
+                          {
+                              id = bt.id,
+                              type = bt.type
+                          };
 
                 return res.ToList();
             }

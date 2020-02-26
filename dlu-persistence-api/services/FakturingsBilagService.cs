@@ -1,8 +1,8 @@
-using System.Threading.Tasks;
 using dlu_persistence_api.daos;
+using System.Threading.Tasks;
 namespace dlu_persistence_api.services
 {
-    public class FakturingsBilagService: IFakturingBilagService
+    public class FakturingsBilagService : IFakturingBilagService
     {
         private FakturingsBilagDao _bilagDao;
 
@@ -10,7 +10,7 @@ namespace dlu_persistence_api.services
         {
             _bilagDao = new FakturingsBilagDao();
         }
-        
+
         public string GetFakturingsBilagByMedieId(int medieId)
         {
             return _bilagDao.GetFakturingsBilagByMedieId(medieId);

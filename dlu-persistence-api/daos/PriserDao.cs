@@ -1,14 +1,11 @@
-﻿using System;
+﻿using dlu_persistence_api.exceptions;
+using dlu_persistence_api.models;
+using System;
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Globalization;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using dlu_persistence_api.exceptions;
-using dlu_persistence_api.models;
-using System.Data.SqlClient;
-using System.Collections.Generic;
 namespace dlu_persistence_api.daos
 {
     /// <summary>
@@ -21,7 +18,7 @@ namespace dlu_persistence_api.daos
         public PriserDao()
         {
             di = new DiMPdotNetDevEntities();
-           
+
         }
 
 
@@ -35,72 +32,75 @@ namespace dlu_persistence_api.daos
         {
             try
             {
-                var res = from p in di.tblPrislisterPrBladPrUges from u in di.tblPrislisters 
-                    where p.BladID == bladId & p.År == year & p.PrislisteID == u.PrislisteID
-                    select new PriceListWeekModel()
-                    {
-                        Uige = p.Uge,
-                        AAr = p.År,
-                        BladId = p.BladID,
-                         PrislisteId = p.PrislisteID,
-                         Navn = u.PrislisteNavn
-                         
+                var res = from p in di.tblPrislisterPrBladPrUges
+                          from u in di.tblPrislisters
+                          where p.BladID == bladId & p.År == year & p.PrislisteID == u.PrislisteID
+                          select new PriceListWeekModel()
+                          {
+                              Uige = p.Uge,
+                              AAr = p.År,
+                              BladId = p.BladID,
+                              PrislisteId = p.PrislisteID,
+                              Navn = u.PrislisteNavn
 
-                    };
+
+                          };
                 return res.ToList<PriceListWeekModel>();
             }
             catch (Exception e)
             {
-                throw new DaoExceptions("GetPrisLigePrUge " , e.InnerException);
+                throw new DaoExceptions("GetPrisLigePrUge ", e.InnerException);
             }
         }
-/// <summary>
-/// 
-/// </summary>
-/// <param name="tbl"></param>
-/// <returns></returns>
-/// <exception cref="DaoExceptions"></exception>
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tbl"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public int CreateOrUpdatePrisListePrBladPrÅr(tblPrislisterPrBladPrÅr tbl)
         {
             try
             {
                 di.tblPrislisterPrBladPrÅr.AddOrUpdate(tbl);
                 return di.SaveChanges();
-                 
 
-            }  catch (Exception e)
+
+            }
+            catch (Exception e)
             {
                 throw new DaoExceptions("CreateOrUpdatePrisListePrBladPrÅr ", e.InnerException);
             }
         }
-/// <summary>
-/// 
-/// </summary>
-/// <returns></returns>
-/// <exception cref="DaoExceptions"></exception>
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public List<Prislister> GetPrisLister()
         {
             try
             {
                 var res = from p in di.tblPrislisters
-                    orderby p.PrislisteNavn
-                    select new Prislister()
-                    {
-                       PrislisteID=  p.PrislisteID, PrislisteNavn = p.PrislisteNavn
-                    };
+                          orderby p.PrislisteNavn
+                          select new Prislister()
+                          {
+                              PrislisteID = p.PrislisteID,
+                              PrislisteNavn = p.PrislisteNavn
+                          };
                 return res.ToList();
             }
             catch (Exception e)
             {
-                throw new  DaoExceptions("GetPrisLister",e.InnerException);
+                throw new DaoExceptions("GetPrisLister", e.InnerException);
             }
         }
-/// <summary>
-/// 
-/// </summary>
-/// <param name="bladid"></param>
-/// <returns></returns>
-/// <exception cref="DaoExceptions"></exception>
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bladid"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
         public int AddPriserPrUge(int bladid, int prislisteId, int yearParameter)
         {
             try
@@ -108,12 +108,13 @@ namespace dlu_persistence_api.daos
                 var year = 0;
                 if (yearParameter == 0)
                 {
-                     year = System.DateTime.Today.Year;
-                } else
+                    year = System.DateTime.Today.Year;
+                }
+                else
                 {
                     year = yearParameter;
                 }
-               
+
                 var numnberofWeeksInYear = GetWeeksInYear(year);
 
                 for (var i = 1; i < numnberofWeeksInYear; i++)
@@ -124,7 +125,7 @@ namespace dlu_persistence_api.daos
                         BladID = bladid,
                         PrislisteID = prislisteId,
                         År = (short)yearParameter
-                    
+
                     };
                     di.tblPrislisterPrBladPrUges.Add(tblPrislisterPrBladPrUge);
                 }
@@ -138,13 +139,13 @@ namespace dlu_persistence_api.daos
 
         }
 
-    public int CreatePrice(tblPriser tblPriser)
+        public int CreatePrice(tblPriser tblPriser)
         {
             try
             {
                 di.tblPrisers.AddOrUpdate(tblPriser);
-          var res = di.SaveChanges();
-               
+                var res = di.SaveChanges();
+
                 return res;
             }
             catch (FormattedDbEntityValidationException e)
@@ -155,7 +156,7 @@ namespace dlu_persistence_api.daos
 
         }
 
-    public List<Prislister>  GetPrislister()
+        public List<Prislister> GetPrislister()
         {
             try
             {
@@ -186,7 +187,8 @@ namespace dlu_persistence_api.daos
                           orderby pla.PlaceringID
                           select new Placering
                           {
-                             PlaceringID =  pla.PlaceringID, Betegenlse =  pla.Betegnelse
+                              PlaceringID = pla.PlaceringID,
+                              Betegenlse = pla.Betegnelse
                           };
                 return res.ToList();
             }
@@ -196,9 +198,9 @@ namespace dlu_persistence_api.daos
             }
         }
 
-    
 
-      
+
+
 
         public List<Priser> GetPrislisteFortable(int bladid, int aar, int prislisteId)
         {
@@ -209,31 +211,33 @@ namespace dlu_persistence_api.daos
                           from d in ds.DefaultIfEmpty()
                           join pi in di.tblPlacerings on pl.PlaceringID equals pi.PlaceringID into p
                           from pi in p.DefaultIfEmpty()
-                          where pl.BladID == bladid & pl.År == aar & pl.PrislisteID == prislisteId  orderby pl.PrislisteID ascending select
-                        new Priser
-                        {
-                            År = pl.År,
-                            Betegnelse = pi.Betegnelse,
-                            BladID = pl.BladID,
-                            Farve4Max = pl.Farve4Max,
-                            Farve4Min = pl.Farve4Min,
-                            Farve4Pris = pl.Farve4Pris,
-                            FarveMax = pl.FarveMax,
-                            FarveMin = pl.FarveMin,
-                            FarvePris = pl.FarvePris,
-                            FormatFra = pl.FormatFra,
-                            FormatTil = pl.FormatTil,
-                            PrislisteNavn = d.PrislisteNavn,
-                          mmPris =   pl.mmPris,
-                         PlaceringID = pl.PlaceringID,
-                         PrislisteID = pl.PrislisteID,
-                    
-                         
-                    
-                        
-                       
-                            
-                         };
+                          where pl.BladID == bladid & pl.År == aar & pl.PrislisteID == prislisteId
+                          orderby pl.PrislisteID ascending
+                          select
+new Priser
+{
+År = pl.År,
+Betegnelse = pi.Betegnelse,
+BladID = pl.BladID,
+Farve4Max = pl.Farve4Max,
+Farve4Min = pl.Farve4Min,
+Farve4Pris = pl.Farve4Pris,
+FarveMax = pl.FarveMax,
+FarveMin = pl.FarveMin,
+FarvePris = pl.FarvePris,
+FormatFra = pl.FormatFra,
+FormatTil = pl.FormatTil,
+PrislisteNavn = d.PrislisteNavn,
+mmPris = pl.mmPris,
+PlaceringID = pl.PlaceringID,
+PrislisteID = pl.PrislisteID,
+
+
+
+
+
+
+};
 
                 return res.ToList<Priser>();
 
@@ -244,11 +248,11 @@ namespace dlu_persistence_api.daos
                 throw new Exception(e.Message);
             }
         }
-/// <summary>
-/// 
-/// </summary>
-/// <param name="year"></param>
-/// <returns></returns>
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="year"></param>
+        /// <returns></returns>
         private int GetWeeksInYear(int year)
         {
             var dfi = DateTimeFormatInfo.CurrentInfo;
@@ -260,37 +264,39 @@ namespace dlu_persistence_api.daos
 
         public Task<int> UpdateWeekListId(tblPrislisterPrBladPrUge tblPrislisterPrBladPrUge)
         {
-             di.tblPrislisterPrBladPrUges.AddOrUpdate(tblPrislisterPrBladPrUge);
-            return di.SaveChangesAsync();   
+            di.tblPrislisterPrBladPrUges.AddOrUpdate(tblPrislisterPrBladPrUge);
+            return di.SaveChangesAsync();
         }
 
 
-    
-        public int DeletePris(int bladid, int placeringId, int prislisteid,  int year)
-        {
-            try {
 
-              var res =   di.tblPrisers.Where(c => c.BladID == bladid).Where(c => c.PlaceringID == placeringId).Where(c => c.PrislisteID == prislisteid).Where(c => c.År == year).First();
+        public int DeletePris(int bladid, int placeringId, int prislisteid, int year)
+        {
+            try
+            {
+
+                var res = di.tblPrisers.Where(c => c.BladID == bladid).Where(c => c.PlaceringID == placeringId).Where(c => c.PrislisteID == prislisteid).Where(c => c.År == year).First();
                 di.tblPrisers.Remove(res);
                 return di.SaveChanges();
-                
-                } catch (Exception e)
+
+            }
+            catch (Exception e)
             {
                 throw new Exception(e.Message);
             }
- 
-        
+
+
 
         }
 
         public BladYear GetCreateYearsFromBladId(int bladid)
         {
 
-            var res = from pu in di.tblPrisers where pu.BladID == bladid select new BladYear() { year = pu.År};
+            var res = from pu in di.tblPrisers where pu.BladID == bladid select new BladYear() { year = pu.År };
 
             return res.Single<BladYear>();
         }
     }
 
-   
+
 }

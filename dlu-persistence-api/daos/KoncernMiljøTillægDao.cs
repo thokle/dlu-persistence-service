@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace dlu_persistence_api.daos
 {
@@ -13,13 +10,13 @@ namespace dlu_persistence_api.daos
         public KoncernMiljøTillægDao()
         {
             entities = new DiMPdotNetDevEntities();
-        
+
         }
 
         public int CreateMiljætilæg(tblKoncernMiljøTillæg tblKoncernMiljøTillæg)
         {
             entities.tblKoncernMiljøTillæg.Add(tblKoncernMiljøTillæg);
-            return entities.SaveChanges();        
+            return entities.SaveChanges();
         }
 
         public List<KoncernMiljøTillæg> GetkoncernMiljøTillægs()
@@ -28,15 +25,15 @@ namespace dlu_persistence_api.daos
                       orderby km.miljøtilæg
                       select new KoncernMiljøTillæg()
                       {
-                        koncern = km.koncern,
-                        miljøid = km.miljøid,
-                        miljøtillæg = km.miljøtilæg
+                          koncern = km.koncern,
+                          miljøid = km.miljøid,
+                          miljøtillæg = km.miljøtilæg
                       };
 
             return res.ToList();
         }
 
-         
+
     }
 
     public class KoncernMiljøTillæg

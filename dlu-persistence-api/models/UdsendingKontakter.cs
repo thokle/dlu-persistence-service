@@ -1,13 +1,10 @@
-﻿using System;
+﻿using dlu_persistence_api.daos;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using dlu_persistence_api.daos;
 
 namespace dlu_persistence_api.models
 {
-    
+
     public class UdsendingKontakter
     {
 
@@ -16,18 +13,20 @@ namespace dlu_persistence_api.models
         public UdsendingKontakter()
         {
             DiMPdotNetDevEntities = new DiMPdotNetDevEntities();
-          
+
             KontaktTyper = (from kt in DiMPdotNetDevEntities.tblStambladUdsendingEmailTypers
                             select new StambladUdsendingEmailTyper()
                             {
-                                id = kt.id, titel = kt.titel
+                                id = kt.id,
+                                titel = kt.titel
                             }).ToList();
 
-            KontaktTitlers  = (from t in DiMPdotNetDevEntities.tblKontaktTitlers
-                          select new Titler()
-                          {
-                              Id = t.TitelID , Titel = t.Titel
-                          }).ToList(); 
+            KontaktTitlers = (from t in DiMPdotNetDevEntities.tblKontaktTitlers
+                              select new Titler()
+                              {
+                                  Id = t.TitelID,
+                                  Titel = t.Titel
+                              }).ToList();
         }
         private int? bladId;
         private int id;
@@ -43,8 +42,8 @@ namespace dlu_persistence_api.models
         public int? BladId { get => bladId; set => bladId = value; }
         public int Id { get => id; set => id = value; }
         public string Titel { get => titel; set => titel = value; }
-         public List<StambladUdsendingEmailTyper> KontaktTyper { get; set; }
-        public List<Titler>  KontaktTitlers { get; set; }
+        public List<StambladUdsendingEmailTyper> KontaktTyper { get; set; }
+        public List<Titler> KontaktTitlers { get; set; }
 
     }
 

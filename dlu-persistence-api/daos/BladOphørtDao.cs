@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.Data.Entity.Migrations;
+using System.Linq;
 
 namespace dlu_persistence_api.daos
 {
 
-  public  class BladOphørtDao
+    public class BladOphørtDao
     {
 
         private DiMPdotNetDevEntities entities;
@@ -25,8 +21,8 @@ namespace dlu_persistence_api.daos
                       where di.bladid == bladid
                       select new OphørtBlad()
                       {
-                         bladid = di.bladid,
-                       kommentart =  di.kommentar,
+                          bladid = di.bladid,
+                          kommentart = di.kommentar,
                           ophørsdato = di.ophørsdato
                       };
             return res.SingleOrDefault<OphørtBlad>();

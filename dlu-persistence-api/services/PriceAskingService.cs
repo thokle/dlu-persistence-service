@@ -1,9 +1,9 @@
+using dlu_persistence_api.daos;
 using System.Threading.Tasks;
-using  dlu_persistence_api.daos;
 namespace dlu_persistence_api.services
 {
-    
-    public class PriceAskingService: IPriceAskingService
+
+    public class PriceAskingService : IPriceAskingService
     {
         private PriceAskingDao _dao;
 
@@ -13,7 +13,7 @@ namespace dlu_persistence_api.services
         }
         public string GetPriceAskigListByBladId(int bladid)
         {
-         return   _dao.GetPriceAskigListByBladId(bladid);
+            return _dao.GetPriceAskigListByBladId(bladid);
         }
 
         public Task<int> CreatePriceAskingEntry(tblPriceAsking asking)

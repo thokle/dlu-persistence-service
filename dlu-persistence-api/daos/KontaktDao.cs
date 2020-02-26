@@ -1,17 +1,17 @@
+using dlu_persistence_api.exceptions;
+using Newtonsoft.Json;
 using System;
 using System.Linq;
-using Newtonsoft.Json;
-using dlu_persistence_api.exceptions;
 namespace dlu_persistence_api.daos
 {
     public class KontaktDao
     {
         private readonly DiMPdotNetDevEntities _entities;
-    
+
         public KontaktDao()
         {
-           _entities = new DiMPdotNetDevEntities();
-           
+            _entities = new DiMPdotNetDevEntities();
+
         }
         /// <summary>
         /// 
@@ -24,27 +24,33 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from ko in _entities.tblKontakterPrBlads
-                    where ko.BladID == bladid
-                    select new
-                    {
-                        ko.BladID,
-                        ko.KontaktID,
-                        ko.tblKontakter,
-                        ko.tblKontaktFunktioners,
+                          where ko.BladID == bladid
+                          select new
+                          {
+                              ko.BladID,
+                              ko.KontaktID,
+                              ko.tblKontakter,
+                              ko.tblKontaktFunktioners,
 
-                        kontakter = from t in _entities.tblKontakters
-                            where t.KontaktID == ko.KontaktID
-                            select new
-                            {
-                                t.KontaktID, t.Fornavn, t.Efternavn, t.Email, t.Tlfnr, t.Mobilnr, t.TitelID
-                            }
-                    };
+                              kontakter = from t in _entities.tblKontakters
+                                          where t.KontaktID == ko.KontaktID
+                                          select new
+                                          {
+                                              t.KontaktID,
+                                              t.Fornavn,
+                                              t.Efternavn,
+                                              t.Email,
+                                              t.Tlfnr,
+                                              t.Mobilnr,
+                                              t.TitelID
+                                          }
+                          };
 
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
             catch (Exception e)
             {
-                throw new DaoExceptions("KontaktDao GetKontakterPrBlad " , e.InnerException );
+                throw new DaoExceptions("KontaktDao GetKontakterPrBlad ", e.InnerException);
             }
         }
 
@@ -58,12 +64,12 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from kt in _entities.tblKontaktTitlers
-                    orderby kt.Titel
-                    select new
-                    {
-                        kt.TitelID,
-                        kt.Titel
-                    };
+                          orderby kt.Titel
+                          select new
+                          {
+                              kt.TitelID,
+                              kt.Titel
+                          };
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
             catch (Exception e)
@@ -81,20 +87,20 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from kk in _entities.tblKontaktArbOmråder
-                    orderby kk.ArbOmråde
-                    select new
-                    {
-                        kk.ArbOmråde,
-                        kk.ArbOmrådeID
-                    };
+                          orderby kk.ArbOmråde
+                          select new
+                          {
+                              kk.ArbOmråde,
+                              kk.ArbOmrådeID
+                          };
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
             catch (Exception e)
             {
-                throw new  FormattedDbEntityValidationException(e.InnerException);
+                throw new FormattedDbEntityValidationException(e.InnerException);
             }
         }
-        
-        
+
+
     }
 }

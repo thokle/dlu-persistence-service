@@ -1,16 +1,11 @@
 ﻿using dlu_persistence_api.exceptions;
 using dlu_persistence_api.models;
-
+using LinqKit;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Management.Instrumentation;
-using System.Runtime.Remoting.Messaging;
-using LinqKit;
 
 namespace dlu_persistence_api.daos
 {
@@ -27,7 +22,7 @@ namespace dlu_persistence_api.daos
             entities = new DiMPdotNetDevEntities();
 
             entities.Configuration.LazyLoadingEnabled = false;
-                                                            }
+        }
 
 
         /// <summary>
@@ -36,15 +31,15 @@ namespace dlu_persistence_api.daos
         /// <param name="medieplanNr"></param>
         /// <returns></returns>
         /// <exception cref="DaoExceptions"></exception>
-        public MediePlan GetMediePlanByNumber(int medieplanNr, int version,int ststus )
+        public MediePlan GetMediePlanByNumber(int medieplanNr, int version, int ststus)
         {
             try
             {
-                
-                
 
 
-            var res = entities.tblMedieplans.Where(medieplan => medieplan.MedieplanNr == medieplanNr && medieplan.Version == version && medieplan.Status == ststus ).Select(mp => new MediePlan()
+
+
+                var res = entities.tblMedieplans.Where(medieplan => medieplan.MedieplanNr == medieplanNr && medieplan.Version == version && medieplan.Status == ststus).Select(mp => new MediePlan()
                 {
                     Statius = mp.Status,
                     annoncoer_no = mp.AnnoncørNo_,
@@ -90,7 +85,7 @@ namespace dlu_persistence_api.daos
                     OprettetDato = mp.OprettetDato,
                     OrdreDato = mp.OrdreDato,
                     Overskrift = mp.Overskrift,
-RekvisitionsNr = mp.RekvisitionsNr,
+                    RekvisitionsNr = mp.RekvisitionsNr,
                     placering_betegnelse = mp.tblPlacering.Betegnelse,
                     kuloer = mp.tblDPKulør.Kulør,
                     mediePlanNr_AktiveVesion = mp.tblMedieplanNr.AktivVersion,
@@ -109,50 +104,53 @@ RekvisitionsNr = mp.RekvisitionsNr,
                     tillad_mm_saer_rabat = mp.TilladMmSærRabat,
                     version = mp.Version,
                     web_tillaeg_opkraves = mp.WebTillægOpkræves,
-                    
-                    medieplannlinjer = (from linjer in mp.tblMedieplanLinjers where  linjer.MedieplanNr == medieplanNr & linjer.Version == version
-                        join re in entities.tblBladStamdatas on linjer.UgeavisID equals  re.BladID into reres from re in reres.DefaultIfEmpty()
-                        
-                        select  new AvisTIlGrid()
-                    {
-                      RabatGruppe  = linjer.RabatGruppe,
-                      MedieplanNr = linjer.MedieplanNr,
-                       bemærkning  = linjer.Bemærkning,
-                        BureauOrdreNr = linjer.BureauOrdreNr,
-                     ErWeekendGruppe  = linjer.ErWeekendGruppe,
-                    FarveMax = linjer.FarveMax,
-                    FarveMin = linjer.FarveMin,
 
-                      FarvePris = linjer.FarvePris,
-                     FarveRabat = linjer.FarveRabat,
-                       FarveTillæg = linjer.FarveTillæg,
-                       FarveTotal = linjer.FarveTotal,
-                       ManueltÆndret = linjer.ManueltÆndret,
-                        MaterialeGodtgørelsePris = linjer.MaterialeGodtgørelsePris,
-                       MaterialeNr  = linjer.MaterialeNr,
-                        MedIGrupper = linjer.MedIGrupper,
-                     MiljøTillæg  = linjer.MiljøTillæg,
-                     Mm = linjer.Mm,
-                       MmPris  = linjer.MmPris,
-                       MmRabat = linjer.MmRabat,
-                        MmTotal = linjer.MmTotal,
+                    medieplannlinjer = (from linjer in mp.tblMedieplanLinjers
+                                        where linjer.MedieplanNr == medieplanNr & linjer.Version == version
+                                        join re in entities.tblBladStamdatas on linjer.UgeavisID equals re.BladID into reres
+                                        from re in reres.DefaultIfEmpty()
 
-                        MåGiveMaterialeGodtgørelse = linjer.MåGiveMaterialeGodtgørelse,
-                        MåGiveMmRabat = linjer.MåGiveMmRabat,
-                        NormalMmPris = linjer.NormalMmPris,
-                         PrisLåst = linjer.PrisLåst,
-                       SendeGruppe = linjer.SendeGruppe,
+                                        select new AvisTIlGrid()
+                                        {
+                                            RabatGruppe = linjer.RabatGruppe,
+                                            MedieplanNr = linjer.MedieplanNr,
+                                            bemærkning = linjer.Bemærkning,
+                                            BureauOrdreNr = linjer.BureauOrdreNr,
+                                            ErWeekendGruppe = linjer.ErWeekendGruppe,
+                                            FarveMax = linjer.FarveMax,
+                                            FarveMin = linjer.FarveMin,
 
-                        SkalGiveMaterialeGodtgørelse =  linjer.SkalGiveMaterialeGodtgørelse,
-                        Navn = re.Navn,
-                        Navn2 =  re.Navn2,
-                        Total = linjer.Total,
-                        totalPris = linjer.TotalPris,
-                            UgeavisID = linjer.UgeavisID
-                     
-                  
-                        
-                    }).ToList()});
+                                            FarvePris = linjer.FarvePris,
+                                            FarveRabat = linjer.FarveRabat,
+                                            FarveTillæg = linjer.FarveTillæg,
+                                            FarveTotal = linjer.FarveTotal,
+                                            ManueltÆndret = linjer.ManueltÆndret,
+                                            MaterialeGodtgørelsePris = linjer.MaterialeGodtgørelsePris,
+                                            MaterialeNr = linjer.MaterialeNr,
+                                            MedIGrupper = linjer.MedIGrupper,
+                                            MiljøTillæg = linjer.MiljøTillæg,
+                                            Mm = linjer.Mm,
+                                            MmPris = linjer.MmPris,
+                                            MmRabat = linjer.MmRabat,
+                                            MmTotal = linjer.MmTotal,
+
+                                            MåGiveMaterialeGodtgørelse = linjer.MåGiveMaterialeGodtgørelse,
+                                            MåGiveMmRabat = linjer.MåGiveMmRabat,
+                                            NormalMmPris = linjer.NormalMmPris,
+                                            PrisLåst = linjer.PrisLåst,
+                                            SendeGruppe = linjer.SendeGruppe,
+
+                                            SkalGiveMaterialeGodtgørelse = linjer.SkalGiveMaterialeGodtgørelse,
+                                            Navn = re.Navn,
+                                            Navn2 = re.Navn2,
+                                            Total = linjer.Total,
+                                            totalPris = linjer.TotalPris,
+                                            UgeavisID = linjer.UgeavisID
+
+
+
+                                        }).ToList()
+                });
 
                 return res.FirstOrDefault<MediePlan>();
             }
@@ -208,58 +206,58 @@ RekvisitionsNr = mp.RekvisitionsNr,
                 var res = entities.tblMedieplans.Where(m =>
                     m.Kontaktperson.StartsWith(name) || m.Kontaktperson.Contains(name) ||
                     m.Kontaktperson.EndsWith(name)).Select(m => new
-                {
-                    m.AnnoncørNo_,
-                    m.AntalFarver,
-                    m.BemærkningTilAnnoncør,
-                    m.BemærkningTilBlade,
-                    m.Beskrivelse,
-                    m.BilagsBladeATT,
-                    m.BilagsBladeTil,
-                    m.BilagsBladeTilAdresse,
-                    m.BilagsBladeTilNavn,
-                    m.BilagsBladeTilPostNr,
-                    m.BrugMaterialeFraUge,
-                    m.BureauNo_,
-                    m.Credit_Reason,
-                    m.Document_Type,
-                    m.DPKulørID,
-                    m.Fakturering,
-                    m.Format1,
-                    m.Format2,
-                    m.FællesBureauOrdreNr,
-                    m.IndrykningsUge,
-                    m.IndrykningsÅr,
-                    m.InfoGodt,
-                    m.KonsulentCode,
-                    m.Kontaktperson,
-                    m.KontaktpersonTilhører,
-                    m.KunForhandlerBundForskellig,
-                    m.MaterialeFølgerFra,
-                    m.MaterialeFølgerFraLeverandør,
-                    m.MaterialeGodtgørelseAlle,
-                    m.MaterialeGodtgørelseTil,
-                    m.MedieplanNr,
-                    m.MiljøTillægOpkræves,
-                    m.OpkrævDSVPMiljøTillæg,
-                    m.OpkrævFynskeMiljøTillæg,
-                    m.OpkrævJyskeMedierASTillæg,
-                    m.OpkrævJyskeMiljøTillæg,
-                    m.OpkrævNordjyskeTillæg,
-                    m.OpkrævNorthMiljøTillæg,
-                    m.OprettetDato,
-                    m.OrdreDato,
-                    m.Overskrift,
-                    m.PlaceringID,
-                    m.Previous_Version,
-                    m.RekvisitionsNr,
-                    m.RettelserEfterAnnoncekontrol,
-                    m.SamletPris,
-                    m.SammeBureauOrdreNr,
-                    m.SammeMateriale,
-                    m.SikkerhedsGodt,
-                    m.Status
-                });
+                    {
+                        m.AnnoncørNo_,
+                        m.AntalFarver,
+                        m.BemærkningTilAnnoncør,
+                        m.BemærkningTilBlade,
+                        m.Beskrivelse,
+                        m.BilagsBladeATT,
+                        m.BilagsBladeTil,
+                        m.BilagsBladeTilAdresse,
+                        m.BilagsBladeTilNavn,
+                        m.BilagsBladeTilPostNr,
+                        m.BrugMaterialeFraUge,
+                        m.BureauNo_,
+                        m.Credit_Reason,
+                        m.Document_Type,
+                        m.DPKulørID,
+                        m.Fakturering,
+                        m.Format1,
+                        m.Format2,
+                        m.FællesBureauOrdreNr,
+                        m.IndrykningsUge,
+                        m.IndrykningsÅr,
+                        m.InfoGodt,
+                        m.KonsulentCode,
+                        m.Kontaktperson,
+                        m.KontaktpersonTilhører,
+                        m.KunForhandlerBundForskellig,
+                        m.MaterialeFølgerFra,
+                        m.MaterialeFølgerFraLeverandør,
+                        m.MaterialeGodtgørelseAlle,
+                        m.MaterialeGodtgørelseTil,
+                        m.MedieplanNr,
+                        m.MiljøTillægOpkræves,
+                        m.OpkrævDSVPMiljøTillæg,
+                        m.OpkrævFynskeMiljøTillæg,
+                        m.OpkrævJyskeMedierASTillæg,
+                        m.OpkrævJyskeMiljøTillæg,
+                        m.OpkrævNordjyskeTillæg,
+                        m.OpkrævNorthMiljøTillæg,
+                        m.OprettetDato,
+                        m.OrdreDato,
+                        m.Overskrift,
+                        m.PlaceringID,
+                        m.Previous_Version,
+                        m.RekvisitionsNr,
+                        m.RettelserEfterAnnoncekontrol,
+                        m.SamletPris,
+                        m.SammeBureauOrdreNr,
+                        m.SammeMateriale,
+                        m.SikkerhedsGodt,
+                        m.Status
+                    });
 
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
@@ -276,58 +274,58 @@ RekvisitionsNr = mp.RekvisitionsNr,
                 var res = entities.tblMedieplans.Where(m =>
                     m.AnnoncørNo_.StartsWith(anoncoer) || m.AnnoncørNo_.Contains(anoncoer) ||
                     m.AnnoncørNo_.EndsWith(anoncoer)).Select(m => new
-                {
-                    m.AnnoncørNo_,
-                    m.AntalFarver,
-                    m.BemærkningTilAnnoncør,
-                    m.BemærkningTilBlade,
-                    m.Beskrivelse,
-                    m.BilagsBladeATT,
-                    m.BilagsBladeTil,
-                    m.BilagsBladeTilAdresse,
-                    m.BilagsBladeTilNavn,
-                    m.BilagsBladeTilPostNr,
-                    m.BrugMaterialeFraUge,
-                    m.BureauNo_,
-                    m.Credit_Reason,
-                    m.Document_Type,
-                    m.DPKulørID,
-                    m.Fakturering,
-                    m.Format1,
-                    m.Format2,
-                    m.FællesBureauOrdreNr,
-                    m.IndrykningsUge,
-                    m.IndrykningsÅr,
-                    m.InfoGodt,
-                    m.KonsulentCode,
-                    m.Kontaktperson,
-                    m.KontaktpersonTilhører,
-                    m.KunForhandlerBundForskellig,
-                    m.MaterialeFølgerFra,
-                    m.MaterialeFølgerFraLeverandør,
-                    m.MaterialeGodtgørelseAlle,
-                    m.MaterialeGodtgørelseTil,
-                    m.MedieplanNr,
-                    m.MiljøTillægOpkræves,
-                    m.OpkrævDSVPMiljøTillæg,
-                    m.OpkrævFynskeMiljøTillæg,
-                    m.OpkrævJyskeMedierASTillæg,
-                    m.OpkrævJyskeMiljøTillæg,
-                    m.OpkrævNordjyskeTillæg,
-                    m.OpkrævNorthMiljøTillæg,
-                    m.OprettetDato,
-                    m.OrdreDato,
-                    m.Overskrift,
-                    m.PlaceringID,
-                    m.Previous_Version,
-                    m.RekvisitionsNr,
-                    m.RettelserEfterAnnoncekontrol,
-                    m.SamletPris,
-                    m.SammeBureauOrdreNr,
-                    m.SammeMateriale,
-                    m.SikkerhedsGodt,
-                    m.Status
-                });
+                    {
+                        m.AnnoncørNo_,
+                        m.AntalFarver,
+                        m.BemærkningTilAnnoncør,
+                        m.BemærkningTilBlade,
+                        m.Beskrivelse,
+                        m.BilagsBladeATT,
+                        m.BilagsBladeTil,
+                        m.BilagsBladeTilAdresse,
+                        m.BilagsBladeTilNavn,
+                        m.BilagsBladeTilPostNr,
+                        m.BrugMaterialeFraUge,
+                        m.BureauNo_,
+                        m.Credit_Reason,
+                        m.Document_Type,
+                        m.DPKulørID,
+                        m.Fakturering,
+                        m.Format1,
+                        m.Format2,
+                        m.FællesBureauOrdreNr,
+                        m.IndrykningsUge,
+                        m.IndrykningsÅr,
+                        m.InfoGodt,
+                        m.KonsulentCode,
+                        m.Kontaktperson,
+                        m.KontaktpersonTilhører,
+                        m.KunForhandlerBundForskellig,
+                        m.MaterialeFølgerFra,
+                        m.MaterialeFølgerFraLeverandør,
+                        m.MaterialeGodtgørelseAlle,
+                        m.MaterialeGodtgørelseTil,
+                        m.MedieplanNr,
+                        m.MiljøTillægOpkræves,
+                        m.OpkrævDSVPMiljøTillæg,
+                        m.OpkrævFynskeMiljøTillæg,
+                        m.OpkrævJyskeMedierASTillæg,
+                        m.OpkrævJyskeMiljøTillæg,
+                        m.OpkrævNordjyskeTillæg,
+                        m.OpkrævNorthMiljøTillæg,
+                        m.OprettetDato,
+                        m.OrdreDato,
+                        m.Overskrift,
+                        m.PlaceringID,
+                        m.Previous_Version,
+                        m.RekvisitionsNr,
+                        m.RettelserEfterAnnoncekontrol,
+                        m.SamletPris,
+                        m.SammeBureauOrdreNr,
+                        m.SammeMateriale,
+                        m.SikkerhedsGodt,
+                        m.Status
+                    });
 
                 return JsonConvert.SerializeObject(res, Formatting.Indented, new JsonSerializerSettings()
                 {
@@ -345,23 +343,23 @@ RekvisitionsNr = mp.RekvisitionsNr,
             try
             {
                 var res = from a in entities.tblBladStamdatas
-                    join
-                        p in entities.tblPrisers on a.BladID equals p.BladID into ap
-                    from p in ap.DefaultIfEmpty()
-                    join g in entities.tblGeoKodes on a.GeoKodeID equals g.GeoKodeID into gp
-                    from g in gp.DefaultIfEmpty()
-                    join dl in entities.tblDelOmråde on a.DelOmrådeID equals dl.DelOmrådeID into dp
-                    from dl in dp.DefaultIfEmpty()
-                    join dk in entities.tblMedIGruppes on a.SalgsGruppeID equals dk.ID into grp
-                    from dk in grp.DefaultIfEmpty()
-                    join pyear in entities.tblPrislisterPrBladPrÅr on a.BladID equals pyear.BladID into gpry
-                    from pyear in gpry.DefaultIfEmpty()
-                    join pw in entities.tblPrislisterPrBladPrUges on a.BladID equals pw.BladID into gpw
-                    from pw in gpw.DefaultIfEmpty()
-                    where a.BladID == bladid
-                    select new
-                    {
-                    };
+                          join
+                              p in entities.tblPrisers on a.BladID equals p.BladID into ap
+                          from p in ap.DefaultIfEmpty()
+                          join g in entities.tblGeoKodes on a.GeoKodeID equals g.GeoKodeID into gp
+                          from g in gp.DefaultIfEmpty()
+                          join dl in entities.tblDelOmråde on a.DelOmrådeID equals dl.DelOmrådeID into dp
+                          from dl in dp.DefaultIfEmpty()
+                          join dk in entities.tblMedIGruppes on a.SalgsGruppeID equals dk.ID into grp
+                          from dk in grp.DefaultIfEmpty()
+                          join pyear in entities.tblPrislisterPrBladPrÅr on a.BladID equals pyear.BladID into gpry
+                          from pyear in gpry.DefaultIfEmpty()
+                          join pw in entities.tblPrislisterPrBladPrUges on a.BladID equals pw.BladID into gpw
+                          from pw in gpw.DefaultIfEmpty()
+                          where a.BladID == bladid
+                          select new
+                          {
+                          };
 
 
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
@@ -383,7 +381,7 @@ RekvisitionsNr = mp.RekvisitionsNr,
                 var pre = PredicateBuilder.New<FundetMediePlaner>();
 
 
-                
+
                 if (mediePlan != 0)
                 {
                     pre = pre.And(a => a.MedieplanNr == mediePlan);
@@ -402,7 +400,7 @@ RekvisitionsNr = mp.RekvisitionsNr,
                         m.BureauNo_.StartsWith(bureau) || m.BureauNo_.Contains(bureau) || m.BureauNo_.EndsWith(bureau));
                 }
 
-                if (fraUge  > 0 && (tilUge  >1 && tilUge < 53) && mediePlan == 0)
+                if (fraUge > 0 && (tilUge > 1 && tilUge < 53) && mediePlan == 0)
                 {
                     pre = pre.And(u => u.IndrykningsUge > fraUge || u.IndrykningsUge <= tilUge);
                     pre = pre.And(a => a.IndrykningsÅr == aar);
@@ -427,65 +425,141 @@ RekvisitionsNr = mp.RekvisitionsNr,
                     {
                         pre = pre.And(p => p.Version.ToString().Length == 3);
                     }
-                    if(bookingCheckBox && mediePlanCheckBox)
+                    if (bookingCheckBox && mediePlanCheckBox)
                     {
                         pre = pre.And(p => p.Version.ToString().Length == 1 && p.Version.ToString().Length > 1);
                     }
                 }
 
-                var res =  entities.tblMedieplans.Join(entities.tblMedieplanLinjers, mp => mp.MedieplanNr,
+                var res = entities.tblMedieplans.Join(entities.tblMedieplanLinjers, mp => mp.MedieplanNr,
                     mpl => mpl.MedieplanNr,
                     (mp, mpl) => new
                     {
-                        mp.PlaceringID, mp.AnnoncørNo_, mp.Beskrivelse, mp.Fakturering, mp.Format1, mp.Format2,
-                       mp.SamletPris,
-                        mp.Kontaktperson, mp.Overskrift, mp.IndrykningsÅr, mp.IndrykningsUge, mp.Version, mp.Status,
-                        mp.MedieplanNr, mp.AntalFarver, mp.BureauNo_, mp.KonsulentCode, mp.KontaktpersonTilhører,
-                      
+                        mp.PlaceringID,
+                        mp.AnnoncørNo_,
+                        mp.Beskrivelse,
+                        mp.Fakturering,
+                        mp.Format1,
+                        mp.Format2,
+                        mp.SamletPris,
+                        mp.Kontaktperson,
+                        mp.Overskrift,
+                        mp.IndrykningsÅr,
+                        mp.IndrykningsUge,
+                        mp.Version,
+                        mp.Status,
+                        mp.MedieplanNr,
+                        mp.AntalFarver,
+                        mp.BureauNo_,
+                        mp.KonsulentCode,
+                        mp.KontaktpersonTilhører,
+
                     }).Join(entities.tblPlacerings, mp => mp.PlaceringID,
                     pl => pl.PlaceringID,
                     (mp, pl) => new
                     {
-                        mp.PlaceringID, pl.Betegnelse, mp.AnnoncørNo_, mp.Beskrivelse, mp.Fakturering, mp.Format1,
-                        mp.Format2, mp.Kontaktperson, mp.Overskrift, mp.IndrykningsÅr, mp.IndrykningsUge, mp.Version,
-                        mp.Status, mp.MedieplanNr, mp.AntalFarver, mp.BureauNo_, mp.KonsulentCode,
+                        mp.PlaceringID,
+                        pl.Betegnelse,
+                        mp.AnnoncørNo_,
+                        mp.Beskrivelse,
+                        mp.Fakturering,
+                        mp.Format1,
+                        mp.Format2,
+                        mp.Kontaktperson,
+                        mp.Overskrift,
+                        mp.IndrykningsÅr,
+                        mp.IndrykningsUge,
+                        mp.Version,
+                        mp.Status,
+                        mp.MedieplanNr,
+                        mp.AntalFarver,
+                        mp.BureauNo_,
+                        mp.KonsulentCode,
                         mp.KontaktpersonTilhører
                     }).Join(entities.NavisionContacts, mp => mp.AnnoncørNo_, contact => contact.No_,
                     (mp, contact) => new
                     {
-                        mp.PlaceringID, mp.AnnoncørNo_, mp.Beskrivelse, mp.Fakturering, mp.Format1, mp.Format2,
-                        mp.Kontaktperson, mp.Overskrift, mp.IndrykningsÅr, mp.IndrykningsUge, mp.Version, contact.Name,
-                        contact.Bill_to_Contact_No_, mp.Status, mp.MedieplanNr, mp.AntalFarver, mp.BureauNo_,
-                        mp.KonsulentCode, mp.KontaktpersonTilhører, 
+                        mp.PlaceringID,
+                        mp.AnnoncørNo_,
+                        mp.Beskrivelse,
+                        mp.Fakturering,
+                        mp.Format1,
+                        mp.Format2,
+                        mp.Kontaktperson,
+                        mp.Overskrift,
+                        mp.IndrykningsÅr,
+                        mp.IndrykningsUge,
+                        mp.Version,
+                        contact.Name,
+                        contact.Bill_to_Contact_No_,
+                        mp.Status,
+                        mp.MedieplanNr,
+                        mp.AntalFarver,
+                        mp.BureauNo_,
+                        mp.KonsulentCode,
+                        mp.KontaktpersonTilhører,
                     }).GroupBy(arg => new
-                {
-                    arg.Beskrivelse, arg.PlaceringID, arg.AnnoncørNo_, arg.Fakturering, arg.Format1, arg.Format2,
-                    arg.Kontaktperson, arg.Overskrift, arg.IndrykningsÅr, arg.IndrykningsUge, arg.Version, arg.Name,
-                    arg.AntalFarver, arg.BureauNo_, arg.KonsulentCode,
-                    arg.Bill_to_Contact_No_, arg.Status, arg.MedieplanNr, arg.KontaktpersonTilhører
-                }).Select(a => new FundetMediePlaner()
-                {
-                   AntalAviser = entities.tblMedieplanLinjers.Where(l => l.MedieplanNr == a.Key.MedieplanNr).Select(s => new { s.MedieplanNr}).Count(),
-               
-                    Beskrivelse = a.Key.Beskrivelse, Format1 = a.Key.Format1, Format2 = a.Key.Format1,
-                    Kontaktperson = a.Key.Kontaktperson, Overskrift = a.Key.Overskrift, navision_name = a.Key.Name,
-                    Status = a.Key.Status, Version = a.Key.Version, AnnoncørNo_ = a.Key.AnnoncørNo_,
-                    AntalFarver = a.Key.AntalFarver, BureauNo_ = a.Key.BureauNo_, IndrykningsUge = a.Key.IndrykningsUge,
-                    IndrykningsÅr = a.Key.IndrykningsÅr,
-                    KonsulentCode = a.Key.KonsulentCode, KontaktpersonTilhører = a.Key.KontaktpersonTilhører,
-                    MedieplanNr = a.Key.MedieplanNr
-                }).Select(a => new FundetMediePlaner()
-                {
-                    AntalAviser = entities.tblMedieplanLinjers.Where(l => l.MedieplanNr == a.MedieplanNr).Select(s => new { s.MedieplanNr}).Distinct().Count(),
-               
-                    Beskrivelse = a.Beskrivelse, Format1 = a.Format1, Format2 = a.Format1,
-                    Kontaktperson = a.Kontaktperson, Overskrift = a.Overskrift, navision_name = a.navision_name,
-                    Status = a.Status, Version = a.Version, AnnoncørNo_ = a.AnnoncørNo_,
-                    AntalFarver = a.AntalFarver, BureauNo_ = a.BureauNo_, IndrykningsUge = a.IndrykningsUge,
-                    IndrykningsÅr = a.IndrykningsÅr,
-                    KonsulentCode = a.KonsulentCode, KontaktpersonTilhører = a.KontaktpersonTilhører,
-                    MedieplanNr = a.MedieplanNr
-                } );
+                    {
+                        arg.Beskrivelse,
+                        arg.PlaceringID,
+                        arg.AnnoncørNo_,
+                        arg.Fakturering,
+                        arg.Format1,
+                        arg.Format2,
+                        arg.Kontaktperson,
+                        arg.Overskrift,
+                        arg.IndrykningsÅr,
+                        arg.IndrykningsUge,
+                        arg.Version,
+                        arg.Name,
+                        arg.AntalFarver,
+                        arg.BureauNo_,
+                        arg.KonsulentCode,
+                        arg.Bill_to_Contact_No_,
+                        arg.Status,
+                        arg.MedieplanNr,
+                        arg.KontaktpersonTilhører
+                    }).Select(a => new FundetMediePlaner()
+                    {
+                        AntalAviser = entities.tblMedieplanLinjers.Where(l => l.MedieplanNr == a.Key.MedieplanNr).Select(s => new { s.MedieplanNr }).Count(),
+
+                        Beskrivelse = a.Key.Beskrivelse,
+                        Format1 = a.Key.Format1,
+                        Format2 = a.Key.Format1,
+                        Kontaktperson = a.Key.Kontaktperson,
+                        Overskrift = a.Key.Overskrift,
+                        navision_name = a.Key.Name,
+                        Status = a.Key.Status,
+                        Version = a.Key.Version,
+                        AnnoncørNo_ = a.Key.AnnoncørNo_,
+                        AntalFarver = a.Key.AntalFarver,
+                        BureauNo_ = a.Key.BureauNo_,
+                        IndrykningsUge = a.Key.IndrykningsUge,
+                        IndrykningsÅr = a.Key.IndrykningsÅr,
+                        KonsulentCode = a.Key.KonsulentCode,
+                        KontaktpersonTilhører = a.Key.KontaktpersonTilhører,
+                        MedieplanNr = a.Key.MedieplanNr
+                    }).Select(a => new FundetMediePlaner()
+                    {
+                        AntalAviser = entities.tblMedieplanLinjers.Where(l => l.MedieplanNr == a.MedieplanNr).Select(s => new { s.MedieplanNr }).Distinct().Count(),
+
+                        Beskrivelse = a.Beskrivelse,
+                        Format1 = a.Format1,
+                        Format2 = a.Format1,
+                        Kontaktperson = a.Kontaktperson,
+                        Overskrift = a.Overskrift,
+                        navision_name = a.navision_name,
+                        Status = a.Status,
+                        Version = a.Version,
+                        AnnoncørNo_ = a.AnnoncørNo_,
+                        AntalFarver = a.AntalFarver,
+                        BureauNo_ = a.BureauNo_,
+                        IndrykningsUge = a.IndrykningsUge,
+                        IndrykningsÅr = a.IndrykningsÅr,
+                        KonsulentCode = a.KonsulentCode,
+                        KontaktpersonTilhører = a.KontaktpersonTilhører,
+                        MedieplanNr = a.MedieplanNr
+                    });
 
                 List<FundetMediePlaner> liet = res.Where(pre).ToList();
                 return liet;
@@ -504,7 +578,7 @@ RekvisitionsNr = mp.RekvisitionsNr,
                        from mplnr in mpmpnlr.DefaultIfEmpty()
                        join nav in entities.NavisionContacts on mp.AnnoncørNo_ equals nav.No_ into mpnav
                        from nav in mpnav.DefaultIfEmpty()
-                       where mp.IndrykningsUge == indrykningsuge & mplnr.AktivVersion > 100 & mplnr.Status == 6 
+                       where mp.IndrykningsUge == indrykningsuge & mplnr.AktivVersion > 100 & mplnr.Status == 6
                        select new MediePlan()
                        {
 
@@ -557,7 +631,9 @@ RekvisitionsNr = mp.RekvisitionsNr,
                            Kontaktperson = mp.Kontaktperson,
                            kontaktperson_tilhoerer = mp.KontaktpersonTilhører,
                            version = Convert.ToInt16(mp.Version * Convert.ToInt16(10) + Convert.ToInt16(1)),
-                           mediePlanNr_kommentar = mpl.Kommentar, mediePlanNr_status = mp.Status, OprettetDato = mp.OprettetDato
+                           mediePlanNr_kommentar = mpl.Kommentar,
+                           mediePlanNr_status = mp.Status,
+                           OprettetDato = mp.OprettetDato
                        }).OrderByDescending(s => s.version).Single();
 
 

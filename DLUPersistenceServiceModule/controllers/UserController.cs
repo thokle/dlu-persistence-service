@@ -1,18 +1,13 @@
-using System;
-using System.Dynamic;
-using System.Linq;
-using System.Net.Sockets;
 using dlu_persistence_api;
-using Nancy.ModelBinding;
-using Nancy;
 using dlu_persistence_api.services;
-
-using DLUPersistenceServiceModule.swagger;
+using Nancy;
+using Nancy.ModelBinding;
+using System.Linq;
 
 namespace DLUPersistenceServiceModule.controllers
-    
+
 {
-    public class UserController: NancyModule
+    public class UserController : NancyModule
     {
         public UserController(UserService service)
         {
@@ -21,13 +16,13 @@ namespace DLUPersistenceServiceModule.controllers
                 var username = Request.Headers["username"].SingleOrDefault().ToString();
                 var password = Request.Headers["password"].SingleOrDefault().ToString();
                 return service.GetUserbyEmailAndPassword(username, password);
-            } );
-            
+            });
+
             Post("/user/create", o =>
             {
 
                 var user = this.Bind<User>();
-               return service.CreateUser(user);
+                return service.CreateUser(user);
             });
         }
     }

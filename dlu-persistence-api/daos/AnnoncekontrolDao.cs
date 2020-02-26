@@ -1,10 +1,9 @@
+using dlu_persistence_api.exceptions;
+using Newtonsoft.Json;
 using System;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
-
-using Newtonsoft.Json;
-using  dlu_persistence_api.exceptions;
 
 namespace dlu_persistence_api.daos
 {/// <summary>
@@ -18,7 +17,7 @@ namespace dlu_persistence_api.daos
         public AnnoncekontrolDao()
         {
             _entities = new DiMPdotNetDevEntities();
-          
+
         }
         /// <summary>
         /// 
@@ -28,19 +27,27 @@ namespace dlu_persistence_api.daos
         /// <exception cref="DaoExceptions"></exception>
         public string GetAnnoceKontrolByMediePlanId(int mediePlan)
         {
-           
+
             try
             {
                 var res = from an in _entities.tblAnnoncekontrols
-                    where an.MedieplanNr == mediePlan
-                    select new
-                    {
+                          where an.MedieplanNr == mediePlan
+                          select new
+                          {
 
-                        an.MedieplanNr, an.Ansvar, an.Fejlkode, an.ErKontrolleret, an.FaktureresTil, an.KontrollørEmail,
-                        an.KontrolTidspunkt,
-                        an.SidePlacering,
-                        an.tblFejlTekst.FejlTekst, an.IndrykketPåSide, an.UgeavisID, an.KontrolleretAfDLU
-                    };
+                              an.MedieplanNr,
+                              an.Ansvar,
+                              an.Fejlkode,
+                              an.ErKontrolleret,
+                              an.FaktureresTil,
+                              an.KontrollørEmail,
+                              an.KontrolTidspunkt,
+                              an.SidePlacering,
+                              an.tblFejlTekst.FejlTekst,
+                              an.IndrykketPåSide,
+                              an.UgeavisID,
+                              an.KontrolleretAfDLU
+                          };
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
 
             }
@@ -50,7 +57,7 @@ namespace dlu_persistence_api.daos
                 throw new DaoExceptions(" AnnoncekontrolDao GetAnnoceKontrolByMediePlanId", a.InnerException);
             }
 
-            
+
         }
         /// <summary>
         /// 
@@ -63,14 +70,22 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from an in _entities.tblAnnoncekontrols
-                    where an.KontrollørEmail == email
-                    select new
-                    {
-                        an.MedieplanNr, an.Ansvar, an.Fejlkode, an.ErKontrolleret, an.FaktureresTil, an.KontrollørEmail,
-                        an.KontrolTidspunkt,
-                        an.SidePlacering,
-                        an.tblFejlTekst.FejlTekst, an.IndrykketPåSide, an.UgeavisID, an.KontrolleretAfDLU
-                    };
+                          where an.KontrollørEmail == email
+                          select new
+                          {
+                              an.MedieplanNr,
+                              an.Ansvar,
+                              an.Fejlkode,
+                              an.ErKontrolleret,
+                              an.FaktureresTil,
+                              an.KontrollørEmail,
+                              an.KontrolTidspunkt,
+                              an.SidePlacering,
+                              an.tblFejlTekst.FejlTekst,
+                              an.IndrykketPåSide,
+                              an.UgeavisID,
+                              an.KontrolleretAfDLU
+                          };
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
 
             }
@@ -80,13 +95,13 @@ namespace dlu_persistence_api.daos
             }
         }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="tblAnnoncekontrol"></param>
-    /// <returns></returns>
-    /// <exception cref="DaoExceptions"></exception>
-    public Task<int> CreateOrUpdate(tblAnnoncekontrol tblAnnoncekontrol)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tblAnnoncekontrol"></param>
+        /// <returns></returns>
+        /// <exception cref="DaoExceptions"></exception>
+        public Task<int> CreateOrUpdate(tblAnnoncekontrol tblAnnoncekontrol)
         {
             try
             {
@@ -95,14 +110,14 @@ namespace dlu_persistence_api.daos
             }
             catch (Exception e)
             {
-                
-                throw  new FormattedDbEntityValidationException(e.InnerException);
-           }
+
+                throw new FormattedDbEntityValidationException(e.InnerException);
+            }
         }
-           
-        
-        
-        
+
+
+
+
         public void Dispose()
         {
             _entities?.Dispose();

@@ -1,17 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Policy;
-using System.Web.Security;
 using dlu_persistence_api;
-using Nancy;
-using Nancy.Metadata.Modules;
 using Nancy.Swagger;
 using Nancy.Swagger.Services;
-using Swagger.ObjectModel;
 
 namespace DLUPersistenceServiceModule.swagger
 {
-    public class StambladMetaDataModule: ISwaggerModelDataProvider
+    public class StambladMetaDataModule : ISwaggerModelDataProvider
     {
         public SwaggerModelData GetModelData()
         {
@@ -23,10 +16,10 @@ namespace DLUPersistenceServiceModule.swagger
                     .Required(true);
             });
         }
-        
-        
-        
-        
+
+
+
+
     }
 
     public class MediePlanDataModule : ISwaggerModelDataProvider
@@ -39,7 +32,7 @@ namespace DLUPersistenceServiceModule.swagger
             {
                 with.Description("tblMediePlanData");
                 with.Property(x => x.MedieplanNr).Description("").Required(true);
-                
+
             });
         }
     }

@@ -1,8 +1,7 @@
 using System.Threading.Tasks;
-using dlu_persistence_api.daos;
 namespace dlu_persistence_api.services
 {
-    public class SalesPersonService: ISalespersonService
+    public class SalesPersonService : ISalespersonService
     {
         public string GetSalesPersonByEmail(string email)
         {

@@ -1,12 +1,11 @@
+using dlu_persistence_api.exceptions;
+using dlu_persistence_api.models;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using  dlu_persistence_api.exceptions;
-using dlu_persistence_api.models;
-using System.Collections.Generic;
 namespace dlu_persistence_api.daos
 {
     /// <summary>
@@ -19,9 +18,9 @@ namespace dlu_persistence_api.daos
         public BladDækningDao()
         {
             _entities = new DiMPdotNetDevEntities();
-            
-                _entities.Configuration.LazyLoadingEnabled = true;
-            
+
+            _entities.Configuration.LazyLoadingEnabled = true;
+
         }
         /// <summary>
         /// 
@@ -33,7 +32,8 @@ namespace dlu_persistence_api.daos
         {
             try
             {
-                var res = from dg in _entities.tblBladDækning from e in _entities.tblPostNrs
+                var res = from dg in _entities.tblBladDækning
+                          from e in _entities.tblPostNrs
                           where dg.PostNr == e.PostNr & dg.BladID == bladID
 
 
@@ -46,9 +46,9 @@ namespace dlu_persistence_api.daos
 
                               PostNr1 = dg.PostNr,
                               Postby = e.PostBy,
-                            
-                   
-                    };
+
+
+                          };
                 return res.ToList<Bladdaeknik>();
             }
             catch (Exception e)
@@ -68,17 +68,20 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from dp in _entities.tblBladDækning
-                    where dp.BladID == bladid
-                    select new
-                    {
-                        dp.BladID, dp.Oplag, dp.DækningsGrad, dp.PostNr
-                    };
+                          where dp.BladID == bladid
+                          select new
+                          {
+                              dp.BladID,
+                              dp.Oplag,
+                              dp.DækningsGrad,
+                              dp.PostNr
+                          };
 
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
             catch (Exception e)
             {
-                throw new FormattedDbEntityValidationException( e.InnerException);
+                throw new FormattedDbEntityValidationException(e.InnerException);
             }
         }
         /// <summary>
@@ -90,7 +93,7 @@ namespace dlu_persistence_api.daos
         public Task<int> OpretBladDækning(tblBladDækning tblBladDækning)
         {
 
-           
+
             try
             {
                 _entities.tblBladDækning.AddOrUpdate(tblBladDækning);
@@ -99,7 +102,7 @@ namespace dlu_persistence_api.daos
             }
             catch (Exception e)
             {
-                throw new DaoExceptions("BladDækningDao OpretBladDækning " , e.InnerException);
+                throw new DaoExceptions("BladDækningDao OpretBladDækning ", e.InnerException);
             }
         }
 
@@ -110,10 +113,11 @@ namespace dlu_persistence_api.daos
             var table = res.Single();
             _entities.tblBladDækning.Remove(table);
             return _entities.SaveChanges();
-;        }
+            ;
+        }
 
 
     }
 
-   
+
 }

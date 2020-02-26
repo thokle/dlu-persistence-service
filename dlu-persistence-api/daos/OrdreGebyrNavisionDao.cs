@@ -1,24 +1,23 @@
+using dlu_persistence_api.exceptions;
+using Newtonsoft.Json;
 using System;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
-
-using dlu_persistence_api.exceptions;
-using Newtonsoft.Json;
 
 namespace dlu_persistence_api.daos
 {
     /// <summary>
     /// 
     /// </summary>
-    public class OrdreGebyrNavisionDao: IDisposable
+    public class OrdreGebyrNavisionDao : IDisposable
     {
         private DiMPdotNetDevEntities _entities;
 
         public OrdreGebyrNavisionDao()
         {
             _entities = new DiMPdotNetDevEntities();
-            
+
         }
 
         /// <summary>
@@ -32,21 +31,40 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from od in _entities.tblOrdreNavisions
-                    where od.OrdreNr == orderid
-                    select new
-                    {
-                         od.Uge, od.Advertiser, od.Bureau, od.Placement, od.Status, od.Version, od.AntalFarver,
-                        od.Credit_Reason, od.Document_Type, od.EnOrdre, od.FakBem1, od.FakBem2, od.FakBem3, od.InfoGodt, od.Item_Description, 
-                        od.OrdreDato, od.Previous_Version, od.SamletPris, od.SikkerhedsGodt, od.SælgerKode, od.AnnoncørID, od.BureauOrdreNr,
-                        od.Previous_Order_No
-                    };
+                          where od.OrdreNr == orderid
+                          select new
+                          {
+                              od.Uge,
+                              od.Advertiser,
+                              od.Bureau,
+                              od.Placement,
+                              od.Status,
+                              od.Version,
+                              od.AntalFarver,
+                              od.Credit_Reason,
+                              od.Document_Type,
+                              od.EnOrdre,
+                              od.FakBem1,
+                              od.FakBem2,
+                              od.FakBem3,
+                              od.InfoGodt,
+                              od.Item_Description,
+                              od.OrdreDato,
+                              od.Previous_Version,
+                              od.SamletPris,
+                              od.SikkerhedsGodt,
+                              od.SælgerKode,
+                              od.AnnoncørID,
+                              od.BureauOrdreNr,
+                              od.Previous_Order_No
+                          };
                 return JsonConvert.SerializeObject(res, formatting: Formatting.Indented);
             }
-            
-            
-            catch(Exception e)
+
+
+            catch (Exception e)
             {
-                
+
                 throw new DaoExceptions("GetOrderGebyNavisionByOrderId", e.InnerException);
             }
         }
@@ -57,21 +75,40 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from od in _entities.tblOrdreNavisions
-                    where od.SælgerKode == saelgerkode
-                    select new
-                    {
-                        od.Uge, od.Advertiser, od.Bureau, od.Placement, od.Status, od.Version, od.AntalFarver,
-                        od.Credit_Reason, od.Document_Type, od.EnOrdre, od.FakBem1, od.FakBem2, od.FakBem3, od.InfoGodt, od.Item_Description, 
-                        od.OrdreDato, od.Previous_Version, od.SamletPris, od.SikkerhedsGodt, od.SælgerKode, od.AnnoncørID, od.BureauOrdreNr,
-                        od.Previous_Order_No
-                    };
+                          where od.SælgerKode == saelgerkode
+                          select new
+                          {
+                              od.Uge,
+                              od.Advertiser,
+                              od.Bureau,
+                              od.Placement,
+                              od.Status,
+                              od.Version,
+                              od.AntalFarver,
+                              od.Credit_Reason,
+                              od.Document_Type,
+                              od.EnOrdre,
+                              od.FakBem1,
+                              od.FakBem2,
+                              od.FakBem3,
+                              od.InfoGodt,
+                              od.Item_Description,
+                              od.OrdreDato,
+                              od.Previous_Version,
+                              od.SamletPris,
+                              od.SikkerhedsGodt,
+                              od.SælgerKode,
+                              od.AnnoncørID,
+                              od.BureauOrdreNr,
+                              od.Previous_Order_No
+                          };
                 return JsonConvert.SerializeObject(res, formatting: Formatting.Indented);
             }
-            
-            
-            catch(Exception e)
+
+
+            catch (Exception e)
             {
-                
+
                 throw new DaoExceptions("GetOrderGebyNavisionByOrderId", e.InnerException);
             }
         }
@@ -81,24 +118,43 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from od in _entities.tblOrdreNavisions
-                    where od.Bureau == burea
-                    select new
-                    {
-                        od.Uge, od.Advertiser, od.Bureau, od.Placement, od.Status, od.Version, od.AntalFarver,
-                        od.Credit_Reason, od.Document_Type, od.EnOrdre, od.FakBem1, od.FakBem2, od.FakBem3, od.InfoGodt, od.Item_Description, 
-                        od.OrdreDato, od.Previous_Version, od.SamletPris, od.SikkerhedsGodt, od.SælgerKode, od.AnnoncørID, od.BureauOrdreNr,
-                        od.Previous_Order_No
-                    };
+                          where od.Bureau == burea
+                          select new
+                          {
+                              od.Uge,
+                              od.Advertiser,
+                              od.Bureau,
+                              od.Placement,
+                              od.Status,
+                              od.Version,
+                              od.AntalFarver,
+                              od.Credit_Reason,
+                              od.Document_Type,
+                              od.EnOrdre,
+                              od.FakBem1,
+                              od.FakBem2,
+                              od.FakBem3,
+                              od.InfoGodt,
+                              od.Item_Description,
+                              od.OrdreDato,
+                              od.Previous_Version,
+                              od.SamletPris,
+                              od.SikkerhedsGodt,
+                              od.SælgerKode,
+                              od.AnnoncørID,
+                              od.BureauOrdreNr,
+                              od.Previous_Order_No
+                          };
                 return JsonConvert.SerializeObject(res, formatting: Formatting.Indented);
             }
-            
-            
-            catch(Exception e)
+
+
+            catch (Exception e)
             {
-                
+
                 throw new DaoExceptions("GetOrderGebyNavisionByOrderId", e.InnerException);
             }
-            
+
         }
 
 
@@ -113,9 +169,9 @@ namespace dlu_persistence_api.daos
             {
                 throw new FormattedDbEntityValidationException(e.InnerException);
             }
-        
+
         }
-        
+
         public void Dispose()
         {
             _entities?.Dispose();

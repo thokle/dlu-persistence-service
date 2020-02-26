@@ -1,11 +1,9 @@
-using System;
-using System.Data.Entity.Core.Common.CommandTrees;
-using System.Linq;
-using System.Net.Sockets;
+using dlu_persistence_api.exceptions;
 using Newtonsoft.Json;
-using  dlu_persistence_api.exceptions;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
+using System.Linq;
 
 namespace dlu_persistence_api.daos
 {    /// <summary>
@@ -19,9 +17,9 @@ namespace dlu_persistence_api.daos
         public PostNrTableDao()
         {
             _diMPdotNetEntities = new DiMPdotNetDevEntities();
-            
-                _diMPdotNetEntities.Configuration.LazyLoadingEnabled = true;
-            
+
+            _diMPdotNetEntities.Configuration.LazyLoadingEnabled = true;
+
         }
 
         /// <summary>
@@ -48,8 +46,8 @@ namespace dlu_persistence_api.daos
             {
                 throw new Exception(e.HelpLink);
             }
-        
-    }
+
+        }
 
         public string GetPostNrAfByNavn(string bynavn)
         {
@@ -57,18 +55,18 @@ namespace dlu_persistence_api.daos
             {
 
                 var res = from ps in _diMPdotNetEntities.tblPostNrs
-                    where ps.PostBy.Equals(bynavn)
-                    orderby ps.PostBy
-                    select new
-                    {
-                        ps.PostNr
-                    };
+                          where ps.PostBy.Equals(bynavn)
+                          orderby ps.PostBy
+                          select new
+                          {
+                              ps.PostNr
+                          };
 
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
             catch (Exception e)
             {
-                throw new DaoExceptions("GetPostNrAfByNavn " , e.InnerException);
+                throw new DaoExceptions("GetPostNrAfByNavn ", e.InnerException);
             }
         }
 
@@ -80,21 +78,23 @@ namespace dlu_persistence_api.daos
             {
 
                 var res = from ps in _diMPdotNetEntities.tblPostNrs
-                    where ps.PostNr == postnr
-                    orderby ps.PostBy
-                    select new
-                    {
-                        ps.PostBy, ps.PostNr,ps.MaxDækningsGrad
-                    };
+                          where ps.PostNr == postnr
+                          orderby ps.PostBy
+                          select new
+                          {
+                              ps.PostBy,
+                              ps.PostNr,
+                              ps.MaxDækningsGrad
+                          };
 
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
             catch (Exception e)
             {
-                throw new DaoExceptions("GetByBYPostNr " , e.InnerException);
-            }   
+                throw new DaoExceptions("GetByBYPostNr ", e.InnerException);
+            }
         }
-        
+
         public int CheckIfPostNrExist(int postnr)
         {
             int returnValue = 0;
@@ -102,19 +102,22 @@ namespace dlu_persistence_api.daos
                        where p.PostNr == postnr
                        select new PostNrModel()
                        {
-                           Hustande = p.Husstande, PostBy =  p.PostBy, PostNr =p.PostNr
+                           Hustande = p.Husstande,
+                           PostBy = p.PostBy,
+                           PostNr = p.PostNr
                        });
 
             if ((int)res.Count() > 0)
             {
-                returnValue =  1;
-            } else if (res.Count() < 1)
-            {
-                returnValue =  0;
+                returnValue = 1;
             }
-            return returnValue;     
+            else if (res.Count() < 1)
+            {
+                returnValue = 0;
+            }
+            return returnValue;
         }
-       
+
         public int AddOrUpdate(tblPostNr tbl)
         {
             _diMPdotNetEntities.tblPostNrs.AddOrUpdate(tbl);

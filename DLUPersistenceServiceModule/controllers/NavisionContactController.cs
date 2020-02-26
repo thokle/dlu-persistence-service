@@ -4,11 +4,11 @@ using Nancy;
 
 namespace DLUPersistenceServiceModule.controllers
 {
-    public sealed class NavisionContactController: NancyModule
+    public sealed class NavisionContactController : NancyModule
     {
         public NavisionContactController(NavisiomContactService service)
         {
-           Get("/navisionContact/byPersonId/{personId:string}", o =>   service.GetNavisionContactbySalesPersonId(o.personId));
+            Get("/navisionContact/byPersonId/{personId:string}", o => service.GetNavisionContactbySalesPersonId(o.personId));
         }
     }
 }

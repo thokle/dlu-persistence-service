@@ -1,11 +1,11 @@
 using dlu_persistence_api;
-using  Nancy;
+using dlu_persistence_api.services;
+using Nancy;
 using Nancy.ModelBinding;
- using dlu_persistence_api.services;
 
 namespace DLUPersistenceServiceModule.controllers
 {
-    public sealed class GruppeController: NancyModule
+    public sealed class GruppeController : NancyModule
     {
         public GruppeController(GruppeService service)
         {

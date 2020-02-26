@@ -1,14 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using dlu_persistence_api.models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using dlu_persistence_api.exceptions;
-using dlu_persistence_api.models;
 namespace dlu_persistence_api.daos
 {
-   public class MediePlanAviserDao
+    public class MediePlanAviserDao
     {
         private DiMPdotNetDevEntities diMPdot;
         public MediePlanAviserDao()
@@ -16,7 +11,7 @@ namespace dlu_persistence_api.daos
             diMPdot = new DiMPdotNetDevEntities();
         }
 
-        public AvisTIlGrid GetAllUgeAvisTilGrid(int bladid, int year,  int placeringid=0)
+        public AvisTIlGrid GetAllUgeAvisTilGrid(int bladid, int year, int placeringid = 0)
         {
             try
             {
@@ -40,9 +35,9 @@ namespace dlu_persistence_api.daos
                           from pla in pplap.DefaultIfEmpty()
                           join prisl in diMPdot.tblPrislisters on p.PrislisteID equals prisl.PrislisteID into pprisl
                           from prisl in pprisl.DefaultIfEmpty()
-                       join konw in diMPdot.tblKoncernMiljøTillæg on b.Koncern equals konw.koncern into konwb
-                       from know in konwb.DefaultIfEmpty()
-                          where b.BladID == bladid & b.Ophørt == false & p.År == year & p.PlaceringID == placeringid & know.koncern !=null
+                          join konw in diMPdot.tblKoncernMiljøTillæg on b.Koncern equals konw.koncern into konwb
+                          from know in konwb.DefaultIfEmpty()
+                          where b.BladID == bladid & b.Ophørt == false & p.År == year & p.PlaceringID == placeringid & know.koncern != null
                           select new AvisTIlGrid
                           {
                               Adresse = b.Adresse,
@@ -141,19 +136,19 @@ namespace dlu_persistence_api.daos
                               WWWDaekningSomTekst = b.WWWDækningSomTekst,
                               MmTotal = (decimal)(p.mmPris * 10),
 
-                              MiljøTillæg = know.miljøtilæg.Value!= 0 ? know.miljøtilæg.Value : 0,
-                            koncern =   know.koncern,
+                              MiljøTillæg = know.miljøtilæg.Value != 0 ? know.miljøtilæg.Value : 0,
+                              koncern = know.koncern,
 
-                            UgeavisID = d.BladID
-                              
+                              UgeavisID = d.BladID
+
                           };
 
 
 
                 return res.FirstOrDefault();
 
-                        
-                        
+
+
             }
             catch (Exception e)
             {

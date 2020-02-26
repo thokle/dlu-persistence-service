@@ -1,11 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using dlu_persistence_api.exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using dlu_persistence_api.exceptions;
-using dlu_persistence_api.models;
 
 namespace dlu_persistence_api.daos
 {
@@ -25,65 +21,65 @@ namespace dlu_persistence_api.daos
                 var res = from d in entities.AktiveUgeaviserMedAlleDatas
                           select new AktiveUgeaviserMedAlleDatas
                           {
-                           
-                          Adress=  d.Adresse,
-                           AnnonceEmail = d.AnnonceEmail,
-                     AnnonceKontrolEmail = d.AnnonceKontrolEmail,
-                              BilagsbladeEmail =     d.BilagsbladeEmail,
-                              BladID =   d.BladID,
-                              BogholderiEmails =    d.BogholderiEmails,
-                             CVR =  d.CVR,
-                              DelOmrådeNavn =     d.DelOmrådeNavn,
-                              DiMPDelOmrådeKode =       d.DiMPDelOmrådeKode,
-                              Ejerforhold =    d.Ejerforhold,
-                              Emails =    d.Emails,
-                              FakturaGruppe =    d.FakturaGruppe, 
-                           Format =    d.Format,
-                              GeoKodeNavn =    d.GeoKodeNavn,
-                            GruppeRabat =   d.GruppeRabat,
-                           Hjemmeside =  d.Hjemmeside,
-                              HovedGruppeNavn =   d.HovedGruppeNavn,
-                              Kontaktperson =      d.Kontaktperson,
-                              KontaktpersonerEmails =      d.KontaktpersonerEmails,
-                              MaterialedeadlineRubrik =     d.MaterialedeadlineRubrik,
-                              MaterialedeadlineTekst= d.MaterialedeadlineTekst,
-                              MaterialeEmail =     d.MaterialeEmail,
-                              MedieNetKode =      d.MedieNetKode,
-                              MedlemMåned =    d.MedlemMåned,
-                              MedlemÅr =     d.MedlemÅr,
-                              Navn =   d.Navn, 
-                             Oplag =  d.Oplag,
-                              OrdrecheckEmail =   d.OrdrecheckEmail,
-                              OrdrecheckSendeDag =    d.OrdrecheckSendeDag,
-                              OrdredeadlineRubrik =  d.OrdredeadlineRubrik,
-                              OrdredeadlineTekst =   d.OrdredeadlineTekst,
-                              OrdreEmail =  d.OrdreEmail,
-                              OrienteringEmails =     d.OrienteringEmails,
-                              PostBy =       d.PostBy,
-                             PostNr =  d.PostNr,
-                            Primær =  d.Primær,
-                          PrimærPct  =   d.PrimærPct,
-                              PrisforespørgselEmails =   d.PrisforespørgselEmails,
-                              RedaktionEmail =   d.RedaktionEmail,
-                              RegionNavn =   d.RegionNavn,
-                              SamannonceringsRabat =   d.SamannonceringsRabat,
-                              SendetidOrdrecheck =  d.SendetidOrdrecheck,
-                              SendIndeværendeUge =   d.SendIndeværendeUge,
-                              StamdataEmail =     d.StamdataEmail,
-                              Tlf =  d.Tlf,
-                              Totalområde =    d.Totalområde,
+
+                              Adress = d.Adresse,
+                              AnnonceEmail = d.AnnonceEmail,
+                              AnnonceKontrolEmail = d.AnnonceKontrolEmail,
+                              BilagsbladeEmail = d.BilagsbladeEmail,
+                              BladID = d.BladID,
+                              BogholderiEmails = d.BogholderiEmails,
+                              CVR = d.CVR,
+                              DelOmrådeNavn = d.DelOmrådeNavn,
+                              DiMPDelOmrådeKode = d.DiMPDelOmrådeKode,
+                              Ejerforhold = d.Ejerforhold,
+                              Emails = d.Emails,
+                              FakturaGruppe = d.FakturaGruppe,
+                              Format = d.Format,
+                              GeoKodeNavn = d.GeoKodeNavn,
+                              GruppeRabat = d.GruppeRabat,
+                              Hjemmeside = d.Hjemmeside,
+                              HovedGruppeNavn = d.HovedGruppeNavn,
+                              Kontaktperson = d.Kontaktperson,
+                              KontaktpersonerEmails = d.KontaktpersonerEmails,
+                              MaterialedeadlineRubrik = d.MaterialedeadlineRubrik,
+                              MaterialedeadlineTekst = d.MaterialedeadlineTekst,
+                              MaterialeEmail = d.MaterialeEmail,
+                              MedieNetKode = d.MedieNetKode,
+                              MedlemMåned = d.MedlemMåned,
+                              MedlemÅr = d.MedlemÅr,
+                              Navn = d.Navn,
+                              Oplag = d.Oplag,
+                              OrdrecheckEmail = d.OrdrecheckEmail,
+                              OrdrecheckSendeDag = d.OrdrecheckSendeDag,
+                              OrdredeadlineRubrik = d.OrdredeadlineRubrik,
+                              OrdredeadlineTekst = d.OrdredeadlineTekst,
+                              OrdreEmail = d.OrdreEmail,
+                              OrienteringEmails = d.OrienteringEmails,
+                              PostBy = d.PostBy,
+                              PostNr = d.PostNr,
+                              Primær = d.Primær,
+                              PrimærPct = d.PrimærPct,
+                              PrisforespørgselEmails = d.PrisforespørgselEmails,
+                              RedaktionEmail = d.RedaktionEmail,
+                              RegionNavn = d.RegionNavn,
+                              SamannonceringsRabat = d.SamannonceringsRabat,
+                              SendetidOrdrecheck = d.SendetidOrdrecheck,
+                              SendIndeværendeUge = d.SendIndeværendeUge,
+                              StamdataEmail = d.StamdataEmail,
+                              Tlf = d.Tlf,
+                              Totalområde = d.Totalområde,
                               TotalområdePct = d.TotalområdePct,
-                            Udgivelsesdag =   d.Udgivelsesdag,
-                              WWWDækningSomTekst =   d.WWWDækningSomTekst,
-                              
-                             
+                              Udgivelsesdag = d.Udgivelsesdag,
+                              WWWDækningSomTekst = d.WWWDækningSomTekst,
+
+
                           };
 
 
                 return res.ToList();
             }
-            
-            catch (FormattedDbEntityValidationException  e)
+
+            catch (FormattedDbEntityValidationException e)
             {
 
                 throw new Exception(e.Message);
@@ -105,7 +101,7 @@ namespace dlu_persistence_api.daos
                     DelOmraadeNavn = d.DelOmrådeNavn,
                     GeoKodeNavn = d.GeoKodeNavn,
                     GruppeNavn = d.GruppeNavn,
-                    HovedGruppeNavn= d.HovedGruppeNavn,
+                    HovedGruppeNavn = d.HovedGruppeNavn,
                     Kontaktperson = d.Kontaktperson,
                     MaterialedeadlineRubrik = d.MaterialedeadlineRubrik,
                     MaterialedeadlineTekst = d.MaterialedeadlineTekst,
@@ -166,17 +162,17 @@ namespace dlu_persistence_api.daos
                               PostNr = d.PostNr,
                               RegionNavn = d.RegionNavn
                           };
-               var array =  res.ToArray <AktiveAviserModel> ();
+                var array = res.ToArray<AktiveAviserModel>();
                 var data = new Data(array.Length);
                 var i = 0;
-                foreach(AktiveAviserModel a in array)
+                foreach (AktiveAviserModel a in array)
                 {
                     data.data[i] = a;
                     i++;
                 }
                 return res.ToList();
             }
-            catch (FormattedDbEntityValidationException e )
+            catch (FormattedDbEntityValidationException e)
             {
 
                 throw new Exception(e.HelpLink);
@@ -203,7 +199,7 @@ namespace dlu_persistence_api.daos
         public string DagNavn { get; set; }
         public string DelOmraadeNavn { get; set; }
         public string GeoKodeNavn { get; set; }
-        public string GruppeNavn{ get; set; }
+        public string GruppeNavn { get; set; }
         public string HovedGruppeNavn { get; set; }
         public string Kontaktperson { get; set; }
         public string MaterialedeadlineRubrik { get; set; }
@@ -212,10 +208,10 @@ namespace dlu_persistence_api.daos
         public string Navn2 { get; set; }
         public int? Oplag { get; set; }
         public string OrdredeadlineRubrik { get; set; }
-        public string OrdredeadlineTekst{ get; set; }
+        public string OrdredeadlineTekst { get; set; }
         public string PostBy { get; set; }
         public int? PostNr { get; set; }
         public string RegionNavn { get; set; }
-    
+
     }
 }

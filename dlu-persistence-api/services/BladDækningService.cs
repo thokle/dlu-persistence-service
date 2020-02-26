@@ -1,5 +1,5 @@
-using System.Threading.Tasks;
 using dlu_persistence_api.daos;
+using System.Threading.Tasks;
 
 namespace dlu_persistence_api.services
 {
@@ -12,7 +12,7 @@ namespace dlu_persistence_api.services
             _dao = new BladDækningDao();
         }
 
-       
+
 
         public string GetBladDækningByPostnr(int postnr)
         {

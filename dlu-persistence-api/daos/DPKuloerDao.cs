@@ -1,13 +1,10 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace dlu_persistence_api.daos
 {
-  public  class DPKuloerDao
+    public class DPKuloerDao
     {
         private DiMPdotNetDevEntities devEntities;
 
@@ -24,8 +21,9 @@ namespace dlu_persistence_api.daos
                           orderby ku.DPKulørID ascending
                           select new DPKulør()
                           {
-                             DPKuloerId =  ku.DPKulørID, kuloer=  ku.Kulør
-                                   
+                              DPKuloerId = ku.DPKulørID,
+                              kuloer = ku.Kulør
+
                           };
                 return res.ToList();
 

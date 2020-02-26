@@ -1,7 +1,7 @@
-using  dlu_persistence_api.daos;
+using dlu_persistence_api.daos;
 namespace dlu_persistence_api.services
 {
-    public class KontaktService: IKontaktService
+    public class KontaktService : IKontaktService
     {
         private KontaktDao _kontaktDao;
 

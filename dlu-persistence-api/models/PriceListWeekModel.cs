@@ -1,6 +1,6 @@
-using System.Linq;
-using System.Collections.Generic;
 using dlu_persistence_api.daos;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace dlu_persistence_api.models
 {
@@ -17,11 +17,13 @@ namespace dlu_persistence_api.models
         public PriceListWeekModel()
         {
             di = new DiMPdotNetDevEntities();
-            prislisters = (from pl in di.tblPrislisters select new daos.Prislister()
-            {
-            PrislisteID =   pl.PrislisteID , PrislisteNavn = pl.PrislisteNavn
-       
-            }).ToList<daos.Prislister>();
+            prislisters = (from pl in di.tblPrislisters
+                           select new daos.Prislister()
+                           {
+                               PrislisteID = pl.PrislisteID,
+                               PrislisteNavn = pl.PrislisteNavn
+
+                           }).ToList<daos.Prislister>();
         }
         public int PrislisteId
         {

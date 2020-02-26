@@ -1,7 +1,7 @@
+using dlu_persistence_api.exceptions;
 using System;
 using System.Data.Entity.Migrations;
 using System.Threading.Tasks;
-using dlu_persistence_api.exceptions;
 namespace dlu_persistence_api.daos
 {    /// <summary>
      /// 
@@ -9,13 +9,13 @@ namespace dlu_persistence_api.daos
     public class KontakterPrBladDao
     {
         private DiMPdotNetDevEntities _entities;
-        
+
         public KontakterPrBladDao()
         {
             using (_entities = new DiMPdotNetDevEntities())
             {
                 _entities.Configuration.LazyLoadingEnabled = true;
-            }   
+            }
         }
         /// <summary>
         /// 
@@ -32,12 +32,12 @@ namespace dlu_persistence_api.daos
             }
             catch (Exception e)
             {
-                throw  new FormattedDbEntityValidationException(e.InnerException );
+                throw new FormattedDbEntityValidationException(e.InnerException);
             }
 
         }
-        
-        
-        
+
+
+
     }
 }

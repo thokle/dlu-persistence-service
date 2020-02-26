@@ -1,40 +1,41 @@
-using System;
-using System.Collections.Generic;
-using System.Data.Entity.Core.Metadata.Edm;
-using System.Data.Entity.Migrations;
-using System.Data.Entity.Validation;
-using  System.Linq;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
 using dlu_persistence_api.exceptions;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity.Migrations;
+using System.Data.Entity.Validation;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace dlu_persistence_api.daos
-{    
+{
     /// <summary>
     /// 
     /// </summary>
     public class KonkurrenceDaekningDao
 
     {
-    private DiMPdotNetDevEntities _entities;
+        private DiMPdotNetDevEntities _entities;
 
-    public KonkurrenceDaekningDao()
-    {
+        public KonkurrenceDaekningDao()
+        {
             _entities = new DiMPdotNetDevEntities();
-       
-    }
+
+        }
 
         public List<KonkurentDaekningDao> GetKonkurrenterById(byte konkurrentId)
         {
             try
             {
-                var res = from k in _entities.tblKonkurrentDækning where k.KonkurrentID == konkurrentId select new KonkurentDaekningDao {
-                    KonkurrentID = k.KonkurrentID,
-                    Oplag =      k.Oplag,
-                    PostNr =    k.PostNr ,
-                    DækningsGrad = k.DækningsGrad
-                };
+                var res = from k in _entities.tblKonkurrentDækning
+                          where k.KonkurrentID == konkurrentId
+                          select new KonkurentDaekningDao
+                          {
+                              KonkurrentID = k.KonkurrentID,
+                              Oplag = k.Oplag,
+                              PostNr = k.PostNr,
+                              DækningsGrad = k.DækningsGrad
+                          };
                 return res.ToList();
             }
             catch (Exception e)
@@ -54,17 +55,19 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from k in _entities.tblKonkurrentDækning
-                    where k.PostNr == postnr
-                    orderby k.PostNr
-                    select new
-                    {
-                        k.PostNr, k.Oplag, k.DækningsGrad
-                    };
+                          where k.PostNr == postnr
+                          orderby k.PostNr
+                          select new
+                          {
+                              k.PostNr,
+                              k.Oplag,
+                              k.DækningsGrad
+                          };
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
             catch (Exception e)
             {
-                throw new  DaoExceptions("GetKomkurrenceDækningPrPostNr ", e.InnerException);
+                throw new DaoExceptions("GetKomkurrenceDækningPrPostNr ", e.InnerException);
             }
         }
         /// <summary>
@@ -79,12 +82,14 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from k in _entities.tblKonkurrentDækning
-                    where k.DækningsGrad == daekg
-                    orderby k.DækningsGrad
-                    select new
-                    {
-                        k.PostNr, k.Oplag, k.DækningsGrad,
-                    };
+                          where k.DækningsGrad == daekg
+                          orderby k.DækningsGrad
+                          select new
+                          {
+                              k.PostNr,
+                              k.Oplag,
+                              k.DækningsGrad,
+                          };
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
             catch (Exception e)
@@ -108,16 +113,16 @@ namespace dlu_persistence_api.daos
             }
             catch (DbEntityValidationException e)
             {
-                throw new    FormattedDbEntityValidationException(e.InnerException);
+                throw new FormattedDbEntityValidationException(e.InnerException);
             }
 
-            
+
         }
-        
-        
+
+
         public void Dispose()
         {
-           _entities.Dispose();
+            _entities.Dispose();
         }
     }
 

@@ -1,8 +1,4 @@
 ﻿using Nancy;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 
 namespace DLUPersistenceServiceModule.controllers
@@ -11,14 +7,14 @@ namespace DLUPersistenceServiceModule.controllers
     {
         public IndexController()
         {
-         
-            
+
+
             Get("/swagger/", _ =>
             {
-          
+
                 return Response.AsRedirect($"http://petstore.swagger.io/?url=http://localhost:49485/api-docs");
             });
-            Get("/swagger-ui/",_=> { return Response.AsRedirect("http://localhost:49485/swagger-ui/"); });  
-    }
+            Get("/swagger-ui/", _ => { return Response.AsRedirect("http://localhost:49485/swagger-ui/"); });
+        }
     }
 }

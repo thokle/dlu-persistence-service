@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Nancy;
+﻿using dlu_persistence_api;
 using dlu_persistence_api.services;
-using dlu_persistence_api;
+using Nancy;
 using Nancy.Extensions;
 using Nancy.IO;
 
 namespace DLUPersistenceServiceModule.controllers
 {
-    public class StmbladKontaktController: Nancy.NancyModule
+    public class StmbladKontaktController : Nancy.NancyModule
     {
         public StmbladKontaktController(StambladKontaktService service)
         {

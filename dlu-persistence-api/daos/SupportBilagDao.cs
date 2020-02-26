@@ -1,14 +1,11 @@
+using dlu_persistence_api.exceptions;
 using System;
 using System.Data.Entity.Migrations;
-using System.Data.SqlTypes;
 using System.Linq;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using dlu_persistence_api.exceptions;
 
 namespace dlu_persistence_api.daos
 {
-    public class SupportBilagDao: IDisposable
+    public class SupportBilagDao : IDisposable
     {
 
         private DiMPdotNetDevEntities _entities;
@@ -16,7 +13,7 @@ namespace dlu_persistence_api.daos
         public SupportBilagDao()
         {
             _entities = new DiMPdotNetDevEntities();
-            
+
         }
 
 
@@ -26,14 +23,30 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from sb in _entities.tblSupportBilags
-                    where sb.MedieplanNr == medieId
-                    select new SupporBillag()
-                    {
-                        MedieplanNr =   sb.MedieplanNr, Bilagsblade=  sb.Bilagsblade, Fakturering = sb.Fakturering, Overskrift = sb.Overskrift, BilagsbladeAtt = sb.BilagsbladeAtt,IndrykningsUge =  sb.IndrykningsUge, LøbendeOrdre = sb.LøbendeOrdre,
-                        SammeMateriale =  sb.SammeMateriale, BemærkningTilBlade = sb.BemærkningTilBlade, BemærkningTilSupport  = sb.BemærkningTilSupport,BilagsBladeTil =  sb.BilagsBladeTil,MaterialeFølgerFra =  sb.MaterialeFølgerFra,MaterialeGodtgørelseTil =  sb.MaterialeGodtgørelseTil,
-                        BilagsBladeTilAdresse =  sb.BilagsBladeTilAdresse, BilagsBladeTilNavns = sb.BilagsBladeTilNavn, BrugMaterialeFraUge = sb.BrugMaterialeFraUge, KunForhandlerBundForskellig = sb.KunForhandlerBundForskellig,MaterialeFølgerFraLeverandør =  sb.MaterialeFølgerFraLeverandør,
-                        BilagsBladeTilPostNr =     sb.BilagsBladeTilPostNr, BureauOrdresedlerLiggerIIndbakke = sb.BureauOrdresedlerLiggerIIndbakke
-                    };
+                          where sb.MedieplanNr == medieId
+                          select new SupporBillag()
+                          {
+                              MedieplanNr = sb.MedieplanNr,
+                              Bilagsblade = sb.Bilagsblade,
+                              Fakturering = sb.Fakturering,
+                              Overskrift = sb.Overskrift,
+                              BilagsbladeAtt = sb.BilagsbladeAtt,
+                              IndrykningsUge = sb.IndrykningsUge,
+                              LøbendeOrdre = sb.LøbendeOrdre,
+                              SammeMateriale = sb.SammeMateriale,
+                              BemærkningTilBlade = sb.BemærkningTilBlade,
+                              BemærkningTilSupport = sb.BemærkningTilSupport,
+                              BilagsBladeTil = sb.BilagsBladeTil,
+                              MaterialeFølgerFra = sb.MaterialeFølgerFra,
+                              MaterialeGodtgørelseTil = sb.MaterialeGodtgørelseTil,
+                              BilagsBladeTilAdresse = sb.BilagsBladeTilAdresse,
+                              BilagsBladeTilNavns = sb.BilagsBladeTilNavn,
+                              BrugMaterialeFraUge = sb.BrugMaterialeFraUge,
+                              KunForhandlerBundForskellig = sb.KunForhandlerBundForskellig,
+                              MaterialeFølgerFraLeverandør = sb.MaterialeFølgerFraLeverandør,
+                              BilagsBladeTilPostNr = sb.BilagsBladeTilPostNr,
+                              BureauOrdresedlerLiggerIIndbakke = sb.BureauOrdresedlerLiggerIIndbakke
+                          };
 
                 return res.SingleOrDefault();
             }
@@ -41,7 +54,7 @@ namespace dlu_persistence_api.daos
             {
                 throw new DaoExceptions("GetSupportBilagByMedieId", e.InnerException);
             }
-            
+
         }
 
         public int CreateOrUpdate(tblSupportBilag tblSupportBilag)
@@ -54,9 +67,9 @@ namespace dlu_persistence_api.daos
             }
             catch (Exception e)
             {
-                throw new  FormattedDbEntityValidationException(e.InnerException);
+                throw new FormattedDbEntityValidationException(e.InnerException);
             }
-          
+
         }
 
         public void Dispose()

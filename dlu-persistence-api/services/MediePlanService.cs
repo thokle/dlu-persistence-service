@@ -1,7 +1,6 @@
+using dlu_persistence_api.daos;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using  dlu_persistence_api.daos;
 namespace dlu_persistence_api.services
 {
     public class MediePlanService
@@ -10,10 +9,10 @@ namespace dlu_persistence_api.services
 
         public MediePlanService()
         {
-            _mediePlanDao =  new MediePlanDao();
-           
+            _mediePlanDao = new MediePlanDao();
+
         }
-      
+
         public string GetMediePlanByKontakt(string name)
         {
             return _mediePlanDao.getMediePlanByKontaktPerson(name);
@@ -41,7 +40,7 @@ namespace dlu_persistence_api.services
             return _mediePlanDao.GetMediePlanByAnnoncoer(anoncoer);
         }
 
-        public MediePlan  GetMediePlanByNumber(int medieplanNr, int version, int status)
+        public MediePlan GetMediePlanByNumber(int medieplanNr, int version, int status)
         {
             return _mediePlanDao.GetMediePlanByNumber(medieplanNr, version, status);
         }
@@ -56,6 +55,6 @@ namespace dlu_persistence_api.services
             return _mediePlanDao.GetLatestMedienr();
         }
 
-      
+
     }
 }

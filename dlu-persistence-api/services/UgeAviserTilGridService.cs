@@ -1,8 +1,8 @@
-using  dlu_persistence_api.daos;
+using dlu_persistence_api.daos;
 namespace dlu_persistence_api.services
 {
-    
-    public class UgeAviserTilGridService: IUgeAviserTilGridServive
+
+    public class UgeAviserTilGridService : IUgeAviserTilGridServive
     {
         private UgeaviserTilGridDao _gridDao;
 

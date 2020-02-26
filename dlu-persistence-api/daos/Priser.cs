@@ -1,21 +1,22 @@
-﻿using System.Linq;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 namespace dlu_persistence_api.daos
 {
     public class Priser
     {
-       
+
         private DiMPdotNetDevEntities di;
         public Priser()
         {
             di = new DiMPdotNetDevEntities();
             di.Configuration.LazyLoadingEnabled = false;
             placerings = (from pl in di.tblPlacerings
-                      select new Placering()
-                      {
-                          Betegenlse = pl.Betegnelse, PlaceringID = pl.PlaceringID
-                      }).ToList<Placering>();
-                    
+                          select new Placering()
+                          {
+                              Betegenlse = pl.Betegnelse,
+                              PlaceringID = pl.PlaceringID
+                          }).ToList<Placering>();
+
         }
         public short År { get; set; }
         public int BladID { get; set; }
@@ -32,9 +33,9 @@ namespace dlu_persistence_api.daos
         public int PrislisteID { get; set; }
         public decimal? mmPris { get; set; }
         public string placering { get; set; }
-        public List<Placering> placerings{ get; set; }
-        public string Betegnelse { get;  set; }
-        public string PrislisteNavn { get;  set; }
+        public List<Placering> placerings { get; set; }
+        public string Betegnelse { get; set; }
+        public string PrislisteNavn { get; set; }
     }
 
     public class Placering

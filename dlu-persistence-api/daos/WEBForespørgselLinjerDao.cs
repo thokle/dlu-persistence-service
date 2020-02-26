@@ -1,15 +1,15 @@
+using dlu_persistence_api.exceptions;
+using Newtonsoft.Json;
 using System;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
-using dlu_persistence_api;
-using dlu_persistence_api.exceptions;
-using Newtonsoft.Json;
 
-namespace dlu_persistence_api.daos{
-/// <summary>
-/// 
-/// </summary>
+namespace dlu_persistence_api.daos
+{
+    /// <summary>
+    /// 
+    /// </summary>
     public class WEBForespørgselLinjerDao
     {
         private DiMPdotNetDevEntities _entities;
@@ -17,8 +17,8 @@ namespace dlu_persistence_api.daos{
         public WEBForespørgselLinjerDao()
         {
             _entities = new DiMPdotNetDevEntities();
-             
-            
+
+
         }
         /// <summary>
         /// 
@@ -31,14 +31,25 @@ namespace dlu_persistence_api.daos{
             try
             {
                 var res = from fl in _entities.tblWEBForespørgselLinjer
-                    where fl.BladID == bladID
-                    orderby fl.BladID
-                    select new
-                    {
-                        fl.BladID, fl.BesvaretAf, fl.BladBemærkning, fl.BladFarveRabat, fl.BladFarveTillæg, fl.BladMmPris, fl.BladMmRabat, fl.ForespørgselID, fl.PlaceringUB, 
-                        fl.DLUFarveRabat, fl.DLUFarveTillæg, fl.DLUMmPris, fl.DLUMmRabat
+                          where fl.BladID == bladID
+                          orderby fl.BladID
+                          select new
+                          {
+                              fl.BladID,
+                              fl.BesvaretAf,
+                              fl.BladBemærkning,
+                              fl.BladFarveRabat,
+                              fl.BladFarveTillæg,
+                              fl.BladMmPris,
+                              fl.BladMmRabat,
+                              fl.ForespørgselID,
+                              fl.PlaceringUB,
+                              fl.DLUFarveRabat,
+                              fl.DLUFarveTillæg,
+                              fl.DLUMmPris,
+                              fl.DLUMmRabat
 
-                    };
+                          };
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
             catch (Exception e)
@@ -55,14 +66,14 @@ namespace dlu_persistence_api.daos{
         {
             try
             {
-                 _entities.tblWEBForespørgselLinjer.AddOrUpdate(forespørgselLinjer);
+                _entities.tblWEBForespørgselLinjer.AddOrUpdate(forespørgselLinjer);
                 return _entities.SaveChangesAsync();
             }
             catch (Exception e)
             {
-              
+
                 throw new FormattedDbEntityValidationException(e);
-              
+
             }
         }
         public void Dispose()

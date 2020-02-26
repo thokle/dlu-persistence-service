@@ -1,5 +1,4 @@
-﻿using System;
-namespace dlu_persistence_api.services
+﻿namespace dlu_persistence_api.services
 {
     public class StambladService
     {

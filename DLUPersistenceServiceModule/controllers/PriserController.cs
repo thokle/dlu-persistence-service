@@ -1,10 +1,9 @@
-using System.Runtime.Remoting.Messaging;
 using dlu_persistence_api;
-using Nancy;
 using dlu_persistence_api.services;
-using Nancy.ModelBinding;
-using Nancy.IO;
+using Nancy;
 using Nancy.Extensions;
+using Nancy.IO;
+using Nancy.ModelBinding;
 using Newtonsoft.Json;
 
 namespace DLUPersistenceServiceModule.controllers
@@ -13,21 +12,22 @@ namespace DLUPersistenceServiceModule.controllers
     {
         public PriserController(PriserService service)
         {
-           
+
             Get("/priser/GetPrisListePrUge/{bladid}/year/{year}", o => service.GetPrisLigePrUge(o.bladid, o.year));
             Get("/priser/{bladid}/add/{year}", o => service.GetPrisLigePrUge(o.bladid, o.year));
-            Get("/priser/prislister", o => service.GetPrisLister() );
+            Get("/priser/prislister", o => service.GetPrisLister());
             Get("/priser/bladpriser/{bladid:int}", o => service.GetPriserFromBladId(o.bladid));
-            Get("/priser/{bladid}/{placeringid}/{aar}/{prislisteid}", o =>  service.GetPrisListeFromBladidArPlacering(o.bladid, o.placeringid, o.aar, o.prislisteid));
+            Get("/priser/{bladid}/{placeringid}/{aar}/{prislisteid}", o => service.GetPrisListeFromBladidArPlacering(o.bladid, o.placeringid, o.aar, o.prislisteid));
             Get("/priser/table/{bladid}/{prislisteid}/{aar}", o =>
             {
                 return service.GetPrislisteFortable(o.bladid, o.aar, o.prislisteid);
             });
-            Get("/priser/createPriserPrUge/{bladid}/{prislisteid}/{year}",  async o => {
+            Get("/priser/createPriserPrUge/{bladid}/{prislisteid}/{year}", async o =>
+            {
 
 
 
-              var res = await  service.AddPriserPrUge(o.bladid, o.prislisteid, o.year);
+                var res = await service.AddPriserPrUge(o.bladid, o.prislisteid, o.year);
                 return "";
 
             });
@@ -38,17 +38,18 @@ namespace DLUPersistenceServiceModule.controllers
                 tblPrislisterPrBladPrUge.PrislisteID = o.listid;
                 tblPrislisterPrBladPrUge.Uge = o.week;
                 tblPrislisterPrBladPrUge.År = o.year;
-           
-               service.UpdateWeekListId(tblPrislisterPrBladPrUge);
+
+                service.UpdateWeekListId(tblPrislisterPrBladPrUge);
                 return JsonConvert.SerializeObject(tblPrislisterPrBladPrUge, Formatting.Indented);
             });
             Get("/priser/placering", o => service.GetPlacering());
-            Post("/priser/createPrice", o => {
+            Post("/priser/createPrice", o =>
+            {
                 var body = RequestStream.FromStream(this.Request.Body).AsString();
 
                 var priser = convertToTbLPriser(body);
-              var res=  service.CreatePrice(priser);
-                return Response.AsJson("{\"pris er\": \"oprettet \": "+res +"}");
+                var res = service.CreatePrice(priser);
+                return Response.AsJson("{\"pris er\": \"oprettet \": " + res + "}");
             });
             Post("/priser/priserPrisListPrBladPrAar/", d =>
             {
@@ -56,11 +57,12 @@ namespace DLUPersistenceServiceModule.controllers
                 return service.CreateOrUpdatePrisListePrBladPrÅr(res);
             });
 
-            Delete("/priser/{bladid}/{priserliste}/{placering}/{year}", o => {
+            Delete("/priser/{bladid}/{priserliste}/{placering}/{year}", o =>
+            {
 
                 service.DeletePris(o.bladid, o.priserliste, o.placering, o.year);
                 return Response.AsJson("{\"pris er\": \"slettet \"}");
-            }  );
+            });
 
             Get("/priser/oprettetyears/{bladid}", o => service.GetCreateYearsFromBladId(o.bladid));
         }
@@ -69,7 +71,7 @@ namespace DLUPersistenceServiceModule.controllers
         {
             var priser = JsonConvert.DeserializeObject<Priser>(s);
 
-           var tp = new tblPriser();
+            var tp = new tblPriser();
 
             tp.BladID = priser.BladID1;
             tp.ControlNavn = priser.ControlNavn1;
@@ -88,10 +90,10 @@ namespace DLUPersistenceServiceModule.controllers
             tp.År = priser.AAr1;
             return tp;
         }
-            
+
     }
 
-    public  class Priser
+    public class Priser
     {
 
         public int PrislisteID1 { get; set; }
@@ -110,5 +112,5 @@ namespace DLUPersistenceServiceModule.controllers
         public string ControlNavn1 { get; set; }
     }
 
-   
- }
+
+}

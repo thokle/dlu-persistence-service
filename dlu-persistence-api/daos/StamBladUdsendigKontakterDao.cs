@@ -1,12 +1,10 @@
-﻿using System;
+﻿using dlu_persistence_api.exceptions;
+using dlu_persistence_api.models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using dlu_persistence_api.exceptions;
-using Newtonsoft.Json;
-using dlu_persistence_api.models;
 
 namespace dlu_persistence_api.daos
 {
@@ -19,7 +17,7 @@ namespace dlu_persistence_api.daos
         {
             entities = new DiMPdotNetDevEntities();
             entities.Configuration.LazyLoadingEnabled = false;
-            
+
         }
 
 
@@ -35,7 +33,8 @@ namespace dlu_persistence_api.daos
                     from tukl in tuktl.DefaultIfEmpty()
 
 
-                    join du in entities.tblStambladUdsendingEmailTypers on tuk.type equals du.id where tuk.bladid == bladId
+                    join du in entities.tblStambladUdsendingEmailTypers on tuk.type equals du.id
+                    where tuk.bladid == bladId
                     select new UdsendingKontakter
                     {
                         Email = tuk.mail,
@@ -45,9 +44,9 @@ namespace dlu_persistence_api.daos
                         BladId = tuk.bladid,
                         Telefonnummer = tuk.telefonnummer,
                         Titel = tukl.Titel,
-                      
-                     
-                        
+
+
+
                     };
 
 
@@ -61,14 +60,14 @@ namespace dlu_persistence_api.daos
             }
         }
 
-        public  Task<int> AddOrUpdateKontakterPrBlad(tblBladUdsendingKontakter tblBlad)
+        public Task<int> AddOrUpdateKontakterPrBlad(tblBladUdsendingKontakter tblBlad)
         {
             entities.tblBladUdsendingKontakters.AddOrUpdate(tblBlad);
             return entities.SaveChangesAsync();
-               
+
         }
     }
 
 
-   
+
 }

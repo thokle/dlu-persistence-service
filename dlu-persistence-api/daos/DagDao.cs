@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using dlu_persistence_api.models;
 namespace dlu_persistence_api.daos
 {
-   public class DagDao
+    public class DagDao
     {
         private DiMPdotNetDevEntities entities;
-       public DagDao() {
+        public DagDao()
+        {
 
             entities = new DiMPdotNetDevEntities();
         }
@@ -21,7 +17,9 @@ namespace dlu_persistence_api.daos
                       orderby d.DagID
                       select new Dage()
                       {
-                          DagID = d.DagID, DagNavn = d.DagNavn, DagType = d.DagType
+                          DagID = d.DagID,
+                          DagNavn = d.DagNavn,
+                          DagType = d.DagType
                       };
             return res.ToList<Dage>();
         }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlTypes;
-
-namespace dlu_persistence_api.daos
+﻿namespace dlu_persistence_api.daos
 {
     public class FundetMediePlaner
     {
@@ -10,7 +6,7 @@ namespace dlu_persistence_api.daos
         {
         }
 
-    
+
         public string AnnoncørNo_ { get; internal set; }
         public string BureauNo_ { get; internal set; }
         public byte Format1 { get; internal set; }
@@ -25,10 +21,10 @@ namespace dlu_persistence_api.daos
         public string Kontaktperson { get; internal set; }
         public byte KontaktpersonTilhører { get; internal set; }
         public string Overskrift { get; internal set; }
-       
+
         public string navision_name { get; internal set; }
         public short IndrykningsÅr { get; internal set; }
         public int AntalAviser { get; set; }
-       // public DateTime OprettetDate { get; set; }
+        // public DateTime OprettetDate { get; set; }
     }
 }

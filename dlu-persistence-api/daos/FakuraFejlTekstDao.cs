@@ -1,11 +1,9 @@
- using System;
- using System.ComponentModel.Design;
+using dlu_persistence_api.exceptions;
+using Newtonsoft.Json;
+using System;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using dlu_persistence_api.exceptions;
 namespace dlu_persistence_api.daos
 {/// <summary>
  /// 
@@ -17,24 +15,25 @@ namespace dlu_persistence_api.daos
         public FakuraFejlTekstDao()
         {
             _entities = new DiMPdotNetDevEntities();
-           
+
         }
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         /// <exception cref="DaoExceptions"></exception>
-        public  string GetFejlTekster()
+        public string GetFejlTekster()
         {
             try
             {
                 var res = from fm in _entities.tblFakturaFejlTeksts
-                    orderby fm.FejlTekst
-                    select new
-                    {
-                        fm.FejlTekst, fm.FejlKode
+                          orderby fm.FejlTekst
+                          select new
+                          {
+                              fm.FejlTekst,
+                              fm.FejlKode
 
-                    };
+                          };
 
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
@@ -58,7 +57,7 @@ namespace dlu_persistence_api.daos
             }
             catch (Exception e)
             {
-                throw new  FormattedDbEntityValidationException(e.InnerException);
+                throw new FormattedDbEntityValidationException(e.InnerException);
             }
         }
     }

@@ -1,12 +1,7 @@
+using dlu_persistence_api.exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Net.Http.Headers;
-using System.Net.Sockets;
-using dlu_persistence_api.exceptions;
-
-using Newtonsoft.Json;
 
 namespace dlu_persistence_api.daos
 {    /// <summary>
@@ -19,9 +14,9 @@ namespace dlu_persistence_api.daos
         public RegionDao()
         {
             _entities = new DiMPdotNetDevEntities();
-            
-                _entities.Configuration.LazyLoadingEnabled = true;
-            
+
+            _entities.Configuration.LazyLoadingEnabled = true;
+
         }
 
         /// <summary>
@@ -40,11 +35,11 @@ namespace dlu_persistence_api.daos
                     var regiion = new Regions()
                     {
                         RegionId = d.RegionID,
-                        RegionNavn1 =  d.RegionNavn,
+                        RegionNavn1 = d.RegionNavn,
                         RegionSortId1 = d.RegionSortKey
                     };
-                    
-                 regions.Add(regiion);
+
+                    regions.Add(regiion);
                 }
 
                 return regions;
@@ -62,18 +57,18 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = (from re in _entities.tblRegions
-                    where re.RegionID == regionId
-                    select new Regions()
-                    {
-                         RegionId = re.RegionID,
-                         RegionNavn1 = re.RegionNavn,
-                        RegionSortId1 = re.RegionSortKey
+                           where re.RegionID == regionId
+                           select new Regions()
+                           {
+                               RegionId = re.RegionID,
+                               RegionNavn1 = re.RegionNavn,
+                               RegionSortId1 = re.RegionSortKey
 
-                    }).Single();
+                           }).Single();
 
                 return res;
             }
-            
+
             catch (Exception e)
             {
                 throw new FormattedDbEntityValidationException(e.InnerException);
@@ -82,29 +77,29 @@ namespace dlu_persistence_api.daos
     }
 
     public class Regions
-     {
-         private int RegionID;
-         private string RegionNavn;
-         private int RegionSortId;
+    {
+        private int RegionID;
+        private string RegionNavn;
+        private int RegionSortId;
 
 
-         public int RegionId
-         {
-             get => RegionID;
-             set => RegionID = value;
-         }
+        public int RegionId
+        {
+            get => RegionID;
+            set => RegionID = value;
+        }
 
 
-         public string RegionNavn1
-         {
-             get => RegionNavn;
-             set => RegionNavn = value;
-         }
+        public string RegionNavn1
+        {
+            get => RegionNavn;
+            set => RegionNavn = value;
+        }
 
-         public int RegionSortId1
-         {
-             get => RegionSortId;
-             set => RegionSortId = value;
-         }
-     }
+        public int RegionSortId1
+        {
+            get => RegionSortId;
+            set => RegionSortId = value;
+        }
+    }
 }

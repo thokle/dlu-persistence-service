@@ -1,14 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.IO;
 using System.Linq;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
-using dlu_persistence_api.exceptions;
-using Newtonsoft.Json;
 
 namespace dlu_persistence_api
 {
@@ -22,12 +17,13 @@ namespace dlu_persistence_api
         }
 
         public string importCSV()
-        {  List<int> resultats =new List<int>();
+        {
+            List<int> resultats = new List<int>();
             using (var read = new StreamReader("C:/Users/Thomas Kleist/Documents/UpdateBladDaekningPrStamBladv2.csv"))
             {
-List<tblBladDækning> dæknings = new List<tblBladDækning>();
+                List<tblBladDækning> dæknings = new List<tblBladDækning>();
                 string currentLine;
-              
+
                 while ((currentLine = read.ReadLine()) != null)
                 {
                     List<string> line = currentLine.Split(',').ToList();
@@ -53,11 +49,11 @@ List<tblBladDækning> dæknings = new List<tblBladDækning>();
                     }
 
 
-                   var res =  update(dækning);
-                   resultats.Add(res.Result);
+                    var res = update(dækning);
+                    resultats.Add(res.Result);
                 }
 
-                
+
 
             }
 

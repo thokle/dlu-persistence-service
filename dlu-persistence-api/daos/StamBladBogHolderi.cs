@@ -10,6 +10,6 @@
         public string Kontakt { get; set; }
         public string NavisioID { get; set; }
         public string NavisionId { get; set; }
-        public int Id { get;  set; }
+        public int Id { get; set; }
     }
 }

@@ -1,11 +1,7 @@
-using System.Collections.Generic;
-using System.IO;
-using System.Web.UI.WebControls;
 using Nancy;
 using Nancy.Bootstrapper;
 using Nancy.Configuration;
 using Nancy.Conventions;
-using Nancy.Swagger.Annotations;
 using Nancy.Swagger.Services;
 using Nancy.TinyIoc;
 using Swagger.ObjectModel;
@@ -22,7 +18,7 @@ namespace DLUPersistenceServiceModule
         }
         protected override void RequestStartup(TinyIoCContainer container, IPipelines pipelines, NancyContext context)
         {
-          //  pipelines.BeforeRequest += (c) => { c.Request.Headers("",""); };
+            //  pipelines.BeforeRequest += (c) => { c.Request.Headers("",""); };
             //CORS Enable
             pipelines.AfterRequest += (ctx) =>
             {
@@ -32,20 +28,20 @@ namespace DLUPersistenceServiceModule
                         "Origin, X-Requested-With, Content-Type, Accept, Authorization,ejerforhold, username, password ")
                     .WithHeader("Access-Control-Max-Age", "3600");
             };
-            
-          
+
+
             SwaggerMetadataProvider.SetInfo("Nancy Swagger Example", "v0", "Our awesome service", new Contact()
             {
                 EmailAddress = "exampleEmail@example.com"
-                
+
             });
-            
+
             base.ApplicationStartup(container, pipelines);
 
         }
 
-    
-    
+
+
 
         protected override void ConfigureConventions(NancyConventions nancyConventions)
         {
@@ -55,8 +51,8 @@ namespace DLUPersistenceServiceModule
                 StaticContentConventionBuilder.AddDirectory("/swagger-ui/dist")
             );
         }
-        
-        
-        
+
+
+
     }
 }

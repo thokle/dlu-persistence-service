@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Data.Metadata.Edm;
 using System.Linq;
-using MetadataWorkspace = System.Data.Entity.Core.Metadata.Edm.MetadataWorkspace;
 
 namespace dlu_persistence_api.daos
 {
@@ -12,25 +10,25 @@ namespace dlu_persistence_api.daos
 
         public ViewBookingListeDao()
         {
-        _entities = new DiMPdotNetDevEntities();
-            
+            _entities = new DiMPdotNetDevEntities();
+
         }
 
         public List<BookingListe> GetAllBookings()
         {
             try
             {
-              return  _entities.viewBookingListes.Select(liste => new BookingListe()
-                {    
-                    MedieplanNr =  liste.MedieplanNr,
-                    Version =  liste.Version,
-                    AnnoncørNo_ =  liste.AnnoncørNo_,
-                    
+                return _entities.viewBookingListes.Select(liste => new BookingListe()
+                {
+                    MedieplanNr = liste.MedieplanNr,
+                    Version = liste.Version,
+                    AnnoncørNo_ = liste.AnnoncørNo_,
+
                     BureauNo_ = liste.BureauNo_,
                     Format = liste.Format,
-                    AntalFarver =  liste.AntalFarver,
-                    IndrykningsUge =  liste.IndrykningsUge,
-                    SamletPris =  liste.SamletPris,
+                    AntalFarver = liste.AntalFarver,
+                    IndrykningsUge = liste.IndrykningsUge,
+                    SamletPris = liste.SamletPris,
                     KonsulentCode = liste.KonsulentCode,
                     IndrykningsÅr = liste.IndrykningsUge
 
@@ -41,10 +39,10 @@ namespace dlu_persistence_api.daos
                 Console.WriteLine(e);
                 throw;
             }
-           
+
         }
 
-        public List<BookingListe> GetBookingBetweenWeeks(int fra ,int til)
+        public List<BookingListe> GetBookingBetweenWeeks(int fra, int til)
         {
             try
             {
@@ -72,7 +70,7 @@ namespace dlu_persistence_api.daos
                 throw;
             }
         }
-        
+
     }
 
     public class BookingListe

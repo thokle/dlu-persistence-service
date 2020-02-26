@@ -1,7 +1,6 @@
-using System.Threading.Tasks;
 using dlu_persistence_api.daos;
-using dlu_persistence_api.models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 namespace dlu_persistence_api.services
 {
     public class EjerforholdService
@@ -17,11 +16,11 @@ namespace dlu_persistence_api.services
             return _dao.OpretEjerforhold(tblEjerforhold);
         }
 
-        public List<EjerForhold>  GetAllEjerforhold()
+        public List<EjerForhold> GetAllEjerforhold()
         {
             return _dao.GetAllEjerforhold();
         }
 
-      
+
     }
 }

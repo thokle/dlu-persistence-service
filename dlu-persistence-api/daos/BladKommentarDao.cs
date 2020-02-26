@@ -1,10 +1,9 @@
-﻿using System;
+﻿using dlu_persistence_api.exceptions;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using dlu_persistence_api.exceptions;
 
 
 namespace dlu_persistence_api.daos
@@ -27,7 +26,9 @@ namespace dlu_persistence_api.daos
                           orderby bk.date
                           select new BladKommentar
                           {
-                             bladid = bk.bladid,tekst =  bk.tekst, date = bk.date
+                              bladid = bk.bladid,
+                              tekst = bk.tekst,
+                              date = bk.date
                           };
                 return res.ToList<BladKommentar>();
             }
@@ -51,7 +52,7 @@ namespace dlu_persistence_api.daos
 
                 throw new Exception(e.Message);
             }
-            
+
         }
 
     }

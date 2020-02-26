@@ -1,10 +1,9 @@
-using System.Threading.Tasks;
 using dlu_persistence_api.daos;
-using  dlu_persistence_api.services;
+using System.Threading.Tasks;
 
 namespace dlu_persistence_api.services
 {
-    public class WebMailService: IWebMailService
+    public class WebMailService : IWebMailService
     {
 
         private WEBeMailDao _weBeMailDao;
@@ -12,11 +11,11 @@ namespace dlu_persistence_api.services
         public WebMailService()
         {
             _weBeMailDao = new WEBeMailDao();
-     
+
         }
         public string GetWebMailByMail(string email)
         {
-           return _weBeMailDao.GetWebMailByMail(email);
+            return _weBeMailDao.GetWebMailByMail(email);
         }
 
         public string GetWebMailByPersonNavn(string personnavn)

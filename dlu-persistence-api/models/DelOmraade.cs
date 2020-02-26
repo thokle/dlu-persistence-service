@@ -1,15 +1,13 @@
-using System;
-
 namespace dlu_persistence_api.models
 {
     public class DelOmraade
     {
         int DelOmraadeID;
         private string DelOmraadeKode;
-        string  DelOmraadeNavn;
-        int DelOmraadeSortKey; 
+        string DelOmraadeNavn;
+        int DelOmraadeSortKey;
         byte[] timestamp;
-        
+
         public int DelOmraadeId
         {
             get => DelOmraadeID;
@@ -40,6 +38,6 @@ namespace dlu_persistence_api.models
             set => timestamp = value;
         }
 
-      
+
     }
 }

@@ -1,10 +1,5 @@
-﻿using System;
+﻿using dlu_persistence_api.daos;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using dlu_persistence_api.daos;
 
 namespace dlu_persistence_api.models
 {
@@ -111,7 +106,7 @@ namespace dlu_persistence_api.models
         public string MaterialeNr { get; set; }
         public string MedIGrupper { get; set; }
         public decimal MiljøTillæg { get; set; }
- 
+
         public bool? MåGiveMmRabat { get; set; }
         public decimal NormalMmPris { get; set; }
         public bool MåGiveMaterialeGodtgørelse { get; set; }
@@ -122,20 +117,20 @@ namespace dlu_persistence_api.models
         public bool SkalGiveMaterialeGodtgørelse { get; set; }
         public double? web_tillæg { get; set; }
         public decimal avis_tillæg { get; set; }
-        public decimal andet_tillæg {get; set;}
+        public decimal andet_tillæg { get; set; }
         public string webtillæg_type { get; set; }
         public decimal oldTotalPris { get; set; }
-        public double? sum_bladtilæg { get;  set; }
+        public double? sum_bladtilæg { get; set; }
         public decimal oldFarveTotal { get; set; }
         public List<webtilLæg> webtillages { get; set; }
         public List<string> tillæg { get; set; }
         public int BureaoOrdreNr { get; set; }
-        public decimal Total { get;  set; }
-        public int UgeavisID { get;  set; }
+        public decimal Total { get; set; }
+        public int UgeavisID { get; set; }
         public string bureauOrdreNr { get; set; }
         public decimal? calTotalPris()
         {
-          return  this.Farve4Max + Farve4Min + Farve4Pris + FarveMax + FarveMin + FarvePris;
+            return this.Farve4Max + Farve4Min + Farve4Pris + FarveMax + FarveMin + FarvePris;
         }
     }
 }

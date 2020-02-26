@@ -1,9 +1,9 @@
+using dlu_persistence_api.exceptions;
+using Newtonsoft.Json;
 using System;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
-using dlu_persistence_api.exceptions;
-using Newtonsoft.Json;
 
 namespace dlu_persistence_api.daos
 {
@@ -30,18 +30,25 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from p in _entities.Salespersons
-                    where p.E_Mail == email
-                    orderby p.E_Mail
-                    select new
-                    {
-                        p.E_Mail, p.Code, p.Name,p.Rolle,p.Status, p.NulstilLayout, p.Phone_No_, p.SidsteLoginVersion
-                    };
+                          where p.E_Mail == email
+                          orderby p.E_Mail
+                          select new
+                          {
+                              p.E_Mail,
+                              p.Code,
+                              p.Name,
+                              p.Rolle,
+                              p.Status,
+                              p.NulstilLayout,
+                              p.Phone_No_,
+                              p.SidsteLoginVersion
+                          };
 
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
             catch (Exception e)
             {
-                throw new DaoExceptions("GetSalesPersonByEmail " , e.InnerException);
+                throw new DaoExceptions("GetSalesPersonByEmail ", e.InnerException);
             }
         }
         /// <summary>
@@ -55,12 +62,19 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from p in _entities.Salespersons
-                    where p.Name == name
-                    orderby p.E_Mail
-                    select new
-                    {
-                        p.E_Mail, p.Code, p.Name,p.Rolle,p.Status, p.NulstilLayout, p.Phone_No_, p.SidsteLoginVersion
-                    };
+                          where p.Name == name
+                          orderby p.E_Mail
+                          select new
+                          {
+                              p.E_Mail,
+                              p.Code,
+                              p.Name,
+                              p.Rolle,
+                              p.Status,
+                              p.NulstilLayout,
+                              p.Phone_No_,
+                              p.SidsteLoginVersion
+                          };
 
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
@@ -85,11 +99,11 @@ namespace dlu_persistence_api.daos
             }
             catch (Exception e)
             {
-               
-                throw new  FormattedDbEntityValidationException(e);
+
+                throw new FormattedDbEntityValidationException(e);
             }
         }
-        
+
         public void Dispose()
         {
             _entities?.Dispose();

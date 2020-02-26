@@ -5,9 +5,9 @@ namespace DLUPersistenceServiceModule
 {
     public class StamBlad
     {
-     
-      
-    
+
+
+
         [Required]
         public int BladID { get; set; }
         public string Navn { get; set; }
@@ -55,7 +55,7 @@ namespace DLUPersistenceServiceModule
         public string Emails { get; set; }
         public string KontaktpersonerEmails { get; set; }
         public string BogholderiEmails { get; set; }
-      
+
         public string MedieNetKode { get; set; }
         public Nullable<byte> MatGodtBeløb { get; set; }
         public string Hjemmeside { get; set; }
@@ -80,6 +80,6 @@ namespace DLUPersistenceServiceModule
         public string MaterialeDeadlineRubrikKl { get; set; }
         public bool Overført { get; set; }
         public byte[] timestamp { get; set; }
-    
+
     }
 }

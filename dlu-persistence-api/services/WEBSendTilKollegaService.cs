@@ -1,18 +1,17 @@
-using System.Threading.Tasks;
 using dlu_persistence_api.daos;
-using dlu_persistence_api.services;
+using System.Threading.Tasks;
 namespace dlu_persistence_api.services
 {
-    public class WEBSendTilKollegaService: IWEBSendTilKollegaService
+    public class WEBSendTilKollegaService : IWEBSendTilKollegaService
     {
         private WEBSendTilKollegaDao _dao;
 
         public WEBSendTilKollegaService()
         {
             _dao = new WEBSendTilKollegaDao();
-          
+
         }
-        
+
         public string WEBSendTilKollegaDaoByPersonID(int personId)
         {
             return _dao.WEBSendTilKollegaDaoByPersonID(personId);

@@ -1,27 +1,27 @@
+using dlu_persistence_api.exceptions;
+using Newtonsoft.Json;
 using System;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
-using  dlu_persistence_api.exceptions;
-using Newtonsoft.Json;
 
 namespace dlu_persistence_api.daos
 { /// <summary>
   /// 
   /// </summary>
-    public class FejlTekstDao: IDisposable
+    public class FejlTekstDao : IDisposable
     {
-    private DiMPdotNetDevEntities _entities;
+        private DiMPdotNetDevEntities _entities;
 
-        
-    public FejlTekstDao()
-    {
-        using (_entities = new DiMPdotNetDevEntities())
+
+        public FejlTekstDao()
         {
+            using (_entities = new DiMPdotNetDevEntities())
+            {
 
-            _entities.Configuration.LazyLoadingEnabled = true;
+                _entities.Configuration.LazyLoadingEnabled = true;
+            }
         }
-    }
         /// <summary>
         /// 
         /// </summary>
@@ -39,7 +39,7 @@ namespace dlu_persistence_api.daos
             {
                 throw new DaoExceptions("CreateOrUpDateFejlTekst ", e.InnerException);
             }
-        
+
         }
 
         /// <summary>
@@ -53,10 +53,10 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from m in _entities.tblFakturaFejls
-                    where m.MedieplanNr == medieId
-                    orderby m.MedieplanNr
-                    select
-                        new { m.MedieplanNr , m.Ansvarlig , m.Version , m.FejlKode , m.UgeavisID };
+                          where m.MedieplanNr == medieId
+                          orderby m.MedieplanNr
+                          select
+                              new { m.MedieplanNr, m.Ansvarlig, m.Version, m.FejlKode, m.UgeavisID };
 
                 return JsonConvert.SerializeObject(res, formatting: Formatting.Indented);
             }
@@ -75,17 +75,21 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from m in _entities.tblFakturaFejls
-                    where m.Ansvarlig == ansvartlig
-                    orderby m.Ansvarlig
-                    select new
-                    {
-                        m.MedieplanNr, m.Ansvarlig, m.Version, m.FejlKode, m.UgeavisID
-                    };
+                          where m.Ansvarlig == ansvartlig
+                          orderby m.Ansvarlig
+                          select new
+                          {
+                              m.MedieplanNr,
+                              m.Ansvarlig,
+                              m.Version,
+                              m.FejlKode,
+                              m.UgeavisID
+                          };
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
             catch (Exception e)
             {
-                throw new  FormattedDbEntityValidationException(e.InnerException);
+                throw new FormattedDbEntityValidationException(e.InnerException);
             }
         }
         public void Dispose()

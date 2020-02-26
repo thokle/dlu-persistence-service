@@ -1,13 +1,10 @@
-using System.Linq;
-using System.Runtime.InteropServices;
 using dlu_persistence_api;
-using  dlu_persistence_api.services;
-using Nancy.ModelBinding;
+using dlu_persistence_api.services;
 using Nancy;
-using Nancy.Responses;
+using Nancy.ModelBinding;
 namespace DLUPersistenceServiceModule.controllers
 {
-    public sealed class OrdreGebyrNavisionController: NancyModule
+    public sealed class OrdreGebyrNavisionController : NancyModule
     {
         private string path = "/OrdreGebyrNavision/";
         public OrdreGebyrNavisionController(OrdreGebyrNavisionService service)
@@ -22,8 +19,8 @@ namespace DLUPersistenceServiceModule.controllers
 
                 return service.CreateOrUpate(res);
 
-            } );
-        } 
-        
+            });
+        }
+
     }
 }

@@ -1,17 +1,14 @@
-﻿using System;
-using System.Web.DynamicData;
-using dlu_persistence_api;
-using Nancy;
-using dlu_persistence_api.daos;
+﻿using dlu_persistence_api;
+using dlu_persistence_api.models;
 using dlu_persistence_api.services;
-using Nancy.ModelBinding;
+using Nancy;
 using Nancy.Extensions;
 using Newtonsoft.Json;
-using dlu_persistence_api.models;
+using System;
 
 namespace DLUPersistenceServiceModule.controllers
 {
-    public sealed class MediePlanController: NancyModule
+    public sealed class MediePlanController : NancyModule
     {
         private const bool RunAsync = true;
 
@@ -26,12 +23,12 @@ namespace DLUPersistenceServiceModule.controllers
             Post("/mediePlan/create", o =>
             {
                 var stream = Nancy.IO.RequestStream.FromStream(Request.Body).AsString();
-            
 
-                var res =  dao.CreateOrUpdateMediePlan(convertFromJson(stream));
+
+                var res = dao.CreateOrUpdateMediePlan(convertFromJson(stream));
                 return res;
-            } );
-          Get("/mediePlan/getlatestId" , o =>  Response.AsJson(dao.GetLatestMedienr()) );
+            });
+            Get("/mediePlan/getlatestId", o => Response.AsJson(dao.GetLatestMedienr()));
         }
 
 
@@ -41,8 +38,8 @@ namespace DLUPersistenceServiceModule.controllers
             try
             {
                 var res = JsonConvert.DeserializeObject<MediePlanModel>(json);
-            tbl = new tblMedieplan();
-          
+                tbl = new tblMedieplan();
+
                 tbl.AnnoncørNo_ = res.AnnoncørNo_;
                 tbl.AntalFarver = res.AntalFarver;
                 tbl.BemærkningTilAnnoncør = res.BemærkningTilAnnoncør;
@@ -57,7 +54,7 @@ namespace DLUPersistenceServiceModule.controllers
                 tbl.BureauNo_ = res.BureauNo_;
                 tbl.Credit_Reason = res.Credit_Reason;
                 tbl.Document_Type = res.Document_Type;
-         
+
                 tbl.DPKulørID = res.DPKulørID;
                 tbl.Fakturering = res.Fakturering;
                 tbl.Format1 = res.Format1;
@@ -106,13 +103,12 @@ namespace DLUPersistenceServiceModule.controllers
 
                 throw new Exception(e.HelpLink);
             }
-           
-            
 
-                 
+
+
+
             return tbl;
         }
 
     }
 }
- 

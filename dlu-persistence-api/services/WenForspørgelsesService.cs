@@ -1,8 +1,8 @@
+using dlu_persistence_api.daos;
 using System.Threading.Tasks;
-using  dlu_persistence_api.daos;
 namespace dlu_persistence_api.services
 {
-    public class WenForspørgelsesService: IWebForspørgelsesService
+    public class WenForspørgelsesService : IWebForspørgelsesService
     {
         private WebForespørgselDao _forespørgselDao;
 
@@ -29,7 +29,7 @@ namespace dlu_persistence_api.services
         {
             return _forespørgselDao.CreateOrUpdate(forespørgsel);
         }
-        
-        
+
+
     }
 }

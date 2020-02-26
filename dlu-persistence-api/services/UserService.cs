@@ -1,9 +1,9 @@
-using System.Threading.Tasks;
 using dlu_persistence_api.daos;
+using System.Threading.Tasks;
 
 namespace dlu_persistence_api.services
 {
-    public class UserService: IUserService
+    public class UserService : IUserService
     {
         private UserDao _dao;
 

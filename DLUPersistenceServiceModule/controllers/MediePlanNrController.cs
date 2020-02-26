@@ -1,38 +1,36 @@
-using System.Threading;
- using dlu_persistence_api;
- using Nancy;
- using  dlu_persistence_api.services;
- using Nancy.ModelBinding;
+using dlu_persistence_api;
 using dlu_persistence_api.models;
-using Nancy.IO;
+using dlu_persistence_api.services;
+using Nancy;
 using Nancy.Extensions;
+using Nancy.IO;
 using Newtonsoft.Json;
 
 namespace DLUPersistenceServiceModule.controllers
- {
-     public sealed class MediePlanNrController: NancyModule
-     {
-         public MediePlanNrController(MediePlanNrService service)
-         {
-             Get("/medieplannr/{medieplannr:int}", o => { return service.GetMediePlanNrByMedIePlanNr(o.medieplannr); });
-             
-             Post("/medieplannr/create", o =>
-                 {
+{
+    public sealed class MediePlanNrController : NancyModule
+    {
+        public MediePlanNrController(MediePlanNrService service)
+        {
+            Get("/medieplannr/{medieplannr:int}", o => { return service.GetMediePlanNrByMedIePlanNr(o.medieplannr); });
 
-                 var body =     RequestStream.FromStream(Request.Body).AsString();
+            Post("/medieplannr/create", o =>
+                {
 
-
-                     var res = service.CreateOrUpDateMediePlanNr(this.convert(body));
+                    var body = RequestStream.FromStream(Request.Body).AsString();
 
 
+                    var res = service.CreateOrUpDateMediePlanNr(this.convert(body));
 
-                     return res;
 
 
-                 } 
-                 );
-             
-         }
+                    return res;
+
+
+                }
+                );
+
+        }
 
         private tblMedieplanNr convert(string body)
         {
@@ -50,7 +48,7 @@ namespace DLUPersistenceServiceModule.controllers
                 tbl.FakturaBemærkning3 = res.FakturaBemaerkning3;
                 tbl.Kommentar = res.Kommentar;
                 tbl.MaterialeModtaget = res.MaterialeModtaget;
-          
+
                 tbl.OverførtFraPrisforespørgsel = res.OverførtFraPrisforespoergsel;
                 tbl.Status = res.Status;
                 tbl.SupportBilagVedlagt = res.SupportBilagVedlagt;
@@ -63,5 +61,5 @@ namespace DLUPersistenceServiceModule.controllers
                 throw;
             }
         }
-     }
- }
+    }
+}

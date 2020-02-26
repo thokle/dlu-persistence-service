@@ -11,7 +11,7 @@ namespace DLUPersistenceServiceModule.controllers
 {
     public sealed class MediePlanLinjerController : NancyModule
     {
-     
+
 
         public MediePlanLinjerController(MediePlanLinjerService service)
         {
@@ -24,15 +24,15 @@ namespace DLUPersistenceServiceModule.controllers
 
             Post("/mediePlanlinjer/create/{num}/{num2}", parameter =>
             {
-              var body=   Nancy.IO.RequestStream.FromStream(Request.Body).AsString();
-
-          
-              
-             var res =     service.CreateOrUpdateMediePlanLinjer(convert(body));
-           
+                var body = Nancy.IO.RequestStream.FromStream(Request.Body).AsString();
 
 
-                
+
+                var res = service.CreateOrUpdateMediePlanLinjer(convert(body));
+
+
+
+
                 return res;
             });
         }
@@ -80,12 +80,12 @@ namespace DLUPersistenceServiceModule.controllers
                     tbl.UgeavisID = res.UgeavisID;
                     tbl.Version = res.Version;
                     tbl.WebtillægFaktureresHer = res.WebtillaegFaktureresHer;
-                    
-              
+
+
 
                     tbllist.Add(tbl);
                 }
-               
+
 
                 return tbllist;
             }
@@ -94,8 +94,8 @@ namespace DLUPersistenceServiceModule.controllers
 
                 throw new Exception(e.Message);
             }
-           
-                
-                }
+
+
+        }
     }
 }

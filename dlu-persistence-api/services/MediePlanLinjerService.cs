@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using dlu_persistence_api.daos;
 
 namespace dlu_persistence_api.services
@@ -19,7 +18,7 @@ namespace dlu_persistence_api.services
 
         public int CreateOrUpdateMediePlanLinjer(tblMedieplanLinjer tblMedieplanLinjer)
         {
-            
+
             return _dao.CreateOrUpdateMediePlanLinjer(tblMedieplanLinjer);
         }
     }

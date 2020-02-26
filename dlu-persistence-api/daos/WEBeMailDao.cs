@@ -1,10 +1,9 @@
+using dlu_persistence_api.exceptions;
+using Newtonsoft.Json;
 using System;
 using System.Data.Entity.Migrations;
-using System.Data.Entity.Validation;
 using System.Linq;
 using System.Threading.Tasks;
-using  dlu_persistence_api.exceptions;
-using Newtonsoft.Json;
 
 namespace dlu_persistence_api.daos
 {
@@ -19,7 +18,7 @@ namespace dlu_persistence_api.daos
         public WEBeMailDao()
         {
             _entities = new DiMPdotNetDevEntities();
-           
+
         }
 
         /// <summary>
@@ -35,16 +34,18 @@ namespace dlu_persistence_api.daos
             {
 
                 var res = from we in _entities.tblWEBeMails
-                    where we.eMail == email
-                    select new
-                    {
-                        we.PersonID, we.eMail, we.PersonNavn
-                    };
+                          where we.eMail == email
+                          select new
+                          {
+                              we.PersonID,
+                              we.eMail,
+                              we.PersonNavn
+                          };
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
             catch (Exception e)
             {
-                throw new  DaoExceptions("GetWebMailByMail " , e.InnerException);
+                throw new DaoExceptions("GetWebMailByMail ", e.InnerException);
             }
         }
 
@@ -59,21 +60,23 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from we in _entities.tblWEBeMails
-                    where we.PersonNavn == personnavn
-                    orderby we.PersonNavn
-                    select new
-                    {
-                        we.PersonID, we.eMail, we.PersonNavn
-                    };
+                          where we.PersonNavn == personnavn
+                          orderby we.PersonNavn
+                          select new
+                          {
+                              we.PersonID,
+                              we.eMail,
+                              we.PersonNavn
+                          };
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
             catch (Exception e)
             {
-                throw new  DaoExceptions("GetWebMailByPersonNavn " , e.InnerException);
+                throw new DaoExceptions("GetWebMailByPersonNavn ", e.InnerException);
             }
         }
 
-    
+
         /// <summary>
         /// 
         /// </summary>
@@ -81,18 +84,18 @@ namespace dlu_persistence_api.daos
         /// <returns></returns>
         /// <exception cref="FormattedDbEntityValidationException"></exception>
         public Task<int> CreateOrUpdate(tblWEBeMail mail)
-       {
-           try
-           {
-               _entities.tblWEBeMails.AddOrUpdate(mail);
+        {
+            try
+            {
+                _entities.tblWEBeMails.AddOrUpdate(mail);
 
-               return _entities.SaveChangesAsync();
-           }
-           catch (Exception e)
-           {
-               throw new FormattedDbEntityValidationException(e);
-           }
-           
+                return _entities.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                throw new FormattedDbEntityValidationException(e);
+            }
+
         }
         public void Dispose()
         {

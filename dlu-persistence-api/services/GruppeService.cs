@@ -1,8 +1,8 @@
-using System.Threading.Tasks;
 using dlu_persistence_api.daos;
+using System.Threading.Tasks;
 namespace dlu_persistence_api.services
 {
-    public class GruppeService: IGruppeService
+    public class GruppeService : IGruppeService
     {
         private GrupperDao _dao;
 

@@ -1,15 +1,13 @@
-﻿using Newtonsoft.Json;
+﻿using dlu_persistence_api.exceptions;
+using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using dlu_persistence_api.exceptions;
 using System.Data.Entity.Migrations;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace dlu_persistence_api.daos
 {
-   public class StamBladKontakterDao
+    public class StamBladKontakterDao
     {
         private DiMPdotNetDevEntities entities;
 
@@ -20,23 +18,28 @@ namespace dlu_persistence_api.daos
         }
 
 
-        public string  GetStamBladKontakterByStambladId(int stambladid)
+        public string GetStamBladKontakterByStambladId(int stambladid)
         {
-           try
+            try
             {
                 var res = from st in entities.tblStambladKontakters
                           where st.StamBladId == stambladid
                           select new
                           {
-                              st.StamBladId, st.KontakPersonEmail, st.KontakPersonNavn, st.KontakPersonTelefon, st.KontakPersonTitel
+                              st.StamBladId,
+                              st.KontakPersonEmail,
+                              st.KontakPersonNavn,
+                              st.KontakPersonTelefon,
+                              st.KontakPersonTitel
                           };
 
-                           return JsonConvert.SerializeObject(res, Formatting.Indented);
+                return JsonConvert.SerializeObject(res, Formatting.Indented);
 
 
 
 
-            } catch (Exception e)
+            }
+            catch (Exception e)
             {
                 throw new FormattedDbEntityValidationException(e.InnerException);
             }
@@ -47,8 +50,8 @@ namespace dlu_persistence_api.daos
         {
             entities.tblStambladKontakters.AddOrUpdate(tblStambladKontakter);
             return entities.SaveChangesAsync();
-              
-              
+
+
         }
     }
 }

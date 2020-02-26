@@ -2,12 +2,12 @@
 using dlu_persistence_api.models;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity.Migrations;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 namespace dlu_persistence_api.daos
 {
     /// <summary>
@@ -122,9 +122,9 @@ namespace dlu_persistence_api.daos
                               DiMPDelOmrådeKode = en.DiMPDelOmrådeKode,
 
                           };
-                        
+
                 return res.Single<BladStamdata>();
-         
+
             }
             catch (Exception e)
             {
@@ -152,92 +152,92 @@ namespace dlu_persistence_api.daos
 
 
 
-                          where en.BladID == bladId
+                       where en.BladID == bladId
 
 
 
 
-                          select new BladStamdata()
-                          {
-                              BladID = en.BladID,
-                              Navn = en.Navn.Trim(),
-                              Navn2 = en.Navn2.Trim(),
-                              MatGodtBeløb = en.MatGodtBeløb,
-                              MedlemÅr = en.MedlemÅr,
-                              CVR = en.CVR,
-                              Fax = en.Fax,
+                       select new BladStamdata()
+                       {
+                           BladID = en.BladID,
+                           Navn = en.Navn.Trim(),
+                           Navn2 = en.Navn2.Trim(),
+                           MatGodtBeløb = en.MatGodtBeløb,
+                           MedlemÅr = en.MedlemÅr,
+                           CVR = en.CVR,
+                           Fax = en.Fax,
 
-                              Tlf = en.Tlf,
-                              Oplag = en.Oplag,
-                              Emails = en.Emails,
+                           Tlf = en.Tlf,
+                           Oplag = en.Oplag,
+                           Emails = en.Emails,
 
-                              Format = en.Format,
-                              Adresse = en.Adresse,
-                              Koncern = en.Koncern,
-                              Ophørt = en.Ophørt,
+                           Format = en.Format,
+                           Adresse = en.Adresse,
+                           Koncern = en.Koncern,
+                           Ophørt = en.Ophørt,
 
-                              Primær = en.Primær,
-                              Adresse2 = en.Adresse2,
-                              Overført = en.Overført,
-                              timestamp = en.timestamp,
-                              Hjemmeside = en.Hjemmeside,
-                              Ejerforhold = en.Ejerforhold,
-                              Totalområde = en.Totalområde,
-                              Kontaktperson = en.Kontaktperson,
-                              OrienteringEmails = en.OrienteringEmails,
-                              PostNr = en.PostNr,
-                              RegionID = en.RegionID,
-                              UgedagID = en.UgedagID,
-                              OrdreEmail = en.OrdreEmail,
-                              PrimærPct = en.PrimærPct,
-                              GruppeRabat = en.GruppeRabat,
-                              AnnonceEmail = en.AnnonceEmail,
-                              MedlemMåned = en.MedlemMåned,
+                           Primær = en.Primær,
+                           Adresse2 = en.Adresse2,
+                           Overført = en.Overført,
+                           timestamp = en.timestamp,
+                           Hjemmeside = en.Hjemmeside,
+                           Ejerforhold = en.Ejerforhold,
+                           Totalområde = en.Totalområde,
+                           Kontaktperson = en.Kontaktperson,
+                           OrienteringEmails = en.OrienteringEmails,
+                           PostNr = en.PostNr,
+                           RegionID = en.RegionID,
+                           UgedagID = en.UgedagID,
+                           OrdreEmail = en.OrdreEmail,
+                           PrimærPct = en.PrimærPct,
+                           GruppeRabat = en.GruppeRabat,
+                           AnnonceEmail = en.AnnonceEmail,
+                           MedlemMåned = en.MedlemMåned,
 
-                              HovedgruppeID = en.HovedgruppeID,
-                              StamdataEmail = en.StamdataEmail,
-                              MaterialeEmail = en.MaterialeEmail,
-                              RedaktionEmail = en.RedaktionEmail,
-                              OrdrecheckEmail = en.OrdrecheckEmail,
-                              TotalområdePct = en.TotalområdePct,
-                              BilagsbladeEmail = en.BilagsbladeEmail,
-                              BogholderiEmails = en.BogholderiEmails,
-                              OrdredeadlineTekst = en.OrdredeadlineTekst,
-                              SendetidOrdrecheck = en.SendetidOrdrecheck,
-                              OrdredeadlineRubrik = en.OrdredeadlineRubrik,
-                              SamannonceringsRabat = en.SamannonceringsRabat,
-                              KontaktpersonerEmails = en.KontaktpersonerEmails,
-                              MaterialedeadlineTekst = en.MaterialedeadlineTekst,
+                           HovedgruppeID = en.HovedgruppeID,
+                           StamdataEmail = en.StamdataEmail,
+                           MaterialeEmail = en.MaterialeEmail,
+                           RedaktionEmail = en.RedaktionEmail,
+                           OrdrecheckEmail = en.OrdrecheckEmail,
+                           TotalområdePct = en.TotalområdePct,
+                           BilagsbladeEmail = en.BilagsbladeEmail,
+                           BogholderiEmails = en.BogholderiEmails,
+                           OrdredeadlineTekst = en.OrdredeadlineTekst,
+                           SendetidOrdrecheck = en.SendetidOrdrecheck,
+                           OrdredeadlineRubrik = en.OrdredeadlineRubrik,
+                           SamannonceringsRabat = en.SamannonceringsRabat,
+                           KontaktpersonerEmails = en.KontaktpersonerEmails,
+                           MaterialedeadlineTekst = en.MaterialedeadlineTekst,
 
-                              MaterialedeadlineRubrik = en.MaterialedeadlineRubrik,
-                              MaterialeDeadlineRubrikKl = en.MaterialeDeadlineRubrikKl,
-                              PrisforespørgselEmails = en.PrisforespørgselEmails,
-                              GeoKodeID = en.GeoKodeID,
-                              VisPåWWW = en.VisPåWWW,
-                              DelOmrådeID = en.DelOmrådeID,
-                              OrdreDeadlineTekstDag = en.OrdreDeadlineTekstDag,
-                              OrdreDeadlineRubrikDag = en.OrdreDeadlineRubrikDag,
-                              OrdreDeadlineRubrikKl = en.OrdreDeadlineRubrikKl,
-                              MedieNetKode = en.MedieNetKode,
-                              SalgsGruppeID = en.SalgsGruppeID,
-                              FakturaGruppeID = en.FakturaGruppeID,
-                              GiverWebTillæg = en.GiverWebTillæg,
-                              SendIndeværendeUge = en.SendIndeværendeUge,
-                              AnnonceKontrolEmail = en.AnnonceKontrolEmail,
-                              MåGiveFarveRabat = en.MåGiveFarveRabat,
-                              OrdrecheckSendeDagID = en.OrdrecheckSendeDagID,
-                              WWWDækningSomTekst = en.WWWDækningSomTekst,
-                              MaterialeDeadlineTekstKl = en.MaterialeDeadlineTekstKl,
-                              OrdreDeadlineTekstKl = en.OrdreDeadlineTekstKl,
-                              MaterialeDeadlineTekstDag = en.MaterialeDeadlineTekstDag,
-                              MaterialeDeadlineRubrikDag = en.MaterialeDeadlineRubrikDag,
+                           MaterialedeadlineRubrik = en.MaterialedeadlineRubrik,
+                           MaterialeDeadlineRubrikKl = en.MaterialeDeadlineRubrikKl,
+                           PrisforespørgselEmails = en.PrisforespørgselEmails,
+                           GeoKodeID = en.GeoKodeID,
+                           VisPåWWW = en.VisPåWWW,
+                           DelOmrådeID = en.DelOmrådeID,
+                           OrdreDeadlineTekstDag = en.OrdreDeadlineTekstDag,
+                           OrdreDeadlineRubrikDag = en.OrdreDeadlineRubrikDag,
+                           OrdreDeadlineRubrikKl = en.OrdreDeadlineRubrikKl,
+                           MedieNetKode = en.MedieNetKode,
+                           SalgsGruppeID = en.SalgsGruppeID,
+                           FakturaGruppeID = en.FakturaGruppeID,
+                           GiverWebTillæg = en.GiverWebTillæg,
+                           SendIndeværendeUge = en.SendIndeværendeUge,
+                           AnnonceKontrolEmail = en.AnnonceKontrolEmail,
+                           MåGiveFarveRabat = en.MåGiveFarveRabat,
+                           OrdrecheckSendeDagID = en.OrdrecheckSendeDagID,
+                           WWWDækningSomTekst = en.WWWDækningSomTekst,
+                           MaterialeDeadlineTekstKl = en.MaterialeDeadlineTekstKl,
+                           OrdreDeadlineTekstKl = en.OrdreDeadlineTekstKl,
+                           MaterialeDeadlineTekstDag = en.MaterialeDeadlineTekstDag,
+                           MaterialeDeadlineRubrikDag = en.MaterialeDeadlineRubrikDag,
 
 
-                              DiMPDelOmrådeKode = en.DiMPDelOmrådeKode,
+                           DiMPDelOmrådeKode = en.DiMPDelOmrådeKode,
 
-                          }).SingleOrDefault<BladStamdata>();
+                       }).SingleOrDefault<BladStamdata>();
 
-             
+
 
             }
             return res;
@@ -249,7 +249,7 @@ namespace dlu_persistence_api.daos
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-      
+
 
         /// <summary>
         /// 
@@ -262,68 +262,68 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from en in di.tblBladStamdatas
-                    where en.PostNr == postNr
-                    orderby en.PostNr
-                    select new
-                    {
-                        en.BladID,
-                        en.Adresse,
-                        en.Adresse2,
-                        en.AnnonceEmail,
-                        en.AnnonceKontrolEmail,
-                        en.BilagsbladeEmail,
-                        en.BogholderiEmails,
-                       
-                        en.CVR,
-                        en.DelOmrådeID,
-                        en.DiMPDelOmrådeKode,
-                        en.UgedagID,
-                        en.Ejerforhold,
-                        en.Emails,
-                        en.FakturaGruppeID,
-                        en.Fax,
-                     
-                        en.Format,
-                        en.GeoKodeID,
+                          where en.PostNr == postNr
+                          orderby en.PostNr
+                          select new
+                          {
+                              en.BladID,
+                              en.Adresse,
+                              en.Adresse2,
+                              en.AnnonceEmail,
+                              en.AnnonceKontrolEmail,
+                              en.BilagsbladeEmail,
+                              en.BogholderiEmails,
 
-                        en.GruppeRabat,
-                        en.Hjemmeside,
-                        en.HovedgruppeID,
-                        en.Koncern,
-                        en.Kontaktperson,
-                        en.KontaktpersonerEmails,
-                        en.PostNr,
-                        en.MaterialedeadlineRubrik,
-                        en.MaterialeDeadlineRubrikDag,
-                        en.MaterialeDeadlineRubrikKl,
-                        en.MaterialedeadlineTekst,
-                        en.MaterialeDeadlineTekstDag,
-                        en.MaterialeDeadlineTekstKl,
-                        en.MaterialeEmail,
-                        en.MatGodtBeløb,
-                        en.MedieNetKode,
-                        en.MedlemMåned,
-                      
-                        en.MedlemÅr,
-                        en.MåGiveFarveRabat,
-                        en.Navn,
-                        en.Navn2,
-                        en.Ophørt,
-                        en.Oplag,
-                        en.OrdrecheckEmail,
-                        en.OrdrecheckSendeDagID,
-                        en.OrdredeadlineRubrik,
-                        en.OrdreDeadlineRubrikDag,
-                        en.OrdreDeadlineRubrikKl,
+                              en.CVR,
+                              en.DelOmrådeID,
+                              en.DiMPDelOmrådeKode,
+                              en.UgedagID,
+                              en.Ejerforhold,
+                              en.Emails,
+                              en.FakturaGruppeID,
+                              en.Fax,
 
-                        en.OrdredeadlineTekst,
-                        en.OrdreDeadlineTekstDag,
-                        en.OrdreDeadlineTekstKl,
+                              en.Format,
+                              en.GeoKodeID,
 
-                        en.OrdreEmail,
-                        en.SendetidOrdrecheck,
-                        en.SendIndeværendeUge
-                    };
+                              en.GruppeRabat,
+                              en.Hjemmeside,
+                              en.HovedgruppeID,
+                              en.Koncern,
+                              en.Kontaktperson,
+                              en.KontaktpersonerEmails,
+                              en.PostNr,
+                              en.MaterialedeadlineRubrik,
+                              en.MaterialeDeadlineRubrikDag,
+                              en.MaterialeDeadlineRubrikKl,
+                              en.MaterialedeadlineTekst,
+                              en.MaterialeDeadlineTekstDag,
+                              en.MaterialeDeadlineTekstKl,
+                              en.MaterialeEmail,
+                              en.MatGodtBeløb,
+                              en.MedieNetKode,
+                              en.MedlemMåned,
+
+                              en.MedlemÅr,
+                              en.MåGiveFarveRabat,
+                              en.Navn,
+                              en.Navn2,
+                              en.Ophørt,
+                              en.Oplag,
+                              en.OrdrecheckEmail,
+                              en.OrdrecheckSendeDagID,
+                              en.OrdredeadlineRubrik,
+                              en.OrdreDeadlineRubrikDag,
+                              en.OrdreDeadlineRubrikKl,
+
+                              en.OrdredeadlineTekst,
+                              en.OrdreDeadlineTekstDag,
+                              en.OrdreDeadlineTekstKl,
+
+                              en.OrdreEmail,
+                              en.SendetidOrdrecheck,
+                              en.SendIndeværendeUge
+                          };
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
             catch (Exception e)
@@ -342,13 +342,13 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from re in di.tblRegions
-                    orderby re.RegionID
-                    select new
-                    {
-                        re.RegionID,
-                        re.RegionNavn,
-                        re.RegionSortKey
-                    };
+                          orderby re.RegionID
+                          select new
+                          {
+                              re.RegionID,
+                              re.RegionNavn,
+                              re.RegionSortKey
+                          };
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
             catch (Exception e)
@@ -366,7 +366,7 @@ namespace dlu_persistence_api.daos
         {
             try
             {
-                var post = from ps in di.tblPostNrSøgning orderby ps.PostNr select new {ps.PostNr, ps.BrugerNavn};
+                var post = from ps in di.tblPostNrSøgning orderby ps.PostNr select new { ps.PostNr, ps.BrugerNavn };
                 return JsonConvert.SerializeObject(post, Formatting.Indented);
             }
             catch (Exception e)
@@ -388,9 +388,12 @@ namespace dlu_persistence_api.daos
                            orderby p.PostNr ascending
                            select new By()
                            {
-                               Husstane = p.Husstande, MaxDækningsGrad = p.MaxDækningsGrad, PostBy = p.PostBy, PostNr= p.PostNr
-                        
-                    };
+                               Husstane = p.Husstande,
+                               MaxDækningsGrad = p.MaxDækningsGrad,
+                               PostBy = p.PostBy,
+                               PostNr = p.PostNr
+
+                           };
                 return post.ToList();
             }
             catch (Exception e)
@@ -409,8 +412,8 @@ namespace dlu_persistence_api.daos
             try
             {
                 var geo = from g in di.tblGeoKodes
-                    orderby g.GeoKodeID, g.GeoKodeNavn
-                    select new {g.GeoKodeID, g.GeoKodeNavn, g.GeoKodeSortKey, g.timestamp};
+                          orderby g.GeoKodeID, g.GeoKodeNavn
+                          select new { g.GeoKodeID, g.GeoKodeNavn, g.GeoKodeSortKey, g.timestamp };
                 return JsonConvert.SerializeObject(geo, Formatting.Indented);
             }
             catch (Exception e)
@@ -429,8 +432,8 @@ namespace dlu_persistence_api.daos
             try
             {
                 var dage = from d in di.tblDages
-                    orderby d.DagType, d.DagID
-                    select new {d.DagID, d.DagNavn, d.DagType, d.timestamp};
+                           orderby d.DagType, d.DagID
+                           select new { d.DagID, d.DagNavn, d.DagType, d.timestamp };
                 return JsonConvert.SerializeObject(dage, Formatting.Indented);
             }
             catch (Exception e)
@@ -448,22 +451,22 @@ namespace dlu_persistence_api.daos
         public Tuple<string, int> OpretNytstamBlad(tblBladStamdata stamData)
 
         {
-           
+
             string trace = null;
             int i = 0;
             try
             {
                 di.tblBladStamdatas.AddOrUpdate(stamData);
 
-                 i =  di.SaveChanges();
-                 
+                i = di.SaveChanges();
+
             }
             catch (Exception e)
             {
-               
+
                 throw new FormattedDbEntityValidationException(e);
             }
-            
+
 
             return new Tuple<string, int>(trace, i);
         }
@@ -501,11 +504,14 @@ namespace dlu_persistence_api.daos
             try
             {
                 var res = from h in di.tblHovedGruppes
-                    orderby h.HovedGruppeID, h.HovedGruppeNavn
-                    select new
-                    {
-                        h.HovedGruppeID, h.HovedGruppeNavn, h.HovedGruppeSortKey, h.timestamp
-                    };
+                          orderby h.HovedGruppeID, h.HovedGruppeNavn
+                          select new
+                          {
+                              h.HovedGruppeID,
+                              h.HovedGruppeNavn,
+                              h.HovedGruppeSortKey,
+                              h.timestamp
+                          };
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
             catch (Exception e)
@@ -528,7 +534,7 @@ namespace dlu_persistence_api.daos
 
         public bool DoesstamBladExist(int bladId)
         {
-            var res = from st in di.tblBladStamdatas where st.BladID == bladId select new {st.BladID};
+            var res = from st in di.tblBladStamdatas where st.BladID == bladId select new { st.BladID };
             var single = res.Single();
 
             return single != null;
@@ -543,105 +549,108 @@ namespace dlu_persistence_api.daos
                           select
 new tblBladStamdata()
 {
-BladID = en.BladID,
-Navn = en.Navn.Trim(),
-Navn2 = en.Navn2.Trim(),
-MatGodtBeløb = en.MatGodtBeløb,
-MedlemÅr = en.MedlemÅr,
-CVR = en.CVR,
-Fax = en.Fax,
+    BladID = en.BladID,
+    Navn = en.Navn.Trim(),
+    Navn2 = en.Navn2.Trim(),
+    MatGodtBeløb = en.MatGodtBeløb,
+    MedlemÅr = en.MedlemÅr,
+    CVR = en.CVR,
+    Fax = en.Fax,
 
-Tlf = en.Tlf,
-Oplag = en.Oplag,
-Emails = en.Emails,
+    Tlf = en.Tlf,
+    Oplag = en.Oplag,
+    Emails = en.Emails,
 
-Format = en.Format,
-Adresse = en.Adresse,
-Koncern = en.Koncern,
-Ophørt = en.Ophørt,
+    Format = en.Format,
+    Adresse = en.Adresse,
+    Koncern = en.Koncern,
+    Ophørt = en.Ophørt,
 
-Primær = en.Primær,
-Adresse2 = en.Adresse2,
-Overført = en.Overført,
-timestamp = en.timestamp,
-Hjemmeside = en.Hjemmeside,
-Ejerforhold = en.Ejerforhold,
-Totalområde = en.Totalområde,
-Kontaktperson = en.Kontaktperson,
-OrienteringEmails = en.OrienteringEmails,
-PostNr = en.PostNr,
-RegionID = en.RegionID,
-UgedagID = en.UgedagID,
-OrdreEmail = en.OrdreEmail,
-PrimærPct = en.PrimærPct,
-GruppeRabat = en.GruppeRabat,
-AnnonceEmail = en.AnnonceEmail,
-MedlemMåned = en.MedlemMåned,
+    Primær = en.Primær,
+    Adresse2 = en.Adresse2,
+    Overført = en.Overført,
+    timestamp = en.timestamp,
+    Hjemmeside = en.Hjemmeside,
+    Ejerforhold = en.Ejerforhold,
+    Totalområde = en.Totalområde,
+    Kontaktperson = en.Kontaktperson,
+    OrienteringEmails = en.OrienteringEmails,
+    PostNr = en.PostNr,
+    RegionID = en.RegionID,
+    UgedagID = en.UgedagID,
+    OrdreEmail = en.OrdreEmail,
+    PrimærPct = en.PrimærPct,
+    GruppeRabat = en.GruppeRabat,
+    AnnonceEmail = en.AnnonceEmail,
+    MedlemMåned = en.MedlemMåned,
 
-HovedgruppeID = en.HovedgruppeID,
-StamdataEmail = en.StamdataEmail,
-MaterialeEmail = en.MaterialeEmail,
-RedaktionEmail = en.RedaktionEmail,
-OrdrecheckEmail = en.OrdrecheckEmail,
-TotalområdePct = en.TotalområdePct,
-BilagsbladeEmail = en.BilagsbladeEmail,
-BogholderiEmails = en.BogholderiEmails,
-OrdredeadlineTekst = en.OrdredeadlineTekst,
-SendetidOrdrecheck = en.SendetidOrdrecheck,
-OrdredeadlineRubrik = en.OrdredeadlineRubrik,
-SamannonceringsRabat = en.SamannonceringsRabat,
-KontaktpersonerEmails = en.KontaktpersonerEmails,
-MaterialedeadlineTekst = en.MaterialedeadlineTekst,
+    HovedgruppeID = en.HovedgruppeID,
+    StamdataEmail = en.StamdataEmail,
+    MaterialeEmail = en.MaterialeEmail,
+    RedaktionEmail = en.RedaktionEmail,
+    OrdrecheckEmail = en.OrdrecheckEmail,
+    TotalområdePct = en.TotalområdePct,
+    BilagsbladeEmail = en.BilagsbladeEmail,
+    BogholderiEmails = en.BogholderiEmails,
+    OrdredeadlineTekst = en.OrdredeadlineTekst,
+    SendetidOrdrecheck = en.SendetidOrdrecheck,
+    OrdredeadlineRubrik = en.OrdredeadlineRubrik,
+    SamannonceringsRabat = en.SamannonceringsRabat,
+    KontaktpersonerEmails = en.KontaktpersonerEmails,
+    MaterialedeadlineTekst = en.MaterialedeadlineTekst,
 
-MaterialedeadlineRubrik = en.MaterialedeadlineRubrik,
-MaterialeDeadlineRubrikKl = en.MaterialeDeadlineRubrikKl,
-PrisforespørgselEmails = en.PrisforespørgselEmails,
-GeoKodeID = en.GeoKodeID,
-VisPåWWW = en.VisPåWWW,
-DelOmrådeID = en.DelOmrådeID,
-OrdreDeadlineTekstDag = en.OrdreDeadlineTekstDag,
-OrdreDeadlineRubrikDag = en.OrdreDeadlineRubrikDag,
-OrdreDeadlineRubrikKl = en.OrdreDeadlineRubrikKl,
-MedieNetKode = en.MedieNetKode,
-SalgsGruppeID = en.SalgsGruppeID,
-FakturaGruppeID = en.FakturaGruppeID,
-GiverWebTillæg = en.GiverWebTillæg,
-SendIndeværendeUge = en.SendIndeværendeUge,
-AnnonceKontrolEmail = en.AnnonceKontrolEmail,
-MåGiveFarveRabat = en.MåGiveFarveRabat,
-OrdrecheckSendeDagID = en.OrdrecheckSendeDagID,
-WWWDækningSomTekst = en.WWWDækningSomTekst,
-MaterialeDeadlineTekstKl = en.MaterialeDeadlineTekstKl,
-OrdreDeadlineTekstKl = en.OrdreDeadlineTekstKl,
-MaterialeDeadlineTekstDag = en.MaterialeDeadlineTekstDag,
-MaterialeDeadlineRubrikDag = en.MaterialeDeadlineRubrikDag,
+    MaterialedeadlineRubrik = en.MaterialedeadlineRubrik,
+    MaterialeDeadlineRubrikKl = en.MaterialeDeadlineRubrikKl,
+    PrisforespørgselEmails = en.PrisforespørgselEmails,
+    GeoKodeID = en.GeoKodeID,
+    VisPåWWW = en.VisPåWWW,
+    DelOmrådeID = en.DelOmrådeID,
+    OrdreDeadlineTekstDag = en.OrdreDeadlineTekstDag,
+    OrdreDeadlineRubrikDag = en.OrdreDeadlineRubrikDag,
+    OrdreDeadlineRubrikKl = en.OrdreDeadlineRubrikKl,
+    MedieNetKode = en.MedieNetKode,
+    SalgsGruppeID = en.SalgsGruppeID,
+    FakturaGruppeID = en.FakturaGruppeID,
+    GiverWebTillæg = en.GiverWebTillæg,
+    SendIndeværendeUge = en.SendIndeværendeUge,
+    AnnonceKontrolEmail = en.AnnonceKontrolEmail,
+    MåGiveFarveRabat = en.MåGiveFarveRabat,
+    OrdrecheckSendeDagID = en.OrdrecheckSendeDagID,
+    WWWDækningSomTekst = en.WWWDækningSomTekst,
+    MaterialeDeadlineTekstKl = en.MaterialeDeadlineTekstKl,
+    OrdreDeadlineTekstKl = en.OrdreDeadlineTekstKl,
+    MaterialeDeadlineTekstDag = en.MaterialeDeadlineTekstDag,
+    MaterialeDeadlineRubrikDag = en.MaterialeDeadlineRubrikDag,
 
 
-DiMPDelOmrådeKode = en.DiMPDelOmrådeKode,
+    DiMPDelOmrådeKode = en.DiMPDelOmrådeKode,
 
 };
-                        
+
 
                 return res.ToList<tblBladStamdata>();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw new FormattedDbEntityValidationException(e.InnerException);
             }
         }
 
-       
+
 
         public string GetByNavnPostNr(int postnr)
         {
             try
             {
                 var res = from st in di.tblPostNrs
-                    where st.PostNr == postnr
-                    select new
-                    {
-                        st.PostNr, st.Husstande, st.PostBy, st.MaxDækningsGrad
-                    };
+                          where st.PostNr == postnr
+                          select new
+                          {
+                              st.PostNr,
+                              st.Husstande,
+                              st.PostBy,
+                              st.MaxDækningsGrad
+                          };
 
                 return JsonConvert.SerializeObject(res, Formatting.Indented);
             }
@@ -654,18 +663,21 @@ DiMPDelOmrådeKode = en.DiMPDelOmrådeKode,
 
         public List<BladIder> GetAllIds()
         {
-            try { 
-            var res = from a in di.tblBladStamdatas orderby a.BladID ascending select new BladIder()
+            try
             {
+                var res = from a in di.tblBladStamdatas
+                          orderby a.BladID ascending
+                          select new BladIder()
+                          {
 
-                BladIDt = a.BladID
-            };
+                              BladIDt = a.BladID
+                          };
                 return res.ToList<BladIder>();
-        }
+            }
             catch (Exception e)
             {
                 throw new FormattedDbEntityValidationException(e.InnerException);
-}
+            }
         }
 
         public Task<int> UpdateEjerforholdForAviser(string oldejeforhold, string newejerforhold)
@@ -676,7 +688,7 @@ DiMPDelOmrådeKode = en.DiMPDelOmrådeKode,
             {
                 item.Ejerforhold = newejerforhold;
             }
-            return  di.SaveChangesAsync();
+            return di.SaveChangesAsync();
         }
     }
 

@@ -4,7 +4,6 @@ using dlu_persistence_api.services;
 using Nancy;
 using Nancy.Extensions;
 using Nancy.IO;
-using Nancy.ModelBinding;
 
 namespace DLUPersistenceServiceModule.controllers
 {
@@ -14,22 +13,22 @@ namespace DLUPersistenceServiceModule.controllers
         {
             Get("/bladdaekning/bladid/{bladid:int}", o => service.GetBladDækningByBladId(o.bladid));
             Get("/bladdaekning/postnr/{postnr:int}", o => service.GetBladDækningByPostnr(o.postnr));
-            Post("/bladdaekning/add",  o =>
-            {
-                var body = RequestStream.FromStream(Request.Body).AsString();
-                var res = createBladDækning(body);
-              service.OpretBladDækning(res);
-                return "";
-            });
+            Post("/bladdaekning/add", o =>
+           {
+               var body = RequestStream.FromStream(Request.Body).AsString();
+               var res = createBladDækning(body);
+               service.OpretBladDækning(res);
+               return "";
+           });
             Delete("/bladdaekning/delete/{bladid}/{postnr}", o =>
             {
                 var body = RequestStream.FromStream(Request.Body).AsString();
 
-                return service.DeleteDaeking(o.bladid ,o.postnr);
+                return service.DeleteDaeking(o.bladid, o.postnr);
             });
         }
-    
-        
+
+
         private dlu_persistence_api.tblBladDækning createBladDækning(string jsonString)
         {
             var stamDataJson = Newtonsoft.Json.JsonConvert.DeserializeObject<Bladdaeknik>(jsonString);
@@ -39,7 +38,7 @@ namespace DLUPersistenceServiceModule.controllers
             tblBladDaekning.PostNr = stamDataJson.PostNr1;
             tblBladDaekning.DækningsGrad = stamDataJson.DaekningsGrad1;
             tblBladDaekning.BladID = stamDataJson.BladID1;
-                    
+
 
             return tblBladDaekning;
         }
