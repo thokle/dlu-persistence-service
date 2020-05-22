@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
-
+using DDF_sql_services.daos;
 namespace dlu_persistence_api.daos
 {
     /// <summary>
@@ -14,13 +14,28 @@ namespace dlu_persistence_api.daos
     /// </summary>
     public class MediePlanDao
     {
+        private DDF_sql_services.daos.AnnonøcerDAO annonøcerDAO;
+        private DDF_sql_services.daos.BureaoDao bureaoDao;
+        private List<DDF_sql_services.daos.Annoncøer> annoncøers { get; set; }
+        private List<DDF_sql_services.daos.Bureau> bureaus { get; set; }
+
+     
+
+        private string GetBureauName(string annoncør)
+        {
+            var res = bureaus.Find(s => s.Company_No_ == annoncør).Annoncør;
+            return res != null ? res : "Ingen bureau";
+        }
         private DiMPdotNetDevEntities entities;
         private IQueryable<tblMedieplan> res;
-
+        
         public MediePlanDao()
         {
             entities = new DiMPdotNetDevEntities();
-
+            annonøcerDAO = new AnnonøcerDAO();
+          annoncøers =   annonøcerDAO.GetAnnoncøer();
+            bureaoDao = new BureaoDao();
+            bureaus = bureaoDao.GetListbureauer();
             entities.Configuration.LazyLoadingEnabled = false;
         }
 
@@ -561,7 +576,29 @@ namespace dlu_persistence_api.daos
                         MedieplanNr = a.MedieplanNr
                     });
 
-                List<FundetMediePlaner> liet = res.Where(pre).ToList();
+                List<FundetMediePlaner> liet = res.Where(pre).ToList().Select(a => new FundetMediePlaner
+                {
+                    AntalAviser = entities.tblMedieplanLinjers.Where(l => l.MedieplanNr == a.MedieplanNr).Select(s => new { s.MedieplanNr }).Distinct().Count(),
+
+                    Beskrivelse = a.Beskrivelse,
+                    Format1 = a.Format1,
+                    Format2 = a.Format1,
+                    Kontaktperson = a.Kontaktperson,
+                    Overskrift = a.Overskrift,
+                    navision_name = a.navision_name,
+                    Status = a.Status,
+                    Version = a.Version,
+                    AnnoncørNo_ = a.AnnoncørNo_,
+                    AntalFarver = a.AntalFarver,
+                    BureauNo_ = a.BureauNo_,
+                    IndrykningsUge = a.IndrykningsUge,
+                    IndrykningsÅr = a.IndrykningsÅr,
+                    KonsulentCode = a.KonsulentCode,
+                    KontaktpersonTilhører = a.KontaktpersonTilhører,
+                    MedieplanNr = a.MedieplanNr,
+                    bureauNavn = GetBureauName(a.BureauNo_)
+
+                }).ToList();
                 return liet;
             }
             catch (Exception e)
@@ -570,7 +607,9 @@ namespace dlu_persistence_api.daos
             }
         }
 
-
+      
+       
+     
         public MediePlan GetMediePlanFortableOrdreNavision(int indrykningsuge)
         {
             var res = (from mp in entities.tblMedieplans

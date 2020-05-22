@@ -25,6 +25,7 @@
         public string navision_name { get; internal set; }
         public short IndrykningsÅr { get; internal set; }
         public int AntalAviser { get; set; }
+        public string bureauNavn { get; set; }
         // public DateTime OprettetDate { get; set; }
     }
 }

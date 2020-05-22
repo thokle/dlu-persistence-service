@@ -29,3 +29,8 @@ C:\Users\Thomas Kleist\source\repos\DLUPersistence-service-api\dlu-persistence-a
 C:\Users\Thomas Kleist\source\repos\DLUPersistence-service-api\dlu-persistence-api\bin\Debug\System.Memory.xml
 C:\Users\Thomas Kleist\source\repos\DLUPersistence-service-api\dlu-persistence-api\obj\Debug\dlu-persistence-api.csproj.CopyComplete
 C:\Users\Thomas Kleist\source\repos\DLUPersistence-service-api\dlu-persistence-api\obj\Debug\dlu-persistence-api.csprojAssemblyReference.cache
+C:\Users\Thomas Kleist\source\repos\DLUPersistence-service-api\dlu-persistence-api\obj\Debug\dlu-persistence-api.csproj.CoreCompileInputs.cache
+C:\Users\Thomas Kleist\source\repos\DLUPersistence-service-api\dlu-persistence-api\bin\Debug\DDF-sql-services.dll
+C:\Users\Thomas Kleist\source\repos\DLUPersistence-service-api\dlu-persistence-api\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Thomas Kleist\source\repos\DLUPersistence-service-api\dlu-persistence-api\bin\Debug\DDF-sql-services.pdb
+C:\Users\Thomas Kleist\source\repos\DLUPersistence-service-api\dlu-persistence-api\bin\Debug\DDF-sql-services.dll.config

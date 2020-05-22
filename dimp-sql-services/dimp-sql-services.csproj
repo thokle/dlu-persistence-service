@@ -91,6 +91,7 @@
       <DependentUpon>dimp-sql.tt</DependentUpon>
     </Compile>
     <Compile Include="daos\AnnonørDao.cs" />
+    <Compile Include="daos\MailDao.cs" />
     <Compile Include="DelOmrTbl.cs">
       <DependentUpon>dimp-sql.tt</DependentUpon>
     </Compile>
@@ -205,6 +206,7 @@
     <Compile Include="rabatele.cs">
       <DependentUpon>dimp-sql.tt</DependentUpon>
     </Compile>
+    <Compile Include="services\MailService.cs" />
     <Compile Include="sp_get_annoncører_Result.cs">
       <DependentUpon>dimp-sql.tt</DependentUpon>
     </Compile>
@@ -513,9 +515,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>

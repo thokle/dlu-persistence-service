@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2046
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dlu-persistence-api", "dlu-persistence-api\dlu-persistence-api.csproj", "{B8DA807F-531C-42C0-B3F1-79AD6560E1AA}"
 EndProject
@@ -38,7 +38,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_StartDate = 2000/1/1
 		SolutionGuid = {F9A2A88C-22D3-4952-AE58-6C5346AA1CD3}
+		BuildVersion_StartDate = 2000/1/1
 	EndGlobalSection
 EndGlobal

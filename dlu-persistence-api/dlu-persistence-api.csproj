@@ -44,6 +44,9 @@
     <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="DDF-sql-services">
+      <HintPath>..\DDF-sql-services\bin\Debug\DDF-sql-services.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -267,15 +270,20 @@
     <Compile Include="daos\BladTillægsTyper.cs" />
     <Compile Include="daos\BogholderiDao.cs" />
     <Compile Include="daos\DPKulør.cs" />
+    <Compile Include="daos\FaktruaBilagListeDao.cs" />
     <Compile Include="daos\FundetMediePlaner.cs" />
     <Compile Include="daos\KoncernDAO.cs" />
     <Compile Include="daos\KoncernMiljøTillægDao.cs" />
     <Compile Include="daos\KonkurrentDao.cs" />
+    <Compile Include="daos\MateraleøudsendingDao.cs" />
+    <Compile Include="daos\MediePlanStatusHelper.cs" />
     <Compile Include="daos\MiljøtillægDao.cs" />
     <Compile Include="daos\Navision.cs" />
     <Compile Include="daos\Priser.cs" />
     <Compile Include="daos\PrislisteDao.cs" />
     <Compile Include="daos\Prislister.cs" />
+    <Compile Include="daos\PrisUdsendingDao.cs" />
+    <Compile Include="daos\RapportVisningsDao.cs" />
     <Compile Include="daos\StamBladBogHolderi.cs" />
     <Compile Include="daos\StamBladKoncernDao.cs" />
     <Compile Include="daos\ViewBookingListeDao.cs" />
@@ -464,10 +472,12 @@
     <Compile Include="services\KontakterPrBladService.cs" />
     <Compile Include="services\KontaktService.cs" />
     <Compile Include="services\KontaktTitlerService.cs" />
+    <Compile Include="services\MaterialeUdsendingService.cs" />
     <Compile Include="services\MediePlanAviserService.cs" />
     <Compile Include="services\MediePlanLinjerService.cs" />
     <Compile Include="services\MediePlanNrService.cs" />
     <Compile Include="services\MediePlanService.cs" />
+    <Compile Include="services\MediePlanStatusHelperService.cs" />
     <Compile Include="services\MediePlanÆndringsService.cs" />
     <Compile Include="services\NavisiomContactService.cs" />
     <Compile Include="services\OrdreGebyrNavisionService.cs" />
@@ -477,6 +487,8 @@
     <Compile Include="services\PriceAskingService.cs" />
     <Compile Include="services\PriserPrBladAArService.cs" />
     <Compile Include="services\PriserService.cs" />
+    <Compile Include="services\PrisUdsendingService.cs" />
+    <Compile Include="services\RapportVisningsService.cs" />
     <Compile Include="services\SendTilNavisionService.cs" />
     <Compile Include="services\StamBladUdsendigKontakterService.cs" />
     <Compile Include="services\RegionService.cs" />
