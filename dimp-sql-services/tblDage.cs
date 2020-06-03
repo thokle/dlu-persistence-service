@@ -14,7 +14,21 @@ namespace dimp_sql_services
     
     public partial class tblDage
     {
-        public byte dag { get; set; }
-        public string sendeDag { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblDage()
+        {
+            this.tblBladStamdatas = new HashSet<tblBladStamdata>();
+            this.tblBladStamdatas1 = new HashSet<tblBladStamdata>();
+        }
+    
+        public byte DagID { get; set; }
+        public string DagNavn { get; set; }
+        public string DagType { get; set; }
+        public byte[] timestamp { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblBladStamdata> tblBladStamdatas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblBladStamdata> tblBladStamdatas1 { get; set; }
     }
 }

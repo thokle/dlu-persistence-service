@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5b9bc873de2345a2b1d9cbb3fb5633ce" Name="Diagram1">
+      <Diagram DiagramId="f3f86bbc05ac41989b6e1fdc67b66547" Name="Diagram1">
         <EntityTypeShape EntityType="DiMPdotNetDevModel.dtproperty" Width="1.5" PointX="14.75" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetDevModel.KontaktTitler" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DiMPdotNetDevModel.OpdateringsTekst" Width="1.5" PointX="2.75" PointY="8.5" IsExpanded="true" />

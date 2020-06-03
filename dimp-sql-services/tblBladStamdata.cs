@@ -14,6 +14,18 @@ namespace dimp_sql_services
     
     public partial class tblBladStamdata
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblBladStamdata()
+        {
+            this.tblMedIGruppes = new HashSet<tblMedIGruppe>();
+            this.tblBladTillaegs = new HashSet<tblBladTillaeg>();
+            this.tblMedieplanLinjers = new HashSet<tblMedieplanLinjer>();
+            this.tblPrisers = new HashSet<tblPriser>();
+            this.tblPrislisterPrBladPrÅr = new HashSet<tblPrislisterPrBladPrÅr>();
+            this.tblPrislisterPrBladPrUges = new HashSet<tblPrislisterPrBladPrUge>();
+            this.tblStamBladBogHolderis = new HashSet<tblStamBladBogHolderi>();
+        }
+    
         public int BladID { get; set; }
         public string Navn { get; set; }
         public string Navn2 { get; set; }
@@ -23,12 +35,10 @@ namespace dimp_sql_services
         public string Tlf { get; set; }
         public string Fax { get; set; }
         public string CVR { get; set; }
-        public string FIK { get; set; }
         public string Kontaktperson { get; set; }
         public Nullable<byte> HovedgruppeID { get; set; }
         public Nullable<byte> MedlemMåned { get; set; }
         public Nullable<byte> MedlemÅr { get; set; }
-        public Nullable<System.DateTime> MedlemSiden { get; set; }
         public string Ejerforhold { get; set; }
         public string Koncern { get; set; }
         public bool Ophørt { get; set; }
@@ -60,7 +70,6 @@ namespace dimp_sql_services
         public string Emails { get; set; }
         public string KontaktpersonerEmails { get; set; }
         public string BogholderiEmails { get; set; }
-        public string BogholderiKontaktperson { get; set; }
         public string MedieNetKode { get; set; }
         public Nullable<byte> MatGodtBeløb { get; set; }
         public string Hjemmeside { get; set; }
@@ -85,5 +94,27 @@ namespace dimp_sql_services
         public string MaterialeDeadlineRubrikKl { get; set; }
         public bool Overført { get; set; }
         public byte[] timestamp { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblMedIGruppe> tblMedIGruppes { get; set; }
+        public virtual tblDage tblDage { get; set; }
+        public virtual tblDage tblDage1 { get; set; }
+        public virtual tblDelOmråde tblDelOmråde { get; set; }
+        public virtual tblGeoKode tblGeoKode { get; set; }
+        public virtual tblHovedGruppe tblHovedGruppe { get; set; }
+        public virtual tblPostNr tblPostNr { get; set; }
+        public virtual tblRegion tblRegion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblBladTillaeg> tblBladTillaegs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblMedieplanLinjer> tblMedieplanLinjers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblPriser> tblPrisers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblPrislisterPrBladPrÅr> tblPrislisterPrBladPrÅr { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblPrislisterPrBladPrUge> tblPrislisterPrBladPrUges { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblStamBladBogHolderi> tblStamBladBogHolderis { get; set; }
     }
 }

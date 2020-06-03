@@ -451,7 +451,7 @@
     <Key>
       <PropertyRef Name="miljøid" />
     </Key>
-    <Property Name="miljøid" Type="Int32" Nullable="false" />
+    <Property Name="miljøid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="miljøtilæg" Type="Decimal" Precision="10" Scale="4" />
     <Property Name="koncern" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
   </EntityType>

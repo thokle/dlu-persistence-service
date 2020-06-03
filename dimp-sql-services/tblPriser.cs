@@ -28,5 +28,9 @@ namespace dimp_sql_services
         public Nullable<decimal> Farve4Min { get; set; }
         public Nullable<decimal> Farve4Max { get; set; }
         public string ControlNavn { get; set; }
+    
+        public virtual tblBladStamdata tblBladStamdata { get; set; }
+        public virtual tblPlacering tblPlacering { get; set; }
+        public virtual tblPrislister tblPrislister { get; set; }
     }
 }

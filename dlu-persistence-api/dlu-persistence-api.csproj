@@ -279,6 +279,10 @@
     <Compile Include="daos\MediePlanStatusHelper.cs" />
     <Compile Include="daos\MiljøtillægDao.cs" />
     <Compile Include="daos\Navision.cs" />
+    <Compile Include="daos\PricesFromWebDao.cs" />
+    <Compile Include="models\PriceWebUpdate.cs" />
+    <Compile Include="daos\TempWebPriser.cs" />
+    <Compile Include="models\PriceTilWeb.cs" />
     <Compile Include="daos\Priser.cs" />
     <Compile Include="daos\PrislisteDao.cs" />
     <Compile Include="daos\Prislister.cs" />
@@ -853,7 +857,7 @@
   </Target>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_UseUniversalClock="True" BuildVersion_UseGlobalSettings="True" BuildVersion_StartDate="2000/1/1" BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" />
+      <UserProperties BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" BuildVersion_StartDate="2000/1/1" BuildVersion_UseGlobalSettings="True" BuildVersion_UseUniversalClock="True" />
     </VisualStudio>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
