@@ -16,19 +16,17 @@ namespace dimp_sql_services
     {
         public int ForespørgselID { get; set; }
         public byte Type { get; set; }
-        public int MedieplanNr { get; set; }
-        public string AnnoncørNo_ { get; set; }
+        public int OrdreNr { get; set; }
+        public int AnnoncørID { get; set; }
         public string Mediebureau { get; set; }
-        public string KonsulentCode { get; set; }
+        public int KonsulentID { get; set; }
         public byte AntalBlade { get; set; }
         public string Format { get; set; }
         public byte AntalFarver { get; set; }
-        public byte PlaceringID { get; set; }
+        public byte Placering { get; set; }
         public byte AntalIndrykninger { get; set; }
         public Nullable<System.DateTime> SvarInden { get; set; }
         public bool Afsluttet { get; set; }
-        public short AntalUdsendinger { get; set; }
         public string Bemærkning { get; set; }
-        public bool PlaceringUB { get; set; }
     }
 }

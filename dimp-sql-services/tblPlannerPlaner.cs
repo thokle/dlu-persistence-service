@@ -14,18 +14,16 @@ namespace dimp_sql_services
     
     public partial class tblPlannerPlaner
     {
-        public int PlannerID { get; set; }
-        public string BrugerNavn { get; set; }
-        public string BrugerEmail { get; set; }
-        public string Annoncør { get; set; }
-        public string Bureau { get; set; }
-        public byte Format1 { get; set; }
-        public short Format2 { get; set; }
-        public byte AntalFarver { get; set; }
-        public string Placering { get; set; }
-        public string Ugeaviser { get; set; }
-        public int MedieplanNr { get; set; }
-        public string KonsulentCode { get; set; }
-        public System.DateTime Oprettet { get; set; }
+        public int plannerID { get; set; }
+        public int brugerID { get; set; }
+        public string bureau { get; set; }
+        public string format { get; set; }
+        public byte farver { get; set; }
+        public byte mmType { get; set; }
+        public string blade { get; set; }
+        public int DimpOrdreNr { get; set; }
+        public Nullable<int> Konsulent { get; set; }
+    
+        public virtual tblMmTyper tblMmTyper { get; set; }
     }
 }

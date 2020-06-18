@@ -14,21 +14,11 @@ namespace dimp_sql_services
     
     public partial class tblMateriale
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblMateriale()
-        {
-            this.tblMedieplanLinjers = new HashSet<tblMedieplanLinjer>();
-        }
-    
-        public int MedieplanNr { get; set; }
-        public int UgeavisID { get; set; }
+        public int OrdreNr { get; set; }
+        public int BladID { get; set; }
         public string FilNavn { get; set; }
         public bool ErSendt { get; set; }
         public bool SkalSendes { get; set; }
         public string FilSti { get; set; }
-    
-        public virtual tblMedieplanNr tblMedieplanNr { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblMedieplanLinjer> tblMedieplanLinjers { get; set; }
     }
 }

@@ -37,31 +37,16 @@ namespace DLUPersistenceServiceModule.controllers
 
 
             Get("/users", o => { return "user"; }, null, "GetUsers");
-            Get("/stamblad/{id:int}", parametes =>
-            {
-                int bladid = parametes.id;
-                return stamBladDao.GetStamBladById(bladid);
-            }, null, "");
+          
+
+         
 
 
-            Get("/stamblad/postnr/{postnr:int}", parameter => { return stamBladDao.GetStamBladByPostNummer(parameter.postnr); });
-
-            Get("/stamblad/navn/{name}", parameter => stamBladDao.GetStamBladByName(parameter.name));
-
-
-            Post("/stamblad", o =>
-            {
-                var body = RequestStream.FromStream(Request.Body).AsString();
-
-                var stamData = this.CreateStamData(body);
-
-                return stamBladDao.CreaateOrUpdateStamBlad(stamData);
-
-            });
+         
 
             Get("/stamblad/GeoCodes", o => { return stamBladDao.GetTableGeoCode(); });
 
-            Get("/stamblad/allpostnr", o => { return stamBladDao.GetTablePostNr(); });
+        
 
             Get("/stamblad/postnrsog", o => { return stamBladDao.GetTablePostNrSøgning(); });
 
@@ -79,7 +64,7 @@ namespace DLUPersistenceServiceModule.controllers
             });
             Post("/stamblad/ejerforhold/{oldejer:string}/{newejer:string",
                 o => stamBladDao.UpdateEjerforholdForAviser(o.oldejer, o.newejer));
-            Get("/stamblad/getAllBladid", o => stamBladDao.GetAllIds());
+        
 
         }
 

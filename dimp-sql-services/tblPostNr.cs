@@ -17,21 +17,14 @@ namespace dimp_sql_services
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tblPostNr()
         {
-            this.tblBladStamdatas = new HashSet<tblBladStamdata>();
-            this.tblKonkurrentDækning = new HashSet<tblKonkurrentDækning>();
-            this.tblPostNrSøgning = new HashSet<tblPostNrSøgning>();
+            this.tblDækning = new HashSet<tblDækning>();
         }
     
-        public int PostNr { get; set; }
-        public string PostBy { get; set; }
-        public int Husstande { get; set; }
-        public byte MaxDækningsGrad { get; set; }
+        public string PostNr { get; set; }
+        public Nullable<short> ById { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblBladStamdata> tblBladStamdatas { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblKonkurrentDækning> tblKonkurrentDækning { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblPostNrSøgning> tblPostNrSøgning { get; set; }
+        public virtual ICollection<tblDækning> tblDækning { get; set; }
+        public virtual tblHusstande tblHusstande { get; set; }
     }
 }

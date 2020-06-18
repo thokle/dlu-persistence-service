@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1e454ed92ce74de89db7931281aa5706" Name="Diagram1">
+        <EntityTypeShape EntityType="dimpSQLModel.dtproperty" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.JuleListe" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.laesertalele" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.øPDKomDæk" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.prisele" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.rabatele" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.sysdiagram" Width="1.5" PointX="11.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblAfdelinger" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblAnnoncemængder" Width="1.5" PointX="13.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblAnnoncører" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblAttachedFile" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblBemærkninger" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblBetalingsbetingelse" Width="1.5" PointX="13.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblBilagsbladReminderSendt" Width="1.5" PointX="13.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblBladBemærkning" Width="1.5" PointX="5.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblBladeOLD" Width="1.5" PointX="3" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblBladeSam" Width="1.5" PointX="7.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblBladGrupper" Width="1.5" PointX="0.75" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblBrugere" Width="1.5" PointX="9.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblDækning" Width="1.5" PointX="5.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblDækningAnden" Width="1.5" PointX="11.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblDage" Width="1.5" PointX="13.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblExtraNet" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblFarveTillægMinMax" Width="1.5" PointX="15.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblFejlTekst" Width="1.5" PointX="15.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblFIK" Width="1.5" PointX="15.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblGeoKoder" Width="1.5" PointX="15.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblGruppeBemærkning" Width="1.5" PointX="15.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblHusstande" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblMail" Width="1.5" PointX="17.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblMateriale" Width="1.5" PointX="17.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblMmPrisWebApp" Width="1.5" PointX="17.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblMmTyper" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblOplag" Width="1.5" PointX="17.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblOrdreLinjeFejl" Width="1.5" PointX="11.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblOrdreLinjer" Width="1.5" PointX="8.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblOrdreLinjerSlettet" Width="1.5" PointX="11.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblOrdrer" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblPlannerBrugere" Width="1.5" PointX="17.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblPlannerPlaner" Width="1.5" PointX="3" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblPostNr" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblRegioner" Width="1.5" PointX="17.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblStillinger" Width="1.5" PointX="7.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblSupplerendeBlade" Width="1.5" PointX="19.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblUdsendteLister" Width="1.5" PointX="19.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblUgeBemærkninger" Width="1.5" PointX="19.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblWEBeMail" Width="1.5" PointX="19.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblWEBForespørgsel" Width="1.5" PointX="19.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblWEBForespørgselLinjer" Width="1.5" PointX="13.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblWEBPrimærDækning" Width="1.5" PointX="19.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblWEBUdgivelse" Width="1.5" PointX="9.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tekniskele" Width="1.5" PointX="15.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.Ark1_" Width="1.5" PointX="17.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.DelOmrTbl" Width="1.5" PointX="19.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.øDDFlet" Width="1.5" PointX="21.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.øDDPostDæk" Width="1.5" PointX="21.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.øPDFletTable" Width="1.5" PointX="21.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.øPDPostDæk" Width="1.5" PointX="5.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.øPDStamdata" Width="1.5" PointX="23.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblAnnoncører3år" Width="1.5" PointX="23.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblBlade" Width="1.5" PointX="23.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblBladStamdata" Width="1.5" PointX="23.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblBladStamDatabackup" Width="1.5" PointX="17.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblDeadline" Width="1.5" PointX="19.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblFarveTillægMinMaxWebApp" Width="1.5" PointX="7.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblKlarTilNavision" Width="1.5" PointX="9.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblMailCopy" Width="1.5" PointX="11.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblMmPri" Width="1.5" PointX="13.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblMmPrisMedFejl" Width="1.5" PointX="25.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblOplagGodkendWEB" Width="1.5" PointX="25.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblOplagWEB" Width="1.5" PointX="25.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblOrdrer2" Width="1.5" PointX="25.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblOrdrer3" Width="1.5" PointX="25.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblPriser" Width="1.5" PointX="25.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblPrisLokal" Width="1.5" PointX="19.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblWebudgivelserbackup" Width="1.5" PointX="27.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.Afstemning" Width="1.5" PointX="27.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.Annoncører_Klar_Til_Overførsel" Width="1.5" PointX="27.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.AnnoncørerFordeltPåSalgsAnsvarlig" Width="1.5" PointX="27.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.AnnoncørOmsætningRegioner" Width="1.5" PointX="13.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.bemaerkninger" Width="1.5" PointX="27.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.BladePrPostNr" Width="1.5" PointX="27.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.BudgetMaterialePrSalgsAnsvarlig" Width="1.5" PointX="27.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.CreateModtagelseseleTilWeb" Width="1.5" PointX="27.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.CreateRabateleTilWeb" Width="1.5" PointX="5.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.CreatetblHovedEleTilWeb" Width="1.5" PointX="7.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.CreatetblLaesertaleleTilWeb" Width="1.5" PointX="9.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.CreateTekniskeleTilWeb" Width="1.5" PointX="29.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.DækningsområdePostNr" Width="1.5" PointX="29.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.FindDækningskortPostNr" Width="1.5" PointX="29.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.FynskeAvisersOmsætningPrAntalBlade" Width="1.5" PointX="29.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.KontaktpersonPrBladnavn" Width="1.5" PointX="19.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.ManglerMateriale" Width="1.5" PointX="29.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.mmprAnnoncørprUge" Width="1.5" PointX="21.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.MMPrisPrÅr" Width="1.5" PointX="29.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.NulltblAnnoncører" Width="1.5" PointX="29.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.NulltblBlade" Width="1.5" PointX="23.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.NulltblOrdreLinjer" Width="1.5" PointX="31.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.NulltblOrdrer" Width="1.5" PointX="31.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.Odense" Width="1.5" PointX="9.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.OmsætningAnnoncører" Width="1.5" PointX="31.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.OmsætningAntalBladeAnnoncør" Width="1.5" PointX="31.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.OmsætningAntalBladeFormatAnnoncør" Width="1.5" PointX="25.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.OmsætningFordeltPåGeokode" Width="1.5" PointX="27.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.OmsætningPrAntalBlade" Width="1.5" PointX="19.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.OmsætningPrAntalBladePrGeokode" Width="1.5" PointX="33.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.OmsætningPrBladPrUgePrOrdreNr" Width="1.5" PointX="5.75" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.OmsætningPrSalgsansvarligMedRestAfTidligereÅr" Width="1.5" PointX="33.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.OmsætningssammenligningPrBladRegnskabsår" Width="1.5" PointX="33.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.Ordrer2004" Width="1.5" PointX="33.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.OrdreRettelser" Width="1.5" PointX="33.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.PriserUdtrækReklameData" Width="1.5" PointX="33.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.SøgIJuleliste" Width="1.5" PointX="29.75" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.Ugeliste" Width="1.5" PointX="33.75" PointY="30.75" IsExpanded="true" />
+        <AssociationConnector Association="dimpSQLModel.FK_tblOrdrer_tblAnnoncører" ManuallyRouted="false" />
+        <AssociationConnector Association="dimpSQLModel.FK_tblOrdrer_tblAnnoncører1" ManuallyRouted="false" />
+        <AssociationConnector Association="dimpSQLModel.FK_tblOrdrer_tblAnnoncører2" ManuallyRouted="false" />
+        <AssociationConnector Association="dimpSQLModel.FK_tblAttachedFiles_tblOrdrer" ManuallyRouted="false" />
+        <AssociationConnector Association="dimpSQLModel.FK_tblBemærkninger_tblBlade" ManuallyRouted="false" />
+        <AssociationConnector Association="dimpSQLModel.FK_tblBemærkninger_tblOrdrer" ManuallyRouted="false" />
+        <AssociationConnector Association="dimpSQLModel.FK_tblBladBemærkning_tblBlade" ManuallyRouted="false" />
+        <AssociationConnector Association="dimpSQLModel.FK_tblBladBemærkning_tblOrdrer" ManuallyRouted="false" />
+        <AssociationConnector Association="dimpSQLModel.FK_tblBlade_tblBladGrupper" ManuallyRouted="false" />
+        <AssociationConnector Association="dimpSQLModel.FK_tblBladGrupper_tblBlade" ManuallyRouted="false" />
+        <AssociationConnector Association="dimpSQLModel.FK_tblDækning_tblBlade" ManuallyRouted="false" />
+        <AssociationConnector Association="dimpSQLModel.FK_tblOrdreLinjer_tblBlade" ManuallyRouted="false" />
+        <AssociationConnector Association="dimpSQLModel.FK_tblOrdreLinjerSlettet_tblBlade" ManuallyRouted="false" />
+        <AssociationConnector Association="dimpSQLModel.FK_tblDækning_tblPostNr" ManuallyRouted="false" />
+        <AssociationConnector Association="dimpSQLModel.FK_tblPostNr_tblHusstande" ManuallyRouted="false" />
+        <AssociationConnector Association="dimpSQLModel.FK_tblOrdrer_tblMmTyper" ManuallyRouted="false" />
+        <AssociationConnector Association="dimpSQLModel.FK_tblPlannerPlaner_tblMmTyper" ManuallyRouted="false" />
+        <AssociationConnector Association="dimpSQLModel.FK_tblOrdreLinjer_tblOrdrer" ManuallyRouted="false" />
+        <AssociationConnector Association="dimpSQLModel.FK_tblOrdreLinjerSlettet_tblOrdrer" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

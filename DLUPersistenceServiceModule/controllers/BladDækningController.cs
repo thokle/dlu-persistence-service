@@ -11,7 +11,7 @@ namespace DLUPersistenceServiceModule.controllers
     {
         public BladDækningController(BladDækningService service)
         {
-            Get("/bladdaekning/bladid/{bladid:int}", o => service.GetBladDækningByBladId(o.bladid));
+         
             Get("/bladdaekning/postnr/{postnr:int}", o => service.GetBladDækningByPostnr(o.postnr));
             Post("/bladdaekning/add", o =>
            {

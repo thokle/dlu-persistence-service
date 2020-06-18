@@ -20,7 +20,9 @@ namespace dlu_persistence_api.daos
         {
             try
             {
-                return devEntities.tblBladStamdatas.Select(s => new Udsending() { StamdataEmail = s.StamdataEmail, Navn = s.Navn, BladID = s.BladID, Ophørt= s.Ophørt }).Where(w => w.Ophørt == false).GroupBy(g => new { g.StamdataEmail, g.Navn, g.BladID, g.Ophørt }).Select(se => new Udsending() { Navn = se.Key.Navn, StamdataEmail = se.Key.StamdataEmail, BladID = se.Key.BladID , Ophørt = se.Key.Ophørt}).Distinct().ToList();
+                return devEntities.tblBladStamdatas.Select(s => new Udsending() { StamdataEmail = s.StamdataEmail, Navn = s.Navn, BladID = s.BladID, Ophørt= s.Ophørt }).Where(w => w.Ophørt == false)
+                    .GroupBy(g => new { g.StamdataEmail, g.Navn, g.BladID, g.Ophørt })
+                    .Select(se => new Udsending() { StamdataEmail = se.Key.StamdataEmail, Navn = se.Key.Navn,  BladID = se.Key.BladID , Ophørt = se.Key.Ophørt}).ToList();
             }
             catch (Exception ex)
             {

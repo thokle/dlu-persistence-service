@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace dimp_sql_services.daos
             dimpSQLEntities = new dimpSQLEntities();
         }
 
-        public Task<int> OpretMail(Mail mail)
+        public int OpretMail(Mail mail)
         {
             var tblMail = new tblMail();
             tblMail.Attachfile1 = mail.Attachfile1;
@@ -24,8 +25,8 @@ namespace dimp_sql_services.daos
             tblMail.SendFrom = mail.SendFrom;
             tblMail.SendTo = mail.SendTo;
             tblMail.Subject = mail.Subject;
-            dimpSQLEntities.tblMails.Add(tblMail);
-            return dimpSQLEntities.SaveChangesAsync();
+            dimpSQLEntities.tblMails.AddOrUpdate(tblMail);
+            return dimpSQLEntities.SaveChanges();
         }
 
         

@@ -1,6 +1,9 @@
 using dlu_persistence_api.exceptions;
+using dlu_persistence_api.models;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace dlu_persistence_api.daos
@@ -8,7 +11,7 @@ namespace dlu_persistence_api.daos
     /// <summary>
     /// 
     /// </summary>
-    public class NavisionContactDao : IDisposable
+    public class NavisionContactDao
 
     {
         private DiMPdotNetDevEntities _entities;
@@ -60,10 +63,16 @@ namespace dlu_persistence_api.daos
 
 
 
-
-        public void Dispose()
+        public NavContact GetNavisinForbyContactId(string contact)
         {
-            _entities?.Dispose();
+          var res =  _entities.Database.SqlQuery<NavContact>("SELECT   dbo.NavisionContact.Name AS BureauNavn, dbo.NavisionContact.Address, dbo.NavisionContact.[Post Code] AS PostNr, dbo.NavisionContact.City AS PostBy, dbo.NavisionContact.[Phone No_] AS TlfNr, dbo.NavisionContact.[VAT Registration No_] AS CVR, " +
+                "dbo.NavisionContact.Infogodtgørelse, dbo.NavisionContact.Sikkerhedsgodtgørelse, dbo.NavisionContact.No_  FROM dbo.NavisionContact where dbo.NavisionContact.Name = @contact", new SqlParameter("contact", contact));
+
+            return res.ToList().FirstOrDefault();
+        
         }
+       
     }
+
+    
 }

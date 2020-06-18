@@ -8,10 +8,8 @@ namespace DLUPersistenceServiceModule.controllers
         public RegionsController(RegionService service)
         {
 
-            Get("/regions/all", o => service.GetRegions());
-
-            Get("/regions/singleregion/{regionid:int}", o => service.GetRegsionById(o.regionid));
+       
         }
 
     }
-}
+}  

@@ -14,17 +14,17 @@ namespace DDF_sql_services.daos
             entities1.Configuration.LazyLoadingEnabled = true;
         }
 
-        public string getDLUContact()
+        public DLUContact getDLUContact(string contactnr)
         {
             try
             {
-                var res = from dlucontac in entities1.DLU_Contact select new { };
+                var res = from dlucontac in entities1.DLU_Contact where dlucontac.Bill_to_Contact_No_ == contactnr select new DLUContact {
+                
+                
+                
+                };
 
-                return JsonConvert.SerializeObject(res, Formatting.Indented, new JsonSerializerSettings()
-                {
-                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                });
-
+                return res.FirstOrDefault();
             }
             catch (Exception)
             {
@@ -33,5 +33,9 @@ namespace DDF_sql_services.daos
             }
         }
 
+    }
+
+    public class DLUContact
+    {
     }
 }

@@ -6,14 +6,14 @@ namespace dlu_persistence_api.services
     public class WebMailService : IWebMailService
     {
 
-        private WEBeMailDao _weBeMailDao;
+        private WebMailDao _weBeMailDao;
 
         public WebMailService()
         {
-            _weBeMailDao = new WEBeMailDao();
+            _weBeMailDao = new WebMailDao();
 
         }
-        public string GetWebMailByMail(string email)
+        public WebMail GetWebMailByMail(string email)
         {
             return _weBeMailDao.GetWebMailByMail(email);
         }
@@ -30,3 +30,4 @@ namespace dlu_persistence_api.services
         }
     }
 }
+

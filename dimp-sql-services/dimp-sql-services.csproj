@@ -50,361 +50,451 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AktiveUgeaviserMedAlleData.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="Afstemning.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="bladtlfogfaxkopi.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="AnnoncørerFordeltPåSalgsAnsvarlig.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Annoncører_Klar_Til_Overførsel.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnnoncørOmsætningRegioner.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ark1_.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="bemaerkninger.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BladePrPostNr.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BudgetMaterialePrSalgsAnsvarlig.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
+    <Compile Include="CreateModtagelseseleTilWeb.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CreateRabateleTilWeb.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CreatetblHovedEleTilWeb.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CreatetblLaesertaleleTilWeb.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CreateTekniskeleTilWeb.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
     <Compile Include="daos\AnnonørDao.cs" />
     <Compile Include="daos\MailDao.cs" />
-    <Compile Include="delPriser.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="DelOmrTbl.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="dimpSQL.Context.cs">
+    <Compile Include="dimp.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dimpSQL.Context.tt</DependentUpon>
+      <DependentUpon>dimp.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="dimpSQL.cs">
+    <Compile Include="dimp.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="dimpSQL.Designer.cs">
+    <Compile Include="dimp.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dimpSQL.edmx</DependentUpon>
+      <DependentUpon>dimp.edmx</DependentUpon>
     </Compile>
     <Compile Include="dtproperty.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
     <Compile Include="dt_getpropertiesbyid_Result.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
     <Compile Include="dt_getpropertiesbyid_u_Result.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DækningsområdePostNr.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
     <Compile Include="exceptions\DaoExceptions.cs" />
     <Compile Include="exceptions\FormattedDbEntityValidationException.cs" />
-    <Compile Include="FakturaFejlFinde.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="FindDækningskortPostNr.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="FindFejlLinjer.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="FynskeAvisersOmsætningPrAntalBlade.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="GammelAnnoncørID.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="JuleListe.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="HerningFolkeblad.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="KontaktpersonPrBladnavn.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="KontaktTitler.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="laesertalele.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="LPRoller.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="ManglerMateriale.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="NavisionContact.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="mmprAnnoncørprUge.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="NavisionContact2.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="MMPrisPrÅr.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="OpdateringsTekst.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="NulltblAnnoncører.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NulltblBlade.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NulltblOrdreLinjer.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NulltblOrdrer.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Odense.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OmsætningAnnoncører.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OmsætningAntalBladeAnnoncør.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OmsætningAntalBladeFormatAnnoncør.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OmsætningFordeltPåGeokode.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OmsætningPrAntalBlade.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OmsætningPrAntalBladePrGeokode.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OmsætningPrBladPrUgePrOrdreNr.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OmsætningPrSalgsansvarligMedRestAfTidligereÅr.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OmsætningssammenligningPrBladRegnskabsår.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ordrer2004.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrdreRettelser.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="prisele.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PriserUdtrækReklameData.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Salesperson.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="rabatele.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
     <Compile Include="services\MailService.cs" />
+    <Compile Include="sp_get_annoncører_Result.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_get_dknkommun_Result.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_get_dknomrode_Result.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_get_MakeHovedSQLAllFalse_Result.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_get_MakeHovedSQLFalse_Result.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_get_MakeSupplerendeSQLAllFalse_Result.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_get_MakeSupplerendeSQLFalse_Result.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_get_mmtyper_Result.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_get_postby_Result.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_get_prisliste_Result.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_get_UdregnPrisHoved_Result.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_get_UdregnPrisSup_Result.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_get_UdskrivAvis_Result.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_get_UdskrivFejlListe2_Result.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_get_UdskrivFejlListe_Result.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_get_UdskrivFejlStatistik2_Result.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_get_UdskrivFejlStatistik_Result.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_get_UdskrivOplag_Result.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_get_UdskrivRapport3Dækning_Result.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_get_UdskrivStillingAnnStat_Result.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagram.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblAktiveVærdier.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="SøgIJuleliste.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblAktivGruppeVersion.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblAfdelinger.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblAnnoncekontrol.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblAnnoncemængder.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblBladDækning.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblAnnoncører.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblBladKommentar.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblAnnoncører3år.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblBladnavnMappingFraDO.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblAttachedFile.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblBladRabat.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblBemærkninger.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblBladRabatter.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblBetalingsbetingelse.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblBilagsbladReminderSendt.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblBladBemærkning.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblBlade.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblBladeOLD.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblBladeSam.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblBladGrupper.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
     <Compile Include="tblBladStamdata.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblBladStamdataKopi.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblBladStamDatabackup.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblBladTillaeg.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblBladTillaegsType.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblBladUdsendingKontakter.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblBrugerData.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblBrugere.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
     <Compile Include="tblDage.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblDelOmråde.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblDeadline.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblDPKulør.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblDækning.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblEjerforhold.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblDækningAnden.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblFakturaFejl.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblExtraNet.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblFakturaFejlTekst.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblFarveTillægMinMax.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblFaktureringsBilag.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblFarveTillægWebApp.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblFarveTillægMinMaxWebApp.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFejlTekst.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblGeoKode.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblFIK.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblGrupper.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblGeoKoder.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblGruppeRabatter.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblGruppeBemærkning.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblHovedGruppe.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblHusstande.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblKoncern.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblKlarTilNavision.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblKoncernMiljøTillæg.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblMail.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblKonkurrentDækning.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblKonkurrenter.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblKontaktArbOmråder.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblKontakter.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblKontakterPrBlad.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblKontaktFunktioner.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblKontaktTitler.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblMailCopy.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMateriale.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblMedieplan.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblMmPri.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblMedieplanLinjer.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblMedieplanNr.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblMedieplanÆndringer.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblMedIGruppe.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblMmPrisMedFejl.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
     <Compile Include="tblMmPrisWebApp.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblMåneder.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblMmTyper.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblOphørtBlad.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblOplag.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblOrdreGebyrNavision.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblOplagGodkendWEB.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblOrdreLinjerNavision.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblOplagWEB.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblOrdreNavision.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblOrdreLinjeFejl.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblPlacering.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblOrdreLinjer.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblOrdreLinjerSlettet.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblOrdrer.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblOrdrer2.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblOrdrer3.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPlannerBrugere.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPlannerPlaner.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPostNr.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblPostNrSøgning.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblPriceAsking.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPriser.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblPrislister.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblPrisLokal.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblPrislisterPrBladPrUge.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblRegioner.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblPrislisterPrBladPrÅr.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblStillinger.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblRegion.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblSupplerendeBlade.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblRemindereSendt.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblUdsendteLister.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblStamBladBogHolderi.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblStambladKoncern.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblStambladKontakter.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblStambladUdsendingEmailTyper.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tblSupportBilag.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblUgeBemærkninger.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
     <Compile Include="tblWEBeMail.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
     <Compile Include="tblWEBForespørgsel.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
     <Compile Include="tblWEBForespørgselLinjer.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblWEBSendTilKollega.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblWEBPrimærDækning.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tempPriser.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblWEBUdgivelse.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tmpNyeDeadline.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tblWebudgivelserbackup.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tnpOrdreNr.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="tekniskele.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tnpOrdreNr2.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="Ugeliste.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="tnpOrdreNr3.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="øDDFlet.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="UgeaviserTilGrid.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="øDDPostDæk.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="User.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="øPDFletTable.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="viewBlade.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="øPDKomDæk.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="viewBookingListe.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="øPDPostDæk.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="viewGrupper.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="viewLinjeDiff.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="viewOrdre.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="viewOrdreErSendt.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="viewOrdreFIND.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="viewOrdreIkkeSendt.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="viewOrdreLinjer.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="viewOrdreLinjerFIND.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="viewOrdreSendtManglerMateriale.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="viewOversigt.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="viewUpdateStatusIMedieplan.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="viewUpdateStatusIMedieplanNr.cs">
-      <DependentUpon>dimpSQL.tt</DependentUpon>
+    <Compile Include="øPDStamdata.cs">
+      <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="dimpSQL.edmx">
+    <EntityDeploy Include="dimp.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>dimpSQL.Designer.cs</LastGenOutput>
+      <LastGenOutput>dimp.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="dimpSQL.edmx.diagram">
-      <DependentUpon>dimpSQL.edmx</DependentUpon>
+    <None Include="dimp.edmx.diagram">
+      <DependentUpon>dimp.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -412,15 +502,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="dimpSQL.Context.tt">
+    <Content Include="dimp.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>dimpSQL.edmx</DependentUpon>
-      <LastGenOutput>dimpSQL.Context.cs</LastGenOutput>
+      <DependentUpon>dimp.edmx</DependentUpon>
+      <LastGenOutput>dimp.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="dimpSQL.tt">
+    <Content Include="dimp.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>dimpSQL.edmx</DependentUpon>
-      <LastGenOutput>dimpSQL.cs</LastGenOutput>
+      <DependentUpon>dimp.edmx</DependentUpon>
+      <LastGenOutput>dimp.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

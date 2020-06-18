@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using dlu_persistence_api.daos;
+using dlu_persistence_api.services;
 using Nancy;
 
 namespace DLUPersistenceServiceModule.controllers
 {
     public sealed class PriceWebUpdateController : NancyModule
     {
-        public PriceWebUpdateController(): base("/priceWebUpdate")
+        public PriceWebUpdateController(PricesFromWebService pricesFromWebService): base("/priceWebUpdate")
         {
-            Get("/{email}", func);
+            Get("/{email:string}", s =>
+            {
+                return pricesFromWebService.ShowPapersFromStamBladId(s.email);
+            });
         }
 
-        private object func(dynamic arg)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

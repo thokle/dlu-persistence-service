@@ -10,7 +10,7 @@ namespace DLUPersistenceServiceModule.controllers
     {
         public BladTilLaegTypeController(BladTilaegsTypeService service)
         {
-            Get("/bladtillaegsType/", o => service.GetBladtillaegsTyper());
+         
             Post("bladtillaegsType/", o =>
             {
 

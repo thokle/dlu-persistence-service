@@ -1,6 +1,7 @@
 ﻿using dlu_persistence_api.exceptions;
 using dlu_persistence_api.models;
 using Newtonsoft.Json;
+using Remotion.Linq.Clauses;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -689,6 +690,19 @@ new tblBladStamdata()
                 item.Ejerforhold = newejerforhold;
             }
             return di.SaveChangesAsync();
+        }
+        
+
+        public string GetStamBladEmailByBladId(int bladid)
+        {
+            var res = (from st in di.tblBladStamdatas
+                       where st.BladID == bladid
+                       select new
+                       {
+                           st.StamdataEmail,
+                       }).FirstOrDefault().StamdataEmail;
+
+            return res;
         }
     }
 

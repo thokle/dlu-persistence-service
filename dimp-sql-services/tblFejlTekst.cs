@@ -14,16 +14,7 @@ namespace dimp_sql_services
     
     public partial class tblFejlTekst
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tblFejlTekst()
-        {
-            this.tblAnnoncekontrols = new HashSet<tblAnnoncekontrol>();
-        }
-    
-        public byte Fejlkode { get; set; }
+        public byte FejlID { get; set; }
         public string FejlTekst { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblAnnoncekontrol> tblAnnoncekontrols { get; set; }
     }
 }

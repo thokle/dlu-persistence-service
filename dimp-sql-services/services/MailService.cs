@@ -15,7 +15,7 @@ namespace dimp_sql_services.services
             mailDao = new MailDao();
         }
 
-        public Task<int> OpretMail(Mail mail)
+        public int OpretMail(Mail mail)
         {
             return mailDao.OpretMail(mail);
         }

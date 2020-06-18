@@ -5,7 +5,7 @@ namespace DDF_sql_services.daos
 {
     public class BureaoDao
     {
-        D dFEntities1;
+        private DDFEntities dFEntities1;
 
         public BureaoDao()
         {

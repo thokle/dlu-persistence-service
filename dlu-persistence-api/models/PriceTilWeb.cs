@@ -1,9 +1,10 @@
 ﻿namespace dlu_persistence_api.daos
 {
-    internal class PriceTilWeb
+    public class PriceTilWeb
     {
-        public int BladID { get; internal set; }
-        public string Navn { get; internal set; }
-        public object tempPriser { get; internal set; }
+        public int BladID { get;  set; }
+        public string Navn { get;  set; }
+        public object tempPriser { get;  set; }
+        public object placeringer { get; set; }
     }
 }

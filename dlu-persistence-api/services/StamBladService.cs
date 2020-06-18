@@ -69,6 +69,9 @@ namespace dlu_persistence_api.services
             return dao.UpdateEjerforholdForAviser(oldejeforhold, newejerforhold);
         }
 
-
+       public string GetStamBladEmailByBladId(int bladid)
+        {
+            return dao.GetStamBladEmailByBladId(bladid);
+        }
     }
 }

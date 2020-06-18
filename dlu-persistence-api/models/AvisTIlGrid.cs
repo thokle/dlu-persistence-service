@@ -1,4 +1,5 @@
-﻿using dlu_persistence_api.daos;
+﻿using DDF_sql_services;
+using dlu_persistence_api.daos;
 using System.Collections.Generic;
 
 namespace dlu_persistence_api.models
@@ -67,13 +68,19 @@ namespace dlu_persistence_api.models
         public decimal? Farve4Max { get; set; }
         public decimal? Farve4Min { get; set; }
         public decimal? Farve4Pris { get; set; }
+
+
+
         public decimal? FarveMax { get; set; }
         public decimal? FarveMin { get; set; }
         public decimal? FarvePris { get; set; }
+        public decimal? OldFarvePris { get; set; }
         public int FormatFra { get; set; }
         public int FormatTil { get; set; }
 
         public decimal? MmPris { get; set; }
+       public decimal? OldMMPris { get; set; }
+       
         public string RegionNavn { get; set; }
         public int DaekningsGrad { get; set; }
         public int Oplag { get; set; }

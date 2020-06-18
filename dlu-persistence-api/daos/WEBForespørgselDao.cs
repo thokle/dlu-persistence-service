@@ -165,9 +165,10 @@ namespace dlu_persistence_api.daos
         }
 
 
-        public void Dispose()
+      
+        public int GetLastCreateId()
         {
-            _entities?.Dispose();
+            return 1;
         }
     }
 }

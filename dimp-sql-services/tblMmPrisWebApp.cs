@@ -14,8 +14,9 @@ namespace dimp_sql_services
     
     public partial class tblMmPrisWebApp
     {
-        public int BladID { get; set; }
-        public byte Placering { get; set; }
+        public int BladId { get; set; }
+        public byte mmType { get; set; }
         public Nullable<decimal> Pris { get; set; }
+        public byte LokalplannerPlacering { get; set; }
     }
 }

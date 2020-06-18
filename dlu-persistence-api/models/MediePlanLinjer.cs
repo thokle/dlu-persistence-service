@@ -36,10 +36,11 @@ namespace dlu_persistence_api.models
         public decimal MiljoeTillaeg { get; set; }
         public decimal TotalInclTillaeg { get; set; }
         public bool PrisLaast { get; set; }
-        public bool? MaaGiveRabat { get; internal set; }
-        public bool ManueltÆndret { get; internal set; }
-        public decimal MaterialeGodtgørelsePris { get; internal set; }
-        public decimal MiljøTillæg { get; internal set; }
-        public bool MåGiveMaterialeGodtgørelse { get; internal set; }
+        public bool? MaaGiveRabat { get;  set; }
+        public bool ManueltÆndret { get;  set; }
+        public decimal MaterialeGodtgørelsePris { get;  set; }
+        public decimal MiljøTillæg { get;  set; }
+        public bool MåGiveMaterialeGodtgørelse { get;  set; }
+        public string email { get; set; }
     }
 }

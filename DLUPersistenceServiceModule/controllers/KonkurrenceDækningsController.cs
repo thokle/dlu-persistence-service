@@ -11,7 +11,7 @@ namespace DLUPersistenceServiceModule.controllers
         {
             Get("/konkurrenceDaekning/byPostnr/{postnr:int}", o => service.GetKomkurrenceDækningPrPostNr(o.postnr));
             Get("/konkurrenceDaekning/ByDaekning/{daekning:int", o => service.GetKonkurrenceDækningPrDaeknngGrad(o.daekning));
-            Get("/konkurrenceDaekning/all/", o => service.GetKonkurrenter());
+            Get("/konkurrenceDaekning/all/", o => service.GetKonkurrenter(8));
             Post("/konkurrenceDækning/create", o =>
             {
                 var res = this.Bind<tblKonkurrentDækning>();
