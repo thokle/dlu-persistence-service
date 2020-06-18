@@ -1,10 +1,11 @@
 ﻿using dlu_persistence_api.daos;
 using dlu_persistence_api.models;
+using dlu_persistence_api.services.interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 namespace dlu_persistence_api.services
 {
-    public class StamBladUdsendigKontakterService
+    public class StamBladUdsendigKontakterService : IStamBladUdsendigKontakterService
     {
         private StamBladUdsendigKontakterDao kontakterDao;
 
@@ -21,6 +22,16 @@ namespace dlu_persistence_api.services
         public List<UdsendingKontakter> GetUdsendingKontakterPrBladId(int bladId)
         {
             return kontakterDao.GetUdsendingKontakterPrBladId(bladId);
+        }
+
+        Task<int> IStamBladUdsendigKontakterService.AddOrUpdateKontakterPrBlad(tblBladUdsendingKontakter tblBlad)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        string IStamBladUdsendigKontakterService.GetUdsendingKontakterPrBladId(int bladId)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

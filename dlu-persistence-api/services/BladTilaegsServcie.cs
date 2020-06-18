@@ -17,7 +17,7 @@ namespace dlu_persistence_api.services
             return dao.CreateOrUpdate(tblBladTillaeg);
         }
 
-        public List<BladTillæg> GetTillaegsTypeByBladId(int bladid)
+        public List<BladTill?g> GetTillaegsTypeByBladId(int bladid)
         {
 
             return dao.GetTillaegsTypeByBladId(bladid);
