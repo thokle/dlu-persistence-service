@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>dlu_persistence_api</RootNamespace>
     <AssemblyName>dlu-persistence-api</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -277,6 +277,7 @@
     <Compile Include="daos\AktiveAviserTIlGridDao.cs" />
     <Compile Include="daos\AktiveUgeaviserMedAlleDatas.cs" />
     <Compile Include="daos\AnnoncekontrolDao.cs" />
+    <Compile Include="daos\BilagsBladsReminder.cs" />
     <Compile Include="daos\BladDækningDao.cs" />
     <Compile Include="daos\BladKommentar.cs" />
     <Compile Include="daos\BladKommentarDao.cs" />
@@ -284,6 +285,7 @@
     <Compile Include="daos\BladTillæg.cs" />
     <Compile Include="daos\BladTillægsTyper.cs" />
     <Compile Include="daos\BogholderiDao.cs" />
+    <Compile Include="daos\CrystalReportDao.cs" />
     <Compile Include="daos\DPKulør.cs" />
     <Compile Include="daos\FaktruaBilagListeDao.cs" />
     <Compile Include="daos\FundetMediePlaner.cs" />
@@ -296,7 +298,10 @@
     <Compile Include="daos\Navision.cs" />
     <Compile Include="daos\PricesFromWebDao.cs" />
     <Compile Include="daos\PriceAskingForWeb.cs" />
+    <Compile Include="daos\SendGruppeDao.cs" />
+    <Compile Include="daos\SendTilWebDao.cs" />
     <Compile Include="daos\WebMail.cs" />
+    <Compile Include="models\AnnoceKontrol.cs" />
     <Compile Include="models\NavContact.cs" />
     <Compile Include="models\PriceAskingWebModel.cs" />
     <Compile Include="models\PriceWebUpdate.cs" />
@@ -433,10 +438,12 @@
     <Compile Include="services\AktiveAviserTIlGridService.cs" />
     <Compile Include="services\AnnoceKontrolService.cs" />
     <Compile Include="services\AnnonceKontrolService.cs" />
+    <Compile Include="services\BilagsBladsReminderService.cs" />
     <Compile Include="services\BladDækningService.cs" />
     <Compile Include="services\BladTilaegsServcie.cs" />
     <Compile Include="services\BladTilaegsTypeService.cs" />
     <Compile Include="services\ChangeStatusService.cs" />
+    <Compile Include="services\CrystalReportService.cs" />
     <Compile Include="services\DelOmraadeService.cs" />
     <Compile Include="services\EjerforholdService.cs" />
     <Compile Include="services\FakturaFejlTekstService.cs" />
@@ -514,7 +521,9 @@
     <Compile Include="services\PriserService.cs" />
     <Compile Include="services\PrisUdsendingService.cs" />
     <Compile Include="services\RapportVisningsService.cs" />
+    <Compile Include="services\SendeGruppeService.cs" />
     <Compile Include="services\SendTilNavisionService.cs" />
+    <Compile Include="services\SendTilWebService.cs" />
     <Compile Include="services\StamBladUdsendigKontakterService.cs" />
     <Compile Include="services\RegionService.cs" />
     <Compile Include="services\SalesPersonService.cs" />

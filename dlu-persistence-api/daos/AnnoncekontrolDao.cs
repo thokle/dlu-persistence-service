@@ -1,7 +1,10 @@
 using dlu_persistence_api.exceptions;
+using dlu_persistence_api.models;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -105,6 +108,7 @@ namespace dlu_persistence_api.daos
         {
             try
             {
+             
                 _entities.tblAnnoncekontrols.AddOrUpdate(tblAnnoncekontrol);
                 return _entities.SaveChangesAsync();
             }
@@ -115,8 +119,51 @@ namespace dlu_persistence_api.daos
             }
         }
 
+        public List<AnnoceKontrol> GetSQLAnnoceKontrols()
+        {
+            try
+            {
 
+            return    _entities.Database.SqlQuery<AnnoceKontrol>("SELECT DISTINCT tblBladStamdata.Navn, tblBladStamdata.BladID, tblMedieplan.IndrykningsUge " +
+                                                            " FROM tblMedieplanNr INNER JOIN " +
+                                                            " tblMedieplan ON tblMedieplanNr.MedieplanNr = tblMedieplan.MedieplanNr AND tblMedieplanNr.AktivVersion = tblMedieplan.Version INNER JOIN " +
+                                                              " tblMedieplanLinjer ON tblMedieplan.Version = tblMedieplanLinjer.Version AND " +
+                      " tblMedieplan.MedieplanNr = tblMedieplanLinjer.MedieplanNr INNER JOIN " +
+                      " tblBladStamdata ON tblMedieplanLinjer.UgeavisID = tblBladStamdata.BladID LEFT OUTER JOIN " +
+                      " tblAnnoncekontrol ON tblMedieplanLinjer.MedieplanNr = tblAnnoncekontrol.MedieplanNr AND " +
+                      " tblMedieplanLinjer.UgeavisID = tblAnnoncekontrol.UgeavisID " +
+                      " WHERE(tblAnnoncekontrol.ErKontrolleret IS NULL) AND(tblMedieplanNr.Status = 3) " +
 
+                        " ORDER BY tblBladStamdata.Navn, tblMedieplan.IndrykningsUge DESC").ToList();
+            }catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
+
+        public List<AnnoceKontrol> GetSQLAnnoceKontrolsByWeek(int uge)
+        {
+            try
+            {
+                return _entities.Database.SqlQuery<AnnoceKontrol>("SELECT DISTINCT tblBladStamdata.Navn, tblBladStamdata.BladID, tblMedieplan.IndrykningsUge  " +
+" FROM         tblMedieplanNr INNER JOIN " +
+"  tblMedieplan ON tblMedieplanNr.MedieplanNr = tblMedieplan.MedieplanNr AND tblMedieplanNr.AktivVersion = tblMedieplan.Version INNER JOIN " +
+"  tblMedieplanLinjer ON tblMedieplan.Version = tblMedieplanLinjer.Version AND " +
+" tblMedieplan.MedieplanNr = tblMedieplanLinjer.MedieplanNr INNER JOIN " +
+" tblBladStamdata ON tblMedieplanLinjer.UgeavisID = tblBladStamdata.BladID LEFT OUTER JOIN " +
+" tblAnnoncekontrol ON tblMedieplanLinjer.MedieplanNr = tblAnnoncekontrol.MedieplanNr AND " +
+" tblMedieplanLinjer.UgeavisID = tblAnnoncekontrol.UgeavisID " +
+" WHERE(tblMedieplan.IndrykningsUge <=@uge) AND(tblMedieplan.IndrykningsÅr = YEAR({ fn NOW() })) AND(tblMedieplanNr.Status = 3) AND " +
+" (tblAnnoncekontrol.ErKontrolleret IS NULL) OR " +
+" (tblMedieplan.IndrykningsÅr = YEAR({ fn NOW() }) -1) AND(tblMedieplanNr.Status = 3) AND(tblAnnoncekontrol.ErKontrolleret IS NULL) " +
+" ORDER BY tblBladStamdata.Navn, tblMedieplan.IndrykningsUge DESC", new SqlParameter("uge", uge)).ToList();
+            } catch(SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
 
         public void Dispose()
         {

@@ -110,4 +110,16 @@ C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\
 C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\bin\Debug\System.Data.Common.dll
+C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\bin\Debug\System.Diagnostics.StackTrace.dll
+C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\bin\Debug\System.Diagnostics.Tracing.dll
+C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\bin\Debug\System.Globalization.Extensions.dll
+C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\bin\Debug\System.IO.Compression.dll
+C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\bin\Debug\System.Net.Http.dll
+C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\bin\Debug\System.Net.Sockets.dll
+C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\bin\Debug\System.Runtime.Serialization.Primitives.dll
+C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\bin\Debug\System.Security.Cryptography.Algorithms.dll
+C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\bin\Debug\System.Security.SecureString.dll
+C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\bin\Debug\System.Threading.Overlapped.dll
+C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\bin\Debug\System.Xml.XPath.XDocument.dll
 C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\obj\Debug\dlu-persistence-api.csprojAssemblyReference.cache

@@ -1,3 +1,5 @@
+using dlu_persistence_api.models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace dlu_persistence_api.services
@@ -7,5 +9,8 @@ namespace dlu_persistence_api.services
         string GetAnnoceKontrolByMediePlanId(int mediePlanId);
         string GetAnnonceKontrolByEmail(string email);
         Task<int> CreateOrUpdate(tblAnnoncekontrol tblAnnoncekontrol);
+
+         List<AnnoceKontrol> GetSQLAnnoceKontrols();
+        List<AnnoceKontrol> GetSQLAnnoceKontrolsByWeek(int uge);
     }
 }

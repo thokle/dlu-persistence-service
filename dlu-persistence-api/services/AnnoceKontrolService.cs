@@ -1,4 +1,6 @@
 using dlu_persistence_api.daos;
+using dlu_persistence_api.models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 namespace dlu_persistence_api.services
 {
@@ -24,6 +26,16 @@ namespace dlu_persistence_api.services
         public Task<int> CreateOrUpdate(tblAnnoncekontrol tblAnnoncekontrol)
         {
             return _dao.CreateOrUpdate(tblAnnoncekontrol);
+        }
+
+        public List<AnnoceKontrol> GetSQLAnnoceKontrols()
+        {
+            return _dao.GetSQLAnnoceKontrols();
+        }
+
+        public List<AnnoceKontrol> GetSQLAnnoceKontrolsByWeek(int uge)
+        {
+            return _dao.GetSQLAnnoceKontrolsByWeek(uge);
         }
     }
 }
