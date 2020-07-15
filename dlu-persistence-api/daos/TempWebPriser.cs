@@ -2,7 +2,7 @@
 
 namespace dlu_persistence_api.daos
 {
-    internal class TempWebPriser
+    public class TempWebPriser
     {
 
         public int BladID { get; set; }

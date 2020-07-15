@@ -29,8 +29,10 @@ namespace dlu_persistence_api
     
         public virtual DbSet<dtproperty> dtproperties { get; set; }
         public virtual DbSet<KontaktTitler> KontaktTitlers { get; set; }
+        public virtual DbSet<newPriser> newPrisers { get; set; }
         public virtual DbSet<OpdateringsTekst> OpdateringsTeksts { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<tableNewPriserMeldtInd> tableNewPriserMeldtInds { get; set; }
         public virtual DbSet<tblAnnoncekontrol> tblAnnoncekontrols { get; set; }
         public virtual DbSet<tblBladDækning> tblBladDækning { get; set; }
         public virtual DbSet<tblBladKommentar> tblBladKommentars { get; set; }
@@ -103,7 +105,6 @@ namespace dlu_persistence_api
         public virtual DbSet<tblFarveTillægWebApp> tblFarveTillægWebApp { get; set; }
         public virtual DbSet<tblMmPrisWebApp> tblMmPrisWebApps { get; set; }
         public virtual DbSet<tblPlannerPlaner> tblPlannerPlaners { get; set; }
-        public virtual DbSet<tempPriser> tempPrisers { get; set; }
         public virtual DbSet<tmpNyeDeadline> tmpNyeDeadlines { get; set; }
         public virtual DbSet<tnpOrdreNr> tnpOrdreNrs { get; set; }
         public virtual DbSet<tnpOrdreNr2> tnpOrdreNr2 { get; set; }

@@ -1140,30 +1140,6 @@
     <Property Name="KonsulentCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Oprettet" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
-  <EntityType Name="tempPriser">
-    <Key>
-      <PropertyRef Name="BladID" />
-      <PropertyRef Name="PlaceringID" />
-      <PropertyRef Name="År" />
-      <PropertyRef Name="PrislisteID" />
-      <PropertyRef Name="FormatFra" />
-      <PropertyRef Name="FormatTil" />
-    </Key>
-    <Property Name="BladID" Type="Int32" Nullable="false" />
-    <Property Name="PlaceringID" Type="Byte" Nullable="false" />
-    <Property Name="År" Type="Int16" Nullable="false" />
-    <Property Name="PrislisteID" Type="Int32" Nullable="false" />
-    <Property Name="FormatFra" Type="Int32" Nullable="false" />
-    <Property Name="FormatTil" Type="Int32" Nullable="false" />
-    <Property Name="mmPris" Type="Decimal" Precision="10" Scale="4" />
-    <Property Name="FarvePris" Type="Decimal" Precision="10" Scale="4" />
-    <Property Name="FarveMin" Type="Decimal" Precision="10" Scale="4" />
-    <Property Name="FarveMax" Type="Decimal" Precision="10" Scale="4" />
-    <Property Name="Farve4Pris" Type="Decimal" Precision="10" Scale="4" />
-    <Property Name="Farve4Min" Type="Decimal" Precision="10" Scale="4" />
-    <Property Name="Farve4Max" Type="Decimal" Precision="10" Scale="4" />
-    <Property Name="ControlNavn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-  </EntityType>
   <EntityType Name="tmpNyeDeadline">
     <Key>
       <PropertyRef Name="BladID" />
@@ -2328,7 +2304,6 @@
     <EntitySet Name="tblFarveTillægWebApp" EntityType="Self.tblFarveTillægWebApp" />
     <EntitySet Name="tblMmPrisWebApps" EntityType="Self.tblMmPrisWebApp" />
     <EntitySet Name="tblPlannerPlaners" EntityType="Self.tblPlannerPlaner" />
-    <EntitySet Name="tempPrisers" EntityType="Self.tempPriser" />
     <EntitySet Name="tmpNyeDeadlines" EntityType="Self.tmpNyeDeadline" />
     <EntitySet Name="tnpOrdreNrs" EntityType="Self.tnpOrdreNr" />
     <EntitySet Name="tnpOrdreNr2" EntityType="Self.tnpOrdreNr2" />
@@ -2729,6 +2704,9 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="newPrisers" EntityType="DiMPdotNetDevModel.newPriser" />
+    <EntitySet Name="tableNewPriserMeldtInds" EntityType="DiMPdotNetDevModel.tableNewPriserMeldtInd" />
+    <EntitySet Name="tblNewPriserMeldtInds" EntityType="DiMPdotNetDevModel.tblNewPriserMeldtInd" />
   </EntityContainer>
   <ComplexType Name="dt_getpropertiesbyid_Result">
     <Property Type="String" Name="property" Nullable="false" MaxLength="64" />
@@ -2753,4 +2731,44 @@
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
   </ComplexType>
+  <EntityType Name="newPriser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BladID" Type="Int32" Nullable="false" />
+    <Property Name="PlaceringID" Type="Byte" Nullable="false" />
+    <Property Name="År" Type="Int16" Nullable="false" />
+    <Property Name="PrislisteID" Type="Int32" Nullable="false" />
+    <Property Name="FormatFra" Type="Int32" Nullable="false" />
+    <Property Name="FormatTil" Type="Int32" Nullable="false" />
+    <Property Name="mmPris" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="FarvePris" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="FarveMin" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="FarveMax" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="Farve4Pris" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="Farve4Min" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="Farve4Max" Type="Decimal" Precision="10" Scale="4" />
+    <Property Name="ControlNavn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tableNewPriserMeldtInd">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BladID" Type="Int32" Nullable="false" />
+    <Property Name="Navn" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="StamBladEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ErMeldtInd" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tblNewPriserMeldtInd">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BladId" Type="Int32" />
+    <Property Name="StamBladEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="BladNavn" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Godkendt" Type="Boolean" />
+  </EntityType>
 </Schema>

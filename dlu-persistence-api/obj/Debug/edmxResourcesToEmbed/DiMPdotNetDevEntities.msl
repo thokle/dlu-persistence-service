@@ -1082,26 +1082,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="tempPrisers">
-      <EntityTypeMapping TypeName="DiMPdotNetDevModel.tempPriser">
-        <MappingFragment StoreEntitySet="tempPriser">
-          <ScalarProperty Name="BladID" ColumnName="BladID" />
-          <ScalarProperty Name="PlaceringID" ColumnName="PlaceringID" />
-          <ScalarProperty Name="År" ColumnName="År" />
-          <ScalarProperty Name="PrislisteID" ColumnName="PrislisteID" />
-          <ScalarProperty Name="FormatFra" ColumnName="FormatFra" />
-          <ScalarProperty Name="FormatTil" ColumnName="FormatTil" />
-          <ScalarProperty Name="mmPris" ColumnName="mmPris" />
-          <ScalarProperty Name="FarvePris" ColumnName="FarvePris" />
-          <ScalarProperty Name="FarveMin" ColumnName="FarveMin" />
-          <ScalarProperty Name="FarveMax" ColumnName="FarveMax" />
-          <ScalarProperty Name="Farve4Pris" ColumnName="Farve4Pris" />
-          <ScalarProperty Name="Farve4Min" ColumnName="Farve4Min" />
-          <ScalarProperty Name="Farve4Max" ColumnName="Farve4Max" />
-          <ScalarProperty Name="ControlNavn" ColumnName="ControlNavn" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="tmpNyeDeadlines">
       <EntityTypeMapping TypeName="DiMPdotNetDevModel.tmpNyeDeadline">
         <MappingFragment StoreEntitySet="tmpNyeDeadlines">
@@ -1670,5 +1650,37 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DiMPdotNetDevModel.Store.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DiMPdotNetDevModel.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="newPrisers">
+      <EntityTypeMapping TypeName="DiMPdotNetDevModel.newPriser">
+        <MappingFragment StoreEntitySet="newPriser">
+          <ScalarProperty Name="ControlNavn" ColumnName="ControlNavn" />
+          <ScalarProperty Name="Farve4Max" ColumnName="Farve4Max" />
+          <ScalarProperty Name="Farve4Min" ColumnName="Farve4Min" />
+          <ScalarProperty Name="Farve4Pris" ColumnName="Farve4Pris" />
+          <ScalarProperty Name="FarveMax" ColumnName="FarveMax" />
+          <ScalarProperty Name="FarveMin" ColumnName="FarveMin" />
+          <ScalarProperty Name="FarvePris" ColumnName="FarvePris" />
+          <ScalarProperty Name="mmPris" ColumnName="mmPris" />
+          <ScalarProperty Name="FormatTil" ColumnName="FormatTil" />
+          <ScalarProperty Name="FormatFra" ColumnName="FormatFra" />
+          <ScalarProperty Name="PrislisteID" ColumnName="PrislisteID" />
+          <ScalarProperty Name="År" ColumnName="År" />
+          <ScalarProperty Name="PlaceringID" ColumnName="PlaceringID" />
+          <ScalarProperty Name="BladID" ColumnName="BladID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tableNewPriserMeldtInds">
+      <EntityTypeMapping TypeName="DiMPdotNetDevModel.tableNewPriserMeldtInd">
+        <MappingFragment StoreEntitySet="tableNewPriserMeldtInd">
+          <ScalarProperty Name="ErMeldtInd" ColumnName="ErMeldtInd" />
+          <ScalarProperty Name="StamBladEmail" ColumnName="StamBladEmail" />
+          <ScalarProperty Name="Navn" ColumnName="Navn" />
+          <ScalarProperty Name="BladID" ColumnName="BladID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

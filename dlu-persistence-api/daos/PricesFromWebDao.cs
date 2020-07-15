@@ -75,7 +75,7 @@ namespace dlu_persistence_api.daos
 
         public Boolean UpdatePrisTilWeb(PriceWebUpdate priceWebUpdate)
         {
-            var update = new tempPriser();
+            var update = new newPriser();
             update.BladID = priceWebUpdate.BladID;
             update.Farve4Max = priceWebUpdate.Farve4Max;
             update.Farve4Min = priceWebUpdate.Farve4Min;
@@ -88,7 +88,7 @@ namespace dlu_persistence_api.daos
             update.PlaceringID = priceWebUpdate.PlaceringID;
             update.PrislisteID = priceWebUpdate.PrislisteID;
             update.År = priceWebUpdate.År;
-            devEntities.tempPrisers.AddOrUpdate(update);
+            devEntities.newPrisers.AddOrUpdate(update);
         var res =    devEntities.SaveChanges();
 
             return res == 1 ? true : false;

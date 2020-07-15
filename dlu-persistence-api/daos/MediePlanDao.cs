@@ -46,7 +46,7 @@ namespace dlu_persistence_api.daos
         /// <param name="medieplanNr"></param>
         /// <returns></returns>
         /// <exception cref="DaoExceptions"></exception>
-        public MediePlan GetMediePlanByNumber(int medieplanNr, int version, int ststus)
+        public MediePlan GetMediePlanByNumber(int medieplanNr, int version)
         {
             try
             {
@@ -54,7 +54,7 @@ namespace dlu_persistence_api.daos
 
 
 
-                var res = entities.tblMedieplans.Where(medieplan => medieplan.MedieplanNr == medieplanNr && medieplan.Version == version && medieplan.Status == ststus).Select(mp => new MediePlan()
+                var res = entities.tblMedieplans.Where(medieplan => medieplan.MedieplanNr == medieplanNr && medieplan.Version == version).Select(mp => new MediePlan()
                 {
                     Statius = mp.Status,
                     annoncoer_no = mp.AnnoncørNo_,

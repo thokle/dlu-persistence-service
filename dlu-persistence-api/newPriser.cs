@@ -12,8 +12,9 @@ namespace dlu_persistence_api
     using System;
     using System.Collections.Generic;
     
-    public partial class tempPriser
+    public partial class newPriser
     {
+        public int ID { get; set; }
         public int BladID { get; set; }
         public byte PlaceringID { get; set; }
         public short År { get; set; }

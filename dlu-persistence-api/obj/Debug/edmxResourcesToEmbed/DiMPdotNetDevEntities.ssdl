@@ -93,6 +93,26 @@ warning 6013: The table/view 'DiMPdotNetDev.dbo.Jysk-Fynske' does not have a pri
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="titel" Type="varchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="newPriser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BladID" Type="int" Nullable="false" />
+    <Property Name="PlaceringID" Type="tinyint" Nullable="false" />
+    <Property Name="År" Type="smallint" Nullable="false" />
+    <Property Name="PrislisteID" Type="int" Nullable="false" />
+    <Property Name="FormatFra" Type="int" Nullable="false" />
+    <Property Name="FormatTil" Type="int" Nullable="false" />
+    <Property Name="mmPris" Type="smallmoney" />
+    <Property Name="FarvePris" Type="smallmoney" />
+    <Property Name="FarveMin" Type="smallmoney" />
+    <Property Name="FarveMax" Type="smallmoney" />
+    <Property Name="Farve4Pris" Type="smallmoney" />
+    <Property Name="Farve4Min" Type="smallmoney" />
+    <Property Name="Farve4Max" Type="smallmoney" />
+    <Property Name="ControlNavn" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <!--Errors Found During Generation:
 warning 6013: The table/view 'DiMPdotNetDev.dbo.NyeLæsertal' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="NyeLæsertal">
@@ -116,6 +136,16 @@ warning 6013: The table/view 'DiMPdotNetDev.dbo.NyeLæsertal' does not have a pr
     <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tableNewPriserMeldtInd">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BladID" Type="int" Nullable="false" />
+    <Property Name="Navn" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="StamBladEmail" Type="varchar" MaxLength="100" />
+    <Property Name="ErMeldtInd" Type="bit" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DiMPdotNetDev.dbo.tblAktiveVærdier' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -1148,32 +1178,6 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.tblPlannerPlaner' does not have 
     <Property Name="PersonID" Type="int" Nullable="false" />
     <Property Name="BladID" Type="int" Nullable="false" />
     <Property Name="eMails" Type="nvarchar" MaxLength="1000" Nullable="false" />
-  </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'DiMPdotNetDev.dbo.tempPriser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="tempPriser">
-    <Key>
-      <PropertyRef Name="BladID" />
-      <PropertyRef Name="PlaceringID" />
-      <PropertyRef Name="År" />
-      <PropertyRef Name="PrislisteID" />
-      <PropertyRef Name="FormatFra" />
-      <PropertyRef Name="FormatTil" />
-    </Key>
-    <Property Name="BladID" Type="int" Nullable="false" />
-    <Property Name="PlaceringID" Type="tinyint" Nullable="false" />
-    <Property Name="År" Type="smallint" Nullable="false" />
-    <Property Name="PrislisteID" Type="int" Nullable="false" />
-    <Property Name="FormatFra" Type="int" Nullable="false" />
-    <Property Name="FormatTil" Type="int" Nullable="false" />
-    <Property Name="mmPris" Type="smallmoney" />
-    <Property Name="FarvePris" Type="smallmoney" />
-    <Property Name="FarveMin" Type="smallmoney" />
-    <Property Name="FarveMax" Type="smallmoney" />
-    <Property Name="Farve4Pris" Type="smallmoney" />
-    <Property Name="Farve4Min" Type="smallmoney" />
-    <Property Name="Farve4Max" Type="smallmoney" />
-    <Property Name="ControlNavn" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'DiMPdotNetDev.dbo.tmpNyeDeadlines' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -2614,8 +2618,10 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
   <EntityContainer Name="DiMPdotNetDevModelStoreContainer">
     <EntitySet Name="dtproperties" EntityType="Self.dtproperties" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="KontaktTitler" EntityType="Self.KontaktTitler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="newPriser" EntityType="Self.newPriser" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OpdateringsTekst" EntityType="Self.OpdateringsTekst" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tableNewPriserMeldtInd" EntityType="Self.tableNewPriserMeldtInd" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblAnnoncekontrol" EntityType="Self.tblAnnoncekontrol" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblBladDækning" EntityType="Self.tblBladDækning" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tblBladKommentar" EntityType="Self.tblBladKommentar" Schema="dbo" store:Type="Tables" />
@@ -2750,24 +2756,6 @@ warning 6002: The table/view 'DiMPdotNetDev.dbo.viewUpdateStatusIMedieplanNr' do
     [tblPlannerPlaner].[KonsulentCode] AS [KonsulentCode], 
     [tblPlannerPlaner].[Oprettet] AS [Oprettet]
     FROM [dbo].[tblPlannerPlaner] AS [tblPlannerPlaner]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="tempPriser" EntityType="Self.tempPriser" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [tempPriser].[BladID] AS [BladID], 
-    [tempPriser].[PlaceringID] AS [PlaceringID], 
-    [tempPriser].[År] AS [År], 
-    [tempPriser].[PrislisteID] AS [PrislisteID], 
-    [tempPriser].[FormatFra] AS [FormatFra], 
-    [tempPriser].[FormatTil] AS [FormatTil], 
-    [tempPriser].[mmPris] AS [mmPris], 
-    [tempPriser].[FarvePris] AS [FarvePris], 
-    [tempPriser].[FarveMin] AS [FarveMin], 
-    [tempPriser].[FarveMax] AS [FarveMax], 
-    [tempPriser].[Farve4Pris] AS [Farve4Pris], 
-    [tempPriser].[Farve4Min] AS [Farve4Min], 
-    [tempPriser].[Farve4Max] AS [Farve4Max], 
-    [tempPriser].[ControlNavn] AS [ControlNavn]
-    FROM [dbo].[tempPriser] AS [tempPriser]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="tmpNyeDeadlines" EntityType="Self.tmpNyeDeadlines" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
