@@ -16,6 +16,11 @@ namespace dlu_persistence_api.services
             newPriser = new NewPriserDao();
         }
 
+        public List<tableNewPriserMeldtInd> GetPriserDerMeldtInd()
+        {
+            return newPriser.GetPriserDerMeldtInd();
+        }
+
         public List<tableNewPriserMeldtInd> ResettableNewPriserMeldtInds()
         {
             return newPriser.ResettableNewPriserMeldtInds();
@@ -30,5 +35,5 @@ namespace dlu_persistence_api.services
         {
             return newPriser.UpDateStatus(email);
         }
-    }
+        
 }

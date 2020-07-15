@@ -11,5 +11,6 @@ namespace dlu_persistence_api.services.interfaces
         int TruncateTable();
         List<tableNewPriserMeldtInd> ResettableNewPriserMeldtInds();
         int UpDateStatus(string email);
+        List<tableNewPriserMeldtInd> GetPriserDerMeldtInd();
     }
 }

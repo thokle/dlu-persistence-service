@@ -33,6 +33,25 @@ namespace dlu_persistence_api.daos
 
         }
 
+        public List<tableNewPriserMeldtInd> GetPriserDerMeldtInd()
+        {
+            try
+            {
+               return entities.tableNewPriserMeldtInds.Where(e => e.ErMeldtInd == true).Select(se => new tableNewPriserMeldtInd()
+                {
+                    ID = se.ID,
+                    Navn = se.Navn,
+                    BladID = se.BladID,
+                    ErMeldtInd = se.ErMeldtInd
+                    
+                  
+                }).ToList();
+            }catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
         public List<tableNewPriserMeldtInd> ResettableNewPriserMeldtInds()
         {
             try

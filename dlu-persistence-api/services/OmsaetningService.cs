@@ -17,7 +17,7 @@ namespace dlu_persistence_api.services
         }
 
 
-        public List<Omsaetning> GetOmsaetnings(int år, int fraUge, int tilUge)
+        public List<Omsaetning> GetOmsaetnings(int år, byte fraUge, byte tilUge)
         {
             return dao.GetOmsaetnings(år, fraUge, tilUge);
         }
