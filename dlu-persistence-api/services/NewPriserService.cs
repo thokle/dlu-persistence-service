@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using dlu_persistence_api.daos;
 namespace dlu_persistence_api.services
 {
-   public class NewPriserService : INewPriserService
+    public class NewPriserService : INewPriserService
     {
         private NewPriserDao newPriser;
 
@@ -35,5 +35,6 @@ namespace dlu_persistence_api.services
         {
             return newPriser.UpDateStatus(email);
         }
-        
+
+    }
 }
