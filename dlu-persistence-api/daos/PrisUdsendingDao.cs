@@ -33,9 +33,27 @@ namespace dlu_persistence_api.daos
 
         }
 
+        public List<Udsending> GetAllStambladTilUdsendingTilDeadlines()
+        {
+            try
+            {
+                return devEntities.tblBladStamdatas.Select(s => new Udsending() { StamdataEmail = s.StamdataEmail, Navn = s.Navn, BladID = s.BladID, Ophørt = s.Ophørt }).Where(w => w.Ophørt == false)
+                  
+                    .Select(se => new Udsending() { StamdataEmail = se.StamdataEmail, Navn = se.Navn, BladID = se.BladID, Ophørt = se.Ophørt }).ToList();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+
+
+        }
+
+
     }
 
-   public class Udsending
+    public class Udsending
     {
         public string StamdataEmail { get;  set; }
         public string Navn { get;  set; }

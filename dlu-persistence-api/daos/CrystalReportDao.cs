@@ -20,7 +20,8 @@ namespace dlu_persistence_api.daos
         public Report GetReport(int mediePlan, int version)
         {
             try {
-                var res = DiMPdotNetDevEntities.Database.SqlQuery<Report>("SELECT NavisionContact.[Invoice Document Type] as InvoiceType FROM tblMedieplan INNER JOIN NavisionContact ON tblMedieplan.BureauNo_ = NavisionContact.No_ WHERE (tblMedieplan.MedieplanNr = &mediePlan ) AND (tblMedieplan.Version = &version)", new SqlParameter("mediePlan", mediePlan), new SqlParameter("version", version));
+                var res = DiMPdotNetDevEntities.Database.SqlQuery<Report>("SELECT NavisionContact.[Invoice Document Type] as InvoiceType FROM tblMedieplan INNER JOIN NavisionContact ON tblMedieplan.BureauNo_ = NavisionContact.No_ WHERE tblMedieplan.MedieplanNr= @mediePlan  AND tblMedieplan.Version= @version", new SqlParameter("mediePlan", mediePlan), new SqlParameter("version", version));
+             
                 return res.SingleOrDefault();
             } catch (SqlException ex)
             {

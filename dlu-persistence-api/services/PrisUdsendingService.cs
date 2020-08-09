@@ -19,5 +19,10 @@ namespace dlu_persistence_api.services
         {
             return udsendingDao.GetAllStambladTilUdsending();
         }
+
+        public List<Udsending> GetAllStambladTilUdsendingTilDeadlines()
+        {
+            return udsendingDao.GetAllStambladTilUdsendingTilDeadlines();
+        }
     }
 }

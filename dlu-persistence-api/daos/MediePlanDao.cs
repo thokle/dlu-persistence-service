@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using DDF_sql_services.daos;
+using Microsoft.EntityFrameworkCore.Internal;
+using dlu_persistence_api.services;
+
 namespace dlu_persistence_api.daos
 {
     /// <summary>
@@ -23,8 +26,11 @@ namespace dlu_persistence_api.daos
 
         private string GetBureauName(string annoncør)
         {
-            var res = bureaus.Find(s => s.Company_No_ == annoncør).Annoncør;
-            return res != null ? res : "Ingen bureau";
+            if (annoncør !=null && annoncør!= "") {
+                var res = bureaus.Find(s => s.Company_No_ == annoncør).Annoncør;
+                return res != null ? res : "Ingen bureau";
+            }
+            return "Ingen Bureau";
         }
         private DiMPdotNetDevEntities entities;
         private IQueryable<tblMedieplan> res;
@@ -389,67 +395,100 @@ namespace dlu_persistence_api.daos
         public List<FundetMediePlaner> findMediePlanToolbar(int mediePlan = 0, string annnoncør = null,
             string bureau = null, byte fraUge = 0, byte tilUge = 0, short aar = 0,
             bool visInAktiveAnnoncer = false, bool mediePlanCheckBox = false, bool bookingCheckBox = false,
-            bool rtAkCheckBox = false, bool faktureing = false)
+            bool rtAkCheckBox = false, bool faktureing = false, string avis = "")
         {
             try
             {
                 var pre = PredicateBuilder.New<FundetMediePlaner>();
-
-
-
+                pre = pre.Start(a => a.IndrykningsÅr == aar);
                 if (mediePlan != 0)
                 {
                     pre = pre.And(a => a.MedieplanNr == mediePlan);
-                }
+                } else
 
                 if (annnoncør != "")
                 {
                     pre = pre.And(m =>
                         m.AnnoncørNo_.StartsWith(annnoncør) || m.AnnoncørNo_.Contains(annnoncør) ||
                         m.AnnoncørNo_.EndsWith(annnoncør));
-                }
+                } else
 
-                if (bureau != "")
+                if (bureau != "" )
                 {
                     pre = pre.And(m =>
                         m.BureauNo_.StartsWith(bureau) || m.BureauNo_.Contains(bureau) || m.BureauNo_.EndsWith(bureau));
-                }
+                } else
 
                 if (fraUge > 0 && (tilUge > 1 && tilUge < 53) && mediePlan == 0)
                 {
-                    pre = pre.And(u => u.IndrykningsUge > fraUge || u.IndrykningsUge <= tilUge);
-                    pre = pre.And(a => a.IndrykningsÅr == aar);
-
+                    pre = pre.And(u => u.IndrykningsUge > fraUge && u.IndrykningsUge <= tilUge);
+                
+                } else
 
                     if (visInAktiveAnnoncer)
-                    {
-                        pre = pre.And(planer => planer.Version.ToString().Length > 3);
-                    }
+                {
+                 //   pre = pre.And(planer => planer.Status.ToString().Length > 3);
+                } else
 
 
-                    if (mediePlanCheckBox)
-                    {
-                        pre = pre.And(planer => planer.Version.ToString().Length == 1);
-                    }
+                    if (mediePlanCheckBox && !bookingCheckBox)
+                {
+                    pre = pre.And(planer => planer.Status == 1);
+                } else
 
-                    if (bookingCheckBox)
-                    {
-                        pre = pre.And(p => p.Version.ToString().Length > 1);
-                    }
+                    if (bookingCheckBox && !mediePlanCheckBox)
+                {
+                    pre = pre.And(p => p.Status == 2);
+                } else
                     if (faktureing)
-                    {
-                        pre = pre.And(p => p.Version.ToString().Length == 3);
-                    }
+                {
+                    pre = pre.And(p => p.Version.ToString().Length > 2);
+                } else
                     if (bookingCheckBox && mediePlanCheckBox)
-                    {
-                        pre = pre.And(p => p.Version.ToString().Length == 1 && p.Version.ToString().Length > 1);
-                    }
+                {
+                    pre = pre.And(p =>
+                      p.Status == 2 );
+                    pre = pre.And(p => p.Status == 2);
+                } else if( avis !="")
+                {
+                    pre.And(a => a.avis == avis);
                 }
+                /*
+                 * persons.LeftJoin(phoneNumbers,  person => person.Id,  phoneNumber => phoneNumber.PersonId,  (person, phoneNumber) => new
+        {
+            Person = person,
+            PhoneNumber = phoneNumber?.Number
+        }
+);
+                 * */
+
+                var e = (from m in entities.tblMedieplans
+                         join mp in entities.tblMedieplanNrs on m.MedieplanNr equals mp.MedieplanNr into mmp
+                         from mp in mmp.DefaultIfEmpty()
+
+                         join mpl in entities.tblMedieplanLinjers on m.MedieplanNr equals mpl.MedieplanNr into mnpl
+                         from mpl in mnpl.DefaultIfEmpty()
+                         join pl in entities.tblPlacerings on m.PlaceringID equals pl.PlaceringID into plm
+                         from pl in plm.DefaultIfEmpty()
+                         join na in entities.NavisionContact2 on m.AnnoncørNo_ equals na.No_ into nam
+                         from na in nam.DefaultIfEmpty()
+                         join st in entities.tblBladStamdatas on mpl.UgeavisID equals st.BladID into stmpl
+                         from st in stmpl.DefaultIfEmpty()
+                         select new FundetMediePlaner
+                         {
+                             avis = st.Navn, 
+                             AnnoncørNo_ = m.AnnoncørNo_,
+                             AntalAviser = (from le in entities.tblMedieplanLinjers where le.MedieplanNr == m.MedieplanNr select new { le.MedieplanNr }).Count(),
+
+                         }).Where(pre).ToList();
+               
+       
 
                 var res = entities.tblMedieplans.Join(entities.tblMedieplanLinjers, mp => mp.MedieplanNr,
                     mpl => mpl.MedieplanNr,
                     (mp, mpl) => new
                     {
+                        mpl.UgeavisID,
                         mp.PlaceringID,
                         mp.AnnoncørNo_,
                         mp.Beskrivelse,
@@ -467,8 +506,15 @@ namespace dlu_persistence_api.daos
                         mp.AntalFarver,
                         mp.BureauNo_,
                         mp.KonsulentCode,
-                        mp.KontaktpersonTilhører,
+                        mp.KontaktpersonTilhører
+                 
+                    
+                  
+                    
 
+                    }).Join(entities.tblBladStamdatas , s => s.UgeavisID, st => st.BladID , (s, st ) => new { 
+                    s.m
+                    
                     }).Join(entities.tblPlacerings, mp => mp.PlaceringID,
                     pl => pl.PlaceringID,
                     (mp, pl) => new
@@ -491,6 +537,8 @@ namespace dlu_persistence_api.daos
                         mp.BureauNo_,
                         mp.KonsulentCode,
                         mp.KontaktpersonTilhører
+                
+
                     }).Join(entities.NavisionContacts, mp => mp.AnnoncørNo_, contact => contact.No_,
                     (mp, contact) => new
                     {
@@ -554,7 +602,7 @@ namespace dlu_persistence_api.daos
                         KonsulentCode = a.Key.KonsulentCode,
                         KontaktpersonTilhører = a.Key.KontaktpersonTilhører,
                         MedieplanNr = a.Key.MedieplanNr
-                    }).Select(a => new FundetMediePlaner()
+                    }).Where(pre).Select(a => new FundetMediePlaner()
                     {
                         AntalAviser = entities.tblMedieplanLinjers.Where(l => l.MedieplanNr == a.MedieplanNr).Select(s => new { s.MedieplanNr }).Distinct().Count(),
 
@@ -573,7 +621,8 @@ namespace dlu_persistence_api.daos
                         IndrykningsÅr = a.IndrykningsÅr,
                         KonsulentCode = a.KonsulentCode,
                         KontaktpersonTilhører = a.KontaktpersonTilhører,
-                        MedieplanNr = a.MedieplanNr
+                        MedieplanNr = a.MedieplanNr,
+                        avis = a.avis
                     });
 
                 List<FundetMediePlaner> liet = res.Where(pre).ToList().Select(a => new FundetMediePlaner
@@ -603,6 +652,7 @@ namespace dlu_persistence_api.daos
             }
             catch (Exception e)
             {
+                
                 throw e;
             }
         }

@@ -26,6 +26,7 @@
         public short IndrykningsÅr { get; internal set; }
         public int AntalAviser { get; set; }
         public string bureauNavn { get; set; }
+        public string avis { get; set; }
         // public DateTime OprettetDate { get; set; }
     }
 }

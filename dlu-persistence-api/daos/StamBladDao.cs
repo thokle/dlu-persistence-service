@@ -1,11 +1,14 @@
 ﻿using dlu_persistence_api.exceptions;
 using dlu_persistence_api.models;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using Newtonsoft.Json;
 using Remotion.Linq.Clauses;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -704,6 +707,20 @@ new tblBladStamdata()
 
             return res;
         }
+
+        public async Task<List<Avis>> GetAllActiveAviser()
+        {
+            try
+            {
+                return await di.tblBladStamdatas.Where(a => a.Ophørt == false).Select(s => new Avis()
+                {
+                    Name = s.Navn
+                }).ToListAsync();
+            } catch(SqlException ex)
+            {
+                throw new Exception(ex.HelpLink);
+            }
+        }
     }
 
     public class BladIder
@@ -713,5 +730,12 @@ new tblBladStamdata()
         }
 
         public int BladIDt { get; set; }
+    }
+
+    public class Avis
+    {
+        private string name;
+
+        public string Name { get => name; set => name = value; }
     }
 }

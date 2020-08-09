@@ -91,6 +91,7 @@
       <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
     <Compile Include="daos\AnnonørDao.cs" />
+    <Compile Include="daos\DeadLinesDao.cs" />
     <Compile Include="daos\MailDao.cs" />
     <Compile Include="DelOmrTbl.cs">
       <DependentUpon>dimp.tt</DependentUpon>
@@ -206,6 +207,8 @@
     <Compile Include="rabatele.cs">
       <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
+    <Compile Include="services\!DeadLinesService.cs" />
+    <Compile Include="services\DeadLinesService.cs" />
     <Compile Include="services\MailService.cs" />
     <Compile Include="sp_get_annoncører_Result.cs">
       <DependentUpon>dimp.tt</DependentUpon>
