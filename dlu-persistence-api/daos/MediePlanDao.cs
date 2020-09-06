@@ -1,14 +1,15 @@
-﻿using dlu_persistence_api.exceptions;
+﻿using DDF_sql_services.daos;
+using dlu_persistence_api.exceptions;
 using dlu_persistence_api.models;
+using dlu_persistence_api.services;
 using LinqKit;
+using Microsoft.EntityFrameworkCore.Internal;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
+using System.Data.SqlClient;
 using System.Linq;
-using DDF_sql_services.daos;
-using Microsoft.EntityFrameworkCore.Internal;
-using dlu_persistence_api.services;
 
 namespace dlu_persistence_api.daos
 {
@@ -55,11 +56,7 @@ namespace dlu_persistence_api.daos
         public MediePlan GetMediePlanByNumber(int medieplanNr, int version)
         {
             try
-            {
-
-
-
-
+            { 
                 var res = entities.tblMedieplans.Where(medieplan => medieplan.MedieplanNr == medieplanNr && medieplan.Version == version).Select(mp => new MediePlan()
                 {
                     Statius = mp.Status,
@@ -400,7 +397,10 @@ namespace dlu_persistence_api.daos
             try
             {
                 var pre = PredicateBuilder.New<FundetMediePlaner>();
-                pre = pre.Start(a => a.IndrykningsÅr == aar);
+                
+                pre = pre.Or(a => a.IndrykningsÅr == aar);
+             //   pre = pre.Or(a => a.MedieplanNr == a.MediePlanLinlerNr);
+              //  pre = pre.Or(s => s.Version == s.MediePlanLinjerVersion);
                 if (mediePlan != 0)
                 {
                     pre = pre.And(a => a.MedieplanNr == mediePlan);
@@ -408,15 +408,14 @@ namespace dlu_persistence_api.daos
 
                 if (annnoncør != "")
                 {
-                    pre = pre.And(m =>
-                        m.AnnoncørNo_.StartsWith(annnoncør) || m.AnnoncørNo_.Contains(annnoncør) ||
-                        m.AnnoncørNo_.EndsWith(annnoncør));
+                    pre = pre.And(m => m.AnnoncørNo_.Equals(annnoncør));
+                       
                 } else
 
                 if (bureau != "" )
                 {
                     pre = pre.And(m =>
-                        m.BureauNo_.StartsWith(bureau) || m.BureauNo_.Contains(bureau) || m.BureauNo_.EndsWith(bureau));
+                        m.BureauNo_.Equals(bureau));
                 } else
 
                 if (fraUge > 0 && (tilUge > 1 && tilUge < 53) && mediePlan == 0)
@@ -451,7 +450,7 @@ namespace dlu_persistence_api.daos
                     pre = pre.And(p => p.Status == 2);
                 } else if( avis !="")
                 {
-                    pre.And(a => a.avis == avis);
+                    pre.And(a => a.Navn == avis);
                 }
                 /*
                  * persons.LeftJoin(phoneNumbers,  person => person.Id,  phoneNumber => phoneNumber.PersonId,  (person, phoneNumber) => new
@@ -462,198 +461,99 @@ namespace dlu_persistence_api.daos
 );
                  * */
 
-                var e = (from m in entities.tblMedieplans
-                         join mp in entities.tblMedieplanNrs on m.MedieplanNr equals mp.MedieplanNr into mmp
-                         from mp in mmp.DefaultIfEmpty()
+                return (from m in entities.tblMedieplans
+                        join mp in entities.tblMedieplanLinjers on m.MedieplanNr equals mp.MedieplanNr 
+                        join mp2 in entities.tblMedieplanLinjers on m.Version equals mp2.Version 
 
-                         join mpl in entities.tblMedieplanLinjers on m.MedieplanNr equals mpl.MedieplanNr into mnpl
-                         from mpl in mnpl.DefaultIfEmpty()
-                         join pl in entities.tblPlacerings on m.PlaceringID equals pl.PlaceringID into plm
-                         from pl in plm.DefaultIfEmpty()
-                         join na in entities.NavisionContact2 on m.AnnoncørNo_ equals na.No_ into nam
-                         from na in nam.DefaultIfEmpty()
-                         join st in entities.tblBladStamdatas on mpl.UgeavisID equals st.BladID into stmpl
-                         from st in stmpl.DefaultIfEmpty()
-                         select new FundetMediePlaner
-                         {
-                             avis = st.Navn, 
-                             AnnoncørNo_ = m.AnnoncørNo_,
-                             AntalAviser = (from le in entities.tblMedieplanLinjers where le.MedieplanNr == m.MedieplanNr select new { le.MedieplanNr }).Count(),
+                        join st in entities.tblBladStamdatas on mp.UgeavisID equals st.BladID 
+                        join na in entities.NavisionContacts on m.AnnoncørNo_ equals na.No_
 
-                         }).Where(pre).ToList();
-               
+
+                        join pl in entities.tblPlacerings on m.PlaceringID equals pl.PlaceringID into plm from pl in plm.DefaultIfEmpty()
+
+                        select new
+                        {
+
+
+                            m.AnnoncørNo_,
+                            AntalAviser = (from le in entities.tblMedieplanLinjers where le.MedieplanNr == m.MedieplanNr select new { le.MedieplanNr }).Count(),
+                            m.AntalFarver,
+                            m.Beskrivelse,
+                            bureauNavn = na.Name,
+                            m.BureauNo_,
+                            m.Format1,
+                            m.Format2,
+                            m.IndrykningsUge,
+                            m.IndrykningsÅr,
+                            m.KonsulentCode,
+                            m.Kontaktperson,
+                            m.KontaktpersonTilhører,
+                            m.MedieplanNr,
+                            na.Name,
+                            m.Overskrift,
+                            m.Status,
+                            m.Version,
+                            MediePlanLinlerNr = mp.MedieplanNr,
+                            MediePlanLinjerVersion = mp.Version,
+                            st.Navn,
+
+
+                        }).GroupBy(gr => new
+                        {
+                            gr.MedieplanNr,
+                            gr.Status,
+                            gr.Version,
+                            gr.AnnoncørNo_,
+                            gr.AntalAviser,
+                            gr.AntalFarver,
+                            gr.Beskrivelse,
+                            gr.bureauNavn,
+                            gr.BureauNo_,
+                            gr.Format1,
+                            gr.Format2,
+                            gr.IndrykningsUge,
+                            gr.IndrykningsÅr,
+                            gr.KonsulentCode,
+                            gr.Kontaktperson,
+                            gr.KontaktpersonTilhører,
+                            gr.Navn,
+                            gr.Overskrift
+
+                        }).Select(a => new FundetMediePlaner()
+                        {
+                            AntalAviser = entities.tblMedieplanLinjers.Where(l => l.MedieplanNr == a.Key.MedieplanNr).Select(s => new { s.MedieplanNr }).Distinct().Count(),
+
+                            Beskrivelse = a.Key.Beskrivelse,
+                            Format1 = a.Key.Format1,
+                            Format2 = a.Key.Format1,
+                            Kontaktperson = a.Key.Kontaktperson,
+                            Overskrift = a.Key.Overskrift,
+
+                            Status = a.Key.Status,
+                            Version = a.Key.Version,
+                            AnnoncørNo_ = a.Key.AnnoncørNo_,
+                            AntalFarver = a.Key.AntalFarver,
+                            BureauNo_ = a.Key.BureauNo_,
+                            IndrykningsUge = a.Key.IndrykningsUge,
+                            IndrykningsÅr = a.Key.IndrykningsÅr,
+                            KonsulentCode = a.Key.KonsulentCode,
+                            KontaktpersonTilhører = a.Key.KontaktpersonTilhører,
+                            MedieplanNr = a.Key.MedieplanNr
+                          //  bureauNavn = GetBureauName(a.Key.BureauNo_)
+                        }).Where(pre)
+
+
+
+                          .OrderBy(o => o.MedieplanNr).Distinct().ToList();                
        
 
-                var res = entities.tblMedieplans.Join(entities.tblMedieplanLinjers, mp => mp.MedieplanNr,
-                    mpl => mpl.MedieplanNr,
-                    (mp, mpl) => new
-                    {
-                        mpl.UgeavisID,
-                        mp.PlaceringID,
-                        mp.AnnoncørNo_,
-                        mp.Beskrivelse,
-                        mp.Fakturering,
-                        mp.Format1,
-                        mp.Format2,
-                        mp.SamletPris,
-                        mp.Kontaktperson,
-                        mp.Overskrift,
-                        mp.IndrykningsÅr,
-                        mp.IndrykningsUge,
-                        mp.Version,
-                        mp.Status,
-                        mp.MedieplanNr,
-                        mp.AntalFarver,
-                        mp.BureauNo_,
-                        mp.KonsulentCode,
-                        mp.KontaktpersonTilhører
-                 
-                    
-                  
-                    
-
-                    }).Join(entities.tblBladStamdatas , s => s.UgeavisID, st => st.BladID , (s, st ) => new { 
-                    s.m
-                    
-                    }).Join(entities.tblPlacerings, mp => mp.PlaceringID,
-                    pl => pl.PlaceringID,
-                    (mp, pl) => new
-                    {
-                        mp.PlaceringID,
-                        pl.Betegnelse,
-                        mp.AnnoncørNo_,
-                        mp.Beskrivelse,
-                        mp.Fakturering,
-                        mp.Format1,
-                        mp.Format2,
-                        mp.Kontaktperson,
-                        mp.Overskrift,
-                        mp.IndrykningsÅr,
-                        mp.IndrykningsUge,
-                        mp.Version,
-                        mp.Status,
-                        mp.MedieplanNr,
-                        mp.AntalFarver,
-                        mp.BureauNo_,
-                        mp.KonsulentCode,
-                        mp.KontaktpersonTilhører
+              
                 
-
-                    }).Join(entities.NavisionContacts, mp => mp.AnnoncørNo_, contact => contact.No_,
-                    (mp, contact) => new
-                    {
-                        mp.PlaceringID,
-                        mp.AnnoncørNo_,
-                        mp.Beskrivelse,
-                        mp.Fakturering,
-                        mp.Format1,
-                        mp.Format2,
-                        mp.Kontaktperson,
-                        mp.Overskrift,
-                        mp.IndrykningsÅr,
-                        mp.IndrykningsUge,
-                        mp.Version,
-                        contact.Name,
-                        contact.Bill_to_Contact_No_,
-                        mp.Status,
-                        mp.MedieplanNr,
-                        mp.AntalFarver,
-                        mp.BureauNo_,
-                        mp.KonsulentCode,
-                        mp.KontaktpersonTilhører,
-                    }).GroupBy(arg => new
-                    {
-                        arg.Beskrivelse,
-                        arg.PlaceringID,
-                        arg.AnnoncørNo_,
-                        arg.Fakturering,
-                        arg.Format1,
-                        arg.Format2,
-                        arg.Kontaktperson,
-                        arg.Overskrift,
-                        arg.IndrykningsÅr,
-                        arg.IndrykningsUge,
-                        arg.Version,
-                        arg.Name,
-                        arg.AntalFarver,
-                        arg.BureauNo_,
-                        arg.KonsulentCode,
-                        arg.Bill_to_Contact_No_,
-                        arg.Status,
-                        arg.MedieplanNr,
-                        arg.KontaktpersonTilhører
-                    }).Select(a => new FundetMediePlaner()
-                    {
-                        AntalAviser = entities.tblMedieplanLinjers.Where(l => l.MedieplanNr == a.Key.MedieplanNr).Select(s => new { s.MedieplanNr }).Count(),
-
-                        Beskrivelse = a.Key.Beskrivelse,
-                        Format1 = a.Key.Format1,
-                        Format2 = a.Key.Format1,
-                        Kontaktperson = a.Key.Kontaktperson,
-                        Overskrift = a.Key.Overskrift,
-                        navision_name = a.Key.Name,
-                        Status = a.Key.Status,
-                        Version = a.Key.Version,
-                        AnnoncørNo_ = a.Key.AnnoncørNo_,
-                        AntalFarver = a.Key.AntalFarver,
-                        BureauNo_ = a.Key.BureauNo_,
-                        IndrykningsUge = a.Key.IndrykningsUge,
-                        IndrykningsÅr = a.Key.IndrykningsÅr,
-                        KonsulentCode = a.Key.KonsulentCode,
-                        KontaktpersonTilhører = a.Key.KontaktpersonTilhører,
-                        MedieplanNr = a.Key.MedieplanNr
-                    }).Where(pre).Select(a => new FundetMediePlaner()
-                    {
-                        AntalAviser = entities.tblMedieplanLinjers.Where(l => l.MedieplanNr == a.MedieplanNr).Select(s => new { s.MedieplanNr }).Distinct().Count(),
-
-                        Beskrivelse = a.Beskrivelse,
-                        Format1 = a.Format1,
-                        Format2 = a.Format1,
-                        Kontaktperson = a.Kontaktperson,
-                        Overskrift = a.Overskrift,
-                        navision_name = a.navision_name,
-                        Status = a.Status,
-                        Version = a.Version,
-                        AnnoncørNo_ = a.AnnoncørNo_,
-                        AntalFarver = a.AntalFarver,
-                        BureauNo_ = a.BureauNo_,
-                        IndrykningsUge = a.IndrykningsUge,
-                        IndrykningsÅr = a.IndrykningsÅr,
-                        KonsulentCode = a.KonsulentCode,
-                        KontaktpersonTilhører = a.KontaktpersonTilhører,
-                        MedieplanNr = a.MedieplanNr,
-                        avis = a.avis
-                    });
-
-                List<FundetMediePlaner> liet = res.Where(pre).ToList().Select(a => new FundetMediePlaner
-                {
-                    AntalAviser = entities.tblMedieplanLinjers.Where(l => l.MedieplanNr == a.MedieplanNr).Select(s => new { s.MedieplanNr }).Distinct().Count(),
-
-                    Beskrivelse = a.Beskrivelse,
-                    Format1 = a.Format1,
-                    Format2 = a.Format1,
-                    Kontaktperson = a.Kontaktperson,
-                    Overskrift = a.Overskrift,
-                    navision_name = a.navision_name,
-                    Status = a.Status,
-                    Version = a.Version,
-                    AnnoncørNo_ = a.AnnoncørNo_,
-                    AntalFarver = a.AntalFarver,
-                    BureauNo_ = a.BureauNo_,
-                    IndrykningsUge = a.IndrykningsUge,
-                    IndrykningsÅr = a.IndrykningsÅr,
-                    KonsulentCode = a.KonsulentCode,
-                    KontaktpersonTilhører = a.KontaktpersonTilhører,
-                    MedieplanNr = a.MedieplanNr,
-                    bureauNavn = GetBureauName(a.BureauNo_)
-
-                }).ToList();
-                return liet;
             }
-            catch (Exception e)
+            catch (SqlException ex)
             {
-                
-                throw e;
+                Console.WriteLine(ex.InnerException);
+                throw new Exception(ex.Message);
             }
         }
 
@@ -679,6 +579,37 @@ namespace dlu_persistence_api.daos
             return res;
         }
 
+
+        public bool FindOmBladUdKommer(int bladid, int uge, int år)
+        {
+            try
+            {
+                var res = (from p in entities.tblPrislisterPrBladPrUges
+                           join pl in entities.tblPrislisters on p.PrislisteID equals pl.PrislisteID into ppl
+                           from pl in ppl.DefaultIfEmpty()
+                           where p.År == år && p.Uge == uge && p.BladID == bladid select new Udkommerikke()
+                           {
+                             PrislisteNavn =   pl.PrislisteNavn
+                           }).FirstOrDefault();
+                          
+                if (res != null)
+                {
+                    if (res.PrislisteNavn.Equals("Udkommer ikke"))
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+                return true;
+             }
+            catch (FormattedDbEntityValidationException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         public MediePlan GetMediePlanFornavision(int indrykningsUge)
         {
 
@@ -746,6 +677,15 @@ namespace dlu_persistence_api.daos
                 throw new Exception(e.HelpLink);
             }
         }
+    }
+
+    public class Udkommerikke
+    {
+        public Udkommerikke()
+        {
+        }
+
+        public string PrislisteNavn { get;  set; }
     }
 
     public class MediePlan

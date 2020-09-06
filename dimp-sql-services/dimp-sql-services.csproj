@@ -207,7 +207,7 @@
     <Compile Include="rabatele.cs">
       <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
-    <Compile Include="services\!DeadLinesService.cs" />
+    <Compile Include="services\IDeadLinesService.cs" />
     <Compile Include="services\DeadLinesService.cs" />
     <Compile Include="services\MailService.cs" />
     <Compile Include="sp_get_annoncører_Result.cs">

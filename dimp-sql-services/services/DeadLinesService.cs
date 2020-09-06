@@ -1,4 +1,5 @@
 ﻿using dimp_sql_services.daos;
+using dlu_persistence_api.exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,21 @@ namespace dimp_sql_services.services
             dead = new DeadLinesDao();
         }
 
-        public int CreateDeadLine(tblWEBUdgivelse wEBUdgivelse)
+        public int CreateDeadLine(DeadLine wEBUdgivelse)
         {
-            return dead.CreateDeadLine(wEBUdgivelse: wEBUdgivelse);
+            return dead.CreateDeadLine(wEBUdgivelse);
+        }
+
+        public int Delete(int bladid, int linje)
+        {
+            try
+            {
+                return dead.Delete(bladid, linje);
+            }catch (FormattedDbEntityValidationException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+          
         }
 
         public List<DeadLine> GetDeadLine(int bladid, int type)

@@ -55,7 +55,7 @@
         <EntityTypeShape EntityType="dimpSQLModel.tblWEBForespørgsel" Width="1.5" PointX="19.75" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dimpSQLModel.tblWEBForespørgselLinjer" Width="1.5" PointX="13.75" PointY="19.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dimpSQLModel.tblWEBPrimærDækning" Width="1.5" PointX="19.75" PointY="17.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="dimpSQLModel.tblWEBUdgivelse" Width="1.5" PointX="9.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dimpSQLModel.tblWEBUdgivelse" Width="3" PointX="9.75" PointY="20.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dimpSQLModel.tekniskele" Width="1.5" PointX="15.75" PointY="20.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dimpSQLModel.Ark1_" Width="1.5" PointX="17.75" PointY="20.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dimpSQLModel.DelOmrTbl" Width="1.5" PointX="19.75" PointY="20.75" IsExpanded="true" />

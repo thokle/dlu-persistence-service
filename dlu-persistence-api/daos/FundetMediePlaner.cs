@@ -27,6 +27,9 @@
         public int AntalAviser { get; set; }
         public string bureauNavn { get; set; }
         public string avis { get; set; }
+        public string Navn { get; internal set; }
+        public int MediePlanLinlerNr { get; internal set; }
+        public short MediePlanLinjerVersion { get; internal set; }
         // public DateTime OprettetDate { get; set; }
     }
 }

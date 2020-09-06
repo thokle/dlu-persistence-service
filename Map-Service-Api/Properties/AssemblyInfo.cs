@@ -1,15 +1,16 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("dlu-persistence-api")]
+[assembly: AssemblyTitle("Map-Service-Api")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("dlu-persistence-api")]
-[assembly: AssemblyCopyright("Copyright ©  2018 Kleist-it")]
+[assembly: AssemblyProduct("Map-Service-Api")]
+[assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -19,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("b8da807f-531c-42c0-b3f1-79ad6560e1aa")]
+[assembly: Guid("145479bd-d8e7-4c62-a527-32bf01c88d17")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -31,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.0.9.27")]
-[assembly: AssemblyFileVersion("2.0.9.27")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]

@@ -708,14 +708,15 @@ new tblBladStamdata()
             return res;
         }
 
-        public async Task<List<Avis>> GetAllActiveAviser()
+        public  List<Avis> GetAllActiveAviser()
         {
             try
             {
-                return await di.tblBladStamdatas.Where(a => a.Ophørt == false).Select(s => new Avis()
+                return  di.tblBladStamdatas.Where(a => a.Ophørt == false).Select(s => new Avis()
                 {
-                    Name = s.Navn
-                }).ToListAsync();
+                    Name = s.Navn,
+                    BladId = s.BladID
+                }).ToList();
             } catch(SqlException ex)
             {
                 throw new Exception(ex.HelpLink);
@@ -735,7 +736,9 @@ new tblBladStamdata()
     public class Avis
     {
         private string name;
+        private int bladId;
 
         public string Name { get => name; set => name = value; }
+        public int BladId { get => bladId; set => bladId = value; }
     }
 }

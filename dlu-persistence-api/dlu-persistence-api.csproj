@@ -288,6 +288,7 @@
     <Compile Include="daos\CrystalReportDao.cs" />
     <Compile Include="daos\DPKulør.cs" />
     <Compile Include="daos\FaktruaBilagListeDao.cs" />
+    <Compile Include="daos\FindMediePlanerDao.cs" />
     <Compile Include="daos\FundetMediePlaner.cs" />
     <Compile Include="daos\KoncernDAO.cs" />
     <Compile Include="daos\KoncernMiljøTillægDao.cs" />
@@ -302,6 +303,7 @@
     <Compile Include="daos\PriceAskingForWeb.cs" />
     <Compile Include="daos\SendGruppeDao.cs" />
     <Compile Include="daos\SendTilWebDao.cs" />
+    <Compile Include="daos\SQLStringsUtil.cs" />
     <Compile Include="delPriser.cs">
       <DependentUpon>DimpDotNet.tt</DependentUpon>
     </Compile>
@@ -347,6 +349,7 @@
     <Compile Include="LPRoller.cs">
       <DependentUpon>DimpDotNet.tt</DependentUpon>
     </Compile>
+    <Compile Include="models\FundneMediePlaner.cs" />
     <Compile Include="models\Omsaetning.cs" />
     <Compile Include="models\StamBladTIlNewPriser.cs" />
     <Compile Include="daos\WebMail.cs" />
@@ -455,6 +458,7 @@
     <Compile Include="services\EjerforholdService.cs" />
     <Compile Include="services\FakturaFejlTekstService.cs" />
     <Compile Include="services\FakturingsBilagService.cs" />
+    <Compile Include="services\FindMediePlanerService.cs" />
     <Compile Include="services\GeoCodeService.cs" />
     <Compile Include="services\GruppeService.cs" />
     <Compile Include="services\FejlTekstService.cs" />

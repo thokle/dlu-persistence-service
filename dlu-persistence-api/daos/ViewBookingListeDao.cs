@@ -30,7 +30,7 @@ namespace dlu_persistence_api.daos
                     IndrykningsUge = liste.IndrykningsUge,
                     SamletPris = liste.SamletPris,
                     KonsulentCode = liste.KonsulentCode,
-                    IndrykningsÅr = liste.IndrykningsUge
+                    IndrykningsÅr = liste.IndrykningsÅr
 
                 }).ToList();
             }
@@ -60,7 +60,7 @@ namespace dlu_persistence_api.daos
                             IndrykningsUge = liste.IndrykningsUge,
                             SamletPris = liste.SamletPris,
                             KonsulentCode = liste.KonsulentCode,
-                            IndrykningsÅr = liste.IndrykningsUge
+                            IndrykningsÅr = liste.IndrykningsÅr
 
                         }).ToList();
             }

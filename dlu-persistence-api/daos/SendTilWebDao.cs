@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace dlu_persistence_api.daos
 {
-    class SendTilWebDao
+   public class SendTilWebDao
     {
         private DiMPdotNetDevEntities entities;
     
@@ -199,8 +199,28 @@ namespace dlu_persistence_api.daos
                 throw new Exception(ex.Message);
             }
         }
+
+        public MMpris GetMmPris(int bladid, int år,int counter, string prisListeNavn )
+        {
+            try
+            {
+                string sql = "SELECT tblPriser.mmPris FROM tblPriser INNER JOIN tblPrislister ON tblPriser.PrislisteID = tblPrislister.PrislisteID WHERE (tblPriser.BladID =@BladId) AND (tblPriser.År =@år ) AND (tblPriser.PlaceringID = @counter) AND (tblPriser.FormatFra < 2) AND (tblPrislister.PrislisteNavn = @prisListeNavn)";
+
+                return entities.Database.SqlQuery<MMpris>(sql, new SqlParameter("BladId", bladid), new SqlParameter("år", år), new SqlParameter("counter", counter), new SqlParameter("prisListeNavn", prisListeNavn)).FirstOrDefault();
+                
+            }
+            catch(SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 
+    public class MMpris
+    {
+       public double mmPris { get; set; }
+    }
 
     public class SendTilWeb
     {

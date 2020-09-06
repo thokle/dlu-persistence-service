@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dimp-sql-services", "dimp-s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDF-sql-services", "DDF-sql-services\DDF-sql-services.csproj", "{25B56147-3EAA-462C-8A4F-FD08EBF25B54}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Map-Service-Api", "Map-Service-Api\Map-Service-Api.csproj", "{145479BD-D8E7-4C62-A527-32BF01C88D17}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,12 +30,18 @@ Global
 		{25B56147-3EAA-462C-8A4F-FD08EBF25B54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{25B56147-3EAA-462C-8A4F-FD08EBF25B54}.dev|Any CPU.ActiveCfg = Debug|Any CPU
 		{25B56147-3EAA-462C-8A4F-FD08EBF25B54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{145479BD-D8E7-4C62-A527-32BF01C88D17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{145479BD-D8E7-4C62-A527-32BF01C88D17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{145479BD-D8E7-4C62-A527-32BF01C88D17}.dev|Any CPU.ActiveCfg = Debug|Any CPU
+		{145479BD-D8E7-4C62-A527-32BF01C88D17}.dev|Any CPU.Build.0 = Debug|Any CPU
+		{145479BD-D8E7-4C62-A527-32BF01C88D17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{145479BD-D8E7-4C62-A527-32BF01C88D17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_StartDate = 2000/1/1
 		SolutionGuid = {F9A2A88C-22D3-4952-AE58-6C5346AA1CD3}
+		BuildVersion_StartDate = 2000/1/1
 	EndGlobalSection
 EndGlobal

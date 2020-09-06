@@ -12,7 +12,7 @@ namespace dlu_persistence_api.daos
         public AktiveAviserTIlGridDao()
         {
             entities = new DiMPdotNetDevEntities();
-           
+            entities.Configuration.LazyLoadingEnabled = true;
         }
 
         public List<AktiveUgeaviserMedAlleDatas> GetAllAvisetTilGrid()
