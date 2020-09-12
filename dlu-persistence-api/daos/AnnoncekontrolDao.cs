@@ -146,7 +146,7 @@ namespace dlu_persistence_api.daos
         {
             try
             {
-                return _entities.Database.SqlQuery<AnnoceKontrol>("SELECT DISTINCT tblBladStamdata.Navn, tblBladStamdata.BladID, tblMedieplan.IndrykningsUge  " +
+                return _entities.Database.SqlQuery<AnnoceKontrol>("SELECT DISTINCT tblBladStamdata.Navn, tblBladStamdata.BladID , tblMedieplan.IndrykningsUge  " +
 " FROM         tblMedieplanNr INNER JOIN " +
 "  tblMedieplan ON tblMedieplanNr.MedieplanNr = tblMedieplan.MedieplanNr AND tblMedieplanNr.AktivVersion = tblMedieplan.Version INNER JOIN " +
 "  tblMedieplanLinjer ON tblMedieplan.Version = tblMedieplanLinjer.Version AND " +

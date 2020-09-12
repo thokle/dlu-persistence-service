@@ -40,5 +40,41 @@ namespace dlu_persistence_api.services
                 throw new FormattedDbEntityValidationException(ex);
             }
         }
+
+        public List<models.FundneMediePlaner> FillByAnnoncørNoBureauNo(int AnnoncørNo, int BureauNo, int ugeStart, int ugeSlut, int år, int verisonFra, int versionTil, bool medtagRettelser)
+        {
+            try
+            {
+                return planerDao.FillByAnnoncørNoBureauNo(AnnoncørNo,BureauNo, ugeStart, ugeSlut, år, verisonFra, versionTil, medtagRettelser);
+            }
+            catch (SqlException ex)
+            {
+                throw new FormattedDbEntityValidationException(ex);
+            }
+        }
+
+        public List<models.FundneMediePlaner> FillByAnnoncørNoBureauNoUgeavisID(int UgeavisID, int AnnoncørNo, int BureauNo, int ugeStart, int ugeSlut, int år, int verisonFra, int versionTil, bool medtagRettelser)
+        {
+            try
+            {
+                return planerDao.FillByAnnoncørNoBureauNoUgeavisID(AnnoncørNo,UgeavisID, BureauNo, ugeStart, ugeSlut, år, verisonFra, versionTil, medtagRettelser);
+            }
+            catch (SqlException ex)
+            {
+                throw new FormattedDbEntityValidationException(ex);
+            }
+        }
+
+        public List<models.FundneMediePlaner> FillByMedieplanNr(int MedieplanNr, int verisonFra, int versionTil, bool medtagRettelser)
+        {
+            try
+            {
+                return planerDao.FillByMedieplanNr(MedieplanNr, verisonFra, versionTil, medtagRettelser);
+            }
+            catch (SqlException ex)
+            {
+                throw new FormattedDbEntityValidationException(ex);
+            }
+        }
     }
 }

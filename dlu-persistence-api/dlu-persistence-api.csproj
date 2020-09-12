@@ -289,6 +289,7 @@
     <Compile Include="daos\DPKulør.cs" />
     <Compile Include="daos\FaktruaBilagListeDao.cs" />
     <Compile Include="daos\FindMediePlanerDao.cs" />
+    <Compile Include="daos\ForspørgelsesDao.cs" />
     <Compile Include="daos\FundetMediePlaner.cs" />
     <Compile Include="daos\KoncernDAO.cs" />
     <Compile Include="daos\KoncernMiljøTillægDao.cs" />
@@ -429,6 +430,8 @@
     <Compile Include="models\PriceListWeekModel.cs" />
     <Compile Include="models\StamBlad.cs" />
     <Compile Include="models\UdsendingKontakter.cs" />
+    <Compile Include="models\WebForspørgelses.cs" />
+    <Compile Include="models\WebForspørgelsesLinjer.cs" />
     <Compile Include="NavisionContact.cs">
       <DependentUpon>DimpDotNet.tt</DependentUpon>
     </Compile>
@@ -459,6 +462,7 @@
     <Compile Include="services\FakturaFejlTekstService.cs" />
     <Compile Include="services\FakturingsBilagService.cs" />
     <Compile Include="services\FindMediePlanerService.cs" />
+    <Compile Include="services\ForspørgelsesService.cs" />
     <Compile Include="services\GeoCodeService.cs" />
     <Compile Include="services\GruppeService.cs" />
     <Compile Include="services\FejlTekstService.cs" />

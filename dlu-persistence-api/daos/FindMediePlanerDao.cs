@@ -45,7 +45,7 @@ namespace dlu_persistence_api.daos
             }
         }
 
-        public List<models.FundneMediePlaner> FillByAnnoncørNoBureauNo(string AnnoncørNo, int BureauNo, int ugeStart, int ugeSlut, int år, int verisonFra, int versionTil, bool medtagRettelser)
+        public List<models.FundneMediePlaner> FillByAnnoncørNoBureauNo(int AnnoncørNo, int BureauNo, int ugeStart, int ugeSlut, int år, int verisonFra, int versionTil, bool medtagRettelser)
         {
             try
             {
@@ -160,22 +160,24 @@ namespace dlu_persistence_api.daos
             }
         }
 
-        public List<models.FundneMediePlaner> FillByBureauOrdreNr()
+        public List<models.FundneMediePlaner> FillByBureauOrdreNr(int BureauNo,  int ugeStart, int ugeSlut, int år, int verisonFra, int versionTil, bool medtagRettelser)
         {
             try
             {
-                throw new NotImplementedException();
+                return devEntities.Database.SqlQuery<models.FundneMediePlaner>(SQLStringsUtil.SQL11,  new SqlParameter("BureauNo", BureauNo), new SqlParameter("ugeStart", ugeStart), new SqlParameter("ugeSlut", ugeSlut)
+                     , new SqlParameter("år", år), new SqlParameter("versionFra", verisonFra), new SqlParameter("versionTil", versionTil), new SqlParameter("medtagRettelser", medtagRettelser)).ToList();
             }catch (SqlException ex)
             {
                 throw new FormattedDbEntityValidationException(ex);
             }
         }
 
-        public List<models.FundneMediePlaner> FillByKonsulentCode()
+        public List<models.FundneMediePlaner> FillByKonsulentCode(string KonsulentCode, int ugeStart, int ugeSlut, int år, int verisonFra, int versionTil, bool medtagRettelser)
         {
             try
             {
-                throw new NotImplementedException();
+                return devEntities.Database.SqlQuery<models.FundneMediePlaner>(SQLStringsUtil.SQL12, new SqlParameter("KonsulentCode", KonsulentCode), new SqlParameter("ugeStart", ugeStart), new SqlParameter("ugeSlut", ugeSlut)
+                     , new SqlParameter("år", år), new SqlParameter("versionFra", verisonFra), new SqlParameter("versionTil", versionTil), new SqlParameter("medtagRettelser", medtagRettelser)).ToList();
             }
             catch (SqlException ex)
             {
@@ -183,11 +185,11 @@ namespace dlu_persistence_api.daos
             }
         }
 
-        public List<models.FundneMediePlaner> FillByMedieplanNr()
+        public List<models.FundneMediePlaner> FillByMedieplanNr(int MedieplanNr, int verisonFra, int versionTil, bool medtagRettelser)
         {
             try
             {
-                throw new NotImplementedException();
+                return devEntities.Database.SqlQuery<models.FundneMediePlaner>(SQLStringsUtil.SQL13, new SqlParameter("MedieplanNr", MedieplanNr), new SqlParameter("versionFra", verisonFra), new SqlParameter("versionTil", versionTil), new SqlParameter("medtagRettelser", medtagRettelser)).ToList();
             }
             catch (SqlException ex)
             {
