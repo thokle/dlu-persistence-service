@@ -20,6 +20,7 @@ C:\Users\Thomas Kleist\source\repos\DLUPersistence-service-api\dlu-persistence-a
 C:\Users\Thomas Kleist\source\repos\DLUPersistence-service-api\dlu-persistence-api\obj\Release\dlu-persistence-api.pdb
 C:\Users\Thomas Kleist\source\repos\DLUPersistence-service-api\dlu-persistence-api\bin\Release\LinqKit.dll
 C:\Users\Thomas Kleist\source\repos\DLUPersistence-service-api\dlu-persistence-api\bin\Release\LinqKit.xml
+C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\obj\Release\dlu-persistence-api.csproj.CoreCompileInputs.cache
 C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\bin\Release\dlu-persistence-api.dll.config
 C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\bin\Release\dlu-persistence-api.dll
 C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\bin\Release\dlu-persistence-api.pdb
@@ -104,7 +105,6 @@ C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\
 C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\bin\Release\System.Threading.Tasks.Extensions.xml
 C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\bin\Release\System.ValueTuple.xml
-C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\obj\Release\dlu-persistence-api.csproj.CoreCompileInputs.cache
 C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\obj\Release\dlu-persistence-api.csproj.CopyComplete
 C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\obj\Release\dlu-persistence-api.dll
 C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\obj\Release\dlu-persistence-api.pdb

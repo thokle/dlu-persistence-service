@@ -1,4 +1,5 @@
-﻿using System;
+﻿using dlu_persistence_api.exceptions;
+using System;
 using System.Data.SqlClient;
 
 namespace dlu_persistence_api.services
@@ -64,6 +65,21 @@ FROM dbo.tblMedieplan AS tblMedieplan_1 INNER JOIN dbo.tblMedieplanNr ON tblMedi
             catch (Exception e)
             {
                 throw new Exception(e.Message);
+            }
+        }
+
+        public Tuple<int, int> RunNavisonStoredProcedures()
+        {
+            try
+            {
+              var res1 =   entities.Database.ExecuteSqlCommand("exec IndsætOrdreTilNavision");
+                var res2 = entities.Database.ExecuteSqlCommand("exec IndsætOrdreLinjerTilNavision");
+
+                return new Tuple<int, int>(res1, res2);
+               
+            } catch (SqlException ex)
+            {
+                throw new FormattedDbEntityValidationException(ex);
             }
         }
     }

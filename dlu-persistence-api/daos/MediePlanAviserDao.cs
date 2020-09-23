@@ -134,7 +134,7 @@ namespace dlu_persistence_api.daos
                               TotalomraadePct = b.TotalområdePct,
                               VisPaaWWW = b.VisPåWWW,
                               WWWDaekningSomTekst = b.WWWDækningSomTekst,
-                              MmTotal = (decimal)(p.mmPris * 10),
+                            
 
                               MiljøTillæg = know.miljøtilæg.Value != 0 ? know.miljøtilæg.Value : 0,
                               koncern = know.koncern,

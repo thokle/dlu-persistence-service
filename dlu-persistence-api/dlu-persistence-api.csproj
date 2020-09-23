@@ -350,8 +350,12 @@
     <Compile Include="LPRoller.cs">
       <DependentUpon>DimpDotNet.tt</DependentUpon>
     </Compile>
+    <Compile Include="models\Forspørgelser.cs" />
+    <Compile Include="models\ForspørgelsesLinjer.cs" />
     <Compile Include="models\FundneMediePlaner.cs" />
     <Compile Include="models\Omsaetning.cs" />
+    <Compile Include="models\PersonId.cs" />
+    <Compile Include="models\SendRykker.cs" />
     <Compile Include="models\StamBladTIlNewPriser.cs" />
     <Compile Include="daos\WebMail.cs" />
     <Compile Include="models\AnnoceKontrol.cs" />

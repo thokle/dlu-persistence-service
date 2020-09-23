@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using dlu_persistence_api.daos;
 using dlu_persistence_api.exceptions;
+using dlu_persistence_api.models;
 
 namespace dlu_persistence_api.services
 {
@@ -53,5 +54,126 @@ namespace dlu_persistence_api.services
             }
         }
 
+        public List<models.Forspørgelser> GetForspørgelsers()
+        {
+            try
+            {
+                return dao.GetForspørgelsers();
+            }
+            catch (Exception ex)
+            {
+                throw new FormattedDbEntityValidationException(ex);
+            }
+
+        }
+        public int AfslutForspørgelses(int mediePlanNr)
+        {
+            try
+            {
+                return dao.AfslutForspørgelses(mediePlanNr);
+            }
+            catch (Exception ex)
+            {
+                throw new FormattedDbEntityValidationException(ex);
+            }
+        }
+
+        public int UpdateTableMediePlaneLinjer(int mediePlanNr)
+        {
+            try
+            {
+                return dao.UpdateTableMediePlaneLinjer(mediePlanNr);
+            }
+            catch (Exception ex)
+            {
+                throw new FormattedDbEntityValidationException(ex);
+            }
+        }
+
+        public int UpdateTableMediePlanNr(int mediePlanNR)
+        {
+            try
+            {
+                return dao.UpdateTableMediePlanNr(mediePlanNR);
+            }
+            catch (Exception ex)
+            {
+                throw new FormattedDbEntityValidationException(ex);
+            }
+        }
+
+        public int UpdateTableWebForspørgelses(int mediePlandNr)
+        {
+
+            try
+            {
+                return dao.UpdateTableWebForspørgelses(mediePlandNr);
+            }
+            catch (Exception ex)
+            {
+                throw new FormattedDbEntityValidationException(ex);
+            }
+        }
+
+        public List<models.SendRykker> GetForspørgelsers(int forspørgelsesId)
+        {
+            try
+            {
+                return dao.GetForspørgelsers(forspørgelsesId);
+            }
+            catch (Exception ex)
+            {
+                throw new FormattedDbEntityValidationException(ex);
+            }
+        }
+
+
+        public PersonId GetPersonId(string email)
+        {
+            try
+            {
+                return dao.GetPersonId(email);
+            }
+            catch (Exception ex)
+            {
+                throw new FormattedDbEntityValidationException(ex);
+            }
+        }
+
+        public int InsertTblWebEmails(string email)
+        {
+            try
+            {
+                return dao.InsertTblWebEmails(email);
+            }
+            catch (Exception ex)
+            {
+                throw new FormattedDbEntityValidationException(ex);
+            }
+        }
+
+        public int UpdateTableWebForspørgelses(int forespørgselID, int AntalUdsendinger)
+        {
+            try
+            {
+                return dao.UpdateTableWebForspørgelses(forespørgselID, AntalUdsendinger);
+            }
+            catch (Exception ex)
+            {
+                throw new FormattedDbEntityValidationException(ex);
+            }
+        }
+
+        public int UpdatseAntalUdsendiger(int AntalUdsendinger, int forespørgselID)
+        {
+            try
+            {
+                return dao.UpdatseAntalUdsendiger(AntalUdsendinger, forespørgselID);
+            }
+            catch (Exception ex)
+            {
+                throw new FormattedDbEntityValidationException(ex);
+            }
+        }
     }
 }
