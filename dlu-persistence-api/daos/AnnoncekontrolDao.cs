@@ -22,6 +22,23 @@ namespace dlu_persistence_api.daos
             _entities = new DiMPdotNetDevEntities();
 
         }
+
+
+
+        public int CreateAnnonceKontrol(tblAnnoncekontrol annoncekontrol) {
+            try
+            {
+                _entities.tblAnnoncekontrols.AddOrUpdate(annoncekontrol);
+                return _entities.SaveChanges();
+
+            } catch (SqlException ex)
+            {
+
+                throw new FormattedDbEntityValidationException(ex);
+            }
+
+
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -170,4 +187,7 @@ namespace dlu_persistence_api.daos
             _entities?.Dispose();
         }
     }
+
+
+
 }
