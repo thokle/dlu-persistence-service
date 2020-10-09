@@ -121,18 +121,16 @@ namespace dlu_persistence_api.daos
         /// <param name="tblAnnoncekontrol"></param>
         /// <returns></returns>
         /// <exception cref="DaoExceptions"></exception>
-        public Task<int> CreateOrUpdate(tblAnnoncekontrol tblAnnoncekontrol)
+        public int CreateOrUpdate(tblAnnoncekontrol tblAnnoncekontrol)
         {
             try
             {
-             
-                _entities.tblAnnoncekontrols.AddOrUpdate(tblAnnoncekontrol);
-                return _entities.SaveChangesAsync();
+                _entities.tblAnnoncekontrols.Add(tblAnnoncekontrol);
+                return _entities.SaveChanges();
             }
             catch (Exception e)
             {
-
-                throw new FormattedDbEntityValidationException(e.InnerException);
+                throw new FormattedDbEntityValidationException(e);
             }
         }
 
@@ -172,8 +170,8 @@ namespace dlu_persistence_api.daos
 " tblAnnoncekontrol ON tblMedieplanLinjer.MedieplanNr = tblAnnoncekontrol.MedieplanNr AND " +
 " tblMedieplanLinjer.UgeavisID = tblAnnoncekontrol.UgeavisID " +
 " WHERE(tblMedieplan.IndrykningsUge <=@uge) AND(tblMedieplan.IndrykningsÅr = YEAR({ fn NOW() })) AND(tblMedieplanNr.Status = 3) AND " +
-" (tblAnnoncekontrol.ErKontrolleret IS NULL) OR " +
-" (tblMedieplan.IndrykningsÅr = YEAR({ fn NOW() }) -1) AND(tblMedieplanNr.Status = 3) AND(tblAnnoncekontrol.ErKontrolleret = 0) " +
+" (tblAnnoncekontrol.ErKontrolleret = 0) OR " +
+" (tblMedieplan.IndrykningsÅr = YEAR({ fn NOW() }) ) AND(tblMedieplanNr.Status = 3) AND(tblAnnoncekontrol.ErKontrolleret = 0) " +
 " ORDER BY tblBladStamdata.Navn, tblMedieplan.IndrykningsUge DESC", new SqlParameter("uge", uge)).ToList();
             } catch(SqlException ex)
             {

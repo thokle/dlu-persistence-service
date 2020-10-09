@@ -305,6 +305,8 @@
     <Compile Include="daos\SendGruppeDao.cs" />
     <Compile Include="daos\SendTilWebDao.cs" />
     <Compile Include="daos\SQLStringsUtil.cs" />
+    <Compile Include="daos\VisAnnonceFejlDao.cs" />
+    <Compile Include="daos\WebAnnonceKontrol.cs" />
     <Compile Include="delPriser.cs">
       <DependentUpon>DimpDotNet.tt</DependentUpon>
     </Compile>
@@ -350,6 +352,7 @@
     <Compile Include="LPRoller.cs">
       <DependentUpon>DimpDotNet.tt</DependentUpon>
     </Compile>
+    <Compile Include="models\AnnonceKontrolWeb.cs" />
     <Compile Include="models\Forspørgelser.cs" />
     <Compile Include="models\ForspørgelsesLinjer.cs" />
     <Compile Include="models\FundneMediePlaner.cs" />
@@ -434,6 +437,7 @@
     <Compile Include="models\PriceListWeekModel.cs" />
     <Compile Include="models\StamBlad.cs" />
     <Compile Include="models\UdsendingKontakter.cs" />
+    <Compile Include="models\VisAnnoceFejl.cs" />
     <Compile Include="models\WebForspørgelses.cs" />
     <Compile Include="models\WebForspørgelsesLinjer.cs" />
     <Compile Include="NavisionContact.cs">
@@ -555,6 +559,7 @@
     <Compile Include="services\SupportBilagService.cs" />
     <Compile Include="services\UgeAviserTilGridService.cs" />
     <Compile Include="services\UserService.cs" />
+    <Compile Include="services\VisAnnonceFejlService.cs" />
     <Compile Include="services\WebforspørgelsesLinjerService.cs" />
     <Compile Include="services\WebMailService.cs" />
     <Compile Include="services\WEBSendTilKollegaService.cs" />

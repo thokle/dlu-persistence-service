@@ -72,8 +72,8 @@ FROM dbo.tblMedieplan AS tblMedieplan_1 INNER JOIN dbo.tblMedieplanNr ON tblMedi
         {
             try
             {
-              var res1 =   entities.Database.ExecuteSqlCommand("exec IndsætOrdreTilNavision");
-                var res2 = entities.Database.ExecuteSqlCommand("exec IndsætOrdreLinjerTilNavision");
+                var res1 = entities.IndsætOrdreTilNavision();
+                var res2 = entities.IndsætOrdreLinjerTilNavision();
 
                 return new Tuple<int, int>(res1, res2);
                

@@ -8,7 +8,7 @@ namespace dlu_persistence_api.services
     {
         string GetAnnoceKontrolByMediePlanId(int mediePlanId);
         string GetAnnonceKontrolByEmail(string email);
-        Task<int> CreateOrUpdate(tblAnnoncekontrol tblAnnoncekontrol);
+        int CreateOrUpdate(tblAnnoncekontrol tblAnnoncekontrol);
 
          List<AnnoceKontrol> GetSQLAnnoceKontrols();
         List<AnnoceKontrol> GetSQLAnnoceKontrolsByWeek(int uge);

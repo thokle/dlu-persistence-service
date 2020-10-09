@@ -1,6 +1,8 @@
 using dlu_persistence_api.daos;
 using dlu_persistence_api.models;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Threading.Tasks;
 namespace dlu_persistence_api.services
 {
@@ -23,9 +25,16 @@ namespace dlu_persistence_api.services
             return _dao.GetAnnonceKontrolByEmail(email);
         }
 
-        public Task<int> CreateOrUpdate(tblAnnoncekontrol tblAnnoncekontrol)
+        public int CreateOrUpdate(tblAnnoncekontrol tblAnnoncekontrol)
         {
-            return _dao.CreateOrUpdate(tblAnnoncekontrol);
+           try
+            {
+                return _dao.CreateOrUpdate(tblAnnoncekontrol);
+            } catch (SqlException ex)
+            {
+                throw new dlu_persistence_api.exceptions.FormattedDbEntityValidationException(ex);
+            }
+            
         }
 
         public List<AnnoceKontrol> GetSQLAnnoceKontrols()
