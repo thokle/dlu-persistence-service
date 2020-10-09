@@ -196,24 +196,11 @@ namespace dlu_persistence_api.daos
             }
         }
 
-        public int RunStoredProcedureOpretPrisForspørgelses(Int16 Type, int MedieplanNr, string AnnoncørNo_, string Mediebureau, 
-            Int16 AntalBlade, string Format, Int16 AntalFarver, Int16 PlaceringID,Int16 AntalIndrykninger, Boolean VisPlaceringUB,  string Bemærkning)
+        public Decimal RunStoredProcedureOpretPrisForspørgelses(int? medieplanNr, string annoncørNo_, string mediebureau, string konsulentCode, byte? antalBlade, string format, byte? antalFarver, byte? placeringID, byte? antalIndrykninger, byte? types, bool? visPlaceringUB, DateTime? svarInden, string bemærkning)
         {
             try
             {
-                return devEntities.Database.ExecuteSqlCommand(" exec OpretForespørgsel   @Type, " +
-          "  @MedieplanNr , " +
-          "  @AnnoncørNo_ , " +
-          "  @Mediebureau , " +
-          "  @KonsulentCode ," +
-          "  @AntalBlade  ," +
-          "  @Format nvarchar(10), " +
-          "  @AntalFarver tinyint, " +
-          "  @PlaceringID tinyint, " +
-          "  @AntalIndrykninger tinyint, " +
-          "  @VisPlaceringUB bit, " +
-          "  @SvarInden datetime, " +
-          "  @Bemærkning nvarchar(2000) ", Type,MedieplanNr,AnnoncørNo_, Mediebureau, AntalBlade, Format, AntalFarver, PlaceringID, AntalIndrykninger, VisPlaceringUB, Bemærkning );
+                return (decimal)devEntities.OpretForespørgsel(types, medieplanNr, annoncørNo_, mediebureau, konsulentCode, antalBlade, format, antalFarver, placeringID, antalIndrykninger, visPlaceringUB, svarInden, bemærkning).First(); ;
                 
             }catch (SqlException ex)
             {
@@ -228,13 +215,7 @@ namespace dlu_persistence_api.daos
             {
 
 
-                return devEntities.Database.ExecuteSqlCommand(" exec OpretForespørgselsLinjer " +
-                 "   @ForespørgselID ," +
- "  @BladID  ," +
- "  @DLUMmPris , " +
- "  @DLUMmRabat , " +
- "  @DLUFarveTillæg  ," +
- "  @DLUFarveRabat" , ForespørgselID,  BladID, DLUMmPris, DLUMmRabat, DLUFarveTillæg, DLUFarveRabat);
+                return devEntities.OpretForespørgselsLinjer(ForespørgselID, BladID, DLUMmPris, DLUFarveRabat, DLUFarveTillæg, DLUMmRabat);
             }
             catch (SqlException ex)
             {
@@ -244,6 +225,7 @@ namespace dlu_persistence_api.daos
         }
        
     }
+
 
     class ForspørgelsesSQL
     {
@@ -280,4 +262,4 @@ namespace dlu_persistence_api.daos
    
     
     }
-}
+

@@ -29,13 +29,11 @@ namespace dlu_persistence_api.daos
         /// <exception cref="DaoExceptions"></exception>
         public WebMail GetWebMailByMail(string email)
         {
-
             try
             {
-
                 var res = (from we in _entities.tblWEBeMails
-                          where we.eMail == email
-                          select new WebMail()
+                          where we.eMail.Equals( email) 
+                           select new WebMail()
                           {
                             PersonID =   we.PersonID,
                              eMail = we.eMail,
