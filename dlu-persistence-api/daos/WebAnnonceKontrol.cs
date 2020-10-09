@@ -92,12 +92,19 @@ namespace dlu_persistence_api.daos
           //  "GETDATE(),'@email', @kontrolleretAfDLU,@ErrorID,@SidePlacering )";//
             try
             {
-                return devEntities.Database.ExecuteSqlCommand(iNSERTSQL,new SqlParameter(), new SqlParameter(), new SqlParameter(), new SqlParameter(),new SqlParameter(), new SqlParameter(), new SqlParameter());
+                return devEntities.Database.ExecuteSqlCommand(iNSERTSQL,new SqlParameter("OrdreID", OrdreID), new SqlParameter("BladID", BladID), new SqlParameter("email", email)
+                    , new SqlParameter("kontrolleretAfDLU", kontrolleretAfDLU),new SqlParameter("ErrorID", ErrorID), new SqlParameter("SidePlacering", SidePlacering));
             }
             catch (SqlException ex)
             {
                 throw new FormattedDbEntityValidationException(ex.InnerException);
             }
+        }
+
+        public List<int> ManglerKontrol()
+        {
+
+
         }
 
 
