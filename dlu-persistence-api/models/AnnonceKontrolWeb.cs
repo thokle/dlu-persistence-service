@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace dlu_persistence_api.models
 {
-    class AnnonceKontrolWeb
+    public class AnnonceKontrolWeb
     {
         private int ordreNr;
         private Boolean slutVist;

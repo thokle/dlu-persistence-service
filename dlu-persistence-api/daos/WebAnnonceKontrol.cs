@@ -5,9 +5,12 @@ using Microsoft.SqlServer.Server;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Data;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -101,12 +104,99 @@ namespace dlu_persistence_api.daos
             }
         }
 
-        public List<int> ManglerKontrol()
+        public int ManglerKontrol(int OrdreID)
         {
+            try
+            {
 
+                return devEntities.Database.SqlQuery<int>(selectDistinct, new SqlParameter("OrdreID", OrdreID))
+                    .ToList().Count;
+
+            }
+            catch (SqlException ex)
+            {
+                throw new FormattedDbEntityValidationException(ex.InnerException);
+            }
+            
 
         }
 
+        public int AntaFejl(int OrdreID)
+        {
+
+            try
+            {
+                return devEntities.Database.SqlQuery<int>(selectCount, new SqlParameter("OrdreID", OrdreID)).ToList()
+                    .Count;
+
+
+            }
+            catch (SqlException ex)
+            {
+                throw  new FormattedDbEntityValidationException(ex.InnerException);
+                  
+            }
+        }
+
+        public int SelectFakturing(int OrdreID)
+        {
+
+            try
+            {
+                return devEntities.Database.SqlQuery<int>(selectMediePlan, new SqlParameter("OrdreID", OrdreID)).ToList().Count;
+            }
+            catch (SqlException ex)
+            {
+                throw new FormattedDbEntityValidationException(ex.InnerException);
+            }
+        }
+
+
+        public int UpdateMediePlan(int Status, int OrdreID)
+        {
+            try
+            {
+                return devEntities.Database.ExecuteSqlCommand(upDateSQL, new SqlParameter("Status", Status),
+                    new SqlParameter("OrdreID", OrdreID));
+            }
+            catch (SqlException ex)
+            {
+                
+                throw new FormattedDbEntityValidationException(ex.InnerException);
+            }
+        }
+
+
+        public int UpdateMediePlanNr(int Status, int OrdreID)
+        {
+
+            try
+            {
+                return devEntities.Database.ExecuteSqlCommand(upDateSQL1, new SqlParameter("Status", Status),
+                    new SqlParameter("OrdreID", OrdreID));
+            }
+            catch (SqlException ex)
+            {
+                throw new FormattedDbEntityValidationException(ex.InnerException);
+            }
+
+        }
+
+
+        public int UpdateAnnonceKontrol(int OrdreID, int BladID)
+        {
+
+            try
+            {
+                return devEntities.Database.ExecuteSqlCommand(upDateSQL2, new SqlParameter("OrdreID", OrdreID),
+                    new SqlParameter("BladID", BladID));
+            }
+            catch (SqlException ex)
+            {
+                throw  new FormattedDbEntityValidationException(ex.InnerException);    
+                   
+            }
+        }
 
 
     }

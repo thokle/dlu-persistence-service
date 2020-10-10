@@ -516,6 +516,7 @@
     <Compile Include="services\interfaces\ISupportBilagService.cs" />
     <Compile Include="services\interfaces\IUgeAviserTilGridServive.cs" />
     <Compile Include="services\interfaces\IUserService.cs" />
+    <Compile Include="services\interfaces\IWebAnnoncKontrolService.cs" />
     <Compile Include="services\interfaces\IWebforspørgelsesLinjerService.cs" />
     <Compile Include="services\interfaces\IWebForspørgelsesService.cs" />
     <Compile Include="services\interfaces\IWebMailService.cs" />
@@ -560,6 +561,7 @@
     <Compile Include="services\UgeAviserTilGridService.cs" />
     <Compile Include="services\UserService.cs" />
     <Compile Include="services\VisAnnonceFejlService.cs" />
+    <Compile Include="services\WebAnnoncKontrolService.cs" />
     <Compile Include="services\WebforspørgelsesLinjerService.cs" />
     <Compile Include="services\WebMailService.cs" />
     <Compile Include="services\WEBSendTilKollegaService.cs" />
