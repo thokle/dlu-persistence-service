@@ -93,7 +93,7 @@ namespace dlu_persistence_api.services
             }
         }
 
-        public int SelectFakturing(int OrdreID)
+        public byte SelectFakturing(int OrdreID)
         {
             try
             {

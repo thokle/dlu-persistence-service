@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 
 namespace dlu_persistence_api.daos
@@ -163,18 +164,21 @@ namespace dlu_persistence_api.daos
                                             Navn2 = re.Navn2,
                                             Total = linjer.Total,
                                             totalPris = linjer.TotalPris,
-                                            UgeavisID = linjer.UgeavisID
-
-
-
+                                            UgeavisID = linjer.UgeavisID,
+                                            fejl = entities.tblFejlTeksts.Select( 
+                                               f => new Fejl()
+                                               {
+                                                   FejlTekst = f.FejlTekst
+                                               }).ToList(),
+                                           ansvar = entities.tblAnnoncekontrols.Select(e => new Ansvar() { Name = e.Ansvar }).Distinct().ToList()
                                         }).ToList()
                 });
 
                 return res.FirstOrDefault<MediePlan>();
             }
-            catch (Exception e)
+            catch (FormattedDbEntityValidationException ex)
             {
-                throw new DaoExceptions("MediePlanDao GetMediePlanByNumber", e.InnerException);
+                throw new Exception("MediePlanDao GetMediePlanByNumber", ex.InnerException);
             }
         }
 
@@ -677,7 +681,20 @@ namespace dlu_persistence_api.daos
                 throw new Exception(e.HelpLink);
             }
         }
+
+
+        public int SetFakturing(int mediePlanNr, int version, int value)
+        {
+            try
+            {
+             return   entities.Database.ExecuteSqlCommand("update tblMedieplan set Fakturering=@value where MedieplanNr=@mediePlanNr and Version=@version", new SqlParameter("mediePlanNr", mediePlanNr), new SqlParameter("version", version), new SqlParameter("value", value));
+            }catch(Exception ex)
+            {
+                throw new FormattedDbEntityValidationException(ex.InnerException);
+            }
+        }
     }
+
 
     public class Udkommerikke
     {
@@ -688,6 +705,7 @@ namespace dlu_persistence_api.daos
         public string PrislisteNavn { get;  set; }
     }
 
+    
     public class MediePlan
     {
         public MediePlan()

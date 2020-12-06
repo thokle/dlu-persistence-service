@@ -1,5 +1,6 @@
 ﻿using dlu_persistence_api.models;
 using System;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
 namespace dlu_persistence_api.daos
 {
@@ -134,12 +135,21 @@ namespace dlu_persistence_api.daos
                               TotalomraadePct = b.TotalområdePct,
                               VisPaaWWW = b.VisPåWWW,
                               WWWDaekningSomTekst = b.WWWDækningSomTekst,
-                            
+
 
                               MiljøTillæg = know.miljøtilæg.Value != 0 ? know.miljøtilæg.Value : 0,
                               koncern = know.koncern,
 
-                              UgeavisID = d.BladID
+                              UgeavisID = d.BladID,
+                              fejl = diMPdot.tblFejlTeksts.Select(
+                                               f => new Fejl()
+                                               {
+                                                   FejlTekst = f.FejlTekst,
+                                                   
+                                               }).ToList(),
+                                               
+                              ansvar = diMPdot.tblAnnoncekontrols.Select(e => new Ansvar() { Name = e.Ansvar}).Distinct().ToList()
+
 
                           };
 
@@ -152,7 +162,7 @@ namespace dlu_persistence_api.daos
             }
             catch (Exception e)
             {
-
+                Console.WriteLine(e.Message);
                 throw new Exception();
             }
         }

@@ -8,6 +8,7 @@ namespace dlu_persistence_api.services.interfaces
     public interface IStamBladUdsendigKontakterService
     {
         List<UdsendingKontakter> GetUdsendingKontakterPrBladId(int bladId);
+        List<UdsendingKontakter> GetUdsendingKontaktersByNavn(string navn);
        Task<int> AddOrUpdateKontakterPrBlad(tblBladUdsendingKontakter tblBlad);
     }
 }

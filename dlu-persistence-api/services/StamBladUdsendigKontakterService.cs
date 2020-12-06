@@ -23,5 +23,10 @@ namespace dlu_persistence_api.services
         {
             return kontakterDao.GetUdsendingKontakterPrBladId(bladId);
         }
+
+        public List<UdsendingKontakter> GetUdsendingKontaktersByNavn(string navn)
+        {
+            return kontakterDao.GetUdsendingKontaktersByNavn(navn);
+        }
     }
 }

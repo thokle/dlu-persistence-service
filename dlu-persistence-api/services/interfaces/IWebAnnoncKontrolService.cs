@@ -17,7 +17,7 @@ namespace dlu_persistence_api.services.interfaces
 
         int AntaFejl(int OrdreID);
 
-        int SelectFakturing(int OrdreID);
+        byte SelectFakturing(int OrdreID);
 
         int UpdateMediePlan(int Status, int OrdreID);
 

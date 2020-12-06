@@ -66,6 +66,43 @@ namespace dlu_persistence_api.daos
             return entities.SaveChangesAsync();
 
         }
+
+        public List<UdsendingKontakter> GetUdsendingKontaktersByNavn(string navn)
+        {
+            try
+            {
+                var res =
+
+                                   from tuk in entities.tblBladUdsendingKontakters
+                                   join tl in entities.tblKontaktTitlers on tuk.titel equals tl.TitelID into tuktl
+                                   from tukl in tuktl.DefaultIfEmpty()
+
+                                   join stam in entities.tblBladStamdatas on tuk.bladid equals stam.BladID into stamtuk
+                                   from stam in stamtuk.DefaultIfEmpty()
+                                   join du in entities.tblStambladUdsendingEmailTypers on tuk.type equals du.id
+                                   where stam.Navn.Contains(navn)
+                                   select new UdsendingKontakter
+                                   {
+                                       Email = tuk.mail,
+                                       KontaktType = du.titel,
+                                       Name = tuk.navn,
+                                       Id = tuk.id,
+                                       BladId = tuk.bladid,
+                                       Telefonnummer = tuk.telefonnummer,
+                                       Titel = tukl.Titel,
+
+
+
+                                   };
+
+
+
+                return res.ToList<UdsendingKontakter>();
+            } catch(FormattedDbEntityValidationException ex)
+            {
+                throw new Exception(ex.HelpLink);
+            }
+        }
     }
 
 

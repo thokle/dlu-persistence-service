@@ -10,9 +10,12 @@ namespace dlu_persistence_api
 
         public static void Main(string[] args)
         {
-            DiMPdotNetDevEntities diMPdotNetDevEntities = new DiMPdotNetDevEntities();
 
-            diMPdotNetDevEntities.tblBladStamdatas.Select(a => new { a.BladID, a.Navn }).ToList().ForEach(p => Console.WriteLine("BladId {0} Navn {1}", p.BladID, p.Navn));
+            dlu_persistence_api.services.WebAnnoncKontrolService webAnnoncKontrolService = new services.WebAnnoncKontrolService();
+
+            webAnnoncKontrolService.AnnonceKontrolWebs(14, 42, 2020);
+
+            
         }
     }
 }
