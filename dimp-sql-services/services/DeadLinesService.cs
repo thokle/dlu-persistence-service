@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace dimp_sql_services.services
 {
-       public   class DeadLinesService: IDeadLinesService
+    public class DeadLinesService : IDeadLinesService
     {
 
         private DeadLinesDao dead;
@@ -28,11 +28,12 @@ namespace dimp_sql_services.services
             try
             {
                 return dead.Delete(bladid, linje);
-            }catch (FormattedDbEntityValidationException ex)
+            }
+            catch (FormattedDbEntityValidationException ex)
             {
                 throw new Exception(ex.Message);
             }
-          
+
         }
 
         public List<DeadLine> GetDeadLine(int bladid, int type)
@@ -40,6 +41,18 @@ namespace dimp_sql_services.services
             return dead.GetDeadLine(bladid, type);
         }
 
+        public List<models.EjerforholdDeadLine> GetEjerforholdDeadLines(string ejerforhold)
+        {
+            try
+            {
+                return dead.GetEjerforholdDeadLines(ejerforhold);
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
+        }
     }
+
 }

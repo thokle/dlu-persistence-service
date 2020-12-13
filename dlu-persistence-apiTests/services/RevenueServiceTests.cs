@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using dlu_persistence_api.services;
 namespace dlu_persistence_api.services.Tests
 {
     [TestClass()]

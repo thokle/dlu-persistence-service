@@ -19,6 +19,36 @@ namespace dimp_sql_services.daos
             dimp = new dimpSQLEntities();
         }
 
+        public List<models.EjerforholdDeadLine> GetEjerforholdDeadLines(string ejerforhold) {
+            try
+            {
+
+               return (from a in dimp.tblBladStamdatas
+                
+                 where a.Ejerforhold.Equals(ejerforhold)
+                 select new models.EjerforholdDeadLine()
+                 {
+                     Navn = a.Navn,
+                     Deadliens = dimp.tblWEBUdgivelses.Where(w => w.BladID == a.BladID).Select(d => new DeadLine() { BladID = d.BladID, 
+                         MaterialeDeadline = d.MaterialeDeadline,
+                     Linje = d.Linje,
+                     MaterialeTid = d.MaterialeTid,
+                     OrdreDeadline = d.OrdreDeadline,
+                     OrdreTid = d.OrdreTid,
+                     UdgivelsesDato = d.UdgivelsesDato,
+                     UdkommerIkke = d.UdkommerIkke,
+                     Uge = d.Uge
+                     }).ToList()
+                 }).ToList();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        
+        }
+
 
         public List<DeadLine> GetDeadLine(int bladid , int type)
         {

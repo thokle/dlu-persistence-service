@@ -24,5 +24,10 @@ namespace dlu_persistence_api.services
         {
             return udsendingDao.GetAllStambladTilUdsendingTilDeadlines();
         }
+
+        public List<models.Ejerforhold> GetAllDistinctEjerforhold()
+        {
+            return udsendingDao.GetAllDistinctEjerforhold();
+        }
     }
 }

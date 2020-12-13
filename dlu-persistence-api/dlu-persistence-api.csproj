@@ -328,6 +328,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DimpDotNet.edmx</DependentUpon>
     </Compile>
+    <Compile Include="dlu_persistence_api\models\Ejerforhold.cs" />
     <Compile Include="dlu_persistence_api\models\SkalSendes.cs" />
     <Compile Include="dtproperty.cs">
       <DependentUpon>DimpDotNet.tt</DependentUpon>
@@ -926,7 +927,7 @@
   </Target>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" BuildVersion_StartDate="2000/1/1" BuildVersion_UseGlobalSettings="True" BuildVersion_UseUniversalClock="True" />
+      <UserProperties BuildVersion_UseUniversalClock="True" BuildVersion_UseGlobalSettings="True" BuildVersion_StartDate="2000/1/1" BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" />
     </VisualStudio>
   </ProjectExtensions>
   <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />

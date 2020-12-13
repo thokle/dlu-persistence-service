@@ -149,6 +149,7 @@
     <Compile Include="MMPrisPrÅr.cs">
       <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
+    <Compile Include="models\EjerforholdDeadLine.cs" />
     <Compile Include="NulltblAnnoncører.cs">
       <DependentUpon>dimp.tt</DependentUpon>
     </Compile>

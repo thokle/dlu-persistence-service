@@ -13,5 +13,7 @@ namespace dimp_sql_services.services
         List<DeadLine> GetDeadLine(int bladid, int type);
         int CreateDeadLine(DeadLine wEBUdgivelse);
         int Delete(int bladid, int linje);
+        List<models.EjerforholdDeadLine> GetEjerforholdDeadLines(string ejerforhold);
+
     }
 }

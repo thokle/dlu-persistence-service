@@ -20,7 +20,7 @@ namespace dlu_persistence_api.daos
         {
             try
             {
-                return devEntities.tblBladStamdatas.Select(s => new Udsending() { StamdataEmail = s.StamdataEmail, Navn = s.Navn, BladID = s.BladID, Ophørt= s.Ophørt }).Where(w => w.Ophørt == false)
+                return devEntities.tblBladStamdatas.Select(s => new { StamdataEmail = s.StamdataEmail, Navn = s.Navn, BladID = s.BladID, Ophørt= s.Ophørt }).Where(w => w.Ophørt == false)
                     .GroupBy(g => new { g.StamdataEmail, g.Navn, g.BladID, g.Ophørt })
                     .Select(se => new Udsending() { StamdataEmail = se.Key.StamdataEmail, Navn = se.Key.Navn,  BladID = se.Key.BladID , Ophørt = se.Key.Ophørt}).ToList();
             }
@@ -37,9 +37,9 @@ namespace dlu_persistence_api.daos
         {
             try
             {
-                return devEntities.tblBladStamdatas.Select(s => new Udsending() { StamdataEmail = s.StamdataEmail, Navn = s.Navn, BladID = s.BladID, Ophørt = s.Ophørt }).Where(w => w.Ophørt == false)
-                  
-                    .Select(se => new Udsending() { StamdataEmail = se.StamdataEmail, Navn = se.Navn, BladID = se.BladID, Ophørt = se.Ophørt }).ToList();
+                return devEntities.tblBladStamdatas.Select(s => new { StamdataEmail = s.StamdataEmail, Navn = s.Navn, BladID = s.BladID, Ophørt = s.Ophørt , Ejerforhold = s.Ejerforhold})
+                    .GroupBy(g => new { g.Ejerforhold, g.Navn, g.Ophørt, g.StamdataEmail, g.BladID  }).Where(w => w.Key.Ophørt == false)                  
+                    .Select(se => new Udsending() {Ejerforhold = se.Key.Ejerforhold,  StamdataEmail = se.Key.StamdataEmail, Navn = se.Key.Navn, BladID = se.Key.BladID, Ophørt = se.Key.Ophørt }).Distinct().ToList();
             }
             catch (Exception ex)
             {
@@ -50,7 +50,18 @@ namespace dlu_persistence_api.daos
 
         }
 
+        public List<models.Ejerforhold> GetAllDistinctEjerforhold()
+        {
+            try
+            {
+                return devEntities.tblBladStamdatas.Where(s => s.Ophørt == false).Select(s => new models.Ejerforhold() { EjerforholdData = s.Ejerforhold }).Distinct().ToList();
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
+        }
     }
 
     public class Udsending
@@ -59,5 +70,7 @@ namespace dlu_persistence_api.daos
         public string Navn { get;  set; }
         public int BladID { get;  set; }
         public bool Ophørt { get; internal set; }
+
+        public string Ejerforhold { get; set; }
     }
 }
