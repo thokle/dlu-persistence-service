@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using dlu_persistence_api.daos;
+using dlu_persistence_api.services.interfaces;
 namespace dlu_persistence_api.services
 {
- public    class PrisUdsendingService
+ public class PrisUdsendingService : IPrisUdsendingService
     {
         private PrisUdsendingDao udsendingDao;
 
@@ -30,4 +31,6 @@ namespace dlu_persistence_api.services
             return udsendingDao.GetAllDistinctEjerforhold();
         }
     }
+
+   
 }

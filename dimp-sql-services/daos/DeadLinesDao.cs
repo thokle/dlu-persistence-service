@@ -41,10 +41,10 @@ namespace dimp_sql_services.daos
                      }).ToList()
                  }).ToList();
             }
-            catch (Exception ex)
+            catch (FormattedDbEntityValidationException ex)
             {
 
-                throw new Exception(ex.Message);
+                throw new Exception(ex.Message, ex.InnerException);
             }
         
         }

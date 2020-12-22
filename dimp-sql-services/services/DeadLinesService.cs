@@ -47,10 +47,10 @@ namespace dimp_sql_services.services
             {
                 return dead.GetEjerforholdDeadLines(ejerforhold);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw new Exception(ex.InnerException.Message, ex.InnerException);
             }
         }
     }

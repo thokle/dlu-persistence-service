@@ -108,3 +108,4 @@ C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\
 C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\obj\Release\dlu-persistence-api.csproj.CopyComplete
 C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\obj\Release\dlu-persistence-api.dll
 C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\obj\Release\dlu-persistence-api.pdb
+C:\Users\Thomas Kleist\Source\Repos\dlu-persistence-service\dlu-persistence-api\obj\Release\dlu-persistence-api.csprojAssemblyReference.cache

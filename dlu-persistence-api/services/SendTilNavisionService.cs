@@ -60,7 +60,7 @@ FROM dbo.tblMedieplan AS tblMedieplan_1 INNER JOIN dbo.tblMedieplanNr ON tblMedi
               var res6=  entities.Database.ExecuteSqlCommand(@"UPDATE tblMedieplanNr SET AktivVersion = tblMedieplanNr.AktivVersion * 10 + 1 FROM tblMedieplanNr INNER JOIN tblMedieplan ON tblMedieplanNr.MedieplanNr = tblMedieplan.MedieplanNr AND tblMedieplanNr.AktivVersion = tblMedieplan.Version WHERE (tblMedieplanNr.Status = 6) AND (tblMedieplanNr.AktivVersion < 100) AND (tblMedieplan.IndrykningsUge=@indrykingsUge) ", new SqlParameter("indrykingsUge", indrykingsUge));
 
 
-                return new Tuple<string, int>("Sendt til Navision", res1+res2+res3+res4+res5+res6);
+                return new Tuple<string, int>("Sendt til Navision", res1+res2+res3+res4);
             }
             catch (Exception e)
             {

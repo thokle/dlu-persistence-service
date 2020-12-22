@@ -516,6 +516,7 @@
     <Compile Include="services\interfaces\IPriceAskingService.cs" />
     <Compile Include="services\interfaces\IPriserPrBladAArService.cs" />
     <Compile Include="services\interfaces\IPriserService.cs" />
+    <Compile Include="services\interfaces\IPrisUdsendingService.cs" />
     <Compile Include="services\interfaces\IRegionService.cs" />
     <Compile Include="services\interfaces\IStambladKontakterService.cs" />
     <Compile Include="services\interfaces\IStambladKontaktPersonService.cs" />
@@ -927,7 +928,7 @@
   </Target>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_UseUniversalClock="True" BuildVersion_UseGlobalSettings="True" BuildVersion_StartDate="2000/1/1" BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" />
+      <UserProperties BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" BuildVersion_StartDate="2000/1/1" BuildVersion_UseGlobalSettings="True" BuildVersion_UseUniversalClock="True" />
     </VisualStudio>
   </ProjectExtensions>
   <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
