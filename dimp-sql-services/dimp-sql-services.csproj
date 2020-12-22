@@ -490,6 +490,7 @@
     <Compile Include="øPDStamdata.cs">
       <DependentUpon>dimp.tt</DependentUpon>
     </Compile>
+    <Compile Include="daos\EjerforholdDeadLines.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
